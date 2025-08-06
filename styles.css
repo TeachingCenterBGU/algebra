@@ -1,0 +1,164 @@
+/* --- עיצוב RTL כללי --- */
+html {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-family: "Alef", "Assistant", sans-serif;
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* --- כותרות --- */
+h1.title, h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: right;
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: right;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 500;
+  color: #444;
+  text-align: right;
+}
+
+/* --- תיבות תוכן (הגדרות, דוגמאות וכו') --- */
+div.example,
+div.definition,
+div.proposition,
+div.proof,
+div.exercise,
+div.remark,
+div.self {
+  border-right: 6px solid #ccc;
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1.5em 0;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- כותרת בתוך בלוק תוכן --- */
+div.example > strong,
+div.definition > strong,
+div.proposition > strong,
+div.proof > strong,
+div.exercise > strong,
+div.remark > strong,
+div.self > strong {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+/* --- צבעים לפי סוג בלוק --- */
+div.definition   { border-color: #00bcd4; background-color: #e0f7fa; }
+div.example      { border-color: #7b1fa2; background-color: #f3e5f5; }
+div.proposition  { border-color: #009688; background-color: #e0f2f1; }
+div.proof        { border-color: #673ab7; background-color: #ede7f6; }
+div.exercise     { border-color: #e64a19; background-color: #fbe9e7; }
+div.self         { border-color: #c62828; background-color: #ffebee; }
+div.remark       { border-color: #1976d2; background-color: #e3f2fd; }
+
+/* --- נוסחאות מתמטיות בכיוון שמאל לימין --- */
+.math.inline, .math.display {
+  direction: ltr;
+  unicode-bidi: embed;
+  text-align: left;
+}
+.sidebar-header {
+  text-align: center;
+}
+
+.sidebar-header::before {
+  content: "";
+  display: block;
+  background-image: url("logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.download-button {
+  display: block;
+  text-align: center;
+  margin: 2em 0;
+}
+.btn-primary {
+  background-color: #ff9900;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #cc7a00;
+}
+
+#download-box {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* הוסף את זה כדי להזיז את הקופסה לסיידבר */
+.sidebar-item:last-child::after {
+  content: '';
+  display: block;
+}
+
+#download-box {
+  position: relative;
+  padding: 1em;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin-top: 1em;
+}
+
+/* העבר את ההורדה ל־sidebar */
+.sidebar nav::after {
+  content: '';
+  display: block;
+}
+
+.sidebar nav + * {
+  display: block;
+}
+
+.tooltip {
+  position: relative;
+  direction: rtl;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  white-space: pre-line;
+  background-color: #f9f9f9;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 999;
+  width: 320px;
+  top: -20px;
+  left: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
