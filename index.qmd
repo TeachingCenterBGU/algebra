@@ -1,0 +1,29 @@
+# מידע כללי {.unnumbered}
+
+::: {.center}
+![](logo.png){width=100px}
+:::
+
+
+
+::: {#download-box}
+[⬇️ להורדת הספר בפורמט PDF](אלגברה-לינארית.pdf){.btn .btn-primary target=_blank}
+:::
+
+This is a Quarto book.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+This is a book created from markdown and executable code.
+
+See @knuth84 for additional discussion of literate programming.
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const downloadBox = document.querySelector("#download-box");
+    if (sidebar && downloadBox) {
+      sidebar.appendChild(downloadBox);
+    }
+  });
+</script>

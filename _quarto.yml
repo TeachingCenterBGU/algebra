@@ -1,0 +1,44 @@
+project:
+  type: book
+
+book:
+  title: "אלגברה לינארית"
+  author: "ד\"ר יונתן שלח, ד\"ר נדב מאיר"
+  language: he
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - chapter_0.qmd
+    - chapter_0_5.qmd
+    - chapter_1.qmd
+    - chapter_2.qmd
+    - chapter_3.qmd
+    - summary.qmd
+    - references.qmd
+
+  sidebar:
+    tools:
+      - icon: download
+        href: "אלגברה-לינארית.pdf" 
+        text: "הורדת הספר כ-PDF"
+  # -------------------------
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    css: styles.css
+    html-math-method: katex
+
+  pdf:
+    documentclass: scrbook
+    mainfont: "David"
+    sansfont: "David"
+    monofont: "Courier New"
+    toc: true
+    number-sections: true
+    pdf-engine: xelatex
+    lang: he
+    dir: rtl

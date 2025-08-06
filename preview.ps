@@ -1,0 +1,11 @@
+# Step 1: Clean up old build directories
+Write-Host "🧹 Cleaning old build files..."
+Remove-Item -Recurse -Force _book, .quarto -ErrorAction SilentlyContinue
+
+# Step 2: Re-render the project
+Write-Host "🛠 Rendering Quarto project..."
+quarto render
+
+# Step 3: Launch the preview server
+Write-Host "🚀 Starting live preview..."
+quarto preview
