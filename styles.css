@@ -162,3 +162,21 @@ div.remark       { border-color: #1976d2; background-color: #e3f2fd; }
 .tooltip:hover::after {
   opacity: 1;
 }
+
+.quarto-figure,
+.figure {
+  text-align: center !important;
+}
+
+.quarto-figure img,
+.figure img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ליתר ביטחון: מרכוז הכיתוב */
+.quarto-figure > figcaption,
+.figure > figcaption {
+  text-align: center !important;
+}
