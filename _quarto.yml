@@ -31,14 +31,28 @@ format:
     number-sections: true
     css: styles.css
     html-math-method: katex
+    fig-align: center
+    fig-cap-location: bottom
+    callout:
+      collapse: true
 
   pdf:
-    documentclass: scrbook
-    mainfont: "David"
-    sansfont: "David"
-    monofont: "Courier New"
+    documentclass: book
+    papersize: a4
+    classoption: oneside
+    lang: he
     toc: true
     number-sections: true
-    pdf-engine: xelatex
-    lang: he
-    dir: rtl
+    mainfont: "David"         # או "Frank Ruehl CLM", "Noto Sans Hebrew"
+    monofont: "Courier New"
+    fontsize: 12pt
+    linestretch: 1.5
+    geometry: "right=30mm, left=30mm, top=30mm, bottom=30mm"
+    header-includes:
+      - \usepackage{bidi}      # תמיכה בעברית
+      - \setRTL                # כתיבה מימין לשמאל
+  
+filters:
+  - uncollapse-for-pdf.lua
+# --------------------
+

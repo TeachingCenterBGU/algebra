@@ -141,7 +141,9 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">אלגברה לינארית</a> 
+      <a href="./">
+      אלגברה לינארית
+      </a> 
         <div class="sidebar-tools-main">
     <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
 </div>
@@ -193,7 +195,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ' - דוגמה מספרית</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -220,7 +222,6 @@ window.Quarto = {
   <ul>
   <li><a href="#תרגיל-לדוגמה" id="toc-תרגיל-לדוגמה" class="nav-link active" data-scroll-target="#תרגיל-לדוגמה"><span class="header-section-number">1.1</span> תרגיל לדוגמה</a></li>
   <li><a href="#עוד-נסיון" id="toc-עוד-נסיון" class="nav-link" data-scroll-target="#עוד-נסיון"><span class="header-section-number">1.2</span> עוד נסיון</a></li>
-  <li><a href="#דמו-אינטראקטיבי" id="toc-דמו-אינטראקטיבי" class="nav-link" data-scroll-target="#דמו-אינטראקטיבי"><span class="header-section-number">1.3</span> דמו אינטראקטיבי?</a></li>
   </ul>
 </nav>
     </div>
@@ -268,6 +269,7 @@ window.Quarto = {
 </div>
 </div>
 <p>הטקסט הזה מופיע אחרי התרגיל והפתרון שלו.</p>
+<p>q</p>
 </section>
 <section id="עוד-נסיון" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="עוד-נסיון"><span class="header-section-number">1.2</span> עוד נסיון</h2>
@@ -295,233 +297,11 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<section id="הוכחה" class="level4 callout-body-container callout-body" data-number="1.2.0.1">
-<h4 data-number="1.2.0.1" class="anchored" data-anchor-id="הוכחה"><span class="header-section-number">1.2.0.1</span> הוכחה:</h4>
-<p>אנו יכולים לבחון שני מקרים:</p>
-<ol type="1">
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k)^2 + 2k = 4k^2 + 2k = 2(2k^2+k)</span> מכיוון שהביטוי הוא כפולה של 2, הוא זוגי.</p></li>
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר אי-זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k+1</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k+1)^2 + (2k+1) = (4k^2+4k+1) + (2k+1) = 4k^2+6k+2 = 2(2k^2+3k+1)</span> מכיוון שהביטוי הוא כפולה של 2, הוא גם זוגי.</p></li>
-</ol>
-<p>בכל מקרה, הביטוי הוא זוגי.</p>
-</section>
-</div>
-</div>
-</section>
-<section id="דמו-אינטראקטיבי" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="דמו-אינטראקטיבי"><span class="header-section-number">1.3</span> דמו אינטראקטיבי?</h2>
-<style>
-  /* עיצוב כללי לכל הדמו */
-  #linear-transform-demo {
-    font-family: sans-serif;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
-  }
-  /* עיצוב לגרף עצמו */
-  #transformCanvas {
-    border: 1px solid black;
-  }
-  /* עיצוב לאזור הבקרה (המחוונים) */
-  .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  .control-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .control-group input[type="range"] {
-    width: 100%;
-  }
-</style>
-
-<div id="linear-transform-demo">
-  <canvas id="transformCanvas" width="500" height="500"></canvas>
-  <div class="controls">
-    <div class="control-group" id="matrix-controls">
-      <h4 class="anchored">ערכי המטריצה</h4>
-      <label for="a_slider">a: <span id="a_value">1.0</span></label>
-      <input type="range" id="a_slider" min="-2" max="2" value="1" step="0.1">
-      <label for="b_slider">b: <span id="b_value">0.0</span></label>
-      <input type="range" id="b_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="c_slider">c: <span id="c_value">0.0</span></label>
-      <input type="range" id="c_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="d_slider">d: <span id="d_value">1.0</span></label>
-      <input type="range" id="d_slider" min="-2" max="2" value="1" step="0.1">
-    </div>
-    <div class="control-group" id="vector-controls">
-      <h4 class="anchored">ערכי הווקטור</h4>
-      <label for="x_slider">x: <span id="x_value">2.0</span></label>
-      <input type="range" id="x_slider" min="-5" max="5" value="2" step="0.1">
-      <label for="y_slider">y: <span id="y_value">3.0</span></label>
-      <input type="range" id="y_slider" min="-5" max="5" value="3" step="0.1">
-    </div>
-  </div>
-</div>
-
-<script>
-  // קבלת רפרנסים לאלמנטים מה-HTML
-  const canvas = document.getElementById('transformCanvas');
-  const ctx = canvas.getContext('2d');
-
-  // קבלת כל המחוונים והתוויות שלהם
-  const sliders = {
-    a: document.getElementById('a_slider'),
-    b: document.getElementById('b_slider'),
-    c: document.getElementById('c_slider'),
-    d: document.getElementById('d_slider'),
-    x: document.getElementById('x_slider'),
-    y: document.getElementById('y_slider')
-  };
-  const values = {
-    a: document.getElementById('a_value'),
-    b: document.getElementById('b_value'),
-    c: document.getElementById('c_value'),
-    d: document.getElementById('d_value'),
-    x: document.getElementById('x_value'),
-    y: document.getElementById('y_value')
-  };
-
-  // הגדרות הגרף
-  const originX = canvas.width / 2;
-  const originY = canvas.height / 2;
-  const scale = 40; // 40 פיקסלים ליחידה אחת
-
-  // פונקציה שמציירת הכל מחדש
-  function draw() {
-    // 1. קריאת הערכים הנוכחיים מהמחוונים
-    const a = parseFloat(sliders.a.value);
-    const b = parseFloat(sliders.b.value);
-    const c = parseFloat(sliders.c.value);
-    const d = parseFloat(sliders.d.value);
-    const x = parseFloat(sliders.x.value);
-    const y = parseFloat(sliders.y.value);
-
-    // עדכון התוויות המספריות
-    values.a.textContent = a.toFixed(1);
-    values.b.textContent = b.toFixed(1);
-    values.c.textContent = c.toFixed(1);
-    values.d.textContent = d.toFixed(1);
-    values.x.textContent = x.toFixed(1);
-    values.y.textContent = y.toFixed(1);
-
-    // 2. ביצוע החישוב המתמטי
-    const transformedX = a * x + b * y;
-    const transformedY = c * x + d * y;
-
-    // 3. ניקוי הקנבס וציור הרקע
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-
-    // 4. ציור הווקטורים
-    drawVector(x, y, 'blue', 'הווקטור המקורי');
-    drawVector(transformedX, transformedY, 'red', 'הווקטור לאחר טרנספורמציה');
-  }
-
-  // פונקציית עזר לציור הרשת והצירים
-  function drawGrid() {
-    ctx.beginPath();
-    ctx.strokeStyle = '#ccc'; // צבע אפור לרשת
-    // קווי רשת אנכיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(originX + i * scale, 0);
-        ctx.lineTo(originX + i * scale, canvas.height);
-    }
-    // קווי רשת אופקיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(0, originY + i * scale);
-        ctx.lineTo(canvas.width, originY + i * scale);
-    }
-    ctx.stroke();
-
-    // צירים ראשיים (שחור)
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    // ציר X
-    ctx.moveTo(0, originY);
-    ctx.lineTo(canvas.width, originY);
-    // ציר Y
-    ctx.moveTo(originX, 0);
-    ctx.lineTo(originX, canvas.height);
-    ctx.stroke();
-    ctx.lineWidth = 1;
-  }
-
-  // פונקציית עזר לציור וקטור
-  function drawVector(x, y, color, label) {
-    const canvasX = originX + x * scale;
-    const canvasY = originY - y * scale; // מינוס כי ציר Y בקנבס הפוך
-
-    // ציור הקו
-    ctx.beginPath();
-    ctx.moveTo(originX, originY);
-    ctx.lineTo(canvasX, canvasY);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
-    ctx.stroke();
-
-    // ציור ראש החץ
-    const headlen = 10;
-    const angle = Math.atan2(canvasY - originY, canvasX - originX);
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(canvasX, canvasY);
-    ctx.lineTo(canvasX - headlen * Math.cos(angle - Math.PI / 6), canvasY - headlen * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(canvasX - headlen * Math.cos(angle + Math.PI / 6), canvasY - headlen * Math.sin(angle + Math.PI / 6));
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  // 5. הוספת "מאזינים" (EventListeners)
-  // כל פעם שמשתמש מזיז מחוון כלשהו, הפונקציה draw() תופעל
-  for (let key in sliders) {
-    sliders[key].addEventListener('input', draw);
-  }
-
-  // ציור ראשוני של הגרף כשהדף נטען
-  draw();
-
-</script>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-חקירה אינטראקטיבית: מטריצה כטרנספורמציה
-</div>
-</div>
 <div class="callout-body-container callout-body">
-<p>הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: <strong>מטריצה כפעולה גיאומטרית</strong>.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">מה רואים כאן?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">נסו לחקור בעצמכם</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<ul>
-<li><p><strong>הווקטור הכחול</strong> הוא הווקטור המקורי במרחב, אותו ניתן לשנות בעזרת המחוונים <code>x</code> ו-<code>y</code>.</p></li>
-<li><p><strong>הווקטור האדום</strong> הוא תוצאת הפעולה – המקום החדש שאליו הווקטור “עבר” לאחר שהמטריצה (שנקבעת על ידי <code>a</code>,<code>b</code>,<code>c</code>,<code>d</code>) הפעילה עליו את הטרנספורמציה.</p></li>
-</ul>
-<p>במילים פשוטות, אתם רואים כיצד המטריצה “מעוותת” את המרחב ולוקחת כל וקטור למקום חדש.</p>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<ul>
-<li><p><strong>מתיחה וכיווץ (Scaling):</strong> מה קורה כאשר משנים רק את ערכי <code>a</code> ו-<code>d</code> (ושומרים על <code>b=0</code>, <code>c=0</code>)? איזו מטריצה תגרום לווקטור להתארך פי שניים בדיוק?</p></li>
-<li><p><strong>שיקוף (Reflection):</strong> האם תמצאו מטריצה שתשקף את הווקטור ביחס לציר ה-x? (רמז: איזה רכיב של הווקטור צריך לשנות את סימנו?).</p></li>
-<li><p><strong>סיבוב (Rotation):</strong> הגדירו את המטריצה להיות <code>a=0</code>, <code>b=-1</code>, <code>c=1</code>, <code>d=0</code>. איזו פעולה גיאומטרית המטריצה מבצעת על כל וקטור שתבחרו?</p></li>
-<li><p><strong>גזירה (Shear):</strong> מה קורה כאשר משנים את ערך <code>b</code> בזמן ש-<code>a=1</code> ו-<code>d=1</code>? הביטו כיצד המרחב “נמתח” הצידה.</p></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-
+</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

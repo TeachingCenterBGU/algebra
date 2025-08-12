@@ -1,6 +1,14 @@
 
 # פרק 0.5: המספרים המרוכבים {.unnumbered}
 
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/CteqpdUGWtg"
+  title="מבוא לאלגברה לינארית"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
 ## 0.5.1 פעולות חשבון
 
 נסמן $z_{1}=a+bi,\,z_{2}=c+di$. נרחיב את הגדרות פעולות החשבון המוכרות ל-$\mathbb{C}$
