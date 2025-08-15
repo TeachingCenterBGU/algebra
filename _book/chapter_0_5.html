@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,6 +114,8 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="rtl-baseline.css">
+<link rel="stylesheet" href="env-remark.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -251,6 +253,8 @@ window.Quarto = {
 </header>
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CteqpdUGWtg" title="מבוא לאלגברה לינארית" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 <section id="פעולות-חשבון" class="level2">
 <h2 class="anchored" data-anchor-id="פעולות-חשבון">0.5.1 פעולות חשבון</h2>
 <p>נסמן <span class="math inline">z_{1}=a+bi,\,z_{2}=c+di</span>. נרחיב את הגדרות פעולות החשבון המוכרות ל-<span class="math inline">\mathbb{C}</span></p>
@@ -354,7 +358,7 @@ y=r\sin\theta
 </section>
 <section id="שימושים-של-הצגה-פולרית" class="level2">
 <h2 class="anchored" data-anchor-id="שימושים-של-הצגה-פולרית">0.5.3 שימושים של הצגה פולרית</h2>
-<div class="hdef">
+<div class="definition" name="הגדרה">
 <p>נסמן <span class="math inline">e^{i\theta}=\cos\theta+i\sin\theta</span>.</p>
 </div>
 <p>מבחינתנו זה רק סימון נוח, אבל זו בעצם נוסחה שנקראת נוסחת אוילר. יש לה משמעות יותר עמוקה שדורשת הסבר לגבי הפונקציה <span class="math inline">f(z)=e^{z}</span> של משתנה מרוכב. זה כבר חורג מאוד מאלגברה לינארית וגולש לתחום שנקרא אנליזה מרוכבת, שבבסיסה היא הגרסה המרוכבת של חשבון דיפרנציאלי ואינטגרלי.</p>
@@ -441,6 +445,74 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 </section>
 
 </main> <!-- /main -->
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // נסה לחלץ את מספר הפרק (המספר לפני הנקודה הראשונה)
+
+  function chapterNumber() {
+
+    // פרק בדף ספר של Quarto לעתים מסומן על h1 עם data-number
+
+    const h1 = document.querySelector('main h1[data-number]');
+
+    if (h1 && h1.getAttribute('data-number')) {
+
+      return h1.getAttribute('data-number').split('.')[0];
+
+    }
+
+    // אחרת, חפש את המספר הראשון שמופיע ליד כותרת מקוטלגת
+
+    const sec = document.querySelector('.header-section-number');
+
+    if (sec) {
+
+      return sec.textContent.trim().split('.')[0];
+
+    }
+
+    // fallback: אם אין — נניח 1
+
+    return '1';
+
+  }
+
+
+
+  const chap = chapterNumber();
+
+  let defCounter = 0;
+
+
+
+  document.querySelectorAll('div.definition').forEach(div => {
+
+    // אל תיצור כפילות: אם יש כבר כותרת Quarto, דלג
+
+    if (div.querySelector(':scope > .theorem-title')) return;
+
+
+
+    defCounter += 1;
+
+    const title = document.createElement('div');
+
+    title.className = 'theorem-title';
+
+    title.textContent = `הגדרה ${chap}.${defCounter}`;
+
+    // הכנס את הכותרת כילד ראשון של הבלוק
+
+    div.insertBefore(title, div.firstChild);
+
+  });
+
+});
+
+</script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

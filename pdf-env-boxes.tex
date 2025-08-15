@@ -1,0 +1,57 @@
+% === PDF boxes for theorem-like environments ===
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+\tcbset{
+  enhanced,
+  sharp corners,        % פינות חדות
+  boxsep=4pt,
+  left=6pt, right=6pt, top=6pt, bottom=6pt,
+  breakable             % מאפשר שבירת דף
+}
+
+% צבעים לכל סביבה
+\definecolor{defC}{HTML}{00BCD4}  % Definition
+\definecolor{exC}{HTML}{7B1FA2}   % Example
+\definecolor{exrC}{HTML}{E64A19}  % Exercise
+\definecolor{remC}{HTML}{1976D2}  % Remark
+\definecolor{thmC}{HTML}{009688}  % Theorem/Proposition/Corollary/Lemma
+\definecolor{prfC}{HTML}{673AB7}  % Proof
+
+% עטיפה גלובלית: כוללת את הכותרת והגוף בתוך התיבה
+\tcolorboxenvironment{definition}{
+  colback=white, colframe=defC,
+  borderline north={2mm}{0pt}{defC}
+}
+\tcolorboxenvironment{example}{
+  colback=white, colframe=exC,
+  borderline north={2mm}{0pt}{exC}
+}
+\tcolorboxenvironment{exercise}{
+  colback=white, colframe=exrC,
+  borderline north={2mm}{0pt}{exrC}
+}
+\tcolorboxenvironment{remark}{
+  colback=white, colframe=remC,
+  borderline north={2mm}{0pt}{remC}
+}
+\tcolorboxenvironment{theorem}{
+  colback=white, colframe=thmC,
+  borderline north={2mm}{0pt}{thmC}
+}
+\tcolorboxenvironment{proposition}{
+  colback=white, colframe=thmC,
+  borderline north={2mm}{0pt}{thmC}
+}
+\tcolorboxenvironment{corollary}{
+  colback=white, colframe=thmC,
+  borderline north={2mm}{0pt}{thmC}
+}
+\tcolorboxenvironment{lemma}{
+  colback=white, colframe=thmC,
+  borderline north={2mm}{0pt}{thmC}
+}
+\tcolorboxenvironment{proof}{
+  colback=white, colframe=prfC,
+  borderline north={2mm}{0pt}{prfC}
+}

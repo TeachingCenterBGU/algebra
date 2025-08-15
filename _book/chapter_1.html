@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,6 +114,8 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="rtl-baseline.css">
+<link rel="stylesheet" href="env-remark.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -246,6 +248,9 @@ window.Quarto = {
 </header>
 
 
+<div id="rem-closure" class="proof remark">
+<p><span class="proof-title"><em>Remark 1.1</em> (— כותרת אופציונלית). </span>באותו אופן (או משיקולי סימטריה( גם מתקיים <span class="math display">.A\cap B\subseteq B\subseteq A\cup B</span></p>
+</div>
 <section id="תרגיל-לדוגמה" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="תרגיל-לדוגמה"><span class="header-section-number">1.1</span> תרגיל לדוגמה</h2>
 <p>כאן מופיעה השאלה של התרגיל.</p>
@@ -295,15 +300,9 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<section id="הוכחה" class="level4 callout-body-container callout-body" data-number="1.2.0.1">
-<h4 data-number="1.2.0.1" class="anchored" data-anchor-id="הוכחה"><span class="header-section-number">1.2.0.1</span> הוכחה:</h4>
-<p>אנו יכולים לבחון שני מקרים:</p>
-<ol type="1">
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k)^2 + 2k = 4k^2 + 2k = 2(2k^2+k)</span> מכיוון שהביטוי הוא כפולה של 2, הוא זוגי.</p></li>
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר אי-זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k+1</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k+1)^2 + (2k+1) = (4k^2+4k+1) + (2k+1) = 4k^2+6k+2 = 2(2k^2+3k+1)</span> מכיוון שהביטוי הוא כפולה של 2, הוא גם זוגי.</p></li>
-</ol>
-<p>בכל מקרה, הביטוי הוא זוגי.</p>
-</section>
+<div class="callout-body-container callout-body">
+
+</div>
 </div>
 </div>
 </section>
@@ -525,6 +524,74 @@ window.Quarto = {
 </section>
 
 </main> <!-- /main -->
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // נסה לחלץ את מספר הפרק (המספר לפני הנקודה הראשונה)
+
+  function chapterNumber() {
+
+    // פרק בדף ספר של Quarto לעתים מסומן על h1 עם data-number
+
+    const h1 = document.querySelector('main h1[data-number]');
+
+    if (h1 && h1.getAttribute('data-number')) {
+
+      return h1.getAttribute('data-number').split('.')[0];
+
+    }
+
+    // אחרת, חפש את המספר הראשון שמופיע ליד כותרת מקוטלגת
+
+    const sec = document.querySelector('.header-section-number');
+
+    if (sec) {
+
+      return sec.textContent.trim().split('.')[0];
+
+    }
+
+    // fallback: אם אין — נניח 1
+
+    return '1';
+
+  }
+
+
+
+  const chap = chapterNumber();
+
+  let defCounter = 0;
+
+
+
+  document.querySelectorAll('div.definition').forEach(div => {
+
+    // אל תיצור כפילות: אם יש כבר כותרת Quarto, דלג
+
+    if (div.querySelector(':scope > .theorem-title')) return;
+
+
+
+    defCounter += 1;
+
+    const title = document.createElement('div');
+
+    title.className = 'theorem-title';
+
+    title.textContent = `הגדרה ${chap}.${defCounter}`;
+
+    // הכנס את הכותרת כילד ראשון של הבלוק
+
+    div.insertBefore(title, div.firstChild);
+
+  });
+
+});
+
+</script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

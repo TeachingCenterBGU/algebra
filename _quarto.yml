@@ -1,44 +1,92 @@
 project:
   type: book
-
 book:
-  title: "אלגברה לינארית"
-  author: "ד\"ר יונתן שלח, ד\"ר נדב מאיר"
+  title: אלגברה לינארית
+  author: ד"ר יונתן שלח, ד"ר נדב מאיר
   language: he
   chapters:
-    - index.qmd
-    - intro.qmd
-    - chapter_0.qmd
-    - chapter_0_5.qmd
-    - chapter_1.qmd
-    - chapter_2.qmd
-    - chapter_3.qmd
-    - summary.qmd
-    - references.qmd
-
+  - index.qmd
+  - intro.qmd
+  - chapter_0.qmd
+  - chapter_0_5.qmd
+  - chapter_1.qmd
+  - chapter_2.qmd
+  - chapter_3.qmd
+  - summary.qmd
+  - references.qmd
+  
+  
   sidebar:
     tools:
-      - icon: download
-        href: "אלגברה-לינארית.pdf" 
-        text: "הורדת הספר כ-PDF"
-  # -------------------------
+    - icon: download
+      href: אלגברה-לינארית.pdf
+      text: הורדת הספר כ-PDF
 bibliography: references.bib
+
+crossref:
+  chapters: true
+
+
 
 format:
   html:
-    theme: cosmo
     toc: true
     number-sections: true
-    css: styles.css
     html-math-method: katex
-
+    fig-align: center
+    fig-cap-location: bottom
+    callout:
+      collapse: true
+    css: 
+      - rtl-baseline.css
+      - env-remark.css
+      - styles.css
+    include-after-body:
+      - auto-def-titles.html
+  
   pdf:
-    documentclass: scrbook
-    mainfont: "David"
-    sansfont: "David"
-    monofont: "Courier New"
+    documentclass: book
+    papersize: a4
+    classoption: oneside
+    lang: he
     toc: true
     number-sections: true
+    mainfont: David
+    monofont: Courier New
+    fontsize: 12pt
+    linestretch: 1.5
+    geometry: right=30mm, left=30mm, top=30mm, bottom=30mm
     pdf-engine: xelatex
-    lang: he
-    dir: rtl
+    header-includes:
+      - \usepackage{bidi}
+      - \setRTL
+      # --- התוספות עבור העיצוב ---
+      - \usepackage[most]{tcolorbox}
+      - \definecolor{myremarkcolor}{HTML}{8e44ad} # הגדרת הצבע
+      - |
+        \newtcbtheorem[auto counter, number within=chapter]{myremark}{הערה}
+        {
+            enhanced,
+            colback = white,
+            colframe = myremarkcolor,
+            fonttitle = \bfseries,
+            coltitle = white,
+            colbacktitle = myremarkcolor,
+            attach title to upper part, % יוצר את פס הכותרת
+            sharp corners
+        }{remark}
+    filters: 
+      - uncollapse-for-pdf.lua
+    include-in-header:
+      - pdf-env-boxes.tex
+        
+theorems:
+  remark:
+    name: "הערה"
+    numbering: true
+    within: chapter
+    latex: myremark  # <-- הוספנו את השורה הזו
+  definition:
+    name: הגדרה
+    numbering: true
+    within: chapter
