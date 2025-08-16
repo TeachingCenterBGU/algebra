@@ -361,7 +361,7 @@ window.Quarto = {
 <div class="example">
 <p>א. עבור <span class="math inline">A=\{1,2,3\},\,B=\{2,3,4\}</span> מתקיים <span class="math display">.A\cap B=\{2,3\},\,A\cup B=\{1,2,3,4\}</span></p>
 <p>ב. מתקיים <span class="math inline">\mathbb{R}\cap\mathbb{C}=\mathbb{R},\,\mathbb{R}\cup\mathbb{C}=\mathbb{C}</span> כי <span class="math inline">\mathbb{R\subseteq\mathbb{C}}</span>.</p>
-<p>ג. נסמן <span class="math inline">D=\{n\in\mathbb{N}|n\text{ {is divided by 5}\}}</span> <span class="math inline">C=\{n\in\mathbb{N}|n\text{ {is divided by 3}\},}</span>. אז לפי הגדרת החיתוך והעובדה ש-<span class="math inline">3,5</span> הם מספרים זרים (המחלק המשותף היחיד שלהם הוא <span class="math inline">1</span>(, נובע כי <span class="math display">.C\cap D=\{n\in\mathbb{N}|n\text{ {is divided by 3 and 5}\}=\{n\ensuremath{\in}\ensuremath{\mathbb{N}}|n\text{ {is divided by 15}\}=\{15,30,45,...\}}}</span></p>
+<p>ג. נסמן <span class="math inline">D = \{\, n \in \mathbb{N} \mid 5 \mid n \,\}, \quad C = \{\, n \in \mathbb{N} \mid 3 \mid n \,\}</span> \ אז לפי הגדרת החיתוך והעובדה ש-<span class="math inline">3,5</span> הם מספרים זרים (המחלק המשותף היחיד שלהם הוא <span class="math inline">1</span>), נובע כי <span class="math display"> C \cap D = \{\, n \in \mathbb{N} \mid 3 \mid n \ \land\ 5 \mid n \,\} = \{\, n \in \mathbb{N} \mid 15 \mid n \,\} \\ = \{15,30,45,\ldots\} </span></p>
 <p>האפיון של האיחוד פחות פשוט: מדובר בקבוצת כל המספרים שמתחלקים ב-<span class="math inline">3</span>, <span class="math inline">5</span> או בשניהם (כלומר ב-<span class="math inline">15</span>, המקרה של החיתוך(. כך נקבל <span class="math display">.C\cup D=\{3,5,6,9,10,12,15,18,20,21,24,25,27,30...\}</span></p>
 </div>
 <div class="{exercise}">
@@ -421,19 +421,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
 
-    exercise:    { label: 'תרגיל',    color: 'rgba(60, 179, 113, 0.35)',numbered: true  },
+    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  }, // כחול פסטלי
 
-    remark:      { label: 'הערה',     color: 'rgba(128, 128, 128, 0.3)',numbered: true  },
+    remark:      { label: 'הערה',     color: 'rgba(0, 0, 0, 0.15)',numbered: true  }, // ירוק פסטלי
 
-    theorem:     { label: 'משפט',     color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
 
-    lemma:       { label: 'למה',      color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
 
-    proposition: { label: 'טענה',     color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
 
-    corollary:   { label: 'מסקנה',    color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
 
-    proof:       { label: 'הוכחה',    color: 'rgba(0, 0, 0, 0.15)',    numbered: false }
+    proof:       { label: 'הוכחה',    color: 'rgba60, 179, 113, 0.35)',    numbered: false }
 
   };
 

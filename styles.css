@@ -57,10 +57,10 @@
 /* ===== צבעים פסטליים לכל סביבה ===== */
 .definition { --env-color: rgba(255, 99, 71, 0.4); }     /* אדום פסטלי */
 .example   { --env-color: rgba(138, 43, 226, 0.3); }    /* סגול פסטלי */
-.exercise  { --env-color: rgba(60, 179, 113, 0.35); }   /* ירוק פסטלי */
-.remark    { --env-color: rgba(128, 128, 128, 0.3); }   /* אפור פסטלי */
-.theorem, .lemma, .proposition, .corollary { --env-color: rgba(0, 0, 0, 0.25); } /* שחור פסטלי */
-.proof     { --env-color: rgba(0, 0, 0, 0.15); }        /* שחור עוד יותר בהיר */
+.exercise  { --env-color: rgba(30, 144, 255, 0.35); }   /* כחול פסטלי */
+.remark    { --env-color: rgba(0, 0, 0, 0.15); }   /* ירוק פסטלי */
+.theorem, .lemma, .proposition, .corollary { --env-color: rgba(255, 165, 0, 0.35); } /* שחור פסטלי */
+.proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
 
 /* הסתרת כותרות-inline שמודבקות בתוך הפסקה הראשונה */
 .remark .remark-title,

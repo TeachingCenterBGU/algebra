@@ -43,6 +43,8 @@ format:
     include-after-body:
       - auto-env-titles.html
       - chapter-numbering.html
+    filters:
+      - env-to-callout.lua
    
   pdf:
     documentclass: book
@@ -83,8 +85,26 @@ format:
 
     include-in-header:
       - pdf-env-boxes.tex
+      - text: |
+          \makeatletter
+          % מעטפת LTR למספרים
+          \newcommand{\LTRnum}[1]{\LR{#1}}
+
+          % תיקון תוכן העניינים: המספרים יוצגו LTR גם עם נקודות
+          \let\orig@numberline\numberline
+          \renewcommand{\numberline}[1]{\orig@numberline{\LTRnum{#1}}}
+
+          % סימניות ה-PDF (bookmarks) בלי פקודות כיווניות
+          \AtBeginDocument{%
+            \@ifpackageloaded{hyperref}{%
+              \pdfstringdefDisableCommands{\let\LTRnum\@firstofone}%
+            }{}%
+          }
+          \makeatother
     filters:
       - uncollapse-for-pdf.lua
+      - div-to-theorem-env.lua
+    #  - pdf-solution-hint.tex
 
         
 number-sections: true
