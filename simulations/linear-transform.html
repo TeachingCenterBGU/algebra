@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ביבליוגרפיה – אלגברה לינארית</title>
+<title>linear-transform</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,368 +20,298 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<script src="linear-transform_files/libs/clipboard/clipboard.min.js"></script>
+<script src="linear-transform_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="linear-transform_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="linear-transform_files/libs/quarto-html/popper.min.js"></script>
+<script src="linear-transform_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="linear-transform_files/libs/quarto-html/anchor.min.js"></script>
+<link href="linear-transform_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="linear-transform_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="linear-transform_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="linear-transform_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="linear-transform_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
-<link rel="stylesheet" href="rtl-baseline.css">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../rtl-baseline.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">ביבליוגרפיה</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">אלגברה לינארית</a> 
-        <div class="sidebar-tools-main">
-    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">מידע כללי</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">הקדמה</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ביבליוגרפיה</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="linear-transform.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">ביבליוגרפיה</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
+<style>
+  /* עיצוב כללי לכל הדמו */
+  #linear-transform-demo {
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+  }
+  /* עיצוב לגרף עצמו */
+  #transformCanvas {
+    border: 1px solid black;
+  }
+  /* עיצוב לאזור הבקרה (המחוונים) */
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .control-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .control-group input[type="range"] {
+    width: 100%;
+  }
+</style>
 
-    
-  
-    
+<div id="linear-transform-demo">
+  <canvas id="transformCanvas" width="500" height="500"></canvas>
+  <div class="controls">
+    <div class="control-group" id="matrix-controls">
+      <h4 class="anchored">ערכי המטריצה</h4>
+      <label for="a_slider">a: <span id="a_value">1.0</span></label>
+      <input type="range" id="a_slider" min="-2" max="2" value="1" step="0.1">
+      <label for="b_slider">b: <span id="b_value">0.0</span></label>
+      <input type="range" id="b_slider" min="-2" max="2" value="0" step="0.1">
+      <label for="c_slider">c: <span id="c_value">0.0</span></label>
+      <input type="range" id="c_slider" min="-2" max="2" value="0" step="0.1">
+      <label for="d_slider">d: <span id="d_value">1.0</span></label>
+      <input type="range" id="d_slider" min="-2" max="2" value="1" step="0.1">
+    </div>
+    <div class="control-group" id="vector-controls">
+      <h4 class="anchored">ערכי הווקטור</h4>
+      <label for="x_slider">x: <span id="x_value">2.0</span></label>
+      <input type="range" id="x_slider" min="-5" max="5" value="2" step="0.1">
+      <label for="y_slider">y: <span id="y_value">3.0</span></label>
+      <input type="range" id="y_slider" min="-5" max="5" value="3" step="0.1">
+    </div>
   </div>
-  
-
-
-</header>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput.
-J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
 </div>
 
-
-
-</main> <!-- /main -->
 <script>
+  // קבלת רפרנסים לאלמנטים מה-HTML
+  const canvas = document.getElementById('transformCanvas');
+  const ctx = canvas.getContext('2d');
 
-/* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
+  // קבלת כל המחוונים והתוויות שלהם
+  const sliders = {
+    a: document.getElementById('a_slider'),
+    b: document.getElementById('b_slider'),
+    c: document.getElementById('c_slider'),
+    d: document.getElementById('d_slider'),
+    x: document.getElementById('x_slider'),
+    y: document.getElementById('y_slider')
+  };
+  const values = {
+    a: document.getElementById('a_value'),
+    b: document.getElementById('b_value'),
+    c: document.getElementById('c_value'),
+    d: document.getElementById('d_value'),
+    x: document.getElementById('x_value'),
+    y: document.getElementById('y_value')
+  };
 
-   גם כשהכותרת כבר קיימת מ‑Quarto */
+  // הגדרות הגרף
+  const originX = canvas.width / 2;
+  const originY = canvas.height / 2;
+  const scale = 40; // 40 פיקסלים ליחידה אחת
+
+  // פונקציה שמציירת הכל מחדש
+  function draw() {
+    // 1. קריאת הערכים הנוכחיים מהמחוונים
+    const a = parseFloat(sliders.a.value);
+    const b = parseFloat(sliders.b.value);
+    const c = parseFloat(sliders.c.value);
+    const d = parseFloat(sliders.d.value);
+    const x = parseFloat(sliders.x.value);
+    const y = parseFloat(sliders.y.value);
+
+    // עדכון התוויות המספריות
+    values.a.textContent = a.toFixed(1);
+    values.b.textContent = b.toFixed(1);
+    values.c.textContent = c.toFixed(1);
+    values.d.textContent = d.toFixed(1);
+    values.x.textContent = x.toFixed(1);
+    values.y.textContent = y.toFixed(1);
+
+    // 2. ביצוע החישוב המתמטי
+    const transformedX = a * x + b * y;
+    const transformedY = c * x + d * y;
+
+    // 3. ניקוי הקנבס וציור הרקע
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawGrid();
+
+    // 4. ציור הווקטורים
+    drawVector(x, y, 'blue', 'הווקטור המקורי');
+    drawVector(transformedX, transformedY, 'red', 'הווקטור לאחר טרנספורמציה');
+  }
+
+  // פונקציית עזר לציור הרשת והצירים
+  function drawGrid() {
+    ctx.beginPath();
+    ctx.strokeStyle = '#ccc'; // צבע אפור לרשת
+    // קווי רשת אנכיים
+    for (let i = -10; i <= 10; i++) {
+        ctx.moveTo(originX + i * scale, 0);
+        ctx.lineTo(originX + i * scale, canvas.height);
+    }
+    // קווי רשת אופקיים
+    for (let i = -10; i <= 10; i++) {
+        ctx.moveTo(0, originY + i * scale);
+        ctx.lineTo(canvas.width, originY + i * scale);
+    }
+    ctx.stroke();
+
+    // צירים ראשיים (שחור)
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    // ציר X
+    ctx.moveTo(0, originY);
+    ctx.lineTo(canvas.width, originY);
+    // ציר Y
+    ctx.moveTo(originX, 0);
+    ctx.lineTo(originX, canvas.height);
+    ctx.stroke();
+    ctx.lineWidth = 1;
+  }
+
+  // פונקציית עזר לציור וקטור
+  function drawVector(x, y, color, label) {
+    const canvasX = originX + x * scale;
+    const canvasY = originY - y * scale; // מינוס כי ציר Y בקנבס הפוך
+
+    // ציור הקו
+    ctx.beginPath();
+    ctx.moveTo(originX, originY);
+    ctx.lineTo(canvasX, canvasY);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // ציור ראש החץ
+    const headlen = 10;
+    const angle = Math.atan2(canvasY - originY, canvasX - originX);
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(canvasX, canvasY);
+    ctx.lineTo(canvasX - headlen * Math.cos(angle - Math.PI / 6), canvasY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.lineTo(canvasX - headlen * Math.cos(angle + Math.PI / 6), canvasY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // 5. הוספת "מאזינים" (EventListeners)
+  // כל פעם שמשתמש מזיז מחוון כלשהו, הפונקציה draw() תופעל
+  for (let key in sliders) {
+    sliders[key].addEventListener('input', draw);
+  }
+
+  // ציור ראשוני של הגרף כשהדף נטען
+  draw();
+
+</script>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+חקירה אינטראקטיבית: מטריצה כטרנספורמציה
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: <strong>מטריצה כפעולה גיאומטרית</strong>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">מה רואים כאן?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">נסו לחקור בעצמכם</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ul>
+<li><p><strong>הווקטור הכחול</strong> הוא הווקטור המקורי במרחב, אותו ניתן לשנות בעזרת המחוונים <code>x</code> ו-<code>y</code>.</p></li>
+<li><p><strong>הווקטור האדום</strong> הוא תוצאת הפעולה – המקום החדש שאליו הווקטור “עבר” לאחר שהמטריצה (שנקבעת על ידי <code>a</code>,<code>b</code>,<code>c</code>,<code>d</code>) הפעילה עליו את הטרנספורמציה.</p></li>
+</ul>
+<p>במילים פשוטות, אתם רואים כיצד המטריצה “מעוותת” את המרחב ולוקחת כל וקטור למקום חדש.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ul>
+<li><p><strong>מתיחה וכיווץ (Scaling):</strong> מה קורה כאשר משנים רק את ערכי <code>a</code> ו-<code>d</code> (ושומרים על <code>b=0</code>, <code>c=0</code>)? איזו מטריצה תגרום לווקטור להתארך פי שניים בדיוק?</p></li>
+<li><p><strong>שיקוף (Reflection):</strong> האם תמצאו מטריצה שתשקף את הווקטור ביחס לציר ה-x? (רמז: איזה רכיב של הווקטור צריך לשנות את סימנו?).</p></li>
+<li><p><strong>סיבוב (Rotation):</strong> הגדירו את המטריצה להיות <code>a=0</code>, <code>b=-1</code>, <code>c=1</code>, <code>d=0</code>. איזו פעולה גיאומטרית המטריצה מבצעת על כל וקטור שתבחרו?</p></li>
+<li><p><strong>גזירה (Shear):</strong> מה קורה כאשר משנים את ערך <code>b</code> בזמן ש-<code>a=1</code> ו-<code>d=1</code>? הביטו כיצד המרחב “נמתח” הצידה.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<!-- auto-env-titles.html (גרסה מתוקנת - רק לעיצוב) -->
+
+<script>
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  function chapterNumber() {
+  // הגדרת צבעים לכל סביבה
 
-    const h1 = document.querySelector('main h1[data-number]');
+  const envColors = {
 
-    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+    definition:  'rgba(255, 99, 71, 0.4)',
 
-    const sec = document.querySelector('.header-section-number');
+    example:     'rgba(138, 43, 226, 0.3)',
 
-    if (sec) return sec.textContent.trim().split('.')[0];
+    exercise:    'rgba(60, 179, 113, 0.35)',
 
-    return '1';
+    remark:      'rgba(128, 128, 128, 0.3)',
 
-  }
+    theorem:     'rgba(0, 0, 0, 0.25)',
 
-  const chap = chapterNumber();
+    lemma:       'rgba(0, 0, 0, 0.25)',
 
+    proposition: 'rgba(0, 0, 0, 0.25)',
 
+    corollary:   'rgba(0, 0, 0, 0.25)',
 
-  const envs = {
-
-    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
-
-    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
-
-    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  }, // כחול פסטלי
-
-    remark:      { label: 'הערה',     color: 'rgba(0, 0, 0, 0.15)',numbered: true  }, // ירוק פסטלי
-
-    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    proof:       { label: 'הוכחה',    color: 'rgba60, 179, 113, 0.35)',    numbered: false }
+    proof:       'rgba(0, 0, 0, 0.15)'
 
   };
 
 
 
-  const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
+  // עבור כל סוג סביבה, מצא את התיבות והחל עליהן את העיצוב
 
-
-
-  Object.keys(envs).forEach(env => {
+  Object.keys(envColors).forEach(env => {
 
     document.querySelectorAll(`div.${env}`).forEach(div => {
 
-      const meta = envs[env];
-
-      const hasTitle = div.querySelector(':scope > .theorem-title');
-
-
-
-      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
-
-      if (!hasTitle) {
-
-        const title = document.createElement('div');
-
-        title.className = 'theorem-title';
-
-        if (meta.numbered) {
-
-          counters[env] += 1;
-
-          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
-
-        } else {
-
-          title.textContent = meta.label;
-
-        }
-
-        div.insertBefore(title, div.firstChild);
-
-      }
-
-
-
-      // תמיד הוסף envbox וצבע פסטלי
+      // הוספת קלאס כללי לתיבה (אם צריך)
 
       div.classList.add('envbox');
 
-      div.style.setProperty('--env-color', meta.color);
+      // הגדרת משתנה הצבע ישירות על האלמנט כדי שה-CSS ישתמש בו
 
-
-
-      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
-
-      const firstP = div.querySelector(':scope > p');
-
-      if (firstP) {
-
-        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
-
-      }
+      div.style.setProperty('--env-color', envColors[env]);
 
     });
-
-  });
-
-});
-
-</script>
-
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  // בחר את כל כותרות הפרקים הראשיים
-
-  const chapters = document.querySelectorAll('main h1[data-number]');
-
-  let counter = 0;
-
-  chapters.forEach(h1 => {
-
-    counter++;
-
-    if (counter <= 3) {
-
-      // שני פרקים ראשונים ברומי
-
-      const roman = ['I','II'][counter-1];
-
-      h1.setAttribute('data-number', roman);
-
-      const numSpan = h1.querySelector('.header-section-number');
-
-      if (numSpan) numSpan.textContent = roman;
-
-    } else {
-
-      // חזרה למספרים רגילים החל מ-1
-
-      const normal = counter - 3;
-
-      h1.setAttribute('data-number', normal);
-
-      const numSpan = h1.querySelector('.header-section-number');
-
-      if (numSpan) numSpan.textContent = normal;
-
-    }
 
   });
 
@@ -787,15 +717,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link" aria-label="סיכום">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
