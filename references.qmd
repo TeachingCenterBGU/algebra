@@ -1,4 +1,4 @@
-# References {.unnumbered}
+# ביבליוגרפיה {.unnumbered}
 
 ::: {#refs}
 :::
