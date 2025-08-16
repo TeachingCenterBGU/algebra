@@ -21,6 +21,7 @@ book:
     - icon: download
       href: אלגברה-לינארית.pdf
       text: הורדת הספר כ-PDF
+    logo: logo.png
 bibliography: references.bib
 
 crossref:

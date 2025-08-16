@@ -7,7 +7,7 @@
 
 
 ::: {#download-box}
-[⬇️ להורדת הספר בפורמט PDF](אלגברה-לינארית.pdf){.btn .btn-primary target=_blank}
+[להורדת הספר ב PDF](אלגברה-לינארית.pdf){.btn target=_blank style="background-color:#FF9E3A; border-color:#FF9E3A; color:white;"}
 :::
 
 This is a Quarto book.
