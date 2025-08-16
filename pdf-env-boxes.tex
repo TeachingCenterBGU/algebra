@@ -1,57 +1,78 @@
-% === PDF boxes for theorem-like environments ===
+% pdf-env-boxes.tex — עטיפת סביבות קיימות עם tcolorbox בפסטל, כותרות שחורות, פס דק
+\usepackage{amsthm}
 \usepackage[most]{tcolorbox}
-\usepackage{xcolor}
+\tcbuselibrary{theorems,skins,breakable,hooks}
 
+% שמות עבריים (למקרה שהמחלקה לא מספקת)
+\providecommand{\definitionname}{הגדרה}
+\providecommand{\examplename}{דוגמה}
+\providecommand{\exercisename}{תרגיל}
+\providecommand{\remarkname}{הערה}
+\providecommand{\theoremname}{משפט}
+\providecommand{\lemmaname}{למה}
+\providecommand{\propositionname}{טענה}
+\providecommand{\corollaryname}{מסקנה}
+\renewcommand{\proofname}{הוכחה}
+
+% סגנון בסיסי עדין: פס דק, כותרת שחורה, ללא חיתוכים
 \tcbset{
-  enhanced,
-  sharp corners,        % פינות חדות
-  boxsep=4pt,
-  left=6pt, right=6pt, top=6pt, bottom=6pt,
-  breakable             % מאפשר שבירת דף
+  envbox/.style={
+    enhanced, breakable, sharp corners,
+    boxrule=0.4pt,
+    colback=white,
+    fonttitle=\bfseries\small, % כותרת טיפה קטנה
+    coltitle=black,            % טקסט שחור
+    title filled,              % פס עליון מלא (מונע "חיתוך" פס)
+    left=8pt,right=8pt,top=6pt,bottom=6pt,
+    before skip=10pt, after skip=10pt
+  },
 }
 
-% צבעים לכל סביבה
-\definecolor{defC}{HTML}{00BCD4}  % Definition
-\definecolor{exC}{HTML}{7B1FA2}   % Example
-\definecolor{exrC}{HTML}{E64A19}  % Exercise
-\definecolor{remC}{HTML}{1976D2}  % Remark
-\definecolor{thmC}{HTML}{009688}  % Theorem/Proposition/Corollary/Lemma
-\definecolor{prfC}{HTML}{673AB7}  % Proof
-
-% עטיפה גלובלית: כוללת את הכותרת והגוף בתוך התיבה
-\tcolorboxenvironment{definition}{
-  colback=white, colframe=defC,
-  borderline north={2mm}{0pt}{defC}
-}
-\tcolorboxenvironment{example}{
-  colback=white, colframe=exC,
-  borderline north={2mm}{0pt}{exC}
-}
-\tcolorboxenvironment{exercise}{
-  colback=white, colframe=exrC,
-  borderline north={2mm}{0pt}{exrC}
-}
-\tcolorboxenvironment{remark}{
-  colback=white, colframe=remC,
-  borderline north={2mm}{0pt}{remC}
-}
-\tcolorboxenvironment{theorem}{
-  colback=white, colframe=thmC,
-  borderline north={2mm}{0pt}{thmC}
-}
-\tcolorboxenvironment{proposition}{
-  colback=white, colframe=thmC,
-  borderline north={2mm}{0pt}{thmC}
-}
-\tcolorboxenvironment{corollary}{
-  colback=white, colframe=thmC,
-  borderline north={2mm}{0pt}{thmC}
-}
-\tcolorboxenvironment{lemma}{
-  colback=white, colframe=thmC,
-  borderline north={2mm}{0pt}{thmC}
-}
-\tcolorboxenvironment{proof}{
-  colback=white, colframe=prfC,
-  borderline north={2mm}{0pt}{prfC}
+% החלת העיטופים רק כאשר כל הסביבות כבר מוגדרות (אחרי תחילת המסמך)
+\AtBeginDocument{%
+  \tcolorboxenvironment{definition}{envbox,
+    colframe=red!70!black,
+    colbacktitle=red!20,
+    borderline south={0.4pt}{0pt}{red!70!black},
+    title={\definitionname}}
+  \tcolorboxenvironment{example}{envbox,
+    colframe=purple!70!black,
+    colbacktitle=purple!20,
+    borderline south={0.4pt}{0pt}{purple!70!black},
+    title={\examplename}}
+  \tcolorboxenvironment{exercise}{envbox,
+    colframe=green!60!black,
+    colbacktitle=green!20,
+    borderline south={0.4pt}{0pt}{green!60!black},
+    title={\exercisename}}
+  \tcolorboxenvironment{remark}{envbox,
+    colframe=gray!70!black,
+    colbacktitle=gray!20,
+    borderline south={0.4pt}{0pt}{gray!70!black},
+    title={\remarkname}}
+  \tcolorboxenvironment{theorem}{envbox,
+    colframe=black!80,
+    colbacktitle=black!15,
+    borderline south={0.4pt}{0pt}{black!80},
+    title={\theoremname}}
+  \tcolorboxenvironment{lemma}{envbox,
+    colframe=black!80,
+    colbacktitle=black!15,
+    borderline south={0.4pt}{0pt}{black!80},
+    title={\lemmaname}}
+  \tcolorboxenvironment{proposition}{envbox,
+    colframe=black!80,
+    colbacktitle=black!15,
+    borderline south={0.4pt}{0pt}{black!80},
+    title={\propositionname}}
+  \tcolorboxenvironment{corollary}{envbox,
+    colframe=black!80,
+    colbacktitle=black!15,
+    borderline south={0.4pt}{0pt}{black!80},
+    title={\corollaryname}}
+  \tcolorboxenvironment{proof}{envbox,
+    colframe=purple!70!black,
+    colbacktitle=purple!20,
+    borderline south={0.4pt}{0pt}{purple!70!black},
+    title={\proofname}}
 }

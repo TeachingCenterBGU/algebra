@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Summary – אלגברה לינארית</title>
+<title>7&nbsp; Summary – אלגברה לינארית</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="rtl-baseline.css">
-<link rel="stylesheet" href="env-remark.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -85,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -122,43 +121,43 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">הקדמה</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">הקדמה</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">פרק 0: קבוצות ומספרים</span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">פרק 0.5: המספרים המרוכבים</span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -180,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></h1>
 </div>
 
 
@@ -204,65 +203,113 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <script>
 
-document.addEventListener('DOMContentLoaded', () => {
+/* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
 
-  // נסה לחלץ את מספר הפרק (המספר לפני הנקודה הראשונה)
+   גם כשהכותרת כבר קיימת מ‑Quarto */
+
+document.addEventListener('DOMContentLoaded', () => {
 
   function chapterNumber() {
 
-    // פרק בדף ספר של Quarto לעתים מסומן על h1 עם data-number
-
     const h1 = document.querySelector('main h1[data-number]');
 
-    if (h1 && h1.getAttribute('data-number')) {
-
-      return h1.getAttribute('data-number').split('.')[0];
-
-    }
-
-    // אחרת, חפש את המספר הראשון שמופיע ליד כותרת מקוטלגת
+    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
 
     const sec = document.querySelector('.header-section-number');
 
-    if (sec) {
-
-      return sec.textContent.trim().split('.')[0];
-
-    }
-
-    // fallback: אם אין — נניח 1
+    if (sec) return sec.textContent.trim().split('.')[0];
 
     return '1';
 
   }
 
-
-
   const chap = chapterNumber();
 
-  let defCounter = 0;
+
+
+  const envs = {
+
+    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
+
+    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
+
+    exercise:    { label: 'תרגיל',    color: 'rgba(60, 179, 113, 0.35)',numbered: true  },
+
+    remark:      { label: 'הערה',     color: 'rgba(128, 128, 128, 0.3)',numbered: true  },
+
+    theorem:     { label: 'משפט',     color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+
+    lemma:       { label: 'למה',      color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+
+    proposition: { label: 'טענה',     color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+
+    corollary:   { label: 'מסקנה',    color: 'rgba(0, 0, 0, 0.25)',    numbered: true  },
+
+    proof:       { label: 'הוכחה',    color: 'rgba(0, 0, 0, 0.15)',    numbered: false }
+
+  };
 
 
 
-  document.querySelectorAll('div.definition').forEach(div => {
-
-    // אל תיצור כפילות: אם יש כבר כותרת Quarto, דלג
-
-    if (div.querySelector(':scope > .theorem-title')) return;
+  const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
 
 
 
-    defCounter += 1;
+  Object.keys(envs).forEach(env => {
 
-    const title = document.createElement('div');
+    document.querySelectorAll(`div.${env}`).forEach(div => {
 
-    title.className = 'theorem-title';
+      const meta = envs[env];
 
-    title.textContent = `הגדרה ${chap}.${defCounter}`;
+      const hasTitle = div.querySelector(':scope > .theorem-title');
 
-    // הכנס את הכותרת כילד ראשון של הבלוק
 
-    div.insertBefore(title, div.firstChild);
+
+      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
+
+      if (!hasTitle) {
+
+        const title = document.createElement('div');
+
+        title.className = 'theorem-title';
+
+        if (meta.numbered) {
+
+          counters[env] += 1;
+
+          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+
+        } else {
+
+          title.textContent = meta.label;
+
+        }
+
+        div.insertBefore(title, div.firstChild);
+
+      }
+
+
+
+      // תמיד הוסף envbox וצבע פסטלי
+
+      div.classList.add('envbox');
+
+      div.style.setProperty('--env-color', meta.color);
+
+
+
+      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
+
+      const firstP = div.querySelector(':scope > p');
+
+      if (firstP) {
+
+        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
+
+      }
+
+    });
 
   });
 
@@ -270,6 +317,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // בחר את כל כותרות הפרקים הראשיים
+
+  const chapters = document.querySelectorAll('main h1[data-number]');
+
+  let counter = 0;
+
+  chapters.forEach(h1 => {
+
+    counter++;
+
+    if (counter <= 3) {
+
+      // שני פרקים ראשונים ברומי
+
+      const roman = ['I','II'][counter-1];
+
+      h1.setAttribute('data-number', roman);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = roman;
+
+    } else {
+
+      // חזרה למספרים רגילים החל מ-1
+
+      const normal = counter - 3;
+
+      h1.setAttribute('data-number', normal);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = normal;
+
+    }
+
+  });
+
+});
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -672,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chapter_3.html" class="pagination-link" aria-label="כלל הסנדוויץ' - דוגמה מספרית">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

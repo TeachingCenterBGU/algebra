@@ -1,14 +1,21 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass{book} % או report
+\usepackage{graphicx}
 
 \title{algebra}
-\author{Inbal BarAd}
+\author{Yonatan shelah}
 \date{July 2025}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\renewcommand{\thechapter}{\Roman{chapter}} % מספור רומי
+\setcounter{chapter}{0} % לוודא שהמספר מתחיל מ-I
 
-\end{document}
+\chapter{קבוצות מספרים}
+\chapter{המספרים המרוכבים}
+
+\renewcommand{\thechapter}{\arabic{chapter}} % חזרה למספרים רגילים
+\setcounter{chapter}{0} % המשך מ-3
+\chapter{חידות}
+

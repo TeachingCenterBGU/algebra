@@ -1,7 +1,20 @@
 ---
 title: "חידות"
 ---
-::: {#rem-closure .remark name="— כותרת אופציונלית"}
+
+::: {.exercise}
+זהו ניסוח התרגיל לבדיקת עיצוב ותצוגה.
+:::
+
+::: {.proof}
+זו הוכחה קצרה לבדיקת עיצוב ותצוגה.
+:::
+
+::: {.exercise}
+זהו ניסוח התרגיל לבדיקת עיצוב ותצוגה.
+:::
+
+::: {.remark}
 באותו אופן (או משיקולי סימטריה( גם מתקיים  $$.A\cap B\subseteq B\subseteq A\cup B$$
 :::
 
@@ -22,13 +35,12 @@ $$ E = mc^2 $$
 
 ## עוד נסיון
 
-::: {.callout-tip icon="false" title="תרגיל 1.1"}
+::: {.exercise}
 הוכיחו כי לכל $n \in \mathbb{N}$, מתקיים כי $n^2+n$ הוא מספר זוגי.
 :::
 
 
 ::: {.callout-note collapse="true" title="פתרון"}
-::: {.content-visible when-format="pdf"}
 
 #### הוכחה:
 אנו יכולים לבחון שני מקרים:
@@ -44,219 +56,8 @@ $$ E = mc^2 $$
     מכיוון שהביטוי הוא כפולה של 2, הוא גם זוגי.
 
 ::: 
-:::  
 
-## דמו אינטראקטיבי?
 
-```{=html}
-<style>
-  /* עיצוב כללי לכל הדמו */
-  #linear-transform-demo {
-    font-family: sans-serif;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
-  }
-  /* עיצוב לגרף עצמו */
-  #transformCanvas {
-    border: 1px solid black;
-  }
-  /* עיצוב לאזור הבקרה (המחוונים) */
-  .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  .control-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .control-group input[type="range"] {
-    width: 100%;
-  }
-</style>
+## טרנספורמציה לינארית
 
-<div id="linear-transform-demo">
-  <canvas id="transformCanvas" width="500" height="500"></canvas>
-  <div class="controls">
-    <div class="control-group" id="matrix-controls">
-      <h4>ערכי המטריצה</h4>
-      <label for="a_slider">a: <span id="a_value">1.0</span></label>
-      <input type="range" id="a_slider" min="-2" max="2" value="1" step="0.1">
-      <label for="b_slider">b: <span id="b_value">0.0</span></label>
-      <input type="range" id="b_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="c_slider">c: <span id="c_value">0.0</span></label>
-      <input type="range" id="c_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="d_slider">d: <span id="d_value">1.0</span></label>
-      <input type="range" id="d_slider" min="-2" max="2" value="1" step="0.1">
-    </div>
-    <div class="control-group" id="vector-controls">
-      <h4>ערכי הווקטור</h4>
-      <label for="x_slider">x: <span id="x_value">2.0</span></label>
-      <input type="range" id="x_slider" min="-5" max="5" value="2" step="0.1">
-      <label for="y_slider">y: <span id="y_value">3.0</span></label>
-      <input type="range" id="y_slider" min="-5" max="5" value="3" step="0.1">
-    </div>
-  </div>
-</div>
-
-<script>
-  // קבלת רפרנסים לאלמנטים מה-HTML
-  const canvas = document.getElementById('transformCanvas');
-  const ctx = canvas.getContext('2d');
-
-  // קבלת כל המחוונים והתוויות שלהם
-  const sliders = {
-    a: document.getElementById('a_slider'),
-    b: document.getElementById('b_slider'),
-    c: document.getElementById('c_slider'),
-    d: document.getElementById('d_slider'),
-    x: document.getElementById('x_slider'),
-    y: document.getElementById('y_slider')
-  };
-  const values = {
-    a: document.getElementById('a_value'),
-    b: document.getElementById('b_value'),
-    c: document.getElementById('c_value'),
-    d: document.getElementById('d_value'),
-    x: document.getElementById('x_value'),
-    y: document.getElementById('y_value')
-  };
-
-  // הגדרות הגרף
-  const originX = canvas.width / 2;
-  const originY = canvas.height / 2;
-  const scale = 40; // 40 פיקסלים ליחידה אחת
-
-  // פונקציה שמציירת הכל מחדש
-  function draw() {
-    // 1. קריאת הערכים הנוכחיים מהמחוונים
-    const a = parseFloat(sliders.a.value);
-    const b = parseFloat(sliders.b.value);
-    const c = parseFloat(sliders.c.value);
-    const d = parseFloat(sliders.d.value);
-    const x = parseFloat(sliders.x.value);
-    const y = parseFloat(sliders.y.value);
-
-    // עדכון התוויות המספריות
-    values.a.textContent = a.toFixed(1);
-    values.b.textContent = b.toFixed(1);
-    values.c.textContent = c.toFixed(1);
-    values.d.textContent = d.toFixed(1);
-    values.x.textContent = x.toFixed(1);
-    values.y.textContent = y.toFixed(1);
-
-    // 2. ביצוע החישוב המתמטי
-    const transformedX = a * x + b * y;
-    const transformedY = c * x + d * y;
-
-    // 3. ניקוי הקנבס וציור הרקע
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-
-    // 4. ציור הווקטורים
-    drawVector(x, y, 'blue', 'הווקטור המקורי');
-    drawVector(transformedX, transformedY, 'red', 'הווקטור לאחר טרנספורמציה');
-  }
-
-  // פונקציית עזר לציור הרשת והצירים
-  function drawGrid() {
-    ctx.beginPath();
-    ctx.strokeStyle = '#ccc'; // צבע אפור לרשת
-    // קווי רשת אנכיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(originX + i * scale, 0);
-        ctx.lineTo(originX + i * scale, canvas.height);
-    }
-    // קווי רשת אופקיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(0, originY + i * scale);
-        ctx.lineTo(canvas.width, originY + i * scale);
-    }
-    ctx.stroke();
-
-    // צירים ראשיים (שחור)
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    // ציר X
-    ctx.moveTo(0, originY);
-    ctx.lineTo(canvas.width, originY);
-    // ציר Y
-    ctx.moveTo(originX, 0);
-    ctx.lineTo(originX, canvas.height);
-    ctx.stroke();
-    ctx.lineWidth = 1;
-  }
-
-  // פונקציית עזר לציור וקטור
-  function drawVector(x, y, color, label) {
-    const canvasX = originX + x * scale;
-    const canvasY = originY - y * scale; // מינוס כי ציר Y בקנבס הפוך
-
-    // ציור הקו
-    ctx.beginPath();
-    ctx.moveTo(originX, originY);
-    ctx.lineTo(canvasX, canvasY);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
-    ctx.stroke();
-
-    // ציור ראש החץ
-    const headlen = 10;
-    const angle = Math.atan2(canvasY - originY, canvasX - originX);
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(canvasX, canvasY);
-    ctx.lineTo(canvasX - headlen * Math.cos(angle - Math.PI / 6), canvasY - headlen * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(canvasX - headlen * Math.cos(angle + Math.PI / 6), canvasY - headlen * Math.sin(angle + Math.PI / 6));
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  // 5. הוספת "מאזינים" (EventListeners)
-  // כל פעם שמשתמש מזיז מחוון כלשהו, הפונקציה draw() תופעל
-  for (let key in sliders) {
-    sliders[key].addEventListener('input', draw);
-  }
-
-  // ציור ראשוני של הגרף כשהדף נטען
-  draw();
-
-</script>
-```
-::: {.callout-note icon="info-circle"}
-## חקירה אינטראקטיבית: מטריצה כטרנספורמציה
-
-הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: **מטריצה כפעולה גיאומטרית**.
-
-::: {.panel-tabset}
-
-### מה רואים כאן?
-
-*   **הווקטור הכחול** הוא הווקטור המקורי במרחב, אותו ניתן לשנות בעזרת המחוונים `x` ו-`y`.
-
-*   **הווקטור האדום** הוא תוצאת הפעולה – המקום החדש שאליו הווקטור "עבר" לאחר שהמטריצה (שנקבעת על ידי `a`,`b`,`c`,`d`) הפעילה עליו את הטרנספורמציה.
-
-במילים פשוטות, אתם רואים כיצד המטריצה "מעוותת" את המרחב ולוקחת כל וקטור למקום חדש.
-
-### נסו לחקור בעצמכם
-
-*   **מתיחה וכיווץ (Scaling):**
-    מה קורה כאשר משנים רק את ערכי `a` ו-`d` (ושומרים על `b=0`, `c=0`)? איזו מטריצה תגרום לווקטור להתארך פי שניים בדיוק?
-
-*   **שיקוף (Reflection):**
-    האם תמצאו מטריצה שתשקף את הווקטור ביחס לציר ה-x? (רמז: איזה רכיב של הווקטור צריך לשנות את סימנו?).
-
-*   **סיבוב (Rotation):**
-    הגדירו את המטריצה להיות `a=0`, `b=-1`, `c=1`, `d=0`. איזו פעולה גיאומטרית המטריצה מבצעת על כל וקטור שתבחרו?
-
-*   **גזירה (Shear):**
-    מה קורה כאשר משנים את ערך `b` בזמן ש-`a=1` ו-`d=1`? הביטו כיצד המרחב "נמתח" הצידה.
-
-:::
-:::
-
+{{< include simulations/linear-transform.qmd >}}

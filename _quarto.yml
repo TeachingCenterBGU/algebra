@@ -39,11 +39,11 @@ format:
       collapse: true
     css: 
       - rtl-baseline.css
-      - env-remark.css
       - styles.css
     include-after-body:
-      - auto-def-titles.html
-  
+      - auto-env-titles.html
+      - chapter-numbering.html
+   
   pdf:
     documentclass: book
     papersize: a4
@@ -60,33 +60,58 @@ format:
     header-includes:
       - \usepackage{bidi}
       - \setRTL
-      # --- התוספות עבור העיצוב ---
-      - \usepackage[most]{tcolorbox}
-      - \definecolor{myremarkcolor}{HTML}{8e44ad} # הגדרת הצבע
       - |
-        \newtcbtheorem[auto counter, number within=chapter]{myremark}{הערה}
-        {
-            enhanced,
-            colback = white,
-            colframe = myremarkcolor,
-            fonttitle = \bfseries,
-            coltitle = white,
-            colbacktitle = myremarkcolor,
-            attach title to upper part, % יוצר את פס הכותרת
-            sharp corners
-        }{remark}
-    filters: 
-      - uncollapse-for-pdf.lua
+          % === I, II, III ואז 1, 2, ... ===
+          \usepackage{etoolbox}
+          \makeatletter
+          \setcounter{chapter}{0}% כך שהפרק הממוספר הראשון יהיה I
+          \newcounter{countedchap}
+          \pretocmd{\@chapter}{%
+            \stepcounter{countedchap}%
+            \ifnum\value{countedchap}=1
+              \renewcommand{\thechapter}{\Roman{chapter}}%
+            \fi
+            % לאחר שלושה פרקים ברומי, הפרק הרביעי עובר לערבי ומתחיל מ-1
+            \ifnum\value{countedchap}=4
+              \renewcommand{\thechapter}{\arabic{chapter}}%
+              \setcounter{chapter}{0}%
+            \fi
+          }{}{}
+          \makeatother
+
+
+
     include-in-header:
       - pdf-env-boxes.tex
+    filters:
+      - uncollapse-for-pdf.lua
+
         
+number-sections: true
+
 theorems:
+  numbering: true
+  within: chapter        # מספור בתוך פרק: 1.1, 1.2, ...; 2.1, 2.2, ...
+  definition:
+    name: "הגדרה"
+  example:
+    name: "דוגמה"
+  exercise:
+    name: "תרגיל"
   remark:
     name: "הערה"
-    numbering: true
-    within: chapter
-    latex: myremark  # <-- הוספנו את השורה הזו
-  definition:
-    name: הגדרה
-    numbering: true
-    within: chapter
+  theorem:
+    name: "משפט"
+  lemma:
+    name: "למה"
+  proposition:
+    name: "טענה"
+  corollary:
+    name: "מסקנה"
+  proof:
+    name: "הוכחה"
+    numbering: false     # הוכחות בלי מספור
+
+resources:
+  - simulations/**
+  - images/**

@@ -1,40 +1,67 @@
-/* === Fallback Title for .definition (HTML) === */
-/* איפוס מונה לכל עמוד/פרק (ב‑Book כל קובץ הוא פרק => מונה נפרד לכל פרק) */
-body { counter-reset: defnum; }
-
-/* בסיס התיבה: פס עליון צבעוני, גוף לבן, פינות חדות */
-.definition {
-  --env-color: #00bcd4;         /* צבע ברירת מחדל להגדרה */
-  border: 1px solid var(--env-color);
+/* ===== עיצוב כללי לכל הסביבות ===== */
+.definition, .example, .exercise, .theorem, .lemma,
+.proposition, .corollary, .proof, .remark {
+  border: 1px solid var(--env-color, #999);
+  margin: 1.25em 0;
   border-radius: 0;
-  background: #fff;
-  margin: 1.25rem 0;
   overflow: hidden;
-  counter-increment: defnum;    /* נגדיל מונה לכל בלוק (לכותרת גיבוי) */
+  direction: rtl;
 }
 
-/* אם Quarto מייצר כותרת אמיתית (.theorem-title) – נעצב אותה */
-.definition > .theorem-title {
-  background: var(--env-color);
-  color: #fff;
-  font-weight: 700;
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--env-color);
-}
-
-/* כותרת גיבוי: תופיע רק אם אין .theorem-title שנוצר ע״י Quarto */
-.definition:not(:has(> .theorem-title))::before {
-  content: "הגדרה " counter(defnum);
+/* ===== פס כותרת ===== */
+.definition .theorem-title,
+.example .theorem-title,
+.exercise .theorem-title,
+.theorem .theorem-title,
+.lemma .theorem-title,
+.proposition .theorem-title,
+.corollary .theorem-title,
+.proof .theorem-title,
+.remark .theorem-title {
   display: block;
-  background: var(--env-color);
-  color: #fff;
-  font-weight: 700;
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--env-color);
-}
-
-/* גוף התיבה */
-.definition > :not(.theorem-title) {
-  padding: 0.75rem;
+  background-color: var(--env-color, #999);
+  color: black; /* כותרת בשחור */
+  font-weight: bold;
+  font-size: 0.9rem; /* פונט טיפה קטן יותר */
+  padding: 0.35rem 0.6rem; /* פס פחות עבה */
   margin: 0;
 }
+
+/* ===== גוף הסביבה ===== */
+.definition > :not(.theorem-title),
+.example > :not(.theorem-title),
+.exercise > :not(.theorem-title),
+.theorem > :not(.theorem-title),
+.lemma > :not(.theorem-title),
+.proposition > :not(.theorem-title),
+.corollary > :not(.theorem-title),
+.proof > :not(.theorem-title),
+.remark > :not(.theorem-title) {
+  padding: 0.6rem;
+  margin: 0;
+}
+
+/* ===== משוואות - LTR ===== */
+.definition .math.inline, .definition .math.display,
+.example .math.inline, .example .math.display,
+.exercise .math.inline, .exercise .math.display,
+.theorem .math.inline, .theorem .math.display,
+.lemma .math.inline, .lemma .math.display,
+.proposition .math.inline, .proposition .math.display,
+.corollary .math.inline, .corollary .math.display,
+.proof .math.inline, .proof .math.display,
+.remark .math.inline, .remark .math.display {
+  direction: ltr;
+}
+
+/* ===== צבעים פסטליים לכל סביבה ===== */
+.definition { --env-color: rgba(255, 99, 71, 0.4); }     /* אדום פסטלי */
+.example   { --env-color: rgba(138, 43, 226, 0.3); }    /* סגול פסטלי */
+.exercise  { --env-color: rgba(60, 179, 113, 0.35); }   /* ירוק פסטלי */
+.remark    { --env-color: rgba(128, 128, 128, 0.3); }   /* אפור פסטלי */
+.theorem, .lemma, .proposition, .corollary { --env-color: rgba(0, 0, 0, 0.25); } /* שחור פסטלי */
+.proof     { --env-color: rgba(0, 0, 0, 0.15); }        /* שחור עוד יותר בהיר */
+
+/* הסתרת כותרות-inline שמודבקות בתוך הפסקה הראשונה */
+.remark .remark-title,
+.proof  .proof-title { display: none; }

@@ -1,0 +1,145 @@
+```{=html}
+<style>
+  #sequence-squeeze-demo {
+    border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 700px;
+    margin: auto; display: flex; flex-direction: column; align-items: center;
+    background-color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  #sequenceCanvas { border: 1px solid black; }
+  .sequence-controls { width: 100%; margin-top: 15px; }
+  .sequence-controls label { display: block; margin-bottom: 5px; margin-top: 10px; }
+  .sequence-controls input[type="range"] { width: 100%; }
+  .legend { width: 100%; padding: 10px 0; }
+  .legend-item { display: inline-block; margin-right: 20px; font-size: 0.9em; }
+  .legend-color { display: inline-block; width: 15px; height: 15px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
+</style>
+
+<div id="sequence-squeeze-demo">
+  <h2>הדגמה: כלל הסנדוויץ' לסדרות</h2>
+  <canvas id="sequenceCanvas" width="650" height="400"></canvas>
+  
+  <div class="legend">
+      <div class="legend-item">סדרה עליונה (h<sub>n</sub>) <span class="legend-color" style="background-color: blue;"></span></div>
+      <div class="legend-item">סדרה תחתונה (f<sub>n</sub>) <span class="legend-color" style="background-color: green;"></span></div>
+      <div class="legend-item">סדרה לכודה (g<sub>n</sub>) <span class="legend-color" style="background-color: red;"></span></div>
+  </div>
+
+  <div class="sequence-controls">
+    <label for="L_slider">הגבול L: <span id="L_value">2.0</span></label>
+    <input type="range" id="L_slider" min="-3" max="3" value="2" step="0.1">
+
+    <label for="gap_h_slider">מרווח עליון (C<sub>h</sub>): <span id="gap_h_value">3.0</span></label>
+    <input type="range" id="gap_h_slider" min="0.5" max="5" value="3" step="0.1">
+
+    <label for="gap_f_slider">מרווח תחתון (C<sub>f</sub>): <span id="gap_f_value">2.0</span></label>
+    <input type="range" id="gap_f_slider" min="0.5" max="5" value="2" step="0.1">
+
+    <label for="n_slider">מספר איברים (N): <span id="n_value">50</span></label>
+    <input type="range" id="n_slider" min="10" max="150" value="50" step="1">
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('sequenceCanvas');
+  const ctx = canvas.getContext('2d');
+  const sliders = { L: document.getElementById('L_slider'), gap_h: document.getElementById('gap_h_slider'), gap_f: document.getElementById('gap_f_slider'), n: document.getElementById('n_slider') };
+  const values = { L: document.getElementById('L_value'), gap_h: document.getElementById('gap_h_value'), gap_f: document.getElementById('gap_f_value'), n: document.getElementById('n_value') };
+  const originY = canvas.height / 2;
+  const scaleY = 40; 
+  const margin = 40; 
+
+  function draw() {
+    const L = parseFloat(sliders.L.value);
+    const gap_h = parseFloat(sliders.gap_h.value);
+    const gap_f = parseFloat(sliders.gap_f.value);
+    const N = parseInt(sliders.n.value);
+
+    values.L.textContent = L.toFixed(1);
+    values.gap_h.textContent = gap_h.toFixed(1);
+    values.gap_f.textContent = gap_f.toFixed(1);
+    values.n.textContent = N;
+    
+    const scaleX = (canvas.width - margin*1.5) / N;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawAxes(N, scaleX);
+
+    // הגדרת הסדרות הא-סימטריות
+    const h_n = (n) => L + gap_h / n;
+    const f_n = (n) => L - gap_f / n;
+    
+    // הגדרה חכמה לסדרה הלכודה שתמיד תישאר בין החסמים
+    const g_n = (n) => (h_n(n) + f_n(n)) / 2 + ((h_n(n) - f_n(n)) / 2) * Math.sin(n * 2.5);
+
+    for (let i = 1; i <= N; i++) {
+      drawPoint(i, h_n(i), 'blue', scaleX);
+      drawPoint(i, f_n(i), 'green', scaleX);
+      drawPoint(i, g_n(i), 'red', scaleX);
+    }
+  }
+
+  function drawAxes(N, scaleX) {
+    ctx.font = "12px Arial"; ctx.fillStyle = "black"; ctx.textAlign = "center";
+    ctx.beginPath(); ctx.strokeStyle = 'black'; ctx.lineWidth = 1.5;
+    ctx.moveTo(margin, originY); ctx.lineTo(canvas.width, originY);
+    ctx.moveTo(margin, 0); ctx.lineTo(margin, canvas.height);
+    ctx.stroke();
+
+    ctx.textAlign = "right";
+    for (let i = -4; i <= 4; i++) {
+        if (i === 0) continue;
+        const y = originY - i * scaleY;
+        ctx.beginPath(); ctx.moveTo(margin - 5, y); ctx.lineTo(margin + 5, y); ctx.stroke();
+        ctx.fillText(i, margin - 10, y + 4);
+    }
+    
+    ctx.textAlign = "center";
+    const tickStep = Math.max(5, Math.ceil(N / 10 / 5) * 5);
+    for (let n = tickStep; n <= N; n += tickStep) {
+        const x = margin + n * scaleX;
+        ctx.beginPath(); ctx.moveTo(x, originY - 5); ctx.lineTo(x, originY + 5); ctx.stroke();
+        ctx.fillText(n, x, originY + 20);
+    }
+  }
+
+  function drawPoint(n, value, color, scaleX) {
+    const canvasX = margin + n * scaleX;
+    const canvasY = originY - value * scaleY;
+    ctx.beginPath(); ctx.arc(canvasX, canvasY, 3.5, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  for (let key in sliders) { sliders[key].addEventListener('input', draw); }
+  draw();
+</script>
+```
+
+::: {.callout-note icon="lightbulb"}
+## חקירה אינטראקטיבית: כלל הסנדוויץ' לסדרות
+
+כלל הסנדוויץ' לסדרות קובע שאם איברי סדרה אחת (`gₙ`) חסומים בין איברי שתי סדרות אחרות (`hₙ` ו-`fₙ`), ושתי הסדרות החיצוניות מתכנסות לאותו גבול `L`, אזי גם לסדרה הלכודה אין ברירה והיא חייבת להתכנס לאותו הגבול.
+
+::: {.panel-tabset}
+
+### הסדרות בדמו
+
+הסדרות שאתם רואים בדמו מוגדרות באופן הבא, כאשר `L` הוא הגבול, ו-`C_h` ו-`C_f` הם "מרווחי ההתכנסות" הנשלטים על ידי המחוונים:
+
+*   **הסדרה העליונה (כחול):** $h_n = L + \frac{C_h}{n}$
+    <br>סדרה זו מתכנסת לגבול `L` מלמעלה.
+
+*   **הסדרה התחתונה (ירוק):** $f_n = L - \frac{C_f}{n}$
+    <br>סדרה זו מתכנסת לגבול `L` מלמטה, ויכולה לעשות זאת בקצב שונה מהסדרה העליונה.
+
+*   **הסדרה הלכודה (אדום):** $g_n = \left( L + \frac{C_h - C_f}{2n} \right) + \left( \frac{C_h + C_f}{2n} \right) \sin(2.5n)$
+    <br>הגדרה זו מבטיחה שהסדרה האדומה תמיד תתנודד בדיוק במרחב שבין הסדרה הירוקה לכחולה. היא לוקחת את "אמצע הסנדוויץ'" ומוסיפה לו תנודה שגודלה המקסימלי הוא בדיוק חצי מהרוחב של ה"סנדוויץ'" באותה נקודה.
+
+### נסו לחקור בעצמכם
+
+*   **צרו א-סימטריה:** נסו להגדיר את המרווח העליון (`C_h`) כגדול בהרבה מהמרווח התחתון (`C_f`), או להפך. שימו לב שגם כאשר ההתכנסות אינה סימטרית, כלל הסנדוויץ' עדיין עובד והסדרה האדומה נדחקת אל הגבול.
+*   **הגדילו את מספר האיברים (`N`):** ככל שתציגו יותר איברים, כך תראו בבירור את ההתכנסות של כל שלוש הסדרות אל קו הגבול.
+*   **שנו את הגבול (`L`):** שימו לב כיצד נקודת ההתכנסות של כל הסדרות משתנה בהתאם.
+
+:::
+:::
