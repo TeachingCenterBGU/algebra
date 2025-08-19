@@ -14,6 +14,7 @@ book:
   - chapter_3.qmd
   - summary.qmd
   - references.qmd
+  search: true
   
   
   sidebar:
@@ -44,6 +45,7 @@ format:
     include-after-body:
       - auto-env-titles.html
       - chapter-numbering.html
+      
     filters:
       - env-to-callout.lua
    

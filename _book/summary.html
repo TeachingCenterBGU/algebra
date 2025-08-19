@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Summary – אלגברה לינארית</title>
+<title>7&nbsp; סיכום – אלגברה לינארית</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">ביבליוגרפיה</span></a>
   </div>
 </li>
     </ul>
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></h1>
 </div>
 
 
@@ -365,6 +365,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+document.addEventListener("DOMContentLoaded", () =&gt; {
+
+  // בדוק אם יש פרמטר חיפוש בכתובת (search-highlighter)
+
+  const params = new URLSearchParams(window.location.search);
+
+  const q = params.get("q");
+
+  if (!q) return;
+
+
+
+  // נבנה ביטוי רגולרי מחיפוש
+
+  const regex = new RegExp(q, "gi");
+
+
+
+  // נעבור על כל פסקאות ותיבות תוכן
+
+  document.querySelectorAll("main p, main li").forEach(el =&gt; {
+
+    el.innerHTML = el.innerHTML.replace(regex, match =&gt;
+
+      `<mark style="background-color: #fff3a0; padding:0 2px;">${match}</mark>`
+
+    );
+
+  });
+
+});
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -771,8 +803,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="ביבליוגרפיה">
+        <span class="nav-page-text">ביבליוגרפיה</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
