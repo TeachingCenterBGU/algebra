@@ -12,6 +12,7 @@ book:
   - chapter_1.qmd
   - chapter_2.qmd
   - chapter_3.qmd
+  - chapter_calculus.qmd
   - summary.qmd
   - references.qmd
   search: true

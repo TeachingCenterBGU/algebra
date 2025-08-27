@@ -1,0 +1,3248 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  hebrew,
+  12pt,
+  a4paper,
+  oneside]{book}
+\usepackage{xcolor}
+\usepackage[right=30mm, left=30mm, top=30mm, bottom=30mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{David}
+  \setmonofont[]{Courier New}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic,provide=*]{babel}
+\else
+\usepackage[bidi=default,provide=*]{babel}
+\fi
+\ifPDFTeX
+\else
+\babelfont{rm}[]{David}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% pdf-env-boxes.tex — עטיפת סביבות LaTeX קיימות עם tcolorbox, מותאם לצבעי HTML
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable,hooks}
+\usepackage{xcolor}
+
+% ==== שמות בעברית ====
+\providecommand{\definitionname}{הגדרה}
+\providecommand{\examplename}{דוגמה}
+\providecommand{\exercisename}{תרגיל}
+\providecommand{\remarkname}{הערה}
+\providecommand{\theoremname}{משפט}
+\providecommand{\lemmaname}{למה}
+\providecommand{\propositionname}{טענה}
+\providecommand{\corollaryname}{מסקנה}
+\renewcommand{\proofname}{הוכחה}
+
+% ==== צבעים (בהתאם ל-CSS: rgba) ====
+\definecolor{envDefinitionRGB}{RGB}{255,99,71}    % tomato
+\definecolor{envExampleRGB}{RGB}{138,43,226}      % blueviolet
+\definecolor{envExerciseRGB}{RGB}{30,144,255}     % dodgerblue
+\definecolor{envRemarkRGB}{RGB}{0,0,0}            % black (עם שקיפות נמוכה)
+\definecolor{envTheoremRGB}{RGB}{255,165,0}       % orange
+\definecolor{envProofRGB}{RGB}{60,179,113}        % mediumseagreen
+
+% ==== סגנון בסיסי לכל התיבות ====
+\tcbset{
+  envbox/.style={
+    enhanced, breakable, sharp corners,
+    boxrule=0.4pt,
+    colback=white,
+    fonttitle=\bfseries\small,
+    coltitle=black,
+    title filled,
+    left=8pt,right=8pt,top=6pt,bottom=6pt,
+    before skip=10pt, after skip=10pt
+  },
+}
+
+\makeatletter
+% parent counter: ב-book לפי chapter, אחרת לפי section
+\@ifundefined{c@chapter}{\def\qnumwithin{section}}{\def\qnumwithin{chapter}}
+
+\newcommand{\EnsureNewTheorem}[2]{%
+  \@ifundefined{#1}{%
+    \newtheorem{#1}{#2}[\qnumwithin]%
+  }{}%
+}
+\makeatother
+
+\AtBeginDocument{%
+  \theoremstyle{definition}
+  \EnsureNewTheorem{definition}{\definitionname}
+  \EnsureNewTheorem{example}{\examplename}
+  \EnsureNewTheorem{exercise}{\exercisename}
+
+  \theoremstyle{remark}
+  \EnsureNewTheorem{remark}{\remarkname}
+
+  \theoremstyle{plain}
+  \EnsureNewTheorem{theorem}{\theoremname}
+  \EnsureNewTheorem{lemma}{\lemmaname}
+  \EnsureNewTheorem{proposition}{\propositionname}
+  \EnsureNewTheorem{corollary}{\corollaryname}
+
+  % ==== עטיפות עם צבעי HTML ====
+  \tcolorboxenvironment{definition}{envbox,
+    colframe=envDefinitionRGB,
+    colbacktitle=envDefinitionRGB,
+    colback=envDefinitionRGB!10,
+    borderline south={0.4pt}{0pt}{envDefinitionRGB},
+    title={\definitionname}}
+
+  \tcolorboxenvironment{example}{envbox,
+    colframe=envExampleRGB,
+    colbacktitle=envExampleRGB,
+    colback=envExampleRGB!10,
+    borderline south={0.4pt}{0pt}{envExampleRGB},
+    title={\examplename}}
+
+  \tcolorboxenvironment{exercise}{envbox,
+    colframe=envExerciseRGB,
+    colbacktitle=envExerciseRGB,
+    colback=envExerciseRGB!10,
+    borderline south={0.4pt}{0pt}{envExerciseRGB},
+    title={\exercisename}}
+
+  \tcolorboxenvironment{remark}{envbox,
+    colframe=envRemarkRGB,
+    colbacktitle=envRemarkRGB,
+    colback=envRemarkRGB!10,
+    borderline south={0.4pt}{0pt}{envRemarkRGB},
+    title={\remarkname}}
+
+  \tcolorboxenvironment{theorem}{envbox,
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
+    title={\theoremname}}
+
+  \tcolorboxenvironment{lemma}{envbox,
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
+    title={\lemmaname}}
+
+  \tcolorboxenvironment{proposition}{envbox,
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
+    title={\propositionname}}
+
+  \tcolorboxenvironment{corollary}{envbox,
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
+    title={\corollaryname}}
+
+  \tcolorboxenvironment{proof}{envbox,
+    colframe=envProofRGB,
+    colbacktitle=envProofRGB,
+    colback=envProofRGB!10,
+    borderline south={0.4pt}{0pt}{envProofRGB},
+    title={\proofname}}
+}
+\makeatletter
+% מעטפת LTR למספרים
+\newcommand{\LTRnum}[1]{\LR{#1}}
+
+% תיקון תוכן העניינים: המספרים יוצגו LTR גם עם נקודות
+\let\orig@numberline\numberline
+\renewcommand{\numberline}[1]{\orig@numberline{\LTRnum{#1}}}
+
+% סימניות ה-PDF (bookmarks) בלי פקודות כיווניות
+\AtBeginDocument{%
+  \@ifpackageloaded{hyperref}{%
+    \pdfstringdefDisableCommands{\let\LTRnum\@firstofone}%
+  }{}%
+}
+\makeatother
+\usepackage{bidi}
+\setRTL
+% === I, II, III ואז 1, 2, ... ===
+\usepackage{etoolbox}
+\makeatletter
+\setcounter{chapter}{0}% כך שהפרק הממוספר הראשון יהיה I
+\newcounter{countedchap}
+\pretocmd{\@chapter}{%
+  \stepcounter{countedchap}%
+  \ifnum\value{countedchap}=1
+    \renewcommand{\thechapter}{\Roman{chapter}}%
+  \fi
+  % לאחר שלושה פרקים ברומי, הפרק הרביעי עובר לערבי ומתחיל מ-1
+  \ifnum\value{countedchap}=4
+    \renewcommand{\thechapter}{\arabic{chapter}}%
+    \setcounter{chapter}{0}%
+  \fi
+}{}{}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{תוכן עניינים}
+\else
+  \newcommand\contentsname{תוכן עניינים}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{רשימת תרשימים}
+\else
+  \newcommand\listfigurename{רשימת תרשימים}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{רשימת טבלאות}
+\else
+  \newcommand\listtablename{רשימת טבלאות}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{תרשים}
+\else
+  \newcommand\figurename{תרשים}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{טבלה}
+\else
+  \newcommand\tablename{טבלה}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{רישום}
+\newcommand*\listoflistings{\listof{codelisting}{רשימת רישומים}}
+\usepackage{amsthm}
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{הוכחה}}
+\newtheorem*{remark}{הערה}
+\newtheorem*{solution}{פתרון}
+\newtheorem{refremark}{הערה}[chapter]
+\newtheorem{refsolution}{פתרון}[chapter]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={אלגברה לינארית},
+  pdfauthor={ד''ר יונתן שלח, ד''ר נדב מאיר},
+  pdflang={he},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{אלגברה לינארית}
+\author{ד''ר יונתן שלח, ד''ר נדב מאיר}
+\date{}
+\begin{document}
+\frontmatter
+\maketitle
+
+\renewcommand*\contentsname{תוכן עניינים}
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\setstretch{1.5}
+\mainmatter
+\bookmarksetup{startatroot}
+
+\chapter*{מידע כללי}\label{ux5deux5d9ux5d3ux5e2-ux5dbux5dcux5dcux5d9}
+\addcontentsline{toc}{chapter}{מידע כללי}
+
+\markboth{מידע כללי}{מידע כללי}
+
+\includegraphics[width=1.04167in,height=\textheight,keepaspectratio]{logo.png}
+
+\phantomsection\label{download-box}
+\href{אלגברה-לינארית.pdf}{להורדת הספר ב PDF}
+
+This is a Quarto book.
+
+To learn more about Quarto books visit
+\url{https://quarto.org/docs/books}.
+
+This is a book created from markdown and executable code.
+
+See Knuth (1984) for additional discussion of literate programming.
+
+\bookmarksetup{startatroot}
+
+\chapter{הקדמה}\label{ux5d4ux5e7ux5d3ux5deux5d4}
+
+אלגברה לינארית היא אחת מאבני היסוד של המתמטיקה המודרנית. בתור התחלה, היא
+קשורה באופן הדוק לגיאומטריה של המישור וגם לגיאומטריה של המרחב. בחטיבת
+הביניים לומדים על משוואה בנעלם אחד, וגם על מערכת של שתי משוואות בשני
+נעלמים. למשל:
+
+\[\begin{cases}
+3x+2y=8\\
+x+y=3
+\end{cases}\]
+
+יש יותר מדרך אחת לפתור מערכת כזו, כמו להכפיל את המשוואה השנייה ב-\(2\)
+ואז להחסיר אותה מהמשוואה הראשונה. כך מקבלים \(x=2\) ולבסוף \(y=1\) עי
+הצבה באחת המשוואות. מבחינה גיאומטרית, כל משוואה מייצגת קו ישר במישור,
+ופתרון המערכת מוביל לנקודת החיתוך של שני הישרים.
+
+\begin{center}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{images/intro/intro_img_1.png}
+\end{center}
+
+איור 1: שני ישרים ונקודת החיתוך
+
+בבסיסה אלגברה לינארית עוסקת בפתרון מערכת של משוואות לינאריות, כלומר
+משוואות ממעלה ראשונה במספר נעלמים. בתחומים רבים במדע ובכלל יכולים להופיע
+הרבה נעלמים והרבה (אילוצים) , בהתאם למה שידוע לנו על הבעיה הרלוונטית.
+
+\begin{example}
+
+תומר נוסע מאילת צפונה, ואלה נוסעת מתל אביב דרומה. המרחק ההתחלתי ביניהם
+הוא \(350\) קמ. תומר נוסע במהירות \(60\) קמש במשך \(t_{1}\) שעות, וממשיך
+במהירות \(90\) קמש במשך \(t_{2}\) שעות עד שהוא חולף על פני המכונית של
+אלה ומזהה אותה. עד לרגע זה אלה נסעה במהירות \(90\) קמ במשך \(t_{3}\)
+שעות ואחר כך במהירות \(110\) קמ במשך \(t_{4}\) שעות. אם נשווה בין סכומי
+זמני התנועה של שתי המכוניות וגם נדרוש שסכום הדרכים יהיה המרחק ההתחלתי,
+נקבל שתי משוואות בארבעה נעלמים:
+
+\[\begin{cases}
+t_{1}+t_{2}=t_{3}+t_{4}\\
+60t_{1}+90t_{2}+90t_{3}+110t_{4}=350
+\end{cases}\]
+
+למערכת משוואות לינארית (ממל בראשי תיבות) זו יש אינסוף פתרונות בתחום
+ההגדרה הרלוונטי של מספרים חיוביים. אם למשל נציב \(t_{3}=t_{4}=1\) בשתי
+המשוואות, נקבל ממל חדשה של שתי משוואות בשני נעלמים:
+
+\[\begin{cases}
+t_{1}+t_{2}=2\\
+60t_{1}+90t_{2}=150
+\end{cases}\]
+
+אפשר לפתור את הממל הזו כרגיל, אבל קל לבדוק שהפתרון הוא
+\(t_{1}=t_{2}=1\). לכן, אחד הפתרונות של הממל המקורית (בארבעה נעלמים) הוא
+\(t_{1}=t_{2}=t_{3}=t_{4}=1\). אבל זה לא הפתרון היחיד כי בחרנו את הערכים
+של \(t_{3},t_{4}\) באופן שרירותי (נוח לחישובים, אך לא יותר מזה).
+
+נראה בפרק איך אפשר לכתוב את קבוצת הפתרונות באופן כללי, אבל כבר אפשר
+להבין שהיא אינסופית כי יש לנו חופש לבחור את ערכי \(t_{3},t_{4}\). אמנם
+לא מדובר בחופש מוחלט כי כל ארבעת הזמנים צריכים להיות חיוביים (מה שמקטין
+את קבוצת הפתרונות), אבל עדיין יש פה מספיק חופש לאינסוף פתרונות.
+
+במובן מסוים אפשר לומר שאלה מחליטה בשביל תומר על זמני הנסיעה שלו. זו דרך
+הסתכלות שרירותית ומאוד טכנית - אפשר לחשוב על פתרון המערכת גם באופן הפוך
+ולתת את החופש לתומר. בפועל (מחוץ לעולם האלגברי) תומר ואלה לא שמו לב אחד
+לשנייה עד לרגע הפגישה המקרית. להם יש מידע מלא על זמני הנסיעה, אבל אנחנו
+מסתפקים במידע חלקי. אם היו לנו מספיק משוואות נוספות (לפחות שתיים), היה
+ניתן להגיע לפתרון המדויק שמתאר את תנועת המכוניות. אבל לא תמיד יש לנו
+מספיק מידע ונלמד להתייחס לכך בהתאם.
+
+\end{example}
+
+באופן כללי, נשאל את השאלות הבאות:
+
+• כיצד פותרים ממל שבה הרבה נעלמים?
+
+• כיצד פותרים ממל שבה הרבה משוואות?
+
+• האם בכלל קיימים פתרונות לממל? אם כן, אז כמה?
+
+כדי לענות על שאלות כאלו באופן מלא ומסודר, ישמשו אותנו שני מושגים
+יסודיים: וקטורים ומטריצות. נדחה את ההגדרות שלהם לפרקים הרלוונטיים, אבל
+לעת עתה מספיק לחשוב עליהם כאובייקטים מתמטיים שבהם מופיעים כמה מספרים.
+למשל, הזוג הסדור \((x,y)\) של שני מספרים \(x\) ו-\(y\) הוא וקטור עם שני
+רכיבים (קוארדינטות). בחטיבת הביניים ובתיכון ראינו שאפשר לחשוב על זוג כזה
+כעל נקודה סטטית במישור, אבל בלימודי הפיזיקה יש הסתכלות דינמית על וקטור
+כאובייקט בעל גודל וכיוון, לדוגמא כוח שפועל על גוף. נראה שאפשר לאמץ את
+שתי הגישות (סטטית ודינמית) במקביל, כאשר האינטואיציה הפיזיקלית מועילה
+מאוד אך ממש לא הכרחית להבנת הקורס.
+
+לאחר שנתרגל לוקטורים ומטריצות, נראה שאפשר להסתכל עליהם באופן מופשט
+(תיאורטי) ולשאול עליהם כל מיני שאלות שלא בהכרח קשורות לממל כזו או אחרת.
+במתמטיקה, דבר אחד מוביל למשנהו וזה טוב לשמור על ראש פתוח כשלומדים מושגים
+חדשים. הגישה המופשטת של אלגברה לינארית מאפשרת יישומים מגוונים, גם מחוץ
+לגיאומטריה ופיזיקה. לטובת הסקרנים, נעסוק קצת בפיזיקה דרך הנדסה בחלק
+מהיישומים בסוף הספר שחורגים מהקורס עצמו. אבל גם נעסוק ביישומים שקשורים
+למאגר גדול של נתונים כמו למידת מכונה.
+
+רבים מכם לומדים חשבון דיפרנציאלי ואינטגרלי במקביל. אפשר לומר שאלגברה
+לינארית מופיעה בחשבון דיפרנציאלי ואינטגרלי הרבה יותר מאשר להיפך. מושג
+הנגזרת מוביל לקירוב לינארי של פונקציה נתונה עי פונקציה לינארית שמתארת את
+הישר המשיק לגרף הפונקציה בנקודה נתונה. בנוסף, הקשר לאלגברה לינארית מתבטא
+בחישוב שטחים (במישור) ונפחים (במרחב) בעזרת כלי שנקרא דטרמיננטה. נפתח
+אותו בפרק .
+
+{[}תמונה - ישר משיק בצד אחד, מישור משיק בצד שני{]}
+
+בספר מופיעות דוגמאות רבות, תרגילים פתורים וגם קישורים לסרטונים. תוכלו
+לחזור אליו בהמשך התואר ככל שתצטרכו להשתמש באלגברה לינארית.
+
+\bookmarksetup{startatroot}
+
+\chapter{קבוצות
+ומספרים}\label{ux5e7ux5d1ux5d5ux5e6ux5d5ux5ea-ux5d5ux5deux5e1ux5e4ux5e8ux5d9ux5dd}
+
+\section{קבוצת המספרים הטבעיים והגדרת
+קבוצה}\label{ux5e7ux5d1ux5d5ux5e6ux5ea-ux5d4ux5deux5e1ux5e4ux5e8ux5d9ux5dd-ux5d4ux5d8ux5d1ux5e2ux5d9ux5d9ux5dd-ux5d5ux5d4ux5d2ux5d3ux5e8ux5ea-ux5e7ux5d1ux5d5ux5e6ux5d4}
+
+המתמטיקה מתחילה בחשבון, וחשבון מבוסס על ספירה. המספר \(1\) מתאר את
+היחידה הבסיסית, (לצורך העניין אצבע אחת) שבעזרתה אפשר לספור כל מיני
+דברים. ניתן להוסיף \(1\) לספירה כאוות נפשנו, ואם נמשיך כך, לנצח בדמיון
+שלנו לפחות, נייצר אינסוף מספרים שלא בהכרח נדע איך לקרוא להם כי השמות
+יהיו ארוכים מאוד. אבל יש שם לקבוצה של כל המספרים האלה: מספרים טבעיים.
+הסימון המקובל הוא \(\mathbb{N}\), ואפשר למנות את איברי הקבוצה באופן הבא
+\[\mathbb{N}=\{1,1+1,1+1+1,...\}=\{1,2,3,...\}\]
+
+הסוגריים המסולסלים מתארים קבוצה שאיבריה מופיעים בין הסוגריים ומופרדים עי
+פסיקים. מאחר שהקבוצה אינסופית, אנחנו נאלצים לכתוב ... מתוך הנחה שברור
+איך להמשיך.
+
+\begin{remark}
+לפעמים גם \(0\) נחשב מספר טבעי, אבל לא בקורס שלנו וזה לא באמת חשוב.
+מבחינה היסטורית ופילוסופית, \(0\) הוא מספר מוזר ומיוחד כי לא רואים אותו
+בטבע. הוא מתאר את מה שאינו.
+\end{remark}
+
+\begin{definition}
+
+קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא חשיבות לסדר הופעתם.
+
+\end{definition}
+
+זו הגדרה מאוד כללית, ובלבד שיהיה ברור מהגדרת הקבוצה אילו איברים שייכים
+לה ואילו לא. אם הקבוצה היא \(A\), אז נכתוב \(a\in A\) כדי לומר שהאיבר
+\(a\) שייך לקבוצה \(A\). אם הוא לא שייך לה, נכתוב \(a\notin A\).
+
+עיגול עם נקודה בתוכו שמסומנת כשייכת, ונקודה בחוץ שמסומנת כלא שייכת
+
+\begin{example}
+
+משפחת לוי כוללת את דרור , אורית ואיתי. נקרא לקבוצת אנשים זו \(L\) ונתאר
+אותה באופן מפורש תוך שימוש בלועזית (אפשר גם בעברית)
+\[L=\{\text{{Dror, Itay, Orit}}\}\]
+
+בפרט, מתקיים \(Itay \in L\) אך \(Ofer \notin L\) כי מבין השניים האלה רק
+איתי שייך למשפחה. נדגיש שאין חשיבות לסדר האיברים בתוך הקבוצה, ובדרך כלל
+יש יותר מדרך אחת להציג את הקבוצה. למשל, כאן גם מתקיים
+\[L=\{\text{{Itay, Dror, Orit}}\}=\{\text{{Orit, Itay, Dror}}\}\]
+
+\end{example}
+
+\begin{exercise}
+
+האם מתקיים \(100^{100}\in\mathbb{N}\)? \(100^{-100}\in\mathbb{N}\)?
+\((-100)^{100}\in\mathbb{N}\)?
+
+\end{exercise}
+
+ניתן להגדיר תת-קבוצות של \(\mathbb{N}\) עי שימוש בתכונות. למשל, את קבוצת
+המספרים הזוגיים החיוביים \(2\mathbb{N}\) ניתן להגדיר באופן הבא:
+\[2\mathbb{N}=\{n\in\mathbb{N}|n\text{ {is divided by} 2}\}=\{2,4,6,...\}\]
+
+הסימן \(\in\) מתאר שייכות, ולכן הנוסחה \(n\in\mathbb{N}\) פירושה המספר
+\(n\) שייך לקבוצה \(\mathbb{N}\). הקו \(|\) שמפריד בין הנוסחה לתנאי,
+פירושו כך ש-. לכן, הגדרת הקבוצה אומרת לנו שמדובר בקבוצת כל המספרים
+מהצורה \(n\in\mathbb{N}\) כך ש-\(n\) מתחלק ב-\(2\). אפשר גם להגדיר את
+הקבוצה הזו עי נוסחה מפורשת \(2n\) שתפיק את כל המספרים הזוגיים החיוביים
+כאשר נציב בה כל מספר מהצורה \(n\in\mathbb{N}\). הפעם הכתיבה היא כדלקמן
+\[2\mathbb{N}=\{2n|n\in\mathbb{N}\}\]
+
+שימו לב ששתי צורות הכתיבה דומות נוסחה בצד שמאל ותנאי בצד ימין, עם קו
+מפריד באמצע. ההבדל הוא שבצורה הראשונה הנוסחה מתייחסת לקבוצה ידועה
+\(\mathbb{N}\), והתנאי דרוש כדי לקבוע את השייכות לקבוצה החדשה. בצורה
+השנייה יש נוסחה של משתנה \(n\), והתנאי מתייחס לערכי המשתנה שיש להציב
+בנוסחה כאן התנאי הוא זה שמתייחס ל-\(\mathbb{N}\). בהמשך הפרק נוכיח שאכן
+שתי ההגדרות של קבוצת הזוגיים הן הגדרות שקולות, כלומר שתיהן אכן מתארות את
+המספרים \(2,4,6,...\) ושום מספר אחר. זה אולי כבר נראה ברור, אבל נשאלת
+השאלה איך כותבים הוכחה מסודרת.
+
+\section{קבוצות מספרים
+נוספות}\label{ux5e7ux5d1ux5d5ux5e6ux5d5ux5ea-ux5deux5e1ux5e4ux5e8ux5d9ux5dd-ux5e0ux5d5ux5e1ux5e4ux5d5ux5ea}
+
+ב-\(\mathbb{N}\) יש פעולות חיבור וכפל. הפעולות ההפוכות, חיסור וחילוק,
+דורשות הרחבה של \(\mathbb{N}\) לקבוצות יותר גדולות. למשל, למשוואה
+\(x+2=1\) אין פתרון טבעי ואנחנו יודעים שאפשר לפתור אותה עי חיסור \(2\)
+מכל אגף ואז הפתרון יהיה \(x=-1\), שהוא מספר שלילי. בעצם, מגדירים את
+\(-1\) כפתרון של המשוואה \(x+1=0\) וזה מוביל להגדרה של המספרים השלמים
+\[\mathbb{Z}=\{...,-3,-2,-1,0,1,2,3,...\}=\{n-m|n,m\in\mathbb{\mathbb{N}}\}\]
+
+שימו לב לכתיבה בצד ימין. זו דרך להגדיר את קבוצת השלמים בעזרת קבוצת
+הטבעיים, כאשר הכוונה היא לקבוצת כל המספרים מהצורה \(n-m\) כאשר \(n,m\)
+הם מספרים טבעיים. יש יותר מדרך אחת לכתוב מספר שלם כהפרש של מספרים טבעיים
+(למעשה אינסוף).
+
+ניתן גם להרחיב את \(\mathbb{Z}\) כך שיהיה ניתן לבצע חילוק. בתור התחלה
+מגדירים לכל \(m\neq0\) שלם את המספר ההופכי \(\frac{1}{m}\), וכדי לאפשר
+כפל גם מוסיפים את כל השברים מהצורה \(\frac{n}{m}\) כאשר
+\(n\in\mathbb{Z}\). כך מקבלים את קבוצת המספרים הרציונליים
+\[\mathbb{Q}=\{\frac{n}{m}|m,n\in\mathbb{\mathbb{Z}},\,m\neq0\}\]
+
+גם כאן יש אינסוף דרכים להציג מספר רציונלי כמנה של מספרים שלמים, ואין עם
+זה בעיה מבחינת הגדרת הקבוצה. אנחנו רגילים להצגה הפשוטה ביותר, לאחר צמצום
+המחלקים המשותפים של המונה והמכנה.
+
+זה מביא אותנו לקבוצת המספרים הממשיים \(\mathbb{R}\), שהיא הקבוצה העיקרית
+שנתמקד בה בקורס. קבוצה זו מכילה את קבוצת המספרים הרציונליים (כל מספר
+רציונלי הוא ממשי(, אבל יש בה מספרים נוספים שנקראים אי-רציונליים. יש הרבה
+מה לומר על מספרים ממשיים, אבל הדיון המלא מתאים לקורס בחשבון דיפרנציאלי
+ואינטגרלי. אז נסתפק באפיון הבא: ניתן להציג כל \(x\in\mathbb{R}\) בהצגה
+עשרונית מהצורה \[x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...\]
+כאשר \(d_{n},d_{n-1},...,d_{0},d_{-1},d_{-2},...\) הן ספרות עשרוניות בין
+\(0\) ל-\(9\) (כולל(, והנקודה העשרונית מפרידה בין החלק השלם משמאל לחלק
+השברי מימין. \(x\) הוא רציונלי כאשר סדרת הספרות העשרוניות היא מחזורית
+החל משלב מסוים. למשל
+
+\[\begin{aligned}
+\frac{1}{5}=0.200000000000...\\
+\frac{1}{6}=0.166666666666...\\
+\frac{1}{7}=0.142857142857...
+\end{aligned}\]
+
+במקרה הראשון הספרה \(0\) חוזרת על עצמה (אפשר להשמיט אותה ולקבל הצגה
+סופית(, במקרה השני הספרה \(6\) חוזרת על עצמה, ובמקרה השלישי הרצף
+\(142857\) חוזר על עצמו. המחזוריות נובעת מאופן החישוב של הספרות
+העשרוניות (לפי חילוק ארוך(.
+
+המספר הוא אי-רציונלי כאשר אין מחזוריות באף שלב של ההצגה העשרונית, ואז
+החוקיות של סדרת הספרות העשרוניות עלולה להיות מסובכת מאוד. למשל
+\[\begin{aligned}
+\sqrt{2}=1.41421356237309504880168872420969807856967187537...\\
+\pi=3.14159265358979323846264338327950288419716939937...
+\end{aligned}\] נדגיש שאלה מספרים אי-רציונליים מיוחדים כי יש להם משמעות
+גיאומטרית. \(\sqrt{2}\) הוא אורך היתר של משולש ישר-זווית עם שני ניצבים
+באורך \(1\), לפי משפט פיתגורס. \(\pi\) הוא היקף מעגל שקוטרו באורך \(1\).
+
+מבחינת הקורס, המספרים האי-רציונליים הרלוונטיים הם בעיקר שורשים כמו
+\(\sqrt{2}\) שהם יחסית נוחים לחישובים. אבל טוב לזכור שיש המון מספרים
+אי-רציונליים (יותר מאשר מספרים רציונליים במובן מסוים(, והם משלימים את
+המספרים הרציונליים למה שנקרא הישר הממשי. ניתן לחשוב על המספרים כנקודות
+על ישר עם ראשית \(0\). המספרים החיוביים מופיעים בצד ימין, ואילו המספרים
+השליליים מופיעים בצד שמאל.
+
+(הישר הממשי(
+
+נשארה עוד קבוצה אחת, שהיא הגדולה ביותר מבין קבוצות המספרים שנעסוק בהן.
+באופן דומה להגדרת \(-1\) כשורש (פתרון( של המשוואה \(x+1=0\), אפשר להגדיר
+את \(i\) כשורש של המשוואה \(x^{2}+1=0\). זהו מספר מדומה, שהרי אין פתרון
+ממשי למשוואה זו (ערך המינימום של הפונקציה הוא \(1\)(. המספר \(i\) לא
+ניתן למדידה במציאות אך הוא שימושי מאוד במתמטיקה, פיזיקה וחלק מההנדסות.
+לפי ההגדרה מתקיים \(i^{2}=-1\) וזה מספיק כדי להגדיר את קבוצת המספרים
+המרוכבים ואת פעולות החשבון המתאימות לה.
+
+\[\mathbb{\mathbb{C}}=\{a+bi|a,b\in\mathbb{R}\}\]
+
+ההצגה \(a+bi\) עבור \(a,b\in\mathbb{R}\) הינה יחידה. כלומר, אם מתקיים
+\(a+bi=c+di\) עבור \(c,d\in\mathbb{R}\), אז בהכרח \(a=c,\,b=d\).
+
+עבור \(z=x+yi\) מרוכב עם \(x,y\in\mathbb{R}\) נגדיר את החלק הממשי
+\(\text{{Re}}(z)=x\) ואת החלק המדומה \(\text{{Im}}(z)=y\). בנוסף, נגדיר
+את המספר הצמוד \(\overline{z}=x-yi\).
+
+שימו לב כי בניגוד לשמו, החלק המדומה הוא מספר ממשי זהו המקדם של \(i\),
+שהוא עצמו באמת מדומה. מספר מרוכב נקרא מדומה אם החלק הממשי שלו הוא \(0\),
+(כלומר זה מספר מהצורה \(yi\) כאשר \(y\in\mathbb{R}\))
+
+א. \(\text{{Re}}(3+5i)=3,\:\text{{Im}}(3+5i)=5,\:\overline{3+5i}=3-5i\)
+
+ב. \(\text{{Re}}(4i)=0,\:\text{{Im}}(4i)=4,\:\overline{4i}=-4i\)
+
+ג. \(\text{{Re}}(3)=3,\:\text{{Im}}(3)=0,\:\overline{3}=3\) כאשר זיהינו
+את \(3\) כמספר מרוכב עם חלק מדומה \(0\) לפי ההצגה \(3=3+0\cdot i\).
+
+\begin{exercise}
+
+לכל \(z\in\mathbb{C}\) הראו כי המספר הצמוד ל-\(\overline{z}\) הוא \(z\).
+
+\end{exercise}
+
+בפרק הבא נדון בפעולות, תכונות וחלק מהשימושים של המספרים המרוכבים. את סוף
+הפרק הזה נקדיש לקשר בין כל קבוצות המספרים.
+
+\section{תורת הקבוצות על קצה
+המזלג}\label{ux5eaux5d5ux5e8ux5ea-ux5d4ux5e7ux5d1ux5d5ux5e6ux5d5ux5ea-ux5e2ux5dc-ux5e7ux5e6ux5d4-ux5d4ux5deux5d6ux5dcux5d2}
+
+ראינו את יחס השייכות בין איבר \(a\) לקבוצה \(A\), וסימנו \(a\in A\).
+בקורס שלנו הקבוצות יהיו יחסית פשוטות, ולכן לא ניתקל בקבוצה שאיבריה הם גם
+קבוצות. זה בהחלט תרחיש אפשרי במתמטיקה (למשל קבוצה של שני ישרים, כאשר כל
+ישר הוא קבוצת נקודות(, אבל בקורס נעסוק בקבוצות מספרים וקבוצות וקטורים
+(וקטורים אינם קבוצות(. בכל אופן, ייתכן קשר יותר טבעי בין שתי קבוצות
+\(A,B\).
+
+\begin{definition}
+
+נאמר ש-\(A\) מוכלת ב-\(B\) ונסמן \(A\subseteq B\) אם כל איבר של \(A\)
+הוא גם איבר של \(B\).
+
+באופן קצת יותר מתמטי \(A\subseteq B\) אם לכל \(a\in A\) מתקיים
+\(a\in B\).
+
+אם ההיפך הוא הנכון, כלומר קיים \(a\in A\) עבורו \(a\notin B\), אז נסמן
+\(A\nsubseteq B\) ונאמר ש-\(A\) לא מוכלת ב-\(B\).
+
+\end{definition}
+
+(עיגול בתוך עיגול כדי לתאר הכלה, ושני עיגולים שרק נחתכים כדי לתאר חוסר
+הכלה(
+
+\begin{example}
+
+עבור \(A=\{1,2\},\,B=\{1,2,3\}\) מתקיים \(A\subseteq B\) כי גם
+\(1\in B\) וגם \(2\in B\). אבל \(B\nsubseteq A\) כי \(3\in B\) אך
+\(3\notin A\).
+
+\end{example}
+
+נגדיר \(A=\{1,3\},\,B=\{-1,1,2,3\},\,C=\{-1,2\}\). מצאו את כל זוגות
+הקבוצות שמקיימות קשר של הכלה.
+
+\begin{definition}
+
+נאמר ששתי קבוצות \(A,B\) הן שוות ונסמן \(A=B\) אם יש בהן בדיוק אותם
+האיברים, כלומר מתקיים \(x\in A\) אם ורק אם \(x\in B\).
+
+\end{definition}
+
+\begin{remark}
+כדי להוכיח כי \(A=B\), הדרך המקובלת היא להוכיח כי \(A\subseteq B\) וגם
+\(B\subseteq A\). דרך הוכחה זו נקראת הכלה דו-צדדית.
+\end{remark}
+
+נסכם את רעיון ההוכחה: מוכיחים שתי הכלות. לכל הכלה מתחילים את הטיעון ביהי
+כדי להצהיר שבחרנו איבר כללי מתוך הקבוצה הנתונה. אחר כך משתמשים בהגדרת
+הקבוצה כדי להראות שהאיבר גם מקיים את ההגדרה של הקבוצה השנייה.
+
+\begin{proposition}
+
+\(\mathbb{N\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{\mathbb{C}}}\)
+וכל הקבוצות שונות זו מזו.
+
+\end{proposition}
+
+\begin{proof}
+ברור כי \(\mathbb{N}\subseteq\mathbb{Z}\) לפי הגדרת \(\mathbb{Z}\)
+כהרחבה של \(\mathbb{N}\), ורואים שאין שוויון כי \(-1\notin\mathbb{N}\).
+גם דיברנו על ההכלה \(\mathbb{Q}\subseteq\mathbb{R}\) שאינה שוויון, כי
+המספרים הרציונליים הם בדיוק המספרים הממשיים שיש להם הצגה עשרונית שהיא
+מחזורית החל ממקום מסוים. יש הרבה מספרים ממשיים שאינם כאלה, למשל
+\(\sqrt{2}\notin\mathbb{Q}\).
+
+נוכיח כי \(\mathbb{Z}\subseteq\mathbb{Q}\) יהי \(n\in\mathbb{Z}\).
+מתקיים \(n=\frac{n}{1}\) וזו מנה של מספרים שלמים, ולכן
+\(n\in\mathbb{Q}\). אז \(\mathbb{Z}\subseteq\mathbb{Q}\), ואין שוויון כי
+למשל \(\frac{1}{2}\in\mathbb{Q}\) אך \(\frac{1}{2}\notin\mathbb{Z}\).
+
+נוכיח כי \(\mathbb{\mathbb{R}}\subseteq\mathbb{\mathbb{C}}\) יהי
+\(x\in\mathbb{\mathbb{R}}\). מתקיים \(x=x+0\cdot i\) וזו הצגה של מספר
+מרוכב, ולכן \(x\in\mathbb{C}\). אז
+\(\mathbb{\mathbb{R}}\subseteq\mathbb{\mathbb{C}}\), ואין שוויון כי למשל
+\(i\in\mathbb{C}\) אך \(i\notin\mathbb{\mathbb{R}}\).
+\end{proof}
+
+\section{פעולות בין
+קבוצות}\label{ux5e4ux5e2ux5d5ux5dcux5d5ux5ea-ux5d1ux5d9ux5df-ux5e7ux5d1ux5d5ux5e6ux5d5ux5ea}
+
+\begin{definition}
+
+בהינתן שתי קבוצות \(A,B\) נגדיר את הקבוצות הבאות
+
+א. החיתוך \(A\cap B\) הוא קבוצת כל האיברים השייכים גם ל-\(A\) וגם
+ל-\(B\).
+
+ב. האיחוד \(A\cup B\) הוא קבוצת כל האיברים השייכים לפחות לאחת משתי
+הקבוצות \(A,B\).
+
+\end{definition}
+
+(דיאגרמות ון לשתי קבוצות האחת לחיתוך, השנייה לאיחוד עם צבע שונה(
+
+\begin{remark}
+במקרה של איחוד זה לא משנה אם האיבר שייך רק לקבוצה אחת או לשתיהן. בכל
+מקרה הוא נספר רק פעם אחת באיחוד.
+\end{remark}
+
+\begin{example}
+
+א. עבור \(A=\{1,2,3\},\,B=\{2,3,4\}\) מתקיים
+\[.A\cap B=\{2,3\},\,A\cup B=\{1,2,3,4\}\]
+
+ב. מתקיים
+\(\mathbb{R}\cap\mathbb{C}=\mathbb{R},\,\mathbb{R}\cup\mathbb{C}=\mathbb{C}\)
+כי \(\mathbb{R\subseteq\mathbb{C}}\).
+
+ג. נסמן
+\(D = \{\, n \in \mathbb{N} \mid 5 \mid n \,\}, \quad C = \{\, n \in \mathbb{N} \mid 3 \mid n \,\}\)
+\textbackslash{} אז לפי הגדרת החיתוך והעובדה ש-\(3,5\) הם מספרים זרים
+(המחלק המשותף היחיד שלהם הוא \(1\)), נובע כי
+\[ C \cap D = \{\, n \in \mathbb{N} \mid 3 \mid n \ \land\ 5 \mid n \,\} = \{\, n \in \mathbb{N} \mid 15 \mid n \,\} \\ = \{15,30,45,\ldots\} \]
+
+האפיון של האיחוד פחות פשוט: מדובר בקבוצת כל המספרים שמתחלקים ב-\(3\),
+\(5\) או בשניהם (כלומר ב-\(15\), המקרה של החיתוך(. כך נקבל
+\[.C\cup D=\{3,5,6,9,10,12,15,18,20,21,24,25,27,30...\}\]
+
+\end{example}
+
+חשבו את \(A\cap B,\,A\cup B\) עבור \(A=\{-1,0,1\},\,B=\{-2,0,1,2\}\).
+
+\begin{proposition}
+
+לכל שתי קבוצות \(A,B\) מתקיים \[.A\cap B\subseteq A\subseteq A\cup B\]
+
+\end{proposition}
+
+\begin{proof}
+יש כאן שתי הכלות. נוכיח תחילה כי \(A\cap B\subseteq A\) יהי
+\(a\in A\cap B\). אז מיידית לפי הגדרת החיתוך מתקיים \(a\in A\) ולכן
+\(A\cap B\subseteq A\).
+
+כעת נוכיח כי \(A\subseteq A\cup B\). גם כאן זה מיידי כי כל \(x\in A\)
+מקיים את הגדרת האיחוד (בין אם \(x\in B\) ובין אם לאו(.
+\end{proof}
+
+\begin{remark}
+באותו אופן (או משיקולי סימטריה) גם מתקיים
+\[.A\cap B\subseteq B\subseteq A\cup B\]
+\end{remark}
+
+\section*{תרגילים}\label{ux5eaux5e8ux5d2ux5d9ux5dcux5d9ux5dd}
+\addcontentsline{toc}{section}{תרגילים}
+
+\markright{תרגילים}
+
+הוכיחו כי \[.\{2n-1|n\in\mathbb{Z}\}=\{2m+1|m\in\mathbb{Z}\}\] הוכיחו כי
+\[.\{z\in\mathbb{C}|\text{{Im}}(z)=2\text{{Re}}(z)\}=\{t+2ti|t\in\mathbb{R}\}\]
+
+נגדיר \(A=\{\frac{1}{n}|n\in\mathbb{Z},\,n\neq0\}\).
+
+א. חשבו את \(A\cap\mathbb{Z}\).
+
+ב. הראו כי \(A\cup\mathbb{Z\subseteq\mathbb{\mathbb{Q}}}\), אך אין
+שוויון.
+
+\bookmarksetup{startatroot}
+
+\chapter{המספרים
+המרוכבים}\label{ux5d4ux5deux5e1ux5e4ux5e8ux5d9ux5dd-ux5d4ux5deux5e8ux5d5ux5dbux5d1ux5d9ux5dd}
+
+\section{פעולות
+חשבון}\label{ux5e4ux5e2ux5d5ux5dcux5d5ux5ea-ux5d7ux5e9ux5d1ux5d5ux5df}
+
+נסמן \(z_{1}=a+bi,\,z_{2}=c+di\). נרחיב את הגדרות פעולות החשבון המוכרות
+ל-\(\mathbb{C}\)
+
+חיבור \(z_{1}+z_{2}=a+c+(b+d)i\)
+
+חיסור \(z_{1}-z_{2}=a-c+(b-d)i\)
+
+כפל \(z_{1}z_{2}=ac-bd+(ad+bc)i\)
+
+חילוק
+\(\frac{z_{1}}{z_{2}}=\frac{(a+bi)(c-di)}{(c+di)(c-di)}=\frac{ac+bd}{c^{2}+d^{2}}+\frac{(bc-ad)}{c^{2}+d^{2}}i\)
+עבור \(z_{2}\neq0\).
+
+הכפל מתאים לפתיחת סוגריים לפי חוקי הפילוג והחילוף של מספרים ממשיים.
+בשביל חילוק מכפילים ומחלקים במספר הצמוד \(\overline{z_{2}}=c-di\) כדי
+המכנה החדש יהיה מספר ממשי.
+
+\begin{example}
+
+ניקח \(z_{1}=1+i,\,z_{2}=2+3i\). כאן נקבל
+
+חיבור \(z_{1}+z_{2}=3+4i\)
+
+חיסור \(z_{1}-z_{2}=-1-2i\)
+
+כפל \(z_{1}z_{2}=(1+i)(2+3i)=2-3+(3+2)i=-1+5i\)
+
+חילוק
+\(\frac{1+\text{i}}{2+3i}=\frac{(1+i)(2-3i)}{(2+3i)(2-3i)}=\frac{5}{13}-\frac{1}{13}i\)
+
+\end{example}
+
+\begin{exercise}
+
+חשבו את ארבע הפעולות עבור \(z_{1}=1+2i,\,z_{2}=3-4i\).
+
+\end{exercise}
+
+\begin{remark}
+נראה בהמשך שחיבור של מספרים מרוכבים שקול לחיבור בין שני וקטורים במישור,
+ואכן ניתן לייצג כל מספר מרוכב \(z=x+yi\) כנקודה/וקטור במישור עם
+קוארדינטות \((x,y)\). קוארדינטות אלו נקראות קרטזיות.
+\end{remark}
+
+\begin{proof}
+לכל \(z_{1},z_{2},z_{3}\in\mathbb{C}\) מתקיים
+
+א. חוקי החילוף לחיבור וכפל \(z_{1}+z_{2}=z_{2}+z_{1}\) וגם
+\(z_{1}z_{2}=z_{2}z_{1}\).
+
+ב. חוקי הקיבוץ לחיבור וכפל \((z_{1}+z_{2})+z_{3}=z_{1}+(z_{2}+z_{3})\)
+וגם \((z_{1}z_{2})z_{3}=z_{1}(z_{2}z_{3})\).
+
+ג. חוק הפילוג \((z_{1}+z_{2})z_{3}=z_{1}z_{3}+z_{2}z_{3}\)
+
+ד. נייטרלי ביחס לחיבור \(z+0=z\) לכל \(z\in\mathbb{C}\).
+
+ה. נייטרלי ביחס לכפל \(z\cdot1=z\) לכל \(z\in\mathbb{C}\).
+\end{proof}
+
+\begin{proof}
+ישירות מן ההגדרות של חיבור וכפל תוך שימוש בחוקים המוכרים למספרים ממשיים.
+נסתפק בהוכחת חוק החילוף לכפל ראשית נסמן \(z_{1}=a+bi,\,z_{2}=c+di\). לפי
+הגדרת הכפל מתקיים \[.\begin{cases}
+z_{1}z_{2}=(a+bi)(c+di)=ac-bd+(ad+bc)i\\
+z_{2}z_{1}=(c+di)(a+bi)=ca-db+(cb+da)i
+\end{cases}\]
+
+נזכור כי \(a,b,c,d\in\mathbb{R}\) ולכן כבר ידוע שחוק החילוף תקף לגביהם
+)גם לכפל וגם לחיבור(. לכן \(ac=ca,\,bd=db,\,ad=da,\,bc=cb\) ומכאן נובע
+כי \(z_{1}z_{2}=z_{2}z_{1}\).
+\end{proof}
+
+נסכם את רעיון ההוכחה: השתמשנו בנוסחה של פעולת הכפל כדי להבין כיצד חוק
+החילוף לכפל של מספרים מרוכבים, נובע מחוק החילוף המוכר לכפל של מספרים
+ממשיים.
+
+\begin{exercise}
+
+הוכיחו את חוק החילוף לחיבור של מספרים מרוכבים.
+
+\end{exercise}
+
+הטענות הבאות קשורות להגדרה של מספר צמוד.
+
+\begin{proof}
+לכל \(z_{1},z_{2}\in\mathbb{C}\) מתקיים
+
+א. \(\overline{z_{1}+z_{2}}=\overline{z_{1}}+\overline{z_{2}}\)
+
+ב. \(\overline{z_{1}z_{2}}=\overline{z_{1}}\cdot\overline{z_{2}}\)
+\end{proof}
+
+\begin{proof}
+נסמן \(z_{1}=a+bi,\,z_{2}=c+di\). נחשב
+
+א.
+\(\overline{z_{1}+z_{2}}=\overline{a+c+(b+d)i}=a+c-(b+d)i=a-bi+c-di=\overline{z_{1}}+\overline{z_{2}}\)
+
+ב.
+\(\overline{z_{1}z_{2}}=\overline{ac-bd+(ad+bc)i}=ac-bd-(ad+bc)i=(a-bi)(c-di)=\overline{z_{1}}\cdot\overline{z_{2}}\)
+\end{proof}
+
+\begin{proposition}
+
+לכל \(z\in\mathbb{C}\) מתקיים
+
+א. \(z+\overline{z}=2\text{{Re}}(z)\)
+
+ב. \(z-\overline{z}=2i\text{{Im}}(z)\)
+
+ג. \(z\overline{z}\in\mathbb{R}\)
+
+\end{proposition}
+
+\begin{proof}
+נסמן \(z=x+yi\) כאשר \(\text{{Re}}(z)=x,\,\text{{Im}}(z)=y\). נחשב
+
+א. \(z+\overline{z}=x+yi+x-yi=2x=2\text{{Re}}(z)\)
+
+ב. \(z-\overline{z}=x+yi-(x-yi)=2yi=2i\text{{Im}}(z)\)
+
+ג.
+\(z\overline{z}=(x+yi)(x-yi)=x^{2}-y^{2}i^{2}+(-xy+yx)i=x^{2}+y^{2}\in\mathbb{R}\)
+\end{proof}
+
+זה מראה מדוע מכפילים ומחלקים ב-\(\overline{z_{2}}\) כדי לחשב את
+\(\frac{z_{1}}{z_{2}}\). קל לחלק במספר ממשי, אז צריך להפוך את המכנה
+לממשי בעזרת הצמוד שלו.
+
+\section{קוארדינטות
+פולריות}\label{ux5e7ux5d5ux5d0ux5e8ux5d3ux5d9ux5e0ux5d8ux5d5ux5ea-ux5e4ux5d5ux5dcux5e8ux5d9ux5d5ux5ea}
+
+הזכרנו את הקוארדינטות הקרטזיות \((x,y)\) עבור מספר מרוכב \(z=x+yi\).
+בדרך זו ניתן לחשוב על מישור, שנקרא המישור המרוכב, שבו הנקודה \((x,y)\)
+מייצגת את \(z\).
+
+)המישור המרוכב עם משולש ישר-זווית וכל הקוארדינטות(
+
+יש דרך אחרת לתאר נקודה במישור. במקום להסתכל על ההיטלים \(x,y\) על
+הצירים, אפשר להסתכל על המרחק \(r\) מהראשית ועל הזווית \(\theta\) )שנמדדת
+ברדיאנים( שנוצרת בין הוקטור שיוצא אל הנקודה לבין הכיוון החיובי של הציר
+הממשי )ציר \(x\)(. הקוארדינטות \((r,\theta)\) נקראות קוארדינטות פולריות
+)קוטביות(.
+
+\begin{remark}
+\(r\) נקרא הערך המוחלט של \(z\) ומתקיים \(r=\sqrt{z\overline{z}}\). עבור
+\(z\in\mathbb{R}\) מדובר על ההגדרה הרגילה של ערך מוחלט.
+\end{remark}
+
+אם הקוארדינטות הפולריות ידועות, ניתן לחשב את הקוארדינטות הקרטזיות לפי
+ההגדרות של סינוס וקוסינוס \[\begin{cases}
+x=r\cos\theta\\
+y=r\sin\theta
+\end{cases}\]
+
+\begin{example}
+
+בהינתן \(r=2,\,\theta=\frac{\pi}{4}\) נוכל לחשב את הקוארדינטות הקרטזיות
+לפי המשוואות לעיל. נקבל
+\(x=2\cos\frac{\pi}{4}=2\cdot\frac{1}{\sqrt{2}}=\sqrt{2},\,y=2\sin\frac{\pi}{4}=2\cdot\frac{1}{\sqrt{2}}=\sqrt{2}\).
+לכן המספר המרוכב המתאים הוא \(z=\sqrt{2}+\sqrt{2}i\).
+
+\end{example}
+
+בכיוון ההפוך, נניח שהקוארדינטות הקרטזיות \((x,y)\) ידועות. איך נחשב את
+הקוארדינטות הפולריות? ניתן להשתמש במשפט פיתגורס ולקבל
+\[.x^{2}+y^{2}=r^{2}\Rightarrow r=\sqrt{x^{2}+y^{2}}\]
+
+את הזווית \(\theta\) ניתן לחשב לפי המשוואה \(\tan\theta=\frac{y}{x}\),
+אבל קודם כל צריך לבחור את תחום הזוויות )ברדיאנים(. התחום המקובל הוא
+\([-\pi,\pi)\) כאשר זה שרירותי אם לכלול את הקצה השמאלי או הימני של הקטע
+)בחרנו את השמאלי(. הסיבה שנוח להשתמש בתחום זה היא שההפונקציה ההופכית
+ל-\(\tan x\) היא \(\arctan x\) או \(\tan^{-1}x\) במחשבון, שמחזירה זוויות
+בתחום \((-\frac{\pi}{2},\frac{\pi}{2})\). כלומר המחשבון עצמו עובד עם
+זוויות חיוביות וגם שליליות. הוא יודע לחשב את \(\theta\) באופן מדויק עבור
+\(z\) ברביע הראשון או הרביעי, אבל בשביל שאר המקרים דרוש תיקון שקשור
+למחזוריות של \(\tan x\). נשתמש בהגדרה מפוצלת של פונקציה לפי מקרים
+\[\theta=\begin{cases}
+\arctan\frac{y}{x} & x>0\\
+\arctan\frac{y}{x}+\pi & x<0,\,y>0\\
+\arctan\frac{y}{x}-\pi & x<0,\,y<0\\
+\frac{\pi}{2} & x=0,\,y>0\\
+-\frac{\pi}{2} & x=0,\,y<0
+\end{cases}\]
+
+זה עלול להיראות מסובך, אבל בפועל צריך לחשב את \(\arctan\frac{y}{x}\)
+ולתקן במידת הצורך כדי לקבל זווית שמתאימה לרביע הרלוונטי )מוסיפים \(\pi\)
+כדי לעבור מהרביע הרביעי לרביע השני, מחסירים \(\pi\) כדי לעבור מהרביע
+הראשון לרביע השלישי(. מספרים מדומים )עבורם \(x=0\)( הם מקרה מיוחד כי
+מלכתחילה לא ניתן לחלק ב-\(0\), אבל אין צורך במחשבון במקרה זה. תמיד אפשר
+להשתמש בציור ולנסות לחשב את הזווית לבד.
+
+)תיאור של סיבוב ב-\(\pi\) כדי לעבור מהרביע הרביעי לרביע השני(
+
+\begin{remark}
+הזווית לא מוגדרת עבור \(z=0\). זהו מקרה יוצא דופן אך פשוט, כך שגם אין
+צורך בקוארדינטות פולריות בשבילו.
+\end{remark}
+
+\begin{example}
+
+נחשב את הקוארדינטות הפולריות של \(z=-2+2i\). נקבל
+\(r=\sqrt{2^{2}+2^{2}}=\sqrt{8}=2\sqrt{2}\). כאן הנקודה ברביע השלישי
+ולכן יש לתקן את חישוב המחשבון עי הוספת \(\pi\), מה שנותן
+\(\theta=\arctan\frac{2}{-2}+\pi=-\frac{\pi}{4}+\pi=\frac{3\pi}{4}\).
+
+\end{example}
+
+\section{שימושים של הצגה
+פולרית}\label{ux5e9ux5d9ux5deux5d5ux5e9ux5d9ux5dd-ux5e9ux5dc-ux5d4ux5e6ux5d2ux5d4-ux5e4ux5d5ux5dcux5e8ux5d9ux5ea}
+
+\begin{definition}
+
+נסמן \(e^{i\theta}=\cos\theta+i\sin\theta\).
+
+\end{definition}
+
+מבחינתנו זה רק סימון נוח, אבל זו בעצם נוסחה שנקראת נוסחת אוילר. יש לה
+משמעות יותר עמוקה שדורשת הסבר לגבי הפונקציה \(f(z)=e^{z}\) של משתנה
+מרוכב. זה כבר חורג מאוד מאלגברה לינארית וגולש לתחום שנקרא אנליזה מרוכבת,
+שבבסיסה היא הגרסה המרוכבת של חשבון דיפרנציאלי ואינטגרלי.
+
+\subsection{משפט
+דה-מואבר}\label{ux5deux5e9ux5e4ux5d8-ux5d3ux5d4-ux5deux5d5ux5d0ux5d1ux5e8}
+
+\begin{theorem}
+
+לכל \(\theta\in\mathbb{R},\,n\in\mathbb{Z}\) מתקיים
+\((\cos\theta+i\sin\theta)^{n}=\cos(n\theta)+i\sin(n\theta)\).
+
+\end{theorem}
+
+שימו לב שהניסוח השקול הוא \((e^{i\theta})^{n}=e^{in\theta}\), שעלול
+להיראות מובן מאליו לפי חוקי חזקות. אבל חוקי החזקות הידועים הם למעריכים
+ממשיים, וגם לא הצדקנו את הסימון. אם נשים את ההוכחה בצד, המשפט מראה מדוע
+הסימון נוח. לא נראה את ההוכחה )שדורשת כלי שנקרא אינדוקציה(, אך נציין את
+הקשר לטענה הבאה שמבוססת על זהויות טריגונומטריות של סכום זוויות
+
+\begin{proposition}
+
+לכל \(\alpha,\beta\in\mathbb{R}\) מתקיים
+\(e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}\).
+
+\end{proposition}
+
+\begin{exercise}
+
+השתמשו בטענה כדי להוכיח את המשפט במקרה \(n=2\).
+
+\end{exercise}
+
+\begin{example}
+
+נחשב את \((1+\sqrt{3}i)^{100}\) בעזרת משפט דה-מואבר )בלעדיו החישוב ארוך
+מאוד(. ראשית נחשב קוארדינטות פולריות של \(1+\sqrt{3}i\) \[\begin{cases}
+r=\sqrt{1+3}=2\\
+\theta=\arctan\frac{\sqrt{3}}{1}=\frac{\pi}{3}
+\end{cases}\]
+
+לכן, לפי המשפט נובע כי
+\[.(1+\sqrt{3}i)^{100}=(2e^{i\frac{\pi}{3}})^{100}=2^{100}e^{i\frac{100\pi}{3}}\]
+
+הזווית \(\frac{100\pi}{3}\) חורגת מהתחום המקובל \([-\pi,\pi)\). לפי
+המחזוריות של קוסינוס וסינוס ניתן להחסיר מהזווית כל כפולה שלמה של
+\(2\pi\) בלי לשנות את התוצאה. מתקיים
+\(\frac{100\pi}{3}=(33+\frac{1}{3})\pi\), ולכן נחסיר \(34\pi\) כדי לקבל
+זווית בתחום \(-\frac{2\pi}{3}\). מכאן
+\[.(1+\sqrt{3}i)^{100}=2^{100}e^{-i\frac{2\pi}{3}}=2^{100}(\cos(-\frac{2\pi}{3})+i\sin(-\frac{2\pi}{3}))=2^{99}(-1-\sqrt{3}i)\]
+
+אין צורך להחסיר מהזווית \(34\pi\) אם המטרה היא ההצגה הקרטזית בלבד. לצורך
+הדוגמה, רצינו גם להראות את ההצגה הפולרית של החזקה.
+
+\end{example}
+
+\begin{exercise}
+
+חשבו את \((1+\sqrt{3}i)^{10}\).
+
+\end{exercise}
+
+\subsection{נוסחת
+השורשים}\label{ux5e0ux5d5ux5e1ux5d7ux5ea-ux5d4ux5e9ux5d5ux5e8ux5e9ux5d9ux5dd}
+
+\begin{theorem}
+
+יהי \(w\in\mathbb{C}\) מספר נתון השונה מ-\(0\), ונניח כי
+\(w=re^{i\theta}\) בהצגה פולרית. אז למשוואה \(z^{n}=w\) בנעלם \(z\) יש
+בדיוק \(n\) שורשים )פתרונות( מרוכבים הנתונים עי
+\[z_{k}=\sqrt[n]{r}e^{i\frac{\theta+2\pi k}{n}}\]
+
+עבור \(k\in\{0,1,...,n-1\}\).
+
+\end{theorem}
+
+\begin{proof}
+זו משוואה ממעלה \(n\) ולכן יש לה לכל היותר \(n\) שורשים שונים. נציב את
+את הנוסחה במשוואה כדי לוודא שאכן \(z_{k}\) הוא שורש לכל
+\(k\in\{0,1,...,n-1\}\). לפי משפט דה-מואבר מתקיים
+\[.z_{k}^{n}=(\sqrt[n]{r}e^{i\frac{\theta+2\pi k}{n}})^{n}=re^{i(\theta+2\pi k)}=re^{i\theta}=w\]
+
+אז עברנו על כל השורשים השונים, ויש בדיוק \(n\) כאלה.
+\end{proof}
+
+\begin{remark}
+שימו לב לשימוש במחזוריות של סינוס וקוסינוס. למעשה, \(z_{k}\) הוא שורש
+לכל \(k\in\mathbb{Z}\), אבל אם נצא מהקבוצה \(\{0,1,...,n-1\}\) נחזור על
+השורשים שכבר חישבנו. למשל
+\[.z_{n}=\sqrt[n]{r}e^{i\frac{\theta+2\pi n}{n}}=\sqrt[n]{r}e^{i(\frac{\theta}{n}+2\pi})=\sqrt[n]{r}e^{i\frac{\theta}{n}}=z_{0}\]
+
+באופן דומה, מתקיים \(z_{n+1}=z_{1}\) וכן הלאה באופן מחזורי )עם מחזור
+\(n\)(. לכן מספיק להציב מספרים מתוך הקבוצה \(\{0,1,...,n-1\}\), שהיא
+קבוצת השאריות שניתן לקבל בחלוקה ב-\(n\).
+
+)קבוצת שורשים על מעגל מתאים עם דגש על ההפרש הקבוע בין הזוויות(
+
+נשים לב כי יש הפרש קבוע בין הזוויות של השורשים. הפרש זה הוא
+\(\frac{2\pi}{n}\), ולכן אפשר לעבור משורש אחד לשורש הבא עי סיבוב נגד
+כיוון השעון בזווית זו. כאשר עושים זאת \(n\) פעמים, משלימים סיבוב שלם
+וחוזרים לנקודת ההתחלה.
+\end{remark}
+
+במקרה של \(n=2\), הראו כי שני השורשים מקיימים \(z_{1}=-z_{0}\). זה נובע
+מכך ששינוי סימן מתאים לסיבוב ב-\(\pi\) )\(180^{\circ}\)( נגד כיוון
+השעון, כי \(e^{i\pi}=-1\).
+
+\begin{remark}
+עבור \(w=0\) יש שורש יחיד, שהוא \(z=0\). זהו מקרה מיוחד שבו השורשים
+מתלכדים ומתקבל שורש יחיד.
+\end{remark}
+
+\begin{example}
+
+נפתור את המשוואה \(z^{4}=1-i\). ראשית נחשב קוארדינטות פולריות של המספר
+באגף ימין
+
+\[\begin{cases}
+r=\sqrt{1+1}=\sqrt{2}\\
+\theta=\arctan\frac{-1}{1}=-\frac{\pi}{4}
+\end{cases}\]
+
+נציב בנוסחת השורשים ונקבל את ארבעת השורשים הבאים \[\begin{cases}
+z_{0}=(\sqrt{2})^{\frac{1}{4}}e^{-i\frac{\pi}{16}}=\sqrt[8]{2}e^{-i\frac{\pi}{16}}\\
+z_{1}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{2\pi}{4}})=\sqrt[8]{2}e^{i\frac{7\pi}{16}}\\
+z_{2}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{4\pi}{4}})=\sqrt[8]{2}e^{i\frac{15\pi}{16}}\\
+z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\pi}{16}}=\sqrt[8]{2}e^{-i\frac{9\pi}{16}}
+\end{cases}\]
+
+במעבר האחרון החסרנו מהזווית \(2\pi\) כדי לעבור לתחום המקובל. אפשר לחשב
+את ההצגה הקרטזית של כל שורש באופן מקורב בעזרת מחשבון )שיודע לקרב ערכי
+סינוס וקוסינוס, שהם לרוב אי-רציונליים(, אך אין צורך. נשים לב כי
+\(z_{2}=-z_{0}\) שכן ההפרש בין הזוויות הוא \(\pi\), ובאופן דומה
+\(z_{3}=-z_{1}\). אבל אם נסתכל על הפרש הזוויות בין שורשים סמוכים, למשל
+\(z_{0},z_{1}\), נקבל \(\frac{\pi}{2}\). זה בעצם אומר שאפשר לעבור משורש
+אחד לשורש הבא עי כפל במספר \(e^{i\frac{\pi}{2}}=i\).
+
+\end{example}
+
+\section{תרגילים}\label{ux5eaux5e8ux5d2ux5d9ux5dcux5d9ux5dd-1}
+
+( נניח כי \(z=re^{i\theta}\) נתון בהצגה פולרית. הראו כי \[.\begin{cases}
+        \overline{z}=re^{-i\theta}\\
+        \frac{1}{z}=\frac{1}{r}e^{-i\theta}
+    \end{cases}\] ( חשבו את החזקות הבאות
+
+א. \(i^{99}\)
+
+ב. \((-1+\sqrt{3}i)^{50}\)
+
+ג. \((1-i)^{150}\)
+
+( מצאו את כל השורשים המרוכבים של המשוואות הבאות
+
+א. \(z^{4}=1\)
+
+ב. \(z^{5}=i\)
+
+ג. \(z^{6}=-1-\sqrt{3}i\)
+
+\bookmarksetup{startatroot}
+
+\chapter{גיאומטריה במרחב
+ובמישור}\label{ux5d2ux5d9ux5d0ux5d5ux5deux5d8ux5e8ux5d9ux5d4-ux5d1ux5deux5e8ux5d7ux5d1-ux5d5ux5d1ux5deux5d9ux5e9ux5d5ux5e8}
+
+בפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד
+תחילה במישור )עם דגש על ישרים( ואחר כך נעבור למרחב )שם נדבר גם על
+מישורים(.
+
+\subsection{\texorpdfstring{המישור
+\(\mathbb{R}^{2}\)}{המישור \textbackslash mathbb\{R\}\^{}\{2\}}}\label{ux5d4ux5deux5d9ux5e9ux5d5ux5e8-mathbbr2}
+
+בפרק \(0\) דיברנו על הישר הממשי, וגם על המישור המרוכב. אפשר גם לתאר את
+המישור )הממשי( בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.
+
+\begin{definition}
+
+המישור \L\{\(\mathbb{R}^{2}\)\} הוא קבוצת כל הנקודות בעלות שתי
+קוארדינטות ממשיות, כלומר\L\{\% {[}
+.\mathbb{R}\^{}\{2\}=\{(x,y)\textbar x,y\in\mathbb{R}\} {]} \}\%
+
+\end{definition}
+
+\begin{example}
+
+\L\{\((0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^{2}\)\}
+
+לעומת זאת: \L\{\(1,(i,0),(0,1,2)\notin\mathbb{R}^{2}\)\}
+
+\end{example}
+
+)מישור אינטראקטיבי שמאפשר ללחוץ על נקודה ולהציג את הוקטור עם הקוארדינטות
+שלו(
+
+\begin{definition}
+
+וקטור \L\{\(\vec{v}=(x,y)\)\} במישור הוא חץ שיוצא מהראשית
+\L\{\((0,0)\)\} ומסתיים בנקודה \L\{\((x,y)\)\}. לכל וקטור יש גודל
+וכיוון.
+
+\end{definition}
+
+\begin{remark}
+נשתמש באותן הקוארדינטות לוקטור וגם לנקודה המתאימה. נבין את הכוונה לפי
+ההקשר, אבל לרוב נדבר על וקטורים ולא על נקודות.
+\end{remark}
+
+הגדרנו וקטורים כחצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה
+שקובע את הוקטור הוא גודלו וכיוונו, לא נקודת ההתחלה או הסיום. וקטורים
+זהים יופיעו כחצים מקבילים ושווי גודל במישור.
+
+)מישור אינטראקטיבי שמאפשר להזיז וקטור נתון(
+
+\begin{remark}
+וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר
+\L\{\((a,b)=(c,d)\)\} אם ורק אם \L\{\(a=c\)\} וגם \L\{\(b=d\)\}. למשל,
+\L\{\((1,2)=(1,2)\)\} אך \L\{\((1,-2)\neq(1,2)\)\}. למעשה,
+\L\{\((1,2)\)\} ו-\L\{\((1,-2)\)\} הם שווי גודל אך בעלי כיוונים שונים.
+\end{remark}
+
+\subsection{פעולות על
+וקטורים}\label{ux5e4ux5e2ux5d5ux5dcux5d5ux5ea-ux5e2ux5dc-ux5d5ux5e7ux5d8ux5d5ux5e8ux5d9ux5dd}
+
+שתי הפעולות הבסיסיות שניתן לבצע על וקטורים הן חיבור וכפל בסקלר. סקלר הוא
+מילה נרדפת למספר, וכאן נסמנו \(c\in\mathbb{R}\).
+
+חיבור: \((a_{1},a_{2})+(b_{1},b_{2})=(a_{1}+b_{1},a_{2}+b_{2})\)
+
+כפל בסקלר: \(c\cdot(a_{1},a_{2})=(ca_{1},ca_{2})\)
+
+\begin{remark}
+הוקטור הנגדי )שווה גודל אך הפוך בכיוון( מתקבל ע\textquotedbl י כפל בסקלר
+\L\{\(-1\)\}. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית
+של השני, כלומר\L\{\% {[}
+.(a\_\{1\},a\_\{2\})-(b\_\{1\},b\_\{2\})=(a\_\{1\},a\_\{2\})+(-1)\cdot(b\_\{1\},b\_\{2\})=(a\_\{1\}-b\_\{1\},a\_\{2\}-b\_\{2\})
+{]} \}\%
+\end{remark}
+
+\begin{example}
+
+א. \L\{\((1,2)+(10,20)=(1+10,2+20)=(11,22)\)\}
+
+ב. \L\{\(2\cdot(5,3)=(10,6)\)\}
+
+ג. \L\{\(-5\cdot(2,5)=(-10,-25)\)\}
+
+ד. \L\{\((9,2)-(11,8)=(9-11,2-8)=(-2,-6)\)\}
+
+\end{example}
+
+אפשר להבין חיבור וקטורי באופן גיאומטרי ע\textquotedblי כלל המקבילית. כלל
+זה קובע שאם נצייר שני וקטורים \(\vec{v},\vec{w}\) שיוצאים מהראשית ואז
+נשלים אותם למקבילית )ע\textquotedblי הוספת שני וקטורים מקבילים ושווי
+גודל כצלעות נגדיות(, אז האלכסון שיוצא מהראשית מתאר את
+\(\vec{v}+\vec{w}\). ההפרש \(\vec{v}-\vec{w}\) מיוצג ע\textquotedblי
+האלכסון השני.
+
+)מישור אינטראקטיבי שמראה חיבור/הפרש וקטורי כאלכסוני מקבילית(
+
+זה גם מוביל אותנו לנוסחה שמתארת וקטור שמתחיל בנקודה \((a_{1},a_{2})\)
+ומסתיים ב-\((b_{1},b_{2})\): מקבלים את ההפרש הוקטורי
+\((b_{1}-a_{1},b_{2}-a_{2})\).
+
+\begin{exercise}
+
+הראו שהוקטור שמתחיל ב-\L\{\((1,3)\)\} ומסתיים ב-\L\{\((5,0)\)\} שווה
+לוקטור שמתחיל ב-\L\{\((5,-1)\)\} ומסתיים ב-\L\{\((9,-4)\)\}.
+
+\end{exercise}
+
+כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור )\(c>1\)( או
+כיווצו \((0<c<1)\) בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון
+ובנוסף מתיחה/כיווץ בהתאם לערך של \(|c|\).
+
+)מישור אינטראקטיבי שמראה כפל בסקלר כמתיחה/כיווץ/היפוך כיוון(
+
+\subsection{\texorpdfstring{גדלים וזוויות
+ב-\(\mathbb{R}^{2}\)}{גדלים וזוויות ב-\textbackslash mathbb\{R\}\^{}\{2\}}}\label{ux5d2ux5d3ux5dcux5d9ux5dd-ux5d5ux5d6ux5d5ux5d5ux5d9ux5d5ux5ea-ux5d1-mathbbr2}
+
+כאמור, לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז
+גודלו/אורכו הוא המרחק מנקודת הסיום לראשית. הכיוון נקבע לפי הזווית
+\(\theta\) עם הכיוון החיובי של ציר \(x\) )בדיוק כמו בקוארדינטות
+פולריות(. עבור וקטור \((a,b)\) נקבל את הנוסחאות הבאות:
+
+גודל: \(||(a,b)||=\sqrt{a^{2}+b^{2}}\)
+
+זווית: \(\tan\theta=\frac{b}{a}\)
+
+כבר דיברנו על החישוב המדויק של \(\theta\) בסוף הפרק הקודם. לא ממש נצטרך
+לחשב זוויות בקורס, אבל זה טוב לידע כללי.
+
+\begin{remark}
+כל וקטור נקבע ביחידות ע\textquotedbl י הגודל והכיוון שלו. לכן קוארדינטות
+פולריות יכולות להחליף קוארדינטות קרטזיות, אבל בקורס שלנו יותר נוח להשתמש
+בקוארדינטות קרטזיות.
+\end{remark}
+
+\begin{example}
+
+א. \L\{\(||(2,1)||=\sqrt{2^{2}+1^{2}}=\sqrt{5}\)\}
+
+ב. \L\{\(||(3,-4)||=\sqrt{3^{2}+(-4)^{2}}=5\)\}
+
+ג. \L\{\(||(-3,-7)||=\sqrt{(-3)^{2}+(-7)^{2}}=\sqrt{58}\)\}
+
+\end{example}
+
+אם כפל בסקלר מתאים למתיחה/כיווץ, זה אמור להתבטא בגודל. מכאן הטענה הבאה:
+
+\begin{proposition}
+
+\L\{\(||c\cdot(a,b)||=|c|\cdot||(a,b)||\)\} לכל וקטור
+\L\{\((a,b)\in\mathbb{R}^{2}\)\} ולכל סקלר \L\{\(c\in\mathbb{R}\)\}.
+
+\end{proposition}
+
+\begin{proof}
+נשתמש בהגדרות ונחשב:\L\{\% {[}
+\textbar\textbar c\cdot(a,b)\textbar\textbar=\textbar\textbar(ca,cb)\textbar\textbar=\sqrt{(ca)^{2}+(cb)^{2}}=\sqrt{c^{2}(a^{2}+b^{2})}=\textbar c\textbar{}\sqrt{a^{2}+b^{2}}
+{]} \}\%
+\end{proof}
+
+\begin{remark}
+בפרט, כפל ב-\L\{\((-1)\)\} לא משנה את גודל הוקטור. רק הכיוון מתהפך.
+\end{remark}
+
+\subsection{\texorpdfstring{ישרים
+ב-\(\mathbb{R}^{2}\)}{ישרים ב-\textbackslash mathbb\{R\}\^{}\{2\}}}\label{ux5d9ux5e9ux5e8ux5d9ux5dd-ux5d1-mathbbr2}
+
+נרצה להבין את הקשר בין ישרים לוקטורים. יותר קל להבין את זה במקרה של
+ישרים שעוברים דרך הראשית. ניקח ישר כזה ונבחר נקודה כלשהי שאינה הראשית,
+מה שייתן לנו וקטור. הישר הוא אוסף כל הנקודות שמתקבלות ע\textquotedblי
+כפל בסקלר של וקטור זה.
+
+דוגמה: הישר שמשוואתו \(y=2x\) עובר דרך הראשית והנקודה \((1,2)\). דרך
+נוספת לתאר את הישר היא כקבוצת כל הכפולות )בסקלר ממשי( של הוקטור
+\((1,2)\). כל הוקטורים האלה מתאימים לנקודות על הישר, ואין הבדל מבחינת
+הכתיבה )כי הוקטורים יוצאים מהראשית(. כך נקבל
+\[\{t(1,2)|t\in\mathbb{R}\}=\{(t,2t)|t\in\mathbb{R}\}\]
+
+)אנימציה שמראה איך נקודות הישר מתקבלות ע\textquotedblי כפל בסקלר של
+הוקטור(
+
+אכן, זה מיידי שכל נקודה מהצורה \((t,2t)\) מקיימת את המשוואה \(y=2x\).
+
+באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור \(\vec{v}\) נתון
+ע\textquotedblי ההצגה \(\{t\vec{v}|t\in\mathbb{R}\}\). נשים לב שעבור
+\(t<0\) מקבלים וקטורים עם כיוון מנוגד )הצד השני של הישר(.
+
+נכליל: ישר שעובר דרך \((x_{0},y_{0})\) בכיוון הוקטור \(\vec{v}\) נתון
+ע\textquotedblי ההצגה \[.\{(x_{0},y_{0})+t\vec{v}|t\in\mathbb{R}\}\] אם
+נתון שהישר עובר דרך \((x_{1},y_{1})\), אז נקבל
+\[.\{(x_{0},y_{0})+t(x_{1}-x_{0})|t\in\mathbb{R}\}\]
+
+\begin{exercise}
+
+איזו נקודה מתקבלת עבור \L\{\(t=0\)\}? \L\{\(t=1\)\}?
+
+\end{exercise}
+
+\begin{remark}
+ההצגה לעיל נקראת הצגה פרמטרית של ישר. לעומת זאת, הצגה מהצורה
+\L\{\(L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}\)\} נקראת הצגה אלגברית של
+ישר. הצגה אלגברית אינה יחידה, כי למשל המשוואה \L\{\(y=2x\)\} שקולה
+למשוואה \L\{\(2y=4x\)\}. באופן דומה, גם הצגה פרמטרית אינה יחידה משתי
+סיבות: אפשר לבחור את נקודת ההתחלה \L\{\((x_{0},y_{0})\)\} באופן שרירותי
+כל עוד היא על הישר, וגם אפשר לבחור את \L\{\((x_{1},y_{1})\)\} כרצוננו
+ובהתאם את וקטור הכיוון \L\{\(\vec{v}\)\} )אפשר לקחת כל כפולה שלו בסקלר
+שאינו \{\beginL 0\endL\}(. כך מקבלים אינסוף הצגות פרמטריות שונות לאותו
+הישר. למשל:\L\{\% {[}
+\{t(1,2)\textbar t\in\mathbb{R}\}=\{(1,2)+s(2,4)\textbar s\in\mathbb{R}\}=\{(2,4)+r(-3,-6)\textbar r\in\mathbb{R}\}
+{]} \}\%
+\end{remark}
+
+\begin{exercise}
+
+עבור הישר שמשוואתו \L\{\(y=3x+1\)\}, מצאו שלוש הצגות פרמטריות שונות. נסו
+לשנות גם את נקודת ההתחלה וגם את וקטור הכיוון.
+
+\end{exercise}
+
+\subsection{מכפלה
+סקלרית}\label{ux5deux5dbux5e4ux5dcux5d4-ux5e1ux5e7ux5dcux5e8ux5d9ux5ea}
+
+מכפלה סקלרית היא פעולה נוספת בין וקטורים, אבל התוצאה שלה היא סקלר ומכאן
+שמה.
+
+\begin{definition}
+
+עבור וקטורים \L\{\((a_{1},a_{2}),(b_{1},b_{2})\in\mathbb{R}^{2}\)\}
+נגדיר \L\{\((a_{1},a_{2})\cdot(b_{1},b_{2})=a_{1}a_{2}+b_{1}b_{2}\)\}.
+
+\end{definition}
+
+\begin{example}
+
+א. \L\{\((1,3)\cdot(2,5)=1\cdot2+3\cdot5=17\)\}
+
+ב. \L\{\((3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8\)\}
+
+ג. \L\{\((1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0\)\}
+
+\end{example}
+
+למכפלה סקלרית יש קשר לגודל. יש מספר תכונות שכדאי לזכור:
+
+\begin{proposition}
+
+יהיו
+\L\{\(\vec{v_{1}}=(x_{1},y_{1}),\,\vec{v_{2}}=(x_{2},y_{2}),\,\vec{v_{3}}=(x_{3},y_{3})\in\mathbb{R}^{2}\)\}
+וקטורים. אז מתקיים:
+
+א. \L\{\(\vec{v_{1}}\cdot\vec{v_{2}}=\vec{v_{2}}\cdot\vec{v_{1}}\)\}.
+
+ב.
+\L\{\((\vec{v_{1}}+\vec{v_{3}})\cdot\vec{v_{2}}=\vec{v_{1}}\cdot\vec{v_{2}}+\vec{v_{3}}\cdot\vec{v_{2}}\)\}.
+
+ג. \L\{\(\vec{v_{1}}\cdot\vec{v_{1}}=||\vec{v_{1}}||^{2}\)\}.
+
+ד.
+\L\{\(\vec{v_{1}}\cdot(c\vec{v_{2}})=c(\vec{v_{1}}\cdot\vec{v_{2}})\)\}.
+
+ה. \L\{\(||\vec{v_{1}}||=0\iff\vec{v_{1}}=(0,0)\)\}.
+
+ו. \L\{\(||\frac{\vec{v_{1}}}{||\vec{v_{1}}||}||=1\)\} אם
+\L\{\(\vec{v_{1}}\neq(0,0)\)\}.
+
+\end{proposition}
+
+\begin{proof}
+נסתפק בסעיפים ג' ו-ה'. סעיפים אחרים יופיעו כתרגילים.\L\{\% {[}
+\vec{v_{1}}\cdot\vec{v_{1}}=x\_\{1\}\textsuperscript{\{2\}+y\_\{1\}}\{2\}=\left(\sqrt{x_{1}^{2}+y_{1}^{2}}\right)\textsuperscript{\{2\}=\textbar\textbar{}\vec{v_{1}}\textbar\textbar{}}\{2\}
+{]} \}\%
+
+סכום ריבועים )של מספרים ממשיים( הוא אי-שלילי, והוא מתאפס אם ורק אם כל
+מחובר מתאפס. במקרה זה \L\{\(x_{1}^{2}=y_{1}^{2}=0\)\} גורר
+\L\{\(x_{1}=y_{1}=0\)\}, או באופן שקול \L\{\(\vec{v_{1}}=(0,0)\)\}.
+\end{proof}
+
+מכפלה סקלרית גם קשורה לזווית בין שני וקטורים. ליתר דיוק, הכוונה היא
+לזווית הקטנה ביניהם )בין \beginL 0\endL ל-\(\pi\) ברדיאנים(.
+
+)מישור אינטראקטיבי שמאפשר ליצור שני וקטורים ולקבל את המכפלה הסקלרית וגם
+את הזווית ברדיאנים(
+
+\begin{proposition}
+
+יהיו \L\{\(\vec{v},\vec{w}\)\} שני וקטורים ב-\L\{\(\mathbb{R}^{2}\)\}
+השונים מ-\L\{\((0,0)\)\}, ותהי \L\{\(\alpha\)\} הזווית הקטנה ביניהם. אז
+מתקיים\L\{\% {[}
+.\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}|||\cdot||\vec{w|}|} {]}
+\}\%
+
+\end{proposition}
+
+ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.
+
+\begin{proof}
+\leavevmode
+
+נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר
+ע\textquotedbl י שני הוקטורים.
+
+\begin{center}
+    )ציור עם משולש בעל צלעות שמתאימות לשני הוקטורים וגם לוקטור ההפרש מול
+    \L{$\alpha$}(
+    \par\end{center}
+
+\L\{\% {[}
+\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}=\textbar\textbar{}\vec{v}-\vec{w}\textbar\textbar\^{}\{2\}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha
+{]} \}\%
+
+נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין
+\L\{\(||v-w||^{2}\)\} ל-\L\{\(v\cdot w\)\}:\L\{\% {[}
+\textbar\textbar{}\vec{v}-\vec{w}\textbar\textbar{}\textsuperscript{\{2\}=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w})=\vec{v}\cdot\vec{v}-\vec{v}\cdot\vec{w}-\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w}=\textbar\textbar{}\vec{v}\textbar\textbar{}}\{2\}-2\vec{v}\cdot\vec{w}+\textbar\textbar{}\vec{w}\textbar\textbar\^{}\{2\}
+{]} \}\%
+
+נציב את המשוואה השנייה בראשונה ונקבל\L\{\% {[}
+.\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}=\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}-2\vec{v}\cdot\vec{w}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha
+{]} \}\%
+
+נקזז \L\{\(||\vec{v}||^{2}+||\vec{w}||^{2}\)\} מכל אגף ונקבל\L\{\% {[}
+-2\vec{v}\cdot\vec{w}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha=0\implies\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}||}
+{]} \}\%
+
+כנדרש.
+\end{proof}
+
+\begin{cor}
+וקטורים \L{$\vec{v},\vec{w}$} השונים מ-\L{$(0,0)$} הם מאונכים/ניצבים
+אם ורק אם \L{$\vec{v}\cdot\vec{w}=0$}. במקרה זה נסמן \L{$\vec{v}\perp\vec{w}$}.
+\end{cor}
+
+\begin{proof}
+תהי \L\{\(\alpha\)\} הזווית הקטנה ביניהם. אז מתקיים\L\{\% {[}
+.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}|}=0\iff\alpha=\frac{\pi}{2}
+{]} \}\%
+\end{proof}
+
+\begin{example}
+
+א. \L\{\((1,2)\perp(-2,1)\)\} כי \L\{\((1,2)\cdot(-2,1)=0\)\}.
+
+ב. באופן כללי, לכל \L\{\((a,b)\in\mathbb{R}^{2}\)\} מתקיים
+\L\{\((a,b)\perp(-b,a)\)\} כי \L\{\((a,b)\cdot(-b,a)=0\)\}.
+
+\end{example}
+
+\begin{remark}
+הוקטור \L\{\((0,0)\)\} הוא מקרה חריג )כי הוא חסר כיוון(. אבל מאחר
+שמתקיים \L\{\(\vec{v}\cdot(0,0)=0\)\} לכל וקטור
+\L\{\(\vec{v}\in\mathbb{R}^{2}\)\}, עדיין נגדיר
+\L\{\(\vec{v}\perp(0,0)\)\}. זהו הוקטור היחיד שמאונך לכל וקטור במישור.
+\end{remark}
+
+\subsection{מעבר בין הצגה פרמטרית של ישר להצגה
+אלגברית}\label{ux5deux5e2ux5d1ux5e8-ux5d1ux5d9ux5df-ux5d4ux5e6ux5d2ux5d4-ux5e4ux5e8ux5deux5d8ux5e8ux5d9ux5ea-ux5e9ux5dc-ux5d9ux5e9ux5e8-ux5dcux5d4ux5e6ux5d2ux5d4-ux5d0ux5dcux5d2ux5d1ux5e8ux5d9ux5ea}
+
+ההצגה האלגברית של ישר קשורה באופן הדוק למכפלה סקלרית. נבין את הקשר דרך
+דוגמה.
+
+דוגמה: נסתכל על הישר \(L=\{t(2,-1)|t\in\mathbb{R}\}\). רואים לפי ההצגה
+הפרמטרית שוקטור הכיוון הוא \((2,-1)\). לפי המכפלה הסקלרית אפשר לקבוע
+שהוקטור \((1,2)\) מאונך לו. הוא לא רק מאונך ל-\((2,-1)\) אלא לכל וקטור
+שמתאים לנקודה על הישר, כי לכל \(t\in\mathbb{R}\) מתקיים
+\[.(1,2)\cdot(2t,-t)=2t-2t=0\]
+
+)הישר עם וקטור הנורמל(
+
+להיפך, אפשר לתאר את הישר כאוסף כל הוקטורים שמאונכים לוקטור \((1,2)\).
+כלומר כל וקטור \((x,y)\in L\) נתון ע\textquotedblי המשוואה
+\[.(x,y)\cdot(1,2)=0\iff x+2y=0\]
+
+או בכתיב קבוצות: \(L=\{(x,y)\in\mathbb{R}^{2}|x+2y=0\}\).
+
+\begin{definition}
+
+וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר )התחלה וסיום( נקרא
+נורמל לישר.
+
+\end{definition}
+
+)מישור אינטראקטיבי שמאפשר לסובב ישר כאשר הנורמל מסתובב יחד איתו בהתאם(
+
+באופן כללי, לישר עם הצגה פרמטרית
+\(\{(x_{0},y_{0})+t(a,b)|t\in\mathbb{R}\}\) יש וקטור נורמל \((-b,a)\)
+המאונך לוקטור הכיוון \((a,b)\). אבל וקטור הנורמל אינו יחיד, כי אם נכפיל
+אותו בסקלר \(c\neq0\) הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני
+וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם )או שניהם( בסקלר.
+
+כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-\((x_{0},y_{0})\) ומסתיים
+ב-\((x,y)\), כלומר הוקטור \((x-x_{0},y-y_{0})\). וקטור זה בהכרח מאונך
+לוקטור הנורמל \((-b,a)\), ולכן צריך להתקיים
+\[.(x-x_{0},y-y_{0})\cdot(-b,a)=0\iff-b(x-x_{0})+a(y-y_{0})=0\iff-bx+ay=-bx_{0}+ay_{0}\]
+כלומר קיבלנו הצגה אלגברית
+\(L=\{(x,y)\in\mathbb{R}^{2}|-bx+ay=-bx_{0}+ay_{0}\}\). נדגיש שהבחירה של
+נקודת ההתחלה \((x_{0},y_{0})\) היא שרירותית. בעצם, המשוואה מראה שהביטוי
+\(-bx+ay\) קבוע לאורך הישר, וקבוע זה מופיע באגף ימין של המשוואה.
+
+\bookmarksetup{startatroot}
+
+\chapter{מערכות משוואות
+לינאריות}\label{ux5deux5e2ux5e8ux5dbux5d5ux5ea-ux5deux5e9ux5d5ux5d5ux5d0ux5d5ux5ea-ux5dcux5d9ux5e0ux5d0ux5e8ux5d9ux5d5ux5ea}
+
+בפרק הקודם עסקנו במשוואות לינאריות עם שני משתנים Ł\(x,y\) לתיאור המישור,
+וגם בשלושה משתנים Ł\(x,y,z\) לתיאור המרחב. אנחנו רוצים להכליל את הדיון
+למספר כלשהו Ł\(n\) )טבעי( של משתנים, לאו דווקא בעלי משמעות גיאומטרית.
+מהי המוטיבציה? משוואות לינאריות מופיעות בפיזיקה כבר בחוק השני של ניוטון
+לפיו יש תלות לינארית בין וקטור הכוח הפועל על גוף לבין לוקטור התאוצה של
+הגוף. כאשר יש הרבה גופים בבעיה עם תלות ביניהם )אילוצים(, יכולות להתקבל
+מספר משוואות לינאריות במספר משתנים ויחד הן נקראות מערכת משוואות
+לינאריות. זה המקרה גם בתחומים רבים אחרים, כמו למשל רשתות נוירונים בהן כל
+נוירון מקבל קלטים ומפיק מהם פלט לפי חישוב שמתאים למשוואה לינארית.
+
+תחילה נבהיר איך נראית משוואה לינארית במספר משתנים )ייתכן גדול מאוד( ואיך
+מחשבים את קבוצת הפתרונות שלה.
+
+\subsection{משוואה לינארית במספר
+משתנים}\label{ux5deux5e9ux5d5ux5d5ux5d0ux5d4-ux5dcux5d9ux5e0ux5d0ux5e8ux5d9ux5ea-ux5d1ux5deux5e1ux5e4ux5e8-ux5deux5e9ux5eaux5e0ux5d9ux5dd}
+
+איך נראית משוואה לינארית כללית? נשתמש במשתנים Ł\(x_{1},x_{2,}...,x_{n}\)
+במקום אותיות רגילות, כי לצורך העניין Ł\(n\) יכול להיות גדול בהרבה ממספר
+האותיות באלף בית הלועזי )Ł\(26\)( או בכל שפה אחרת. גם נראה בהמשך שצריך
+לבחור איזשהו סדר בין המשתנים, אז אם מספרם גדול זה נוח להשתמש באינדקס
+מספרי כדי להדגיש את הסדר ביניהם.
+
+\begin{definition}
+
+משוואה לינארית במשתנים \L\{\(x_{1},x_{2,}...,x_{n}\)\} היא משוואה מהצורה
+\L\{\% {[}
+(*):a\_\{1\}x\_\{1\}+a\_\{2\}x\_\{2\}+a\_\{3\}x\_\{3\}+\ldots+a\_\{n\}x\_\{n\}=b
+{]} \}\%
+
+כאשר \L\{\(a_{1},...,a_{n}\)\} הם סקלרים נתונים שנקראים מקדמים,
+ו-\L\{\(b\)\} הוא סקלר נתון שנקרא קבוע או איבר חופשי. אם כל הסקלרים
+והמשתנים ממשיים, נאמר שזו משוואה לינארית מעל
+\L\{\(\mathbb{\mathbb{R}}\)\}. אם לפחות סקלר אחד הוא מרוכב ו/או המשתנים
+מרוכבים, נאמר שזו משוואה לינארית מעל \L\{\(\mathbb{C}\)\}. אם נרצה
+להכליל בלי לציין שמדובר ב-\L\{\(\mathbb{R}\)\} או
+\L\{\(\mathbb{\mathbb{C}}\)\}, נכתוב \L\{\(\mathbb{F}\)\} ונזכור שקבוצה
+זו היא או \L\{\(\mathbb{R}\)\} או \L\{\(\mathbb{C}\)\}.
+
+\end{definition}
+
+\begin{example}
+
+א. \L\{\(x_{1}-x_{2}+x_{3}-x_{4}=100\)\} זו משוואה לינארית בארבעה משתנים
+מעל \L\{\(\mathbb{R}\)\}.
+
+ב. \L\{\(x_{1}+ix_{2}-x_{3}-ix_{4}+x_{5}=1+i\)\} זו משוואה לינארית
+בחמישה משתנים מעל \L\{\(\mathbb{C}\)\}.
+
+\end{example}
+
+\begin{definition}
+
+סדרת סקלרים \L\{\((c_{1},c_{2},...,c_{n})\)\} נקראת \L\{\(n\)\}-יה, או
+וקטור באורך \L\{\(n\)\}. נגדיר את מרחב ה-\L\{\(n\)\}-יות מעל
+\L\{\(\mathbb{\mathbb{R}}\)\}:\L\{\% {[}
+\mathbb{R}\^{}\{n\}=\{(c\_\{1\},c\_\{2\},\ldots.,c\_\{n\})\textbar c\_\{1\},c\_\{2\},\ldots.,c\_\{n\}\in\mathbb{R}\}
+{]} \}\% וגם את מרחב ה-\L\{\(n\)\}-יות מעל
+\L\{\(\mathbb{\mathbb{C}}\)\}:\L\{\% {[}
+\mathbb{\mathbb{C}}\^{}\{n\}=\{(c\_\{1\},c\_\{2\},\ldots.,c\_\{n\})\textbar c\_\{1\},c\_\{2\},\ldots.,c\_\{n\}\in\mathbb{\mathbb{C}}\}
+{]} \}\%
+
+לעיתים נכתוב \L\{\(\mathbb{F}^{n}\)\} במקום לפרט אם הכוונה היא
+ל-\L\{\(\mathbb{R}^{n}\)\} או ל-\L\{\(\mathbb{C}^{n}\)\}.
+
+\end{definition}
+
+יש לנו אינטואיציה גיאומטרית טובה לגבי המישור הדו-מימדי
+Ł\(\mathbb{R}^{2}\) והמרחב התלת-מימדי Ł\(\mathbb{R}^{3}\). החל
+מ-Ł\(\mathbb{R}^{4}\) ו-Ł\(\mathbb{C}^{2}\) כבר אין לנו יכולת לדמיין את
+המרחבים האלה באופן מלא, אבל נתרגל גם אליהם מבחינה אלגברית.
+
+\begin{definition}
+
+פתרון של משוואה לינארית הינו \L\{\(n\)\}-יה
+\L\{\((c_{1},c_{2},...,c_{n})\in\mathbb{F}^{n}\)\} כך שבהצבת \L\{\% {[}
+x\_\{1\}=c\_\{1\},x\_\{2\}=c\_\{2\},\ldots,x\_\{n\}=c\_\{n\} {]} \}\%
+
+המשוואה מתקיימת.
+
+\end{definition}
+
+\begin{example}
+
+א. משוואה לינארית ב-\L\{\(5\)\} משתנים מעל \L\{\(\mathbb{R}\)\}: \L\{\%
+{[} x\_\{1\}+x\_\{2\}+x\_\{3\}+x\_\{4\}+x\_\{5\}=100 {]} \}\%
+
+אחד הפתרונות של המשוואה הוא
+\L\{\((x_{1},x_{2},x_{3},x_{4},x_{5})=(20,20,20,20,20)\)\}. פתרון נוסף
+הוא \L\{\((x_{1},x_{2},x_{3},x_{4},x_{5})=(50,10,10,10,10)\)\}, ויש עוד
+אינסוף אחרים. לעומת זאת, \L\{\((x_{1},x_{2},x_{3},x_{4})=(0,0,0,0,0)\)\}
+אינו פתרון כי ההצבה נותנת \L\{\(0=100\)\} וזה כמובן לא מתקיים.
+
+כדי למצוא את קבוצת כל הפתרונות נבודד את אחד המשתנים. נוח לבחור את
+\L\{\(x_{1}\)\} כי הוא הראשון. נקבל\L\{\% {[}
+x\_\{1\}=100-x\_\{2\}-x\_\{3\}-x\_\{4\}-x\_\{5\} {]} \}\%
+
+זה למעשה מראה שניתן לבחור את ערכיהם של \L\{\(x_{2},x_{3},x_{4},x_{5}\)\}
+באופן שרירותי. זו משוואה מעל \L\{\(\mathbb{R}\)\} ולכן נבחר
+\L\{\(c_{2},c_{3},c_{4},c_{5}\in\mathbb{R}\)\} שרירותיים ונציב
+\L\{\((x_{2},x_{3},x_{4},x_{5})=(c_{2},c_{3},c_{4},c_{5})\)\} במשוואה.
+כך נקבל\L\{\% {[} .x\_\{1\}=100-c\_\{2\}-c\_\{3\}-c\_\{4\}-c\_\{5\} {]}
+\}\%
+
+לכן, קבוצת הפתרונות נתונה באופן פרמטרי )עם \{\beginL 4\endL\} פרמטרים
+\L\{\(c_{2},c_{3},c_{4},c_{5}\)\}( ע\textquotedbl י\L\{\% {[}
+.\{100-c\_\{2\}-c\_\{3\}-c\_\{4\}-c\_\{5\},c\_\{2\},c\_\{3\},c\_\{4\},c\_\{5\})\textbar c\_\{2\},c\_\{3\},c\_\{4\},c\_\{5\}\in\mathbb{R}\}
+{]} \}\%
+
+ב. משוואה לינארית ב-\L\{\(4\)\} משתנים מעל
+\L\{\(\mathbb{\mathbb{C}}\)\}: \L\{\% {[}
+x\_\{1\}+ix\_\{2\}+2ix\_\{3\}+x\_\{4\}=1+4i {]} \}\%
+
+אחד הפתרונות של המשוואה הוא
+\L\{\((x_{1},x_{2},x_{3},x_{4})=(1,1,1,i)\)\} ויש עוד אינסוף אחרים.
+\L\{\((x_{1},x_{2},x_{3},x_{4})=(1,0,1,0)\)\} אינו פתרון כי
+\L\{\(1+2i\neq1+4i\)\}.
+
+נבודד את \L\{\(x_{1}\)\} כדי למצוא את קבוצת הפתרונות:\L\{\% {[}
+x\_\{1\}=1+4i-ix\_\{2\}-2ix\_\{3\}-x\_\{4\} {]} \}\%
+
+זו משוואה מעל \L\{\(\mathbb{\mathbb{C}}\)\} ולכן נבחר
+\L\{\(c_{2},c_{3},c_{4}\in\mathbb{C}\)\} שרירותיים ונציב אותם במשוואה.
+כך נקבל\L\{\% {[} .x\_\{1\}=1+4i-ic\_\{2\}-2ic\_\{3\}-c\_\{4\} {]} \}\%
+
+לכן, קבוצת הפתרונות נתונה באופן פרמטרי )עם \{\beginL 3\endL\} פרמטרים
+\L\{\(c_{2},c_{3},c_{4}\)\}( ע\textquotedbl י\L\{\% {[}
+.\{1+4i-ic\_\{2\}-2ic\_\{3\}-c\_\{4\},c\_\{2\},c\_\{3\},c\_\{4\})\textbar c\_\{2\},c\_\{3\},c\_\{4\}\in\mathbb{\mathbb{C}}\}
+{]} \}\%
+
+\end{example}
+
+איך פותרים משוואה לינארית כללית מהצורה Ł\((*)\)? אפשר למצוא את כל
+הפתרונות ע\textquotedblי בידוד אחד המשתנים. מקובל לעשות זאת עבור
+Ł\(x_{1}\) בהנחה ש-Ł\(a_{1}\neq0\) )אם Ł\(a_{1}=0\), נבחר את המשתנה
+הראשון עם מקדם השונה מ-Ł\(0\)( וכך לקבלŁ
+\[.x_{1}=\frac{1}{a_{1}}(b-a_{2}x_{2}-a_{3}x_{3}-...-a_{n}x_{n})\]
+
+זה מראה שלכל בחירה של סקלרים Ł\(c_{2},....,c_{n}\in\mathbb{F}\) נקבל
+פתרוןŁ
+\[.(x_{1},x_{2},x_{3},...,x_{n})=(\frac{1}{a_{1}}(b-a_{2}c_{2}-a_{3}c_{3}-...-a_{n}c_{n}),c_{2},c_{3},...,c_{n})\]
+
+לכן, קבוצת הפתרונות של המשוואה נתונה בהצגה פרמטרית ע\textquotedblיŁ
+\[.\{(\frac{1}{a_{1}}(b-a_{2}c_{2}-a_{3}c_{3}-...-a_{n}c_{n}),c_{2},c_{3},...,c_{n})|c_{1},c_{2},...,c_{n}\in\mathbb{F}\}\]
+
+נדגיש כי Ł\(a_{1},a_{2},a_{3},...,a_{n}\) נתונים במשוואה כסקלרים קבועים.
+Ł\(c_{1},c_{2},...,c_{n}\) הם פרמטרים שרצים על פני הקבוצה
+Ł\(\mathbb{F}\) )Ł\(\mathbb{R}\) או Ł\(\mathbb{C}\)( כדי לתאר את כל
+הפתרונות. זו הכללה של הצגה פרמטרית של ישר )פרמטר אחד( ושל מישור )שני
+פרמטרים( למספר כללי של פרמטרים, שהוא בעצם Ł\(n-1\). בפרט, לכל
+Ł\(n\geq2\) יש אינסוף פתרונות למשוואה Ł\((*)\) כי ניתן להציב אינסוף
+אפשרויות במשתנה אחד או יותר.
+
+שימו לב שהתייחסנו אל Ł\(x_{1}\) כמשתנה תלוי ואל
+Ł\(x_{2},x_{3},...,x_{n}\) כמשתנים חופשיים )הצבנו בהם ערכים שרירותיים(.
+אם היינו מבודדים את Ł\(x_{2}\) או משתנה אחר במקום Ł\(x_{1}\), אז הוא היה
+המשתנה התלוי וההצגה הפרמטרית הייתה משתנה בהתאם. עדיין, זו רק הצגה חלופית
+לקבוצת הפתרונות של אותה המשוואה. טבעי לבחור את Ł\(x_{1}\), אך אין חובה
+לעשות זאת.
+
+\begin{exercise}
+
+מצאו את קבוצת הפתרונות של המשוואה
+\L\{\(2x_{1}+x_{2}+3x_{3}+4x_{4}=5\)\}. בדקו איך ההצגה הפרמטרית משתנה
+כאשר מבודדים את \L\{\(x_{2}\)\} במקום \L\{\(x_{1}\)\}.
+
+\end{exercise}
+
+\subsection{מערכות משוואות
+לינאריות}\label{ux5deux5e2ux5e8ux5dbux5d5ux5ea-ux5deux5e9ux5d5ux5d5ux5d0ux5d5ux5ea-ux5dcux5d9ux5e0ux5d0ux5e8ux5d9ux5d5ux5ea-1}
+
+בפרק הקודם ראינו הרבה דוגמאות למערכות משוואות לינאריות
+)ממ\textquotedblל( מעל Ł\(\mathbb{R}\) עם שתי משוואות בשני משתנים
+)לתיאור חיתוך שני ישרים במישור( וגם לממ\textquotedblל עם שתי משוואות
+בשלושה משתנים )לתיאור חיתוך שני מישורים במרחב(. באופן כללי, אפשר להתייחס
+לכל אוסף של משוואות לינאריות כמערכת אחת.
+
+בהקשר של החוק השני של ניוטון, אפשר לחשוב על ממ\textquotedblל במספר גדול
+של משתנים שקשורים לוקטורי התאוצה של מספר גופים ולכוחות הפועלים עליהם. גם
+מספר המשתנים וגם מספר המשוואות יכולים להיות גדולים מאוד. אמנם גודל
+הממ\textquotedblל מקשה על האינטואיציה הגיאומטרית ומוסיף חישובים )ייתכן
+באופן משמעותי(, אך עדיין יש גישה אלגברית אחת לפתרון של כל
+ממ\textquotedblל. נפתח אותה בפרק זה.
+
+\begin{example}
+
+א. כל משוואה לינארית היא ממ\textquotedbl ל שבה משוואה אחת. למשל: \L\{\%
+{[} x\_\{1\}+2x\_\{2\}+3x\_\{3\}+4x\_\{4\}=5 {]} \}\%
+
+זו ממ\textquotedbl ל של משוואה אחת בארבעה משתנים מעל
+\L\{\(\mathbb{R}\)\}.
+
+ב. ניקח את הדוגמה הקודמת ונוסיף משוואה:\L\{\% {[}
+
+\begin{cases}
+x_{1}+2x_{2}+3x_{3}+4x_{4}=5\\
+x_{1}+x_{2}+x_{3}+x_{4}=4
+\end{cases}
+
+{]} \}\%
+
+זו ממ\textquotedbl ל של שתי משוואות בארבעה משתנים מעל
+\L\{\(\mathbb{R}\)\}.
+
+ג. ממ\textquotedbl ל של שלוש משוואות בשלושה משתנים מעל
+\L\{\(\mathbb{\mathbb{R}}\)\}:\L\{\% {[}
+
+\begin{cases}
+x+y+z=3\\
+x+2y+z=4\\
+x+y+3z=5
+\end{cases}
+
+{]} \}\% כאן חזרנו להשתמש באותיות המוכרות \L\{\(x,y,z\)\} במקום
+\L\{\(x_{1},x_{2},x_{3}\)\}. הסימונים לא באמת חשובים כל עוד יש עקביות
+)נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים(.
+
+ד. ממ\textquotedbl ל של שתי משוואות בארבעה משתנים מעל
+\L\{\(\mathbb{C}\)\}:\L\{\% {[}
+
+\begin{cases}
+iz_{1}+z_{2}+iz_{3}+z_{4}=2i\\
+z_{1}+(1+i)z_{2}+z_{2}+2iz_{3}=2
+\end{cases}
+
+{]} \}\%
+
+\end{example}
+
+\begin{definition}
+
+מערכת משוואות לינאריות )ממ\textquotedbl ל( במשתנים
+\L\{\(x_{1},x_{2,}...,x_{n}\)\} היא אוסף של מספר כלשהו )\L\{\(m\)\}( של
+משוואות לינאריות מהצורה\L\{\% {[} (**)
+
+\begin{cases}
+a_{11}x_{1}+a_{12}x_{2}+a_{13}x_{3}+...+a_{1n}x_{n}=b_{1}\\
+a_{21}x_{1}+a_{22}x_{2}+a_{23}x_{3}+...+a_{2n}x_{n}=b_{2}\\
+a_{31}x_{1}+a_{32}x_{2}+a_{33}x_{3}+...+a_{3n}x_{n}=b_{3}\\
+\qquad\qquad\qquad\qquad\quad\vdots\\
+a_{n1}x_{1}+a_{n2}x_{2}+a_{n3}x_{3}+...+a_{nn}x_{n}=b_{m}
+\end{cases}
+
+{]} \}\%
+
+אם כל המשוואות הן מעל \L\{\(\mathbb{R}\)\}, נאמר שהממ\textquotedbl ל מעל
+\L\{\(\mathbb{R}\)\}. אחרת, נאמר שהממ\textquotedbl ל מעל
+\L\{\(\mathbb{C}\)\}.
+
+\end{definition}
+
+שימו לב לאינדקס הכפול: Ł\(a_{ij}\) הוא המקדם של המשתנה Ł\(x_{j}\)
+במשוואה ה-Ł\(i\) )כלומר בשורה ה-Ł\(i\)(. Ł\(b_{i}\) הוא הקבוע )איבר
+חופשי( במשוואה ה-Ł\(i\). צריך להתרגל לכתיבה עם שני אינדקסים )ולזכור שכאן
+Ł\(ij\) אינו מכפלה וגם לא מספר דו-ספרתי(, אבל זו הדרך הטבעית להתייחס גם
+למספר המשתנה וגם למספר המשוואה.
+
+\begin{definition}
+
+פתרון של משוואה לינארית הינו סדרת סקלרים
+\L\{\((c_{1},c_{2},...,c_{n})\)\} כך שבהצבת \L\{\% {[}
+x\_\{1\}=c\_\{1\},x\_\{2\}=c\_\{2\},\ldots,x\_\{n\}=c\_\{n\} {]} \}\%
+
+כל המשוואות בממ\textquotedbl ל מתקיימות.
+
+\end{definition}
+
+\begin{example}
+
+נחזור לדוגמה קודמת:
+
+\L\{\% {[}
+
+\begin{cases}
+x+y+z=3\\
+x+2y+z=4\\
+x+y+3z=5
+\end{cases}
+
+{]} \}\%
+
+כאן המקדמים הם \L\{\% {[}
+.a\_\{11\}=a\_\{12\}=a\_\{13\}=a\_\{21\}=a\_\{23\}=a\_\{31\}=a\_\{32\}=1,,a\_\{22\}=2,,a\_\{33\}=3
+{]} \}\% הקבועים הם \L\{\(b_{1}=3,\,b_{2}=4,\,b_{3}=5\)\}.
+
+\end{example}
+
+הרבה יותר קשה לדמיין את הגיאומטריה כאשר יש מספר משתנים גבוה מ-Ł\(3\), או
+אפילו משוואה אחת בשני משתנים מרוכבים. אבל מבחינה אלגברית, כל המקרים האלה
+שייכים לקטגוריה אחת ושיטת הפתרון משותפת לכולם. באופן כללי, נשאל את
+השאלות הבאות על ממ\textquotedblל:
+
+\beginL 1\endL. כמה פתרונות יש?
+
+\beginL 2\endL. כיצד נמצא את כל הפתרונות?
+
+\beginL 3\endL. מהו מבנה קבוצת הפתרונות?
+
+לפני כן, נראה עוד דוגמאות לממ\textquotedblל וגם נחזור אל חלק מהדוגמאות
+הקודמות. קל לבדוק אם פתרון נתון הוא אכן פתרון ע\textquotedblי בדיקה
+שהצבתו מקיימת את כל המשוואות. עבור ממ\textquotedblל פשוטה גם לא דרוש
+הרבה מאמץ כדי למצוא את קבוצת הפתרונות.
+
+\begin{example}
+
+א. \L\{\% {[}
+
+\begin{cases}
+x=1\\
+y=2\\
+z=3
+\end{cases}
+
+{]} \}\%
+
+זו ממ\textquotedbl ל פשוטה שיש לה פתרון יחיד \L\{\((x,y,z)=(1,2,3)\)\},
+שכבר מופיע באופן מפורש.
+
+ב. נחזור לדוגמה קודמת:\L\{\% {[}
+
+\begin{cases}
+x+y+z=3\\
+x+2y+z=4\\
+x+y+3z=5
+\end{cases}
+
+{]} \}\% ניתן לבדוק ע\textquotedbl י הצבה כי \L\{\((x,y,z)=(1,1,1)\)\}
+הוא פתרון של הממ\textquotedbl ל, כי כל שלוש המשוואות מתקיימות, לעומת
+זאת, \L\{\((x,y,z)=(2,1,0)\)\} אינו פתרון כי הוא מקיים רק את שתי
+המשוואות הראשונות.
+
+האם \L\{\((x,y,z)=(1,1,1)\)\} הוא פתרון יחיד? נראה זאת בהמשך, אבל
+בינתיים נשים לב שהממ\textquotedbl ל מתארת חיתוך של שלושה מישורים במרחב.
+לפי הפרק הקודם, החיתוך בין כל שניים מהמישורים שנתונים
+בממ\textquotedbl ל, הוא ישר. אז החיתוך בין שלושת המישורים הוא בעצם חיתוך
+בין שני ישרים )למשל: ישר החיתוך של שני המישורים הראשונים, וישר החיתוך של
+שני המישורים האחרונים(. אפשר לקבוע את המצב ההדדי בין שני הישרים בעזרת
+ההצגות הפרמטריות שלהם, אבל נראה שיש דרך יותר מסודרת ויעילה לחישוב קבוצת
+הפתרונות בדוגמה זו ובאופן כללי.
+
+\begin{center}
+)שלושת המישורים וחיתוכיהם(
+\par\end{center}
+
+ג. \L\{\% {[}
+
+\begin{cases}
+x+w=1\\
+y+w=2\\
+z+w=3
+\end{cases}
+
+{]} \}\%
+
+זו ממ\textquotedbl ל יחסית פשוטה בארבעה משתנים \L\{\(x,y,z,w\)\}. אפשר
+להתייחס ל-\L\{\(w\)\} כמשתנה חופשי ואז כל שאר המשתנים תלויים בו. נשתמש
+בפרמטר \L\{\(t\)\}, נציב \L\{\(w=t\)\} במשוואות ואז נחסיר \L\{\(t\)\}
+מכל אגף בכל משוואה. כך נקבל\L\{\% {[}
+
+\begin{cases}
+x=1-t\\
+y=2-t\\
+z=3-t
+\end{cases}
+
+{]} \}\%
+
+לכן קבוצת הפתרונות של הממ\textquotedbl ל היא \L\{\% {[}
+\{(1-t,2-t,3-t,t)\textbar t\in\mathbb{R}\}=\{(1,2,3,0)+t(-1,-1,-1,1)\textbar t\in\mathbb{R}\}
+{]} \}\%
+
+אפשר לנסות לדמיין קבוצה זו כישר במרחב \L\{\(\mathbb{\mathbb{R}}^{4}\)\}
+הארבע-מימדי. זה בהחלט לא משהו שרואים ביום-יום כי העולם המוכר הוא
+תלת-מימדי, אבל זו עדיין הצגה אלגברית של ישר חד-מימדי. זה נובע מכך שיש
+משתנה חופשי יחיד, ומכאן הפרמטר \L\{\(t\)\}. אם לצורך העניין היה פרמטר
+נוסף בהצגה הפרמטרית )בקבוצת הפתרונות של ממ\textquotedbl ל אחרת(, הקבוצה
+הייתה \textquotedbl נראית\textquotedbl{} כמו מישור
+ב-\L\{\(\mathbb{\mathbb{R}}^{4}\)\} ככל שאפשר לדמיין אותו. למשל:\L\{\%
+{[} \{(1,2,3,0)+t(-1,-1,-1,1)+s(1,1,1,1)\textbar t\in\mathbb{R}\} {]}
+\}\%
+
+זו כתיבה שמזכירה הצגה פרמטרית של מישור במרחב, אלא שכאן המרחב הוא
+\L\{\(\mathbb{R}^{4}\)\}. בהמשך הקורס נלמד על המושגים של מימד ותת-מרחב
+)כמו ישר במישור, ומישור במרחב( באופן מדויק.
+
+ד. עוד דוגמה קודמת:\L\{\% {[}
+
+\begin{cases}
+iz_{1}+z_{2}+iz_{3}+z_{4}=2i\\
+z_{1}+(1+i)z_{2}+z_{2}+2iz_{3}=2
+\end{cases}
+
+{]} \}\%
+
+ניתן לבדוק ע\textquotedbl י הצבה כי
+\L\{\((z_{1},z_{2},z_{3},z_{4})=(1,0,1,0)\)\} הוא פתרון של
+הממ\textquotedbl ל. אינטואיטיבית, אמורים להיות אינסוף פתרונות כי מספר
+המשתנים גדול ממספר המשוואות. נצדיק את האינטואיציה הזו בהמשך.
+
+ה. ממ\textquotedbl ל של שלוש משוואות בשני משתנים מעל
+\L\{\(\mathbb{\mathbb{R}}\)\}:\L\{\% {[}
+
+\begin{cases}
+x+3y=0\\
+x-y=0\\
+x+y=1
+\end{cases}
+
+{]} \}\%
+
+כאן מספר המשתנים גדול ממספר המשוואות, ולמעשה אין פתרון. ניתן לראות זאת
+ע\textquotedbl י חיבור שתי המשוואות הראשונות, מה שנותן \L\{\(2x+2y=0\)\}
+או באופן שקול \L\{\(x+y=0\)\}. זו סתירה למשוואה האחרונה. המשמעות
+הגיאומטרית היא שאמנם כל שניים משלושת הישרים נחתכים, אבל נקודות החיתוך
+שונות ולכן אין נקודת חיתוך משותפת לכל השלושה.
+
+\begin{center}
+)שלושת הישרים והחיתוכים ביניהם(
+\par\end{center}
+
+\end{example}
+
+\begin{exercise}
+
+נסתכל על הממ\textquotedblright ל\L\{\% {[} .
+
+\begin{cases}
+x_{1}+x_{2}+2x_{3}-x_{4}=2\\
+5x_{1}-3x_{2}-2x_{3}+x_{4}=0
+\end{cases}
+
+{]} \}\%
+
+האם \L\{\((x_{1},x_{2},x_{3},x_{4})=(1,1,1,2)\)\} הוא פתרון? האם
+\L\{\((x_{1},x_{2},x_{3},x_{4})=(1,2,-1,-1)\)\} הוא פתרון?
+
+\end{exercise}
+
+\subsection{מטריצות}\label{ux5deux5d8ux5e8ux5d9ux5e6ux5d5ux5ea}
+
+ראינו דוגמה לפעולת חיבור בין שתי משוואות. למעשה, פעולה זו משפיעה רק על
+המקדמים והקבועים של הממ\textquotedblל. כאשר מחברים את שתי המשוואות
+הראשונות של Ł\((**)\) מקבליםŁ
+\[(a_{11}+a_{21})x_{1}+(a_{12}+a_{22})x_{2}+(a_{13}+a_{23})x_{3}+...+(a_{1n}+a_{2n})x_{n}=b_{1}+b_{2}\]
+
+לצורך העניין, אפשר לשים את המשתנים בצד ולחזור אליהם בסוף. המידע של
+הממ\textquotedblל אמנם קשור למשתנים, אבל הוא מגולם בסקלרים )מקדמים
+וקבועים(. אז זה שימושי לייצג את הממ\textquotedblל כטבלה שבה מופיעים רק
+הסקלרים. טבלה כזו נקראת מטריצה.
+
+\begin{definition}
+
+מטריצה מסדר \L\{\(m\times n\)\} מעל \L\{\(\mathbb{F}\)\} היא טבלה בת
+\L\{\(m\)\} שורות ו-\L\{\(n\)\} עמודות כך שבכל משבצת מופיע סקלר
+ב-\L\{\(\mathbb{F}\)\}. בהקשר של הממ\textquotedbl ל \L\{\((**)\)\},
+נגדיר את מטריצת המקדמים )שנקראת גם מטריצת מקדמים מצומצמת(:\L\{\% {[} A=
+
+\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+
+{]} \}\% או \L\{\(A=(a_{ij})\)\} בצורה מקוצרת כאשר הכוונה היא שבשורה
+\L\{\(i\)\} ובעמודה \L\{\(j\)\} מופיע \L\{\(a_{ij}\)\}. נגדיר גם את
+מטריצת המקדמים המורחבת מסדר \L\{\(m\times(n+1)\)\} שכוללת עמודה בצד ימין
+)אחרי קו מפריד( בשביל הקבועים:\L\{\% {[} \left(
+
+\begin{array}{@{}cccc|c@{}}
+    a_{11} & a_{12} & \cdots & a_{1n} & b_{1} \\
+    a_{21} & a_{22} & \cdots & a_{2n} & b_{2} \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} & b_{m}
+\end{array}
+
+\right) {]} \}\%
+
+נגדיר בנוסף את וקטור המשתנים \L\{\(X=\begin{pmatrix}x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}
+\end{pmatrix}\)\} וגם את וקטור הקבועים \L\{\(B=\begin{pmatrix}b_{1}\\
+b_{2}\\
+\vdots\\
+b_{m}
+\end{pmatrix}\)\}. דרך מקוצרת לכתיבת הממ\textquotedbl ל \L\{\((**)\)\}
+היא המשוואה הוקטורית \L\{\(AX=B\)\}.
+
+\end{definition}
+
+נראה בפרק הבא שאפשר להתייחס למטריצות כאובייקטים מתמטיים בפני עצמם ללא
+קשר לממ\textquotedblל. אז גם נבין יותר לעומק את הסימון Ł\(AX\) שמתאר כפל
+של מטריצה בוקטור עמודה באורך מתאים )בינתיים זה סימון נוח(. אמנם כתבנו
+וקטורי עמודה במקום וקטורי שורה )ההסבר בפרק הבא(, אבל כרגע זו רק צורת
+כתיבה קצת שונה.
+
+\begin{remark}
+שימו לב שאם המשתנה ה-\L\{\(j\)\} לא מופיע במשוואה ה-\L\{\(i\)\}, זה אומר
+שהמקדם המתאים הוא \{\beginL 0\endL\} ולכן \L\{\(a_{ij}=0\)\} במטריצה.
+\end{remark}
+
+\begin{example}
+
+א. עבור הממ\textquotedbl ל\L\{\% {[}
+
+\begin{cases}
+x+y+z=3\\
+x+2y+z=4\\
+x+y+3z=5
+\end{cases}
+
+{]} \}\%
+
+מטריצת המקדמים המצומצמת היא\L\{\% {[} .
+
+\begin{pmatrix}1 & 1 & 1\\
+1 & 2 & 1\\
+1 & 1 & 3
+\end{pmatrix}
+
+{]} \}\%
+
+בשביל מטריצת המקדמים המורחבת נוסיף את עמודת הקבועים ונקבל\L\{\% {[}
+.\left(
+
+\begin{array}{@{}ccc|c@{}}
+1 & 1 & 1 & 3\\
+1 & 2 & 1 & 4\\
+1 & 1 & 3 & 5
+\end{array}
+
+\right) {]} \}\%
+
+ב. נסתכל על הממ\textquotedbl ל\L\{\% {[} .
+
+\begin{cases}
+2x+y+z=1\\
+x+2y+z+w=-1\\
+x+y+w=2
+\end{cases}
+
+{]} \}\%
+
+נשים לב שמסתתרים שני אפסים: המקדם של \L\{\(w\)\} במשוואה הראשונה, והמקדם
+של \L\{\(z\)\} במשוואה השלישית. הנה כתיבה יותר מפורשת:\L\{\% {[} .
+
+\begin{cases}
+    2x+y+z+0\cdot w=1\\
+    x+2y+z+w=-1\\
+    x+y+0\cdot z+w=2
+\end{cases}
+
+{]} \}\% לכן מטריצת המקדמים המצומצמת היא\L\{\% {[} .
+
+\begin{pmatrix}2 & 1 & 1 & 0\\
+1 & 2 & 1 & 1\\
+1 & 1 & 0 & 1
+\end{pmatrix}
+
+{]} \}\%
+
+מטריצת המקדמים המורחבת היא \L\{\% {[} .\left(
+
+\begin{array}{@{}cccc|c@{}}
+    2 & 1 & 1 & 0 & 1\\
+    1 & 2 & 1 & 1 & -1\\
+    1 & 1 & 0 & 1 & 2
+\end{array}
+
+\right) {]} \}\%
+
+\end{example}
+
+\begin{exercise}
+
+כתבו את מטריצות המקדמים )מצומצמת ומורחבת( של הממ\textquotedbl ל\L\{\%
+{[} .
+
+\begin{cases}
+x+y+z+w=0\\
+z-w=2\\
+x+2y+2z+3w=8
+\end{cases}
+
+{]} \}\%
+
+\end{exercise}
+
+\begin{definition}
+
+כאשר \L\{\(B=\begin{pmatrix}0\\
+0\\
+\vdots\\
+0
+\end{pmatrix}\)\} הממ\textquotedbl ל נקראת \uline{הומוגנית} וניתן לכתוב
+\L\{\(AX=0\)\}. הכוונה באגף ימין היא לוקטור האפס באורך \L\{\(m\)\} )מספר
+השורות של \L\{\(A\)\}(.
+
+\end{definition}
+
+במקרה ההומוגני ניתן להסתפק במטריצת המקדמים מצומצמת לצורך פתרון
+הממ\textquotedblל. עמודת הקבועים מיותרת כי כל פעולה שנעשה תשאיר את וקטור
+האפס ללא שינוי )פעולות חיבור/כפל עם אפסים תמיד יחזירו אפס(.
+
+\begin{proposition}
+
+לכל ממ\textquotedbl ל הומוגנית קיים פתרון טריוויאלי שהוא וקטור האפס
+\L\{\(X=0\)\}, כלומר הפתרון בו כל המשתנים מתאפסים.
+
+\end{proposition}
+
+\begin{proof}
+נציב \L\{\(x_{1}=x_{2}=...=x_{n}=0\)\} בממ\textquotedbl ל ונקבל\L\{\%
+{[} a\_\{i1\}\cdot0+a\_\{i2\}\cdot0+\ldots+a\_\{in\}=0 {]} \}\%
+
+כנדרש לכל \L\{\(1\leq i\leq n\)\}.
+\end{proof}
+
+\subsection{פעולות שורה
+אלמנטריות}\label{ux5e4ux5e2ux5d5ux5dcux5d5ux5ea-ux5e9ux5d5ux5e8ux5d4-ux5d0ux5dcux5deux5e0ux5d8ux5e8ux5d9ux5d5ux5ea}
+
+נרצה לפשט את הממ\textquotedblל בלי לשנות את קבוצת הפתרונות שלה. זה לא
+רעיון חדש: כבר במקרה של שתי משוואות בשני משתנים ראינו שאפשר לחבר/לחסר
+בין המשוואות וגם להשתמש בכפל בסקלר. כל פעולה כזו לא משנה את קבוצת
+הפתרונות, כי מדובר בפעולה הפיכה )אפשר לשחזר את הממ\textquotedblל המקורית
+מתוך צורתה החדשה(. במילים אחרות, פעולות כאלו יוצרות ממ\textquotedblל
+שקולה לממ\textquotedblל המקורית, ויש בזה טעם אם היא יותר פשוטה.
+
+\begin{definition}
+
+תהי \L\{\(A=(a_{ij})\)\} מטריצה מסדר \L\{\(m\times n\)\} מעל
+\L\{\(\mathbb{F}\)\}. נסמן ב-\L\{\(R_{1},R_{2},...,R_{m}\)\} את שורות
+המטריצה \L\{\(A\)\}, כלומר \L\{\(R_{i}=(a_{i1},a_{i2},...,a_{in})\)\}
+לכל \L\{\(1\leq i\leq m\)\}. להלן שלושה סוגי פעולות על שורות \L\{\(A\)\}
+הנקראות \uline{פעולות שורה
+אלמנטריות:}
+
+\{\beginL 1\endL\}. כפל השורה \L\{\(R_{i}\)\} בסקלר \L\{\(c\in F\)\}
+שאינו \L\{\(0\)\}. נסמן פעולה זו כך: \L\{\(cR_{i}\rightarrow R_{i}\)\}.
+
+\{\beginL 2\endL\}. הוספה לשורה \L\{\(R_{i}\)\} את הכפולה של השורה
+\L\{\(R_{j}\)\} בסקלר \L\{\(c\in F\)\} כאשר \L\{\(i\neq j\)\}. נסמן
+\L\{\(R_{i}+cR_{j}\rightarrow R_{i}\)\}. השורה \L\{\(R_{j}\)\} נשארת ללא
+שינוי.
+
+\{\beginL 3\endL\}. החלפת השורות \L\{\(R_{i}\)\} ו-\L\{\(R_{j}\)\} עבור
+\L\{\(i\neq j\)\}. נסמן \L\{\(R_{i}\leftrightarrow R_{j}\)\}.
+
+\end{definition}
+
+\begin{example}
+
+נדגים כל סוג פעולה על המטריצה \L\{\% {[} .
+
+\begin{pmatrix}1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 9
+\end{pmatrix}
+
+{]} \}\%
+
+\{\beginL 1\endL\}. נכפיל את השורה הראשונה ב-\L\{\(2\)\}:\L\{\% {[}
+
+\begin{pmatrix}1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 9
+\end{pmatrix}
+
+\overset{2R_1 \to R_1}{\underset{R_1\leftarrow \dfrac{1}{2}R_1}{\longleftrightarrow}}
+
+\begin{pmatrix}2 & 4 & 6\\
+4 & 5 & 6\\
+7 & 8 & 9
+\end{pmatrix}
+
+{]} \}\%
+
+את הפעולה משמאל לימין ציינו מעל לחץ, ומתחתיו ציינו את הפעולה ההפוכה
+מימין לשמאל. פעולה זו היא כפל השורה הראשונה ב-\L\{\(\frac{1}{2}\)\}.
+
+\{\beginL 2\endL\}. נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר
+\L\{\(-3\)\}:\L\{\% {[}
+
+\begin{pmatrix}1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 9
+\end{pmatrix}
+
+\overset{R_3-3R_1 \to R_3}{\underset{R_3\leftarrow R_3+3R_1}{\longleftrightarrow}}
+
+\begin{pmatrix}1 & 2 & 3\\
+4 & 5 & 6\\
+4 & 2 & 0
+\end{pmatrix}
+
+{]} \}\%
+
+שימו לב שהשורה הראשונה לא משתנה. החישוב שעשינו עבור השורה השלישית הוא
+\L\{\((7,8,9)-3(1,2,3)=(4,2,0)\)\}. הפעולה ההפוכה היא הוספה לשורה
+השלישית כפולה של השורה הראשונה בסקלר \L\{\(3\)\}, כלומר הסקלר הנגדי
+לסקלר המקורי )שינוי סימן(.
+
+\{\beginL 3\endL\}. נחליף בין השורה השנייה לשורה השלישית:\L\{\% {[}
+
+\begin{pmatrix}1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 9
+\end{pmatrix}
+
+\overset{R_2 \leftrightarrow R_3}{\underset{R_3 \leftrightarrow R_2}{\longleftrightarrow}}
+
+\begin{pmatrix}1 & 2 & 3\\
+7 & 8 & 9\\
+4 & 5 & 6
+\end{pmatrix}
+
+{]} \}\%
+
+כאן הפעולה ההפוכה היא אותה הפעולה: החלפה בין השורה השנייה לשורה השלישית.
+
+\end{example}
+
+\begin{remark}
+באופן כללי, כל פעולות השורה האלמנטריות הן הפיכות. נבהיר למה הכוונה בכל
+מקרה:
+
+\{\beginL 1\endL\}. לכל \L\{\(c\neq0\)\} ולכל \L\{\(1\leq i\leq m\)\}
+הפעולה ההפוכה ל-\L\{\(cR_{i}\rightarrow R_{i}\)\} היא
+\L\{\(\frac{1}{c}R_{i}\rightarrow R_{i}\)\}.
+
+\{\beginL 2\endL\}. לכל \L\{\(c\in F\)\} ולכל \L\{\(i\neq j\)\} הפעולה
+ההפוכה ל-\L\{\(R_{i}+cR_{j}\rightarrow R_{i}\)\} היא
+\L\{\(R_{i}-cR_{j}\rightarrow R_{i}\)\}. אכן, אם מבצעים את הפעולה
+הראשונה ואחריה את השנייה )או בסדר הפוך(, התוצאה היא
+\L\{\(R_{i}+cR_{j}-cR_{j}\rightarrow R_{i}\)\} או בקיצור
+\L\{\(R_{i}\to R_{i}\)\}. החזרה למקור היא המשמעות של פעולה הפוכה.
+
+\{\beginL 3\endL\}. לכל \L\{\(i\neq j\)\} הפעולה ההפוכה להחלפה
+\L\{\(R_{i}\leftrightarrow R_{j}\)\} היא אותה ההחלפה
+\L\{\(R_{i}\leftrightarrow R_{j}\)\}.
+\end{remark}
+
+\begin{proposition}
+
+לכל ממ\textquotedbl ל שהיא, קבוצת הפתרונות שלה לא משתנה לאחר ביצוע מספר
+סופי )גדול ככל שיהיה( של פעולות שורה אלמנטריות.
+
+\end{proposition}
+
+במילים אחרות, כל Ł\(n\)-יה Ł\((c_{1},c_{2},...,c_{n})\) היא פתרון של
+הממ\textquotedblל החדשה )שמתקבלת אחרי כל הפעולות( אם ורק אם היא פתרון של
+הממ\textquotedblל המקורית.
+
+\begin{proof}
+לכל ממ\textquotedbl ל ולכל פעולת שורה אלמנטרית, כל פתרון של
+הממ\textquotedbl ל לפני הפעולה נשאר פתרון של הממ\textquotedbl ל שמתקבלת
+בעקבות הפעולה. ולהיפך, ההפיכות של הפעולה מראה שכל פתרון של
+הממ\textquotedbl ל החדשה הוא גם פתרון של הממ\textquotedbl ל הקודמת לה.
+אז קבוצת הפתרונות נשארת ללא שינוי.
+
+אם נמשיך כך ונבצע מספר סופי של פעולות שורה אלמנטריות, קבוצת הפתרונות
+תישמר בכל שלב ולכן גם בסוף התהליך היא תישאר זהה לקבוצת הפתרונות המקורית.
+\end{proof}
+
+\begin{remark}
+\leavevmode
+
+כפל שורה ב-\L\{\(0\)\} אינה פעולה הפיכה. למעשה, הוא מוחק את המשוואה
+המתאימה בממ\textquotedbl ל כי \L\{\(0=0\)\} מתקיים ללא קשר למשתנים. זה
+בדרך כלל ישפיע על קבוצת הפתרונות )יגדיל אותה( ולכן יש להימנע מכפל שורה
+ב-\L\{\(0\)\}. הנה דוגמה פשוטה במקרה של שתי משוואות בשני משתנים:\L\{\%
+{[}
+
+\begin{cases}
+x=1\\
+y=0
+\end{cases}
+
+{]} \}\%
+
+לממ\textquotedbl ל יש פתרון יחיד \L\{\((x,y)=(1,0)\)\} ושני המשתנים
+תלויים. נכפיל את השורה השנייה ב-\L\{\(0\)\} במטריצת המקדמים המורחבת:
+\L\{\% {[} \left(
+
+\begin{array}{@{}cc|c@{}}
+1 & 0 & 1\\
+0 & 1 & 0
+\end{array}
+
+\right) \xrightarrow{0\cdot R_2\to R_2} \left(
+
+\begin{array}{@{}cc|c@{}}
+    1 & 0 & 1\\
+    0 & 0 & 0
+\end{array}
+
+\right) {]} \}\%
+
+הממ\textquotedbl ל החדשה היא\L\{\% {[} .
+
+\begin{cases}
+x=1\\
+0=0
+\end{cases}
+
+{]} \}\%
+
+עכשיו \L\{\(y\)\} משתנה חופשי. נציב \L\{\(y=t\)\} ונקבל קבוצת פתרונות
+\L\{\(\{(1,t)|t\in\mathbb{R}\}\)\}, כלומר התווספו אינסוף פתרונות.
+הממ\textquotedbl ל החדשה לא שקולה לממ\textquotedbl ל המקורית כי הכפלנו
+ב-\L\{\(0\)\} ובכך מחקנו משוואה.
+\end{remark}
+
+\begin{example}
+
+נסתכל על ממ\textquotedbl ל הומוגנית:\L\{\% {[}
+
+\begin{cases}
+x+y+z=0\\
+2x+2z=0\\
+3x+5y+7z=0
+\end{cases}
+
+{]} \}\%
+
+נבצע סדרה של פעולות על מטריצת המקדמים המצומצמת:
+
+\L\{\% \begin{alignat*}{3}
+        &\begin{pmatrix} 1 & 1 & 1 \\ 2 & 0 & 2 \\ 3 & 5 & 7 \end{pmatrix}
+        &&\xrightarrow{\dfrac{1}{2}R_2 \to R_2}
+        \begin{pmatrix} 1 & 1 & 1 \\ 1 & 0 & 1 \\ 3 & 5 & 7 \end{pmatrix}
+        &&\xrightarrow{R_1 - R_2 \to R_1}
+        \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 3 & 5 & 7 \end{pmatrix} \\
+        \xrightarrow{R_1 \leftrightarrow R_2}&\begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 3 & 5 & 7 \end{pmatrix}
+        &&\xrightarrow{R_3 - 3R_1 \to R_3}
+        \begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 5 & 4 \end{pmatrix}
+        &&\xrightarrow{R_3 - 5R_2 \to R_3}
+        \begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 4 \end{pmatrix} \\
+        \xrightarrow{\dfrac{1}{4}R_3 \to R_3}&\begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+        &&\xrightarrow{R_1 - R_3 \to R_1}
+        \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+        &&
+    \end{alignat*} \}\%
+
+נסביר בהמשך איך בחרנו את הפעולות האלו. בינתיים נציין שסדרה כזו של פעולות
+נקראת \uline{דירוג מטריצה}, וכאן היא מראה כי הממ\textquotedbl ל המקורית
+שקולה לממ\textquotedbl ל הפשוטה שמתאימה למטריצה האחרונה שקיבלנו:\L\{\%
+{[}
+
+\begin{cases}
+x=0\\
+y=0\\
+z=0
+\end{cases}
+
+{]} \}\%
+
+לכן גם לממ\textquotedbl ל המקורית יש פתרון יחיד, שהוא הפתרון הטריוויאלי.
+שימו לב לצורתה של המטריצה האחרונה שהתקבלה בתהליך הדירוג. זו צורה נוחה
+מאוד בגלל ריבוי האפסים, ובנוסף כל שאר האיברים הם \L\{\(1\)\}. לכן, בכל
+משוואה בממ\textquotedbl ל האחרונה יש משתנה תלוי שהוא כבר מבודד )ובמקרה
+זה אין אף משתנה חופשי(.
+
+\end{example}
+
+באופן כללי, צריך להתייחס לשתי שאלות כאשר מנסים לפשט ממ\textquotedblל:
+
+\beginL 1\endL. איזו פעולת שורה אלמנטרית בוחרים בכל שלב?
+
+\beginL 2\endL. מתי עוצרים את הדירוג? כלומר, מתי המטריצה פשוטה מספיק כדי
+לפתור את הממ\textquotedblל?
+
+\subsection{מטריצות מדורגות ומדורגות
+קנונית}\label{ux5deux5d8ux5e8ux5d9ux5e6ux5d5ux5ea-ux5deux5d3ux5d5ux5e8ux5d2ux5d5ux5ea-ux5d5ux5deux5d3ux5d5ux5e8ux5d2ux5d5ux5ea-ux5e7ux5e0ux5d5ux5e0ux5d9ux5ea}
+
+בדוגמה הקודמת שלוש המטריצות האחרונות שקיבלנו עונות על תנאי ההגדרה הבאה:
+
+\begin{definition}
+
+מטריצה נקראת \uline{מדורגת} אם:
+
+\{\beginL 1\endL\}. אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל
+שאר השורות.
+
+\{\beginL 2\endL\}. בכל שורה שאינה שורת אפסים, האיבר הראשון )משמאל(
+שאינו \L\{\(0\)\} נקרא \uline{האיבר המוביל} של שורה זו, והוא מופיע משמאל
+לאיבר המוביל של השורה מתחתיו.
+
+\end{definition}
+
+\begin{example}
+
+א. במטריצה \L\{\% {[}
+
+\begin{pmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 4
+\end{pmatrix}
+
+{]} \}\%
+
+האיברים המובילים הם \L\{\(1,1,4\)\} לפי סדר השורות והם מופיעים בסדר
+הנכון )זזים ימינה כאשר יורדים שורה(. בנוסף, אין בכלל שורות אפסים ולכן זו
+מטריצה מדורגת.
+
+ב. המטריצה\L\{\% {[}
+
+\begin{pmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 5 & 4
+\end{pmatrix}
+
+{]} \}\%
+
+אינה מדורגת כי האיבר המוביל של השורה השלישית )\L\{\(5\)\}( מופיע באותה
+העמודה של האיבר המוביל של השורה השנייה )\L\{\(1\)\}(.
+
+ג. המטריצה \L\{\% {[}
+
+\begin{pmatrix}1 & 2 & 3\\
+0 & 0 & 4\\
+0 & 0 & 0
+\end{pmatrix}
+
+{]} \}\%
+
+מדורגת. שורה האפסים מופיעה בסוף, והאיבר המוביל של השורה הראשונה
+)\L\{\(1\)\}( מופיע משמאל לזה של השורה השנייה )\L\{\(4\)\}(.
+
+ד. המטריצה \L\{\% {[}
+
+\begin{pmatrix}1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+
+{]} \}\%
+
+אינה מדורגת כי יש שורת אפסים מעל לשורה שאינה כולה אפסים.
+
+\end{example}
+
+מטריצות מדורגות הן יחסית נוחות, אך יש מטריצות מדורגות מסוג יותר מסוים
+שהוא עוד יותר נוח בפתרון ממ\textquotedblל.
+
+\begin{definition}
+
+מטריצה נקראת \uline{מדורגת קנונית} אם:
+
+\{\beginL 1\endL\}. היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.
+
+\{\beginL 2\endL\}. האיבר המוביל בכל שורה )אם הוא קיים( הוא \L\{\(1\)\}.
+אפשר גם לקרוא לו אחד מוביל.
+
+\{\beginL 3\endL\}. בכל עמודה של אחד מוביל, כל שאר האיברים הם
+\L\{\(0\)\}.
+
+\end{definition}
+
+\begin{example}
+
+א. ראינו כבר את המטריצה\L\{\% {[} ,
+
+\begin{pmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+
+{]} \}\%
+
+שנקראת מטריצת היחידה מסדר \L\{\(3\times3\)\}. היא מדורגת קנונית כי אין
+בה שורת אפסים, כל האיברים המובילים הם \L\{\(1\)\} ומופיעים בסדר הנכון,
+וכל שאר האיברים הם \L\{\(0\)\}.
+
+ב. המטריצה \L\{\% {[}
+
+\begin{pmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 4
+\end{pmatrix}
+
+{]} \}\%
+
+מדורגת אך לא מדורגת קנונית, כי האיבר המוביל התחתון אינו \L\{\(1\)\}.
+בנוסף, לא כל האיברים מעליו הם \L\{\(0\)\}.
+
+ג. המטריצה \L\{\% {[}
+
+\begin{pmatrix}1 & 0 & 0 & 2\\
+0 & 0 & 1 & 3\\
+0 & 0 & 0 & 0
+\end{pmatrix}
+
+{]} \}\%
+
+מדורגת קנונית כי שני האיברים המובילים הם \L\{\(1\)\} ומופיעים בסדר
+הנכון. חוץ מהם יש רק אפסים בעמודות שלהם, וגם שורת האפסים מופיעה בסוף.
+
+\end{example}
+
+מהי הצורה הכללית של מטריצה מדורגת קנונית מסדר Ł\(m\times n\)?
+
+)מטריצה מדורגת קנונית עם דגש על האיברים המובילים(
+
+האיברים המובילים מופיעים בעמודות Ł\(k_{1},k_{2},....,k_{r}\). Ł\(r\) הוא
+גם מספר השורות שאינן כולן אפסים )בכל שורה כזו יש איבר מוביל אחד(.
+
+\begin{definition}
+
+נניח שקיבלנו צורה מדורגת קנונית של מטריצת מקדמים מצומצמת \L\{\(A\)\} של
+ממ\textquotedbl ל \L\{\(AX=B\)\}.
+
+א. כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר
+המשתנים נקראים חופשיים.
+
+ב. למספר המשתנים התלויים נקרא הדרגה של הממ\textquotedbl ל/מטריצה. נסמן
+\L\{\(\text{rank}(A)\)\}.
+
+\end{definition}
+
+\begin{remark}
+כל מטריצה ניתנת לדירוג שבסופו מתקבלת מטריצה מדורגת קנונית. מטריצה זו היא
+יחידה וניתן להשתמש בה כדי לקבוע את הדרגה של המטריצה המקורית, וגם את
+קבוצת הפתרונות שלה.
+\end{remark}
+
+הרעיון של משתנה תלוי זה שיש משוואה שמתארת את התלות שלו במשתנים החופשיים
+)או חלקם אם בכלל(. ניתן להציב סקלרים שרירותיים במשתנים החופשיים בכל
+משוואה, ולקבל את הערכים המתאימים של המשתנים התלויים.
+
+\begin{example}
+
+נפתור את הממ\textquotedbl ל\L\{\% {[} .
+
+\begin{cases}
+x_{1}+ix_{4}=1+i\\
+x_{3}+x_{4}=2
+\end{cases}
+
+{]} \}\%
+
+מטריצת המקדמים המורחבת היא\L\{\% {[} \left(
+
+\begin{array}{@{}cccc|c@{}}
+    1 & 0 & 0 & i & 1+i\\
+    0 & 0 & 1 & 1 & 2
+\end{array}
+
+\right) {]} \}\%
+
+היא כבר מדורגת קנונית ויש בה שני אחדות מובילים. לכן הדרגה היא
+\L\{\(2\)\} והמשתנים התלויים הם \L\{\(x_{1},x_{3}\)\}. נציב
+\L\{\((x_{2},x_{4})=(s,t)\in\mathbb{C}^{2}\)\} בשתי המשוואות ונבודד את
+המשתנים התלויים: \L\{\% {[} .
+
+\begin{cases}
+x_{1}=1+i-it\\
+x_{3}=2-t
+\end{cases}
+
+{]} \}\%
+
+לכן, קבוצת הפתרונות נתונה ע\textquotedbl י\L\{\% {[}
+.\{(1+i-it,s,2-t,t)\textbar s,t\in\mathbb{C}\} {]} \}\%
+
+יש שני פרמטרים בהצגה הפרמטרית כי יש שני משתנים חופשיים.
+
+\end{example}
+
+\subsection{שיטת הדירוג של
+גאוס}\label{ux5e9ux5d9ux5d8ux5ea-ux5d4ux5d3ux5d9ux5e8ux5d5ux5d2-ux5e9ux5dc-ux5d2ux5d0ux5d5ux5e1}
+
+כיצד נבחר אילו פעולות השורה האלמנטריות לבצע בכל שלב כדי להעביר מטריצה
+נתונה Ł\(A=(a_{ij})\) לצורה מדורגת קנונית? יש שיטה מסודרת )אלגוריתם(
+שנקראת שיטת הדירוג של גאוס. בהינתן מטריצה, נפעל לפי השלבים הבאים:
+
+\beginL 1\endL. נחפש בעמודה הראשונה איבר Ł\(a_{i1}\neq0\) ונהפוך אותו
+ל-Ł\(1\) ע\textquotedblי הפעולה Ł\(\frac{1}{a_{i1}}R_{i}\to R_{i}\) )אם
+יש רק אפסים, אפשר לדלג לשלב \beginL 3\endL(. אם Ł\(i\neq1\), נבצע גם את
+ההחלפה Ł\(R_{i}\leftrightarrow R_{1}\) כדי שיופיע Ł\(1\) בפינה השמאלית
+העליונה.
+
+\beginL 2\endL. נשתמש ב-Ł\(1\) שקיבלנו בשורה הראשונה כדי לאפס את כל
+האיברים מתחתיו. כלומר: אם מופיע Ł\(a_{j1}\) בשורה ה-Ł\(j\), נבצע את
+הפעולה Ł\(R_{j}-a_{j1}R_{1}\to R_{j}\) לכל Ł\(j>1\) כך
+ש-Ł\(a_{j1}\neq0\). כך נקבל עמודה שכמעט כולה אפסים חוץ מהאחד המוביל
+בשורה הראשונה.
+
+\beginL 3\endL. ממשיכים באופן דומה עם העמודה השנייה וחוזרים על אותם
+השלבים כדי לאפס את כל האיברים חוץ מאיבר אחד שיופיע בשורה השנייה כ-Ł\(1\)
+)אם מלכתחילה יש רק אפסים מתחת לשורה הראשונה, ממשיכים הלאה לעמודה הבאה(.
+יש להימנע מפעולה שתשנה את העמודה הראשונה.
+
+\beginL 4\endL. ממשיכים באופן דומה עם שאר העמודות לפי הסדר, בלי לשנות את
+העמודות הקודמות.
+
+\beginL 5\endL. עוצרים אחרי שעברנו על כל העמודות, או כאשר כל השורות מתחת
+לאחד המוביל האחרון הן שורות אפסים )ואז אין מה לעשות איתן(.
+
+\begin{example}
+
+נחזור לדוגמה קודמת, אבל הפעם נעבוד קצת שונה וגם נסביר את בחירת הפעולות.
+ניתן לבצע מספר פעולות במקביל אם הן בלתי תלויות, כמו להחסיר כפולות של
+שורה כלשהי משורות אחרות )לכל שורה כפולה משלה(. \L\{\% \begin{equation*}
+    \begin{aligned}
+        \begin{pmatrix}1 & 1 & 1 \\ 2 & 0 & 2 \\ 3 & 5 & 7 \end{pmatrix}
+        &\xrightarrow[R_2-2R_1 \to R_2]{R_3-3R_1 \to R_3}
+        \begin{pmatrix}1 & 1 & 1 \\ 0 & -2 & 0 \\ 0 & 2 & 4\end{pmatrix}
+        &\xrightarrow{-\dfrac{1}{2}R_2 \to R_2}
+        \begin{pmatrix}1 & 1 & 1 \\ 0 & 1 & 0 \\ 0 & 2 & 4 \end{pmatrix} \\
+        &\xrightarrow[R_1-R_2 \to R_1]{R_3-2R_2 \to R_3}
+        \begin{pmatrix}1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 4\end{pmatrix}
+        &\xrightarrow{\dfrac{1}{4}R_3 \to R_3}
+        \begin{pmatrix}1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+        &\xrightarrow{R_1-R_3 \to R_1}
+        \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+    \end{aligned}
+\end{equation*} \}\%
+
+בשלב הראשון כבר היה \L\{\(1\)\} בשורה הראשונה. השתמשנו בו כדי לאפס את
+האיברים מתחתיו.
+
+בשלב השני הפכנו את \L\{\(-2\)\} ל-\L\{\(1\)\}. בשלב השלישי איפסנו את שאר
+האיברים בעמודה השנייה.
+
+בשלב הרביעי הפכנו את \L\{\(4\)\} ל-\{\beginL 1\endL\}. בשלב החמישי
+איפסנו את שאר האיברים בעמודה השלישית.
+
+התוצאה היא מטריצה מדורגת קנונית )למעשה מטריצת היחידה( עם אחדות מובילים
+ואפסים בלבד.
+
+\end{example}
+
+\begin{remark}
+לרוב יש יותר מדרך אחת לפעול לפי שיטת הדירוג של גאוס, וזה גם לגיטימי
+לעשות פעולה מיותרת כל עוד היא חוקית. כל דרך היא נכונה ובלבד שאין בה כפל
+שורה ב-\L\{\(0\)\} )או טעות חישוב(. בכל מקרה הצורה המדורגת קנונית היא
+יחידה ולכן אינה תלויה בדרך הדירוג.
+\end{remark}
+
+\selectlanguage{american}
+
+\bookmarksetup{startatroot}
+
+\chapter{בדיקת
+סביבות}\label{ux5d1ux5d3ux5d9ux5e7ux5ea-ux5e1ux5d1ux5d9ux5d1ux5d5ux5ea}
+
+\section{בדיקת
+סביבות}\label{ux5d1ux5d3ux5d9ux5e7ux5ea-ux5e1ux5d1ux5d9ux5d1ux5d5ux5ea-1}
+
+\begin{definition}
+
+זהו טקסט קצר של \textbf{הגדרה}.
+
+\end{definition}
+
+\begin{example}
+
+זהו טקסט קצר של \textbf{דוגמה} עם נוסחה: \(a^2 + b^2 = c^2\).
+
+\end{example}
+
+\begin{exercise}
+
+זהו טקסט קצר של \textbf{תרגיל}.
+
+\end{exercise}
+
+\begin{remark}
+זהו טקסט קצר של \textbf{הערה}.
+\end{remark}
+
+\begin{theorem}
+
+זהו טקסט קצר של \textbf{משפט}.
+
+\end{theorem}
+
+\begin{lemma}
+
+זהו טקסט קצר של \textbf{למה}.
+
+\end{lemma}
+
+\begin{proposition}
+
+זהו טקסט קצר של \textbf{טענה}.
+
+\end{proposition}
+
+\begin{corollary}
+
+זהו טקסט קצר של \textbf{מסקנה}.
+
+\end{corollary}
+
+\begin{proof}
+זהו טקסט קצר של \textbf{הוכחה}. \(\blacksquare\)
+\end{proof}
+
+\begin{remark}
+באותו אופן (או משיקולי סימטריה( גם מתקיים
+\[.A\cap B\subseteq B\subseteq A\cup B\]
+\end{remark}
+
+\section{תרגיל
+לדוגמה}\label{ux5eaux5e8ux5d2ux5d9ux5dc-ux5dcux5d3ux5d5ux5d2ux5deux5d4}
+
+כאן מופיעה השאלה של התרגיל.
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, rightrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, toptitle=1mm, toprule=.15mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{הצג פתרון}, colback=white]
+
+זהו הפתרון של התרגיל.
+
+הוא יכול להכיל מספר שורות, ואפילו \textbf{עיצובים שונים}.
+
+\[ E = mc^2 \]
+
+\end{tcolorbox}
+
+הטקסט הזה מופיע אחרי התרגיל והפתרון שלו.
+
+\section{עוד נסיון}\label{ux5e2ux5d5ux5d3-ux5e0ux5e1ux5d9ux5d5ux5df}
+
+\begin{exercise}
+
+הוכיחו כי לכל \(n \in \mathbb{N}\), מתקיים כי \(n^2+n\) הוא מספר זוגי.
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, rightrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, toptitle=1mm, toprule=.15mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{פתרון}, colback=white]
+
+\subsubsection{הוכחה:}\label{ux5d4ux5d5ux5dbux5d7ux5d4}
+
+אנו יכולים לבחון שני מקרים:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{אם \(n\) הוא מספר זוגי:} ניתן לכתוב \(n=2k\) עבור \(k\) שלם
+  כלשהו. נציב בביטוי: \(n^2+n = (2k)^2 + 2k = 4k^2 + 2k = 2(2k^2+k)\)
+  מכיוון שהביטוי הוא כפולה של 2, הוא זוגי.
+\item
+  \textbf{אם \(n\) הוא מספר אי-זוגי:} ניתן לכתוב \(n=2k+1\) עבור \(k\)
+  שלם כלשהו. נציב בביטוי:
+  \(n^2+n = (2k+1)^2 + (2k+1) = (4k^2+4k+1) + (2k+1) = 4k^2+6k+2 = 2(2k^2+3k+1)\)
+  מכיוון שהביטוי הוא כפולה של 2, הוא גם זוגי.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\section{שני ישרים}\label{ux5e9ux5e0ux5d9-ux5d9ux5e9ux5e8ux5d9ux5dd}
+
+\section{חיתוך בין שני
+ישרים}\label{ux5d7ux5d9ux5eaux5d5ux5da-ux5d1ux5d9ux5df-ux5e9ux5e0ux5d9-ux5d9ux5e9ux5e8ux5d9ux5dd}
+
+בסימולציה זו נבחן את נקודת החיתוך של שני ישרים במישור:\\
+הישר הקבוע \(x + y = 0\) והישר המשתנה \(x + ty = s\).\\
+באמצעות המחוונים ניתן לשנות את הערכים של \(t\) ו־\(s\) ולראות כיצד משתנה
+נקודת החיתוך.
+
+\begin{remark}
+הסימולציה מדגימה את הקשר בין מערכת משוואות לינאריות לבין חיתוך גיאומטרי
+של ישרים במישור.
+\end{remark}
+
+\phantomsection\label{sim-two-lines}
+\phantomsection\label{quarto-content}
+חיתוך בין ישרים --- סימולציה
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colframe=quarto-callout-color-frame, left=2mm, bottomrule=.15mm, toprule=.15mm, breakable, leftrule=.75mm, arc=.35mm, rightrule=.15mm, colback=white]
+
+איך משתמשים?
+
+\phantomsection\label{callout-1}
+הזיזו את המחוונים כדי לשנות את הפרמטרים של הישר הירוק (x + t y = s)
+ולראות את נקודת החיתוך עם הישר הכחול (x + y = 0).
+
+\end{tcolorbox}
+
+\phantomsection\label{sim-two-lines}
+\phantomsection\label{info-panel}
+
+\subsection{מה רואים
+כאן?}\label{ux5deux5d4-ux5e8ux5d5ux5d0ux5d9ux5dd-ux5dbux5d0ux5df}
+
+\begin{itemize}
+\tightlist
+\item
+  כאשר \(t=1\) ושתי המשוואות \textbf{זהות} --- הישרים מתלכדים ויש
+  \textbf{אינסוף פתרונות}.
+\item
+  כאשר \(t=1\) אך האגפים הימניים שונים --- הישרים \textbf{מקבילים} ואין
+  פתרון.
+\item
+  אחרת --- הישרים נחתכים בנקודה יחידה \((x,y)\) שהיא הפתרון של המערכת.
+\end{itemize}
+
+\begin{exercise}
+
+\textbf{אתגר:} מצאו תנאים על \(t\) ו־\(s\) כך שהנקודה \((x,y)=(1,-1)\)
+תהיה נקודת החיתוך.\\
+רמז: הציבו במערכת ופתרו עבור הפרמטרים.
+
+\end{exercise}
+
+\begin{proof}
+מניחים \((x,y)=(1,-1)\). מהישר הקבוע מתקבל \(1+(-1)=0\) שמתקיים תמיד.\\
+מהישר המשתנה מתקבל \(1 + t(-1) = s\), כלומר \(s = 1 - t\).
+\end{proof}
+
+\section{טרנספורמציה
+לינארית}\label{ux5d8ux5e8ux5e0ux5e1ux5e4ux5d5ux5e8ux5deux5e6ux5d9ux5d4-ux5dcux5d9ux5e0ux5d0ux5e8ux5d9ux5ea}
+
+\begin{center}
+\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{simulations/linear-transform.png}
+\end{center}
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, rightrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, toptitle=1mm, toprule=.15mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: מטריצה כטרנספורמציה}, colback=white]
+
+הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: \textbf{מטריצה
+כפעולה גיאומטרית}.
+
+\subsection{מה רואים כאן?}
+
+\begin{itemize}
+\item
+  \textbf{הווקטור הכחול} הוא הווקטור המקורי במרחב, אותו ניתן לשנות בעזרת
+  המחוונים \texttt{x} ו-\texttt{y}.
+\item
+  \textbf{הווקטור האדום} הוא תוצאת הפעולה -- המקום החדש שאליו הווקטור
+  ``עבר'' לאחר שהמטריצה (שנקבעת על ידי
+  \texttt{a},\texttt{b},\texttt{c},\texttt{d}) הפעילה עליו את
+  הטרנספורמציה.
+\end{itemize}
+
+במילים פשוטות, אתם רואים כיצד המטריצה ``מעוותת'' את המרחב ולוקחת כל
+וקטור למקום חדש.
+
+\subsection{נסו לחקור בעצמכם}
+
+\begin{itemize}
+\item
+  \textbf{מתיחה וכיווץ (Scaling):} מה קורה כאשר משנים רק את ערכי
+  \texttt{a} ו-\texttt{d} (ושומרים על \texttt{b=0}, \texttt{c=0})? איזו
+  מטריצה תגרום לווקטור להתארך פי שניים בדיוק?
+\item
+  \textbf{שיקוף (Reflection):} האם תמצאו מטריצה שתשקף את הווקטור ביחס
+  לציר ה-x? (רמז: איזה רכיב של הווקטור צריך לשנות את סימנו?).
+\item
+  \textbf{סיבוב (Rotation):} הגדירו את המטריצה להיות \texttt{a=0},
+  \texttt{b=-1}, \texttt{c=1}, \texttt{d=0}. איזו פעולה גיאומטרית
+  המטריצה מבצעת על כל וקטור שתבחרו?
+\item
+  \textbf{גזירה (Shear):} מה קורה כאשר משנים את ערך \texttt{b} בזמן
+  ש-\texttt{a=1} ו-\texttt{d=1}? הביטו כיצד המרחב ``נמתח'' הצידה.
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{הדגמה: כלל הסנדוויץ'
+לסדרות}\label{ux5d4ux5d3ux5d2ux5deux5d4-ux5dbux5dcux5dc-ux5d4ux5e1ux5e0ux5d3ux5d5ux5d5ux5d9ux5e5-ux5dcux5e1ux5d3ux5e8ux5d5ux5ea}
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, rightrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, toptitle=1mm, toprule=.15mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: כלל הסנדוויץ' לסדרות}, colback=white]
+
+כלל הסנדוויץ' לסדרות קובע שאם איברי סדרה אחת (\texttt{gₙ}) חסומים בין
+איברי שתי סדרות אחרות (\texttt{hₙ} ו-\texttt{fₙ}), ושתי הסדרות החיצוניות
+מתכנסות לאותו גבול \texttt{L}, אזי גם לסדרה הלכודה אין ברירה והיא חייבת
+להתכנס לאותו הגבול.
+
+\subsection{הסדרות בדמו}
+
+הסדרות שאתם רואים בדמו מוגדרות באופן הבא, כאשר \texttt{L} הוא הגבול,
+ו-\texttt{C\_h} ו-\texttt{C\_f} הם ``מרווחי ההתכנסות'' הנשלטים על ידי
+המחוונים:
+
+\begin{itemize}
+\item
+  \textbf{הסדרה העליונה (כחול):} \(h_n = L + \frac{C_h}{n}\) סדרה זו
+  מתכנסת לגבול \texttt{L} מלמעלה.
+\item
+  \textbf{הסדרה התחתונה (ירוק):} \(f_n = L - \frac{C_f}{n}\) סדרה זו
+  מתכנסת לגבול \texttt{L} מלמטה, ויכולה לעשות זאת בקצב שונה מהסדרה
+  העליונה.
+\item
+  \textbf{הסדרה הלכודה (אדום):}
+  \(g_n = \left( L + \frac{C_h - C_f}{2n} \right) + \left( \frac{C_h + C_f}{2n} \right) \sin(2.5n)\)
+  הגדרה זו מבטיחה שהסדרה האדומה תמיד תתנודד בדיוק במרחב שבין הסדרה
+  הירוקה לכחולה. היא לוקחת את ``אמצע הסנדוויץ''' ומוסיפה לו תנודה שגודלה
+  המקסימלי הוא בדיוק חצי מהרוחב של ה''סנדוויץ'\,'' באותה נקודה.
+\end{itemize}
+
+\subsection{נסו לחקור בעצמכם}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{צרו א-סימטריה:} נסו להגדיר את המרווח העליון (\texttt{C\_h})
+  כגדול בהרבה מהמרווח התחתון (\texttt{C\_f}), או להפך. שימו לב שגם כאשר
+  ההתכנסות אינה סימטרית, כלל הסנדוויץ' עדיין עובד והסדרה האדומה נדחקת אל
+  הגבול.
+\item
+  \textbf{הגדילו את מספר האיברים (\texttt{N}):} ככל שתציגו יותר איברים,
+  כך תראו בבירור את ההתכנסות של כל שלוש הסדרות אל קו הגבול.
+\item
+  \textbf{שנו את הגבול (\texttt{L}):} שימו לב כיצד נקודת ההתכנסות של כל
+  הסדרות משתנה בהתאם.
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{הדגמה: כלל הסנדוויץ' לסדרות - מספרים
+קבועים}\label{ux5d4ux5d3ux5d2ux5deux5d4-ux5dbux5dcux5dc-ux5d4ux5e1ux5e0ux5d3ux5d5ux5d5ux5d9ux5e5-ux5dcux5e1ux5d3ux5e8ux5d5ux5ea---ux5deux5e1ux5e4ux5e8ux5d9ux5dd-ux5e7ux5d1ux5d5ux5e2ux5d9ux5dd}
+
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, rightrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, toptitle=1mm, toprule=.15mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: דוגמה מספרית}, colback=white]
+
+בדוגמה זו אנו בוחנים מקרה ספציפי של כלל הסנדוויץ' עם סדרות שהוגדרו מראש.
+האינטראקטיביות היחידה היא היכולת לשנות את מספר האיברים (\texttt{N})
+המוצגים, כדי לראות את תהליך ההתכנסות מתרחש.
+
+\subsection{הסדרות בדמו}
+
+הסדרות הקבועות המוצגות כאן הן:
+
+\begin{itemize}
+\item
+  \textbf{הסדרה העליונה (כחול):} \(h_n = 1 + \frac{2}{n}\) סדרה זו
+  מתכנסת לגבול 1 מלמעלה.
+\item
+  \textbf{הסדרה התחתונה (ירוק):} \(f_n = 1 - \frac{1.5}{n}\) סדרה זו
+  מתכנסת לגבול 1 מלמטה.
+\item
+  \textbf{הסדרה הלכודה (אדום):}
+  \(g_n = 1+ \frac{0.25}{n} + \frac{3.5}{2n} \sin(2.5n)\) זוהי סדרה
+  מתנודדת אשר נשארת תמיד כלואה בין שתי הסדרות החיצוניות.
+\end{itemize}
+
+כל שלוש הסדרות שואפות לאותו הגבול, \texttt{L\ =\ 1}.
+
+\subsection{נסו לחקור בעצמכם}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{התחילו עם ערך \texttt{N} קטן}, למשל 15. שימו לב שהסדרות עדיין
+  רחוקות זו מזו, והמרחק בינן לבין קו הגבול (y=1) גדול יחסית.
+\item
+  \textbf{הזיזו את המחוון של \texttt{N} ימינה לאט.}
+\item
+  \textbf{צפו בתופעה:} ככל ש-\texttt{N} גדל, הנקודות החדשות שנוספות לכל
+  סדרה מתקרבות יותר ויותר לקו הגבול \texttt{y=1}. אפקט ה''סחיטה'' של
+  הסנדוויץ' הופך ברור יותר ויותר ככל שמתקדמים על ציר ה-\texttt{n}.
+\end{enumerate}
+
+הדגמה זו ממחישה כיצד ההתכנסות היא תכונה של ``זנב'' הסדרה, כלומר מה שקורה
+עבור ערכי \texttt{n} גדולים מאוד.
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{פרק חדוא}\label{ux5e4ux5e8ux5e7-ux5d7ux5d3ux5d5ux5d0}
+
+\section{סדרות}\label{ux5e1ux5d3ux5e8ux5d5ux5ea}
+
+יתכן מאוד וכבר שמעתם על סדרות חשבוניות, לדוגמא, \(1,2,3,4,5,\ldots\),
+וסדרות הנדסיות, לדוגמא,
+\(1,\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},\ldots\). אלה הן
+שתי משפחות של סדרות של מספרים.
+
+\begin{definition}
+
+\emph{סדרה של מספרים ממשיים} היא פונקציה \(f\) אשר תחום הגדרתה הוא קבוצת
+המספרים הטבעיים וטווחה הוא קבוצת המספרים הממשיים. נסכים לכתוב \(a_n\)
+במקום \(f(n)\).
+
+\end{definition}
+
+\[\begin{array}{cccccc}
+1 & 2 & 3 & \ldots & n & \ldots \\
+\downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow \\
+f(1) & f(2) & f(3) & \ldots & f(n) & \ldots
+\end{array}\]
+
+כמו לכל פונקציה, גם לסדרה יש הצגה גרפית. לכל מספר סידורי \(n\) על ציר ה-
+\(x\) נתאים נקודה \((n,a_n)\). לדוגמא, הסדרה שמתוארת באיור היא
+\(a_n=\frac{1}{n}\).
+
+נהוג לסמן סדרה ע"י \(\{a_n\}_{n=1}^\infty\), כש- \(a_{17}\) הוא האיבר ה-
+\(17\) שלה ו- \(a_{129}\) הוא האיבר ה- \(129\) שלה. לעתים בכתיבת איברי
+הסדרה מוותרים על הסוגריים ורושמים פשוט \(a_1,a_2,a_3,\ldots\).
+
+\begin{example}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\{n\}_{n=1}^\infty\) היא סדרה של מספרים טבעיים המופיעים לפי הסדר
+  ה"טבעי" שלהם, כלומר, \[1,2,3,4,5,\ldots.\]
+\item
+  \(\{2n-1\}_{n=1}^\infty\) היא סדרה של מספרים טבעיים אי-זוגיים, כלומר,
+  \[1,3,5,7,9,\ldots.\]
+\end{enumerate}
+
+\end{example}
+
+\begin{example}
+
+הסדרה \(a_n=1\) לכל \(n\), כלומר \[1,1,1,1,1,\ldots.\]
+
+\end{example}
+
+\begin{example}
+
+\(\{(-1)^n\}_{n=1}^\infty\) היא סדרה של מספרים \(-1\) ו- \(1\) המתחלפים,
+כלומר, \[-1,1,-1,1,-1,\ldots.\]
+
+\end{example}
+
+\begin{example}
+
+\(\left\{\frac{(-1)^{n+1}}{n}\right\}_{n=1}^\infty\) היא הסדרה הבאה
+\[1,-\frac{1}{2},\frac{1}{3},-\frac{1}{4},\frac{1}{5},\ldots.\]
+
+\end{example}
+
+קיימים אופנים שונים להגדרת סדרה. בכל אחת מהדוגמאות לעיל, סדרה הוגדרה ע"י
+נוסחא לחישוב איברה הכללי. זהו לא האופן היחיד. אחת השיטות הנפוצות להגדרת
+סדרה היא השיטה \emph{רקורסיבית} - השיטה שמאפשרת חישוב של איברה הכללי של
+סדרה דרך האיברים הקודמים. בשיטה זאת נחוצים \emph{תנאיי התחלה}. לדוגמא,
+תהא \(\{a_n\}_{n=1}^\infty\) מוגדרת ע"י \(a_{n}=a_{n-2}+a_{n-1}\) כאשר
+\(a_1=1\) ו- \(a_2=1\). )שימו לב כי סדרות רקורסיביות עם נוסחת נסיגה זהה
+שנבדלות בתנאיי התחילה הן סדרות שונות.( לא קשה להשתכנע כי איבריה הראשונים
+של הסדרה הם \(1,1,2,3,5,8,13,21,\ldots\). קיימת גם נוסחא לחישוב של איברה
+הכללי של הסדרה הזאת
+\[a_n=\frac{(1+\sqrt{5})^n-(1-\sqrt{5})^n}{2^n\sqrt{5}}.\] זאת סדרה
+"ידוענית" בתחום המתמטיקה, היא נקראת \emph{סדרת פיבונצ'י}, על כינויו של
+מתמטיקאי איטלקי מימי הביניים- לאונרדו פיזנו.
+
+\begin{theorem}
+
+אם \(a > b\) ו־\(b > c\), אז \(a > c\).
+
+\end{theorem}
+
+\bookmarksetup{startatroot}
+
+\chapter{סיכום}\label{ux5e1ux5d9ux5dbux5d5ux5dd}
+
+In summary, this book has no content whatsoever.
+
+\bookmarksetup{startatroot}
+
+\chapter*{ביבליוגרפיה}\label{ux5d1ux5d9ux5d1ux5dcux5d9ux5d5ux5d2ux5e8ux5e4ux5d9ux5d4}
+\addcontentsline{toc}{chapter}{ביבליוגרפיה}
+
+\markboth{ביבליוגרפיה}{ביבליוגרפיה}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-knuth84}
+Knuth, Donald E. 1984. {``Literate Programming''}. \emph{Comput. J.} 27
+(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+
+\end{CSLReferences}
+
+
+\backmatter
+
+
+\end{document}

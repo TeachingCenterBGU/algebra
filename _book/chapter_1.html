@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; חידות – אלגברה לינארית</title>
+<title>4&nbsp; גיאומטריה במרחב ובמישור – אלגברה לינארית</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במרחב ובמישור</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -185,25 +185,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במרחב ובמישור</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">בדיקת סביבות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_calculus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">פרק חדוא</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -222,9 +228,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#תרגיל-לדוגמה" id="toc-תרגיל-לדוגמה" class="nav-link active" data-scroll-target="#תרגיל-לדוגמה"><span class="header-section-number">4.1</span> תרגיל לדוגמה</a></li>
-  <li><a href="#עוד-נסיון" id="toc-עוד-נסיון" class="nav-link" data-scroll-target="#עוד-נסיון"><span class="header-section-number">4.2</span> עוד נסיון</a></li>
-  <li><a href="#טרנספורמציה-לינארית" id="toc-טרנספורמציה-לינארית" class="nav-link" data-scroll-target="#טרנספורמציה-לינארית"><span class="header-section-number">4.3</span> טרנספורמציה לינארית</a></li>
+  <li><a href="#המישור-mathbbr2" id="toc-המישור-mathbbr2" class="nav-link active" data-scroll-target="#המישור-mathbbr2"><span class="header-section-number">4.0.1</span> המישור <span class="math inline">\mathbb{R}^{2}</span></a></li>
+  <li><a href="#פעולות-על-וקטורים" id="toc-פעולות-על-וקטורים" class="nav-link" data-scroll-target="#פעולות-על-וקטורים"><span class="header-section-number">4.0.2</span> פעולות על וקטורים</a></li>
+  <li><a href="#גדלים-וזוויות-ב-mathbbr2" id="toc-גדלים-וזוויות-ב-mathbbr2" class="nav-link" data-scroll-target="#גדלים-וזוויות-ב-mathbbr2"><span class="header-section-number">4.0.3</span> גדלים וזוויות ב-<span class="math inline">\mathbb{R}^{2}</span></a></li>
+  <li><a href="#ישרים-ב-mathbbr2" id="toc-ישרים-ב-mathbbr2" class="nav-link" data-scroll-target="#ישרים-ב-mathbbr2"><span class="header-section-number">4.0.4</span> ישרים ב-<span class="math inline">\mathbb{R}^{2}</span></a></li>
+  <li><a href="#מכפלה-סקלרית" id="toc-מכפלה-סקלרית" class="nav-link" data-scroll-target="#מכפלה-סקלרית"><span class="header-section-number">4.0.5</span> מכפלה סקלרית</a></li>
+  <li><a href="#מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" id="toc-מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" class="nav-link" data-scroll-target="#מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית"><span class="header-section-number">4.0.6</span> מעבר בין הצגה פרמטרית של ישר להצגה אלגברית</a></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +242,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במרחב ובמישור</span></h1>
 </div>
 
 
@@ -250,281 +259,176 @@ window.Quarto = {
 </header>
 
 
-<div class="exercise">
-<p>זהו ניסוח התרגיל לבדיקת עיצוב ותצוגה.</p>
+<p>בפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד תחילה במישור )עם דגש על ישרים( ואחר כך נעבור למרחב )שם נדבר גם על מישורים(.</p>
+<section id="המישור-mathbbr2" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="המישור-mathbbr2"><span class="header-section-number">4.0.1</span> המישור <span class="math inline">\mathbb{R}^{2}</span></h3>
+<p>בפרק <span class="math inline">0</span> דיברנו על הישר הממשי, וגם על המישור המרוכב. אפשר גם לתאר את המישור )הממשי( בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.</p>
+<div class="definition">
+<p>המישור {<span class="math inline">\mathbb{R}^{2}</span>} הוא קבוצת כל הנקודות בעלות שתי קוארדינטות ממשיות, כלומר{% [ .^{2}={(x,y)|x,y} ] }%</p>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>זו הוכחה קצרה לבדיקת עיצוב ותצוגה.</p>
+<div class="example">
+<p>{<span class="math inline">(0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^{2}</span>}</p>
+<p>לעומת זאת: {<span class="math inline">1,(i,0),(0,1,2)\notin\mathbb{R}^{2}</span>}</p>
 </div>
-<div class="exercise">
-<p>זהו ניסוח התרגיל לבדיקת עיצוב ותצוגה.</p>
+<div class="center">
+<p>)מישור אינטראקטיבי שמאפשר ללחוץ על נקודה ולהציג את הוקטור עם הקוארדינטות שלו(</p>
+</div>
+<div class="definition">
+<p>וקטור {<span class="math inline">\vec{v}=(x,y)</span>} במישור הוא חץ שיוצא מהראשית {<span class="math inline">(0,0)</span>} ומסתיים בנקודה {<span class="math inline">(x,y)</span>}. לכל וקטור יש גודל וכיוון.</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>באותו אופן (או משיקולי סימטריה( גם מתקיים <span class="math display">.A\cap B\subseteq B\subseteq A\cup B</span></p>
+<p><span class="proof-title"><em>Remark</em>. </span>נשתמש באותן הקוארדינטות לוקטור וגם לנקודה המתאימה. נבין את הכוונה לפי ההקשר, אבל לרוב נדבר על וקטורים ולא על נקודות.</p>
 </div>
-<section id="תרגיל-לדוגמה" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="תרגיל-לדוגמה"><span class="header-section-number">4.1</span> תרגיל לדוגמה</h2>
-<p>כאן מופיעה השאלה של התרגיל.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="הצג פתרון">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>הגדרנו וקטורים כחצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה שקובע את הוקטור הוא גודלו וכיוונו, לא נקודת ההתחלה או הסיום. וקטורים זהים יופיעו כחצים מקבילים ושווי גודל במישור.</p>
+<div class="center">
+<p>)מישור אינטראקטיבי שמאפשר להזיז וקטור נתון(</p>
 </div>
-<div class="callout-title-container flex-fill">
-הצג פתרון
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר {<span class="math inline">(a,b)=(c,d)</span>} אם ורק אם {<span class="math inline">a=c</span>} וגם {<span class="math inline">b=d</span>}. למשל, {<span class="math inline">(1,2)=(1,2)</span>} אך {<span class="math inline">(1,-2)\neq(1,2)</span>}. למעשה, {<span class="math inline">(1,2)</span>} ו-{<span class="math inline">(1,-2)</span>} הם שווי גודל אך בעלי כיוונים שונים.</p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>זהו הפתרון של התרגיל.</p>
-<p>הוא יכול להכיל מספר שורות, ואפילו <strong>עיצובים שונים</strong>.</p>
-<p><span class="math display"> E = mc^2 </span></p>
-</div>
-</div>
-</div>
-<p>הטקסט הזה מופיע אחרי התרגיל והפתרון שלו.</p>
 </section>
-<section id="עוד-נסיון" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="עוד-נסיון"><span class="header-section-number">4.2</span> עוד נסיון</h2>
+<section id="פעולות-על-וקטורים" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="פעולות-על-וקטורים"><span class="header-section-number">4.0.2</span> פעולות על וקטורים</h3>
+<p>שתי הפעולות הבסיסיות שניתן לבצע על וקטורים הן חיבור וכפל בסקלר. סקלר הוא מילה נרדפת למספר, וכאן נסמנו <span class="math inline">c\in\mathbb{R}</span>.</p>
+<p>חיבור: <span class="math inline">(a_{1},a_{2})+(b_{1},b_{2})=(a_{1}+b_{1},a_{2}+b_{2})</span></p>
+<p>כפל בסקלר: <span class="math inline">c\cdot(a_{1},a_{2})=(ca_{1},ca_{2})</span></p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי )שווה גודל אך הפוך בכיוון( מתקבל עי כפל בסקלר {<span class="math inline">-1</span>}. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר{% [ .(a_{1},a_{2})-(b_{1},b_{2})=(a_{1},a_{2})+(-1)(b_{1},b_{2})=(a_{1}-b_{1},a_{2}-b_{2}) ] }%</p>
+</div>
+<div class="example">
+<p>א. {<span class="math inline">(1,2)+(10,20)=(1+10,2+20)=(11,22)</span>}</p>
+<p>ב. {<span class="math inline">2\cdot(5,3)=(10,6)</span>}</p>
+<p>ג. {<span class="math inline">-5\cdot(2,5)=(-10,-25)</span>}</p>
+<p>ד. {<span class="math inline">(9,2)-(11,8)=(9-11,2-8)=(-2,-6)</span>}</p>
+</div>
+<p>אפשר להבין חיבור וקטורי באופן גיאומטרי עי כלל המקבילית. כלל זה קובע שאם נצייר שני וקטורים <span class="math inline">\vec{v},\vec{w}</span> שיוצאים מהראשית ואז נשלים אותם למקבילית )עי הוספת שני וקטורים מקבילים ושווי גודל כצלעות נגדיות(, אז האלכסון שיוצא מהראשית מתאר את <span class="math inline">\vec{v}+\vec{w}</span>. ההפרש <span class="math inline">\vec{v}-\vec{w}</span> מיוצג עי האלכסון השני.</p>
+<div class="center">
+<p>)מישור אינטראקטיבי שמראה חיבור/הפרש וקטורי כאלכסוני מקבילית(</p>
+</div>
+<p>זה גם מוביל אותנו לנוסחה שמתארת וקטור שמתחיל בנקודה <span class="math inline">(a_{1},a_{2})</span> ומסתיים ב-<span class="math inline">(b_{1},b_{2})</span>: מקבלים את ההפרש הוקטורי <span class="math inline">(b_{1}-a_{1},b_{2}-a_{2})</span>.</p>
 <div class="exercise">
-<p>הוכיחו כי לכל <span class="math inline">n \in \mathbb{N}</span>, מתקיים כי <span class="math inline">n^2+n</span> הוא מספר זוגי.</p>
+<p>הראו שהוקטור שמתחיל ב-{<span class="math inline">(1,3)</span>} ומסתיים ב-{<span class="math inline">(5,0)</span>} שווה לוקטור שמתחיל ב-{<span class="math inline">(5,-1)</span>} ומסתיים ב-{<span class="math inline">(9,-4)</span>}.</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-פתרון
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<section id="הוכחה" class="level4 callout-body-container callout-body" data-number="4.2.0.1">
-<h4 data-number="4.2.0.1" class="anchored" data-anchor-id="הוכחה"><span class="header-section-number">4.2.0.1</span> הוכחה:</h4>
-<p>אנו יכולים לבחון שני מקרים:</p>
-<ol type="1">
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k)^2 + 2k = 4k^2 + 2k = 2(2k^2+k)</span> מכיוון שהביטוי הוא כפולה של 2, הוא זוגי.</p></li>
-<li><p><strong>אם <span class="math inline">n</span> הוא מספר אי-זוגי:</strong> ניתן לכתוב <span class="math inline">n=2k+1</span> עבור <span class="math inline">k</span> שלם כלשהו. נציב בביטוי: <span class="math inline">n^2+n = (2k+1)^2 + (2k+1) = (4k^2+4k+1) + (2k+1) = 4k^2+6k+2 = 2(2k^2+3k+1)</span> מכיוון שהביטוי הוא כפולה של 2, הוא גם זוגי.</p></li>
-</ol>
-</section>
-</div>
+<p>כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור )<span class="math inline">c&gt;1</span>( או כיווצו <span class="math inline">(0&lt;c&lt;1)</span> בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון ובנוסף מתיחה/כיווץ בהתאם לערך של <span class="math inline">|c|</span>.</p>
+<div class="center">
+<p>)מישור אינטראקטיבי שמראה כפל בסקלר כמתיחה/כיווץ/היפוך כיוון(</p>
 </div>
 </section>
-<section id="טרנספורמציה-לינארית" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="טרנספורמציה-לינארית"><span class="header-section-number">4.3</span> טרנספורמציה לינארית</h2>
-<style>
-  /* עיצוב כללי לכל הדמו */
-  #linear-transform-demo {
-    font-family: sans-serif;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
-  }
-  /* עיצוב לגרף עצמו */
-  #transformCanvas {
-    border: 1px solid black;
-  }
-  /* עיצוב לאזור הבקרה (המחוונים) */
-  .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  .control-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .control-group input[type="range"] {
-    width: 100%;
-  }
-</style>
-
-<div id="linear-transform-demo">
-  <canvas id="transformCanvas" width="500" height="500"></canvas>
-  <div class="controls">
-    <div class="control-group" id="matrix-controls">
-      <h4 class="anchored">ערכי המטריצה</h4>
-      <label for="a_slider">a: <span id="a_value">1.0</span></label>
-      <input type="range" id="a_slider" min="-2" max="2" value="1" step="0.1">
-      <label for="b_slider">b: <span id="b_value">0.0</span></label>
-      <input type="range" id="b_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="c_slider">c: <span id="c_value">0.0</span></label>
-      <input type="range" id="c_slider" min="-2" max="2" value="0" step="0.1">
-      <label for="d_slider">d: <span id="d_value">1.0</span></label>
-      <input type="range" id="d_slider" min="-2" max="2" value="1" step="0.1">
-    </div>
-    <div class="control-group" id="vector-controls">
-      <h4 class="anchored">ערכי הווקטור</h4>
-      <label for="x_slider">x: <span id="x_value">2.0</span></label>
-      <input type="range" id="x_slider" min="-5" max="5" value="2" step="0.1">
-      <label for="y_slider">y: <span id="y_value">3.0</span></label>
-      <input type="range" id="y_slider" min="-5" max="5" value="3" step="0.1">
-    </div>
-  </div>
+<section id="גדלים-וזוויות-ב-mathbbr2" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="גדלים-וזוויות-ב-mathbbr2"><span class="header-section-number">4.0.3</span> גדלים וזוויות ב-<span class="math inline">\mathbb{R}^{2}</span></h3>
+<p>כאמור, לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז גודלו/אורכו הוא המרחק מנקודת הסיום לראשית. הכיוון נקבע לפי הזווית <span class="math inline">\theta</span> עם הכיוון החיובי של ציר <span class="math inline">x</span> )בדיוק כמו בקוארדינטות פולריות(. עבור וקטור <span class="math inline">(a,b)</span> נקבל את הנוסחאות הבאות:</p>
+<p>גודל: <span class="math inline">||(a,b)||=\sqrt{a^{2}+b^{2}}</span></p>
+<p>זווית: <span class="math inline">\tan\theta=\frac{b}{a}</span></p>
+<p>כבר דיברנו על החישוב המדויק של <span class="math inline">\theta</span> בסוף הפרק הקודם. לא ממש נצטרך לחשב זוויות בקורס, אבל זה טוב לידע כללי.</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כל וקטור נקבע ביחידות עי הגודל והכיוון שלו. לכן קוארדינטות פולריות יכולות להחליף קוארדינטות קרטזיות, אבל בקורס שלנו יותר נוח להשתמש בקוארדינטות קרטזיות.</p>
 </div>
-
-<script>
-  // קבלת רפרנסים לאלמנטים מה-HTML
-  const canvas = document.getElementById('transformCanvas');
-  const ctx = canvas.getContext('2d');
-
-  // קבלת כל המחוונים והתוויות שלהם
-  const sliders = {
-    a: document.getElementById('a_slider'),
-    b: document.getElementById('b_slider'),
-    c: document.getElementById('c_slider'),
-    d: document.getElementById('d_slider'),
-    x: document.getElementById('x_slider'),
-    y: document.getElementById('y_slider')
-  };
-  const values = {
-    a: document.getElementById('a_value'),
-    b: document.getElementById('b_value'),
-    c: document.getElementById('c_value'),
-    d: document.getElementById('d_value'),
-    x: document.getElementById('x_value'),
-    y: document.getElementById('y_value')
-  };
-
-  // הגדרות הגרף
-  const originX = canvas.width / 2;
-  const originY = canvas.height / 2;
-  const scale = 40; // 40 פיקסלים ליחידה אחת
-
-  // פונקציה שמציירת הכל מחדש
-  function draw() {
-    // 1. קריאת הערכים הנוכחיים מהמחוונים
-    const a = parseFloat(sliders.a.value);
-    const b = parseFloat(sliders.b.value);
-    const c = parseFloat(sliders.c.value);
-    const d = parseFloat(sliders.d.value);
-    const x = parseFloat(sliders.x.value);
-    const y = parseFloat(sliders.y.value);
-
-    // עדכון התוויות המספריות
-    values.a.textContent = a.toFixed(1);
-    values.b.textContent = b.toFixed(1);
-    values.c.textContent = c.toFixed(1);
-    values.d.textContent = d.toFixed(1);
-    values.x.textContent = x.toFixed(1);
-    values.y.textContent = y.toFixed(1);
-
-    // 2. ביצוע החישוב המתמטי
-    const transformedX = a * x + b * y;
-    const transformedY = c * x + d * y;
-
-    // 3. ניקוי הקנבס וציור הרקע
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-
-    // 4. ציור הווקטורים
-    drawVector(x, y, 'blue', 'הווקטור המקורי');
-    drawVector(transformedX, transformedY, 'red', 'הווקטור לאחר טרנספורמציה');
-  }
-
-  // פונקציית עזר לציור הרשת והצירים
-  function drawGrid() {
-    ctx.beginPath();
-    ctx.strokeStyle = '#ccc'; // צבע אפור לרשת
-    // קווי רשת אנכיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(originX + i * scale, 0);
-        ctx.lineTo(originX + i * scale, canvas.height);
-    }
-    // קווי רשת אופקיים
-    for (let i = -10; i <= 10; i++) {
-        ctx.moveTo(0, originY + i * scale);
-        ctx.lineTo(canvas.width, originY + i * scale);
-    }
-    ctx.stroke();
-
-    // צירים ראשיים (שחור)
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    // ציר X
-    ctx.moveTo(0, originY);
-    ctx.lineTo(canvas.width, originY);
-    // ציר Y
-    ctx.moveTo(originX, 0);
-    ctx.lineTo(originX, canvas.height);
-    ctx.stroke();
-    ctx.lineWidth = 1;
-  }
-
-  // פונקציית עזר לציור וקטור
-  function drawVector(x, y, color, label) {
-    const canvasX = originX + x * scale;
-    const canvasY = originY - y * scale; // מינוס כי ציר Y בקנבס הפוך
-
-    // ציור הקו
-    ctx.beginPath();
-    ctx.moveTo(originX, originY);
-    ctx.lineTo(canvasX, canvasY);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
-    ctx.stroke();
-
-    // ציור ראש החץ
-    const headlen = 10;
-    const angle = Math.atan2(canvasY - originY, canvasX - originX);
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(canvasX, canvasY);
-    ctx.lineTo(canvasX - headlen * Math.cos(angle - Math.PI / 6), canvasY - headlen * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(canvasX - headlen * Math.cos(angle + Math.PI / 6), canvasY - headlen * Math.sin(angle + Math.PI / 6));
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  // 5. הוספת "מאזינים" (EventListeners)
-  // כל פעם שמשתמש מזיז מחוון כלשהו, הפונקציה draw() תופעל
-  for (let key in sliders) {
-    sliders[key].addEventListener('input', draw);
-  }
-
-  // ציור ראשוני של הגרף כשהדף נטען
-  draw();
-
-</script>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="example">
+<p>א. {<span class="math inline">||(2,1)||=\sqrt{2^{2}+1^{2}}=\sqrt{5}</span>}</p>
+<p>ב. {<span class="math inline">||(3,-4)||=\sqrt{3^{2}+(-4)^{2}}=5</span>}</p>
+<p>ג. {<span class="math inline">||(-3,-7)||=\sqrt{(-3)^{2}+(-7)^{2}}=\sqrt{58}</span>}</p>
 </div>
-<div class="callout-title-container flex-fill">
-חקירה אינטראקטיבית: מטריצה כטרנספורמציה
+<p>אם כפל בסקלר מתאים למתיחה/כיווץ, זה אמור להתבטא בגודל. מכאן הטענה הבאה:</p>
+<div class="proposition">
+<p>{<span class="math inline">||c\cdot(a,b)||=|c|\cdot||(a,b)||</span>} לכל וקטור {<span class="math inline">(a,b)\in\mathbb{R}^{2}</span>} ולכל סקלר {<span class="math inline">c\in\mathbb{R}</span>}.</p>
 </div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נשתמש בהגדרות ונחשב:{% [ ||c(a,b)||=||(ca,cb)||===|c| ] }%</p>
 </div>
-<div class="callout-body-container callout-body">
-<p>הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: <strong>מטריצה כפעולה גיאומטרית</strong>.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">מה רואים כאן?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">נסו לחקור בעצמכם</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<ul>
-<li><p><strong>הווקטור הכחול</strong> הוא הווקטור המקורי במרחב, אותו ניתן לשנות בעזרת המחוונים <code>x</code> ו-<code>y</code>.</p></li>
-<li><p><strong>הווקטור האדום</strong> הוא תוצאת הפעולה – המקום החדש שאליו הווקטור “עבר” לאחר שהמטריצה (שנקבעת על ידי <code>a</code>,<code>b</code>,<code>c</code>,<code>d</code>) הפעילה עליו את הטרנספורמציה.</p></li>
-</ul>
-<p>במילים פשוטות, אתם רואים כיצד המטריצה “מעוותת” את המרחב ולוקחת כל וקטור למקום חדש.</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בפרט, כפל ב-{<span class="math inline">(-1)</span>} לא משנה את גודל הוקטור. רק הכיוון מתהפך.</p>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<ul>
-<li><p><strong>מתיחה וכיווץ (Scaling):</strong> מה קורה כאשר משנים רק את ערכי <code>a</code> ו-<code>d</code> (ושומרים על <code>b=0</code>, <code>c=0</code>)? איזו מטריצה תגרום לווקטור להתארך פי שניים בדיוק?</p></li>
-<li><p><strong>שיקוף (Reflection):</strong> האם תמצאו מטריצה שתשקף את הווקטור ביחס לציר ה-x? (רמז: איזה רכיב של הווקטור צריך לשנות את סימנו?).</p></li>
-<li><p><strong>סיבוב (Rotation):</strong> הגדירו את המטריצה להיות <code>a=0</code>, <code>b=-1</code>, <code>c=1</code>, <code>d=0</code>. איזו פעולה גיאומטרית המטריצה מבצעת על כל וקטור שתבחרו?</p></li>
-<li><p><strong>גזירה (Shear):</strong> מה קורה כאשר משנים את ערך <code>b</code> בזמן ש-<code>a=1</code> ו-<code>d=1</code>? הביטו כיצד המרחב “נמתח” הצידה.</p></li>
-</ul>
+</section>
+<section id="ישרים-ב-mathbbr2" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="ישרים-ב-mathbbr2"><span class="header-section-number">4.0.4</span> ישרים ב-<span class="math inline">\mathbb{R}^{2}</span></h3>
+<p>נרצה להבין את הקשר בין ישרים לוקטורים. יותר קל להבין את זה במקרה של ישרים שעוברים דרך הראשית. ניקח ישר כזה ונבחר נקודה כלשהי שאינה הראשית, מה שייתן לנו וקטור. הישר הוא אוסף כל הנקודות שמתקבלות עי כפל בסקלר של וקטור זה.</p>
+<p>דוגמה: הישר שמשוואתו <span class="math inline">y=2x</span> עובר דרך הראשית והנקודה <span class="math inline">(1,2)</span>. דרך נוספת לתאר את הישר היא כקבוצת כל הכפולות )בסקלר ממשי( של הוקטור <span class="math inline">(1,2)</span>. כל הוקטורים האלה מתאימים לנקודות על הישר, ואין הבדל מבחינת הכתיבה )כי הוקטורים יוצאים מהראשית(. כך נקבל <span class="math display">\{t(1,2)|t\in\mathbb{R}\}=\{(t,2t)|t\in\mathbb{R}\}</span></p>
+<div class="center">
+<p>)אנימציה שמראה איך נקודות הישר מתקבלות עי כפל בסקלר של הוקטור(</p>
 </div>
+<p>אכן, זה מיידי שכל נקודה מהצורה <span class="math inline">(t,2t)</span> מקיימת את המשוואה <span class="math inline">y=2x</span>.</p>
+<p>באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור <span class="math inline">\vec{v}</span> נתון עי ההצגה <span class="math inline">\{t\vec{v}|t\in\mathbb{R}\}</span>. נשים לב שעבור <span class="math inline">t&lt;0</span> מקבלים וקטורים עם כיוון מנוגד )הצד השני של הישר(.</p>
+<p>נכליל: ישר שעובר דרך <span class="math inline">(x_{0},y_{0})</span> בכיוון הוקטור <span class="math inline">\vec{v}</span> נתון עי ההצגה <span class="math display">.\{(x_{0},y_{0})+t\vec{v}|t\in\mathbb{R}\}</span> אם נתון שהישר עובר דרך <span class="math inline">(x_{1},y_{1})</span>, אז נקבל <span class="math display">.\{(x_{0},y_{0})+t(x_{1}-x_{0})|t\in\mathbb{R}\}</span></p>
+<div class="exercise">
+<p>איזו נקודה מתקבלת עבור {<span class="math inline">t=0</span>}? {<span class="math inline">t=1</span>}?</p>
 </div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>ההצגה לעיל נקראת הצגה פרמטרית של ישר. לעומת זאת, הצגה מהצורה {<span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}</span>} נקראת הצגה אלגברית של ישר. הצגה אלגברית אינה יחידה, כי למשל המשוואה {<span class="math inline">y=2x</span>} שקולה למשוואה {<span class="math inline">2y=4x</span>}. באופן דומה, גם הצגה פרמטרית אינה יחידה משתי סיבות: אפשר לבחור את נקודת ההתחלה {<span class="math inline">(x_{0},y_{0})</span>} באופן שרירותי כל עוד היא על הישר, וגם אפשר לבחור את {<span class="math inline">(x_{1},y_{1})</span>} כרצוננו ובהתאם את וקטור הכיוון {<span class="math inline">\vec{v}</span>} )אפשר לקחת כל כפולה שלו בסקלר שאינו {}(. כך מקבלים אינסוף הצגות פרמטריות שונות לאותו הישר. למשל:{% [ {t(1,2)|t}={(1,2)+s(2,4)|s}={(2,4)+r(-3,-6)|r} ] }%</p>
 </div>
+<div class="exercise">
+<p>עבור הישר שמשוואתו {<span class="math inline">y=3x+1</span>}, מצאו שלוש הצגות פרמטריות שונות. נסו לשנות גם את נקודת ההתחלה וגם את וקטור הכיוון.</p>
 </div>
+</section>
+<section id="מכפלה-סקלרית" class="level3" data-number="4.0.5">
+<h3 data-number="4.0.5" class="anchored" data-anchor-id="מכפלה-סקלרית"><span class="header-section-number">4.0.5</span> מכפלה סקלרית</h3>
+<p>מכפלה סקלרית היא פעולה נוספת בין וקטורים, אבל התוצאה שלה היא סקלר ומכאן שמה.</p>
+<div class="definition">
+<p>עבור וקטורים {<span class="math inline">(a_{1},a_{2}),(b_{1},b_{2})\in\mathbb{R}^{2}</span>} נגדיר {<span class="math inline">(a_{1},a_{2})\cdot(b_{1},b_{2})=a_{1}a_{2}+b_{1}b_{2}</span>}.</p>
 </div>
+<div class="example">
+<p>א. {<span class="math inline">(1,3)\cdot(2,5)=1\cdot2+3\cdot5=17</span>}</p>
+<p>ב. {<span class="math inline">(3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8</span>}</p>
+<p>ג. {<span class="math inline">(1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0</span>}</p>
+</div>
+<p>למכפלה סקלרית יש קשר לגודל. יש מספר תכונות שכדאי לזכור:</p>
+<div class="proposition">
+<p>יהיו {<span class="math inline">\vec{v_{1}}=(x_{1},y_{1}),\,\vec{v_{2}}=(x_{2},y_{2}),\,\vec{v_{3}}=(x_{3},y_{3})\in\mathbb{R}^{2}</span>} וקטורים. אז מתקיים:</p>
+<p>א. {<span class="math inline">\vec{v_{1}}\cdot\vec{v_{2}}=\vec{v_{2}}\cdot\vec{v_{1}}</span>}.</p>
+<p>ב. {<span class="math inline">(\vec{v_{1}}+\vec{v_{3}})\cdot\vec{v_{2}}=\vec{v_{1}}\cdot\vec{v_{2}}+\vec{v_{3}}\cdot\vec{v_{2}}</span>}.</p>
+<p>ג. {<span class="math inline">\vec{v_{1}}\cdot\vec{v_{1}}=||\vec{v_{1}}||^{2}</span>}.</p>
+<p>ד. {<span class="math inline">\vec{v_{1}}\cdot(c\vec{v_{2}})=c(\vec{v_{1}}\cdot\vec{v_{2}})</span>}.</p>
+<p>ה. {<span class="math inline">||\vec{v_{1}}||=0\iff\vec{v_{1}}=(0,0)</span>}.</p>
+<p>ו. {<span class="math inline">||\frac{\vec{v_{1}}}{||\vec{v_{1}}||}||=1</span>} אם {<span class="math inline">\vec{v_{1}}\neq(0,0)</span>}.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסתפק בסעיפים ג’ ו-ה’. סעיפים אחרים יופיעו כתרגילים.{% [ =x_{1}<sup>{2}+y_{1}</sup>{2}=()<sup>{2}=||||</sup>{2} ] }%</p>
+<p>סכום ריבועים )של מספרים ממשיים( הוא אי-שלילי, והוא מתאפס אם ורק אם כל מחובר מתאפס. במקרה זה {<span class="math inline">x_{1}^{2}=y_{1}^{2}=0</span>} גורר {<span class="math inline">x_{1}=y_{1}=0</span>}, או באופן שקול {<span class="math inline">\vec{v_{1}}=(0,0)</span>}.</p>
+</div>
+<p>מכפלה סקלרית גם קשורה לזווית בין שני וקטורים. ליתר דיוק, הכוונה היא לזווית הקטנה ביניהם )בין ל-<span class="math inline">\pi</span> ברדיאנים(.</p>
+<div class="center">
+<p>)מישור אינטראקטיבי שמאפשר ליצור שני וקטורים ולקבל את המכפלה הסקלרית וגם את הזווית ברדיאנים(</p>
+</div>
+<div class="proposition">
+<p>יהיו {<span class="math inline">\vec{v},\vec{w}</span>} שני וקטורים ב-{<span class="math inline">\mathbb{R}^{2}</span>} השונים מ-{<span class="math inline">(0,0)</span>}, ותהי {<span class="math inline">\alpha</span>} הזווית הקטנה ביניהם. אז מתקיים{% [ .= ] }%</p>
+</div>
+<p>ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר עי שני הוקטורים.
+<p>{% [ ||||<sup>{2}+||||</sup>{2}=||-||^{2}+2|||||||| ] }%</p>
+<p>נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין {<span class="math inline">||v-w||^{2}</span>} ל-{<span class="math inline">v\cdot w</span>}:{% [ ||-||<sup>{2}=(-)(-)=--+=||||</sup>{2}-2+||||^{2} ] }%</p>
+<p>נציב את המשוואה השנייה בראשונה ונקבל{% [ .||||<sup>{2}+||||</sup>{2}=||||<sup>{2}-2+||||</sup>{2}+2|||||||| ] }%</p>
+<p>נקזז {<span class="math inline">||\vec{v}||^{2}+||\vec{w}||^{2}</span>} מכל אגף ונקבל{% [ -2+2||||||||= ] }%</p>
+<p>כנדרש.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>תהי {<span class="math inline">\alpha</span>} הזווית הקטנה ביניהם. אז מתקיים{% [ .=0==0= ] }%</p>
+</div>
+<div class="example">
+<p>א. {<span class="math inline">(1,2)\perp(-2,1)</span>} כי {<span class="math inline">(1,2)\cdot(-2,1)=0</span>}.</p>
+<p>ב. באופן כללי, לכל {<span class="math inline">(a,b)\in\mathbb{R}^{2}</span>} מתקיים {<span class="math inline">(a,b)\perp(-b,a)</span>} כי {<span class="math inline">(a,b)\cdot(-b,a)=0</span>}.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הוקטור {<span class="math inline">(0,0)</span>} הוא מקרה חריג )כי הוא חסר כיוון(. אבל מאחר שמתקיים {<span class="math inline">\vec{v}\cdot(0,0)=0</span>} לכל וקטור {<span class="math inline">\vec{v}\in\mathbb{R}^{2}</span>}, עדיין נגדיר {<span class="math inline">\vec{v}\perp(0,0)</span>}. זהו הוקטור היחיד שמאונך לכל וקטור במישור.</p>
+</div>
+</section>
+<section id="מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" class="level3" data-number="4.0.6">
+<h3 data-number="4.0.6" class="anchored" data-anchor-id="מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית"><span class="header-section-number">4.0.6</span> מעבר בין הצגה פרמטרית של ישר להצגה אלגברית</h3>
+<p>ההצגה האלגברית של ישר קשורה באופן הדוק למכפלה סקלרית. נבין את הקשר דרך דוגמה.</p>
+<p>דוגמה: נסתכל על הישר <span class="math inline">L=\{t(2,-1)|t\in\mathbb{R}\}</span>. רואים לפי ההצגה הפרמטרית שוקטור הכיוון הוא <span class="math inline">(2,-1)</span>. לפי המכפלה הסקלרית אפשר לקבוע שהוקטור <span class="math inline">(1,2)</span> מאונך לו. הוא לא רק מאונך ל-<span class="math inline">(2,-1)</span> אלא לכל וקטור שמתאים לנקודה על הישר, כי לכל <span class="math inline">t\in\mathbb{R}</span> מתקיים <span class="math display">.(1,2)\cdot(2t,-t)=2t-2t=0</span></p>
+<div class="center">
+<p>)הישר עם וקטור הנורמל(</p>
+</div>
+<p>להיפך, אפשר לתאר את הישר כאוסף כל הוקטורים שמאונכים לוקטור <span class="math inline">(1,2)</span>. כלומר כל וקטור <span class="math inline">(x,y)\in L</span> נתון עי המשוואה <span class="math display">.(x,y)\cdot(1,2)=0\iff x+2y=0</span></p>
+<p>או בכתיב קבוצות: <span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|x+2y=0\}</span>.</p>
+<div class="definition">
+<p>וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר )התחלה וסיום( נקרא נורמל לישר.</p>
+</div>
+<div class="center">
+<p>)מישור אינטראקטיבי שמאפשר לסובב ישר כאשר הנורמל מסתובב יחד איתו בהתאם(</p>
+</div>
+<p>באופן כללי, לישר עם הצגה פרמטרית <span class="math inline">\{(x_{0},y_{0})+t(a,b)|t\in\mathbb{R}\}</span> יש וקטור נורמל <span class="math inline">(-b,a)</span> המאונך לוקטור הכיוון <span class="math inline">(a,b)</span>. אבל וקטור הנורמל אינו יחיד, כי אם נכפיל אותו בסקלר <span class="math inline">c\neq0</span> הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם )או שניהם( בסקלר.</p>
+<p>כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-<span class="math inline">(x_{0},y_{0})</span> ומסתיים ב-<span class="math inline">(x,y)</span>, כלומר הוקטור <span class="math inline">(x-x_{0},y-y_{0})</span>. וקטור זה בהכרח מאונך לוקטור הנורמל <span class="math inline">(-b,a)</span>, ולכן צריך להתקיים <span class="math display">.(x-x_{0},y-y_{0})\cdot(-b,a)=0\iff-b(x-x_{0})+a(y-y_{0})=0\iff-bx+ay=-bx_{0}+ay_{0}</span> כלומר קיבלנו הצגה אלגברית <span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|-bx+ay=-bx_{0}+ay_{0}\}</span>. נדגיש שהבחירה של נקודת ההתחלה <span class="math inline">(x_{0},y_{0})</span> היא שרירותית. בעצם, המשוואה מראה שהביטוי <span class="math inline">-bx+ay</span> קבוע לאורך הישר, וקבוע זה מופיע באגף ימין של המשוואה.</p>
 
 
 </section>
@@ -691,38 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-document.addEventListener("DOMContentLoaded", () =&gt; {
-
-  // בדוק אם יש פרמטר חיפוש בכתובת (search-highlighter)
-
-  const params = new URLSearchParams(window.location.search);
-
-  const q = params.get("q");
-
-  if (!q) return;
-
-
-
-  // נבנה ביטוי רגולרי מחיפוש
-
-  const regex = new RegExp(q, "gi");
-
-
-
-  // נעבור על כל פסקאות ותיבות תוכן
-
-  document.querySelectorAll("main p, main li").forEach(el =&gt; {
-
-    el.innerHTML = el.innerHTML.replace(regex, match =&gt;
-
-      `<mark style="background-color: #fff3a0; padding:0 2px;">${match}</mark>`
-
-    );
-
-  });
-
-});
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1129,8 +1001,8 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_2.html" class="pagination-link" aria-label="חדוא לבניתיים">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_2.html" class="pagination-link" aria-label="מערכות משוואות לינאריות">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

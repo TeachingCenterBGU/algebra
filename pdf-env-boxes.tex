@@ -1,9 +1,10 @@
-% pdf-env-boxes.tex — עטיפת סביבות LaTeX קיימות עם tcolorbox, בלי ארגומנט חובה
+% pdf-env-boxes.tex — עטיפת סביבות LaTeX קיימות עם tcolorbox, מותאם לצבעי HTML
 \usepackage{amsthm}
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{theorems,skins,breakable,hooks}
+\usepackage{xcolor}
 
-% שמות עבריים
+% ==== שמות בעברית ====
 \providecommand{\definitionname}{הגדרה}
 \providecommand{\examplename}{דוגמה}
 \providecommand{\exercisename}{תרגיל}
@@ -14,7 +15,15 @@
 \providecommand{\corollaryname}{מסקנה}
 \renewcommand{\proofname}{הוכחה}
 
-% סגנון בסיסי לתיבה
+% ==== צבעים (בהתאם ל-CSS: rgba) ====
+\definecolor{envDefinitionRGB}{RGB}{255,99,71}    % tomato
+\definecolor{envExampleRGB}{RGB}{138,43,226}      % blueviolet
+\definecolor{envExerciseRGB}{RGB}{30,144,255}     % dodgerblue
+\definecolor{envRemarkRGB}{RGB}{0,0,0}            % black (עם שקיפות נמוכה)
+\definecolor{envTheoremRGB}{RGB}{255,165,0}       % orange
+\definecolor{envProofRGB}{RGB}{60,179,113}        % mediumseagreen
+
+% ==== סגנון בסיסי לכל התיבות ====
 \tcbset{
   envbox/.style={
     enhanced, breakable, sharp corners,
@@ -29,10 +38,9 @@
 }
 
 \makeatletter
-% נקבע הורה למספור: ב-book לפי chapter, אחרת section
+% parent counter: ב-book לפי chapter, אחרת לפי section
 \@ifundefined{c@chapter}{\def\qnumwithin{section}}{\def\qnumwithin{chapter}}
 
-% אם סביבה לא מוגדרת — נגדיר אותה עם amsthm (שאינו דורש ארגומנט כותרת)
 \newcommand{\EnsureNewTheorem}[2]{%
   \@ifundefined{#1}{%
     \newtheorem{#1}{#2}[\qnumwithin]%
@@ -40,27 +48,9 @@
 }
 \makeatother
 
-% מגדירים (אם חסר) ואז עוטפים ב-tcolorbox — זה לא מוסיף דרישה לארגומנט
 \AtBeginDocument{%
-  % הגדרות בסיסיות (אם חסרות)
   \theoremstyle{definition}
   \EnsureNewTheorem{definition}{\definitionname}
-  % --- כותרת ממוספרת ל"definition" בתוך פס הכותרת ---
-  \makeatletter
-  \renewenvironment{definition}
-  {%
-    \refstepcounter{definition}% מעלה מונה ומאפשר \label
-    \begin{tcolorbox}[envbox,
-      colframe=blue!70!black, colbacktitle=blue!15,
-      borderline south={0.4pt}{0pt}{blue!70!black},
-      title={\definitionname~\thedefinition}%
-    ]%
-    \ignorespaces
-  }{%
-    \end{tcolorbox}%
-  }
-  \makeatother
-
   \EnsureNewTheorem{example}{\examplename}
   \EnsureNewTheorem{exercise}{\exercisename}
 
@@ -73,50 +63,67 @@
   \EnsureNewTheorem{proposition}{\propositionname}
   \EnsureNewTheorem{corollary}{\corollaryname}
 
-  % עטיפות tcolorbox עם כותרת קבועה (אין צורך בארגומנט ב-\begin{...})
-  %\tcolorboxenvironment{definition}{envbox,
-   % colframe=blue!70!black, colbacktitle=blue!15,
-    %borderline south={0.4pt}{0pt}{blue!70!black},
-    %title={\definitionname}}
+  % ==== עטיפות עם צבעי HTML ====
+  \tcolorboxenvironment{definition}{envbox,
+    colframe=envDefinitionRGB,
+    colbacktitle=envDefinitionRGB,
+    colback=envDefinitionRGB!10,
+    borderline south={0.4pt}{0pt}{envDefinitionRGB},
+    title={\definitionname}}
 
   \tcolorboxenvironment{example}{envbox,
-    colframe=teal!70!black, colbacktitle=teal!15,
-    borderline south={0.4pt}{0pt}{teal!70!black},
+    colframe=envExampleRGB,
+    colbacktitle=envExampleRGB,
+    colback=envExampleRGB!10,
+    borderline south={0.4pt}{0pt}{envExampleRGB},
     title={\examplename}}
 
   \tcolorboxenvironment{exercise}{envbox,
-    colframe=orange!80!black, colbacktitle=orange!20,
-    borderline south={0.4pt}{0pt}{orange!80!black},
+    colframe=envExerciseRGB,
+    colbacktitle=envExerciseRGB,
+    colback=envExerciseRGB!10,
+    borderline south={0.4pt}{0pt}{envExerciseRGB},
     title={\exercisename}}
 
   \tcolorboxenvironment{remark}{envbox,
-    colframe=gray!70!black, colbacktitle=gray!15,
-    borderline south={0.4pt}{0pt}{gray!70!black},
+    colframe=envRemarkRGB,
+    colbacktitle=envRemarkRGB,
+    colback=envRemarkRGB!10,
+    borderline south={0.4pt}{0pt}{envRemarkRGB},
     title={\remarkname}}
 
   \tcolorboxenvironment{theorem}{envbox,
-    colframe=black, colbacktitle=black!10,
-    borderline south={0.4pt}{0pt}{black},
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
     title={\theoremname}}
 
   \tcolorboxenvironment{lemma}{envbox,
-    colframe=black!80, colbacktitle=black!15,
-    borderline south={0.4pt}{0pt}{black!80},
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
     title={\lemmaname}}
 
   \tcolorboxenvironment{proposition}{envbox,
-    colframe=black!80, colbacktitle=black!15,
-    borderline south={0.4pt}{0pt}{black!80},
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
     title={\propositionname}}
 
   \tcolorboxenvironment{corollary}{envbox,
-    colframe=black!80, colbacktitle=black!15,
-    borderline south={0.4pt}{0pt}{black!80},
+    colframe=envTheoremRGB,
+    colbacktitle=envTheoremRGB,
+    colback=envTheoremRGB!10,
+    borderline south={0.4pt}{0pt}{envTheoremRGB},
     title={\corollaryname}}
 
-  % proof כבר קיים ב-amsthm — רק עטיפה
   \tcolorboxenvironment{proof}{envbox,
-    colframe=purple!70!black, colbacktitle=purple!20,
-    borderline south={0.4pt}{0pt}{purple!70!black},
+    colframe=envProofRGB,
+    colbacktitle=envProofRGB,
+    colback=envProofRGB!10,
+    borderline south={0.4pt}{0pt}{envProofRGB},
     title={\proofname}}
 }

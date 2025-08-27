@@ -185,25 +185,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במרחב ובמישור</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">בדיקת סביבות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_calculus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">פרק חדוא</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -608,38 +614,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-document.addEventListener("DOMContentLoaded", () =&gt; {
-
-  // בדוק אם יש פרמטר חיפוש בכתובת (search-highlighter)
-
-  const params = new URLSearchParams(window.location.search);
-
-  const q = params.get("q");
-
-  if (!q) return;
-
-
-
-  // נבנה ביטוי רגולרי מחיפוש
-
-  const regex = new RegExp(q, "gi");
-
-
-
-  // נעבור על כל פסקאות ותיבות תוכן
-
-  document.querySelectorAll("main p, main li").forEach(el =&gt; {
-
-    el.innerHTML = el.innerHTML.replace(regex, match =&gt;
-
-      `<mark style="background-color: #fff3a0; padding:0 2px;">${match}</mark>`
-
-    );
-
-  });
-
-});
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1046,8 +1020,8 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_1.html" class="pagination-link" aria-label="חידות">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_1.html" class="pagination-link" aria-label="גיאומטריה במרחב ובמישור">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במרחב ובמישור</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
