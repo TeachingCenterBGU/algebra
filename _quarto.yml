@@ -51,67 +51,7 @@ format:
     filters:
       - env-to-callout.lua
    
-  pdf:
-    documentclass: book
-    papersize: a4
-    classoption: oneside
-    lang: he
-    toc: true
-    number-sections: true
-    mainfont: David
-    monofont: Courier New
-    fontsize: 12pt
-    linestretch: 1.5
-    geometry: right=30mm, left=30mm, top=30mm, bottom=30mm
-    pdf-engine: xelatex
-    theorems: false
-    header-includes:
-      - \usepackage{bidi}
-      - \setRTL
-      - |
-          % === I, II, III ואז 1, 2, ... ===
-          \usepackage{etoolbox}
-          \makeatletter
-          \setcounter{chapter}{0}% כך שהפרק הממוספר הראשון יהיה I
-          \newcounter{countedchap}
-          \pretocmd{\@chapter}{%
-            \stepcounter{countedchap}%
-            \ifnum\value{countedchap}=1
-              \renewcommand{\thechapter}{\Roman{chapter}}%
-            \fi
-            % לאחר שלושה פרקים ברומי, הפרק הרביעי עובר לערבי ומתחיל מ-1
-            \ifnum\value{countedchap}=4
-              \renewcommand{\thechapter}{\arabic{chapter}}%
-              \setcounter{chapter}{0}%
-            \fi
-          }{}{}
-          \makeatother
-
-
-
-    include-in-header:
-      - pdf-env-boxes.tex
-      - text: |
-          \makeatletter
-          % מעטפת LTR למספרים
-          \newcommand{\LTRnum}[1]{\LR{#1}}
-
-          % תיקון תוכן העניינים: המספרים יוצגו LTR גם עם נקודות
-          \let\orig@numberline\numberline
-          \renewcommand{\numberline}[1]{\orig@numberline{\LTRnum{#1}}}
-
-          % סימניות ה-PDF (bookmarks) בלי פקודות כיווניות
-          \AtBeginDocument{%
-            \@ifpackageloaded{hyperref}{%
-              \pdfstringdefDisableCommands{\let\LTRnum\@firstofone}%
-            }{}%
-          }
-          \makeatother
-    filters:
-      - uncollapse-for-pdf.lua
-      - div-to-theorem-env.lua
-    #  - pdf-solution-hint.tex
-
+ 
         
 number-sections: true
 

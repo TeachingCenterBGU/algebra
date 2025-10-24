@@ -1,0 +1,143 @@
+project:
+  type: book
+book:
+  title: אלגברה לינארית
+  author: ד"ר יונתן שלח, ד"ר נדב מאיר
+  language: he
+  chapters:
+  - index.qmd
+  - intro.qmd
+  - chapter_0.qmd
+  - chapter_0_5.qmd
+  - chapter_1.qmd
+  - chapter_2.qmd
+  # - chapter_3.qmd
+  # - chapter_calculus.qmd
+  - summary.qmd
+  - references.qmd
+  search: true
+  
+  
+  sidebar:
+    tools:
+    - icon: download
+      href: אלגברה-לינארית.pdf
+      text: הורדת הספר כ-PDF
+    logo: logo.png
+bibliography: references.bib
+
+crossref:
+  chapters: true
+
+
+
+format:
+  html:
+    toc: true
+    number-sections: true
+    html-math-method: katex
+    fig-align: center
+    fig-cap-location: bottom
+    theorems: false
+    callout:
+      collapse: true
+    css: 
+      - rtl-baseline.css
+      - styles.css
+    include-after-body:
+      - auto-env-titles.html
+      - chapter-numbering.html
+      
+    filters:
+      - env-to-callout.lua
+   
+  pdf:
+    documentclass: book
+    papersize: a4
+    classoption: oneside
+    lang: he
+    toc: true
+    number-sections: true
+    mainfont: David
+    monofont: Courier New
+    fontsize: 12pt
+    linestretch: 1.5
+    geometry: right=30mm, left=30mm, top=30mm, bottom=30mm
+    pdf-engine: xelatex
+    theorems: false
+    header-includes:
+      - \usepackage{bidi}
+      - \setRTL
+      - |
+          % === I, II, III ואז 1, 2, ... ===
+          \usepackage{etoolbox}
+          \makeatletter
+          \setcounter{chapter}{0}% כך שהפרק הממוספר הראשון יהיה I
+          \newcounter{countedchap}
+          \pretocmd{\@chapter}{%
+            \stepcounter{countedchap}%
+            \ifnum\value{countedchap}=1
+              \renewcommand{\thechapter}{\Roman{chapter}}%
+            \fi
+            % לאחר שלושה פרקים ברומי, הפרק הרביעי עובר לערבי ומתחיל מ-1
+            \ifnum\value{countedchap}=4
+              \renewcommand{\thechapter}{\arabic{chapter}}%
+              \setcounter{chapter}{0}%
+            \fi
+          }{}{}
+          \makeatother
+
+
+
+    include-in-header:
+      - pdf-env-boxes.tex
+      - text: |
+          \makeatletter
+          % מעטפת LTR למספרים
+          \newcommand{\LTRnum}[1]{\LR{#1}}
+
+          % תיקון תוכן העניינים: המספרים יוצגו LTR גם עם נקודות
+          \let\orig@numberline\numberline
+          \renewcommand{\numberline}[1]{\orig@numberline{\LTRnum{#1}}}
+
+          % סימניות ה-PDF (bookmarks) בלי פקודות כיווניות
+          \AtBeginDocument{%
+            \@ifpackageloaded{hyperref}{%
+              \pdfstringdefDisableCommands{\let\LTRnum\@firstofone}%
+            }{}%
+          }
+          \makeatother
+    filters:
+      - uncollapse-for-pdf.lua
+      - div-to-theorem-env.lua
+    #  - pdf-solution-hint.tex
+
+        
+number-sections: true
+
+theorems:
+  numbering: true
+  within: chapter        # מספור בתוך פרק: 1.1, 1.2, ...; 2.1, 2.2, ...
+  definition:
+    name: "הגדרה"
+  example:
+    name: "דוגמה"
+  exercise:
+    name: "תרגיל"
+  remark:
+    name: "הערה"
+  theorem:
+    name: "משפט"
+  lemma:
+    name: "למה"
+  proposition:
+    name: "טענה"
+  corollary:
+    name: "מסקנה"
+  proof:
+    name: "הוכחה"
+    numbering: false     # הוכחות בלי מספור
+
+resources:
+  - simulations/**
+  - images/**
