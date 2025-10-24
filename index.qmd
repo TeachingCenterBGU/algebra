@@ -1,29 +1,31 @@
 # מידע כללי {.unnumbered}
 
-::: {.center}
-![](logo.png){width=100px}
+<div class="home-hero">
+  <img src="logo.png" alt="לוגו" class="home-hero__logo">
+  <h1 class="home-hero__title">מבוא להנדסת תהליכים</h1>
+  <div class="home-hero__subtitle">ענבל צרפתי-ברנע</div>
+  <p class="home-hero__tagline">מיועד לסטודנטים וסטודנטיות בתחילת דרכם בלימודי הנדסת תהליכים</p>
+  <hr class="home-hero__divider">
+</div>
+
+::: {.home-ack}
+#### תודות
+ד״ר רחל ליכנשטיין, המחלקה להנדסת ביוטכנולוגיה על שם גולדה-מאיר  
+אבנר וסבלה גולדשטיין-יגורן  
+פרופ׳ רונית ביטון, המחלקה להנדסה כימית  
+היחידה לקידום איכות ההוראה והלמידה – אוניברסיטת בן-גוריון בנגב
 :::
-
-
 
 ::: {#download-box}
-[להורדת הספר ב PDF](אלגברה-לינארית.pdf){.btn target=_blank style="background-color:#FF9E3A; border-color:#FF9E3A; color:white;"}
+[להורדת הספר ב PDF](אלגברה-לינארית.pdf){.btn target=_blank}
 :::
-
-This is a Quarto book.
-
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
 
 <script>
   window.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const downloadBox = document.querySelector("#download-box");
-    if (sidebar && downloadBox) {
-      sidebar.appendChild(downloadBox);
-    }
+    if (sidebar && downloadBox) sidebar.appendChild(downloadBox);
   });
 </script>
+
+

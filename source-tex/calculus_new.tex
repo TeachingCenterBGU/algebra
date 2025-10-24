@@ -1,0 +1,1830 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[hebrew,english]{babel}
+\usepackage[main=hebrew,english]{babel}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+
+
+
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[margin=1in]{geometry}
+
+
+
+
+\usepackage{float}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\addto\captionshebrew{\renewcommand{\figurename}{איור}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Hebrew-style theorem-like environments with section-based numbering
+
+\newcounter{theoremHcounter}[section]
+\renewcommand{\thetheoremHcounter}{\thesection.\arabic{theoremHcounter}}
+
+\newcounter{defnHcounter}[section]
+\renewcommand{\thedefnHcounter}{\thesection.\arabic{defnHcounter}}
+
+\newcounter{excounter}[section]
+\renewcommand{\theexcounter}{\thesection.\arabic{excounter}}
+
+\newcounter{exscounter}[section]
+\renewcommand{\theexscounter}{\thesection.\arabic{exscounter}}
+
+\newcounter{exercounter}[section]
+\renewcommand{\theexercounter}{\thesection.\arabic{exercounter}}
+
+\newcounter{questcounter}[section]
+\renewcommand{\thequestcounter}{\thesection.\arabic{questcounter}}
+
+% Environments
+
+\newenvironment{theoremH}
+  {
+    \par\noindent\refstepcounter{theoremHcounter}%
+    \textbf{משפט~\thetheoremHcounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{prop}
+  {
+    \par\noindent\refstepcounter{theoremHcounter}%
+    \textbf{טענה~\thetheoremHcounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{defnH}
+  {
+    \par\noindent\refstepcounter{defnHcounter}%
+    \textbf{הגדרה~\thedefnHcounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{ex}
+  {
+    \par\noindent\refstepcounter{excounter}%
+    \textbf{דוגמא~\theexcounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{exs}
+  {
+    \par\noindent\refstepcounter{exscounter}%
+    \textbf{דוגמאות~\theexscounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{exer}
+  {
+    \par\noindent\refstepcounter{exercounter}%
+    \textbf{תרגיל~\theexercounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+\newenvironment{quest}
+  {
+    \par\noindent\refstepcounter{questcounter}%
+    \textbf{שאלה~\thequestcounter.}%
+    \begin{itshape}
+  }
+  {
+    \end{itshape}\par
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+\selectlanguage{hebrew}
+\section{סדרות}
+% ✅ Now using a real environment
+
+\subsection{הגדרות ודוגמאות}
+יתכן מאוד וכבר שמעתם על סדרות חשבוניות,
+לדוגמא,
+$1,2,3,4,5,\ldots$, 
+וסדרות הנדסיות, 
+לדוגמא, 
+$1,\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},\ldots$. 
+אלה הן שתי משפחות של סדרות של מספרים. 
+\begin{defnH}\rm
+{\it סדרה של מספרים ממשיים} 
+היא פונקציה 
+$f$ 
+אשר תחום הגדרתה הוא קבוצת המספרים הטבעיים וטווחה הוא קבוצת המספרים הממשיים. 
+נסכים לכתוב 
+$a_n$ 
+במקום 
+$f(n)$. 
+\end{defnH}
+\[
+\begin{array}{cccccc}
+1 & 2 & 3 & \ldots & n & \ldots \\
+\downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow \\
+f(1) & f(2) & f(3) & \ldots & f(n) & \ldots
+\end{array}
+\]
+שימו לב כי לכל סדרה אינסוף איברים. 
+
+כמו לכל פונקציה, גם לסדרה יש הצגה גרפית. לכל מספר סידורי 
+$n$ 
+על ציר ה- 
+$x$ 
+נתאים 
+נקודה 
+$(n,a_n)$. 
+לדוגמא, הסדרה שמתוארת באיור היא 
+$a_n=\frac{1}{n}$. 
+
+
+\vspace{1cm}
+
+% Plot
+%\selectlanguage{english}
+%\begin{figure}[h]
+%\centering
+%\begin{tikzpicture}
+%  \begin{axis}[
+%    axis lines = left,
+%    xlabel = {$n$},
+%    ylabel = {$a_n=\frac{1}{n}$},
+%    xtick = {1,2,3,4,5,6,7},
+%    ytick = {0, 0.2, 0.4, 0.6, 0.8, 1.0},
+%    ymin=0, ymax=1.1,
+%    xmin=0.5, xmax=7.5,
+%    width=12cm,
+%    height=6cm,
+%    grid=both,
+%  ]
+%    \addplot[
+%      only marks,
+%      mark=*,
+%      mark size=2pt,
+%      blue  % ← this makes the points blue
+%    ] coordinates {
+%      (1,1)
+%      (2,0.5)
+%      (3,0.333)
+%      (4,0.25)
+%      (5,0.2)
+%      (6,0.166)
+%      (7,0.142)
+%    };
+%  \end{axis}
+%\end{tikzpicture}
+%\selectlanguage{hebrew}
+%\caption{שבעת האיברים הראשונים של $a_n=\frac{1}{n}$ על המישור הממשי}
+%\label{fig:sequence-on-real-plane}
+%\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\selectlanguage{english}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xlabel={}, % Disable default xlabel
+    ylabel={$a_n$},
+    xmin=0, xmax=45,
+    ymin=-0.05, ymax=1.1,
+    width=12cm,
+    height=7cm,
+    xtick={1,2,3,4,5,10,20,40,41,42,43,44},
+    xticklabels={1,2,3,4,5,10,20,,,,,},
+    ytick={1/20, 0.1, 0.5, 1},
+    yticklabels={ ,0.1,0.5,1},
+    ytick style={draw=none},
+    grid=none,
+    xmajorgrids=false,
+    ymajorgrids=false,
+  ]
+
+    % Sequence points: a_n = 1/n
+    \addplot[
+      only marks,
+      mark=*,
+      mark size=2pt,
+      color=blue
+    ] coordinates {
+      (1,1)
+      (2,0.5)
+      (3,0.333)
+      (4,0.25)
+      (5,0.2)
+      (10,0.1)
+      (20,0.05)
+      (40,0.025)
+      (41,0.0244)
+      (42,0.0238)
+      (43,0.0233)
+      (44,0.0227)
+    };
+
+    % Dashed red line at y=0 (the limit)
+    \addplot[domain=0:45, samples=2, red, dashed, thick] {0};
+
+    % Dashed tick mark on y-axis at y=0
+    \draw[dashed] (axis cs:0,0) -- ++(-5pt,0);
+
+    % Move label "n" 2mm toward the origin
+    \node[xshift=-2mm] at (axis cs:45,-0.04) {$n$};
+
+  \end{axis}
+\end{tikzpicture}
+\selectlanguage{hebrew}
+\caption{כמה איברים ראשונים של הסדרה $a_n=\frac{1}{n}$}
+\label{fig:limit-sequence}
+\end{figure}
+
+\selectlanguage{hebrew}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\selectlanguage{hebrew}
+ניתן להציג 
+"גרף" אחר של סדרה. במקום לשרטט נקודות 
+$(n,a_n)$ 
+במישור, 
+נשרטט נקודות 
+$a_n$ 
+על הציר הממשי. 
+לשיטה הזאת יש חסרון - אחרי ששרטטנו את הנקודות, בלתי אפשרי להבין מהו הסדר בין האיברים האלה. 
+
+% Plot
+\selectlanguage{english}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=10]
+  \draw[->] (0,0) -- (1.1,0) node[below right] {$\mathbb{R}$};
+
+  \foreach \n in {1,...,7} {
+    \pgfmathsetmacro{\an}{1/\n}
+    \filldraw[blue] ({\an}, 0) circle (0.3pt);
+    \node[below] at ({\an}, 0) {$\frac{1}{\n}$};
+  }
+
+  \node[below] at (0,0) {$0$};
+\end{tikzpicture}
+\selectlanguage{hebrew}
+\caption{שבעת האיברים הראשונים של $a_n=\frac{1}{n}$ על הציר הממשי}
+\label{fig:sequence-on-real-line}
+\end{figure}
+
+\selectlanguage{hebrew}
+נהוג לסמן סדרה ע"י 
+$(a_n)_{n=1}^\infty$, 
+כש- 
+$a_{17}$ 
+הוא האיבר ה- 
+$17$ 
+שלה ו- 
+$a_{129}$ 
+הוא האיבר ה- 
+$129$ 
+שלה. 
+לעתים בכתיבת איברי הסדרה מוותרים על הסוגריים ורושמים פשוט 
+$a_1,a_2,a_3,\ldots$. 
+
+\begin{ex}\rm
+$(a_n=n)_{n=1}^\infty$ 
+היא סדרה של מספרים טבעיים המופיעים לפי הסדר ה"טבעי" שלהם, כלומר,
+$$1,2,3,4,5,\ldots.$$
+\end{ex}
+\begin{ex}\rm
+$(a_n=2n-1)_{n=1}^\infty$ 
+היא סדרה של מספרים טבעיים אי-זוגיים, 
+כלומר, 
+$$1,3,5,7,9,\ldots.$$
+\end{ex}
+\begin{ex}\rm
+הסדרה 
+$a_n=1$ 
+לכל 
+$n$, 
+כלומר 
+$$1,1,1,1,1,\ldots.$$
+\end{ex}
+\begin{ex}\rm
+$(a_n=(-1)^n)_{n=1}^\infty$ 
+היא סדרה של מספרים 
+$-1$ 
+ו- 
+$1$ 
+המתחלפים, כלומר, 
+$$-1,1,-1,1,-1,\ldots.$$
+\end{ex}
+\begin{ex}\rm
+$\left(a_n=\frac{(-1)^{n+1}}{n}\right)_{n=1}^\infty$ 
+היא הסדרה הבאה 
+$$1,-\frac{1}{2},\frac{1}{3},-\frac{1}{4},\frac{1}{5},\ldots.$$
+\end{ex}
+
+
+קיימים אופנים שונים להגדרת סדרה. בכל אחת מהדוגמאות לעיל, סדרה הוגדרה ע"י נוסחא לחישוב איברה הכללי. 
+זהו לא האופן היחיד. 
+אחת השיטות הנפוצות להגדרת סדרה היא ע"י נוסחת נסיגה -  
+השיטה שמאפשרת חישוב של איברה הכללי של סדרה דרך האיברים הקודמים. בשיטה זאת נחוצים 
+{\it תנאיי התחלה}. 
+
+\begin{ex}\rm
+    תהא 
+    $(a_n)_{n=1}^\infty$ 
+    המתקבלת ע"י 
+    $a_{n+1}=2a_n$ 
+    לכל 
+    $n$, 
+    כאשר
+    $a_1=1$. 
+    נחשב כמה מאיבריה הראשונים של 
+    $(a_n)_{n=1}^\infty$. 
+    כאמור, 
+    $a_1=1$. 
+    מתקיים 
+    $$a_2=2a_1=2\cdot 1=2,\ a_3=2a_2=2\cdot 2=4,\ a_4=2a_3=2\cdot4=8,\ldots.$$
+    האם ניחשתם את הנוסחא לחישןב האיבר הכללי? 
+    הכוכיחו )באינדוקציה מתמטית( כי צדקתם. 
+\end{ex}
+
+\begin{ex}\rm
+תהא 
+$(a_n)_{n=1}^\infty$ 
+מוגדרת ע"י 
+$a_{n}=a_{n-2}+a_{n-1}$ 
+כאשר 
+$a_1=1$
+ו- 
+$a_2=1$. 
+)שימו לב כי סדרות עם נוסחאות נסיגה זהות שנבדלות בתנאיי התחילה הן סדרות שונות.(
+לא קשה להשתכנע כי איבריה הראשונים של הסדרה הם
+$1,1,2,3,5,8,13,21,\ldots$. 
+קיימת גם נוסחא לחישוב של איברה הכללי של הסדרה הזאת
+$$a_n=\frac{(1+\sqrt{5})^n-(1-\sqrt{5})^n}{2^n\sqrt{5}}.$$
+\end{ex}
+
+זאת סדרה "ידוענית" בתחום המתמטיקה, היא נקראת 
+{\it סדרת פיבונצ'י}, 
+על כינויו של מתמטיקאי איטלקי מימי הביניים- לאונרדו פיזנו. 
+%למרבה הנס, הנוסחא המסובכת הזאת אכן "מייצרת" מספרים שלמים, למרות שזה לא נראה כך. 
+פיזנו, בספרו 
+{\it ספר החשבוניה} 
+מביא דוגמא הבאה. 
+זוג ארנבים, זכר ונקבה, נולד בתחילת חודש ראשון. 
+לכל זוג נדרש חודש אחד כדי להתבגר ולהתרבות. 
+כל זוג מוגר יולד זוג חדש, זכר ונקבה, כל חודש. 
+בהנחה שארנבים לא מתי, כמה זוגות יהיו לאחר 
+$n$
+חודשים? 
+השתכנעו כי 
+$a_n$ 
+זה אכן מספר הזוגות אחרי 
+$n$ 
+חודשים, 
+כאשר 
+$n=3,4,5,6$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exer}\rm 
+רשמו חמישה איברים ראשונים של הסדרה 
+    $(a_n)_{n=1}^\infty$ 
+    כאשר 
+    \begin{enumerate}
+        \item $a_n=\frac{n^3-1}{n^2+1}$.
+        \item $a_n=\frac{n^2}{2^n}$. 
+        \item $a_n=1-\frac{(-1)^n}{n}$. 
+    \end{enumerate}
+    \end{exer}
+\begin{exer}\rm מצאו נוסחאות לאיבר הכללי של הסדרות הבאות:
+    \begin{enumerate}
+        \item $1,0,1,0,1,0\ldots$. 
+        \item $\frac{5}{3},-\frac{10}{9},\frac{20}{27},-\frac{40}{81},\ldots$.
+        \item $\frac{1}{1\cdot 3},\frac{1}{3\cdot 5},\frac{1}{5\cdot 7},\ldots$.
+    \end{enumerate}
+    \end{exer}
+\begin{exer}\rm 
+    תארו בצורה גרפית 
+    )בשני אופנים( 
+    את הסדרות הבאות: 
+    \begin{enumerate}
+        \item $a_n=1+\frac{1}{n}$. 
+        \item $a_n=\frac{1-3n}{n}$. 
+        \item $\frac{1+(-1)^n}{n}$. 
+    \end{enumerate}
+    \end{exer}
+\begin{exer}\rm  האם  
+    $42$ 
+    הוא איבר של הסדרה 
+    $(n^2-5n)_{n=1}^\infty$? 
+    אם כן, מהו מיקומו בסדרה?
+ענו על אותה השאלה עם המספרים 
+$36$, 
+$-4$
+ו- 
+$-6$.
+\end{exer}
+\begin{exer}\rm 
+הציגו בצורה רקורסיבית את הסדרות הבאות: 
+\begin{enumerate}
+    \item $a_n=n$. 
+    \item $a_n=\frac{1}{n}$.
+    \item $(a_n)_{n=1}^\infty$ 
+    היא סדרה כך שכל איבר, החל מאיבר השלישי, הוא ממוצע חשבוני של שני איברים קודמים. 
+    כמה תנאיי התחלה נחוצים כדי לקבוע סדרה ביחידות? 
+    \end{enumerate}
+    כמה תנאי התחלה הגדרתם? 
+\end{exer}
+
+נחזור לדיון בסדרות. 
+אנו הולכים להגדיר משפחות חשובות של סדרות שבעתיד הקרוב תשחקנה תפקיד חשוב. 
+
+\begin{defnH}\rm
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it יורדת} 
+אם 
+$a_n\geq a_{n+1}$ 
+לכל 
+$n$. 
+
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it עולה} 
+אם 
+$a_n\leq a_{n+1}$ 
+לכל 
+$n$. 
+
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it מונוטונית} 
+אם 
+היא עולה או יורדת.
+\end{defnH}
+%במילים אחרות, סדרה יורדת זו סדרה שאיבר הבא לא גדול מקודמו. 
+
+\begin{ex}\rm
+הסדרה 
+$a_n=\frac{1}{n}$ 
+היא יורדת. 
+אכן 
+$a_n-a_{n+1}=\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}\geq 0$. 
+\end{ex}
+
+בדוגמא הקודמת כדי להראות שמספר אחד קטן או שווה מאחר - הסתכלנו על סימן של הפרש בין שניהם. 
+זוהי טכניקה נפוצה. 
+
+\begin{quest}\rm
+האם הסדרה 
+$a_n=1$ 
+היא יורדת? 
+\end{quest}
+%במילים אחרות, סדרה עולה זו סדרה שאיבר הבא לא קטן מקודמו. 
+\begin{ex}\rm
+הסדרה 
+$a_n=\frac{3n-5}{n}$ 
+היא עולה. 
+אכן 
+$a_{n+1}-a_{n}=\frac{3(n+1)-5}{n+1}-\frac{3n}{n}=\frac{3}{n(n+1)}\geq 0$. 
+גם הסדרה הקבועה 
+$a_n=1$ 
+היא עולה. 
+\end{ex}
+
+\begin{defnH}\rm
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it  חסומה מלעיל} 
+)או מלמעלה(
+אם קיים מספר ממשי 
+$M$ 
+כך ש- 
+$a_n\leq M$ 
+לכל~$n$. 
+
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it  חסומה מלרע} 
+)או מלמטה(
+אם קיים מספר ממשי 
+$m$ 
+כך ש- 
+$a_n\geq m$ 
+לכל~$n$. 
+
+סדרה 
+$(a_n)_{n=1}^\infty$ 
+תקרא 
+{\it חסומה} 
+אם היא חסומה גם מלעיל וגם מלרע. 
+\end{defnH}
+
+\begin{ex}\rm
+הסדרה 
+$a_n=\frac{1}{n}$ 
+חסומה מלעיל ע"י מספר 
+$1$
+אכן 
+$\frac{1}{n}\leq 1$. 
+\end{ex}
+
+
+\begin{ex}\rm
+הסדרה 
+$a_n=\frac{3n-5}{n}$ 
+חסומה מלרע ע"י מספר 
+$-2$
+אכן 
+$\frac{3n-5}{n}=3-\frac{5}{n}\geq 3-5=-2$. 
+\end{ex}
+
+\begin{exer}\rm
+    תנו דוגמא  
+    \begin{enumerate}
+        \item לסדרה שעולה ולא חסומה מלעיל.
+        \item לסדרה שעולה וחסומה מלעיל.
+        \item לסדרה מונוטונית ולא חסומה.
+        \item לסדרה גם עולה וגם יורדת. 
+        \item לסדרה חסומה ולא מונוטונית.
+        \item לסדרה לא עולה ולא יורדת.
+    \end{enumerate}
+\end{exer}
+
+
+
+
+
+
+
+
+\section
+{גבול של סדרה}
+
+נתבונן בסדרה של 
+קירובים עשרוניים של 
+$\frac{1}{3}$, 
+דהיינו 
+$$0, 0.3, 0.33, 0.333, 0.3333
+\ldots.$$
+ככל שמיקמוהים של איברי הסדרה יגדלו, איבריה של הסדרה הנ"ל "יתקרבו" יותר ויותר ל- 
+$\frac{1}{3}$. 
+במקרה זה נומר שהסדרה מתכנסת וגבולה הוא 
+$\frac{1}{3}$. 
+ראו איור 
+\ref{decimal approximation of 1/3}.
+
+\selectlanguage{english}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xlabel={$n$},
+    ylabel={$a_n$},
+    xmin=0, xmax=45,
+    ymin=0, ymax=0.6,
+    width=12cm,
+    height=7cm,
+    xtick={1,2,3,4,5,10,20,40,41,42,43,44},
+    xticklabels={1,2,3,4,5,10,20,,,,,},
+    ytick={0,0.3,0.33,0.3333},
+    yticklabels={},
+    ytick style={draw=none},
+    grid=none,
+    xmajorgrids=false,
+    ymajorgrids=false,
+  ]
+    % Points
+    \addplot[
+      only marks,
+      mark=*,
+      mark size=2pt,
+      color=blue
+    ] coordinates {
+      (1,0)
+      (2,0.3)
+      (3,0.33)
+      (4,0.36)
+      (5,0.38)
+      (10,0.41)
+      (20,0.46)
+      (40,0.47)
+      (41,0.474)
+      (42,0.479)
+      (43,0.482)
+      (44,0.484)
+    };
+
+    % Interrupted red dashed horizontal line at y=0.52 (break at x=20)
+    \draw[red, thick, dashed] (axis cs:0,0.4935) -- (axis cs:18,0.4935);
+    \draw[red, thick, dashed] (axis cs:22,0.4935) -- (axis cs:45,0.4935);
+
+    % Label y=1/3 aligned with the dashed line, shifted slightly down
+    \node[red, anchor=south, yshift=-9pt] at (axis cs:20,0.4935) {$y=\frac{1}{3}$};
+
+    % Dashed tick mark on y-axis at y=1/3 with label slightly above and left
+    \draw[dashed] (axis cs:0,0.3333) -- ++(-5pt,0);
+    \node[anchor=south east, xshift=-5pt, yshift=3pt] at (axis cs:0,0.3333) {$\frac{1}{3}$};
+
+  \end{axis}
+\end{tikzpicture}
+\selectlanguage{hebrew}
+\caption{סדרת הקירובים העשרוניים של $\frac{1}{3}$}
+\label{decimal approximation of 1/3}
+\end{figure}
+
+
+\
+\selectlanguage{hebrew}
+עתה נתבונן בסדרה 
+$a_n=\frac{1}{n}$, 
+ראו איור 
+\ref{fig:limit-sequence}. 
+ככל ש- 
+$n$ 
+יגדל, איבריה של הסדרה "יתקרבו" ל- 
+$0$. 
+
+
+
+
+
+
+
+
+
+
+מיד נעבור להגדרה פורמלית של המושג המרכזי - גבול. 
+אך לפני זה נכיר אות יוונית 
+$\varepsilon$ - 
+אפסילון. 
+במרבית ספרי חדו"א כשמוזכר 
+$\varepsilon$ 
+הכוונה היא למספר חיובי 
+"קטן" 
+לא ידוע. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%עיקר העניין שלנו בספר זה יתמקד בסדרות שבמובן מסוים יש להן התנהגות "יציבה" - סדרות שעם התקדמות האינדקסים, איבריהן מצטופפים ליד איזשהו מספר. 
+%המספר הזה יקרא 
+%{\it גבול של סדרה}. 
+%מושג הגבול הינו המושג המרכזי בחשבון דיפרנציאלי ואינטגרלי. כפי שנראה בהמשך, מושגים רבים בתחום מבוססים עליו. 
+
+\begin{defnH}\label{limit of sequence}\rm
+תהא 
+$(a_n)_{n=1}^\infty$ 
+סדרה. 
+אומרים של- 
+$(a_n)_{n=1}^\infty$ 
+קיים גבול 
+$L\in\mathbb{R}$ 
+אם לכל 
+$\varepsilon>0$ 
+קיים 
+$N\in\mathbb{N}$ 
+כך ש- 
+$|a_n-L|<\varepsilon$, 
+לכל 
+$n> N$. 
+את העובדה הזאת נציין בכתיבה 
+$$\displaystyle\lim_{n \to \infty}a_n=L$$ 
+או 
+$$a_n\xrightarrow[n\longrightarrow\infty]{}L.$$
+
+אם 
+$\displaystyle\lim_{n \to \infty}a_n=L$, 
+אז נומר ש- 
+$(a_n)_{n=1}^\infty$ 
+{\it מתכנסת}
+או 
+{\it שואפת} 
+ל- 
+$L$. 
+\end{defnH}
+
+נתעכב על ההגדרה של גבול. נבין בהדרגה. 
+\begin{itemize}
+    \item 
+{\it לכל $\varepsilon>0$}:
+המשמעות היא שכל מה שהולכים לומר אחרי זה נכון לכל מספר חיובי ללא יוצא דופן. 
+\item 
+{\it קיים $N\in\mathbb{N}$}: 
+יחד עם הביטוי הקודם זה אומר שלכל מספר חיובי 
+$\varepsilon$
+נצליח למצוא מספר טבעי 
+$N$. 
+\item 
+{\it כך ש- $|a_n-L|<\varepsilon$ לכל $n>N$}: 
+וזה אומר שאיברי הסדרה 
+$(a_n)_{n=1}^\infty$ 
+"קרובים" למספר
+$L$ 
+עד כדי 
+$\varepsilon$ 
+החל ממקום 
+$N$, 
+כלומר, המרחק בין כל איברי הסדרה שמיקומם הוא לכל הפחות 
+$N+1$ 
+לגבול 
+$L$ 
+הוא קטן מ- 
+$\varepsilon$. 
+
+גרפית זה אומר שכל האיברים 
+$a_{N+1},a_{N+2},a_{N+3},\ldots$ 
+צריכים להמצא ברצועה אופקית שתחומה בין הישרים 
+$y=L-\varepsilon$ 
+ו- 
+$y=L+\varepsilon$. 
+ראו איור 
+\ref{fig:limit-alternating-full}. 
+\end{itemize}
+ראו איור
+\ref{fig:limit-alternating-full} 
+שוב. 
+ל- 
+$\varepsilon>0$ 
+שבאיור, 
+$N$ 
+שיתאים הוא 
+$N=57$. 
+אכן, אם תסתכלו טוב, 
+$|a_{57}-L|\geq\varepsilon$, 
+אבל 
+$|a_n-L|<\varepsilon$ 
+ל- 
+$n=58,59,60,\ldots$. 
+באיור אנו רואים שגם 
+$|a_1-L|<\varepsilon$ 
+וגם 
+$|a_2-L|<\varepsilon$, 
+אך 
+$N=1$ 
+ו- 
+$N=2$ 
+לא יספקו אותנו, מאחר ו -
+$|a_3-L|\geq\varepsilon$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\selectlanguage{english}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xlabel={$n$},
+    ylabel={$a_n$},
+    xmin=0, xmax=45,
+    ymin=0.8, ymax=1.2,
+    width=12cm,
+    height=7cm,
+    xtick={1,2,3,4,5,10,11,20,40,41,42,43,44},
+    xticklabels={1,2,3,4,5,,58,128,},
+    ytick={0.9,1,1.1},
+    yticklabels={$L-\varepsilon$, $L$, $L+\varepsilon$},
+    ytick style={draw=none},
+    grid=none,
+    xmajorgrids=false,
+    ymajorgrids=false,
+  ]
+
+    % Points from n=1 to n=44
+    \addplot[
+      only marks,
+      mark=*,
+      mark size=2pt,
+      color=blue
+    ] coordinates {
+      (1, 1.05)
+      (2, 0.95)
+      (3, 1.135)
+      (4, 0.85)
+      (5, 1.17)
+      (6, 1.1666)
+      (7, 0.8571)
+      (8, 1.125)
+      (9, 0.8888)
+      (10, 1.1)
+      (11, 0.9091)
+      (12, 1.0833)
+      (13, 0.9231)
+      (14, 1.0714)
+      (15, 0.9333)
+      (16, 1.0625)
+      (17, 0.9411)
+      (18, 1.0556)
+      (19, 0.9474)
+      (20, 1.05)
+      (40, 1.025)
+      (41, 0.9756)
+      (42, 1.0238)
+      (43, 0.9767)
+      (44, 1.0227)
+    };
+
+    % Dashed red line at y=1 (limit)
+    \addplot[domain=0:45, samples=2, red, dashed, thick] {1};
+    \node[red, anchor=south] at (axis cs:22,1) {%$y=1$
+    };
+    \draw[dashed] (axis cs:0,1) -- ++(-5pt,0);
+
+    % Dashed red lines at y = 1.1 and y = 0.9
+    \addplot[domain=0:45, samples=2, red, dashed] {1.1};
+    \addplot[domain=0:45, samples=2, red, dashed] {0.9};
+
+    % Labels for epsilon lines
+    \node[red, anchor=south] at (axis cs:22,1.1) {%$y=L+\varepsilon$
+    };
+    \node[red, anchor=north] at (axis cs:22,0.9) {%$y = L - \varepsilon$
+    };
+
+  \end{axis}
+\end{tikzpicture}
+\selectlanguage{hebrew}
+\caption{גבול של סדרה}
+\label{fig:limit-alternating-full}
+\end{figure}
+\selectlanguage{hebrew}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\vspace*{0.3cm}
+%{\bf הערה מיותרת?} 
+%בהגדרה הנ"ל אפשר לצמצם את טווח ה- 
+%$\varepsilon$ 
+%לכל 
+%$\varepsilon<\varepsilon_0$ 
+%עבור איזשהו 
+%$\varepsilon_0>0$ 
+%קבוע. 
+%אכן, נניח כי אני מסוגלים "להפעיל" את הגדרת הגבול לכל 
+%$\varepsilon<\frac{1}{100}$, 
+%כלומר,
+%לכל 
+%$\varepsilon<\frac{1}{100}$
+%קיים 
+%$N$ 
+%כך ש- 
+%$|a_n-L|<\varepsilon$ 
+%לכל 
+%$N>N$. 
+%עתה נשאל את עצמנו, מה לדוגמא עושים עם 
+%$\varepsilon=\frac{1}{3}$? 
+%ננהוג באופן הבא: נמצא 
+%$N\left(\frac{1}{100}\right)$, 
+%אזי, לכל 
+%$N>N\left(\frac{1}{100}\right)$, 
+%מתקיים
+%$|a_n-L|<\frac{1}{100}$, 
+%על אחת כמה וכמה, 
+%$|a_n-L|<\frac{1}{3}$ 
+%לכל 
+%$n>N\left(\frac{1}{100}\right)$,
+%כלומר, 
+%$N\left(\frac{1}{100}\right)$ 
+%"משרת" את כל האפסילונים שגדולים מ- 
+%$\frac{1}{100}$. 
+
+
+\begin{ex}\rm 
+נראה כי
+    $\displaystyle\lim_{n \to \infty}\frac{5n-12}{2n+3}=\frac{5}{2}$. 
+    נפנה להגדרה
+    \ref{limit of sequence}. 
+    נקבע 
+    $\varepsilon>0$. 
+    מטרתנו למצוא 
+    $N\in\mathbb{N}$ 
+    כך ש- 
+    $\left|a_n-\frac{5}{2}\right|<\varepsilon$ 
+    לכל 
+    $n>N$. 
+    כלומר, עלינו למצוא פתרון לאי-שיוויון 
+    $$\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|<\varepsilon.$$ 
+יש לומר שאנו לא מעוניינים בפתרון כלשהו אלא בפתרון בעל צורה מסוימת - כל הטעי החל מאיזשהו טבעי 
+$N$ 
+צריכים להוות פתרון לאי-שיוויון. 
+כלומר, אנו מעוניינים במציאת 
+    $N$ 
+    כך שאם 
+    $n>N$ 
+    יתקיים 
+    $\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|<\varepsilon$. 
+מתקיים 
+        $$\varepsilon>\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|=\left|\frac{39}{4n+6}\right|.$$ 
+        מכיוון שהביטוי באגף ימין הוא חיובי, אי-שיוויון האחרון שקול ל- 
+        $$\frac{39}{4n+6}<\varepsilon.$$
+        שבתורו שקול ל- 
+        $$\frac{4n+6}{39}>\frac{1}{\varepsilon},$$
+        כלומר, 
+        $$4n+6>\frac{39}{\varepsilon},$$
+        מכאן 
+$$n>\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right).$$  
+המספר 
+$\frac{39}{\varepsilon}-6$
+יכול להיות שלילי
+)לדוגמא, אם 
+$\varepsilon=7$(, 
+לכן 
+    ניקח 
+    $N$ 
+    להיות השלם הכי קטן שגדול מ- 
+    $\max\left\{\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right),0\right\}$. 
+    נראה כי ה-
+    $N$
+    הזה משרת את מטרתנו. 
+    אם 
+    $\max\left\{\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right),0\right\}=\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right)$, 
+    אז
+    לכל 
+    $n>\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right)$ 
+    מתקיים
+    $$\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|=\left|\frac{39}{4n+6}\right|<\left|\frac{39}{4\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right)+6}\right|=|\varepsilon|=\varepsilon.$$
+    ואם 
+    $\max\left\{\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right),0\right\}=0$, 
+    נסיק כי 
+    $\frac{1}{4}\left(\frac{39}{\varepsilon}-6\right)\leq 0$, 
+    כלומר 
+    $\frac{39}{\varepsilon}\leq 6$, 
+    ז"א 
+    $\varepsilon\geq\frac{39}{6}$, 
+    אז נסיק כי 
+    $$\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|=\left|\frac{39}{4n+6}\right|<\left|\frac{39}{4\cdot0+6}\right|=\frac{39}{6}\leq\varepsilon.$$ 
+    בשני המקרים הצלחנו למצוא 
+    $N\in\mathbb{N}$ 
+    כך ש- 
+    $$\left|\frac{5n-12}{2n+3}-\frac{5}{2}\right|<\varepsilon$$
+    לכל 
+    $n>N$, 
+    כלומר, קיימנו את הנדרש בהגדרת גבול. 
+\end{ex}    
+\begin{ex}\rm 
+נחזור לדוגמא הקודמת ונראה שמספר אחר, לדוגמא 
+$\frac{3}{2}$ - 
+לא מהווה גבול של הסדרה. 
+נקבע 
+$\varepsilon>0$ 
+וננסה למצוא 
+$N\in\mathbb{N}$ 
+כך ש- 
+$$\left|\frac{5n-12}{2n+3}-\frac{3}{2}\right|<\varepsilon,$$
+כלומר,
+$$\left|\frac{4n-33}{4n+6}\right|<\varepsilon.$$
+אי-שיוויון זה שקול ל- 
+$$-\varepsilon<\frac{4n-33}{4n+6}<\varepsilon.$$
+נשים לב כי 
+$\frac{4n-33}{4n+6}-1-\frac{39}{4n+6}$, 
+אזי 
+$$-\varepsilon<\frac{4n-33}{4n+6}<\varepsilon$$
+אמ"מ
+$$-\varepsilon<1-\frac{39}{4n+6}<\varepsilon$$
+אמ"מ
+$$-1-\varepsilon<-\frac{39}{4n+6}<-1+\varepsilon$$
+אמ"מ
+$$\frac{1-\varepsilon}{39}<\frac{1}{4n+6}<\frac{1+\varepsilon}{39}$$
+אמ"מ
+$$\frac{39}{1+\varepsilon}<4n+6<\frac{39}{1-\varepsilon}$$
+אמ"מ
+$$\frac{39}{1+\varepsilon}-6<4n<\frac{39}{1-\varepsilon}-6$$
+אמ"מ
+$$\frac{39}{4+4\varepsilon}-\frac{3}{2}<n<\frac{39}{4-4\varepsilon}-\frac{3}{2}.$$
+נשים לב כי אם קיימים פתרונות לאי-שיוויון שפתרנו הרי  שמספרם סופי. 
+נזכר כי בהגדרת הגבול נדרש פתרון שמכיל את כל הטבעיים החל מאיזשהו טבעי מסוים, בפרט אינסוף פתרונות. 
+אם נלך לכיוון של הפרכת קיום הגבול, נצטרך לספק 
+$\varepsilon>0$ 
+כך שלכל 
+$N\in\mathbb{N}$ 
+קיים 
+$n<N$ 
+אשר יקיים 
+$$\left|\frac{5n-12}{2n+3}-\frac{3}{2}\right|\geq\varepsilon,$$
+כלומר 
+$$\left|\frac{4n-33}{4n+6}\right|\geq\varepsilon.$$
+מסובך לעבוד עם ערכים מוחלטים, לכן ננסה "להיפטר" מערך מוחלט, לשם כך נשים לב כי המכנה הוא חיובי ואילו המונה הוא חיובי רק כאשר 
+$n\geq 9$. 
+לכן נניח כי 
+$n\geq 9$ 
+ונמשיך 
+$$\left|\frac{5n-12}{2n+3}-\frac{3}{2}\right|=\frac{4n-33}{4n+6}=1-\frac{39}{4n+6}\geq 1-\frac{39}{4\cdot 9+6}=\frac{1}{14}.$$
+איך התוצאה שהתקבלה ניתנת לפירוש? 
+נבחר 
+$\varepsilon<\frac{1}{14}$ 
+ואז בשביל 
+$0<\varepsilon$ 
+זה לא נוכל למצוא 
+$N$ 
+כך ש- 
+$$\left|\frac{5n-12}{2n+3}-\frac{3}{2}\right|<\varepsilon$$ 
+לכל 
+$n>N$, 
+הרי שהראנו כי 
+$$\left|\frac{5n-12}{2n+3}-\frac{3}{2}\right|\geq\frac{1}{14}>\varepsilon.$$
+זה מוכיח כי 
+$\frac{3}{2}$ 
+לא מהווה גבול של הסדרה. 
+\end{ex} 
+
+
+\begin{ex}\rm 
+בדוגמא זו נראה שאף מספר לא מהווה גבול של הסדרה 
+$a_n=(-1)^n$. 
+קודם נשלול ש- 
+$L=-1$ 
+הוא גבול של הסדרה. 
+נניח בשלילה ש- 
+$L=-1$ 
+הוא גבול. זה אומר שלכל 
+$\varepsilon>0$ 
+קיים 
+$N$ 
+כך שכל איברי הסדרה 
+$(a_n)_{n=1}^\infty$ 
+שייכים לסביבת-
+$\varepsilon$ 
+של 
+$L$ 
+ל- 
+$n=N+1,N+2,N+3,\ldots$. 
+בפרט, ל-
+$\varepsilon=\frac{1}{10}$ 
+קיים 
+$N$ 
+כך ש- 
+$$|a_n-(-1)|<\frac{1}{10}$$
+לכל 
+$n>N$. 
+אבל לערכים הזוגיים של 
+$n$ 
+$$|a_n-(-1)|=|2|>\frac{1}{10},$$
+קיבלנו סתירה. זה אומר ש- 
+$L=-1$ 
+לא גבול של הסדרה. 
+באופן דומה מראים כי 
+$L=-1$ 
+לא מהווה גבול של הסדרה הנתונה. 
+עתה נניח כי 
+$L\neq\pm1$ 
+הוא גבולה של 
+$(a_n)_{n=1}^\infty$. 
+נבחר 
+$$\varepsilon<\min\{|1-L|,|-1-L|\}.$$
+מתקיים 
+$|a_n-L|>\varepsilon$, 
+מאחר ו - 
+$$|a_n-L|=|1-L|>\varepsilon$$
+ל- 
+$n$ 
+זוגי ו- 
+$$|a_n-L|=|-1-L|>\varepsilon$$ 
+ל- 
+$n$ 
+אי-זוגי. 
+נשיק של- 
+$\varepsilon>0$ 
+מסוים 
+$|a_n-L|<\varepsilon$ 
+לכל 
+$n$, 
+כלומר, עבור 
+$\varepsilon$ 
+מסוים זה לא קיים 
+$N$ 
+כך ש- 
+$|a_n-L|<\varepsilon$ 
+לכל 
+$n>N$. 
+נסיק כי לסדרה הנתונה לא קיים גבול. 
+\end{ex} 
+
+%\begin{ex}\rm 
+%    $\lim_{n\longrightarrow\infty}\frac{5n^2-3}{3n^2+n}\neq1$. 
+%    עלינו להראות כי קיים 
+%    $\varepsilon>0$ 
+%    כך שלכל 
+%    $N\in\mathbb{N}$ 
+%    קיים 
+%    $n> N$ 
+%    המקיים 
+%    $\left|\frac{5n^2-3}{3n^2+n}-1\right|\geq\varepsilon$. 
+%    נתחיל בחישובים 
+%    $$\left|\frac{5n^2-3}{3n^2+n}-1\right|=\left|\frac{2n^2-n-3}{3n^2+n}\right|\underset{n\geq 2}{=}\frac{2n^2-n-3}{3n^2+n}.$$
+%    נראה באינדוקציה כי 
+%    $\frac{2n^2-n-3}{3n^2+n}>\frac{1}{2}$ 
+%    לכל 
+%    $n\geq 5$. 
+%    עבור 
+%    $n=5$ 
+%    נקבל 
+%    $$\frac{2\cdot5^2-5-3}{3\cdot5^2+5}=\frac{21}{40}>\frac{1}{2}.$$
+%    נניח כי הטענה נכונה לאיזשהו 
+%    $n\geq 5$, 
+%    כלומר 
+%    $\frac{2n^2-n-3}{3n^2+n}>\frac{1}{2}$. 
+%    מתקיים 
+%    \begin{align*}
+%        \frac{2(n+1)^2-(n+1)-3}{3(n+1)^2+(n+1)}-\frac{2n^2-n-3}{3n^2+n}&=\ \frac{2n^2+3n-2}{3n^2+7n+4}-\frac{2n^2-n-3}{3n^2+n}\\
+%        &=\ \frac{5n^2+23n+12}{(3n^2+n)(3n^2+7n+4)}\\
+%        &>\ 0,
+%    \end{align*}
+%    כלומר 
+%    $$ \frac{2(n+1)^2-(n+1)-3}{3(n+1)^2+(n+1)}>\frac{2n^2-n-3}{3n^2+n}>\frac{1}{2},$$
+%    כנדרש. 
+%    אזי 
+%    $\varepsilon=\frac{1}{2}$ 
+%    משרת את מטרתנו. 
+%\end{ex}
+\vspace{0.3 cm}
+מה ראינו בשלוש דוגמאות האחרונות? 
+בשתי דוגמאות הראשונות ראינו כי מספר מסוים - 
+$\frac{5}{2}$ - 
+הוא גבול של הסדרה הנתונה ואילו מספר אחר - 
+$\frac{3}{2}$ - 
+הוא לאו. 
+בדוגמא שלישית ראינו סדרה שאין לה גבול. 
+שלוש התוצאות האלה באופן טבעי מובילות למשפט הבא. 
+\vspace{0.3 cm}
+\begin{prop}\label{uniqueness of limit}\rm
+אם קיים גבול 
+$\displaystyle\lim_{n \to \infty}a_n$, 
+אז הוא יחיד. 
+\end{prop}
+
+\begin{proof}
+יהיו 
+$L,M\in\mathbb{R}$ 
+כך ש- 
+$$\displaystyle\lim_{n \to \infty}a_n=L,\ \displaystyle\lim_{n \to \infty}a_n=M$$ 
+ו- 
+$L\neq M$. 
+בלי הגבלת כלליות
+)משתמשים בביטוי זה כאשר בהוכחה יש מספר מקרים והוכחה של כל אחד מהם דומה להוכחה של מקרה אחד(
+נניח כי 
+$L>M$
+יהא 
+$\varepsilon=\frac{L-M}{2}$. 
+מהעובדה ש- 
+$\displaystyle\lim_{n \to \infty}a_n=L$, 
+קיים
+$N_1\in\mathbb{N}$ 
+כך ש- 
+$|a_n-L|<\varepsilon$ 
+לכל 
+$n>N_1$, 
+בפרט, 
+$a_n>\frac{L+M}{2}$ 
+לכל 
+$n>N_1$. 
+כמוכן, 
+מהעובדה ש- 
+$\displaystyle\lim_{n \to \infty}a_n=M$, 
+קיים
+$N_2\in\mathbb{N}$ 
+כך ש- 
+$|a_n-M|<\varepsilon$ 
+לכל 
+$n>N_2$, 
+בפרט, 
+$a_n>\frac{L+M}{2}$ 
+לכל 
+$n>N_2$. 
+קיבלנו כי לכל 
+$n> N=\max\{N_1,N_2\}$ 
+מתקיים בו-זמנית 
+$a_n>\frac{L+M}{2}$ 
+ו- 
+$a_n<\frac{L+M}{2}$, 
+סתירה. 
+\end{proof} 
+
+\selectlanguage{english}
+\begin{center}
+\begin{tikzpicture}
+
+  % Define L, M, and epsilon
+  \def\L{6}
+  \def\M{2}
+  \def\eps{2} % (L - M)/2 = 2
+
+  % Draw horizontal axis extended more to the right
+  \draw[->] (-2,0) -- (10,0);
+
+  % Mark L point with filled red dot and red label below
+  \draw[fill=red] (\L,0) circle (2pt) node[below=6pt,red] {$\textcolor{red}{L}$};
+
+  % Mark M point with filled blue dot and blue label above
+  \draw[fill=blue] (\M,0) circle (2pt) node[above=6pt,blue] {$\textcolor{blue}{M}$};
+
+  % Draw open circles at endpoints and label:
+  % Left interval endpoints above
+  \foreach \x/\label in {
+    \L-\eps/{$L - \varepsilon$},
+    \L+\eps/{$L + \varepsilon$}
+  } {
+    \draw (\x,0) circle (3pt);
+    \node[above=6pt] at (\x,0) {\small \label};
+  }
+  % Right interval endpoints below
+  \foreach \x/\label in {
+    \M-\eps/{$M - \varepsilon$},
+    \M+\eps/{$M + \varepsilon$}
+  } {
+    \draw (\x,0) circle (3pt);
+    \node[below=6pt] at (\x,0) {\small \label};
+  }
+
+  % Draw point close to L inside left interval with orange color and label above
+  \def\pointL{5.7}
+  \draw[fill=orange] (\pointL,0) circle (2pt) node[above=6pt,orange] {$a_{N+1}$};
+
+  % Draw point close to M inside right interval with orange color and label below
+  \def\pointM{2.5}
+  \draw[fill=orange] (\pointM,0) circle (2pt) node[below=6pt,orange] {$a_{N+1}$};
+
+\end{tikzpicture}
+\end{center}
+
+\selectlanguage{hebrew}
+בהוכחת הטענה 
+\ref{uniqueness of limit}
+ראינו ברמיזה עובדה חשובה שתנוסח בטענה הבאה. 
+
+\begin{prop}\rm
+אם 
+$\lim_{n\longrightarrow \infty} a_n=L$, 
+אז כל סביבה של 
+$L$ 
+מכילה 
+כמעט כל איברי הסדרה
+$(a_n)_{n=1}^\infty$ 
+\newline
+)ביתר הדיוק, מכילה את כל האיברים של הסדרה החל ממקום מסוים בפרט סדרה שמתכנסת
+\newline
+היא חסומה.(
+\end{prop}
+\begin{proof}
+ע"פ ההגדה, ל- 
+$\varepsilon>0$ 
+הנתון מראש 
+קיים 
+$N\in\mathbb{N}$ 
+כך ש-  
+$|a_n-L|<\varepsilon$ 
+לכל 
+$n>N$, 
+כלומר 
+$$L-\varepsilon<a_n<L+\varepsilon,$$
+זאת אומרת שמחוץ לסביבה
+$(L-\varepsilon,L+\varepsilon)$ 
+יכולים להימצא רק האיברים 
+$a_1,a_2,\ldots,a_{N-1}$.
+ניקח עתה 
+$$m=\min\{L-\varepsilon,a_1,a_2,\ldots,a_{N}\},\ M=\max\{L+\varepsilon,a_1,a_2,\ldots,a_{N}\},$$ 
+אזי 
+$m\leq a_n\leq M$ 
+לכל 
+$n\in\mathbb{N}$, 
+כלומר 
+$(a_n)_{n=1}^\infty$ 
+היא סדרה חסומה. 
+\end{proof}
+
+\vspace*{0.3cm}
+
+
+\subsection{ משפטי התכנסות}
+
+בהינתן שתי סדרות
+$(a_n)_{n=1}^\infty$
+ו- 
+$(b_n)_{n=1}^\infty$
+נגדיר 
+\begin{itemize}
+    \item 
+{\it סכום} 
+שלהם להיות סדרה שאיברה ה- 
+$k$ 
+הוא סכום של איבר ה- 
+$k$ 
+של 
+$(a_n)_{n=1}^\infty$
+עם איבר ה- 
+$k$ 
+של 
+$(b_n)_{n=1}^\infty$, 
+דהיינו, 
+$(a_n+b_n)_{n=1}^\infty$.  
+    \item 
+{\it הפרש} 
+בין 
+$(a_n)_{n=1}^\infty$
+ל- 
+$(b_n)_{n=1}^\infty$ 
+להיות סדרה שאיברה ה- 
+$k$ 
+הוא הפרש בין איבר ה- 
+$k$ 
+של 
+$(a_n)_{n=1}^\infty$
+ואיבר ה- 
+$k$ 
+של 
+$(b_n)_{n=1}^\infty$, 
+דהיינו, 
+$(a_n-b_n)_{n=1}^\infty$.
+    \item 
+{\it מכפלה} 
+של  
+$(a_n)_{n=1}^\infty$
+ב- 
+$(b_n)_{n=1}^\infty$ 
+להיות סדרה שאיברה ה- 
+$k$ 
+הוא מכפלת איבר ה- 
+$k$ 
+של 
+$(a_n)_{n=1}^\infty$
+באיבר ה- 
+$k$ 
+של 
+$(b_n)_{n=1}^\infty$, 
+דהיינו, 
+$(a_nb_n)_{n=1}^\infty$.
+\item
+{\it מנה} 
+בין 
+$(a_n)_{n=1}^\infty$
+ל-  
+$(b_n)_{n=1}^\infty$ 
+להיות סדרה שאיברה ה- 
+$k$ 
+הוא חלוקת איבר ה- 
+$k$ 
+של 
+$(a_n)_{n=1}^\infty$
+באיבר ה- 
+$k$ 
+של 
+$(b_n)_{n=1}^\infty$, 
+דהיינו, 
+$\left(\frac{a_n}{b_n}\right)_{n=1}^\infty$. 
+להבדיל מההגדרות הקודמות, בהגדרה זו קיימת דרישה נוספת - 
+$b_n\neq 0$ 
+לכל 
+$n$. 
+\end{itemize}
+
+המשפט הבא, הידוע בשם 
+{\it אריתמטיקת הגבולות},
+ מגלה קשר בין גבולות של סכום, הפרש, מכפלה ומנה אם לגבולות של 
+ $(a_n)_{n=1}^\infty$ 
+ ו- 
+ $(b_n)_{n=1}^\infty$. 
+
+
+
+
+
+\vspace*{0.3cm}
+\begin{theoremH}\rm
+יהיו  
+$(a_n)_{n=1}^\infty$
+ו- 
+$(b_n)_{n=1}^\infty$ 
+סדרות
+נניח כי קיימים הגבולות 
+$$\displaystyle\lim_{n \to \infty}a_n=L_1,\ 
+\displaystyle\lim_{n \to \infty}b_n=L_2.$$ 
+אזי 
+\begin{enumerate}
+    \item[1.] הגבול 
+    $\displaystyle\lim_{n \to \infty}(a_n\pm b_n)$ 
+    קיים 
+    ו- 
+    $\displaystyle\lim_{n \to \infty}(a_n\pm b_n)=L_1\pm L_2$. 
+    \item[2.] הגבול 
+    $\displaystyle\lim_{n \to \infty}(a_n\cdot b_n)$ 
+    קיים 
+    ו- 
+    $\displaystyle\lim_{n \to \infty}(a_n\cdot b_n)=L_1\cdot L_2$. 
+    \item[3.] אם 
+    $L_2\neq 0$, 
+    אז קיים הגבול 
+    $\displaystyle\lim_{n \to \infty}\frac{a_n}{b_n}$ 
+    ו- 
+    $\displaystyle\lim_{n \to \infty}\frac{a_n}{b_n}=\frac{L_1}{L_2}$. 
+\end{enumerate}
+\end{theoremH}
+
+התוצאות לא מפתיעות. נספק הסבר אינטואיטיבי לנכונות הטענה הראשונה במשפט. 
+אם 
+$\displaystyle\lim_{n \to \infty}(a_n)=L_1$ 
+ו- 
+$\displaystyle\lim_{n \to \infty}(b_n)=L_2$, 
+אז, 
+"עם הזמן",
+איבריה של 
+$(a_n)_{n=1}^\infty$ 
+מתקרבים ל- 
+$L_1$ 
+ואיבריה של 
+$(b_n)_{n=1}^\infty$ 
+מתקרבים ל- 
+$L_2$, 
+לכן איבריה של 
+$(a_n+b_n)_{n=1}^\infty$ 
+מתקרבים ל- 
+$L_1+L_2$. 
+שאר הטענות מוסברות באופן דומה. עתה נעבור להוכחת המשפט. 
+
+\end{document}

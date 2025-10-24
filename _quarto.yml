@@ -11,8 +11,8 @@ book:
   - chapter_0_5.qmd
   - chapter_1.qmd
   - chapter_2.qmd
-  - chapter_3.qmd
-  - chapter_calculus.qmd
+  # - chapter_3.qmd
+  # - chapter_calculus.qmd
   - summary.qmd
   - references.qmd
   search: true
@@ -38,6 +38,7 @@ format:
     html-math-method: katex
     fig-align: center
     fig-cap-location: bottom
+    theorems: false
     callout:
       collapse: true
     css: 
@@ -63,6 +64,7 @@ format:
     linestretch: 1.5
     geometry: right=30mm, left=30mm, top=30mm, bottom=30mm
     pdf-engine: xelatex
+    theorems: false
     header-includes:
       - \usepackage{bidi}
       - \setRTL

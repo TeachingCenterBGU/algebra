@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; גיאומטריה במישור ובמרחב – אלגברה לינארית</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_2.html" rel="next">
+<link href="./chapter_0_5.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="rtl-baseline.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">אלגברה לינארית</a> 
+        <div class="sidebar-tools-main">
+    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">מידע כללי</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">הקדמה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ביבליוגרפיה</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#המישור-mathbbr2" id="toc-המישור-mathbbr2" class="nav-link active" data-scroll-target="#המישור-mathbbr2"><span class="header-section-number">4.0.1</span> המישור <span class="math inline">\mathbb{R}^2</span></a></li>
+  <li><a href="#פעולות-על-וקטורים" id="toc-פעולות-על-וקטורים" class="nav-link" data-scroll-target="#פעולות-על-וקטורים"><span class="header-section-number">4.0.2</span> פעולות על וקטורים</a></li>
+  <li><a href="#גדלים-וזוויות-ב-mathbbr2" id="toc-גדלים-וזוויות-ב-mathbbr2" class="nav-link" data-scroll-target="#גדלים-וזוויות-ב-mathbbr2"><span class="header-section-number">4.0.3</span> גדלים וזוויות ב-<span class="math inline">\mathbb{R}^{2}</span></a></li>
+  <li><a href="#ישרים-ב-mathbbr2" id="toc-ישרים-ב-mathbbr2" class="nav-link" data-scroll-target="#ישרים-ב-mathbbr2"><span class="header-section-number">4.0.4</span> ישרים ב-<span class="math inline">\mathbb{R}^{2}</span></a></li>
+  <li><a href="#מכפלה-סקלרית" id="toc-מכפלה-סקלרית" class="nav-link" data-scroll-target="#מכפלה-סקלרית"><span class="header-section-number">4.0.5</span> מכפלה סקלרית</a></li>
+  <li><a href="#מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" id="toc-מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" class="nav-link" data-scroll-target="#מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית"><span class="header-section-number">4.0.6</span> מעבר בין הצגה פרמטרית של ישר להצגה אלגברית</a></li>
+  <li><a href="#מעבר-בין-הצגה-אלגברית-של-ישר-להצגה-פרמטרית" id="toc-מעבר-בין-הצגה-אלגברית-של-ישר-להצגה-פרמטרית" class="nav-link" data-scroll-target="#מעבר-בין-הצגה-אלגברית-של-ישר-להצגה-פרמטרית"><span class="header-section-number">4.0.7</span> מעבר בין הצגה אלגברית של ישר להצגה פרמטרית</a></li>
+  <li><a href="#הקדמה" id="toc-הקדמה" class="nav-link" data-scroll-target="#הקדמה"><span class="header-section-number">4.1</span> הקדמה</a></li>
+  <li><a href="#משוואות" id="toc-משוואות" class="nav-link" data-scroll-target="#משוואות"><span class="header-section-number">4.2</span> משוואות</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>בפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד תחילה במישור (עם דגש על הישרים המוכלים בו) ואחר כך נעבור למרחב (שם נדבר גם על מישורים).</p>
+<section id="המישור-mathbbr2" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="המישור-mathbbr2"><span class="header-section-number">4.0.1</span> המישור <span class="math inline">\mathbb{R}^2</span></h3>
+<p>בפרק <span class="math inline">0</span> דיברנו על הישר הממשי וגם על המישור המרוכב. אפשר גם לתאר את המישור (הממשי) בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.</p>
+<div class="definition">
+<p>המישור <span class="math inline">\mathbb{R}^2</span> הוא קבוצת כל הנקודות בעלות שתי קוארדינטות ממשיות, כלומר <span class="math display">.\mathbb{R}^{2}=\{(x,y)|x,y\in\mathbb{R}\}</span></p>
+</div>
+<div class="example">
+<p><span class="math inline">(0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^{2}</span></p>
+<p>לעומת זאת: <span class="math inline">1,(i,0),(0,1,2)\notin\mathbb{R}^{2}</span></p>
+</div>
+<div class="center">
+<p>(מישור אינטראקטיבי שמאפשר ללחוץ על נקודה ולהציג את הוקטור עם הקוארדינטות שלו)</p>
+</div>
+<div class="definition">
+<p>וקטור <span class="math inline">\vec{v}=(x,y)</span> במישור הוא חץ שיוצא מהראשית <span class="math inline">(0,0)</span> ומסתיים בנקודה <span class="math inline">(x,y)</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>נשתמש באותן הקוארדינטות לוקטור וגם לנקודה המתאימה. נבין את הכוונה לפי ההקשר, אבל לרוב נדבר על וקטורים ולא על נקודות.</p>
+</div>
+<p>הגדרנו וקטורים כחצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה שקובע את הוקטור הם גודלו וכיוונו, לא נקודת ההתחלה. וקטורים זהים יופיעו כחצים מקבילים ושווי גודל במישור.</p>
+<div class="center">
+<p>(מישור אינטראקטיבי שמאפשר להזיז וקטור נתון)</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר <span class="math inline">(a,b)=(c,d)</span> אם ורק אם <span class="math inline">a=c</span> וגם <span class="math inline">b=d</span>. למשל, <span class="math inline">(1,2)=(1,2)</span> אך <span class="math inline">(1,2)\neq(1,-2)</span>. שני הוקטורים האחרונים שווים בגודלם אך הכיוונים שונים.</p>
+</div>
+</section>
+<section id="פעולות-על-וקטורים" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="פעולות-על-וקטורים"><span class="header-section-number">4.0.2</span> פעולות על וקטורים</h3>
+<p>שתי הפעולות הבסיסיות שניתן לבצע על וקטורים הן חיבור וכפל בסקלר. סקלר הוא מילה נרדפת למספר, וכאן נסמנו <span class="math inline">c\in\mathbb{R}</span>.</p>
+<p>חיבור: <span class="math inline">(a_{1},a_{2})+(b_{1},b_{2})=(a_{1}+b_{1},a_{2}+b_{2})</span></p>
+<p>כפל בסקלר: <span class="math inline">c\cdot(a_{1},a_{2})=(ca_{1},ca_{2})</span></p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר <span class="math inline">-1</span>. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר: <span class="math display">(a_{1},a_{2})-(b_{1},b_{2})=(a_{1},a_{2})+(-1)\cdot(b_{1},b_{2})=(a_{1}-b_{1},a_{2}-b_{2})</span></p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p><span class="math inline">(1,2)+(10,20)=(1+10,2+20)=(11,22)</span></p></li>
+<li><p><span class="math inline">2\cdot(5,3)=(10,6)</span></p></li>
+<li><p><span class="math inline">-5\cdot(2,5)=(-10,-25)</span></p></li>
+<li><p><span class="math inline">(9,2)-(11,8)=(9-11,2-8)=(-2,-6)</span></p></li>
+</ol>
+</div>
+<p>אפשר להבין חיבור וקטורי באופן גיאומטרי ע"י כלל המקבילית. כלל זה קובע שאם נצייר שני וקטורים <span class="math inline">\vec{v},\vec{w}</span> שיוצאים מהראשית ונשלים אותם למקבילית ע"י הוספת שני וקטורים מקבילים ושווי גודל כצלעות נגדיות, אז האלכסון שיוצא מהראשית יתאר את <span class="math inline">\vec{v}+\vec{w}</span>. ההפרש <span class="math inline">\vec{v}-\vec{w}</span> מיוצג ע"י האלכסון השני.</p>
+<div class="center">
+<p>(מישור אינטראקטיבי שמראה חיבור/הפרש וקטורי כאלכסוני מקבילית)</p>
+</div>
+<p>זה גם מוביל אותנו לנוסחה שמתארת וקטור שמתחיל בנקודה <span class="math inline">(a_{1},a_{2})</span> ומסתיים ב-<span class="math inline">(b_{1},b_{2})</span>: מקבלים את ההפרש הוקטורי <span class="math inline">(b_{1}-a_{1},b_{2}-a_{2})</span>.</p>
+<div class="exercise">
+<p>הראו שהוקטור שמתחיל ב-<span class="math inline">(1,3)</span> ומסתיים ב-<span class="math inline">(5,0)</span>, שווה לוקטור שמתחיל ב- <span class="math inline">(5,-1)</span> ומסתיים ב- <span class="math inline">(9,-4)</span>.</p>
+</div>
+<p>כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור אם <span class="math inline">c&gt;1</span>, או כיווצו אם <span class="math inline">0&lt;c&lt;1</span>, בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון ובנוסף מתיחה/כיווץ בהתאם לערך של <span class="math inline">|c|</span>.</p>
+<div class="center">
+<p>(מישור אינטראקטיבי שמראה כפל בסקלר כמתיחה/כיווץ/היפוך כיוון)</p>
+</div>
+</section>
+<section id="גדלים-וזוויות-ב-mathbbr2" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="גדלים-וזוויות-ב-mathbbr2"><span class="header-section-number">4.0.3</span> גדלים וזוויות ב-<span class="math inline">\mathbb{R}^{2}</span></h3>
+<p>כאמור, לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז גודלו/אורכו הוא המרחק מנקודת הסיום לראשית. הכיוון נקבע לפי הזווית <span class="math inline">\theta</span> עם הכיוון החיובי של ציר <span class="math inline">x</span> בדיוק כמו בקוארדינטות פולריות. עבור וקטור <span class="math inline">(a,b)</span> נקבל את הנוסחאות הבאות:</p>
+<p>גודל: <span class="math inline">||(a,b)||=\sqrt{a^{2}+b^{2}}</span></p>
+<p>זווית: <span class="math inline">\tan\theta=\frac{b}{a}</span></p>
+<p>כבר דיברנו על החישוב המדויק של <span class="math inline">\theta</span> בסוף הפרק הקודם. לא ממש נצטרך לחשב זוויות בקורס, אבל זה טוב לידע כללי.</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כל וקטור נקבע ביחידות ע"י הגודל והכיוון שלו. לכן קוארדינטות פולריות יכולות להחליף קוארדינטות קרטזיות, אבל בקורס שלנו יותר נוח להשתמש בקוארדינטות קרטזיות וכך נעשה. לקראת סוף הקורס נחזור לגיאומטריה והחישוב של גדלים יהיה חשוב.</p>
+</div>
+<div class="example">
+<p>א. <span class="math inline">||(2,1)||=\sqrt{2^{2}+1^{2}}=\sqrt{5}</span></p>
+<p>ב. <span class="math inline">||(3,-4)||=\sqrt{3^{2}+(-4)^{2}}=5</span></p>
+<p>ג. <span class="math inline">||(-3,-7)||=\sqrt{(-3)^{2}+(-7)^{2}}=\sqrt{58}</span></p>
+</div>
+<p>אם כפל בסקלר מתאים למתיחה/כיווץ, זה אמור להתבטא בגודל. מכאן הטענה הבאה:</p>
+<div class="proposition">
+<p><em> <span class="math inline">||c\cdot(a,b)||=|c|\cdot||(a,b)||</span> לכל וקטור <span class="math inline">(a,b)\in\mathbb{R}^{2}</span> ולכל סקלר <span class="math inline">c\in\mathbb{R}</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נשתמש בהגדרות ונחשב: <span class="math display">\begin{aligned}
+||c\cdot(a,b)||&amp;=||(ca,cb)||=\sqrt{(ca)^{2}+(cb)^{2}}=\sqrt{c^{2}(a^{2}+b^{2})}=\sqrt{c^2}\sqrt{a^2+b^2}\\
+&amp;=|c|\sqrt{a^{2}+b^{2}}=|c|\cdot||(a,b)||
+\end{aligned}</span> נציין שמתקיים <span class="math inline">\sqrt{c^2}=|c|</span> כי מדובר בשורש חיובי.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בפרט, כפל ב-<span class="math inline">-1</span> לא משנה את גודל הוקטור. רק הכיוון מתהפך.</p>
+</div>
+</section>
+<section id="ישרים-ב-mathbbr2" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="ישרים-ב-mathbbr2"><span class="header-section-number">4.0.4</span> ישרים ב-<span class="math inline">\mathbb{R}^{2}</span></h3>
+<p>נרצה להבין את הקשר בין ישרים לוקטורים. יותר קל להבין את זה במקרה של ישרים שעוברים דרך הראשית. ניקח ישר כזה ונבחר נקודה כלשהי שאינה הראשית, מה שייתן לנו וקטור. הישר הוא אוסף כל הנקודות שמתקבלות ע"י כפל בסקלר של וקטור זה.</p>
+<div class="example">
+<p>הישר שמשוואתו <span class="math inline">y=2x</span> עובר דרך הראשית והנקודה <span class="math inline">(1,2)</span>. דרך נוספת לתאר את הישר היא כקבוצת כל הכפולות (בסקלר ממשי) של הוקטור <span class="math inline">(1,2)</span>. כל הוקטורים האלה מתאימים לנקודות על הישר, וכותבים את הנקודות כמו הוקטורים (כי הם יוצאים מהראשית). כך נקבל את ההצגה הבאה לישר כקבוצת נקודות: <span class="math display">\{t(1,2)|t\in\mathbb{R}\}=\{(t,2t)|t\in\mathbb{R}\}</span></p>
+</div>
+<div class="center">
+<p>(אנימציה שמראה איך נקודות הישר מתקבלות ע"י כפל בסקלר של הוקטור)</p>
+</div>
+<p>אכן, זה מיידי שכל נקודה מהצורה <span class="math inline">(t,2t)</span> מקיימת את המשוואה <span class="math inline">y=2x</span>.</p>
+<p>באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור <span class="math inline">\vec{v}</span> נתון ע"י ההצגה <span class="math inline">\{t\vec{v}|t\in\mathbb{R}\}</span>. נשים לב שעבור <span class="math inline">t&lt;0</span> מקבלים וקטורים עם כיוון מנוגד (הצד השני של הישר).</p>
+<p>נכליל: ישר שעובר דרך <span class="math inline">(x_{0},y_{0})</span> בכיוון הוקטור <span class="math inline">\vec{v}</span> נתון ע"י ההצגה <span class="math display">.\{(x_{0},y_{0})+t\vec{v}|t\in\mathbb{R}\}</span> אם נתון שהישר גם עובר דרך <span class="math inline">(x_{1},y_{1})</span>, אז נקבל <span class="math display">.\{(x_{0},y_{0})+t(x_{1}-x_{0},y_{1}-y_{0})|t\in\mathbb{R}\}</span></p>
+<div class="exercise">
+<p>איזו נקודה מתקבלת עבור <span class="math inline">t=0</span>? <span class="math inline">t=1</span>? <span class="math inline">t=2</span>?</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>ההצגה לעיל נקראת הצגה פרמטרית של ישר. לעומת זאת, הצגה מהצורה <span class="math display">L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}</span> נקראת הצגה אלגברית של ישר. הצגה אלגברית אינה יחידה, כי למשל המשוואה <span class="math inline">y=2x</span> שקולה למשוואה <span class="math inline">2y=4x</span>. באופן דומה, גם הצגה פרמטרית אינה יחידה משתי סיבות: אפשר לבחור את נקודת ההתחלה <span class="math inline">(x_{0},y_{0})</span> באופן שרירותי כל עוד היא על הישר, וגם אפשר לבחור את <span class="math inline">(x_{1},y_{1})</span> כרצוננו ובהתאם את וקטור הכיוון <span class="math inline">\vec{v}</span> (אפשר לקחת כל כפולה שלו בסקלר שאינו <span class="math inline">0</span>). כך מקבלים אינסוף הצגות פרמטריות שונות לאותו הישר. למשל: <span class="math display">\{t(1,2)|t\in\mathbb{R}\}=\{(1,2)+s(2,4)|s\in\mathbb{R}\}=\{(2,4)+r(-3,-6)|r\in\mathbb{R}\}</span></p>
+</div>
+<div class="exercise">
+<p>עבור הישר שמשוואתו <span class="math inline">y=3x+1</span>, מצאו שלוש הצגות פרמטריות שונות. נסו לשנות גם את נקודת ההתחלה וגם את וקטור הכיוון.</p>
+</div>
+</section>
+<section id="מכפלה-סקלרית" class="level3" data-number="4.0.5">
+<h3 data-number="4.0.5" class="anchored" data-anchor-id="מכפלה-סקלרית"><span class="header-section-number">4.0.5</span> מכפלה סקלרית</h3>
+<p>מכפלה סקלרית היא פעולה נוספת בין וקטורים, אבל התוצאה שלה היא סקלר ומכאן שמה.</p>
+<div class="definition">
+<p> עבור וקטורים <span class="math inline">(a_1,a_2),(b_1,b_2)\in\mathbb{R}^2</span> נגדיר <span class="math inline">(a_{1},a_{2})\cdot(b_{1},b_{2})=a_{1}b_{1}+a_{2}b_{2}</span>.</p>
+</div>
+<div class="example">
+<p>א. <span class="math inline">(1,3)\cdot(2,5)=1\cdot2+3\cdot5=17</span></p>
+<p>ב. <span class="math inline">(3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8</span></p>
+<p>ג. <span class="math inline">(1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0</span></p>
+</div>
+<p>למכפלה סקלרית יש קשר לגודל. יש מספר תכונות שכדאי לזכור:</p>
+<div class="proposition">
+<p><em>יהיו <span class="math inline">\vec{v_{1}}=(x_{1},y_{1}),\,\vec{v_{2}}=(x_{2},y_{2}),\,\vec{v_{3}}=(x_{3},y_{3})\in\mathbb{R}^{2}</span> וקטורים. אז מתקיים:</em></p>
+<p><em>א. <span class="math inline">\vec{v_{1}}\cdot\vec{v_{2}}=\vec{v_{2}}\cdot\vec{v_{1}}</span>.</em></p>
+<p><em>ב. <span class="math inline">(\vec{v_{1}}+\vec{v_{3}})\cdot\vec{v_{2}}=\vec{v_{1}}\cdot\vec{v_{2}}+\vec{v_{3}}\cdot\vec{v_{2}}</span>.</em></p>
+<p><em>ג. <span class="math inline">\vec{v_{1}}\cdot\vec{v_{1}}=||\vec{v_{1}}||^{2}</span>.</em></p>
+<p><em>ד. <span class="math inline">\vec{v_{1}}\cdot(c\vec{v_{2}})=c(\vec{v_{1}}\cdot\vec{v_{2}})</span> לכל סקלר <span class="math inline">c\in\mathbb{R}</span>.</em></p>
+<p><em>ה. <span class="math inline">||\vec{v_{1}}||=0\iff\vec{v_{1}}=(0,0)</span>.</em></p>
+<p><em>ו. <span class="math inline">||\frac{\vec{v_{1}}}{||\vec{v_{1}}||}||=1</span> אם <span class="math inline">\vec{v_{1}}\neq(0,0)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נסתפק בסעיפים ג’ ו-ה’. סעיפים אחרים יופיעו כתרגילים. לפי ההגדרה של מכפלה סקלרית, מתקיים <span class="math display">.\vec{v_{1}}\cdot\vec{v_{1}}=x_{1}^{2}+y_{1}^{2}=\left(\sqrt{x_{1}^{2}+y_{1}^{2}}\right)^{2}=||\vec{v_{1}}||^{2}</span></p>
+<p>סכום ריבועים (של מספרים ממשיים) הוא אי-שלילי, והוא מתאפס אם ורק אם כל מחובר מתאפס. במקרה זה <span class="math inline">x_{1}^{2}=y_{1}^{2}=0</span> גורר <span class="math inline">x_{1}=y_{1}=0</span>, או באופן שקול <span class="math inline">\vec{v_{1}}=(0,0)</span>.&nbsp;◻</p>
+</div>
+<p>מכפלה סקלרית גם קשורה לזווית בין שני וקטורים. ליתר דיוק, הכוונה היא לזווית הקטנה ביניהם (בין <span class="math inline">0</span> ל-<span class="math inline">\pi</span> ברדיאנים).</p>
+<div class="center">
+<p>(מישור אינטראקטיבי שמאפשר ליצור שני וקטורים ולקבל את המכפלה הסקלרית וגם את הזווית ברדיאנים)</p>
+</div>
+<div class="proposition">
+<p><em>יהיו <span class="math inline">\vec{v},\vec{w}</span> שני וקטורים ב-<span class="math inline">\mathbb{R}^{2}</span> השונים מ- <span class="math inline">(0,0)</span>, ותהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. אז מתקיים <span class="math display">\label{eq:cosine-scalar}
+    .\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}|||\cdot||\vec{w}||}</span></em></p>
+</div>
+<p>ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר ע"י שני הוקטורים:</p>
+<div class="center">
+<p>(ציור עם משולש בעל צלעות שמתאימות לשני הוקטורים וגם לוקטור ההפרש מול <span class="math inline">\alpha</span>)</p>
+</div>
+<p><span class="math display">||\vec{v}||^{2}+||\vec{w}||^{2}=||\vec{v}-\vec{w}||^{2}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha</span></p>
+<p>נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין <span class="math inline">||v-w||^{2}</span> ל-<span class="math inline">v\cdot w</span>: <span class="math display">||\vec{v}-\vec{w}||^{2}=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w})=\vec{v}\cdot\vec{v}-\vec{v}\cdot\vec{w}-\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w}=||\vec{v}||^{2}-2\vec{v}\cdot\vec{w}+||\vec{w}||^{2}</span></p>
+<p>נציב את המשוואה השנייה בראשונה ונקבל <span class="math display">.||\vec{v}||^{2}+||\vec{w}||^{2}=||\vec{v}||^{2}-2\vec{v}\cdot\vec{w}+||\vec{w}||^{2}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha</span></p>
+<p>נקזז <span class="math inline">||\vec{v}||^{2}+||\vec{w}||^{2}</span> מכל אגף ונקבל <span class="math display">.0=-2\vec{v}\cdot\vec{w}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha\implies\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}||}</span></p>
+<p>כנדרש.&nbsp;◻</p>
+</div>
+<div class="corollary">
+<p><em>וקטורים <span class="math inline">\vec{v},\vec{w}</span> השונים מ-<span class="math inline">(0,0)</span> הם מאונכים/ניצבים אם ורק אם <span class="math inline">\vec{v}\cdot\vec{w}=0</span>. במקרה זה נסמן <span class="math inline">\vec{v}\perp\vec{w}</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> תהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. אז מתקיים <span class="math display">.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}|}=0\iff\alpha=\frac{\pi}{2}</span>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>א. <span class="math inline">(1,2)\perp(-2,1)</span> כי <span class="math inline">(1,2)\cdot(-2,1)=0</span>.</p>
+<p>ב. באופן כללי, לכל <span class="math inline">(a,b)\in\mathbb{R}^{2}</span> מתקיים <span class="math inline">(a,b)\perp(-b,a)</span> כי <span class="math inline">(a,b)\cdot(-b,a)=0</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הוקטור <span class="math inline">(0,0)</span> הוא מקרה חריג כי הוא חסר כיוון. אבל מאחר שמתקיים <span class="math inline">\vec{v}\cdot(0,0)=0</span> לכל וקטור <span class="math inline">\vec{v}\in\mathbb{R}^2</span>, עדיין נגדיר <span class="math inline">\vec{v}\perp(0,0)</span>. זהו הוקטור היחיד שמאונך לכל וקטור במישור, כי כל וקטור אחר לא מאונך לעצמו.</p>
+</div>
+</section>
+<section id="מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית" class="level3" data-number="4.0.6">
+<h3 data-number="4.0.6" class="anchored" data-anchor-id="מעבר-בין-הצגה-פרמטרית-של-ישר-להצגה-אלגברית"><span class="header-section-number">4.0.6</span> מעבר בין הצגה פרמטרית של ישר להצגה אלגברית</h3>
+<p>ההצגה האלגברית של ישר קשורה באופן הדוק למכפלה סקלרית. נבין את הקשר דרך דוגמה.</p>
+<div class="example">
+<p>נסתכל על הישר <span class="math inline">L=\{t(2,-1)|t\in\mathbb{R}\}</span>. רואים לפי ההצגה הפרמטרית שוקטור הכיוון הוא <span class="math inline">(2,-1)</span>. לפי המכפלה הסקלרית אפשר לקבוע שהוקטור <span class="math inline">(1,2)</span> מאונך לו. הוא לא רק מאונך ל-<span class="math inline">(2,-1)</span> אלא לכל וקטור שמתאים לנקודה על הישר, כי לכל <span class="math inline">t\in\mathbb{R}</span> מתקיים <span class="math display">.(1,2)\cdot(2t,-t)=2t-2t=0</span></p>
+</div>
+<div class="center">
+<p>(הישר עם וקטור הנורמל)</p>
+</div>
+<p>להיפך, אפשר לתאר את הישר כאוסף כל הוקטורים שמאונכים לוקטור <span class="math inline">(1,2)</span>. כלומר כל וקטור <span class="math inline">(x,y)\in L</span> נתון ע"י המשוואה <span class="math display">.(x,y)\cdot(1,2)=0\iff x+2y=0</span></p>
+<p>או בכתיב קבוצות: <span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|x+2y=0\}</span>.</p>
+<div class="definition">
+<p>וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר (התחלה וסיום) נקרא נורמל לישר.</p>
+</div>
+<div class="center">
+<p>(מישור אינטראקטיבי שמאפשר לסובב ישר כאשר הנורמל מסתובב יחד איתו בהתאם)</p>
+</div>
+<p>באופן כללי, לישר עם הצגה פרמטרית <span class="math inline">\{(x_{0},y_{0})+t(a,b)|t\in\mathbb{R}\}</span> יש וקטור נורמל <span class="math inline">(-b,a)</span> המאונך לוקטור הכיוון <span class="math inline">(a,b)</span>. אבל וקטור הנורמל אינו יחיד, כי אם נכפיל אותו בסקלר <span class="math inline">c\neq0</span> הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם (או שניהם) בסקלר.</p>
+<p>כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-<span class="math inline">(x_{0},y_{0})</span> ומסתיים ב-<span class="math inline">(x,y)</span>, כלומר הוקטור <span class="math inline">(x-x_{0},y-y_{0})</span>. וקטור זה בהכרח מאונך לוקטור הנורמל <span class="math inline">(-b,a)</span>, ולכן צריך להתקיים: <span class="math display">\begin{aligned}
+    (x-x_{0},y-y_{0})\cdot(-b,a)=0&amp;\iff-b(x-x_{0})+a(y-y_{0})=0\\
+    &amp;\iff-bx+ay=-bx_{0}+ay_{0}
+\end{aligned}</span> כלומר קיבלנו הצגה אלגברית <span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|-bx+ay=-bx_{0}+ay_{0}\}</span>. נדגיש שהבחירה של נקודת ההתחלה <span class="math inline">(x_{0},y_{0})</span> היא שרירותית. המשוואה מראה שהביטוי <span class="math inline">-bx+ay</span> קבוע לאורך הישר, וקבוע זה מופיע באגף ימין של המשוואה.</p>
+<div class="example">
+<p>נסתכל על הישר <span class="math inline">L=\{(2,3)+t(1,-1)|t\in\mathbb{R}\}</span>. יש לו וקטור נורמל <span class="math inline">(1,1)</span> ולכל <span class="math inline">(x,y)\in L</span> הוקטור <span class="math inline">(x-2,y-3)</span> מאונך ל-<span class="math inline">(1,1)</span>, ולכן מתקיים <span class="math display">.(x-2,y-3)\cdot(1,1)=0\iff x-2+y-3=0\iff x+y=5</span></p>
+<p>קיבלנו הצגה אלגברית <span class="math inline">L=\{(x,y)\in\mathbb{R}^2|x+y=5\}</span>.</p>
+</div>
+<div class="exercise">
+<p>מצאו הצגה אלגברית של <span class="math inline">L=\{(1,-2)+t(3,1)|t\in\mathbb{R}\}</span>.</p>
+</div>
+</section>
+<section id="מעבר-בין-הצגה-אלגברית-של-ישר-להצגה-פרמטרית" class="level3" data-number="4.0.7">
+<h3 data-number="4.0.7" class="anchored" data-anchor-id="מעבר-בין-הצגה-אלגברית-של-ישר-להצגה-פרמטרית"><span class="header-section-number">4.0.7</span> מעבר בין הצגה אלגברית של ישר להצגה פרמטרית</h3>
+<p>כדי למצוא הצגה פרמטרית של ישר, צריך למצוא שתי נקודות עליו. האחת בשביל נקודת ההתחלה, והשנייה בשביל נקודת הסיום של וקטור הכיוון. הבחירה של נקודות אלו היא שרירותית לחלוטין, אבל יחסית נוח להשתמש בנקודות חיתוך עם הצירים.</p>
+<div class="example">
+<p>נסתכל על הישר <span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|2x+3y=1\}</span>. אם נציב <span class="math inline">y=0</span> נקבל <span class="math inline">x=\frac{1}{2}</span>, ולכן נבחר את <span class="math inline">(\frac{1}{2},0)</span> כנקודת התחלה. אם נציב <span class="math inline">x=0</span> נקבל <span class="math inline">y=\frac{1}{3}</span>, ולכן נבחר את <span class="math inline">(0,\frac{1}{3})</span> כנקודת סיום של וקטור הכיוון. כך נקבל וקטור כיוון <span class="math inline">(0,\frac{1}{3})-(\frac{1}{2},0)=(-\frac{1}{2},\frac{1}{3})</span>.</p>
+<p>מכאן <span class="math inline">L=\{(\frac{1}{2},0)+t(-\frac{1}{2},\frac{1}{3})|t\in\mathbb{R}\}</span> היא הצגה פרמטרית אחת מתוך רבות. מי שלא אוהב שברים יכול להכפיל ב-<span class="math inline">6</span> את וקטור הכיוון, וגם אפשר להחליף את נקודת ההתחלה ב-<span class="math inline">(2,-1)</span>, למשל. אז גם מתקיים Ł<span class="math inline">L=\{(2,-1)+t(-3,2)|t\in\mathbb{R}\}</span> ושתי התשובות נכונות באותה המידה. נשים לב שלפי הנוסחה Ł<span class="math inline">(-b,a)</span>, וקטור הנורמל שמתאים להצגה הפרמטרית הראשונה הוא Ł<span class="math inline">(-\frac{1}{3},-\frac{1}{2})</span>. באופן דומה, וקטור הנורמל שמתאים להצגה הפרמטרית השנייה הוא Ł<span class="math inline">(-2,-3)</span>. שני הוקטורים האלה הם כפולות של הוקטור Ł<span class="math inline">(2,3)</span> שמופיע בתוך ההצגה האלגברית המקורית בתור המקדמים של Ł<span class="math inline">x,y</span> בהתאמה.</p>
+</div>
+<p>באופן כללי, עבור הצגה אלגברית Ł<span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}</span> נבחר נקודת התחלה Ł<span class="math inline">(x_{0},y_{0})</span> כלשהי. זו נקודה שמקיימת את משוואת הישר ולכן בהכרח Ł<span class="math inline">ax_{0}+by_{0}=c</span>, ולאחר הצבה במשוואה נקבלŁ <span class="math display">.(x,y)\in L\iff ax+by=ax_{0}+by_{0}\iff a(x-x_{0})+b(y-y_{0})=0\iff(x-x_{0},y-y_{0})\perp(a,b)</span></p>
+<p>אז Ł<span class="math inline">(a,b)</span> הוא וקטור נורמל של Ł<span class="math inline">L</span>. כל וקטור כיוון שנמצא )עי בחירה נקודה נוספת על Ł<span class="math inline">L</span>( בהכרח מאונך לוקטור זה. זו בדיוק המשמעות של התנאי Ł<span class="math inline">(x-x_{0},y-y_{0})\perp(a,b)</span>.</p>
+<div class="exercise">
+<p>מצאו הצגה פרמטרית של Ł<span class="math inline">L=\{(x,y)\in\mathbb{R}^{2}|3x+y=5\}</span>. האם וקטור הכיוון מאונך ל-Ł<span class="math inline">(3,1)</span>?</p>
+</div>
+</section>
+<section id="הקדמה" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="הקדמה"><span class="header-section-number">4.1</span> הקדמה</h2>
+<p>דוגמה לפרק שנכתב לפי ההנחיות. הקפידו להשתמש בשם הסביבה המדויק ולהוסיף תיוגים עם קידומת כמו <code>def:</code>, <code>thm:</code>, <code>exr:</code>, <code>eq:</code> וכן הלאה.</p>
+<div class="definition">
+<p> מרחב וקטורי מעל שדה <span class="math inline">F</span> הוא …</p>
+</div>
+<div class="theorem">
+<p><em> לכל מרחב וקטורי סופי-ממד מעל <span class="math inline">F</span> קיים בסיס.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>הוכחה.</em> רעיון ההוכחה: נבנה קבוצה בת הוספה עד שאינה ניתנת להגדלה, ואז נראה שהיא בסיס. &nbsp;◻</p>
+</div>
+<div class="example">
+<p> ב-<span class="math inline">\mathbb{R}^2</span> הקבוצה <span class="math inline">\{(1,0),(0,1)\}</span> היא בסיס סטנדרטי.</p>
+</div>
+<div class="exercise">
+<p> מצאו בסיס ל-<span class="math inline">\mathbb{R}^2</span> המורכב מהוקטורים <span class="math inline">(1,1)</span> ו-<span class="math inline">(1,-1)</span>.</p>
+</div>
+<div class="callout callout-tip" data-collapse="true" title="רמז">
+<p><strong>רמז 1.1</strong>. אפשר להתחיל בבדיקה של אי-תלות לינארית בעזרת דטרמיננטה.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><strong>פתרון 1.1</strong>. הדטרמיננטה של המטריצה <span class="math inline">\begin{pmatrix}1&amp;1\\ 1&amp;-1\end{pmatrix}</span> שווה <span class="math inline">-2\neq 0</span>, ולכן הוקטורים בתל̈. מכאן שהם גם פורשים את <span class="math inline">\mathbb{R}^2</span>, ולכן מהווים בסיס כנדרש.</p>
+</div>
+<p>ראו משפט&nbsp;, הגדרה&nbsp;, ודוגמה&nbsp;.</p>
+</section>
+<section id="משוואות" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="משוואות"><span class="header-section-number">4.2</span> משוואות</h2>
+<p>נשתמש ב-<code>equation</code> ו-<code>align</code> (לא <code>eqnarray</code>). <span class="math display">\label{eq:idempotent}
+P^2 = P</span> <span class="math display">\begin{aligned}
+\label{eq:two-steps}
+Ax &amp;= b\\
+x  &amp;= A^{-1}b
+\end{aligned}</span> הפניה למשוואות: , .</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+/* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
+
+   גם כשהכותרת כבר קיימת מ‑Quarto */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  function chapterNumber() {
+
+    const h1 = document.querySelector('main h1[data-number]');
+
+    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+
+    const sec = document.querySelector('.header-section-number');
+
+    if (sec) return sec.textContent.trim().split('.')[0];
+
+    return '1';
+
+  }
+
+  const chap = chapterNumber();
+
+
+
+  const envs = {
+
+    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
+
+    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
+
+    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  }, // כחול פסטלי
+
+    remark:      { label: 'הערה',     color: 'rgba(0, 0, 0, 0.15)',numbered: true  }, // ירוק פסטלי
+
+    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
+
+    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
+
+    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
+
+    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
+
+    proof:       { label: 'הוכחה',    color: 'rgba60, 179, 113, 0.35)',    numbered: false }
+
+  };
+
+
+
+  const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
+
+
+
+  Object.keys(envs).forEach(env => {
+
+    document.querySelectorAll(`div.${env}`).forEach(div => {
+
+      const meta = envs[env];
+
+      const hasTitle = div.querySelector(':scope > .theorem-title');
+
+
+
+      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
+
+      if (!hasTitle) {
+
+        const title = document.createElement('div');
+
+        title.className = 'theorem-title';
+
+        if (meta.numbered) {
+
+          counters[env] += 1;
+
+          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+
+        } else {
+
+          title.textContent = meta.label;
+
+        }
+
+        div.insertBefore(title, div.firstChild);
+
+      }
+
+
+
+      // תמיד הוסף envbox וצבע פסטלי
+
+      div.classList.add('envbox');
+
+      div.style.setProperty('--env-color', meta.color);
+
+
+
+      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
+
+      const firstP = div.querySelector(':scope > p');
+
+      if (firstP) {
+
+        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
+
+      }
+
+    });
+
+  });
+
+});
+
+</script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // בחר את כל כותרות הפרקים הראשיים
+
+  const chapters = document.querySelectorAll('main h1[data-number]');
+
+  let counter = 0;
+
+  chapters.forEach(h1 => {
+
+    counter++;
+
+    if (counter <= 3) {
+
+      // שני פרקים ראשונים ברומי
+
+      const roman = ['I','II'][counter-1];
+
+      h1.setAttribute('data-number', roman);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = roman;
+
+    } else {
+
+      // חזרה למספרים רגילים החל מ-1
+
+      const normal = counter - 3;
+
+      h1.setAttribute('data-number', normal);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = normal;
+
+    }
+
+  });
+
+});
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_0_5.html" class="pagination-link" aria-label="המספרים המרוכבים">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_2.html" class="pagination-link" aria-label="מערכות משוואות לינאריות">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

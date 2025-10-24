@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מישור אינטראקטיבי עם וקטורים</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+  #coordinates-wrapper {
+    direction: rtl;
+  }
+</style>
+</head>
+<body>
+
+  <h1>וקטורים במישור שיוצאים מהראשית</h1>
+  <!-- עדכון נוסח המשפט -->
+  <p>לחצו על נקודה במישור כדי לצייר את הוקטור שיוצא אליה מהראשית</p>
+  <canvas id="interactivePlane" width="500" height="500"></canvas>
+  <p id="coordinates-wrapper">קוארדינטות: <span id="coordinates" dir="ltr">(0.00, 0.00)</span></p>
+
+<script>
+  const canvas = document.getElementById('interactivePlane');
+  const ctx = canvas.getContext('2d');
+  const coordinatesDisplay = document.getElementById('coordinates');
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  
+  const padding = 25;
+  const unitSize = (canvas.width - 2 * padding) / 20;
+
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1;
+    for(let i = -10; i <= 10; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0);
+      ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize);
+      ctx.lineTo(canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.moveTo(padding, centerY);
+    ctx.lineTo(canvas.width - padding, centerY);
+    ctx.moveTo(centerX, canvas.height - padding);
+    ctx.lineTo(centerX, padding);
+    
+    const headlen = 10;
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+
+    ctx.stroke();
+    
+    ctx.fillStyle = 'black';
+    ctx.font = '12px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let i = -10; i <= 10; i++) {
+      if (i === 0) continue;
+      ctx.fillText(i, centerX + i * unitSize, centerY + 15);
+      ctx.fillText(i, centerX - 15, centerY - i * unitSize);
+    }
+      
+    ctx.font = 'italic 16px Arial';
+    ctx.fillText('x', canvas.width - padding + 10, centerY);
+    ctx.fillText('y', centerX, padding - 15);
+  }
+
+  function drawArrow(fromX, fromY, toX, toY) {
+    const headlen = 10;
+    const dx = toX - fromX;
+    const dy = toY - fromY;
+    const angle = Math.atan2(dy, dx);
+
+    ctx.beginPath();
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(toX, toY);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+
+  drawGrid();
+
+  canvas.addEventListener('click', function(event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const scaledX = (x - centerX) / unitSize;
+    const scaledY = ((y - centerY) * -1) / unitSize;
+
+    drawGrid();
+    drawArrow(centerX, centerY, x, y);
+    
+    coordinatesDisplay.textContent = `(${scaledX.toFixed(2)}, ${scaledY.toFixed(2)})`;
+  });
+</script>
+
+</body>
+</html>
