@@ -1273,43 +1273,41 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 \bookmarksetup{startatroot}
 
-\chapter{גיאומטריה במרחב
-ובמישור}\label{ux5d2ux5d9ux5d0ux5d5ux5deux5d8ux5e8ux5d9ux5d4-ux5d1ux5deux5e8ux5d7ux5d1-ux5d5ux5d1ux5deux5d9ux5e9ux5d5ux5e8}
+\chapter{גיאומטריה במישור
+ובמרחב}\label{ux5d2ux5d9ux5d0ux5d5ux5deux5d8ux5e8ux5d9ux5d4-ux5d1ux5deux5d9ux5e9ux5d5ux5e8-ux5d5ux5d1ux5deux5e8ux5d7ux5d1}
 
 בפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד
-תחילה במישור )עם דגש על ישרים( ואחר כך נעבור למרחב )שם נדבר גם על
-מישורים(.
+תחילה במישור (עם דגש על הישרים המוכלים בו) ואחר כך נעבור למרחב (שם נדבר
+גם על מישורים).
 
 \subsection{\texorpdfstring{המישור
-\(\mathbb{R}^{2}\)}{המישור \textbackslash mathbb\{R\}\^{}\{2\}}}\label{ux5d4ux5deux5d9ux5e9ux5d5ux5e8-mathbbr2}
+\(\mathbb{R}^2\)}{המישור \textbackslash mathbb\{R\}\^{}2}}\label{ux5d4ux5deux5d9ux5e9ux5d5ux5e8-mathbbr2}
 
-בפרק \(0\) דיברנו על הישר הממשי, וגם על המישור המרוכב. אפשר גם לתאר את
-המישור )הממשי( בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.
+בפרק \(0\) דיברנו על הישר הממשי וגם על המישור המרוכב. אפשר גם לתאר את
+המישור (הממשי) בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.
 
 \begin{definition}
 
-המישור \L\{\(\mathbb{R}^{2}\)\} הוא קבוצת כל הנקודות בעלות שתי
-קוארדינטות ממשיות, כלומר
-\[\mathbb{R}^{2}=\{(x,y)\mid x,y\in\mathbb{R}\}\]
+המישור \(\mathbb{R}^2\) הוא קבוצת כל הנקודות בעלות שתי קוארדינטות
+ממשיות, כלומר \[.\mathbb{R}^{2}=\{(x,y)|x,y\in\mathbb{R}\}\]
 
 \end{definition}
 
 \begin{example}
 
-\L\{\((0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^{2}\)\}
+\((0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^{2}\)
 
-לעומת זאת: \L\{\(1,(i,0),(0,1,2)\notin\mathbb{R}^{2}\)\}
+לעומת זאת: \(1,(i,0),(0,1,2)\notin\mathbb{R}^{2}\)
 
 \end{example}
 
-)מישור אינטראקטיבי שמאפשר ללחוץ על נקודה ולהציג את הוקטור עם הקוארדינטות
-שלו(
+(מישור אינטראקטיבי שמאפשר ללחוץ על נקודה ולהציג את הוקטור עם הקוארדינטות
+שלו)
 
 \begin{definition}
 
-וקטור \L\{\(\vec{v}=(x,y)\)\} במישור הוא חץ שיוצא מהראשית
-\L\{\((0,0)\)\} ומסתיים בנקודה \L\{\((x,y)\)\}. לכל וקטור יש גודל
-וכיוון.
+וקטור \(\vec{v}=(x,y)\) במישור הוא חץ שיוצא מהראשית \((0,0)\) ומסתיים
+בנקודה \((x,y)\).
 
 \end{definition}
 
@@ -1319,16 +1317,16 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 \end{remark}
 
 הגדרנו וקטורים כחצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה
-שקובע את הוקטור הוא גודלו וכיוונו, לא נקודת ההתחלה או הסיום. וקטורים
-זהים יופיעו כחצים מקבילים ושווי גודל במישור.
+שקובע את הוקטור הם גודלו וכיוונו, לא נקודת ההתחלה. וקטורים זהים יופיעו
+כחצים מקבילים ושווי גודל במישור.
 
-)מישור אינטראקטיבי שמאפשר להזיז וקטור נתון(
+(מישור אינטראקטיבי שמאפשר להזיז וקטור נתון)
 
 \begin{remark}
-וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר
-\L\{\((a,b)=(c,d)\)\} אם ורק אם \L\{\(a=c\)\} וגם \L\{\(b=d\)\}. למשל,
-\L\{\((1,2)=(1,2)\)\} אך \L\{\((1,-2)\neq(1,2)\)\}. למעשה,
-\L\{\((1,2)\)\} ו-\L\{\((1,-2)\)\} הם שווי גודל אך בעלי כיוונים שונים.
+וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר \((a,b)=(c,d)\)
+אם ורק אם \(a=c\) וגם \(b=d\). למשל, \((1,2)=(1,2)\) אך
+\((1,2)\neq(1,-2)\). שני הוקטורים האחרונים שווים בגודלם אך הכיוונים
+שונים.
 \end{remark}
 
 \subsection{פעולות על
@@ -1342,32 +1340,37 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 כפל בסקלר: \(c\cdot(a_{1},a_{2})=(ca_{1},ca_{2})\)
 
 \begin{remark}
-הוקטור הנגדי )שווה גודל אך הפוך בכיוון( מתקבל ע''י כפל בסקלר
-\L\{\(-1\)\}. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית
-של השני, כלומר\L\{\% {[}
-.(a\_\{1\},a\_\{2\})-(b\_\{1\},b\_\{2\})=(a\_\{1\},a\_\{2\})+(-1)\cdot(b\_\{1\},b\_\{2\})=(a\_\{1\}-b\_\{1\},a\_\{2\}-b\_\{2\})
-{]} \}\%
+הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר \(-1\).
+חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני,
+כלומר:
+\[(a_{1},a_{2})-(b_{1},b_{2})=(a_{1},a_{2})+(-1)\cdot(b_{1},b_{2})=(a_{1}-b_{1},a_{2}-b_{2})\]
 \end{remark}
 
 \begin{example}
 
-א. \L\{\((1,2)+(10,20)=(1+10,2+20)=(11,22)\)\}
+~
 
-ב. \L\{\(2\cdot(5,3)=(10,6)\)\}
-
-ג. \L\{\(-5\cdot(2,5)=(-10,-25)\)\}
-
-ד. \L\{\((9,2)-(11,8)=(9-11,2-8)=(-2,-6)\)\}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \((1,2)+(10,20)=(1+10,2+20)=(11,22)\)
+\item
+  \(2\cdot(5,3)=(10,6)\)
+\item
+  \(-5\cdot(2,5)=(-10,-25)\)
+\item
+  \((9,2)-(11,8)=(9-11,2-8)=(-2,-6)\)
+\end{enumerate}
 
 \end{example}
 
-אפשר להבין חיבור וקטורי באופן גיאומטרי על ידי כלל המקבילית. כלל זה קובע
-שאם נצייר שני וקטורים \(\vec{v},\vec{w}\) שיוצאים מהראשית ואז נשלים אותם
-למקבילית )ע''י הוספת שני וקטורים מקבילים ושווי גודל כצלעות נגדיות(, אז
-האלכסון שיוצא מהראשית מתאר את \(\vec{v}+\vec{w}\). ההפרש
-\(\vec{v}-\vec{w}\) מיוצג על ידי האלכסון השני.
+אפשר להבין חיבור וקטורי באופן גיאומטרי ע"י כלל המקבילית. כלל זה קובע שאם
+נצייר שני וקטורים \(\vec{v},\vec{w}\) שיוצאים מהראשית ונשלים אותם
+למקבילית ע"י הוספת שני וקטורים מקבילים ושווי גודל כצלעות נגדיות, אז
+האלכסון שיוצא מהראשית יתאר את \(\vec{v}+\vec{w}\). ההפרש
+\(\vec{v}-\vec{w}\) מיוצג ע"י האלכסון השני.
 
-)מישור אינטראקטיבי שמראה חיבור/הפרש וקטורי כאלכסוני מקבילית(
+(מישור אינטראקטיבי שמראה חיבור/הפרש וקטורי כאלכסוני מקבילית)
 
 זה גם מוביל אותנו לנוסחה שמתארת וקטור שמתחיל בנקודה \((a_{1},a_{2})\)
 ומסתיים ב-\((b_{1},b_{2})\): מקבלים את ההפרש הוקטורי
@@ -1375,24 +1378,24 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 \begin{exercise}
 
-הראו שהוקטור שמתחיל ב-\L\{\((1,3)\)\} ומסתיים ב-\L\{\((5,0)\)\} שווה
-לוקטור שמתחיל ב-\L\{\((5,-1)\)\} ומסתיים ב-\L\{\((9,-4)\)\}.
+הראו שהוקטור שמתחיל ב-\((1,3)\) ומסתיים ב-\((5,0)\), שווה לוקטור שמתחיל
+ב- \((5,-1)\) ומסתיים ב- \((9,-4)\).
 
 \end{exercise}
 
-כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור )\(c>1\)( או
-כיווצו \((0<c<1)\) בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון
+כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור אם \(c>1\), או
+כיווצו אם \(0<c<1\), בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון
 ובנוסף מתיחה/כיווץ בהתאם לערך של \(|c|\).
 
-)מישור אינטראקטיבי שמראה כפל בסקלר כמתיחה/כיווץ/היפוך כיוון(
+(מישור אינטראקטיבי שמראה כפל בסקלר כמתיחה/כיווץ/היפוך כיוון)
 
 \subsection{\texorpdfstring{גדלים וזוויות
 ב-\(\mathbb{R}^{2}\)}{גדלים וזוויות ב-\textbackslash mathbb\{R\}\^{}\{2\}}}\label{ux5d2ux5d3ux5dcux5d9ux5dd-ux5d5ux5d6ux5d5ux5d5ux5d9ux5d5ux5ea-ux5d1-mathbbr2}
 
 כאמור, לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז
 גודלו/אורכו הוא המרחק מנקודת הסיום לראשית. הכיוון נקבע לפי הזווית
-\(\theta\) עם הכיוון החיובי של ציר \(x\) )בדיוק כמו בקוארדינטות
-פולריות(. עבור וקטור \((a,b)\) נקבל את הנוסחאות הבאות:
+\(\theta\) עם הכיוון החיובי של ציר \(x\) בדיוק כמו בקוארדינטות פולריות.
+עבור וקטור \((a,b)\) נקבל את הנוסחאות הבאות:
 
 גודל: \(||(a,b)||=\sqrt{a^{2}+b^{2}}\)
 
@@ -1402,18 +1405,19 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 לחשב זוויות בקורס, אבל זה טוב לידע כללי.
 
 \begin{remark}
-כל וקטור נקבע ביחידות על ידי הגודל והכיוון שלו. לכן קוארדינטות פולריות
+כל וקטור נקבע ביחידות ע"י הגודל והכיוון שלו. לכן קוארדינטות פולריות
 יכולות להחליף קוארדינטות קרטזיות, אבל בקורס שלנו יותר נוח להשתמש
-בקוארדינטות קרטזיות.
+בקוארדינטות קרטזיות וכך נעשה. לקראת סוף הקורס נחזור לגיאומטריה והחישוב
+של גדלים יהיה חשוב.
 \end{remark}
 
 \begin{example}
 
-א. \L\{\(||(2,1)||=\sqrt{2^{2}+1^{2}}=\sqrt{5}\)\}
+א. \(||(2,1)||=\sqrt{2^{2}+1^{2}}=\sqrt{5}\)
 
-ב. \L\{\(||(3,-4)||=\sqrt{3^{2}+(-4)^{2}}=5\)\}
+ב. \(||(3,-4)||=\sqrt{3^{2}+(-4)^{2}}=5\)
 
-ג. \L\{\(||(-3,-7)||=\sqrt{(-3)^{2}+(-7)^{2}}=\sqrt{58}\)\}
+ג. \(||(-3,-7)||=\sqrt{(-3)^{2}+(-7)^{2}}=\sqrt{58}\)
 
 \end{example}
 
@@ -1421,19 +1425,21 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 \begin{proposition}
 
-\L\{\(||c\cdot(a,b)||=|c|\cdot||(a,b)||\)\} לכל וקטור
-\L\{\((a,b)\in\mathbb{R}^{2}\)\} ולכל סקלר \L\{\(c\in\mathbb{R}\)\}.
+\emph{\label{proposition:norm-scalar}
+\(||c\cdot(a,b)||=|c|\cdot||(a,b)||\) לכל וקטור
+\((a,b)\in\mathbb{R}^{2}\) ולכל סקלר \(c\in\mathbb{R}\).}
 
 \end{proposition}
 
 \begin{proof}
-נשתמש בהגדרות ונחשב:\L\{\% {[}
-\textbar\textbar c\cdot(a,b)\textbar\textbar=\textbar\textbar(ca,cb)\textbar\textbar=\sqrt{(ca)^{2}+(cb)^{2}}=\sqrt{c^{2}(a^{2}+b^{2})}=\textbar c\textbar{}\sqrt{a^{2}+b^{2}}
-{]} \}\%
+\emph{Proof.} נשתמש בהגדרות ונחשב: \[\begin{aligned}
+||c\cdot(a,b)||&=||(ca,cb)||=\sqrt{(ca)^{2}+(cb)^{2}}=\sqrt{c^{2}(a^{2}+b^{2})}=\sqrt{c^2}\sqrt{a^2+b^2}\\
+&=|c|\sqrt{a^{2}+b^{2}}=|c|\cdot||(a,b)||
+\end{aligned}\] נציין שמתקיים \(\sqrt{c^2}=|c|\) כי מדובר בשורש חיובי.~◻
 \end{proof}
 
 \begin{remark}
-בפרט, כפל ב-\L\{\((-1)\)\} לא משנה את גודל הוקטור. רק הכיוון מתהפך.
+בפרט, כפל ב-\(-1\) לא משנה את גודל הוקטור. רק הכיוון מתהפך.
 \end{remark}
 
 \subsection{\texorpdfstring{ישרים
@@ -1441,52 +1447,54 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 נרצה להבין את הקשר בין ישרים לוקטורים. יותר קל להבין את זה במקרה של
 ישרים שעוברים דרך הראשית. ניקח ישר כזה ונבחר נקודה כלשהי שאינה הראשית,
-מה שייתן לנו וקטור. הישר הוא אוסף כל הנקודות שמתקבלות על ידי כפל בסקלר
-של וקטור זה.
+מה שייתן לנו וקטור. הישר הוא אוסף כל הנקודות שמתקבלות ע"י כפל בסקלר של
+וקטור זה.
 
-דוגמה: הישר שמשוואתו \(y=2x\) עובר דרך הראשית והנקודה \((1,2)\). דרך
-נוספת לתאר את הישר היא כקבוצת כל הכפולות )בסקלר ממשי( של הוקטור
-\((1,2)\). כל הוקטורים האלה מתאימים לנקודות על הישר, ואין הבדל מבחינת
-הכתיבה )כי הוקטורים יוצאים מהראשית(. כך נקבל
+\begin{example}
+
+הישר שמשוואתו \(y=2x\) עובר דרך הראשית והנקודה \((1,2)\). דרך נוספת לתאר
+את הישר היא כקבוצת כל הכפולות (בסקלר ממשי) של הוקטור \((1,2)\). כל
+הוקטורים האלה מתאימים לנקודות על הישר, וכותבים את הנקודות כמו הוקטורים
+(כי הם יוצאים מהראשית). כך נקבל את ההצגה הבאה לישר כקבוצת נקודות:
 \[\{t(1,2)|t\in\mathbb{R}\}=\{(t,2t)|t\in\mathbb{R}\}\]
 
-)אנימציה שמראה איך נקודות הישר מתקבלות על ידי כפל בסקלר של הוקטור(
+\end{example}
+
+(אנימציה שמראה איך נקודות הישר מתקבלות ע"י כפל בסקלר של הוקטור)
 
 אכן, זה מיידי שכל נקודה מהצורה \((t,2t)\) מקיימת את המשוואה \(y=2x\).
 
-באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור \(\vec{v}\) נתון על ידי
+באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור \(\vec{v}\) נתון ע"י
 ההצגה \(\{t\vec{v}|t\in\mathbb{R}\}\). נשים לב שעבור \(t<0\) מקבלים
-וקטורים עם כיוון מנוגד )הצד השני של הישר(.
+וקטורים עם כיוון מנוגד (הצד השני של הישר).
 
-נכליל: ישר שעובר דרך \((x_{0},y_{0})\) בכיוון הוקטור \(\vec{v}\) נתון על
-ידי ההצגה \[.\{(x_{0},y_{0})+t\vec{v}|t\in\mathbb{R}\}\] אם נתון שהישר
-עובר דרך \((x_{1},y_{1})\), אז נקבל
-\[.\{(x_{0},y_{0})+t(x_{1}-x_{0})|t\in\mathbb{R}\}\]
+נכליל: ישר שעובר דרך \((x_{0},y_{0})\) בכיוון הוקטור \(\vec{v}\) נתון
+ע"י ההצגה \[.\{(x_{0},y_{0})+t\vec{v}|t\in\mathbb{R}\}\] אם נתון שהישר
+גם עובר דרך \((x_{1},y_{1})\), אז נקבל
+\[.\{(x_{0},y_{0})+t(x_{1}-x_{0},y_{1}-y_{0})|t\in\mathbb{R}\}\]
 
 \begin{exercise}
 
-איזו נקודה מתקבלת עבור \L\{\(t=0\)\}? \L\{\(t=1\)\}?
+איזו נקודה מתקבלת עבור \(t=0\)? \(t=1\)? \(t=2\)?
 
 \end{exercise}
 
 \begin{remark}
 ההצגה לעיל נקראת הצגה פרמטרית של ישר. לעומת זאת, הצגה מהצורה
-\L\{\(L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}\)\} נקראת הצגה אלגברית של
-ישר. הצגה אלגברית אינה יחידה, כי למשל המשוואה \L\{\(y=2x\)\} שקולה
-למשוואה \L\{\(2y=4x\)\}. באופן דומה, גם הצגה פרמטרית אינה יחידה משתי
-סיבות: אפשר לבחור את נקודת ההתחלה \L\{\((x_{0},y_{0})\)\} באופן שרירותי
-כל עוד היא על הישר, וגם אפשר לבחור את \L\{\((x_{1},y_{1})\)\} כרצוננו
-ובהתאם את וקטור הכיוון \L\{\(\vec{v}\)\} )אפשר לקחת כל כפולה שלו בסקלר
-שאינו \{\beginL 0\endL\}(. כך מקבלים אינסוף הצגות פרמטריות שונות לאותו
-הישר. למשל:\L\{\% {[}
-\{t(1,2)\textbar t\in\mathbb{R}\}=\{(1,2)+s(2,4)\textbar s\in\mathbb{R}\}=\{(2,4)+r(-3,-6)\textbar r\in\mathbb{R}\}
-{]} \}\%
+\[L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}\] נקראת הצגה אלגברית של ישר. הצגה
+אלגברית אינה יחידה, כי למשל המשוואה \(y=2x\) שקולה למשוואה \(2y=4x\).
+באופן דומה, גם הצגה פרמטרית אינה יחידה משתי סיבות: אפשר לבחור את נקודת
+ההתחלה \((x_{0},y_{0})\) באופן שרירותי כל עוד היא על הישר, וגם אפשר
+לבחור את \((x_{1},y_{1})\) כרצוננו ובהתאם את וקטור הכיוון \(\vec{v}\)
+(אפשר לקחת כל כפולה שלו בסקלר שאינו \(0\)). כך מקבלים אינסוף הצגות
+פרמטריות שונות לאותו הישר. למשל:
+\[\{t(1,2)|t\in\mathbb{R}\}=\{(1,2)+s(2,4)|s\in\mathbb{R}\}=\{(2,4)+r(-3,-6)|r\in\mathbb{R}\}\]
 \end{remark}
 
 \begin{exercise}
 
-עבור הישר שמשוואתו \L\{\(y=3x+1\)\}, מצאו שלוש הצגות פרמטריות שונות. נסו
-לשנות גם את נקודת ההתחלה וגם את וקטור הכיוון.
+עבור הישר שמשוואתו \(y=3x+1\), מצאו שלוש הצגות פרמטריות שונות. נסו לשנות
+גם את נקודת ההתחלה וגם את וקטור הכיוון.
 
 \end{exercise}
 
@@ -1498,18 +1506,19 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 \begin{definition}
 
-עבור וקטורים \L\{\((a_{1},a_{2}),(b_{1},b_{2})\in\mathbb{R}^{2}\)\}
-נגדיר \L\{\((a_{1},a_{2})\cdot(b_{1},b_{2})=a_{1}a_{2}+b_{1}b_{2}\)\}.
+\label{def:scalar-product-plane} עבור וקטורים
+\((a_1,a_2),(b_1,b_2)\in\mathbb{R}^2\) נגדיר
+\((a_{1},a_{2})\cdot(b_{1},b_{2})=a_{1}b_{1}+a_{2}b_{2}\).
 
 \end{definition}
 
 \begin{example}
 
-א. \L\{\((1,3)\cdot(2,5)=1\cdot2+3\cdot5=17\)\}
+א. \((1,3)\cdot(2,5)=1\cdot2+3\cdot5=17\)
 
-ב. \L\{\((3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8\)\}
+ב. \((3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8\)
 
-ג. \L\{\((1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0\)\}
+ג. \((1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0\)
 
 \end{example}
 
@@ -1517,111 +1526,104 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 
 \begin{proposition}
 
-יהיו
-\L\{\(\vec{v_{1}}=(x_{1},y_{1}),\,\vec{v_{2}}=(x_{2},y_{2}),\,\vec{v_{3}}=(x_{3},y_{3})\in\mathbb{R}^{2}\)\}
-וקטורים. אז מתקיים:
+\emph{יהיו
+\(\vec{v_{1}}=(x_{1},y_{1}),\,\vec{v_{2}}=(x_{2},y_{2}),\,\vec{v_{3}}=(x_{3},y_{3})\in\mathbb{R}^{2}\)
+וקטורים. אז מתקיים:}
 
-א. \L\{\(\vec{v_{1}}\cdot\vec{v_{2}}=\vec{v_{2}}\cdot\vec{v_{1}}\)\}.
+\emph{א. \(\vec{v_{1}}\cdot\vec{v_{2}}=\vec{v_{2}}\cdot\vec{v_{1}}\).}
 
-ב.
-\L\{\((\vec{v_{1}}+\vec{v_{3}})\cdot\vec{v_{2}}=\vec{v_{1}}\cdot\vec{v_{2}}+\vec{v_{3}}\cdot\vec{v_{2}}\)\}.
+\emph{ב.
+\((\vec{v_{1}}+\vec{v_{3}})\cdot\vec{v_{2}}=\vec{v_{1}}\cdot\vec{v_{2}}+\vec{v_{3}}\cdot\vec{v_{2}}\).}
 
-ג. \L\{\(\vec{v_{1}}\cdot\vec{v_{1}}=||\vec{v_{1}}||^{2}\)\}.
+\emph{ג. \(\vec{v_{1}}\cdot\vec{v_{1}}=||\vec{v_{1}}||^{2}\).}
 
-ד.
-\L\{\(\vec{v_{1}}\cdot(c\vec{v_{2}})=c(\vec{v_{1}}\cdot\vec{v_{2}})\)\}.
+\emph{ד.
+\(\vec{v_{1}}\cdot(c\vec{v_{2}})=c(\vec{v_{1}}\cdot\vec{v_{2}})\) לכל
+סקלר \(c\in\mathbb{R}\).}
 
-ה. \L\{\(||\vec{v_{1}}||=0\iff\vec{v_{1}}=(0,0)\)\}.
+\emph{ה. \(||\vec{v_{1}}||=0\iff\vec{v_{1}}=(0,0)\).}
 
-ו. \L\{\(||\frac{\vec{v_{1}}}{||\vec{v_{1}}||}||=1\)\} אם
-\L\{\(\vec{v_{1}}\neq(0,0)\)\}.
+\emph{ו. \(||\frac{\vec{v_{1}}}{||\vec{v_{1}}||}||=1\) אם
+\(\vec{v_{1}}\neq(0,0)\).}
 
 \end{proposition}
 
 \begin{proof}
-נסתפק בסעיפים ג' ו-ה'. סעיפים אחרים יופיעו כתרגילים.\L\{\% {[}
-\vec{v_{1}}\cdot\vec{v_{1}}=x\_\{1\}\textsuperscript{\{2\}+y\_\{1\}}\{2\}=\left(\sqrt{x_{1}^{2}+y_{1}^{2}}\right)\textsuperscript{\{2\}=\textbar\textbar{}\vec{v_{1}}\textbar\textbar{}}\{2\}
-{]} \}\%
+\emph{Proof.} נסתפק בסעיפים ג' ו-ה'. סעיפים אחרים יופיעו כתרגילים. לפי
+ההגדרה של מכפלה סקלרית, מתקיים
+\[.\vec{v_{1}}\cdot\vec{v_{1}}=x_{1}^{2}+y_{1}^{2}=\left(\sqrt{x_{1}^{2}+y_{1}^{2}}\right)^{2}=||\vec{v_{1}}||^{2}\]
 
-סכום ריבועים )של מספרים ממשיים( הוא אי-שלילי, והוא מתאפס אם ורק אם כל
-מחובר מתאפס. במקרה זה \L\{\(x_{1}^{2}=y_{1}^{2}=0\)\} גורר
-\L\{\(x_{1}=y_{1}=0\)\}, או באופן שקול \L\{\(\vec{v_{1}}=(0,0)\)\}.
+סכום ריבועים (של מספרים ממשיים) הוא אי-שלילי, והוא מתאפס אם ורק אם כל
+מחובר מתאפס. במקרה זה \(x_{1}^{2}=y_{1}^{2}=0\) גורר \(x_{1}=y_{1}=0\),
+או באופן שקול \(\vec{v_{1}}=(0,0)\).~◻
 \end{proof}
 
 מכפלה סקלרית גם קשורה לזווית בין שני וקטורים. ליתר דיוק, הכוונה היא
-לזווית הקטנה ביניהם )בין \beginL 0\endL ל-\(\pi\) ברדיאנים(.
+לזווית הקטנה ביניהם (בין \(0\) ל-\(\pi\) ברדיאנים).
 
-)מישור אינטראקטיבי שמאפשר ליצור שני וקטורים ולקבל את המכפלה הסקלרית וגם
-את הזווית ברדיאנים(
+(מישור אינטראקטיבי שמאפשר ליצור שני וקטורים ולקבל את המכפלה הסקלרית וגם
+את הזווית ברדיאנים)
 
 \begin{proposition}
 
-יהיו \L\{\(\vec{v},\vec{w}\)\} שני וקטורים ב-\L\{\(\mathbb{R}^{2}\)\}
-השונים מ-\L\{\((0,0)\)\}, ותהי \L\{\(\alpha\)\} הזווית הקטנה ביניהם. אז
-מתקיים\L\{\% {[}
-.\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}|||\cdot||\vec{w|}|} {]}
-\}\%
+\emph{יהיו \(\vec{v},\vec{w}\) שני וקטורים ב-\(\mathbb{R}^{2}\) השונים
+מ- \((0,0)\), ותהי \(\alpha\) הזווית הקטנה ביניהם. אז מתקיים
+\[\label{eq:cosine-scalar}
+    .\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}|||\cdot||\vec{w}||}\]}
 
 \end{proposition}
 
 ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.
 
 \begin{proof}
-\leavevmode
+\emph{Proof.} נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש
+שנוצר ע"י שני הוקטורים:
 
-נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר על ידי שני
-הוקטורים.
+(ציור עם משולש בעל צלעות שמתאימות לשני הוקטורים וגם לוקטור ההפרש מול
+\(\alpha\))
 
-\begin{center}
-    )ציור עם משולש בעל צלעות שמתאימות לשני הוקטורים וגם לוקטור ההפרש מול
-    \L{$\alpha$}(
-    \par\end{center}
+\[||\vec{v}||^{2}+||\vec{w}||^{2}=||\vec{v}-\vec{w}||^{2}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha\]
 
-\L\{\% {[}
-\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}=\textbar\textbar{}\vec{v}-\vec{w}\textbar\textbar\^{}\{2\}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha
-{]} \}\%
+נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין \(||v-w||^{2}\)
+ל-\(v\cdot w\):
+\[||\vec{v}-\vec{w}||^{2}=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w})=\vec{v}\cdot\vec{v}-\vec{v}\cdot\vec{w}-\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w}=||\vec{v}||^{2}-2\vec{v}\cdot\vec{w}+||\vec{w}||^{2}\]
 
-נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין
-\L\{\(||v-w||^{2}\)\} ל-\L\{\(v\cdot w\)\}:\L\{\% {[}
-\textbar\textbar{}\vec{v}-\vec{w}\textbar\textbar{}\textsuperscript{\{2\}=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w})=\vec{v}\cdot\vec{v}-\vec{v}\cdot\vec{w}-\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w}=\textbar\textbar{}\vec{v}\textbar\textbar{}}\{2\}-2\vec{v}\cdot\vec{w}+\textbar\textbar{}\vec{w}\textbar\textbar\^{}\{2\}
-{]} \}\%
+נציב את המשוואה השנייה בראשונה ונקבל
+\[.||\vec{v}||^{2}+||\vec{w}||^{2}=||\vec{v}||^{2}-2\vec{v}\cdot\vec{w}+||\vec{w}||^{2}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha\]
 
-נציב את המשוואה השנייה בראשונה ונקבל\L\{\% {[}
-.\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}=\textbar\textbar{}\vec{v}\textbar\textbar{}\textsuperscript{\{2\}-2\vec{v}\cdot\vec{w}+\textbar\textbar{}\vec{w}\textbar\textbar{}}\{2\}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha
-{]} \}\%
+נקזז \(||\vec{v}||^{2}+||\vec{w}||^{2}\) מכל אגף ונקבל
+\[.0=-2\vec{v}\cdot\vec{w}+2||\vec{v}||\cdot||\vec{w}||\cos\alpha\implies\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}||}\]
 
-נקזז \L\{\(||\vec{v}||^{2}+||\vec{w}||^{2}\)\} מכל אגף ונקבל\L\{\% {[}
--2\vec{v}\cdot\vec{w}+2\textbar\textbar{}\vec{v}\textbar\textbar{}\cdot\textbar\textbar{}\vec{w}\textbar\textbar{}\cos\alpha=0\implies\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}||}
-{]} \}\%
-
-כנדרש.
+כנדרש.~◻
 \end{proof}
 
-\begin{cor}
-וקטורים \L{$\vec{v},\vec{w}$} השונים מ-\L{$(0,0)$} הם מאונכים/ניצבים
-אם ורק אם \L{$\vec{v}\cdot\vec{w}=0$}. במקרה זה נסמן \L{$\vec{v}\perp\vec{w}$}.
-\end{cor}
+\begin{corollary}
+
+\emph{וקטורים \(\vec{v},\vec{w}\) השונים מ-\((0,0)\) הם מאונכים/ניצבים
+אם ורק אם \(\vec{v}\cdot\vec{w}=0\). במקרה זה נסמן
+\(\vec{v}\perp\vec{w}\).}
+
+\end{corollary}
 
 \begin{proof}
-תהי \L\{\(\alpha\)\} הזווית הקטנה ביניהם. אז מתקיים\L\{\% {[}
-.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}|}=0\iff\alpha=\frac{\pi}{2}
-{]} \}\%
+\emph{Proof.} תהי \(\alpha\) הזווית הקטנה ביניהם. אז מתקיים
+\[.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{||\vec{v}||\cdot||\vec{w}|}=0\iff\alpha=\frac{\pi}{2}\]~◻
 \end{proof}
 
 \begin{example}
 
-א. \L\{\((1,2)\perp(-2,1)\)\} כי \L\{\((1,2)\cdot(-2,1)=0\)\}.
+א. \((1,2)\perp(-2,1)\) כי \((1,2)\cdot(-2,1)=0\).
 
-ב. באופן כללי, לכל \L\{\((a,b)\in\mathbb{R}^{2}\)\} מתקיים
-\L\{\((a,b)\perp(-b,a)\)\} כי \L\{\((a,b)\cdot(-b,a)=0\)\}.
+ב. באופן כללי, לכל \((a,b)\in\mathbb{R}^{2}\) מתקיים
+\((a,b)\perp(-b,a)\) כי \((a,b)\cdot(-b,a)=0\).
 
 \end{example}
 
 \begin{remark}
-הוקטור \L\{\((0,0)\)\} הוא מקרה חריג )כי הוא חסר כיוון(. אבל מאחר
-שמתקיים \L\{\(\vec{v}\cdot(0,0)=0\)\} לכל וקטור
-\L\{\(\vec{v}\in\mathbb{R}^{2}\)\}, עדיין נגדיר
-\L\{\(\vec{v}\perp(0,0)\)\}. זהו הוקטור היחיד שמאונך לכל וקטור במישור.
+הוקטור \((0,0)\) הוא מקרה חריג כי הוא חסר כיוון. אבל מאחר שמתקיים
+\(\vec{v}\cdot(0,0)=0\) לכל וקטור \(\vec{v}\in\mathbb{R}^2\), עדיין
+נגדיר \(\vec{v}\perp(0,0)\). זהו הוקטור היחיד שמאונך לכל וקטור במישור,
+כי כל וקטור אחר לא מאונך לעצמו.
 \end{remark}
 
 \subsection{מעבר בין הצגה פרמטרית של ישר להצגה
@@ -1630,43 +1632,172 @@ z_{3}=\sqrt[8]{2}e^{i(-\frac{\pi}{16}+\frac{6\pi}{4}})=\sqrt[8]{2}e^{i\frac{23\p
 ההצגה האלגברית של ישר קשורה באופן הדוק למכפלה סקלרית. נבין את הקשר דרך
 דוגמה.
 
-דוגמה: נסתכל על הישר \(L=\{t(2,-1)|t\in\mathbb{R}\}\). רואים לפי ההצגה
-הפרמטרית שוקטור הכיוון הוא \((2,-1)\). לפי המכפלה הסקלרית אפשר לקבוע
-שהוקטור \((1,2)\) מאונך לו. הוא לא רק מאונך ל-\((2,-1)\) אלא לכל וקטור
-שמתאים לנקודה על הישר, כי לכל \(t\in\mathbb{R}\) מתקיים
+\begin{example}
+
+נסתכל על הישר \(L=\{t(2,-1)|t\in\mathbb{R}\}\). רואים לפי ההצגה הפרמטרית
+שוקטור הכיוון הוא \((2,-1)\). לפי המכפלה הסקלרית אפשר לקבוע שהוקטור
+\((1,2)\) מאונך לו. הוא לא רק מאונך ל-\((2,-1)\) אלא לכל וקטור שמתאים
+לנקודה על הישר, כי לכל \(t\in\mathbb{R}\) מתקיים
 \[.(1,2)\cdot(2t,-t)=2t-2t=0\]
 
-)הישר עם וקטור הנורמל(
+\end{example}
+
+(הישר עם וקטור הנורמל)
 
 להיפך, אפשר לתאר את הישר כאוסף כל הוקטורים שמאונכים לוקטור \((1,2)\).
-כלומר כל וקטור \((x,y)\in L\) נתון על ידי המשוואה
+כלומר כל וקטור \((x,y)\in L\) נתון ע"י המשוואה
 \[.(x,y)\cdot(1,2)=0\iff x+2y=0\]
 
 או בכתיב קבוצות: \(L=\{(x,y)\in\mathbb{R}^{2}|x+2y=0\}\).
 
 \begin{definition}
 
-וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר )התחלה וסיום( נקרא
+וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר (התחלה וסיום) נקרא
 נורמל לישר.
 
 \end{definition}
 
-)מישור אינטראקטיבי שמאפשר לסובב ישר כאשר הנורמל מסתובב יחד איתו בהתאם(
+(מישור אינטראקטיבי שמאפשר לסובב ישר כאשר הנורמל מסתובב יחד איתו בהתאם)
 
 באופן כללי, לישר עם הצגה פרמטרית
 \(\{(x_{0},y_{0})+t(a,b)|t\in\mathbb{R}\}\) יש וקטור נורמל \((-b,a)\)
 המאונך לוקטור הכיוון \((a,b)\). אבל וקטור הנורמל אינו יחיד, כי אם נכפיל
 אותו בסקלר \(c\neq0\) הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני
-וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם )או שניהם( בסקלר.
+וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם (או שניהם) בסקלר.
 
 כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-\((x_{0},y_{0})\) ומסתיים
 ב-\((x,y)\), כלומר הוקטור \((x-x_{0},y-y_{0})\). וקטור זה בהכרח מאונך
-לוקטור הנורמל \((-b,a)\), ולכן צריך להתקיים
-\[.(x-x_{0},y-y_{0})\cdot(-b,a)=0\iff-b(x-x_{0})+a(y-y_{0})=0\iff-bx+ay=-bx_{0}+ay_{0}\]
-כלומר קיבלנו הצגה אלגברית
+לוקטור הנורמל \((-b,a)\), ולכן צריך להתקיים: \[\begin{aligned}
+    (x-x_{0},y-y_{0})\cdot(-b,a)=0&\iff-b(x-x_{0})+a(y-y_{0})=0\\
+    &\iff-bx+ay=-bx_{0}+ay_{0}
+\end{aligned}\] כלומר קיבלנו הצגה אלגברית
 \(L=\{(x,y)\in\mathbb{R}^{2}|-bx+ay=-bx_{0}+ay_{0}\}\). נדגיש שהבחירה של
-נקודת ההתחלה \((x_{0},y_{0})\) היא שרירותית. בעצם, המשוואה מראה שהביטוי
+נקודת ההתחלה \((x_{0},y_{0})\) היא שרירותית. המשוואה מראה שהביטוי
 \(-bx+ay\) קבוע לאורך הישר, וקבוע זה מופיע באגף ימין של המשוואה.
+
+\begin{example}
+
+נסתכל על הישר \(L=\{(2,3)+t(1,-1)|t\in\mathbb{R}\}\). יש לו וקטור נורמל
+\((1,1)\) ולכל \((x,y)\in L\) הוקטור \((x-2,y-3)\) מאונך ל-\((1,1)\),
+ולכן מתקיים \[.(x-2,y-3)\cdot(1,1)=0\iff x-2+y-3=0\iff x+y=5\]
+
+קיבלנו הצגה אלגברית \(L=\{(x,y)\in\mathbb{R}^2|x+y=5\}\).
+
+\end{example}
+
+\begin{exercise}
+
+מצאו הצגה אלגברית של \(L=\{(1,-2)+t(3,1)|t\in\mathbb{R}\}\).
+
+\end{exercise}
+
+\subsection{מעבר בין הצגה אלגברית של ישר להצגה
+פרמטרית}\label{ux5deux5e2ux5d1ux5e8-ux5d1ux5d9ux5df-ux5d4ux5e6ux5d2ux5d4-ux5d0ux5dcux5d2ux5d1ux5e8ux5d9ux5ea-ux5e9ux5dc-ux5d9ux5e9ux5e8-ux5dcux5d4ux5e6ux5d2ux5d4-ux5e4ux5e8ux5deux5d8ux5e8ux5d9ux5ea}
+
+כדי למצוא הצגה פרמטרית של ישר, צריך למצוא שתי נקודות עליו. האחת בשביל
+נקודת ההתחלה, והשנייה בשביל נקודת הסיום של וקטור הכיוון. הבחירה של
+נקודות אלו היא שרירותית לחלוטין, אבל יחסית נוח להשתמש בנקודות חיתוך עם
+הצירים.
+
+\begin{example}
+
+נסתכל על הישר \(L=\{(x,y)\in\mathbb{R}^{2}|2x+3y=1\}\). אם נציב \(y=0\)
+נקבל \(x=\frac{1}{2}\), ולכן נבחר את \((\frac{1}{2},0)\) כנקודת התחלה.
+אם נציב \(x=0\) נקבל \(y=\frac{1}{3}\), ולכן נבחר את \((0,\frac{1}{3})\)
+כנקודת סיום של וקטור הכיוון. כך נקבל וקטור כיוון
+\((0,\frac{1}{3})-(\frac{1}{2},0)=(-\frac{1}{2},\frac{1}{3})\).
+
+מכאן
+\(L=\{(\frac{1}{2},0)+t(-\frac{1}{2},\frac{1}{3})|t\in\mathbb{R}\}\) היא
+הצגה פרמטרית אחת מתוך רבות. מי שלא אוהב שברים יכול להכפיל ב-\(6\) את
+וקטור הכיוון, וגם אפשר להחליף את נקודת ההתחלה ב-\((2,-1)\), למשל. אז גם
+מתקיים Ł\(L=\{(2,-1)+t(-3,2)|t\in\mathbb{R}\}\) ושתי התשובות נכונות
+באותה המידה. נשים לב שלפי הנוסחה Ł\((-b,a)\), וקטור הנורמל שמתאים להצגה
+הפרמטרית הראשונה הוא Ł\((-\frac{1}{3},-\frac{1}{2})\). באופן דומה, וקטור
+הנורמל שמתאים להצגה הפרמטרית השנייה הוא Ł\((-2,-3)\). שני הוקטורים האלה
+הם כפולות של הוקטור Ł\((2,3)\) שמופיע בתוך ההצגה האלגברית המקורית בתור
+המקדמים של Ł\(x,y\) בהתאמה.
+
+\end{example}
+
+באופן כללי, עבור הצגה אלגברית Ł\(L=\{(x,y)\in\mathbb{R}^{2}|ax+by=c\}\)
+נבחר נקודת התחלה Ł\((x_{0},y_{0})\) כלשהי. זו נקודה שמקיימת את משוואת
+הישר ולכן בהכרח Ł\(ax_{0}+by_{0}=c\), ולאחר הצבה במשוואה נקבלŁ
+\[.(x,y)\in L\iff ax+by=ax_{0}+by_{0}\iff a(x-x_{0})+b(y-y_{0})=0\iff(x-x_{0},y-y_{0})\perp(a,b)\]
+
+אז Ł\((a,b)\) הוא וקטור נורמל של Ł\(L\). כל וקטור כיוון שנמצא
+)ע\textquotedblי בחירה נקודה נוספת על Ł\(L\)( בהכרח מאונך לוקטור זה. זו
+בדיוק המשמעות של התנאי Ł\((x-x_{0},y-y_{0})\perp(a,b)\).
+
+\begin{exercise}
+
+מצאו הצגה פרמטרית של Ł\(L=\{(x,y)\in\mathbb{R}^{2}|3x+y=5\}\). האם וקטור
+הכיוון מאונך ל-Ł\((3,1)\)?
+
+\end{exercise}
+
+\section{הקדמה}\label{ux5d4ux5e7ux5d3ux5deux5d4-1}
+
+דוגמה לפרק שנכתב לפי ההנחיות. הקפידו להשתמש בשם הסביבה המדויק ולהוסיף
+תיוגים עם קידומת כמו \texttt{def:}, \texttt{thm:}, \texttt{exr:},
+\texttt{eq:} וכן הלאה.
+
+\begin{definition}
+
+\label{def:vectorspace} מרחב וקטורי מעל שדה \(F\) הוא \ldots{}
+
+\end{definition}
+
+\begin{theorem}
+
+\emph{\label{thm:basis-exists} לכל מרחב וקטורי סופי-ממד מעל \(F\) קיים
+בסיס.}
+
+\end{theorem}
+
+\begin{proof}
+\emph{הוכחה.} רעיון ההוכחה: נבנה קבוצה בת הוספה עד שאינה ניתנת להגדלה,
+ואז נראה שהיא בסיס. \qedhere~◻
+\end{proof}
+
+\begin{example}
+
+\label{ex:first} ב-\(\mathbb{R}^2\) הקבוצה \(\{(1,0),(0,1)\}\) היא בסיס
+סטנדרטי.
+
+\end{example}
+
+\begin{exercise}
+
+\label{exr:find-basis} מצאו בסיס ל-\(\mathbb{R}^2\) המורכב מהוקטורים
+\((1,1)\) ו-\((1,-1)\).
+
+\end{exercise}
+
+\textbf{רמז 1.1}. אפשר להתחיל בבדיקה של אי-תלות לינארית בעזרת דטרמיננטה.
+
+\begin{solution}
+\textbf{פתרון 1.1}. הדטרמיננטה של המטריצה
+\(\begin{pmatrix}1&1\\ 1&-1\end{pmatrix}\) שווה \(-2\neq 0\), ולכן
+הוקטורים בתל̈. מכאן שהם גם פורשים את \(\mathbb{R}^2\), ולכן מהווים בסיס
+כנדרש.
+\end{solution}
+
+ראו משפט~\ref{thm:basis-exists}, הגדרה~\ref{def:vectorspace},
+ודוגמה~\ref{ex:first}.
+
+\section{משוואות}\label{ux5deux5e9ux5d5ux5d5ux5d0ux5d5ux5ea}
+
+נשתמש ב-\texttt{equation} ו-\texttt{align} (לא \texttt{eqnarray}).
+\[\label{eq:idempotent}
+P^2 = P\] \[\begin{aligned}
+\label{eq:two-steps}
+Ax &= b\\
+x  &= A^{-1}b
+\end{aligned}\] הפניה למשוואות: \eqref{eq:idempotent},
+\eqref{eq:two-steps}.
+
+\backmatter
 
 \bookmarksetup{startatroot}
 
@@ -2866,7 +2997,7 @@ x_{3}=2-t
 
 כאן מופיעה השאלה של התרגיל.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colback=white, titlerule=0mm, breakable, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm, opacityback=0, toprule=.15mm, bottomtitle=1mm, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{הצג פתרון}, left=2mm, opacitybacktitle=0.6, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{הצג פתרון}, rightrule=.15mm, opacitybacktitle=0.6, breakable, left=2mm, colback=white]
 
 זהו הפתרון של התרגיל.
 
@@ -2886,7 +3017,7 @@ x_{3}=2-t
 
 \end{exercise}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colback=white, titlerule=0mm, breakable, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm, opacityback=0, toprule=.15mm, bottomtitle=1mm, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{פתרון}, left=2mm, opacitybacktitle=0.6, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{פתרון}, rightrule=.15mm, opacitybacktitle=0.6, breakable, left=2mm, colback=white]
 
 \subsubsection{הוכחה:}\label{ux5d4ux5d5ux5dbux5d7ux5d4}
 
@@ -2944,7 +3075,7 @@ x_{3}=2-t
 \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{simulations/linear-transform.png}
 \end{center}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colback=white, titlerule=0mm, breakable, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm, opacityback=0, toprule=.15mm, bottomtitle=1mm, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: מטריצה כטרנספורמציה}, left=2mm, opacitybacktitle=0.6, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: מטריצה כטרנספורמציה}, rightrule=.15mm, opacitybacktitle=0.6, breakable, left=2mm, colback=white]
 
 הדגמה זו ממחישה את אחד הרעיונות המרכזיים באלגברה לינארית: \textbf{מטריצה
 כפעולה גיאומטרית}.
@@ -2989,7 +3120,7 @@ x_{3}=2-t
 \section{הדגמה: כלל הסנדוויץ'
 לסדרות}\label{ux5d4ux5d3ux5d2ux5deux5d4-ux5dbux5dcux5dc-ux5d4ux5e1ux5e0ux5d3ux5d5ux5d5ux5d9ux5e5-ux5dcux5e1ux5d3ux5e8ux5d5ux5ea}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colback=white, titlerule=0mm, breakable, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm, opacityback=0, toprule=.15mm, bottomtitle=1mm, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: כלל הסנדוויץ' לסדרות}, left=2mm, opacitybacktitle=0.6, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: כלל הסנדוויץ' לסדרות}, rightrule=.15mm, opacitybacktitle=0.6, breakable, left=2mm, colback=white]
 
 כלל הסנדוויץ' לסדרות קובע שאם איברי סדרה אחת (\texttt{gₙ}) חסומים בין
 איברי שתי סדרות אחרות (\texttt{hₙ} ו-\texttt{fₙ}), ושתי הסדרות החיצוניות
@@ -3040,7 +3171,7 @@ x_{3}=2-t
 \section{הדגמה: כלל הסנדוויץ' לסדרות - מספרים
 קבועים}\label{ux5d4ux5d3ux5d2ux5deux5d4-ux5dbux5dcux5dc-ux5d4ux5e1ux5e0ux5d3ux5d5ux5d5ux5d9ux5e5-ux5dcux5e1ux5d3ux5e8ux5d5ux5ea---ux5deux5e1ux5e4ux5e8ux5d9ux5dd-ux5e7ux5d1ux5d5ux5e2ux5d9ux5dd}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colback=white, titlerule=0mm, breakable, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm, opacityback=0, toprule=.15mm, bottomtitle=1mm, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: דוגמה מספרית}, left=2mm, opacitybacktitle=0.6, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomrule=.15mm, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{חקירה אינטראקטיבית: דוגמה מספרית}, rightrule=.15mm, opacitybacktitle=0.6, breakable, left=2mm, colback=white]
 
 בדוגמה זו אנו בוחנים מקרה ספציפי של כלל הסנדוויץ' עם סדרות שהוגדרו מראש.
 האינטראקטיביות היחידה היא היכולת לשנות את מספר האיברים (\texttt{N})

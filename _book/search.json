@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "אלגברה לינארית",
+    "section": "",
+    "text": "מידע כללי\n\n\n\n\nלהורדת הספר ב PDF\n\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\nThis is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "מידע כללי"
+    ]
+  },
+  {
+    "objectID": "chapter_1.html",
+    "href": "chapter_1.html",
+    "title": "4  גיאומטריה במישור ובמרחב",
+    "section": "",
+    "text": "4.0.1 המישור \\mathbb{R}^2\nבפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד תחילה במישור (עם דגש על הישרים המוכלים בו) ואחר כך נעבור למרחב (שם נדבר גם על מישורים).\nבפרק 0 דיברנו על הישר הממשי וגם על המישור המרוכב. אפשר גם לתאר את המישור (הממשי) בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.\nהגדרנו וקטורים כחצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה שקובע את הוקטור הם גודלו וכיוונו, לא נקודת ההתחלה. וקטורים זהים יופיעו כחצים מקבילים ושווי גודל במישור.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>גיאומטריה במישור ובמרחב</span>"
+    ]
+  },
+  {
+    "objectID": "chapter_1.html#הקדמה",
+    "href": "chapter_1.html#הקדמה",
+    "title": "4  גיאומטריה במישור ובמרחב",
+    "section": "4.1 הקדמה",
+    "text": "4.1 הקדמה\nדוגמה לפרק שנכתב לפי ההנחיות. הקפידו להשתמש בשם הסביבה המדויק ולהוסיף תיוגים עם קידומת כמו def:, thm:, exr:, eq: וכן הלאה.\n\n מרחב וקטורי מעל שדה F הוא …\n\n\n לכל מרחב וקטורי סופי-ממד מעל F קיים בסיס.\n\n\nProof. הוכחה. רעיון ההוכחה: נבנה קבוצה בת הוספה עד שאינה ניתנת להגדלה, ואז נראה שהיא בסיס.  ◻\n\n\n ב-\\mathbb{R}^2 הקבוצה \\{(1,0),(0,1)\\} היא בסיס סטנדרטי.\n\n\n מצאו בסיס ל-\\mathbb{R}^2 המורכב מהוקטורים (1,1) ו-(1,-1).\n\n\nרמז 1.1. אפשר להתחיל בבדיקה של אי-תלות לינארית בעזרת דטרמיננטה.\n\n\nSolution. פתרון 1.1. הדטרמיננטה של המטריצה \\begin{pmatrix}1&1\\\\ 1&-1\\end{pmatrix} שווה -2\\neq 0, ולכן הוקטורים בתל̈. מכאן שהם גם פורשים את \\mathbb{R}^2, ולכן מהווים בסיס כנדרש.\n\nראו משפט , הגדרה , ודוגמה .",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>גיאומטריה במישור ובמרחב</span>"
+    ]
+  },
+  {
+    "objectID": "chapter_1.html#משוואות",
+    "href": "chapter_1.html#משוואות",
+    "title": "4  גיאומטריה במישור ובמרחב",
+    "section": "4.2 משוואות",
+    "text": "4.2 משוואות\nנשתמש ב-equation ו-align (לא eqnarray). \\label{eq:idempotent}\nP^2 = P \\begin{aligned}\n\\label{eq:two-steps}\nAx &= b\\\\\nx  &= A^{-1}b\n\\end{aligned} הפניה למשוואות: , .",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>גיאומטריה במישור ובמרחב</span>"
+    ]
+  }
+]

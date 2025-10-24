@@ -38,6 +38,7 @@ format:
     html-math-method: katex
     fig-align: center
     fig-cap-location: bottom
+    theorems: false
     callout:
       collapse: true
     css: 
@@ -63,6 +64,7 @@ format:
     linestretch: 1.5
     geometry: right=30mm, left=30mm, top=30mm, bottom=30mm
     pdf-engine: xelatex
+    theorems: false
     header-includes:
       - \usepackage{bidi}
       - \setRTL
