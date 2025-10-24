@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.24)  24 OCT 2025 19:44
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.24)  24 OCT 2025 19:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1994,7 +1994,7 @@ No file index.toc.
 
 ]
 LaTeX Font Info:    Font shape `TU/David(2)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 384.
+(Font)              scaled to size 12.0pt on input line 386.
 
 
 [1
@@ -2003,21 +2003,21 @@ LaTeX Font Info:    Font shape `TU/David(2)/b/n' will be
 ]
 \bbl@ensure@hebrew {פרק} I.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.71696pt on input line 404.
+(Font)              scaled to size 8.71696pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.22641pt on input line 404.
+(Font)              scaled to size 6.22641pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.4541pt on input line 404.
+(Font)              scaled to size 12.4541pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.71785pt on input line 404.
+(Font)              scaled to size 8.71785pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.22705pt on input line 404.
+(Font)              scaled to size 6.22705pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 12.45154pt on input line 404.
+(Font)              scaled to size 12.45154pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.71606pt on input line 404.
+(Font)              scaled to size 8.71606pt on input line 400.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.22577pt on input line 404.
+(Font)              scaled to size 6.22577pt on input line 400.
 File: images/intro/intro_img_1.png Graphic file (type bmp)
 <images/intro/intro_img_1.png>
 
@@ -2026,15 +2026,15 @@ File: images/intro/intro_img_1.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `TU/David(2)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 424.
+(Font)              scaled to size 10.95pt on input line 420.
 
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/sl' undefined
-(Font)              using `TU/David(2)/m/n' instead on input line 466.
+(Font)              using `TU/David(2)/m/n' instead on input line 462.
 
 LaTeX Font Info:    Font shape `TU/David(2)/m/sl' will be
-(Font)              scaled to size 12.0pt on input line 466.
+(Font)              scaled to size 12.0pt on input line 462.
 [3]
 
 [4]
@@ -2042,12 +2042,12 @@ LaTeX Font Info:    Font shape `TU/David(2)/m/sl' will be
 [5]
 \bbl@ensure@hebrew {פרק} II.
 LaTeX Font Info:    Font shape `TU/David(2)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 512.
+(Font)              scaled to size 17.28pt on input line 508.
 LaTeX Font Info:    Font shape `TU/David(2)/b/n' will be
-(Font)              scaled to size 17.28pt on input line 512.
+(Font)              scaled to size 17.28pt on input line 508.
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 527.
+(Font)              using `TU/David(2)/m/sl' instead on input line 523.
 
 
 
@@ -2055,9 +2055,9 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 
 ]
 LaTeX Font Info:    Font shape `TU/David(2)/m/n' will be
-(Font)              scaled to size 8.4pt on input line 548.
+(Font)              scaled to size 8.4pt on input line 544.
 LaTeX Font Info:    Font shape `TU/David(2)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 548.
+(Font)              scaled to size 6.0pt on input line 544.
 
 
 [7]
@@ -2069,37 +2069,37 @@ LaTeX Font Info:    Font shape `TU/David(2)/m/n' will be
 [10]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 732.
+(Font)              using `TU/David(2)/m/sl' instead on input line 728.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 740.
+(Font)              using `TU/David(2)/m/sl' instead on input line 736.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 748.
+(Font)              using `TU/David(2)/m/sl' instead on input line 744.
 
 
 
 [11]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 785.
+(Font)              using `TU/David(2)/m/sl' instead on input line 781.
 
 
 
 [12]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 812.
+(Font)              using `TU/David(2)/m/sl' instead on input line 808.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 819.
+(Font)              using `TU/David(2)/m/sl' instead on input line 815.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 828.
+(Font)              using `TU/David(2)/m/sl' instead on input line 824.
 
 
 
@@ -2107,7 +2107,7 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 \bbl@ensure@hebrew {פרק} III.
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 894.
+(Font)              using `TU/David(2)/m/sl' instead on input line 890.
 
 
 
@@ -2116,50 +2116,50 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 ]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 900.
+(Font)              using `TU/David(2)/m/sl' instead on input line 896.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 916.
+(Font)              using `TU/David(2)/m/sl' instead on input line 912.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 941.
+(Font)              using `TU/David(2)/m/sl' instead on input line 937.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 949.
+(Font)              using `TU/David(2)/m/sl' instead on input line 945.
 
 
 
 [15]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 958.
+(Font)              using `TU/David(2)/m/sl' instead on input line 954.
 
 LaTeX Font Info:    Font shape `TU/David(2)/m/sl' will be
-(Font)              scaled to size 8.4pt on input line 962.
+(Font)              scaled to size 8.4pt on input line 958.
 LaTeX Font Info:    Font shape `TU/David(2)/m/sl' will be
-(Font)              scaled to size 6.0pt on input line 962.
+(Font)              scaled to size 6.0pt on input line 958.
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 971.
+(Font)              using `TU/David(2)/m/sl' instead on input line 967.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1001.
+(Font)              using `TU/David(2)/m/sl' instead on input line 997.
 
 
 
 [16]
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1007.
+(Font)              scaled to size 12.0pt on input line 1003.
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 8.4pt on input line 1007.
+(Font)              scaled to size 8.4pt on input line 1003.
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 1007.
+(Font)              scaled to size 6.0pt on input line 1003.
 
-Underfull \hbox (badness 1270) in paragraph at lines 1020--1022
+Underfull \hbox (badness 1270) in paragraph at lines 1016--1018
 [][][]\TU/David(2)/m/sl/12 בכיוון ההפוך, נניח שהקוארדינטות הקרטזיות $[][][] [][]$ ידועות. איך נחשב את הקוארדינטות[][]
  []
 
@@ -2168,39 +2168,39 @@ Underfull \hbox (badness 1270) in paragraph at lines 1020--1022
 [17]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1051.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1047.
 
 LaTeX Font Info:    Font shape `TU/David(2)/b/n' will be
-(Font)              scaled to size 14.4pt on input line 1079.
+(Font)              scaled to size 14.4pt on input line 1075.
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1081.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1077.
 
 
 
 [18]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1094.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1090.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1139.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1135.
 
 
 
 [19]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1151.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1147.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1160.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1156.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1182.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1178.
 
 
 
@@ -2211,14 +2211,14 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 [22]
 \bbl@ensure@hebrew {פרק} 1.
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1244.
+(Font)              scaled to size 14.4pt on input line 1240.
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 1244.
+(Font)              scaled to size 10.0pt on input line 1240.
 LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 1244.
+(Font)              scaled to size 7.0pt on input line 1240.
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1275.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1271.
 
 
 
@@ -2227,76 +2227,80 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 ]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1286.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1282.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1303.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1299.
 
 
 
 [24]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1368.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1364.
 
 
 
 [25]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1382.
+
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 (Font)              using `TU/David(2)/m/sl' instead on input line 1386.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1390.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1391.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1395.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1391.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1395.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1391.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1395.
-
-
-LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1395.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1391.
 
 Missing character: There is no ◻ (U+25FB) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1402.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1398.
 
 
 
 [26]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1443.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1439.
 
 
 
 [27]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1483.
+
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 (Font)              using `TU/David(2)/m/sl' instead on input line 1487.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1491.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1489.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1493.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1492.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1496.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1494.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
@@ -2304,84 +2308,80 @@ LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1502.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1500.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1504.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1503.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1507.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1508.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1512.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1508.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1512.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1508.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1512.
-
-
-LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1512.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1508.
 
 Missing character: There is no ◻ (U+25FB) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1527.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1523.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1532.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1528.
 
 
 
 [28]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1539.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1535.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1539.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1535.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1539.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1535.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1539.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1535.
 
 Missing character: There is no ◻ (U+25FB) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1556.
+
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
 (Font)              using `TU/David(2)/m/sl' instead on input line 1560.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1564.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1565.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1569.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1565.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1569.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1565.
 
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1569.
-
-
-LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1569.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1565.
 
 Missing character: There is no ◻ (U+25FB) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 
@@ -2389,7 +2389,7 @@ Missing character: There is no ◻ (U+25FB) in font David/OT:script=hebr;languag
 [29]
 
 LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
-(Font)              using `TU/David(2)/m/sl' instead on input line 1583.
+(Font)              using `TU/David(2)/m/sl' instead on input line 1579.
 
 
 
@@ -2408,14 +2408,14 @@ Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 
-Overfull \hbox (63.26314pt too wide) detected at line 1686
+Overfull \hbox (63.26314pt too wide) detected at line 1682
 [][][][] [][] [] []  []  [][] [] [][] [] [][][] [] [][][]  []  [][][] [] [][][] [] [][][] [] [][][] [] []  []  [][] [] [][][] [] [] [][][] [] [][][] [][]
  []
 
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 ! Undefined control sequence.
-l.1689 )ע\textquotedblי
+l.1685 )ע\textquotedblי
                         בחירה נקודה נוספת על Ł\(L\)( בהכרח מאונך לוקטור זה. זו
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
