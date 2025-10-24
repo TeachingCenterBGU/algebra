@@ -65,3 +65,78 @@
 /* הסתרת כותרות-inline שמודבקות בתוך הפסקה הראשונה */
 .remark .remark-title,
 .proof  .proof-title { display: none; }
+
+/* למרכז תמונות וכיתובים ב‑HTML של Quarto */
+figure.quarto-figure,
+.figure {
+  text-align: center !important;   /* עוקף את right מה‑RTL */
+}
+
+figure.quarto-figure figcaption,
+.figure .figure-caption {
+  text-align: center !important;
+  margin: 0.5rem auto;
+}
+
+/* רשימות בתוך סביבות: שהמספור יהיה בתוך התיבה ולא ייחתך */
+.definition ol, .definition ul,
+.example   ol, .example   ul,
+.exercise  ol, .exercise  ul,
+.theorem   ol, .theorem   ul,
+.lemma     ol, .lemma     ul,
+.proposition ol, .proposition ul,
+.corollary ol, .corollary ul,
+.remark    ol, .remark    ul,
+.proof     ol, .proof     ul {
+  list-style-position: inside;   /* המספר/תבליט בתוך הקופסה */
+  padding-inline-start: 0;       /* לא צריך ריווח שמאלה (או ימינה ב‑RTL) */
+  margin: 0.4rem 0;              /* ריווח אנכי נעים */
+  direction: rtl;                /* מוודא RTL גם ברשימה */
+  text-align: right;
+}
+/* --- Home hero --- */
+.home-hero{ text-align:center; margin:2.2rem 0 1.4rem; }
+.home-hero__logo{ width:140px; display:block; margin:0 auto 1rem; }
+.home-hero__title{ font-size:2.2rem; margin:0 0 .35rem; }
+.home-hero__tagline{ font-size:1.1rem; opacity:.8; margin:0; }
+
+/* --- Download button in sidebar --- */
+#download-box{ margin:1rem 0; }
+#download-box .btn{
+  background:#FF9E3A; border-color:#FF9E3A; color:#fff;
+  display:block; text-align:center; font-weight:600;
+}
+.sidebar #download-box{ margin-top:1rem; }
+
+/* --- Home hero v2 --- */
+.home-hero{ text-align:center; margin:2.5rem 0 1.5rem; }
+.home-hero__logo{ width:180px; display:block; margin:0 auto 1.1rem; }
+.home-hero__title{ font-size:2.6rem; line-height:1.15; margin:0; }
+.home-hero__subtitle{ font-size:1.1rem; opacity:.8; margin:.35rem 0 1.3rem; }
+.home-hero__tagline{
+  font-weight:700; font-size:1.15rem; margin:.2rem auto 1.2rem;
+  max-width:42ch;
+}
+.home-hero__divider{
+  width:min(720px,92%); margin:1.2rem auto 0; border:none; height:1px;
+  background:linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+}
+
+/* --- Acknowledgements card --- */
+.home-ack{
+  background:#eef6ff; border:2px solid #9ec5fe; border-radius:18px;
+  padding:1.1rem 1.2rem; margin:1.3rem auto 0; max-width:780px;
+  box-shadow:0 6px 18px rgba(30,58,138,.10);
+  text-align:center; font-weight:600;
+}
+.home-ack h4, .home-ack h3, .home-ack h2{ margin:.1rem 0 .6rem; }
+.home-ack p{ margin:.25rem 0; }
+
+/* --- Download button in sidebar --- */
+#download-box{ margin:1rem 0; }
+#download-box .btn{
+  background:#FF9E3A; border-color:#FF9E3A; color:#fff;
+  display:block; text-align:center; font-weight:700;
+}
+.sidebar #download-box{ margin-top:1rem; }
+

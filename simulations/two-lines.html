@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="he" xml:lang="he"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; כלל הסנדוויץ’ - דוגמה מספרית – אלגברה לינארית</title>
+<title>חיתוך בין ישרים — סימולציה</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,172 +23,78 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./chapter_2.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<script src="two-lines_files/libs/clipboard/clipboard.min.js"></script>
+<script src="two-lines_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="two-lines_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="two-lines_files/libs/quarto-html/popper.min.js"></script>
+<script src="two-lines_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="two-lines_files/libs/quarto-html/anchor.min.js"></script>
+<link href="two-lines_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="two-lines_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="two-lines_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="two-lines_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="two-lines_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>
+/* סגנון ממוקף-מקומי: לא יתנגש עם סימולציות אחרות */
+#sim-two-lines { direction: rtl; }
+#sim-two-lines .main-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+#sim-two-lines canvas {
+  border: 1px solid var(--quarto-border-color, #999);
+  border-radius: 6px;
+  max-width: 100%;
+  height: auto;
+}
+#sim-two-lines #info-panel {
+  direction: ltr;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  border: 1px solid var(--quarto-border-color, #ddd);
+  padding: 12px;
+  border-radius: 8px;
+  width: 280px;
+  background: var(--quarto-body-bg, #fff);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+#sim-two-lines .control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+#sim-two-lines input[type="range"] {
+  width: 150px;
+}
+#sim-two-lines #intersection-point {
+  font-weight: 700;
+  color: #c0392b;
+  font-size: 1.05rem;
+  text-align: center;
+  margin-top: 12px;
+}
+#sim-two-lines .title {
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+</style>
 
 
-<link rel="stylesheet" href="rtl-baseline.css">
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="fullcontent quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_3.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">אלגברה לינארית</a> 
-        <div class="sidebar-tools-main">
-    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">מידע כללי</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">הקדמה</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ביבליוגרפיה</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#הדגמה-כלל-הסנדוויץ-עם-סדרות-קבועות" id="toc-הדגמה-כלל-הסנדוויץ-עם-סדרות-קבועות" class="nav-link active" data-scroll-target="#הדגמה-כלל-הסנדוויץ-עם-סדרות-קבועות"><span class="header-section-number">6.1</span> הדגמה: כלל הסנדוויץ’ עם סדרות קבועות</a></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></h1>
+<h1 class="title">חיתוך בין ישרים — סימולציה</h1>
 </div>
 
 
@@ -205,174 +111,200 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="הדגמה-כלל-הסנדוויץ-עם-סדרות-קבועות" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="הדגמה-כלל-הסנדוויץ-עם-סדרות-קבועות"><span class="header-section-number">6.1</span> הדגמה: כלל הסנדוויץ’ עם סדרות קבועות</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+איך משתמשים?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הזיזו את המחוונים כדי לשנות את הפרמטרים של הישר הירוק \(x + t y = s\) ולראות את נקודת החיתוך עם הישר הכחול \(x + y = 0\).</p>
+</div>
+</div>
+</div>
+<div id="sim-two-lines">
+<div class="main-container">
+<canvas id="interactivePlane" width="600" height="600" aria-label="מישור קרטזי אינטראקטיבי">
+</canvas>
+<div id="info-panel">
+<pre><code>&lt;div class="title" style="color: #1f77b4;"&gt;Line 1: x + y = 0&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="title" style="color: #2ca02c;"&gt;Line 2: x + t·y = s&lt;/div&gt;
 
+&lt;div class="control-row"&gt;
+  &lt;label for="t-slider"&gt;t =&lt;/label&gt;
+  &lt;input type="range" id="t-slider" min="-5" max="5" value="2" step="0.1" aria-label="t"&gt;
+  &lt;span id="t-value"&gt;2.0&lt;/span&gt;
+&lt;/div&gt;
 
-</section>
+&lt;div class="control-row"&gt;
+  &lt;label for="s-slider"&gt;s =&lt;/label&gt;
+  &lt;input type="range" id="s-slider" min="-5" max="5" value="3" step="0.1" aria-label="s"&gt;
+  &lt;span id="s-value"&gt;3.0&lt;/span&gt;
+&lt;/div&gt;
 
-</main> <!-- /main -->
+&lt;hr&gt;
+&lt;div&gt;נקודת חיתוך (x, y):&lt;/div&gt;
+&lt;div id="intersection-point"&gt;(1.00, -1.00)&lt;/div&gt;</code></pre>
+</div>
+</div>
 <script>
+(function() {
+  const root = document.getElementById('sim-two-lines');
+  const canvas = root.querySelector('#interactivePlane');
+  const ctx = canvas.getContext('2d');
+  const tSlider = root.querySelector('#t-slider');
+  const sSlider = root.querySelector('#s-slider');
+  const tValueDisplay = root.querySelector('#t-value');
+  const sValueDisplay = root.querySelector('#s-value');
+  const intersectionDisplay = root.querySelector('#intersection-point');
 
-/* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
 
-   גם כשהכותרת כבר קיימת מ‑Quarto */
+  const padding = 30;
+  const scale = 5;
+  const unitSize = (canvas.width - 2 * padding) / (scale * 2);
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  function chapterNumber() {
-
-    const h1 = document.querySelector('main h1[data-number]');
-
-    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
-
-    const sec = document.querySelector('.header-section-number');
-
-    if (sec) return sec.textContent.trim().split('.')[0];
-
-    return '1';
-
+  function scaledToPixels(point) {
+    return {
+      x: centerX + point.x * unitSize,
+      y: centerY - point.y * unitSize
+    };
   }
 
-  const chap = chapterNumber();
-
-
-
-  const envs = {
-
-    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
-
-    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
-
-    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  }, // כחול פסטלי
-
-    remark:      { label: 'הערה',     color: 'rgba(0, 0, 0, 0.15)',numbered: true  }, // ירוק פסטלי
-
-    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)',    numbered: true  },
-
-    proof:       { label: 'הוכחה',    color: 'rgba60, 179, 113, 0.35)',    numbered: false }
-
-  };
-
-
-
-  const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
-
-
-
-  Object.keys(envs).forEach(env => {
-
-    document.querySelectorAll(`div.${env}`).forEach(div => {
-
-      const meta = envs[env];
-
-      const hasTitle = div.querySelector(':scope > .theorem-title');
-
-
-
-      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
-
-      if (!hasTitle) {
-
-        const title = document.createElement('div');
-
-        title.className = 'theorem-title';
-
-        if (meta.numbered) {
-
-          counters[env] += 1;
-
-          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
-
-        } else {
-
-          title.textContent = meta.label;
-
-        }
-
-        div.insertBefore(title, div.firstChild);
-
-      }
-
-
-
-      // תמיד הוסף envbox וצבע פסטלי
-
-      div.classList.add('envbox');
-
-      div.style.setProperty('--env-color', meta.color);
-
-
-
-      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
-
-      const firstP = div.querySelector(':scope > p');
-
-      if (firstP) {
-
-        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
-
-      }
-
-    });
-
-  });
-
-});
-
-</script>
-
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  // בחר את כל כותרות הפרקים הראשיים
-
-  const chapters = document.querySelectorAll('main h1[data-number]');
-
-  let counter = 0;
-
-  chapters.forEach(h1 => {
-
-    counter++;
-
-    if (counter <= 3) {
-
-      // שני פרקים ראשונים ברומי
-
-      const roman = ['I','II'][counter-1];
-
-      h1.setAttribute('data-number', roman);
-
-      const numSpan = h1.querySelector('.header-section-number');
-
-      if (numSpan) numSpan.textContent = roman;
-
-    } else {
-
-      // חזרה למספרים רגילים החל מ-1
-
-      const normal = counter - 3;
-
-      h1.setAttribute('data-number', normal);
-
-      const numSpan = h1.querySelector('.header-section-number');
-
-      if (numSpan) numSpan.textContent = normal;
-
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // grid
+    ctx.beginPath();
+    ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--quarto-border-color') || '#ddd';
+    ctx.lineWidth = 1;
+    for (let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0);
+      ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize);
+      ctx.lineTo(canvas.width, centerY + i * unitSize);
     }
+    ctx.stroke();
 
+    // axes
+    ctx.beginPath();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.moveTo(padding, centerY);
+    ctx.lineTo(canvas.width - padding, centerY);
+    ctx.moveTo(centerX, canvas.height - padding);
+    ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    // arrows
+    const headlen = 10;
+    ctx.beginPath();
+    ctx.strokeStyle = '#000';
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    // labels
+    ctx.fillStyle = '#000';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', canvas.width - padding + 10, centerY);
+    ctx.fillText('y', centerX, padding - 15);
+  }
+
+  function drawLine(p1, p2, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+  }
+
+  function drawPoint(p, color = 'red') {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  function drawSceneAndCalc() {
+    drawGrid();
+
+    const t = parseFloat(tSlider.value);
+    const s = parseFloat(sSlider.value);
+
+    // line 1: x + y = 0
+    const line1_p1 = scaledToPixels({ x: -scale, y: scale });
+    const line1_p2 = scaledToPixels({ x: scale, y: -scale });
+    drawLine(line1_p1, line1_p2, '#1f77b4');
+
+    // line 2: x + t y = s
+    const y1 = -scale * 2;
+    const x1 = s - t * y1;
+    const y2 = scale * 2;
+    const x2 = s - t * y2;
+    const line2_p1 = scaledToPixels({ x: x1, y: y1 });
+    const line2_p2 = scaledToPixels({ x: x2, y: y2 });
+    drawLine(line2_p1, line2_p2, '#2ca02c');
+
+    if (Math.abs(1 - t) < 0.01) {
+      if (Math.abs(s) < 0.01) {
+        intersectionDisplay.textContent = "הישרים מתלכדים";
+      } else {
+        intersectionDisplay.textContent = "הישרים מקבילים";
+      }
+    } else {
+      const x = s / (1 - t);
+      const y = -x;
+      intersectionDisplay.textContent = `(${x.toFixed(2)}, ${y.toFixed(2)})`;
+
+      if (Math.abs(x) <= scale && Math.abs(y) <= scale) {
+        drawPoint(scaledToPixels({ x, y }));
+      }
+    }
+  }
+
+  function updateValues() {
+    tValueDisplay.textContent = parseFloat(tSlider.value).toFixed(1);
+    sValueDisplay.textContent = parseFloat(sSlider.value).toFixed(1);
+    drawSceneAndCalc();
+  }
+
+  tSlider.addEventListener('input', updateValues);
+  sSlider.addEventListener('input', updateValues);
+
+  // initial render
+  updateValues();
+
+  // resize support if container width changes (optional)
+  const ro = new ResizeObserver(() => {
+    // keep fixed canvas size for consistency across book; skip dynamic resizing
+    drawSceneAndCalc();
   });
-
-});
-
+  ro.observe(root);
+})();
 </script>
+</div>
+
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -398,12 +330,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "הועתק!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "הועתק!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -772,18 +704,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./chapter_2.html" class="pagination-link" aria-label="חדוא לבניתיים">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="סיכום">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

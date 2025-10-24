@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; חדוא לבניתיים – אלגברה לינארית</title>
+<title>5&nbsp; מערכות משוואות לינאריות – אלגברה לינארית</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter_3.html" rel="next">
+<link href="./summary.html" rel="next">
 <link href="./chapter_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -127,7 +127,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -185,25 +185,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -222,8 +216,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#הדגמה-כלל-הסנדוויץ-לסדרות" id="toc-הדגמה-כלל-הסנדוויץ-לסדרות" class="nav-link active" data-scroll-target="#הדגמה-כלל-הסנדוויץ-לסדרות"><span class="header-section-number">5.1</span> הדגמה: כלל הסנדוויץ’ לסדרות</a></li>
-  <li><a href="#הדגמה-כלל-הסנדוויץ-לסדרות---מספרים-קבועים" id="toc-הדגמה-כלל-הסנדוויץ-לסדרות---מספרים-קבועים" class="nav-link" data-scroll-target="#הדגמה-כלל-הסנדוויץ-לסדרות---מספרים-קבועים"><span class="header-section-number">5.2</span> הדגמה: כלל הסנדוויץ’ לסדרות - מספרים קבועים</a></li>
+  <li><a href="#משוואה-לינארית-במספר-משתנים" id="toc-משוואה-לינארית-במספר-משתנים" class="nav-link active" data-scroll-target="#משוואה-לינארית-במספר-משתנים"><span class="header-section-number">5.1</span> משוואה לינארית במספר משתנים</a></li>
+  <li><a href="#מערכות-משוואות-לינאריות" id="toc-מערכות-משוואות-לינאריות" class="nav-link" data-scroll-target="#מערכות-משוואות-לינאריות"><span class="header-section-number">5.2</span> מערכות משוואות לינאריות</a></li>
+  <li><a href="#מטריצות" id="toc-מטריצות" class="nav-link" data-scroll-target="#מטריצות"><span class="header-section-number">5.3</span> מטריצות</a></li>
+  <li><a href="#מטריצות-מדורגות-ומדורגות-קנונית" id="toc-מטריצות-מדורגות-ומדורגות-קנונית" class="nav-link" data-scroll-target="#מטריצות-מדורגות-ומדורגות-קנונית"><span class="header-section-number">5.4</span> מטריצות מדורגות ומדורגות קנונית</a></li>
+  <li><a href="#פעולות-שורה-אלמנטריות" id="toc-פעולות-שורה-אלמנטריות" class="nav-link" data-scroll-target="#פעולות-שורה-אלמנטריות"><span class="header-section-number">5.5</span> פעולות שורה אלמנטריות</a></li>
+  <li><a href="#שיטת-הדירוג-של-גאוס" id="toc-שיטת-הדירוג-של-גאוס" class="nav-link" data-scroll-target="#שיטת-הדירוג-של-גאוס"><span class="header-section-number">5.6</span> שיטת הדירוג של גאוס</a></li>
+  <li><a href="#מספר-הפתרונות" id="toc-מספר-הפתרונות" class="nav-link" data-scroll-target="#מספר-הפתרונות"><span class="header-section-number">5.7</span> מספר הפתרונות</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +231,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></h1>
 </div>
 
 
@@ -249,301 +248,956 @@ window.Quarto = {
 </header>
 
 
-<section id="הדגמה-כלל-הסנדוויץ-לסדרות" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="הדגמה-כלל-הסנדוויץ-לסדרות"><span class="header-section-number">5.1</span> הדגמה: כלל הסנדוויץ’ לסדרות</h2>
-<style>
-  #sequence-squeeze-demo {
-    border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 700px;
-    margin: auto; display: flex; flex-direction: column; align-items: center;
-    background-color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  #sequenceCanvas { border: 1px solid black; }
-  .sequence-controls { width: 100%; margin-top: 15px; }
-  .sequence-controls label { display: block; margin-bottom: 5px; margin-top: 10px; }
-  .sequence-controls input[type="range"] { width: 100%; }
-  .legend { width: 100%; padding: 10px 0; }
-  .legend-item { display: inline-block; margin-right: 20px; font-size: 0.9em; }
-  .legend-color { display: inline-block; width: 15px; height: 15px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
-</style>
-
-<div id="sequence-squeeze-demo">
-  <h2 class="anchored">הדגמה: כלל הסנדוויץ' לסדרות</h2>
-  <canvas id="sequenceCanvas" width="650" height="400"></canvas>
-  
-  <div class="legend">
-      <div class="legend-item">סדרה עליונה (h<sub>n</sub>) <span class="legend-color" style="background-color: blue;"></span></div>
-      <div class="legend-item">סדרה תחתונה (f<sub>n</sub>) <span class="legend-color" style="background-color: green;"></span></div>
-      <div class="legend-item">סדרה לכודה (g<sub>n</sub>) <span class="legend-color" style="background-color: red;"></span></div>
-  </div>
-
-  <div class="sequence-controls">
-    <label for="L_slider">הגבול L: <span id="L_value">2.0</span></label>
-    <input type="range" id="L_slider" min="-3" max="3" value="2" step="0.1">
-
-    <label for="gap_h_slider">מרווח עליון (C<sub>h</sub>): <span id="gap_h_value">3.0</span></label>
-    <input type="range" id="gap_h_slider" min="0.5" max="5" value="3" step="0.1">
-
-    <label for="gap_f_slider">מרווח תחתון (C<sub>f</sub>): <span id="gap_f_value">2.0</span></label>
-    <input type="range" id="gap_f_slider" min="0.5" max="5" value="2" step="0.1">
-
-    <label for="n_slider">מספר איברים (N): <span id="n_value">50</span></label>
-    <input type="range" id="n_slider" min="10" max="150" value="50" step="1">
-  </div>
+<p>בפרק הקודם עסקנו במשוואות לינאריות עם שני משתנים <span class="math inline">x,y</span> לתיאור המישור, וגם בשלושה משתנים <span class="math inline">x,y,z</span> לתיאור המרחב. אנחנו רוצים להכליל את הדיון למספר (טבעי) כלשהו של משתנים. מהי המוטיבציה? משוואות לינאריות מופיעות בפיזיקה כבר בחוקי ניוטון. למשל, החוק השני מתאר תלות לינארית מהצורה <span class="math inline">\vec{F}=m\vec{a}</span> בין וקטור הכוח <span class="math inline">\vec{F}</span> הפועל על גוף לבין לוקטור התאוצה <span class="math inline">\vec{a}</span> של הגוף, כאשר מסת הגוף <span class="math inline">m</span> היא סקלר חיובי. למעשה, המשוואה הוקטורית <span class="math inline">\vec{F}=m\vec{a}</span> מבטאת שלוש משוואות - אחת לכל קוארדינטה של המרחב.</p>
+<p>כאשר יש הרבה גופים בבעיה עם תלות ביניהם (אילוצים), יכולות להתקבל מספר משוואות לינאריות במספר משתנים ויחד הן נקראות מערכת משוואות לינאריות. זה המקרה גם בתחומים רבים אחרים, כמו למשל רשתות נוירונים בהן כל נוירון מקבל קלטים ומפיק מהם פלט לפי חישוב שמתאים למשוואה לינארית. לא תמיד יש הקשר גיאומטרי/פיזיקלי לבעיה שאותה מבקשים להבין באמצעות מערכת משוואות לינאריות.</p>
+<p>תחילה נבהיר איך נראית משוואה לינארית במספר משתנים ואיך מחשבים את קבוצת הפתרונות שלה.</p>
+<section id="משוואה-לינארית-במספר-משתנים" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="משוואה-לינארית-במספר-משתנים"><span class="header-section-number">5.1</span> משוואה לינארית במספר משתנים</h2>
+<p>איך נראית משוואה לינארית כללית? נשתמש במשתנים <span class="math inline">x_1,x_{2,}...,x_n</span> במקום אותיות רגילות, כי לצורך העניין <span class="math inline">n</span> יכול להיות גדול בהרבה ממספר האותיות באלף בית הלועזי (<span class="math inline">26</span>) או בכל שפה אחרת. גם נראה בהמשך שצריך לבחור איזשהו סדר בין המשתנים, אז אם מספרם גדול זה נוח להשתמש באינדקס מספרי כדי להדגיש את הסדר ביניהם. זה נוח גם למספר משתנים לא גדול במיוחד.</p>
+<div class="definition">
+<p>משוואה לינארית במשתנים <span class="math inline">x_1,x_{2,}...,x_n</span> היא משוואה מהצורה <span id="eq-linear-eq"><span class="math display">
+a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
+\tag{5.1}</span></span></p>
+<p>כאשר <span class="math inline">a_1,...,a_n</span> הם סקלרים נתונים שנקראים מקדמים, ו-<span class="math inline">b</span> הוא סקלר נתון שנקרא קבוע או איבר חופשי. אם כל הסקלרים והמשתנים ממשיים, נאמר שזו משוואה לינארית מעל <span class="math inline">\mathbb R</span>. אם לפחות סקלר אחד הוא מרוכב ו/או המשתנים מרוכבים, נאמר שזו משוואה לינארית מעל <span class="math inline">\mathbb C</span>. אם נרצה להכליל בלי לציין שמדובר ב-<span class="math inline">\mathbb R</span> או <span class="math inline">\mathbb C</span>, נכתוב <span class="math inline">\mathbb F</span> ונזכור שקבוצה זו היא או <span class="math inline">\mathbb R</span> או <span class="math inline">\mathbb C</span>.</p>
 </div>
-
-<script>
-  const canvas = document.getElementById('sequenceCanvas');
-  const ctx = canvas.getContext('2d');
-  const sliders = { L: document.getElementById('L_slider'), gap_h: document.getElementById('gap_h_slider'), gap_f: document.getElementById('gap_f_slider'), n: document.getElementById('n_slider') };
-  const values = { L: document.getElementById('L_value'), gap_h: document.getElementById('gap_h_value'), gap_f: document.getElementById('gap_f_value'), n: document.getElementById('n_value') };
-  const originY = canvas.height / 2;
-  const scaleY = 40; 
-  const margin = 40; 
-
-  function draw() {
-    const L = parseFloat(sliders.L.value);
-    const gap_h = parseFloat(sliders.gap_h.value);
-    const gap_f = parseFloat(sliders.gap_f.value);
-    const N = parseInt(sliders.n.value);
-
-    values.L.textContent = L.toFixed(1);
-    values.gap_h.textContent = gap_h.toFixed(1);
-    values.gap_f.textContent = gap_f.toFixed(1);
-    values.n.textContent = N;
-    
-    const scaleX = (canvas.width - margin*1.5) / N;
-    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawAxes(N, scaleX);
-
-    // הגדרת הסדרות הא-סימטריות
-    const h_n = (n) => L + gap_h / n;
-    const f_n = (n) => L - gap_f / n;
-    
-    // הגדרה חכמה לסדרה הלכודה שתמיד תישאר בין החסמים
-    const g_n = (n) => (h_n(n) + f_n(n)) / 2 + ((h_n(n) - f_n(n)) / 2) * Math.sin(n * 2.5);
-
-    for (let i = 1; i <= N; i++) {
-      drawPoint(i, h_n(i), 'blue', scaleX);
-      drawPoint(i, f_n(i), 'green', scaleX);
-      drawPoint(i, g_n(i), 'red', scaleX);
-    }
-  }
-
-  function drawAxes(N, scaleX) {
-    ctx.font = "12px Arial"; ctx.fillStyle = "black"; ctx.textAlign = "center";
-    ctx.beginPath(); ctx.strokeStyle = 'black'; ctx.lineWidth = 1.5;
-    ctx.moveTo(margin, originY); ctx.lineTo(canvas.width, originY);
-    ctx.moveTo(margin, 0); ctx.lineTo(margin, canvas.height);
-    ctx.stroke();
-
-    ctx.textAlign = "right";
-    for (let i = -4; i <= 4; i++) {
-        if (i === 0) continue;
-        const y = originY - i * scaleY;
-        ctx.beginPath(); ctx.moveTo(margin - 5, y); ctx.lineTo(margin + 5, y); ctx.stroke();
-        ctx.fillText(i, margin - 10, y + 4);
-    }
-    
-    ctx.textAlign = "center";
-    const tickStep = Math.max(5, Math.ceil(N / 10 / 5) * 5);
-    for (let n = tickStep; n <= N; n += tickStep) {
-        const x = margin + n * scaleX;
-        ctx.beginPath(); ctx.moveTo(x, originY - 5); ctx.lineTo(x, originY + 5); ctx.stroke();
-        ctx.fillText(n, x, originY + 20);
-    }
-  }
-
-  function drawPoint(n, value, color, scaleX) {
-    const canvasX = margin + n * scaleX;
-    const canvasY = originY - value * scaleY;
-    ctx.beginPath(); ctx.arc(canvasX, canvasY, 3.5, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
-
-  for (let key in sliders) { sliders[key].addEventListener('input', draw); }
-  draw();
-</script>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p><span class="math inline">x_1-x_2+x_3-x_4=100</span> זו משוואה לינארית בארבעה משתנים מעל <span class="math inline">\mathbb R</span>. דוגמה לפתרון היא <span class="math inline">(x_1,x_2,x_3,x_4)=(50,0,50,0)</span> כי <span class="math inline">.50-0+50-0=100</span></p></li>
+<li><p><span class="math inline">x_1+ix_2-x_3-ix_4+x_5=1+i</span> זו משוואה לינארית בחמישה משתנים מעל <span class="math inline">\mathbb C</span>. דוגמה לפתרון היא <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,0,0,0)</span> כי <span class="math inline">.1+i\cdot1-0-0+0=1+i</span></p></li>
+<li><p><span class="math inline">0=0</span> זו משוואה לינארית במספר כלשהו של משתנים, מעל <span class="math inline">\mathbb R</span> או <span class="math inline">\mathbb C</span>. בכתיבה מלאה עבור <span class="math inline">n</span> משתנים מדובר על המשוואה <span class="math display">.0\cdot x_1+0\cdot x_2+0+...+0\cdot x_n=0</span> כל בחירה של סקלרים <span class="math inline">(x_1,x_2,...,x_n)=(c_1,c_2,...,c_n)</span> היא פתרון למשוואה זו, שהיא פסוק אמת שלא תלוי בערכי המשתנים.</p></li>
+</ol>
 </div>
-<div class="callout-title-container flex-fill">
-חקירה אינטראקטיבית: כלל הסנדוויץ’ לסדרות
+<div class="definition">
+<p>סדרת סקלרים <span class="math inline">(c_1,c_2,...,c_n)</span> נקראת <span class="math inline">n</span>-יה, או וקטור באורך <span class="math inline">n</span>. נגדיר את מרחב ה-<span class="math inline">n</span>-יות מעל <span class="math inline">\mathbb R</span>: <span class="math display">\mathbb R^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb R}</span> וגם את מרחב ה-<span class="math inline">n</span>-יות מעל <span class="math inline">\mathbb C</span>: <span class="math display">\mathbb C^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb C}</span></p>
+<p>לעיתים נכתוב <span class="math inline">\mathbb F^n</span> במקום לפרט אם הכוונה היא ל-<span class="math inline">\mathbb R^n</span> או ל-<span class="math inline">\mathbb C^n</span>.</p>
 </div>
+<p>יש לנו אינטואיציה גיאומטרית טובה לגבי המישור הדו-מימדי <span class="math inline">\mathbb R^2</span> והמרחב התלת-מימדי <span class="math inline">\mathbb R^3</span>. החל מ- <span class="math inline">\mathbb R^4</span> ו- <span class="math inline">\mathbb C^2</span> כבר אין לנו יכולת לדמיין את המרחבים האלה באופן מלא, אבל נתרגל גם אליהם מבחינה אלגברית.</p>
+<div class="definition">
+<p>פתרון של משוואה לינארית הינו <span class="math inline">n</span>-יה <span class="math inline">(c_1,c_2,...,c_n)\in\mathbb F^{n}</span> כך שבהצבת <span class="math display">x_1=c_1,x_2=c_2,...,x_n=c_n</span></p>
+<p>המשוואה מתקיימת.</p>
 </div>
-<div class="callout-body-container callout-body">
-<p>כלל הסנדוויץ’ לסדרות קובע שאם איברי סדרה אחת (<code>gₙ</code>) חסומים בין איברי שתי סדרות אחרות (<code>hₙ</code> ו-<code>fₙ</code>), ושתי הסדרות החיצוניות מתכנסות לאותו גבול <code>L</code>, אזי גם לסדרה הלכודה אין ברירה והיא חייבת להתכנס לאותו הגבול.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">הסדרות בדמו</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">נסו לחקור בעצמכם</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>הסדרות שאתם רואים בדמו מוגדרות באופן הבא, כאשר <code>L</code> הוא הגבול, ו-<code>C_h</code> ו-<code>C_f</code> הם “מרווחי ההתכנסות” הנשלטים על ידי המחוונים:</p>
-<ul>
-<li><p><strong>הסדרה העליונה (כחול):</strong> <span class="math inline">h_n = L + \frac{C_h}{n}</span> <br>סדרה זו מתכנסת לגבול <code>L</code> מלמעלה.</p></li>
-<li><p><strong>הסדרה התחתונה (ירוק):</strong> <span class="math inline">f_n = L - \frac{C_f}{n}</span> <br>סדרה זו מתכנסת לגבול <code>L</code> מלמטה, ויכולה לעשות זאת בקצב שונה מהסדרה העליונה.</p></li>
-<li><p><strong>הסדרה הלכודה (אדום):</strong> <span class="math inline">g_n = \left( L + \frac{C_h - C_f}{2n} \right) + \left( \frac{C_h + C_f}{2n} \right) \sin(2.5n)</span> <br>הגדרה זו מבטיחה שהסדרה האדומה תמיד תתנודד בדיוק במרחב שבין הסדרה הירוקה לכחולה. היא לוקחת את “אמצע הסנדוויץ’” ומוסיפה לו תנודה שגודלה המקסימלי הוא בדיוק חצי מהרוחב של ה”סנדוויץ’” באותה נקודה.</p></li>
-</ul>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>משוואה לינארית ב-<span class="math inline">5</span> משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">x_1+x_2+x_3+x_4+x_5=100</span></p>
+<p>אחד הפתרונות של המשוואה הוא <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(20,20,20,20,20)</span>. פתרון נוסף הוא <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(60,10,10,10,10)</span>, ויש עוד אינסוף אחרים. לעומת זאת, <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(0,0,0,0,0)</span> אינו פתרון כי ההצבה נותנת <span class="math inline">0=100</span> וזה כמובן לא מתקיים.</p>
+<p>כדי למצוא את קבוצת כל הפתרונות נבודד את אחד המשתנים. נוח לבחור את <span class="math inline">x_1</span> כי הוא הראשון. נקבל <span class="math display">.x_1=100-x_2-x_3-x_4-x_5</span></p>
+<p>זה למעשה מראה שניתן לבחור את ערכיהם של <span class="math inline">x_2,x_3,x_4,x_5</span> באופן שרירותי. זו משוואה מעל <span class="math inline">\mathbb R</span> ולכן נבחר <span class="math inline">c_2,c_3,c_4,c_5\in\mathbb R</span> שרירותיים ונציב במשוואה <span class="math display">.(x_2,x_3,x_4,x_5)=(c_2,c_3,c_4,c_5)</span> כך נקבל <span class="math display">.x_1=100-c_2-c_3-c_4-c_5</span></p>
+<p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">4</span> פרמטרים <span class="math inline">c_2,c_3,c_4,c_5</span>) ע"י <span class="math display">.\Set{(100-c_2-c_3-c_4-c_5,c_2,c_3,c_4,c_5)|c_2,c_3,c_4,c_5\in\mathbb R}</span></p></li>
+<li><p>משוואה לינארית ב-<span class="math inline">4</span> משתנים מעל <span class="math inline">\mathbb C</span>: <span class="math display">x_1+ix_2+2ix_3+x_4=1+4i</span></p>
+<p>אחד הפתרונות של המשוואה הוא <span class="math inline">(x_1,x_2,x_3,x_4)=(1,1,1,i)</span>. נבדוק זאת: <span class="math display">1\cdot 1+i\cdot 1+2i\cdot 1+1\cdot i=1+4i</span> לעומת זאת, <span class="math inline">(x_1,x_2,x_3,x_4)=(1,0,1,0)</span> אינו פתרון. הפעם בדיקה מראה כי <span class="math display">.1\cdot 1+i\cdot 0+2i\cdot 1+1\cdot 0=1+2i\neq1+4i</span></p>
+<p>נבודד את <span class="math inline">x_1</span> כדי למצוא את קבוצת הפתרונות: <span class="math display">x_1=1+4i-ix_2-2ix_3-x_4</span></p>
+<p>זו משוואה מעל <span class="math inline">\mathbb C</span> ולכן נבחר <span class="math inline">c_2,c_3,c_4\in\mathbb C</span> שרירותיים ונציב אותם במשוואה. כך נקבל <span class="math display">.x_1=1+4i-ic_2-2ic_3-c_4</span></p>
+<p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">3</span> פרמטרים <span class="math inline">c_2,c_3,c_4</span>) ע"י <span class="math display">.\Set{(1+4i-ic_2-2ic_3-c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb C}</span></p></li>
+</ol>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<ul>
-<li><strong>צרו א-סימטריה:</strong> נסו להגדיר את המרווח העליון (<code>C_h</code>) כגדול בהרבה מהמרווח התחתון (<code>C_f</code>), או להפך. שימו לב שגם כאשר ההתכנסות אינה סימטרית, כלל הסנדוויץ’ עדיין עובד והסדרה האדומה נדחקת אל הגבול.</li>
-<li><strong>הגדילו את מספר האיברים (<code>N</code>):</strong> ככל שתציגו יותר איברים, כך תראו בבירור את ההתכנסות של כל שלוש הסדרות אל קו הגבול.</li>
-<li><strong>שנו את הגבול (<code>L</code>):</strong> שימו לב כיצד נקודת ההתכנסות של כל הסדרות משתנה בהתאם.</li>
-</ul>
+<p>איך פותרים משוואה לינארית כללית מהצורה ? אפשר למצוא את כל הפתרונות ע"י בידוד אחד המשתנים. מקובל לעשות זאת עבור <span class="math inline">x_1</span> בהנחה ש- <span class="math inline">a_1\neq0</span> (אם <span class="math inline">a_1=0</span>, נבחר את המשתנה הראשון עם מקדם השונה מ-<span class="math inline">0</span>). ראשית מעבירים לאגף ימין את כל הביטויים של המשתנים האחרים: <span class="math display">.a_1x_1=b-a_2x_2-a_3x_3-...-a_nx_n</span> נחלק בסקלר <span class="math inline">a_1</span> ונקבל <span class="math display">.x_1=\frac{1}{a_1}(b-a_2x_2-a_3x_3-...-a_nx_n)</span></p>
+<p>זה מראה שלכל בחירה של סקלרים <span class="math inline">c_2,....,c_n\in\mathbb F</span> נקבל פתרון <span class="math display">.(x_1,x_2,x_3,...,x_n)=(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)</span></p>
+<p>לכן, קבוצת הפתרונות של המשוואה נתונה בהצגה פרמטרית ע"י <span class="math display">.\Set{(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)|c_1,c_2,...,c_n\in\mathbb F}</span></p>
+<p>נדגיש כי <span class="math inline">a_1,a_2,a_3,...,a_n</span> נתונים במשוואה כסקלרים קבועים. <span class="math inline">c_1,c_2,...,c_n</span> הם פרמטרים שרצים על פני הקבוצה <span class="math inline">\mathbb F</span> (<span class="math inline">\mathbb R</span> או <span class="math inline">\mathbb C</span>) כדי ליצור את כל הפתרונות. זו הכללה (כלומר צורה יותר כללית של מקרה מוכר) של הצגה פרמטרית של ישר (פרמטר אחד) ושל מישור (שני פרמטרים) למספר כללי של פרמטרים, שהוא בעצם <span class="math inline">n-1</span>. בפרט, לכל <span class="math inline">n\geq2</span> יש אינסוף פתרונות למשוואה כי ניתן להציב אינסוף אפשרויות במשתנה אחד או יותר.</p>
+<p>שימו לב שהתייחסנו אל <span class="math inline">x_1</span> כמשתנה תלוי ואל <span class="math inline">x_2,x_3,...,x_n</span> כמשתנים חופשיים (הצבנו בהם ערכים שרירותיים). אם היינו מבודדים את <span class="math inline">x_2</span> או משתנה אחר במקום <span class="math inline">x_1</span>, אז הוא היה המשתנה התלוי וההצגה הפרמטרית הייתה משתנה בהתאם. עדיין, זו רק הצגה חלופית לקבוצת הפתרונות של אותה המשוואה. טבעי לבחור את <span class="math inline">x_1</span>, אך אין חובה לעשות זאת.</p>
+<div class="example">
+<p>את המשוואה <span class="math display">x_1+2x_2+3x_3+4x_4=4</span> אפשר לפתור ע"י בידוד אחד מארבעת המשתנים (זה נתון לבחירתנו). מקובל לבודד את <span class="math inline">x_1</span> ולקבל <span class="math display">.x_1=4-2x_2-3x_3-4x_4</span> בהצבת <span class="math inline">(x_2,x_3,x_4)=(c_2,c_3,c_4)</span> מקבלים את קבוצת הפתרונות <span class="math display">.\Set{(4-2c_2-3c_3-4c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}</span> אבל באותה המידה אפשר לבודד משתנה אחר, למשל <span class="math inline">x_2</span>. כך נקבל <span class="math inline">,2x_2=4-x_1-3x_3-4x_4</span> ולאחר חלוקה ב- <span class="math inline">2</span>: <span class="math display">.x_2=\frac{1}{2}(4-x_1-3x_3-4x_4)</span></p>
+<p>בהצבת סקלרים <span class="math inline">(x_1,x_3,x_4)=(d_1,d_3,d_4)</span> נקבל הצגה פרמטרית חדשה לקבוצת הפתרונות, שנתונה ע"י <span class="math display">.\Set{(d_1,\frac{1}{2}(4-d_1-3d_3-4d_4),d_3,d_4)|d_1,d_3,d_4\in\mathbb R}</span> בפרט, נובע כי מתקיים שוויון בין שתי הקבוצות. מדובר בשתי הצגות שקולות.</p>
 </div>
+<div class="exercise">
+<p>מצאו את קבוצת הפתרונות של המשוואה <span class="math inline">2x_1+x_2+3x_3+4x_4=5</span>. בדקו איך ההצגה הפרמטרית משתנה כאשר מבודדים את <span class="math inline">x_2</span> במקום <span class="math inline">x_1</span>.</p>
 </div>
-</div>
-</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>. נבודד תחילה את <span class="math inline">x_1</span> ונקבל <span class="math display">.x_1=\frac{1}{2}(5-x_2-3x_3-4x_4)</span></p>
+<p>נציב <span class="math inline">(x_2,x_3,x_4)=(c_2,c_3,c_4)</span> ונקבל את ההצגה הפרמטרית הבאה לקבוצת הפתרונות: <span class="math display">\Set{(\frac{1}{2}(5-c_2-3c_3-4c_4),c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}</span></p>
+<p>כעת נבודד את <span class="math inline">x_2</span> וזה יוביל להצגה פרמטרית נוספת של אותה קבוצת הפתרונות. ראשית נקבל <span class="math display">.x_2=5-2x_1-3x_3-4x_4</span></p>
+<p>נציב <span class="math inline">(x_1,x_3,x_4)=(d_1,d_3,d_4)</span> ונקבל את ההצגה הפרמטרית הבאה: <span class="math display">\Set{(d_1,5-2d_1-3d_3-4d_4,d_3,d_4)|d_1,d_3,d_4\in\mathbb R}</span></p>
 </div>
 </section>
-<section id="הדגמה-כלל-הסנדוויץ-לסדרות---מספרים-קבועים" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="הדגמה-כלל-הסנדוויץ-לסדרות---מספרים-קבועים"><span class="header-section-number">5.2</span> הדגמה: כלל הסנדוויץ’ לסדרות - מספרים קבועים</h2>
-<style>
-  #sequence-squeeze-demo-fixed {
-    font-family: sans-serif;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 700px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  #sequenceCanvasFixed { border: 1px solid black; }
-  .sequence-controls-fixed { width: 100%; margin-top: 15px; }
-  .sequence-controls-fixed label { display: block; margin-bottom: 5px; margin-top: 10px; }
-  .sequence-controls-fixed input[type="range"] { width: 100%; }
-  .legend-fixed { width: 100%; padding: 10px 0; }
-  .legend-item-fixed { display: inline-block; margin-right: 20px; font-size: 0.9em; }
-  .legend-color-fixed { display: inline-block; width: 15px; height: 15px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
-</style>
-
-<div id="sequence-squeeze-demo-fixed">
-  <h2 class="anchored">הדגמה: כלל הסנדוויץ' עם סדרות קבועות</h2>
-  <canvas id="sequenceCanvasFixed" width="650" height="400"></canvas>
-  
-  <div class="legend-fixed">
-      <div class="legend-item-fixed">סדרה עליונה (h<sub>n</sub>) <span class="legend-color-fixed" style="background-color: blue;"></span></div>
-      <div class="legend-item-fixed">סדרה תחתונה (f<sub>n</sub>) <span class="legend-color-fixed" style="background-color: green;"></span></div>
-      <div class="legend-item-fixed">סדרה לכודה (g<sub>n</sub>) <span class="legend-color-fixed" style="background-color: red;"></span></div>
-  </div>
-
-  <div class="sequence-controls-fixed">
-    <!-- המחוונים של הפרמטרים הוסרו, נשארנו רק עם N -->
-    <label for="n_slider_fixed">מספר איברים (N): <span id="n_value_fixed">50</span></label>
-    <input type="range" id="n_slider_fixed" min="5" max="150" value="5" step="1">
-  </div>
-</div>
-
-<script>
-  // פרמטרים קבועים
-  const L_fixed = 1;
-  const C_h_fixed = 2;
-  const C_f_fixed = 1.5;
-
-  const canvas_fixed = document.getElementById('sequenceCanvasFixed');
-  const ctx_fixed = canvas_fixed.getContext('2d');
-  const slider_n_fixed = document.getElementById('n_slider_fixed');
-  const value_n_fixed = document.getElementById('n_value_fixed');
-  
-  const originY_fixed = canvas_fixed.height / 2;
-  const scaleY_fixed = 50; 
-  const margin_fixed = 40; 
-
-  function draw_fixed() {
-    const N = parseInt(slider_n_fixed.value);
-    value_n_fixed.textContent = N;
-    
-    const scaleX = (canvas_fixed.width - margin_fixed * 1.5) / N;
-    
-    ctx_fixed.clearRect(0, 0, canvas_fixed.width, canvas_fixed.height);
-    drawAxes_fixed(N, scaleX);
-
-    // הגדרת הסדרות עם מספרים קבועים
-    const h_n = (n) => L_fixed + C_h_fixed / n;
-    const f_n = (n) => L_fixed - C_f_fixed / n;
-    const g_n = (n) => (h_n(n) + f_n(n)) / 2 + ((h_n(n) - f_n(n)) / 2) * Math.sin(n * 2.5);
-
-    for (let i = 1; i <= N; i++) {
-      drawPoint_fixed(i, h_n(i), 'blue', scaleX);
-      drawPoint_fixed(i, f_n(i), 'green', scaleX);
-      drawPoint_fixed(i, g_n(i), 'red', scaleX);
-    }
-  }
-
-  function drawAxes_fixed(N, scaleX) {
-    ctx_fixed.font = "12px Arial"; ctx_fixed.fillStyle = "black"; ctx_fixed.textAlign = "center";
-    ctx_fixed.beginPath(); ctx_fixed.strokeStyle = 'black'; ctx_fixed.lineWidth = 1.5;
-    ctx_fixed.moveTo(margin_fixed, originY_fixed); ctx_fixed.lineTo(canvas_fixed.width, originY_fixed);
-    ctx_fixed.moveTo(margin_fixed, 0); ctx_fixed.lineTo(margin_fixed, canvas_fixed.height);
-    ctx_fixed.stroke();
-    ctx_fixed.textAlign = "right";
-    for (let i = -2; i <= 4; i++) {
-        if (i === 0) continue;
-        const y = originY_fixed - i * (scaleY_fixed/2); // קנה מידה עדין יותר לציר Y
-        ctx_fixed.beginPath(); ctx_fixed.moveTo(margin_fixed - 5, y); ctx_fixed.lineTo(margin_fixed + 5, y); ctx_fixed.stroke();
-        ctx_fixed.fillText((i/2).toFixed(1), margin_fixed - 10, y + 4);
-    }
-    ctx_fixed.textAlign = "center";
-    const tickStep = (N < 20) ? 2 : Math.max(5, Math.ceil(N / 10 / 5) * 5); //
-    for (let n = tickStep; n <= N; n += tickStep) {
-        const x = margin_fixed + n * scaleX;
-        ctx_fixed.beginPath(); ctx_fixed.moveTo(x, originY_fixed - 5); ctx_fixed.lineTo(x, originY_fixed + 5); ctx_fixed.stroke();
-        ctx_fixed.fillText(n, x, originY_fixed + 20);
-    }
-  }
-
-  function drawPoint_fixed(n, value, color, scaleX) {
-    const canvasX = margin_fixed + n * scaleX;
-    const canvasY = originY_fixed - value * scaleY_fixed;
-    ctx_fixed.beginPath(); ctx_fixed.arc(canvasX, canvasY, 3.5, 0, 2 * Math.PI);
-    ctx_fixed.fillStyle = color;
-    ctx_fixed.fill();
-  }
-
-  slider_n_fixed.addEventListener('input', draw_fixed);
-  draw_fixed();
-</script>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-חקירה אינטראקטיבית: דוגמה מספרית
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>בדוגמה זו אנו בוחנים מקרה ספציפי של כלל הסנדוויץ’ עם סדרות שהוגדרו מראש. האינטראקטיביות היחידה היא היכולת לשנות את מספר האיברים (<code>N</code>) המוצגים, כדי לראות את תהליך ההתכנסות מתרחש.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">הסדרות בדמו</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">נסו לחקור בעצמכם</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>הסדרות הקבועות המוצגות כאן הן:</p>
-<ul>
-<li><p><strong>הסדרה העליונה (כחול):</strong> <span class="math inline">h_n = 1 + \frac{2}{n}</span> <br>סדרה זו מתכנסת לגבול 1 מלמעלה.</p></li>
-<li><p><strong>הסדרה התחתונה (ירוק):</strong> <span class="math inline">f_n = 1 - \frac{1.5}{n}</span> <br>סדרה זו מתכנסת לגבול 1 מלמטה.</p></li>
-<li><p><strong>הסדרה הלכודה (אדום):</strong> <span class="math inline">g_n = 1+ \frac{0.25}{n} + \frac{3.5}{2n} \sin(2.5n)</span> <br>זוהי סדרה מתנודדת אשר נשארת תמיד כלואה בין שתי הסדרות החיצוניות.</p></li>
-</ul>
-<p>כל שלוש הסדרות שואפות לאותו הגבול, <code>L = 1</code>.</p>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<section id="מערכות-משוואות-לינאריות" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="מערכות-משוואות-לינאריות"><span class="header-section-number">5.2</span> מערכות משוואות לינאריות</h2>
+<p>בפרק הקודם ראינו הרבה דוגמאות למערכות משוואות לינאריות (ממ"ל) מעל <span class="math inline">\mathbb R</span> עם שתי משוואות בשני משתנים (לתיאור חיתוך שני ישרים במישור) וגם לממ"ל עם שתי משוואות בשלושה משתנים (לתיאור חיתוך שני מישורים במרחב). באופן כללי, אפשר להתייחס לכל אוסף של משוואות לינאריות כמערכת אחת.</p>
+<p>בהקשר של החוק השני של ניוטון שהזכרו בתחילת הפרק כמשוואה וקטרית מהצורה <span class="math inline">\vec{F}=m\vec{a}</span>, אפשר לחשוב על ממ"ל במספר כלשהו של משתנים שקשורים לוקטורי התאוצה של מספר גופים ולכוחות הפועלים עליהם. גודל הממ"ל מקשה על האינטואיציה הגיאומטרית ומוסיף חישובים (ייתכן באופן משמעותי), אך עדיין יש גישה אלגברית אחת לפתרון של כל ממ"ל. נפתח אותה בפרק זה.</p>
+<div class="example">
+<p>&nbsp;</p>
 <ol type="1">
-<li><strong>התחילו עם ערך <code>N</code> קטן</strong>, למשל 15. שימו לב שהסדרות עדיין רחוקות זו מזו, והמרחק בינן לבין קו הגבול (y=1) גדול יחסית.</li>
-<li><strong>הזיזו את המחוון של <code>N</code> ימינה לאט.</strong></li>
-<li><strong>צפו בתופעה:</strong> ככל ש-<code>N</code> גדל, הנקודות החדשות שנוספות לכל סדרה מתקרבות יותר ויותר לקו הגבול <code>y=1</code>. אפקט ה”סחיטה” של הסנדוויץ’ הופך ברור יותר ויותר ככל שמתקדמים על ציר ה-<code>n</code>.</li>
+<li><p>ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
+\begin{alignedat}{7}
+x_1 &amp;{}+{}&amp; 2x_2 &amp;{}+{}&amp; 3x_3 &amp;{}+{}&amp; 4x_4 &amp;= 5 \\[4pt]
+x_1 &amp;{}+{}&amp;  x_2 &amp;{}+{}&amp;  x_3 &amp;{}+{}&amp;  x_4 &amp;= 4
+\end{alignedat}
+\end{cases}</span></p></li>
+<li><p>ממ"ל של שלוש משוואות בשלושה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}</span></p>
+<p>כאן חזרנו להשתמש באותיות המוכרות <span class="math inline">x,y,z</span> במקום <span class="math inline">x_1,x_2,x_3</span>. הסימונים לא באמת חשובים כל עוד יש עקביות (נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים).</p></li>
+<li><p>ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb C</span>: <span class="math display">\begin{cases}
+\begin{alignedat}{8}
+&amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
+&amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
+\end{alignedat}
+\end{cases}</span></p></li>
 </ol>
-<p>הדגמה זו ממחישה כיצד ההתכנסות היא תכונה של “זנב” הסדרה, כלומר מה שקורה עבור ערכי <code>n</code> גדולים מאוד.</p>
 </div>
+<div class="definition">
+<p>מערכת משוואות לינאריות (ממ"ל) במשתנים <span class="math inline">x_1,x_{2,}...,x_n</span> היא אוסף של מספר כלשהו (<span class="math inline">m</span>) של משוואות לינאריות מהצורה</p>
+<p><span id="eq-linear-eqs"><span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+a_{11}x_1 &amp;{}+{}&amp; a_{12}x_2 &amp;{}+{}&amp; a_{13}x_3 &amp;{}+{}&amp; \dots + a_{1n}x_n &amp;= b_1 \\[4pt]
+a_{21}x_1 &amp;{}+{}&amp; a_{22}x_2 &amp;{}+{}&amp; a_{23}x_3 &amp;{}+{}&amp; \dots + a_{2n}x_n &amp;= b_2 \\[4pt]
+a_{31}x_1 &amp;{}+{}&amp; a_{32}x_2 &amp;{}+{}&amp; a_{33}x_3 &amp;{}+{}&amp; \dots + a_{3n}x_n &amp;= b_3 \\[4pt]
+\vdots&amp; &amp; &amp; &amp; \vdots &amp; &amp; &amp; \;\;\vdots \\[4pt]
+a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \dots + a_{mn}x_n &amp;= b_m
+\end{alignedat}
+\end{cases}
+\tag{5.2}</span></span></p>
+<p>אם כל המקדמים והקבועים הם מספרים ממשיים, נאמר שהממ"ל מעל <span class="math inline">\mathbb R</span>. אחרת, נאמר שהממ"ל מעל <span class="math inline">\mathbb C</span>.</p>
 </div>
+<p>שימו לב לאינדקס הכפול: <span class="math inline">a_{ij}</span> הוא המקדם של המשתנה <span class="math inline">x_{j}</span> במשוואה ה- <span class="math inline">i</span> (כלומר בשורה ה-<span class="math inline">i</span>). <span class="math inline">b_{i}</span> הוא הקבוע (איבר חופשי) במשוואה ה- <span class="math inline">i</span>. צריך להתרגל לכתיבה עם שני אינדקסים, אבל זו הדרך הטבעית להתייחס גם למספר המשתנה וגם למספר המשוואה. נדגיש ש- <span class="math inline">ij</span> אינו מכפלה וגם לא מספר דו-ספרתי בהקשר זה. בנוסף, כאן <span class="math inline">i</span> אינו המספר המדומה אלא אינדקס שמתאר את מספר השורה, ואילו <span class="math inline">j</span> הוא אינדקס שמתאר את מספר העמודה. אלה הסימונים המקובלים בקורס, והכוונה אמורה להיות ברורה כי אינדקס מופיע בכתב תחתי.</p>
+<div class="definition">
+<p>פתרון של ממ"ל הינו סדרת סקלרים <span class="math inline">(c_1,c_2,...,c_n)</span> כך שבהצבת <span class="math display">x_1=c_1,x_2=c_2,...,x_n=c_n</span> <u>כל</u> המשוואות בממ"ל מתקיימות.</p>
 </div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נחזור לדוגמה קודמת:</p>
+<p><span class="math display">\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}</span></p>
+<p>כאן המקדמים הם <span class="math display">.a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\,a_{22}=2,\,a_{33}=3</span> הקבועים הם <span class="math inline">b_1=3,\,b_2=4,\,b_3=5</span>.</p></li>
+<li><p><span class="math display">\begin{cases}
+\begin{aligned}
+x_1 + x_2 + x_3 + x_4 &amp;= 4 \\[4pt]
+\phantom{x_1 + {}}x_2 + x_3 + x_4 &amp;= 0 \\[4pt]
+x_1 + \phantom{x_2 + {}}x_3 + x_4 &amp;= 0
+\end{aligned}
+\end{cases}</span></p>
+<p>כאן הממ"ל לא כתובה באופן מלא, כי בכל משוואה שבה חסר משתנה המשמעות היא שהמקדם המתאים הוא <span class="math inline">0</span> (הרווחים נועדו להדגשה). בכתיבה מלאה, הממ"ל נראית כך:</p>
+<p><span class="math display">\begin{cases}
+\begin{aligned}
+1\cdot x_1 + 1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 4 \\[4pt]
+0\cdot x_1 +1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0 \\[4pt]
+1\cdot x_1 + 0\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0
+\end{aligned}
+\end{cases}</span></p>
+<p>כלומר מתקיים</p>
+<p><span class="math display">\begin{cases}
+\begin{aligned}
+a_{11} &amp;= a_{12} = a_{13} = a_{14} = 1 \\[4pt]
+a_{21} &amp;= 0,a_{22} = a_{23} = a_{24} = 1 \\[4pt]
+a_{32} &amp;= 0, a_{31} = a_{33} = a_{34} = 1
+\end{aligned}
+\end{cases}</span></p>
+<p>הקבועים הם <span class="math inline">b_1=4, b_2=b_3=0</span>.</p></li>
+</ol>
 </div>
+<p>הרבה יותר קשה לדמיין את הגיאומטריה כאשר יש מספר משתנים גבוה מ-<span class="math inline">3</span>, או אפילו משוואה אחת בשני משתנים מרוכבים. אבל מבחינה אלגברית, כל המקרים האלה שייכים לקטגוריה אחת ושיטת הפתרון משותפת לכולם. באופן כללי, נשאל את השאלות הבאות על ממ"ל:</p>
+<ol type="1">
+<li><p>כמה פתרונות יש?</p></li>
+<li><p>כיצד נמצא את כל הפתרונות?</p></li>
+<li><p>מהו מבנה קבוצת הפתרונות?</p></li>
+</ol>
+<p>לפני כן, נראה עוד דוגמאות לממ"ל וגם נחזור אל חלק מהדוגמאות הקודמות. קל לבדוק אם פתרון נתון הוא אכן פתרון ע"י בדיקה שהצבתו מקיימת את כל המשוואות. עבור ממ"ל פשוטה גם לא דרוש הרבה מאמץ כדי למצוא את קבוצת הפתרונות.</p>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p><span class="math display">\begin{cases}
+\begin{aligned}
+x\phantom{+y+z} &amp;= 1 \\[4pt]
+\phantom{x+}y\phantom{+z} &amp;= 2 \\[4pt]
+\phantom{x+y+}z &amp;= 3
+\end{aligned}
+\end{cases}</span></p>
+<p>זו ממ"ל פשוטה שיש לה פתרון יחיד <span class="math inline">(x,y,z)=(1,2,3)</span>, שכבר מופיע באופן מפורש.</p></li>
+<li><p>נחזור לדוגמה קודמת: <span class="math display">\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}</span></p>
+<p>ניתן לבדוק ע"י הצבה כי <span class="math inline">(x,y,z)=(1,1,1)</span> הוא פתרון של הממ"ל, כי כל שלוש המשוואות מתקיימות, לעומת זאת <span class="math inline">(x,y,z)=(2,1,0)</span> אינו פתרון כי הוא מקיים רק את שתי המשוואות הראשונות.</p>
+<p>האם <span class="math inline">(x,y,z)=(1,1,1)</span> הוא פתרון יחיד? נראה בהמשך שהתשובה היא כן, אבל בינתיים נשים לב שהממ"ל מתארת חיתוך של שלושה מישורים במרחב. לפי הפרק הקודם, החיתוך בין כל שניים מהמישורים שנתונים בממ"ל - הוא ישר. אז החיתוך בין שלושת המישורים הוא בעצם חיתוך בין שני ישרים. למשל: ישר החיתוך של שני המישורים הראשונים, וישר החיתוך של שני המישורים האחרונים. אפשר לקבוע את המצב ההדדי בין שני הישרים בעזרת ההצגות הפרמטריות שלהם, אבל נראה שיש דרך יותר מסודרת ויעילה לחישוב קבוצת הפתרונות בדוגמה זו ובאופן כללי.</p>
+<figure id="fig:3 Planes" class="figure">
+<p><img src="images/chapter02/3 Planes.png" style="width:60.0%" class="figure-img"></p>
+<figcaption>
+<p>שלושת המישורים, ישרי החיתוך ונקודת החיתוך</p>
+</figcaption>
+</figure></li>
+<li><p><span class="math display">\begin{cases}
+\begin{aligned}
+x\phantom{+y+z}+w=1\\
+\phantom{x+}y\phantom{+z}+w=2\\
+\phantom{x+y+}z+w=3
+\end{aligned}
+\end{cases}</span></p>
+<p>זו ממ"ל יחסית פשוטה בארבעה משתנים <span class="math inline">x,y,z,w</span>. אפשר להתייחס ל-<span class="math inline">w</span> כמשתנה חופשי ואז כל שאר המשתנים תלויים בו. נשתמש בפרמטר <span class="math inline">t</span>, נציב <span class="math inline">w=t</span> במשוואות ואז נחסיר <span class="math inline">t</span> מכל אגף בכל משוואה. כך נקבל <span class="math display">\begin{cases}
+x=1-t\\
+y=2-t\\
+z=3-t
+\end{cases}</span></p>
+<p>לכן קבוצת הפתרונות של הממ"ל היא <span class="math display">.\Set{(1-t,2-t,3-t,t)|t\in\mathbb R}=\Set{(1,2,3,0)+t(-1,-1,-1,1)|t\in\mathbb R}</span></p>
+<p>אפשר לנסות לדמיין קבוצה זו כישר במרחב <span class="math inline">\mathbb R^4</span> הארבע-מימדי. זה בהחלט לא משהו שרואים ביום-יום כי העולם המוכר הוא תלת-מימדי, אבל זו עדיין הצגה אלגברית של ישר חד-מימדי. זה נובע מכך שיש משתנה חופשי יחיד, ומכאן הפרמטר <span class="math inline">t</span>. אם לצורך העניין היה פרמטר נוסף בהצגה הפרמטרית (בקבוצת הפתרונות של ממ"ל אחרת), הקבוצה הייתה "נראית" כמו מישור ב- <span class="math inline">\mathbb R^{4}</span> ככל שאפשר לדמיין אותו. נראה מקרה כזה בדוגמה הבאה.</p></li>
+<li><p><span class="math display">\begin{cases}
+\begin{aligned}
+x\phantom{+y}+z+w=1\\
+\phantom{x+}y+z+w=2\\
+\end{aligned}
+\end{cases}</span></p>
+<p>כאן המשתנים החופשיים הם <span class="math inline">z,w</span> והמשתנים התלויים הם <span class="math inline">x,y</span>. נציב ערכים שרירותיים <span class="math inline">z=t, w=s</span> ונקבל אחרי העברת אגפים</p>
+<p><span class="math display">\begin{cases}
+x=1-t-s \\
+y=2-t-s
+\end{cases}</span></p>
+<p>כלומר קיבלנו את ההצגה הפרמטרית הבאה לקבוצת הפתרונות:</p>
+<p><span class="math display">\Set{(1-s-t,2-s-t,s,t)|s,t\in\mathbb R}</span></p>
+<p>לפעמים נרצה לכתוב אותה בצורה קצת שונה. נכתוב את הוקטור של ההצגה הפרמטרית כסכום וקטורים: הוקטור של הקבועים <span class="math inline">(1,2,0,0)</span>, הוקטור של כפולות של <span class="math inline">s</span> <span class="math inline">(-s,-s,s,0)</span> והוקטור של כפולות של <span class="math inline">t</span> <span class="math inline">(-t,-t,0,t)</span>. במילים אחרות, נעשה חישוב "הפוך" וזאת כדי לראות את הקשר להצגה פרמטרית של מישור. בנוסף, כל פרמטר הוא סקלר ולכן ניתן להוציא אותו מחוץ לוקטור המתאים לו. כך נקבל את ההצגה הבאה:</p>
+<p><span class="math display">\Set{(1,2,0,0)+s(-1,-1,1,0)+t(-1,-1,0,1)|s,t\in\mathbb R}</span></p>
+<p>זו כתיבה שמזכירה הצגה פרמטרית של מישור במרחב, אלא שכאן המרחב הוא <span class="math inline">\mathbb R^{4}</span>. בהמשך הקורס נלמד על המושגים של מימד ותת-מרחב (כמו ישר במישור, ומישור במרחב) באופן מדויק.</p></li>
+<li><p>עוד דוגמה קודמת: <span class="math display">\begin{cases}
+\begin{alignedat}{8}
+&amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
+&amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
+\end{alignedat}
+\end{cases}</span></p>
+<p>ניתן לבדוק ע"י הצבה כי <span class="math inline">(z_1,z_2,z_3,z_4)=(1,0,1,0)</span> הוא פתרון של הממ"ל. אינטואיטיבית, אמורים להיות אינסוף פתרונות כי מספר המשתנים גדול ממספר המשוואות. נצדיק את האינטואיציה הזו בהמשך.</p></li>
+<li><p>ממ"ל של שלוש משוואות בשני משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
+\begin{aligned}
+x+3y&amp;=0\\
+x-y&amp;=0\\
+x+y&amp;=1
+\end{aligned}
+\end{cases}</span></p>
+<p>כאן מספר המשתנים גדול ממספר המשוואות, ולמעשה אין פתרון. ניתן לראות זאת ע"י חיבור שתי המשוואות הראשונות, מה שנותן <span class="math inline">2x+2y=0</span> או באופן שקול <span class="math inline">x+y=0</span>. זו סתירה למשוואה האחרונה. המשמעות הגיאומטרית היא שאמנם כל שניים משלושת הישרים נחתכים, אבל נקודות החיתוך שונות ולכן אין נקודת חיתוך משותפת לכל השלושה.</p>
+<figure id="fig:3 Lines" class="figure">
+<p><img src="images/chapter02/3 Lines.png" style="width:60.0%" class="figure-img"></p>
+<figcaption>
+<p>שלושת הישרים ונקודות החיתוך</p>
+</figcaption>
+</figure></li>
+</ol>
+</div>
+<div class="exercise">
+<p>נסתכל על הממ"ל <span class="math display">.\begin{cases}
+\begin{aligned}
+x_1 +  x_2 + 2x_3 - x_4+x_5 &amp;= 2 \\[4pt]
+5x_1 - 3x_2 - 2x_3 + x_4\phantom{+x_5} &amp;= 0
+\end{aligned}
+\end{cases}</span></p>
+<p>האם <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,1,2,0)</span> הוא פתרון? אם לא, לאיזה ערך של <span class="math inline">a\in\mathbb R</span> הוקטור <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1-a,1,1,2,a)</span> הוא פתרון של הממ"ל?</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>. נציב בממ"ל <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,1,2,0)</span> ונקבל <span class="math display">.\begin{cases}
+1+1+2-2+0=2 \\
+5-3-2+2=2\neq 0
+\end{cases}</span></p>
+<p>אז זה לא פתרון לממ"ל (אלא רק למשוואה הראשונה). נחפש פתרון מהצורה <span class="math display">(x_1,x_2,x_3,x_4,x_5)=(1-a,1,1,2,a)</span> ונקבל לאחר הצבה <span class="math display">.\begin{cases}
+\begin{aligned}
+1-a+1+2-2+a&amp;=2 \\
+5(1-a)-3-2+2&amp;=0
+\end{aligned}
+\end{cases}</span></p>
+<p>המשוואה הראשונה מתקיימת לכל ערך של <span class="math inline">a</span>, ואילו המשוואה השנייה מתקיימת אם ורק אם <span class="math display">.2-5a=0 \iff a=\frac{2}{5}</span> אז הפתרון מהצורה המבוקשת (יש עוד אינסוף פתרונות מסוג אחר) הוא <span class="math display">.(x_1,x_2,x_3,x_4,x_5)=(\frac{3}{5},1,1,2,\frac{2}{5})</span></p>
+</div>
+</section>
+<section id="מטריצות" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="מטריצות"><span class="header-section-number">5.3</span> מטריצות</h2>
+<p>ראינו בפרק הקודם, למשל עבור ממ"ל של שתי משוואות בשני נעלמים, שניתן לחבר בין שתי משוואות כדי לנסות לקבל משוואה יותר פשוטה שנובעת מהממ"ל. למעשה, פעולה זו משפיעה רק על המקדמים והקבועים של הממ"ל. כאשר מחברים את שתי המשוואות הראשונות של מקבלים <span class="math display">(a_{11}+a_{21})x_1+(a_{12}+a_{22})x_2+(a_{13}+a_{23})x_3+...+(a_{1n}+a_{2n})x_n=b_1+b_2</span></p>
+<p>לצורך העניין, אפשר לשים את המשתנים בצד ולחזור אליהם בסוף. המידע של הממ"ל אמנם קשור למשתנים, אבל הוא מגולם בסקלרים (מקדמים וקבועים). אז זה שימושי לייצג את הממ"ל כטבלה שבה מופיעים רק הסקלרים. טבלה כזו נקראת מטריצה.</p>
+<div class="definition">
+<p>מטריצה מסדר <span class="math inline">m\times n</span> מעל <span class="math inline">\mathbb F</span> היא טבלה בת <span class="math inline">m</span> שורות ו-<span class="math inline">n</span> עמודות כך שבכל משבצת מופיע סקלר ב-<span class="math inline">\mathbb F</span>. בהקשר של הממ"ל <span class="math display">,\begin{cases}
+\begin{alignedat}{7}
+a_{11}x_1 &amp;{}+{}&amp; a_{12}x_2 &amp;{}+{}&amp; a_{13}x_3 &amp;{}+{}&amp; \dots + a_{1n}x_n &amp;= b_1 \\[4pt]
+a_{21}x_1 &amp;{}+{}&amp; a_{22}x_2 &amp;{}+{}&amp; a_{23}x_3 &amp;{}+{}&amp; \dots + a_{2n}x_n &amp;= b_2 \\[4pt]
+a_{31}x_1 &amp;{}+{}&amp; a_{32}x_2 &amp;{}+{}&amp; a_{33}x_3 &amp;{}+{}&amp; \dots + a_{3n}x_n &amp;= b_3 \\[4pt]
+\vdots&amp; &amp; &amp; &amp; \vdots &amp; &amp; &amp; \;\;\vdots \\[4pt]
+a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \dots + a_{mn}x_n &amp;= b_m
+\end{alignedat}
+\end{cases}</span> נגדיר את מטריצת המקדמים (שנקראת גם מטריצת מקדמים מצומצמת):</p>
+<p><span class="math display">A=\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}</span></p>
+<p>נגדיר גם את מטריצת המקדמים המורחבת מסדר <span class="math inline">m\times(n+1)</span> שכוללת עמודה בצד ימין (אחרי קו מפריד) בשביל הקבועים:</p>
+<p><span class="math display">\left( \begin{array}{cccc|c}
+    a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1 \\
+    a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; b_2 \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+    a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} &amp; b_m
+\end{array} \right)</span></p>
+<p>נגדיר בנוסף את וקטור המשתנים <span class="math inline">x=\begin{pmatrix}x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix}</span> וגם את וקטור הקבועים <span class="math inline">b=\begin{pmatrix}b_1\\
+b_2\\
+\vdots\\
+b_m
+\end{pmatrix}</span>. דרך מקוצרת לכתיבת הממ"ל היא המשוואה הוקטורית <span class="math inline">Ax=b</span>.</p>
+</div>
+<p>בפרק הבא נבין יותר לעומק את הסימון <span class="math inline">Ax</span>. בינתיים זה סימון מקוצר, וגם <span class="math inline">x</span> הוא סימון נוח עבור וקטור (אין צורך בחץ מעליו).</p>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>עבור הממ"ל <span class="math display">\begin{cases}
+\begin{aligned}
+x+y+z&amp;=3\\
+x+2y+z&amp;=4\\
+x+y+3z&amp;=5
+\end{aligned}
+\end{cases}</span></p>
+<p>מטריצת המקדמים המצומצמת היא <span class="math display">.\begin{pmatrix}1 &amp; 1 &amp; 1\\
+1 &amp; 2 &amp; 1\\
+1 &amp; 1 &amp; 3
+\end{pmatrix}</span></p>
+<p>בשביל מטריצת המקדמים המורחבת נוסיף את עמודת הקבועים ונקבל <span class="math display">.\left( \begin{array}{ccc|c}
+1 &amp; 1 &amp; 1 &amp; 3\\
+1 &amp; 2 &amp; 1 &amp; 4\\
+1 &amp; 1 &amp; 3 &amp; 5
+\end{array} \right)</span></p></li>
+<li><p>נסתכל על הממ"ל <span class="math display">.\begin{cases}
+\begin{alignedat}{7}
+2x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;     &amp;      &amp;= 1 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;  w &amp;= -1 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;     &amp;     &amp;{}+{}&amp;  w &amp;= 2
+\end{alignedat}
+\end{cases}</span></p>
+<p>נשים לב שמסתתרים שני אפסים: המקדם של <span class="math inline">w</span> במשוואה הראשונה, והמקדם של <span class="math inline">z</span> במשוואה השלישית. הנה כתיבה יותר מפורשת: <span class="math display">.\begin{cases}
+\begin{alignedat}{7}
+2x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;{}+{}&amp; 0\!\cdot\! w &amp;=  1 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;     w &amp;= -1 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 0\!\cdot\! z &amp;{}+{}&amp;     w &amp;=  2
+\end{alignedat}
+\end{cases}</span> לכן מטריצת המקדמים המצומצמת היא <span class="math display">.\begin{pmatrix}2 &amp; 1 &amp; 1 &amp; 0\\
+1 &amp; 2 &amp; 1 &amp; 1\\
+1 &amp; 1 &amp; 0 &amp; 1
+\end{pmatrix}</span></p>
+<p>מטריצת המקדמים המורחבת היא <span class="math display">.\left( \begin{array}{cccc|c}
+    2 &amp; 1 &amp; 1 &amp; 0 &amp; 1\\
+    1 &amp; 2 &amp; 1 &amp; 1 &amp; -1\\
+    1 &amp; 1 &amp; 0 &amp; 1 &amp; 2
+\end{array} \right)</span></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>שימו לב שאם המשתנה ה- <span class="math inline">j</span> לא מופיע במשוואה ה- <span class="math inline">i</span>, זה אומר שהמקדם המתאים הוא <span class="math inline">0</span> ולכן <span class="math inline">a_{ij}=0</span> במטריצה.</p>
+</div>
+<div class="exercise">
+<p>כתבו את מטריצות המקדמים (מצומצמת ומורחבת) ועמודת הקבועים של הממ"ל <span class="math display">.\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;{}+{}&amp;  w &amp;=  0 \\[4pt]
+    &amp;     &amp;     &amp;     &amp;  z &amp;{}-{}&amp;  w &amp;=  2 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
+\end{alignedat}
+\end{cases}</span></p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>. מטריצת המקדמים המצומצמת היא <span class="math display">.\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; -1\\
+1 &amp; 2 &amp; 2 &amp; 3
+\end{pmatrix}</span></p>
+<p>מטריצת המקדמים המורחבת היא <span class="math display">.\left( \begin{array}{cccc|c}
+    1 &amp; 1 &amp; 1 &amp; 1 &amp; 0\\
+    0 &amp; 0 &amp; 1 &amp; -1 &amp; 2\\
+    1 &amp; 2 &amp; 2 &amp; 3 &amp; 8
+\end{array} \right)</span></p>
+<p>וקטור הקבועים הוא וקטור העמודה הימנית של המטריצה האחרונה, כלומר <span class="math inline">\begin{pmatrix}
+0 \\
+2 \\
+8
+\end{pmatrix}</span>.</p>
+</div>
+</section>
+<section id="מטריצות-מדורגות-ומדורגות-קנונית" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="מטריצות-מדורגות-ומדורגות-קנונית"><span class="header-section-number">5.4</span> מטריצות מדורגות ומדורגות קנונית</h2>
+<p>כבר נתקלנו בדוגמאות בהן הממ"ל יחסית פשוטה לפתרון, במובן שקל לזהות את המשתנים החופשיים, להציב בהם ערכים שרירותיים ולקבל את הערכים המתאימים של המשתנים התלויים ע"י קצת אלגברה (פעולות חשבון ואולי הצבות). איך מטריצת המקדמים (מצומצמת או מורחבת) נראית במקרים כאלה? לשם כך נועדה ההגדרה הבאה.</p>
+<div class="definition">
+<p>מטריצה נקראת <u>מדורגת</u> אם:</p>
+<ol type="1">
+<li><p>אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.</p></li>
+<li><p>בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו <span class="math inline">0</span> נקרא <u>האיבר המוביל</u> של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.</p></li>
+</ol>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>במטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 4
+\end{pmatrix}</span></p>
+<p>האיברים המובילים הם <span class="math inline">1,1,4</span> לפי סדר השורות והם מופיעים בסדר הנכון (זזים ימינה כאשר יורדים שורה). בנוסף, אין בכלל שורות אפסים ולכן זו מטריצה מדורגת.</p></li>
+<li><p>המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 5 &amp; 4
+\end{pmatrix}</span></p>
+<p>אינה מדורגת כי האיבר המוביל של השורה השלישית (<span class="math inline">5</span>) מופיע באותה העמודה של האיבר המוביל של השורה השנייה (<span class="math inline">1</span>).</p></li>
+<li><p>המטריצה <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+0 &amp; 0 &amp; 4\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}</span></p>
+<p>מדורגת. שורה האפסים מופיעה בסוף, והאיבר המוביל של השורה הראשונה (<span class="math inline">1</span>) מופיע משמאל לזה של השורה השנייה (<span class="math inline">4</span>).</p></li>
+<li><p>המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}</span></p>
+<p>אינה מדורגת כי יש שורת אפסים מעל לשורה שאינה כולה אפסים.</p></li>
+</ol>
+</div>
+<p>מטריצות מדורגות הן יחסית נוחות, אך יש מטריצות מדורגות מסוג יותר מסוים שהוא עוד יותר נוח בפתרון ממ"ל.</p>
+<div class="definition">
+<p>מטריצה נקראת <u>מדורגת קנונית</u> אם:</p>
+<ol type="1">
+<li><p>היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.</p></li>
+<li><p>האיבר המוביל בכל שורה (אם הוא קיים) הוא <span class="math inline">1</span>. אפשר גם לקרוא לו אחד מוביל.</p></li>
+<li><p>בכל עמודה של אחד מוביל, כל שאר האיברים הם <span class="math inline">0</span> (מתחת וגם מעל לאחד המוביל).</p></li>
+</ol>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>ראינו כבר את המטריצה <span class="math display">,\begin{pmatrix}1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}</span></p>
+<p>שנקראת מטריצת היחידה מסדר <span class="math inline">3\times3</span>. היא מדורגת קנונית כי אין בה שורת אפסים, כל האיברים המובילים הם <span class="math inline">1</span> ומופיעים בסדר הנכון, וכל שאר האיברים הם <span class="math inline">0</span>.</p></li>
+<li><p>המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 4
+\end{pmatrix}</span></p>
+<p>מדורגת אך לא מדורגת קנונית, כי האיבר המוביל התחתון אינו <span class="math inline">1</span>. בנוסף, לא כל האיברים מעליו הם <span class="math inline">0</span>.</p></li>
+<li><p>המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 2\\
+0 &amp; 0 &amp; 1 &amp; 3\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}</span></p>
+<p>מדורגת קנונית כי שני האיברים המובילים הם <span class="math inline">1</span> ומופיעים בסדר הנכון. חוץ מהם יש רק אפסים בעמודות שלהם, וגם שורת האפסים מופיעה בסוף.</p></li>
+</ol>
+</div>
+<p>מהי הצורה הכללית של מטריצה מדורגת קנונית מסדר <span class="math inline">m\times n</span>?</p>
+<figure id="fig:Matrix" class="figure">
+<img src="images/chapter02/Matrix.jpg" style="width:80.0%" class="figure-img">
+<figcaption>
+הצורה הכללית של מטריצה מדורגת קנונית
+</figcaption>
+</figure>
+<p>האיברים המובילים מופיעים בעמודות <span class="math inline">k_1,k_2,....,k_{r}</span>. <span class="math inline">r</span> הוא גם מספר השורות שאינן כולן אפסים (בכל שורה כזו יש איבר מוביל אחד).</p>
+<div class="definition">
+<p>נניח שקיבלנו צורה מדורגת קנונית של מטריצת מקדמים מצומצמת <span class="math inline">A</span> של ממ"ל <span class="math inline">Ax=b</span>.</p>
+<ol type="1">
+<li><p>כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.</p></li>
+<li><p>למספר המשתנים התלויים נקרא הדרגה של הממ"ל/מטריצה. נסמן <span class="math inline">\mathop{\mathrm{rank}}(A)</span>.</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>נראה בקרוב (שיטת הדירוג של גאוס) שניתן לבצע על כל מטריצה סדרת פעולות (שנקראת דירוג) בין שורותיה, כך שבסוף מתקבלת מטריצה מדורגת קנונית. מטריצה זו היא יחידה (כלומר לא תלויה בדרך הדירוג שניתנת לבחירה) וניתן להשתמש בה כדי לקבוע את קבוצת הפתרונות של הממ"ל המקורית. הדרגה, שהיא כאמור מספר המשתנים התלויים, שווה למספר השורות בצורה המדורגת קנונית שאינן שורת אפסים. זהו גם מספר האיברים המובילים.</p>
+</div>
+<p>הרעיון של משתנה תלוי זה שיש משוואה שמתארת את התלות שלו במשתנים החופשיים (או חלקם). ניתן להציב סקלרים שרירותיים במשתנים החופשיים בכל משוואה, ולקבל את הערכים המתאימים של המשתנים התלויים.</p>
+<div class="example">
+<p>נפתור את הממ"ל <span class="math display">.\begin{cases}
+\begin{aligned}
+x_1+ix_4&amp;=1+i\\
+x_3+x_4&amp;=2
+\end{aligned}
+\end{cases}</span></p>
+<p>מטריצת המקדמים המורחבת היא <span class="math display">\left( \begin{array}{cccc|c}
+    1 &amp; 0 &amp; 0 &amp; i &amp; 1+i\\
+    0 &amp; 0 &amp; 1 &amp; 1 &amp; 2
+\end{array} \right)</span></p>
+<p>היא כבר מדורגת קנונית ויש בה שני אחדות מובילים. לכן הדרגה היא <span class="math inline">2</span> והמשתנים התלויים הם <span class="math inline">x_1,x_3</span>. נציב <span class="math inline">(x_2,x_4)=(s,t)\in\mathbb C^{2}</span> בשתי המשוואות ונבודד את המשתנים התלויים: <span class="math display">.\begin{cases}
+x_1=1+i-it\\
+x_3=2-t
+\end{cases}</span></p>
+<p>לכן, קבוצת הפתרונות נתונה ע"י <span class="math display">.\Set{(1+i-it,s,2-t,t)|s,t\in\mathbb C}</span></p>
+<p>יש שני פרמטרים בהצגה הפרמטרית כי יש שני משתנים חופשיים.</p>
+</div>
+</section>
+<section id="פעולות-שורה-אלמנטריות" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="פעולות-שורה-אלמנטריות"><span class="header-section-number">5.5</span> פעולות שורה אלמנטריות</h2>
+<p>נרצה לפשט ממ"ל כללית, כלומר להעביר את מטריצת המקדמים לצורה מדורגת קנונית בלי לשנות את קבוצת הפתרונות של הממ"ל. זה לא רעיון חדש: כבר במקרה של שתי משוואות בשני משתנים ראינו שאפשר לחבר/לחסר בין המשוואות וגם להשתמש בכפל בסקלר. כל פעולה כזו לא משנה את קבוצת הפתרונות, כי מדובר בפעולה הפיכה (אפשר לשחזר את הממ"ל המקורית מתוך צורתה החדשה). במילים אחרות, פעולות כאלו יוצרות ממ"ל שקולה לממ"ל המקורית, ויש בזה טעם אם היא יותר פשוטה לפתרון כמו במקרה של ממ"ל המתאימה למטריצה מדורגת קנונית.</p>
+<div class="definition">
+<p>תהי <span class="math display">A=\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}</span> מטריצה מסדר <span class="math inline">m\times n</span> מעל <span class="math inline">\mathbb F</span>. נסמן ב-<span class="math inline">R_1,R_2,...,R_m</span> את שורות המטריצה <span class="math inline">A</span>, כלומר <span class="math inline">R_{i}=(a_{i1},a_{i2},...,a_{in})</span> לכל <span class="math inline">1\leq i\leq m</span>. להלן שלושה סוגי פעולות על שורות <span class="math inline">A</span> הנקראות <u>פעולות שורה אלמנטריות:</u></p>
+<ol type="1">
+<li><p>כפל השורה <span class="math inline">R_{i}</span> בסקלר <span class="math inline">c\in F</span> שאינו <span class="math inline">0</span>. נסמן פעולה זו כך: <span class="math inline">cR_{i}\rightarrow R_{i}</span>.</p></li>
+<li><p>הוספה לשורה <span class="math inline">R_{i}</span> את הכפולה של השורה <span class="math inline">R_{j}</span> בסקלר <span class="math inline">c\in \mathbb F</span> כאשר <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span>. השורה <span class="math inline">R_{j}</span> נשארת ללא שינוי.</p></li>
+<li><p>החלפת השורות <span class="math inline">R_{i}</span> ו-<span class="math inline">R_{j}</span> עבור <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.</p></li>
+</ol>
+</div>
+<div class="example">
+<p>נדגים כל סוג פעולה על המטריצה <span class="math display">.\begin{pmatrix}1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9
+\end{pmatrix}</span></p>
+<ol type="1">
+<li><p>נכפיל את השורה הראשונה ב-<span class="math inline">2</span>: <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9
+\end{pmatrix}\overset{2R_1 \to R_1}{\underset{R_1\leftarrow \frac{1}{2}R_1}{\longleftrightarrow}}\begin{pmatrix}2 &amp; 4 &amp; 6\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9
+\end{pmatrix}</span></p>
+<p>את הפעולה משמאל לימין ציינו מעל לחץ, ומתחתיו ציינו את הפעולה ההפוכה מימין לשמאל. פעולה זו היא כפל השורה הראשונה ב-<span class="math inline">\frac{1}{2}</span>.</p></li>
+<li><p>נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">-3</span>:</p>
+<p><span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9
+\end{pmatrix}\overset{R_3-3R_1 \to R_3}{\underset{R_3\leftarrow R_3+3R_1}{\longleftrightarrow}}\begin{pmatrix}1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+4 &amp; 2 &amp; 0
+\end{pmatrix}</span></p>
+<p>שימו לב שהשורה הראשונה לא משתנה. החישוב שעשינו עבור השורה השלישית הוא <span class="math inline">(7,8,9)-3(1,2,3)=(4,2,0)</span>. הפעולה ההפוכה היא הוספה לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">3</span>, כלומר הסקלר הנגדי לסקלר המקורי (שינוי סימן).</p></li>
+<li><p>נחליף בין השורה השנייה לשורה השלישית: <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9
+\end{pmatrix}\overset{R_2 \leftrightarrow R_3}{\underset{R_3 \leftrightarrow R_2}{\longleftrightarrow}}\begin{pmatrix}1 &amp; 2 &amp; 3\\
+7 &amp; 8 &amp; 9\\
+4 &amp; 5 &amp; 6
+\end{pmatrix}</span></p>
+<p>כאן הפעולה ההפוכה היא אותה הפעולה: החלפה בין השורה השנייה לשורה השלישית.</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>באופן כללי, כל פעולות השורה האלמנטריות הן הפיכות. נבהיר למה הכוונה בכל מקרה:</p>
+<ol type="1">
+<li><p>לכל <span class="math inline">c\neq0</span> ולכל <span class="math inline">1\leq i\leq m</span> הפעולה ההפוכה ל-<span class="math inline">cR_{i}\rightarrow R_{i}</span> היא <span class="math inline">\frac{1}{c}R_{i}\rightarrow R_{i}</span>.</p></li>
+<li><p>לכל <span class="math inline">c\in F</span> ולכל <span class="math inline">i\neq j</span> הפעולה ההפוכה ל-<span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span> היא <span class="math inline">R_{i}-cR_{j}\rightarrow R_{i}</span>. אכן, אם מבצעים את הפעולה הראשונה ואחריה את השנייה (או בסדר הפוך), התוצאה היא <span class="math inline">R_{i}+cR_{j}-cR_{j}\rightarrow R_{i}</span> או בקיצור <span class="math inline">R_{i}\to R_{i}</span>. החזרה למקור היא המשמעות של פעולה הפוכה.</p></li>
+<li><p>לכל <span class="math inline">i\neq j</span> הפעולה ההפוכה להחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span> היא אותה ההחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.</p></li>
+</ol>
+</div>
+<div class="definition">
+<p>מטריצות <span class="math inline">A,A'</span> נקראות <u>שקולות שורה</u> אם ניתן להגיע מ- <span class="math inline">A</span> ל- <span class="math inline">A'</span> ע"י סדרה סופית של פעולות שורה אלמנטריות.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>זו הגדרה סימטרית. אם ניתן להגיע מ- <span class="math inline">A</span> ל- <span class="math inline">A'</span> ע"י סדרה סופית של פעולות שורה אלמנטריות, אז גם ניתן להגיע מ- <span class="math inline">A'</span> ל- <span class="math inline">A</span> ע"י סדרת הפעולות ההפוכות.</p>
+</div>
+<div class="proposition">
+<p>. <em>נסתכל על הממ"ל <span class="math inline">Ax=b</span> עם מטריצת מקדמים מורחבת <span class="math inline">(A|b)</span>, וגם על הממ"ל <span class="math inline">A'x=b'</span> עם מטריצת מקדמים מורחבת <span class="math inline">(A'|b')</span>. אם <span class="math inline">(A|b),(A'|b')</span> הן מטריצות שקולות שורה, אז קבוצת הפתרונות של הממ"ל <span class="math inline">Ax=b</span> שווה לקבוצת הפתרונות של הממ"ל <span class="math inline">A'x=b'</span>.</em></p>
+</div>
+<p>במילים אחרות, כל <span class="math inline">n</span>-יה <span class="math inline">(c_1,c_2,...,c_n)</span> היא פתרון של הממ"ל החדשה (שמתקבלת אחרי סדרת פעולות שורה אלמנטריות) אם ורק אם היא פתרון של הממ"ל המקורית.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לכל ממ"ל <span class="math inline">Ax=b</span> ולכל פעולת שורה אלמנטרית, כל פתרון של הממ"ל לפני הפעולה נשאר פתרון של הממ"ל שמתקבלת בעקבות הפעולה. ולהיפך, ההפיכות של הפעולה מראה שכל פתרון של הממ"ל החדשה הוא גם פתרון של הממ"ל הקודמת לה. אז קבוצת הפתרונות נשארת ללא שינוי.</p>
+<p>נמשיך כך ונבצע מספר סופי של פעולות שורה אלמנטריות כדי לקבל את הממ"ל <span class="math inline">A'x=b'</span>. קבוצת הפתרונות תישמר בכל שלב ולכן גם בסוף התהליך היא תישאר זהה לקבוצת הפתרונות המקורית.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כפל שורה ב-<span class="math inline">0</span> אינה פעולה הפיכה. למעשה, הוא הופך את המשוואה המתאימה בממ"ל למשוואה <span class="math inline">0=0</span> שמתקיימת ללא קשר למשתנים. בדרך כלל זה מוביל לאובדן מידע על המשתנים, מה שישפיע על קבוצת הפתרונות (יגדיל אותה) ולכן יש להימנע מכפל שורה ב-<span class="math inline">0</span>. הנה דוגמה פשוטה במקרה של שתי משוואות בשני משתנים: <span class="math display">\begin{cases}
+x=1\\
+y=0
+\end{cases}</span></p>
+<p>לממ"ל יש פתרון יחיד <span class="math inline">(x,y)=(1,0)</span> ושני המשתנים תלויים. נכפיל את השורה השנייה ב-<span class="math inline">0</span> במטריצת המקדמים המורחבת: <span class="math display">\left( \begin{array}{cc|c}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0
+\end{array}\right) \xrightarrow{0\cdot R_2\to R_2}
+    \left( \begin{array}{cc|c}
+    1 &amp; 0 &amp; 1\\
+    0 &amp; 0 &amp; 0
+\end{array} \right)</span></p>
+<p>הממ"ל החדשה היא <span class="math display">.\begin{cases}
+x=1\\
+0=0
+\end{cases}</span></p>
+<p>עכשיו <span class="math inline">y</span> משתנה חופשי. נציב <span class="math inline">y=t</span> ונקבל קבוצת פתרונות <span class="math inline">\Set{(1,t)|t\in\mathbb R}</span>, כלומר התווספו אינסוף פתרונות. הממ"ל החדשה לא שקולה לממ"ל המקורית כי הכפלנו ב-<span class="math inline">0</span> ובכך מחקנו משוואה.</p>
+</div>
+<div class="definition">
+<p>כאשר וקטור הקבועים של הממ"ל <span class="math inline">Ax=b</span> הוא <span class="math inline">b=\begin{pmatrix}0\\
+0\\
+\vdots\\
+0
+\end{pmatrix}</span>, הממ"ל נקראת <u>הומוגנית</u> וניתן לכתוב <span class="math inline">Ax=0</span>. הכוונה באגף ימין היא לוקטור האפס באורך <span class="math inline">m</span> (מספר השורות של <span class="math inline">A</span>).</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>במקרה של ממ"ל הומוגנית, וקטור הקבועים מיותר מבחינת פעולות השורה האלמנטריות. הסיבה לכך היא שכל פעולת חיבור בין אפסים תיתן 0, וכנ"ל לכפל בסקלר (כי <span class="math inline">a\cdot 0=0</span> לכל סקלר <span class="math inline">a</span> ממשי או מרוכב). לכן זה מוצדק להסתפק במטריצת המקדמים המצומצמת במקרה זה (ורק במקרה זה), וכמובן הממ"ל החדשה גם תהיה הומוגנית.</p>
+</div>
+<div class="example">
+<p> נסתכל על ממ"ל הומוגנית: <span class="math display">\begin{cases}
+\begin{alignedat}{5}
+x &amp;{}+{}&amp; y &amp;{}+{}&amp; z &amp;= 0 \\[4pt]
+2x &amp;{}{}&amp;    &amp;{}+{}&amp; 2z &amp;= 0 \\[4pt]
+3x &amp;{}+{}&amp; 5y &amp;{}+{}&amp; 7z &amp;= 0
+\end{alignedat}
+\end{cases}</span></p>
+<p>נבצע סדרה של פעולות על מטריצת המקדמים המצומצמת:</p>
+$$
+<span class="math display">\begin{aligned}
+{3}
+        &amp;\begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 2 &amp; 0 &amp; 2 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
+        &amp;&amp;\xrightarrow{\dfrac{1}{2}R_2 \to R_2}
+        \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
+        &amp;&amp;\xrightarrow{R_1 - R_2 \to R_1}
+        \begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 3 &amp; 5 &amp; 7 \end{pmatrix} \\
+        \xrightarrow{R_1 \leftrightarrow R_2}&amp;\begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
+        &amp;&amp;\xrightarrow{R_3 - 3R_1 \to R_3}
+        \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 5 &amp; 4 \end{pmatrix}
+        &amp;&amp;\xrightarrow{R_3 - 5R_2 \to R_3}
+        \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix} \\
+        \xrightarrow{\dfrac{1}{4}R_3 \to R_3}&amp;\begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+        &amp;&amp;\xrightarrow{R_1 - R_3 \to R_1}
+        \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+        &amp;&amp;
+    
+\end{aligned}</span>
+<p>$$</p>
+<p>נסביר בהמשך איך בחרנו את הפעולות האלו. בינתיים נציין שסדרה כזו של פעולות נקראת <u>דירוג מטריצה</u>, וכאן היא מראה כי הממ"ל המקורית שקולה לממ"ל ההומוגנית שמתאימה למטריצה האחרונה שקיבלנו: <span class="math display">\begin{cases}
+x=0\\
+y=0\\
+z=0
+\end{cases}</span></p>
+<p>לכן גם לממ"ל המקורית יש פתרון יחיד, שהוא הפתרון הטריוויאלי שבו כל המשתנים מתאפסים. שימו לב לצורתה של המטריצה האחרונה שהתקבלה בתהליך הדירוג. זו צורה נוחה מאוד בגלל ריבוי האפסים, ובנוסף כל שאר האיברים הם <span class="math inline">1</span>. לכן, בכל משוואה בממ"ל האחרונה יש משתנה תלוי שהוא כבר מבודד (ובמקרה זה אין אף משתנה חופשי).</p>
+</div>
+<p>באופן כללי, צריך להתייחס לשתי שאלות כאשר מנסים לפשט ממ"ל:</p>
+<ol type="1">
+<li><p>איזו פעולת שורה אלמנטרית בוחרים בכל שלב?</p></li>
+<li><p>מתי עוצרים את הדירוג? כלומר, מתי המטריצה פשוטה מספיק כדי לפתור את הממ"ל?</p></li>
+</ol>
+</section>
+<section id="שיטת-הדירוג-של-גאוס" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="שיטת-הדירוג-של-גאוס"><span class="header-section-number">5.6</span> שיטת הדירוג של גאוס</h2>
+<p>כיצד נבחר פעולות שורה אלמנטריות לבצע כדי להעביר מטריצה נתונה <span class="math display">A=\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}</span> לצורה מדורגת קנונית? יש שיטה מסודרת (אלגוריתם) שנקראת שיטת הדירוג של גאוס. בהינתן מטריצה, נפעל לפי השלבים הבאים:</p>
+<ol type="1">
+<li><p>נחפש בעמודה הראשונה איבר <span class="math inline">a_{i1}\neq0</span> ונהפוך אותו ל-<span class="math inline">1</span> ע"י הפעולה <span class="math inline">\frac{1}{a_{i1}}R_{i}\to R_{i}</span> (אם יש רק אפסים, אפשר לדלג לשלב <span class="math inline">3</span>). אם <span class="math inline">i\neq1</span>, נבצע גם את ההחלפה <span class="math inline">R_{i}\leftrightarrow R_1</span> כדי שיופיע <span class="math inline">1</span> בפינה השמאלית העליונה.</p></li>
+<li><p>נשתמש ב-<span class="math inline">1</span> שקיבלנו בשורה הראשונה כדי לאפס את כל האיברים מתחתיו. כלומר: נבצע את הפעולה <span class="math inline">R_{j}-a_{j1}R_1\to R_{j}</span> לכל <span class="math inline">j&gt;1</span> כך ש-<span class="math inline">a_{j1}\neq0</span>. כך נקבל עמודה שכמעט כולה אפסים חוץ מהאחד המוביל בשורה הראשונה.</p></li>
+<li><p>ממשיכים באופן דומה עם העמודה השנייה וחוזרים על אותם השלבים כדי לאפס את כל האיברים חוץ מאיבר אחד שיופיע בשורה השנייה כ-<span class="math inline">1</span> (אם מלכתחילה יש רק אפסים מתחת לשורה הראשונה, ממשיכים הלאה לעמודה הבאה). יש להימנע מפעולה שתשנה את העמודה הראשונה.</p></li>
+<li><p>ממשיכים באופן דומה עם שאר העמודות לפי הסדר, בלי לשנות את העמודות הקודמות.</p></li>
+<li><p>עוצרים אחרי שעברנו על כל העמודות, או כאשר כל השורות מתחת לאחד המוביל האחרון הן שורות אפסים (ואז אין מה לעשות איתן).</p></li>
+</ol>
+<div class="example">
+<p>נחזור לדוגמה , אבל הפעם נעבוד קצת שונה וגם נסביר את בחירת הפעולות. ניתן לבצע מספר פעולות במקביל אם הן בלתי תלויות, כמו להחסיר כפולות של שורה כלשהי משורות אחרות (לכל שורה כפולה משלה).</p>
+<p><span class="math display">\begin{aligned}
+        \begin{pmatrix}1 &amp; 1 &amp; 1 \\ 2 &amp; 0 &amp; 2 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
+        &amp;\xrightarrow[R_2-2R_1 \to R_2]{R_3-3R_1 \to R_3}
+        \begin{pmatrix}1 &amp; 1 &amp; 1 \\ 0 &amp; -2 &amp; 0 \\ 0 &amp; 2 &amp; 4\end{pmatrix}
+        &amp;\xrightarrow{-\dfrac{1}{2}R_2 \to R_2}
+        \begin{pmatrix}1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 4 \end{pmatrix} \\
+        &amp;\xrightarrow[R_1-R_2 \to R_1]{R_3-2R_2 \to R_3}
+        \begin{pmatrix}1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 4\end{pmatrix}
+        &amp;\xrightarrow{\dfrac{1}{4}R_3 \to R_3}
+        \begin{pmatrix}1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{pmatrix} \\
+        &amp;\xrightarrow{R_1-R_3 \to R_1}
+        \begin{pmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{pmatrix}
+    \end{aligned}</span></p>
+<p>בשלב הראשון כבר היה <span class="math inline">1</span> בשורה הראשונה. השתמשנו בו כדי לאפס את האיברים מתחתיו.</p>
+<p>בשלב השני הפכנו את <span class="math inline">-2</span> ל-<span class="math inline">1</span>. בשלב השלישי איפסנו את שאר האיברים בעמודה השנייה.</p>
+<p>בשלב הרביעי הפכנו את <span class="math inline">4</span> ל-<span class="math inline">1</span>. בשלב החמישי איפסנו את שאר האיברים בעמודה השלישית.</p>
+<p>התוצאה היא מטריצה מדורגת קנונית (למעשה מטריצת היחידה) עם אחדות מובילים ואפסים בלבד.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כמו בדוגמה לעיל, לרוב יש יותר מדרך אחת לפעול לפי שיטת הדירוג של גאוס. זה גם לגיטימי לעשות פעולה מיותרת או לא אופטימלית (מבחינת מספר הפעולות) כל עוד היא חוקית. כל דרך היא נכונה ובלבד שאין בה כפל שורה ב-<span class="math inline">0</span> (או טעות חישוב) ומתקבלת בסוף מטריצה מדורגת קנונית. מטריצה זו היא יחידה ולכן אינה תלויה בדרך הדירוג.</p>
+</div>
+<div class="example">
+<p>נפתור את הממ"ל הבאה:</p>
+<p><span class="math display">\begin{cases}
+\begin{alignedat}{8}
+2x &amp;{}+{}&amp;  y &amp;{}-{}&amp;  z &amp;{}+{}&amp;  w &amp;=  8 \\[4pt]
+-3x &amp;{}-{}&amp;  y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;= -11 \\[4pt]
+-2x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 2z &amp;     &amp;    &amp;= -3
+\end{alignedat}
+\end{cases}</span></p>
+<p>נדרג את מטריצת המקדמים המורחבת:</p>
+<p><span class="math display">\begin{aligned}
+&amp;\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 8 \\
+-3 &amp; -1 &amp; 2 &amp; 3 &amp; -11 \\
+-2 &amp; 1 &amp; 2 &amp; 0 &amp; -3
+\end{array}\right)
+\xrightarrow{\substack{R_2 + \tfrac{3}{2} R_1 \to R_2 \\ R_3 + R_1 \to R_3}}
+\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 8 \\
+0 &amp; \tfrac{1}{2} &amp; \tfrac{1}{2} &amp; \tfrac{9}{2} &amp; 1 \\
+0 &amp; 2 &amp; 1 &amp; 1 &amp; 5
+\end{array}\right) \\[6pt]
+&amp;\xrightarrow{2 R_2 \to R_2}
+\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 8 \\
+0 &amp; 1 &amp; 1 &amp; 9 &amp; 2 \\
+0 &amp; 2 &amp; 1 &amp; 1 &amp; 5
+\end{array}\right)
+\xrightarrow{R_3 - 2 R_2 \to R_3}
+\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 8 \\
+0 &amp; 1 &amp; 1 &amp; 9 &amp; 2 \\
+0 &amp; 0 &amp; -1 &amp; -17 &amp; 1
+\end{array}\right) \\[6pt]
+&amp;\xrightarrow{-R_3 \to R_3}
+\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 8 \\
+0 &amp; 1 &amp; 1 &amp; 9 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 17 &amp; -1
+\end{array}\right)
+\xrightarrow{\substack{R_1 + R_3 \to R_1 \\ R_2 - R_3 \to R_2}}
+\left(\begin{array}{rrrr|r}
+2 &amp; 1 &amp; 0 &amp; 18 &amp; 7 \\
+0 &amp; 1 &amp; 0 &amp; -8 &amp; 3 \\
+0 &amp; 0 &amp; 1 &amp; 17 &amp; -1
+\end{array}\right) \\[6pt]
+&amp;\xrightarrow{\tfrac{1}{2} R_1 \to R_1}
+\left(\begin{array}{rrrr|r}
+1 &amp; \tfrac{1}{2} &amp; 0 &amp; 9 &amp; \tfrac{7}{2} \\
+0 &amp; 1 &amp; 0 &amp; -8 &amp; 3 \\
+0 &amp; 0 &amp; 1 &amp; 17 &amp; -1
+\end{array}\right)
+\xrightarrow{R_1 - \tfrac{1}{2} R_2 \to R_1}
+\left(\begin{array}{rrrr|r}
+1 &amp; 0 &amp; 0 &amp; 13 &amp; 2 \\
+0 &amp; 1 &amp; 0 &amp; -8 &amp; 3 \\
+0 &amp; 0 &amp; 1 &amp; 17 &amp; -1
+\end{array}\right)
+\end{aligned}</span></p>
+<p>הממ"ל השקולה שמתאימה למטריצה המדורגת קנונית, נתונה ע"י:</p>
+<p><span class="math display">\begin{cases}
+\begin{aligned}
+x+13w &amp;= 2 \\
+y-8w &amp;= 3 \\
+z+17w &amp;= -1
+\end{aligned}
+\end{cases}</span></p>
+<p>המשתנה החופשי הוא <span class="math inline">w</span>. נציב <span class="math inline">w=t</span> ונבודד את שאר המשתנים כדי לקבל את קבוצת הפתרונות:</p>
+<p><span class="math display">\Set{(2-13t,3+8t,-1-17t,t)|t\in\mathbb R}</span></p>
+</div>
+<div class="example">
+<p>נפתור את הממ"ל הבאה מעל <span class="math inline">\mathbb C</span>:</p>
+<p><span class="math display">\begin{cases}
+\begin{aligned}
+x  + y + z &amp;= i \\
+x+ iy + z &amp;= 1+i \\
+x + y + iz &amp;= 2
+\end{aligned}
+\end{cases}</span></p>
+<p>נדרג את מטריצת המקדמים המורחבת:</p>
+<p><span class="math display">\begin{aligned}
+&amp;\left(\begin{array}{rrr|r}
+1 &amp; 1 &amp; 1 &amp; i \\
+1 &amp; i &amp; 1 &amp; 1 + i \\
+1 &amp; 1 &amp; i &amp; 2
+\end{array}\right)
+\xrightarrow{\substack{R_2 - R_1 \to R_2 \\ R_3 - R_1 \to R_3}}
+\left(\begin{array}{rrr|r}
+1 &amp; 1 &amp; 1 &amp; i \\
+0 &amp; i - 1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; i - 1 &amp; 2 - i
+\end{array}\right) \\[6pt]
+&amp;\xrightarrow{\tfrac{1}{\,i - 1\,} R_2 \to R_2}
+\left(\begin{array}{rrr|r}
+1 &amp; 1 &amp; 1 &amp; i \\
+0 &amp; 1 &amp; 0 &amp; \tfrac{1}{\,i - 1\,} \\
+0 &amp; 0 &amp; i - 1 &amp; 2 - i
+\end{array}\right)
+\xrightarrow{\tfrac{1}{\,i - 1\,} R_3 \to R_3}
+\left(\begin{array}{rrr|r}
+1 &amp; 1 &amp; 1 &amp; i \\
+0 &amp; 1 &amp; 0 &amp; \tfrac{1}{\,i - 1\,} \\
+0 &amp; 0 &amp; 1 &amp; \tfrac{2 - i}{\,i - 1\,}
+\end{array}\right) \\[6pt]
+&amp;\xrightarrow{R_1 - R_2 - R_3 \to R_1}
+\left(\begin{array}{rrr|r}
+1 &amp; 0 &amp; 0 &amp; i - \tfrac{3 - i}{\,i - 1\,} \\
+0 &amp; 1 &amp; 0 &amp; \tfrac{1}{\,i - 1\,} \\
+0 &amp; 0 &amp; 1 &amp; \tfrac{2 - i}{\,i - 1\,}
+\end{array}\right)
+\end{aligned}</span></p>
+<p>זה מראה שהפתרון הוא יחיד (כי אין משתנה חופשי) ונתון ע"י:</p>
+<p><span class="math display">\begin{cases}
+x=i-\frac{3-i}{i-1}=i-\frac{(3-i)(-i-1)}{2}=\frac{2i+(3-i)(1+i)}{2}=\frac{4+4i}{2}=2+2i\\
+y=\frac{1}{i-1}=-\frac{1+i}{2} \\
+z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
+\end{cases}</span></p>
+<p>כלומר <span class="math inline">(x,y,z)=(2+2i,-\frac{1+i}{2},-\frac{3+i}{2})</span>.</p>
+</div>
+</section>
+<section id="מספר-הפתרונות" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="מספר-הפתרונות"><span class="header-section-number">5.7</span> מספר הפתרונות</h2>
+<p>ראינו בדוגמאות השונות שמספר הפתרונות לממ"ל <span class="math inline">Ax=b</span> נקבע לפי שני קריטריונים:</p>
+<ol type="1">
+<li><p>האם יש שורת סתירה מהצורה <span class="math inline">(\begin{array}{rrrr|r}
+0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 \\
+\end{array})</span> בצורה המדורגת קנונית? אם כן, אין פתרון לממ"ל. אם לא, נעבור לקריטריון הבא.</p></li>
+<li><p>האם יש משתנה חופשי (אחד או יותר)? אם כן, יש אינסוף פתרונות לממ"ל. אם לא, יש פתרון יחיד.</p></li>
+</ol>
+<p>ניתן לאפיין את הקריטריונים לעיל באמצעות הדרגה <span class="math inline">\mathop{\mathrm{rank}}(A)</span> של מטריצת המקדמים המצומצמת, והדרגה <span class="math inline">\mathop{\mathrm{rank}}(A|b)</span> של מטריצת המקדמים המורחבת. דירוג קנוני של <span class="math inline">A</span> מתאים לדירוג קנוני של <span class="math inline">(A|b)</span>, כאשר ההבדל היחיד הוא העמודה הימנית (צריך לבצע עליה את כל פעולות השורה שבחרנו עבור <span class="math inline">A</span>).</p>
+<p>ראשית נוכיח כמה תכונות של דרגה.</p>
+<div class="proposition">
+<p>. <em></em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb F^n</span> מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span>.</em></p></li>
+<li><p><em>מתקיים <span class="math inline">0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span> כאשר <span class="math inline">\min\{m,n\}</span> הוא המספר הקטן מבין <span class="math inline">m,n</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>נניח כי הצורה המדורגת קנונית של <span class="math inline">(A|b)</span> היא <span class="math inline">(A'|b')</span>. אז בפרט, <span class="math inline">A'</span> היא הצורה המדורגת קנונית של <span class="math inline">A</span>.</p>
+<p>בהכרח מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span> כי מספר האיברים המובילים ב- <span class="math inline">(A'|b')</span> הוא לפחות מספר האיברים המובילים ב- <span class="math inline">A'</span>. או שהדרגות שוות, או שהדרגה של מטריצת המקדמים המורחבת גדולה יותר (ב-<span class="math inline">1</span>) כתוצאה משורת סתירה שמוסיפה איבר מוביל.</p></li>
+<li><p>הדרגה היא מספר טבעי (היא <span class="math inline">0</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">0</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">A</span>, מספר זה הוא לכל היותר <span class="math inline">m</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">m</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">n</span>, ובסך הכל מתקיים <span class="math display">.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proposition">
+<p>. <em> לכל מטריצה <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb R^n</span>, מספר הפתרונות לממ"ל <span class="math inline">Ax=b</span> נקבע באופן הבא:</em></p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)</span>, אז אין לממ"ל פתרון.</em></p></li>
+<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n</span>, אז לממ"ל יש אינסוף פתרונות.</em></p></li>
+<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n</span>, אז לממ"ל יש פתרון יחיד.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>בכל מקרה נתרגם את הנתון על הדרגות לשפה של שורת סתירה ומשתנים חופשיים.</p>
+<ol type="1">
+<li><p>במקרה זה יש שורת סתירה ולכן אין פתרון.</p></li>
+<li><p>כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p></li>
+<li><p>כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+<p> נסתכל על ממ"ל שבה חלק מהמקדמים תלויים בפרמטר <span class="math inline">a</span>, כלומר קבוע (לא משתנה) שערכו אינו ידוע מראש. אפשר לחשוב על ממ"ל עם פרמטר כמשפחה של ממ"ליות - לכל הצבה של ערך הפרמטר נקבל ממ"ל מסוימת במשפחה.</p>
+<p><span class="math display">\begin{cases}
+\begin{alignedat}{7}
+a x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 1 \\[4pt]
+x &amp;{}+{}&amp;  a y &amp;{}+{}&amp;  z &amp;= 1 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  a z &amp;= 1
+\end{alignedat}
+\end{cases}</span></p>
+<p>נמצא לאילו ערכי <span class="math inline">a</span> מספר הפתרונות הוא אפס, אחד או אינסוף. נדרג את מטריצת המקדמים המורחבת, כאשר הפעולות עצמן יהיו תלויות ב- <span class="math inline">a</span>. כל פעולה של הוספת כפולה של שורה לשורה אחרת היא חוקית, אבל צריך להיזהר עם פעולה של כפל בסקלר (או חילוק בסקלר). אסור להכפיל או לחלק <span class="math inline">0</span>, ולכן נצטרך לפצל למקרים לפחות בשלב אחד של הדירוג.</p>
+<p><span class="math display">\begin{aligned}
+&amp;\left(\begin{array}{rrr|r}
+a &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; a &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; a &amp; 1
+\end{array}\right)
+\xrightarrow{R_2\leftrightarrow R_1}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+a &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; a &amp; 1
+\end{array}\right) \\
+&amp;\xrightarrow{\overset{R_2 - aR_1 \to R_2}{\underset{R_3 - R_1 \to R_3}{\hphantom{\quad\quad}}}}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a\\
+0 &amp; 1-a &amp; a-1 &amp; 0
+\end{array}\right)
+\end{aligned}</span></p>
+<p>נרצה לחלק את השורה האחרונה בסקלר <span class="math inline">1-a</span>, אבל זה כרוך בהנחה <span class="math inline">a\neq 1</span>. במקרה המיוחד <span class="math inline">a=1</span> שתי השורות האחרונות הן שורות אפסים, והשורה הראשונה מתאימה למשוואה <span class="math inline">x+y+z=1</span>. אז במקרה זה יש שני משתנים חופשיים (והדרגה היא <span class="math inline">1</span>), ולכן יש לממ"ל אינסוף פתרונות. קבוצת הפתרונות במקרה זה נתונה ע"י</p>
+<p><span class="math display">.\Set{(1-s-t,s,t)|s,t\in\mathbb R}</span></p>
+<p>נניח כי <span class="math inline">a\neq 1</span> ונמשיך את הדירוג:</p>
+<p><span class="math display">\begin{aligned}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a\\
+0 &amp; 1-a &amp; a-1 &amp; 0
+\end{array}\right)
+\xrightarrow{\frac{1}{1-a}R_3\to R_3}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a\\
+0 &amp; 1 &amp; -1 &amp; 0
+\end{array}\right) \\
+\xrightarrow{R_2\leftrightarrow R_3}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; -1 &amp; 0\\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a
+\end{array}\right)
+\xrightarrow{R_3-(1-a^2)R_2\to R_3}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; -1 &amp; 0\\
+0 &amp; 0 &amp; 2-a-a^2 &amp; 1-a
+\end{array}\right)
+\end{aligned}</span></p>
+<p>אם מתקיים <span class="math inline">2-a-a^2\neq 0</span>, אז הדרגה של מטריצת המקדמים המצומצמת שווה ל- <span class="math inline">3</span> וזו גם הדרגה של מטריצת המקדמים המורחבת. לכן יש פתרון יחיד לממ"ל המקורית.</p>
+<p>לעומת זאת, שורשי המשוואה <span class="math inline">2-a-a^2=0</span> הם <span class="math inline">a_1=1, a_2=-2</span>. את המקרה הראשון כבר ניתחנו וראינו שמתקבלים אינסוף פתרונות. במקרה השני נקבל שהשורה הראשונה היא <span class="math inline">(\begin{array}{rrr|r}
+0 &amp; 0 &amp; 0 &amp; 3 \\
+\end{array})</span> ולכן אין פתרון.</p>
+<p>נמשיך בדירוג קנוני כדי לחשב את הפתרון היחיד במקרה של <span class="math inline">a\notin\{-2,1\}</span>. ניתן לחלק בסקלר <span class="math inline">(1-a)(2+a)\neq 0</span>.</p>
+<p><span class="math display">\begin{aligned}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; -1 &amp; 0\\
+0 &amp; 0 &amp; 2-a-a^2 &amp; 1-a
+\end{array}\right)
+\xrightarrow{\frac{1}{(1-a)(2+a)}R_3\to R_3}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; -1 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; \frac{1}{a+2}
+\end{array}\right) \\
+\xrightarrow{R_2+R_3\to R_2}
+\left(\begin{array}{rrr|r}
+1 &amp; a &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; \frac{1}{a+2}\\
+0 &amp; 0 &amp; 1 &amp; \frac{1}{a+2}
+\end{array}\right)
+\xrightarrow{R_1-aR_2-R_3\to R_1}
+\left(\begin{array}{rrr|r}
+1 &amp; 0 &amp; 0 &amp; \frac{1}{a+2} \\
+0 &amp; 1 &amp; 0 &amp; \frac{1}{a+2}\\
+0 &amp; 0 &amp; 1 &amp; \frac{1}{a+2}
+\end{array}\right)
+\end{aligned}</span></p>
+<p>בסוף השתמשנו בחישוב <span class="math display">.1-\frac{a}{a+2}-\frac{1}{a+2}=\frac{1}{a+2}</span></p>
+<p>נסכם: כאשר <span class="math inline">a\notin\{-2,1\}</span> מתקבל פתרון יחיד <span class="math display">.(x,y,z)=(\frac{1}{a+2},\frac{1}{a+2},\frac{1}{a+2})</span> כאשר <span class="math inline">a=1</span> מתקבלת קבוצת פתרונות אינסופית <span class="math display">.\Set{(1-s-t,s,t)|s,t\in\mathbb R}</span> כאשר <span class="math inline">a=-2</span> אין פתרון.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בשאלות שקשורות רק למספר הפתרונות, אין צורך בדירוג קנוני. אפשר להסתפק בדירוג רגיל (חלקי) לחישוב הדרגות.</p>
+</div>
+<p>בניגוד לממ"ל כללית, לממ"ל הומוגנית תמיד קיים לפחות פתרון אחד. הטענה הבאה מראה זאת ומאפיינת את שני המקרים (פתרון יחיד ואינסוף פתרונות).</p>
+<div class="proposition">
+<ol type="1">
+<li><p><em>לכל ממ"ל הומוגנית <span class="math inline">Ax=0</span> קיים פתרון טריוויאלי שהוא וקטור האפס <span class="math inline">x=0</span>, כלומר הפתרון בו כל המשתנים מתאפסים.</em></p></li>
+<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=n</span>, אז הפתרון יחיד.</em></p></li>
+<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;n</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">m&lt;n</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>נציב <span class="math inline">x_1=x_2=...=x_n=0</span> בממ"ל ונקבל <span class="math display">a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0</span></p>
+<p>כנדרש לכל <span class="math inline">1\leq i\leq n</span>.</p></li>
+<li><p>אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n</span> לכן, לפי טענה יש פתרון יחיד.</p></li>
+<li><p>הפעם מתקיים <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n</span> לכן, לפי טענה יש אינסוף פתרונות.</p>
+<p>בהינתן <span class="math inline">m&lt;n</span>, נובע מ- כי <span class="math inline">\mathop{\mathrm{rank}}(A)\leq m&lt;n</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>נחזור לממ"ל מדוגמה ונחליף את כל הקבועים ב- <span class="math inline">0</span>, כלומר נסתכל על הממ"ל הבאה:</p>
+<p><span class="math display">\begin{cases}
+\begin{alignedat}{7}
+a x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 0 \\[4pt]
+x &amp;{}+{}&amp;  a y &amp;{}+{}&amp;  z &amp;= 0 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  a z &amp;= 0
+\end{alignedat}
+\end{cases}</span></p>
+<p>לאילו ערכי <span class="math inline">a\in\mathbb R</span> יש פתרון יחיד? אינסוף פתרונות?</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>. נחזור על הדירוג שביצענו בדוגמה. ההבדל היחיד הוא שהפעם ניתן להשמיט את העמודה הימנית כי הממ"ל הומוגנית (צריך לזכור שמסתתרת שם עמודת אפסים בכל שלב של הדירוג). אז לפי תחילת הדירוג שעשינו, מטריצת המקדמים המצומצמת שקולת שורה למטריצה</p>
+<p><span class="math display">.\begin{pmatrix}
+1 &amp; a &amp; 1  \\
+0 &amp; 1-a^2 &amp; 1-a \\
+0 &amp; 1-a &amp; a-1
+\end{pmatrix}</span></p>
+<p>כבר רואים שאם <span class="math inline">a=1</span> אז הדרגה היא <span class="math inline">1</span>, ולכן יש אינסוף פתרונות.</p>
+<p>אם <span class="math inline">a\neq 1</span> נמשיך את הדירוג כמו בדוגמה. נקבל <span class="math display">\begin{pmatrix}
+1 &amp; a &amp; 1  \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 2-a-a^2
+\end{pmatrix}</span></p>
+<p>הדרגה היא לפחות <span class="math inline">2</span> ונקבע אותה לפי הערך בפינה התחתונה. אם מתקיים <span class="math inline">2-a-a^2\neq 0</span>, אז הדרגה היא <span class="math inline">3</span> ולכן הפתרון יחיד (והוא הפתרון הטריוויאלי). באופן מפורש, יש פתרון יחיד לכל <span class="math inline">a\notin\{-2,1\}</span> כי מתקיים</p>
+<p><span class="math display">.2-a-a^2\neq 0 \iff a\notin\{-2,1\}</span></p>
+<p>אם <span class="math inline">a\in\{-2,1\}</span> יש אינסוף פתרונות כי הדרגה קטנה מ- <span class="math inline">3</span> בשני המקרים.</p>
 </div>
 
 
@@ -1112,13 +1766,13 @@ document.addEventListener('DOMContentLoaded', () => {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter_1.html" class="pagination-link" aria-label="חידות">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span>
+      <a href="./chapter_1.html" class="pagination-link" aria-label="גיאומטריה במישור ובמרחב">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_3.html" class="pagination-link" aria-label="כלל הסנדוויץ' - דוגמה מספרית">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="סיכום">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

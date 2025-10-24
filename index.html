@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -162,25 +142,19 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">חידות</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">חדוא לבניתיים</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">כלל הסנדוויץ’ - דוגמה מספרית</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,31 +207,35 @@ div.csl-indent {
 
 <section id="מידע-כללי" class="level1 unnumbered">
 <h1 class="unnumbered">מידע כללי</h1>
-<div class="center">
-<p><img src="logo.png" class="img-fluid" width="100"></p>
+<div class="home-hero">
+<img src="logo.png" alt="לוגו" class="home-hero__logo">
+<h1 class="home-hero__title">
+אלגברה לינארית להנדסה
+</h1>
+<div class="home-hero__subtitle">
+ד”ר יונתן שלח, ד”ר נדב מאיר
 </div>
-<div id="download-box">
-<p><a href="אלגברה-לינארית.pdf" class="btn" target="_blank" style="background-color:#FF9E3A; border-color:#FF9E3A; color:white;">להורדת הספר ב PDF</a></p>
-</div>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+<p class="home-hero__tagline">
+ספר קורס עבור סטודנטים בפקולטה להנדסה
+</p>
+<p class="home-hero__tagline">
+באוניברסיטת בן גוריון בנגב
+</p>
+<hr class="home-hero__divider">
+<p>:::</p>
+<section id="תודות" class="level4 home-ack">
+<h4 class="anchored" data-anchor-id="תודות">תודות</h4>
+<p>היחידה לקידום איכות ההוראה והלמידה – אוניברסיטת בן-גוריון בנגב</p>
+</section>
 <script>
   window.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const downloadBox = document.querySelector("#download-box");
-    if (sidebar && downloadBox) {
-      sidebar.appendChild(downloadBox);
-    }
+    if (sidebar && downloadBox) sidebar.appendChild(downloadBox);
   });
 </script>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
 </div>
 </section>
 
