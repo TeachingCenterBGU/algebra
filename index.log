@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.15)  27 AUG 2025 09:10
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.15)  8 SEP 2025 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2206,25 +2206,86 @@ LaTeX Font Info:    Font shape `TU/David(1)/m/n' will be
 (Font)              scaled to size 7.0pt on input line 1284.
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
 
-! LaTeX Error: \symbballowed only in math mode.
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1317.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1293 .\mathbb
-               {R}\^{}\{2\}=\{(x,y)\textbar x,y\in\mathbb{R}\} {]} \}\%
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+
+
+[23
+
+]
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1328.
+
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1345.
+
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no ⋅ (U+22C5) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+
+[24]
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1405.
+
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1422.
+
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+
+
+[25]
+
+LaTeX Font Warning: Font shape `TU/David(2)/m/it' undefined
+(Font)              using `TU/David(2)/m/sl' instead on input line 1430.
+
+Missing character: There is no Ł (U+0141) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+Missing character: There is no ⋅ (U+22C5) in font David/OT:script=hebr;language=IWR;mapping=tex-text;!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1431 ...ar\textbar(ca,cb)\textbar\textbar=\sqrt{
+                                                  (ca)^{2}+(cb)^{2}}=\sqrt{c...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
  
 Here is how much of TeX's memory you used:
- 42195 strings out of 470396
- 885447 string characters out of 5487052
- 1474930 words of memory out of 5000000
- 69828 multiletter control sequences out of 15000+600000
+ 42207 strings out of 470396
+ 885495 string characters out of 5487052
+ 1475985 words of memory out of 5000000
+ 69841 multiletter control sequences out of 15000+600000
  633534 words of font info for 126 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  98i,12n,122p,1157b,1056s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on index.pdf (24 pages).
+Output written on index.pdf (27 pages).
