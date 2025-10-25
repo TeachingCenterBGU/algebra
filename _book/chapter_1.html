@@ -501,7 +501,7 @@ window.Quarto = {
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר ע"י שני הוקטורים:</p>
 <figure id="fig:Cosine Law" class="figure">
-<img src="Cosine Law.png" style="width:40.0%" class="figure-img">
+<img src="images/chapter02/Cosine Law.png" style="width:40.0%" class="figure-img">
 <figcaption>
 המשולש המתאים לשני הוקטורים יחד עם וקטור ההפרש
 </figcaption>
@@ -541,12 +541,12 @@ window.Quarto = {
 <p>וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר (התחלה וסיום) נקרא נורמל לישר.</p>
 </div>
 <p>באופן כללי, לישר עם הצגה פרמטרית <span class="math inline">\Set{(x_0,y_0)+t(a,b)|t\in\mathbb{R}}</span> יש וקטור נורמל <span class="math inline">(-b,a)</span> המאונך לוקטור הכיוון <span class="math inline">(a,b)</span>. אבל וקטור הנורמל אינו יחיד, כי אם נכפיל אותו בסקלר <span class="math inline">c\neq0</span> הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם (או שניהם) בסקלר.</p>
-<figure id="fig:Rotating Line" class="figure">
-<img src="Rotating Line.png" style="width:50.0%" class="figure-img">
-<figcaption>
-ישר ושני וקטורי נורמל לדוגמה
-</figcaption>
+<div id="fig:Rotating-line" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="simulations/Rotating line.html?embed=1" width="800" height="800"></p>
+<figcaption>סימולציה 1.7 - ישר ושני וקטורי נורמל לדוגמה</figcaption>
 </figure>
+</div>
 <p>כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-<span class="math inline">(x_0,y_0)</span> ומסתיים ב-<span class="math inline">(x,y)</span>, כלומר הוקטור <span class="math inline">(x-x_0,y-y_0)</span>. וקטור זה בהכרח מאונך לוקטור הנורמל <span class="math inline">(-b,a)</span>, ולכן צריך להתקיים: <span class="math display">\begin{aligned}
     (x-x_0,y-y_0)\cdot(-b,a)=0&amp;\iff-b(x-x_0)+a(y-y_0)=0\\
     &amp;\iff-bx+ay=-bx_0+ay_0
@@ -587,12 +587,12 @@ window.Quarto = {
 <section id="מצבים-הדדיים-בין-ישרים-במישור" class="level3" data-number="4.1.7">
 <h3 data-number="4.1.7" class="anchored" data-anchor-id="מצבים-הדדיים-בין-ישרים-במישור"><span class="header-section-number">4.1.7</span> מצבים הדדיים בין ישרים במישור</h3>
 <p>קיימים שלושה מצבים הדדיים אפשריים בין שני ישרים במישור: נחתכים, מקבילים ומתלכדים.</p>
-<figure id="fig:Two Lines" class="figure">
-<img src="Two Lines.png" style="width:60.0%" class="figure-img">
-<figcaption>
-ישרים מקבילים בצד ימין, ישרים נחתכים בצד שמאל
-</figcaption>
+<div id="fig:two-lines" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="simulations/two-lines.html?embed=1" width="800" height="800"></p>
+<figcaption>סימולציה 1.8 - חיתוך בין שני ישרים</figcaption>
 </figure>
+</div>
 <p>נתחיל בדוגמאות לפני שנעבור לאפיון.</p>
 <div class="example">
 <p>&nbsp;</p>
@@ -779,7 +779,7 @@ window.Quarto = {
 <p>לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז גודלו הוא המרחק מנקודת הסיום לראשית שניתן לחשב לפי משפט פיתגורס:</p>
 <p>גודל: <span class="math inline">\|(x,y,z)\|=\sqrt{x^2+y^2+z^2}</span></p>
 <figure id="fig:3DPythagoras" class="figure">
-<img src="3DPythagoras.png" style="width:60.0%" class="figure-img">
+<img src="images/chapter02/3DPythagoras.png" style="width:60.0%" class="figure-img">
 <figcaption>
 שני משולשים ישרי-זווית במרחב
 </figcaption>
@@ -841,19 +841,26 @@ window.Quarto = {
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>כאן ההוכחה היא לא הכללה מיידית. נדלג עליה, אבל נציין שכל שני וקטורים שאינם מקבילים קובעים מישור (יחיד) וניתן לחשב את הזווית ביניהם כוקטורים באותו המישור. קל להבין זאת במקרה הפרטי שבו שני הוקטורים שייכים למישור <span class="math inline">xy</span> שנתון ע"י המשוואה <span class="math inline">z=0</span>.</p>
-<figure id="fig:XYAngle" class="figure">
-<img src="XYAngle.png" style="width:40.0%" class="figure-img">
-<figcaption>
-שני וקטורים השייכים למישור <span class="math inline"><em>x</em><em>y</em></span>
+<div id="fig-XYAngle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-XYAngle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/XYAngle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-XYAngle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="math inline">xy</span>
 </figcaption>
 </figure>
-<p>מבחינה גיאומטרית (לא אלגברית), את מישור זה ניתן להבין כאילו הוא <span class="math inline">\mathbb{R}^2</span>. אכן, אם <span class="math inline">\vec{v}=(x_1,y_1,0)</span> ו-<span class="math inline">\vec{w}=(x_2,y_2,0)</span>, אז מתקיים <span class="math display">.\begin{cases}
-    \begin{aligned}
-        \vec{v}\cdot\vec{w}&amp;=x_1x_2+y_1y_2+0^2=x_1x_2+y_1y_2\\
-        \|\vec{v}\||&amp;=\sqrt{x_1^2+x_2^2+0^2}=\sqrt{x_1^2+x_2^2}\\
-        \|\vec{w}\||&amp;=\sqrt{y_1^2+y_2^2+0^2}=\sqrt{y_1^2+y_2^2}
-        \end{aligned}
-    \end{cases}</span></p>
+</div>
+<p>מבחינה גיאומטרית (לא אלגברית), את מישור זה ניתן להבין כאילו הוא <span class="math inline">\mathbb{R}^2</span>. אכן, אם <span class="math inline">\vec{v}=(x_1,y_1,0)</span> ו-<span class="math inline">\vec{w}=(x_2,y_2,0)</span>, אז מתקיים</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+\vec{v}\cdot\vec{w}&amp;=x_1x_2+y_1y_2+0^2=x_1x_2+y_1y_2\\
+\|\vec{v}\|&amp;=\sqrt{x_1^2+y_1^2+0^2}=\sqrt{x_1^2+y_1^2}\\
+\|\vec{w}\|&amp;=\sqrt{x_2^2+y_2^2+0^2}=\sqrt{x_2^2+y_2^2}
+\end{aligned}
+\end{cases}
+</span></p>
 <p>כלומר, במקרה זה אין הבדל בין הנוסחאות של המרחב לנוסחאות של המישור (במובן מסוים, אין חשיבות לקוארדינטה השלישית). בפרט, מתקיים <span class="math inline">\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\||\cdot\|\vec{w}\|}</span>.</p>
 <p>המקרה הכללי יותר מסובך (יש חשיבות לקוארדינטה השלישית), אבל אין הבדל מהותי והנוסחה עדיין מתקיימת.</p>
 </div>
@@ -1164,31 +1171,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const meta = envs[env];
 
-      const hasTitle = div.querySelector(':scope > .theorem-title');
+      // חפשי כותרת קיימת של Quarto (בכל עומק), ואם אין - צרי אחת.
 
+      // בכל מקרה קובעים לה את הטקסט העברי והמספור שלנו.
 
+      let title = div.querySelector('.theorem-title');
 
-      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
+      if (!title) {
 
-      if (!hasTitle) {
-
-        const title = document.createElement('div');
+        title = document.createElement('div');
 
         title.className = 'theorem-title';
 
-        if (meta.numbered) {
-
-          counters[env] += 1;
-
-          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
-
-        } else {
-
-          title.textContent = meta.label;
-
-        }
-
         div.insertBefore(title, div.firstChild);
+
+      }
+
+
+
+      if (meta.numbered) {
+
+        counters[env] += 1;
+
+        title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+
+      } else {
+
+        title.textContent = meta.label;
 
       }
 
