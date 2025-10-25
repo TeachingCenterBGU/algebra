@@ -446,31 +446,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const meta = envs[env];
 
-      const hasTitle = div.querySelector(':scope > .theorem-title');
+      // חפשי כותרת קיימת של Quarto (בכל עומק), ואם אין - צרי אחת.
 
+      // בכל מקרה קובעים לה את הטקסט העברי והמספור שלנו.
 
+      let title = div.querySelector('.theorem-title');
 
-      // צור כותרת רק אם חסרה (לא נעצור אם קיימת!)
+      if (!title) {
 
-      if (!hasTitle) {
-
-        const title = document.createElement('div');
+        title = document.createElement('div');
 
         title.className = 'theorem-title';
 
-        if (meta.numbered) {
-
-          counters[env] += 1;
-
-          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
-
-        } else {
-
-          title.textContent = meta.label;
-
-        }
-
         div.insertBefore(title, div.firstChild);
+
+      }
+
+
+
+      if (meta.numbered) {
+
+        counters[env] += 1;
+
+        title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+
+      } else {
+
+        title.textContent = meta.label;
 
       }
 
