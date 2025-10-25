@@ -1,7 +1,7 @@
 -- div-to-theorem-env.lua
 -- ממיר בלוקים מסוג ::: {.definition/.example/...} לסביבות LaTeX
 local targets = {
-  "definition", "example", "exercise",
+  "definition", "example", "exercise", "remark",
   "theorem", "lemma", "proposition", "corollary"
 }
 
