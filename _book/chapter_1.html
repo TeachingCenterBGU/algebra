@@ -140,15 +140,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">אלגברה לינארית</a> 
-        <div class="sidebar-tools-main">
-    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -266,15 +260,13 @@ window.Quarto = {
 <p>בפרק זה נרצה להגדיר ולהבין וקטורים מבחינה גיאומטרית ואלגברית. נתמקד תחילה במישור הדו-מימדי (עם דגש על הישרים המוכלים בו) ואחר כך נעבור למרחב התלת-מימדי (שם נדבר גם על מישורים).</p>
 <section id="המישור-mathbbr2" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="המישור-mathbbr2"><span class="header-section-number">4.1</span> המישור <span class="math inline">\mathbb{R}^2</span></h2>
-<p>בפרק <span class="math inline">0</span> דיברנו על הישר הממשי וגם על המישור המרוכב. אפשר גם לתאר את המישור (הממשי) בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.</p>
+<p>בפרק <span class="math inline">2</span> דיברנו על הישר הממשי וגם על המישור המרוכב. אפשר גם לתאר את המישור (הממשי) בלי מספרים מרוכבים, אבל הרעיון דומה מאוד.</p>
 <div class="definition">
 <p>המישור <span class="math inline">\mathbb{R}^2</span> הוא קבוצת כל הנקודות בעלות שתי קוארדינטות ממשיות, כלומר <span class="math display">.\mathbb{R}^2=\Set{(x,y)|x,y\in\mathbb{R}}</span></p>
 </div>
 <div class="example">
-<ol type="1">
-<li><p><span class="math inline">(0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^2</span></p></li>
-<li><p><span class="math inline">1,(i,0),(0,1,2)\notin\mathbb{R}^2</span></p></li>
-</ol>
+<p>א. <span class="math inline">(0,0),(1,-2),(-3,-5),(\frac{3}{5},\sqrt{2}),(\pi,-10)\in\mathbb{R}^2</span></p>
+<p>ב. <span class="math inline">1,(i,0),(0,1,2)\notin\mathbb{R}^2</span></p>
 </div>
 <div class="definition">
 <p>וקטור <span class="math inline">\vec{v}=(x,y)</span> במישור הוא זוג סדור של מספרים ממשיים, כלומר איבר של <span class="math inline">\mathbb{R}^2</span>.</p>
@@ -304,29 +296,33 @@ window.Quarto = {
 <p>חיבור: <span class="math inline">(a_1,a_2)+(b_1,b_2)=(a_1+b_1,a_2+b_2)</span></p>
 <p>כפל בסקלר: <span class="math inline">c\cdot(a_1,a_2)=(ca_1,ca_2)</span></p>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(1,2)+(10,20)=(1+10,2+20)=(11,22)</span></p></li>
-<li><p><span class="math inline">2\cdot(5,3)=(10,6)</span></p></li>
-<li><p><span class="math inline">-5\cdot(2,5)=(-10,-25)</span></p></li>
-<li><p><span class="math inline">(9,2)-(11,8)=(9-11,2-8)=(-2,-6)</span></p></li>
-</ol>
+<p>&nbsp; א. <span class="math inline">(1,2)+(10,20)=(1+10,2+20)=(11,22)</span></p>
+<p>ב. <span class="math inline">2\cdot(5,3)=(10,6)</span></p>
+<p>ג. <span class="math inline">-5\cdot(2,5)=(-10,-25)</span></p>
+<p>ד. <span class="math inline">(9,2)-(11,8)=(9-11,2-8)=(-2,-6)</span></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר <span class="math inline">-1</span>. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר: <span class="math display">(a_1,a_2)-(b_1,b_2)=(a_1,a_2)+(-1)\cdot(b_1,b_2)=(a_1-b_1,a_2-b_2)</span></p>
 </div>
 <div class="exercise">
 <p>בצעו את הפעולות הבאות:</p>
-<ol type="1">
-<li><p><span class="math inline">(-3,5)+(20,36)</span></p></li>
-<li><p><span class="math inline">-7\cdot(-2,9)</span></p></li>
-<li><p><span class="math inline">(11,27)-(13,42)</span></p></li>
-<li><p><span class="math inline">3(8,2)+5(3,-6)</span><br>
-</p></li>
-</ol>
+<p>א. <span class="math inline">(-3,5)+(20,36)</span></p>
+<p>ב. <span class="math inline">-7\cdot(-2,9)</span></p>
+<p>ג. <span class="math inline">(11,27)-(13,42)</span></p>
+<p>ד. <span class="math inline">3(8,2)+5(3,-6)</span></p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><span class="math inline">(-3,5)+(20,36)=(17,41)</span></p></li>
 <li><p><span class="math inline">-7\cdot(-2,9)=(14,-63)</span></p></li>
@@ -334,20 +330,30 @@ window.Quarto = {
 <li><p><span class="math inline">3(8,2)+5(3,-6)=(24+15,6-30)=(39,-24)</span></p></li>
 </ol>
 </div>
+</div>
+</div>
 <p>אפשר להבין חיבור וקטורי באופן גיאומטרי ע"י כלל המקבילית. כלל זה קובע שאם נצייר שני וקטורים <span class="math inline">\vec{v},\vec{w}</span> שיוצאים מהראשית ונשלים אותם למקבילית ע"י הוספת שני וקטורים מקבילים ושווי גודל כצלעות נגדיות, אז האלכסון שיוצא מהראשית יתאר את <span class="math inline">\vec{v}+\vec{w}</span>.</p>
-<figure id="fig:Parallelogram1" class="figure">
-<img src="images/chapter02/Parallelogram1.png" style="width:40.0%" class="figure-img">
-<figcaption>
-החיבור הוקטורי מתאים לאלכסון המוצג
+<div id="fig-Parallelogram1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Parallelogram1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/Parallelogram1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Parallelogram1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.1: החיבור הוקטורי מתאים לאלכסון המוצג
 </figcaption>
 </figure>
+</div>
 <p>ההפרש <span class="math inline">\vec{v}-\vec{w}</span> מיוצג ע"י האלכסון השני.</p>
-<figure id="fig:Parallelogram2" class="figure">
-<img src="images/chapter02/Parallelogram2.png" style="width:40.0%" class="figure-img">
-<figcaption>
-ההפרש הוקטורי מופיע בסגול לצד החיבור הוקטורי באדום
+<div id="fig-Parallelogram2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Parallelogram2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/Parallelogram2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Parallelogram2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.2: ההפרש הוקטורי מופיע בסגול לצד החיבור הוקטורי באדום
 </figcaption>
 </figure>
+</div>
 <p>נוכל להתנסות בעצמינו</p>
 <div id="fig:Parallelogram" class="figure">
 <embed src="simulations/Parallelogram.html?embed=1" width="800" height="800">
@@ -362,8 +368,21 @@ window.Quarto = {
 <div class="exercise">
 <p>הראו שהוקטור שמתחיל ב-<span class="math inline">(1,3)</span> ומסתיים ב-<span class="math inline">(5,0)</span>, שווה לוקטור שמתחיל ב- <span class="math inline">(5,-1)</span> ומסתיים ב- <span class="math inline">(9,-4)</span>.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>הוקטור הראשון שווה ל- <span class="math display">,(5,0)-(1,3)=(4,-3)</span> ואילו הוקטור השני שווה ל- <span class="math display">.(9,-4)-(5,-1)=(4,-3)</span> לכן יש שוויון ביניהם.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הוקטור הראשון שווה ל- <span class="math display">,(5,0)-(1,3)=(4,-3)</span> ואילו הוקטור השני שווה ל- <span class="math display">.(9,-4)-(5,-1)=(4,-3)</span> לכן יש שוויון ביניהם.</p>
+</div>
+</div>
 </div>
 <p>כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור אם <span class="math inline">c&gt;1</span>, או כיווצו אם <span class="math inline">0&lt;c&lt;1</span>, בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון ובנוסף מתיחה/כיווץ בהתאם לערך של <span class="math inline">|c|</span>.</p>
 <div id="fig:Parallelogram" class="figure">
@@ -378,10 +397,14 @@ window.Quarto = {
 <p>כאמור, לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז גודלו/אורכו הוא המרחק מנקודת הסיום לראשית. הכיוון נקבע לפי הזווית <span class="math inline">\theta</span> עם הכיוון החיובי של ציר <span class="math inline">x</span> בדיוק כמו בקוארדינטות פולריות. עבור וקטור <span class="math inline">(a,b)</span> נקבל את הנוסחאות הבאות:</p>
 <p>גודל: <span class="math inline">\|(a,b)\|=\sqrt{a^2+b^2}</span></p>
 <p>זווית: <span class="math inline">\tan\theta=\frac{b}{a}</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/chapter02/Pythagoras.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>משולש ישר-זווית שבו היתר מתאים לוקטור הנתון</figcaption>
+<div id="fig-Pythagoras" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Pythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/Pythagoras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.3: משולש ישר-זווית שבו היתר מתאים לוקטור הנתון
+</figcaption>
 </figure>
 </div>
 <p>החישוב של גודל הוקטור נובע ממשפט פיתגורס. בציור <span class="math inline">c</span> הוא הסימון של <span class="math inline">\|(a,b)\|</span> ולפי משפט פיתגורס מתקיים <span class="math display">a^2+b^2=c^2\implies \|(a,b)\|=c=\sqrt{a^2+b^2}</span> כבר דיברנו על החישוב המדויק של <span class="math inline">\theta</span> בסוף פרק <span class="math inline">0</span>. לא ממש נצטרך לחשב זוויות בקורס, אבל זה טוב לידע כללי.</p>
@@ -389,12 +412,9 @@ window.Quarto = {
 <p><span class="proof-title"><em>Remark</em>. </span>כל וקטור נקבע ביחידות ע"י הגודל והכיוון שלו. קוארדינטות פולריות מתארות גודל וכיוון, אבל בשביל פעולות בין וקטורים יותר נוח להשתמש בקוארדינטות קרטזיות. כך נעשה בקורס.</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">\|(2,1)\|=\sqrt{2^2+1^2}=\sqrt{5}</span></p></li>
-<li><p><span class="math inline">\|(3,-4)\|=\sqrt{3^2+(-4)^2}=5</span></p></li>
-<li><p><span class="math inline">\|(-3,-7)\|=\sqrt{(-3)^2+(-7)^2}=\sqrt{58}</span></p></li>
-</ol>
+<p>א. <span class="math inline">\|(2,1)\|=\sqrt{2^2+1^2}=\sqrt{5}</span></p>
+<p>ב. <span class="math inline">\|(3,-4)\|=\sqrt{3^2+(-4)^2}=5</span></p>
+<p>ג. <span class="math inline">\|(-3,-7)\|=\sqrt{(-3)^2+(-7)^2}=\sqrt{58}</span></p>
 </div>
 <p>אם כפל בסקלר מתאים למתיחה/כיווץ, זה אמור להתבטא בגודל. מכאן הטענה הבאה:</p>
 <div id="prop-norm-scalar" class="proposition">
@@ -428,10 +448,23 @@ window.Quarto = {
 <div class="exercise">
 <p>איזו נקודה מתקבלת עבור <span class="math inline">t=0</span>? <span class="math inline">t=1</span>? <span class="math inline">t=2</span>?</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>עבור <span class="math inline">t=0</span> מתקבלת נקודת ההתחלה <span class="math inline">(x_0,y_0)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>עבור <span class="math inline">t=0</span> מתקבלת נקודת ההתחלה <span class="math inline">(x_0,y_0)</span>.</p>
 <p>עבור <span class="math inline">t=1</span> מתקבלת נקודת הסיום <span class="math inline">(x_1,y_1)</span>.</p>
 <p>לבסוף, עבור <span class="math inline">t=2</span> מתקבלת הנקודה <span class="math display">.(x_0+2x_1-2x_0,y_0+2y_1-2y_0)=(2x_1-x_0,2y_1-y_0)</span></p>
+</div>
+</div>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>ההצגה לעיל נקראת הצגה פרמטרית של ישר. לעומת זאת, הצגה מהצורה <span class="math display">L=\Set{(x,y)\in\mathbb{R}^2|ax+by=c}</span> נקראת הצגה אלגברית של ישר. הצגה אלגברית אינה יחידה, כי למשל המשוואה <span class="math inline">y=2x</span> שקולה למשוואה <span class="math inline">2y=4x</span>. באופן דומה, גם הצגה פרמטרית אינה יחידה משתי סיבות: אפשר לבחור את נקודת ההתחלה <span class="math inline">(x_0,y_0)</span> באופן שרירותי כל עוד היא על הישר, וגם אפשר לבחור את <span class="math inline">(x_1,y_1)</span> כרצוננו ובהתאם את וקטור הכיוון <span class="math inline">\vec{v}</span> (אפשר לקחת כל כפולה שלו בסקלר שאינו <span class="math inline">0</span>). כך מקבלים אינסוף הצגות פרמטריות שונות לאותו הישר. האות של הפרמטר היא סימון שרירותי ולכן ניתן להשתמש באותה האות להצגות שונות, אך לפעמים נרצה להשתמש באותיות שונות כדי למנוע בלבול. למשל: <span class="math display">\Set{t(1,2)|t\in\mathbb{R}}=\Set{(1,2)+s(2,4)|s\in\mathbb{R}}=\Set{(2,4)+r(-3,-6)|r\in\mathbb{R}}</span></p>
@@ -439,29 +472,39 @@ window.Quarto = {
 <div class="exercise">
 <p>עבור הישר שמשוואתו <span class="math inline">y=3x+1</span>, מצאו שלוש הצגות פרמטריות שונות. נסו לשנות גם את נקודת ההתחלה וגם את וקטור הכיוון.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>נבחר שתי נקודות על הישר. תחילה נציב <span class="math inline">x=0</span> ונקבל את הנקודה <span class="math inline">(0,1)</span>. בשביל הנקודה השנייה נציב <span class="math inline">x=1</span> ונקבל את הנקודה <span class="math inline">(1,4)</span>. וקטור הכיוון המתאים לשתי הנקודות האלו הוא <span class="math inline">(1,4)-(0,1)=(1,3)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נבחר שתי נקודות על הישר. תחילה נציב <span class="math inline">x=0</span> ונקבל את הנקודה <span class="math inline">(0,1)</span>. בשביל הנקודה השנייה נציב <span class="math inline">x=1</span> ונקבל את הנקודה <span class="math inline">(1,4)</span>. וקטור הכיוון המתאים לשתי הנקודות האלו הוא <span class="math inline">(1,4)-(0,1)=(1,3)</span>.</p>
 <p>אז ההצגה הפרמטרית הראשונה שמתאימה לשתי הנקודות האלו היא <span class="math display">.L=\Set{(0,1)+t(1,3)|t\in\mathbb{R}}</span></p>
 <p>בשביל ההצגה השנייה נחליף את נקודת ההתחלה בנקודת הסיום (אפשר להפוך את סימן וקטור הכיוון, אך אין צורך):</p>
 <p><span class="math display">.L=\Set{(1,4)+s(1,3)|s\in\mathbb{R}}</span></p>
 <p>בשביל ההצגה השלישית נכפיל את וקטור הכיוון ב- <span class="math inline">2</span> בלי לשנות את נקודת ההתחלה המקורית:</p>
 <p><span class="math display">.L=\Set{(0,1)+r(2,6)|r\in\mathbb{R}}</span></p>
 </div>
+</div>
+</div>
 </section>
 <section id="מכפלה-סקלרית" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="מכפלה-סקלרית"><span class="header-section-number">4.1.4</span> מכפלה סקלרית</h3>
 <p>מכפלה סקלרית היא פעולה נוספת בין וקטורים, אבל התוצאה שלה היא סקלר ומכאן שמה.</p>
-<div id="def-scalar-product-plane" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 4.1</strong></span> עבור וקטורים <span class="math inline">(a_1,a_2),(b_1,b_2)\in\mathbb{R}^2</span> נגדיר<br>
+<div class="definition">
+<p>עבור וקטורים <span class="math inline">(a_1,a_2),(b_1,b_2)\in\mathbb{R}^2</span> נגדיר<br>
 <span class="math inline">(a_1,a_2)\cdot(b_1,b_2)=a_1b_1+a_2b_2</span>.</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(1,3)\cdot(2,5)=1\cdot2+3\cdot5=17</span></p></li>
-<li><p><span class="math inline">(3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8</span></p></li>
-<li><p><span class="math inline">(1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0</span></p></li>
-</ol>
+<p>א. <span class="math inline">(1,3)\cdot(2,5)=1\cdot2+3\cdot5=17</span></p>
+<p>ב. <span class="math inline">(3,-2)\cdot(6,5)=3\cdot6+(-2)\cdot5=8</span></p>
+<p>ג. <span class="math inline">(1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0</span></p>
 </div>
 <p>למכפלה סקלרית יש קשר לגודל. יש מספר תכונות שכדאי לזכור:</p>
 <div id="prop-dot-product-properties" class="proposition">
@@ -500,12 +543,16 @@ window.Quarto = {
 <p>ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.</p>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נסתמך על משפט הקוסינוסים מטריגונומטריה. נסתכל על המשולש שנוצר ע"י שני הוקטורים:</p>
-<figure id="fig:Cosine Law" class="figure">
-<img src="images/chapter02/Cosine Law.png" style="width:40.0%" class="figure-img">
-<figcaption>
-המשולש המתאים לשני הוקטורים יחד עם וקטור ההפרש
+<div id="fig-Cosine-Law" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Cosine-Law-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/Cosine Law.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cosine-Law-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.4: המשולש המתאים לשני הוקטורים יחד עם וקטור ההפרש
 </figcaption>
 </figure>
+</div>
 <p><span class="math display">\|\vec{v}\|^2+\|\vec{w}\|^2=\|\vec{v}-\vec{w}\|^2+2\|\vec{v}\|\cdot\|\vec{w}\|\cos\alpha</span></p>
 <p>נשתמש בתכונות של מכפלה סקלרית כדי למצוא את הקשר בין <span class="math inline">\|v-w\|^2</span> ל-<span class="math inline">v\cdot w</span>: <span class="math display">\|\vec{v}-\vec{w}\|^2=(\vec{v}-\vec{w})\cdot(\vec{v}-\vec{w})=\vec{v}\cdot\vec{v}-\vec{v}\cdot\vec{w}-\vec{w}\cdot\vec{v}+\vec{w}\cdot\vec{w}=\|\vec{v}\|^2-2\vec{v}\cdot\vec{w}+\|\vec{w}\|^2</span></p>
 <p>נציב את המשוואה השנייה בראשונה ונקבל <span class="math display">.\|\vec{v}\|^2+\|\vec{w}\|^2=\|\vec{v}\|^2-2\vec{v}\cdot\vec{w}+\|\vec{w}\|^2+2\|\vec{v}\|\cdot\|\vec{w}\|\cos\alpha</span></p>
@@ -513,16 +560,14 @@ window.Quarto = {
 <p>כנדרש.&nbsp;◻</p>
 </div>
 <div class="corollary">
-<p><strong>מסקנה 1.22</strong>. <em>וקטורים <span class="math inline">\vec{v},\vec{w}</span> השונים מ-<span class="math inline">(0,0)</span> הם מאונכים/ניצבים אם ורק אם <span class="math inline">\vec{v}\cdot\vec{w}=0</span>. במקרה זה נסמן <span class="math inline">\vec{v}\perp\vec{w}</span>.</em></p>
+<p><em>וקטורים <span class="math inline">\vec{v},\vec{w}</span> השונים מ-<span class="math inline">(0,0)</span> הם מאונכים/ניצבים אם ורק אם <span class="math inline">\vec{v}\cdot\vec{w}=0</span>. במקרה זה נסמן <span class="math inline">\vec{v}\perp\vec{w}</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>תהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. אז מתקיים <span class="math display">.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}|}=0\iff\alpha=\frac{\pi}{2}</span>&nbsp;◻</p>
 </div>
 <div class="example">
-<ol type="1">
-<li><p><span class="math inline">(1,2)\perp(-2,1)</span> כי <span class="math inline">(1,2)\cdot(-2,1)=0</span>.</p></li>
-<li><p>באופן כללי, לכל <span class="math inline">(a,b)\in\mathbb{R}^2</span> מתקיים <span class="math inline">(a,b)\perp(-b,a)</span> כי <span class="math inline">(a,b)\cdot(-b,a)=0</span>.</p></li>
-</ol>
+<p>א. <span class="math inline">(1,2)\perp(-2,1)</span> כי <span class="math inline">(1,2)\cdot(-2,1)=0</span>.</p>
+<p>ב. באופן כללי, לכל <span class="math inline">(a,b)\in\mathbb{R}^2</span> מתקיים <span class="math inline">(a,b)\perp(-b,a)</span> כי <span class="math inline">(a,b)\cdot(-b,a)=0</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>הוקטור <span class="math inline">(0,0)</span> הוא מקרה חריג כי הוא חסר כיוון. אבל מאחר שמתקיים <span class="math inline">\vec{v}\cdot(0,0)=0</span> לכל וקטור <span class="math inline">\vec{v}\in\mathbb{R}^2</span>, עדיין נגדיר <span class="math inline">\vec{v}\perp(0,0)</span>. זהו הוקטור היחיד שמאונך לכל וקטור במישור, כי כל וקטור אחר לא מאונך לעצמו.</p>
@@ -557,9 +602,22 @@ window.Quarto = {
 <div class="exercise">
 <p>מצאו הצגה אלגברית של <span class="math inline">L=\Set{(1,-2)+t(3,1)|t\in\mathbb{R}}</span>.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span><strong>פתרון 1.5</strong>. כאן יש וקטור נורמל <span class="math inline">(-1,3)</span>. לכל <span class="math inline">(x,y)\in L</span> הוקטור <span class="math display">(x-1,y-(-2))=(x-1,y+2)</span> מאונך ל- <span class="math inline">(-1,3)</span>, ולכן מתקיים <span class="math display">.(x-1,y+2)\cdot(-1,3)=0\iff -x+1+3y+6=0\iff x-3y=7</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>פתרון 1.5</strong>. כאן יש וקטור נורמל <span class="math inline">(-1,3)</span>. לכל <span class="math inline">(x,y)\in L</span> הוקטור <span class="math display">(x-1,y-(-2))=(x-1,y+2)</span> מאונך ל- <span class="math inline">(-1,3)</span>, ולכן מתקיים <span class="math display">.(x-1,y+2)\cdot(-1,3)=0\iff -x+1+3y+6=0\iff x-3y=7</span></p>
 <p>ההצגה האלגברית המתאימה היא <span class="math inline">L=\Set{(x,y)\in\mathbb{R}^2|x-3y=7}</span>.</p>
+</div>
+</div>
 </div>
 </section>
 <section id="מעבר-מהצגה-אלגברית-של-ישר-להצגה-פרמטרית" class="level3" data-number="4.1.6">
@@ -577,10 +635,23 @@ window.Quarto = {
 <div class="exercise">
 <p>מצאו הצגה פרמטרית של <span class="math inline">L=\Set{(x,y)\in\mathbb{R}^2|3x+y=5}</span>. האם וקטור הכיוון מאונך ל- <span class="math inline">(3,1)</span>?</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>נוח להציב <span class="math inline">x=0</span> ולקבל <span class="math inline">y=5</span>. אז נבחר את <span class="math inline">(0,5)</span> להיות נקודת ההתחלה. כעת נציב (בחירה שרירותית אך נוחה) <span class="math inline">x=1</span> ונקבל <span class="math inline">y=2</span>. אז נקודת הסיום של וקטור הכיוון היא <span class="math inline">(1,2)</span>, ולכן הוקטור עצמו נתון ע"י <span class="math inline">\vec{v}=(1,2)-(0,5)=(1,-3)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נוח להציב <span class="math inline">x=0</span> ולקבל <span class="math inline">y=5</span>. אז נבחר את <span class="math inline">(0,5)</span> להיות נקודת ההתחלה. כעת נציב (בחירה שרירותית אך נוחה) <span class="math inline">x=1</span> ונקבל <span class="math inline">y=2</span>. אז נקודת הסיום של וקטור הכיוון היא <span class="math inline">(1,2)</span>, ולכן הוקטור עצמו נתון ע"י <span class="math inline">\vec{v}=(1,2)-(0,5)=(1,-3)</span>.</p>
 <p>אז ההצגה הפרמטרית המתאימה היא <span class="math display">.L=\Set{(0,5)+t(1,-3)|t\in\mathbb{R}}</span></p>
 <p>אכן מתקיים <span class="math inline">,(1,-3)\cdot(3,1)=3-3=0</span> אז וקטור הכיוון מאונך לוקטור הנורמל כצפוי.</p>
+</div>
+</div>
 </div>
 </section>
 <section id="מצבים-הדדיים-בין-ישרים-במישור" class="level3" data-number="4.1.7">
@@ -594,27 +665,58 @@ window.Quarto = {
 </div>
 <p>נתחיל בדוגמאות לפני שנעבור לאפיון.</p>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">L_1=\Set{(1,1)+t(1,2)|t\in\mathbb{R}}</span> ו-<span class="math inline">L_2=\Set{(0,-1)+t(2,4)|t\in\mathbb{R}}</span> הם ישרים מתלכדים, כלומר <span class="math inline">L_1=L_2</span>. ניתן לראות זאת כי <span class="math inline">(2,4)=2\cdot(1,2)</span> ולכן שני וקטורי הכיוון מקבילים. זה אומר שהישרים או מקבילים או מתלכדים (בהכרח לא נחתכים). בנוסף, <span class="math inline">(0,-1)\in L_1</span> כי <span class="math inline">(0,-1)=(1,1)-1\cdot(1,2)</span>. אז יש לפחות נקודת חיתוך אחת, ולכן שני הישרים אינם מקבילים אלא מתלכדים.</p></li>
-<li><p><span class="math inline">L_1=\Set{(1,1)+t(1,2)|t\in\mathbb{R}}</span> ו-<span class="math inline">L_3=\Set{(0,1)+t(-1,-2)|t\in\mathbb{R}}</span> הם ישרים מקבילים. שני וקטורי הכיוון הם מנוגדים, אבל כל ישר מכיל נקודות שמתאימות גם לוקטור הכיוון <span class="math inline">(1,2)</span> וגם לכיוון הנגדי. אז הישרים או מקבילים או מתלכדים, וניתן להראות שאין נקודת חיתוך. לצורך כך נכתוב <span class="math inline">L_3=\Set{(0,1)+s(-1,-2)|s\in\mathbb{R}}</span> עם פרמטר <span class="math inline">s</span> כדי להדגיש שזה פרמטר שונה. נחפש נקודת חיתוך <span class="math inline">(x,y)\in L_1\cap L_3</span>. אפשר להציג את הקוארדינטות שלה בשתי דרכים שונות לפי ההצגות הפרמטריות של הישרים. כך נקבל: <span class="math display">\begin{cases}
-     \begin{aligned}
-         x&amp;=1+t=0-s\\
-         y&amp;=1+2t=1-2s
-         \end{aligned}
-     \end{cases}</span></p>
-<p>כעת אפשר להתעלם מ-<span class="math inline">x,y</span> ולפתור מערכת של שתי משוואות בשני נעלמים. מהמשוואה הראשונה נובע כי <span class="math inline">s=-1-t</span> וכאשר מציבים את זה במשוואה השנייה נקבל <span class="math display">.1+2t=1-2(-1-t)\implies 1=3</span></p>
-<p>זה לא ייתכן (פסוק שקר) ולכן קיבלנו סתירה. מה המשמעות של סתירה? עצם ההנחה שיש נקודת חיתוך התבררה כשגויה, ולכן שני הישרים מקבילים.</p></li>
-<li><p><span class="math inline">L_1=\Set{(1,1)+t(1,2)|t\in\mathbb{R}}</span> ו-<span class="math inline">L_4=\Set{(3,2)+t(1,-1)|t\in\mathbb{R}}</span> הם ישרים נחתכים. שוב נשנה את הפרמטר ונכתוב <span class="math inline">L_4=\Set{(3,2)+s(1,-1)|s\in\mathbb{R}}</span>. נחפש נקודת חיתוך <span class="math inline">(x,y)\in L_1\cap L_4</span> ונקבל <span class="math display">.\begin{cases}
-     \begin{aligned}
-         1+t&amp;=3+s\\
-         1+2t&amp;=2-s
-         \end{aligned}
-     \end{cases}</span></p>
-<p>נחבר את שתי המשוואות ונקבל <span class="math display">.2+3t=5\implies3t=3\implies t=1</span></p>
-<p>נציב <span class="math inline">t=1</span> במשוואה הראשונה (אפשר גם בשנייה) ונקבל <span class="math display">.2=3+s\implies s=-1</span></p>
-<p>זה מראה כי <span class="math inline">(2,3)\in L_1\cap L_4</span> לפי הצבת <span class="math inline">t=1</span> בהצגה הפרמטרית של <span class="math inline">L_1</span>, או לפי הצבת <span class="math inline">s=-1</span> בהצגה הפרמטרית של <span class="math inline">L_4</span>. יותר מכך, זו נקודת החיתוך היחידה לפי החישוב ולכן שני הישרים אכן נחתכים (לא מקבילים).</p></li>
-</ol>
+<p><span class="math inline">L_1=\Set{(1,1)+t(1,2)|t\in\mathbb{R}}</span> ו-<span class="math inline">L_2=\Set{(0,-1)+t(2,4)|t\in\mathbb{R}}</span> הם ישרים מתלכדים, כלומר $$ L_1=L_2$ ניתן לראות זאת כי <span class="math inline">(2,4)=2\cdot(1,2)</span> ולכן שני וקטורי הכיוון מקבילים. זה אומר שהישרים או מקבילים או מתלכדים (בהכרח לא נחתכים). בנוסף, <span class="math inline">(0,-1)\in L_1</span> כי <span class="math inline">(0,-1)=(1,1)-1\cdot(1,2)</span>. אז יש לפחות נקודת חיתוך אחת, ולכן שני הישרים אינם מקבילים אלא מתלכדים.</p>
+</div>
+<div class="example">
+<p>נניח כי<br>
+<span class="math inline">L_1=\Set{(1,1)+t(1,2)\mid t\in\mathbb{R}}</span><br>
+ו־<span class="math inline">L_3=\Set{(0,1)+t(-1,-2)\mid t\in\mathbb{R}}</span>.</p>
+<p>שני הישרים מקבילים, משום שוקטורי הכיוון שלהם — <span class="math inline">(1,2)</span> ו־<span class="math inline">(-1,-2)</span> — הם מנוגדים.<br>
+עם זאת, כל ישר כזה כולל נקודות שמתאימות גם לכיוון <span class="math inline">(1,2)</span> וגם לכיוון ההפוך, ולכן הם יכולים להיות מקבילים או מתלכדים.<br>
+נוכיח שהם <strong>אינם מתלכדים</strong> בכך שנראה שאין להם נקודת חיתוך.</p>
+<p>נכתוב את הישר השני באמצעות פרמטר אחר כדי להבדיל בין המשתנים:<br>
+<span class="math inline">L_3=\Set{(0,1)+s(-1,-2)\mid s\in\mathbb{R}}</span>.</p>
+<p>כעת נחפש נקודה <span class="math inline">(x,y)</span> השייכת לשני הישרים גם יחד, כלומר <span class="math inline">(x,y)\in L_1\cap L_3</span>.<br>
+אפשר לבטא את הקואורדינטות שלה בשתי דרכים שונות לפי שתי ההצגות הפרמטריות:</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+x &amp;= 1 + t = 0 - s \\
+y &amp;= 1 + 2t = 1 - 2s
+\end{aligned}
+\end{cases}
+</span></p>
+<p>כעת אפשר להתעלם מ-<span class="math inline">x,y</span> ולפתור מערכת של שתי משוואות בשני נעלמים. מהמשוואה הראשונה נובע כי <span class="math inline">s=-1-t</span> וכאשר מציבים את זה במשוואה השנייה נקבל <span class="math display">
+1+2t = 1 - 2(-1 - t) \implies 1 = 3
+</span></p>
+<p>זה לא ייתכן (פסוק שקר) ולכן קיבלנו סתירה. מה המשמעות של סתירה? עצם ההנחה שיש נקודת חיתוך התבררה כשגויה, ולכן שני הישרים מקבילים.</p>
+</div>
+<div class="example">
+<p>נניח כי<br>
+<span class="math inline">L_1=\Set{(1,1)+t(1,2)\mid t\in\mathbb{R}}</span><br>
+ו־<span class="math inline">L_4=\Set{(3,2)+t(1,-1)\mid t\in\mathbb{R}}</span> הם ישרים נחתכים.</p>
+<p>כדי להבדיל בין הפרמטרים נכתוב את הישר השני כך:<br>
+<span class="math inline">L_4=\Set{(3,2)+s(1,-1)\mid s\in\mathbb{R}}</span>.</p>
+<p>נחפש נקודת חיתוך <span class="math inline">(x,y)\in L_1\cap L_4</span>, ונקבל:</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+1 + t &amp;= 3 + s \\
+1 + 2t &amp;= 2 - s
+\end{aligned}
+\end{cases}
+</span></p>
+<p>נחבר את שתי המשוואות ונקבל:</p>
+<p><span class="math display">
+2 + 3t = 5 \implies 3t = 3 \implies t = 1
+</span></p>
+<p>נציב <span class="math inline">t = 1</span> במשוואה הראשונה (אפשר גם בשנייה) ונקבל:</p>
+<p><span class="math display">
+2 = 3 + s \implies s = -1
+</span></p>
+<p>מכאן ש־<span class="math inline">(2,3)\in L_1\cap L_4</span>:<br>
+בהצגה הפרמטרית של <span class="math inline">L_1</span> מתקבל <span class="math inline">t=1</span>, ובהצגה הפרמטרית של <span class="math inline">L_4</span> מתקבל <span class="math inline">s=-1</span>.<br>
+לפיכך, זו נקודת החיתוך היחידה, ולכן שני הישרים אכן נחתכים ואינם מקבילים.</p>
 </div>
 <div class="definition">
 <p>שני וקטורים <span class="math inline">\vec{v},\vec{w}\in\mathbb{R}^2</span> נקראים קו-לינאריים אם קיים <span class="math inline">c\in\mathbb{R}</span> כך ש-<span class="math inline">\vec{v}=c\vec{w}</span> או <span class="math inline">\vec{w}=c\vec{v}</span>.</p>
@@ -624,13 +726,12 @@ window.Quarto = {
 <p>אבל אם למשל <span class="math inline">\vec{v}=(0,0)</span>, אז לכל <span class="math inline">\vec{w}\in\mathbb{R}^2</span> מתקיים <span class="math inline">\vec{v}=0\cdot\vec{w}</span> ולכן שני הוקטורים נחשבים קו-לינאריים אך לא מקבילים (כי וקטור האפס חסר כיוון).</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(2,-4),(-3,6)</span> הם קו-לינאריים כי <span class="math inline">(-3,6)=-\frac{3}{2}(2,-4)</span>.</p></li>
-<li><p><span class="math inline">(1,5),(0,0)</span> הם קו-לינאריים כי <span class="math inline">(0,0)=0\cdot(1,5)</span>.</p></li>
-<li><p><span class="math inline">(1,2),(3,1)</span> אינם קו-לינאריים. כדי לראות זאת, נניח בשלילה שהם קו-לינאריים וננסה לקבל סתירה. אז לפי ההגדרה קיים <span class="math inline">c\in\mathbb{R}</span> כך ש-<span class="math inline">(1,2)=c(3,1)</span>, או להיפך אבל שני התנאים שקולים כי אף וקטור אינו <span class="math inline">(0,0)</span>. אז מצד אחד קיבלנו <span class="math display">.1=3c\implies c=\frac{1}{3}</span></p>
-<p>ומצד שני <span class="math inline">c=2</span> לפי המשוואה השנייה. זו סתירה ולכן שני הוקטורים אינם קו-לינאריים.</p></li>
-</ol>
+<p>א. <span class="math inline">(2,-4),(-3,6)</span> הם קו-לינאריים כי <span class="math inline">(-3,6)=-\frac{3}{2}(2,-4)</span>.</p>
+<p>ב. <span class="math inline">(1,5),(0,0)</span> הם קו-לינאריים כי <span class="math inline">(0,0)=0\cdot(1,5)</span>.</p>
+</div>
+<div class="example">
+<p><span class="math inline">(1,2),(3,1)</span> אינם קו-לינאריים. כדי לראות זאת, נניח בשלילה שהם קו-לינאריים וננסה לקבל סתירה. אז לפי ההגדרה קיים <span class="math inline">c\in\mathbb{R}</span> כך ש-<span class="math inline">(1,2)=c(3,1)</span>, או להיפך אבל שני התנאים שקולים כי אף וקטור אינו <span class="math inline">(0,0)</span>. אז מצד אחד קיבלנו <span class="math display">.1=3c\implies c=\frac{1}{3}</span></p>
+<p>ומצד שני <span class="math inline">c=2</span> לפי המשוואה השנייה. זו סתירה ולכן שני הוקטורים אינם קו-לינאריים.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>הוכחה בדרך השלילה היא שיטת הוכחה כללית במתמטיקה. כשמה כן היא: מניחים ההיפך ממה שרוצים להוכיח, ואם מקבלים סתירה זה אומר שהנחה זו שגויה ולכן ההיפך הוא הנכון. נוח להשתמש בשיטה זו כדי להראות שהגדרה כלשהי לא מתקיימת, כמו בדוגמה האחרונה.</p>
@@ -680,39 +781,71 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|2x+5y=7}</span> ו-<span class="math inline">L_2=\Set{(x,y)\in\mathbb{R}^2|5x-4y=1}</span> הם ישרים נחתכים. רואים זאת כי וקטורי הנורמל, שהם <span class="math inline">(2,5)</span> ו-<span class="math inline">(5,-4)</span>, אינם קו-לינאריים. אם הם היו קו-לינאריים, אז היה קיים <span class="math inline">c\neq0</span> כך ש-<span class="math inline">(5,-4)=c\cdot(2,5)</span>. זו סתירה כי מצד אחד נובע כי <span class="math inline">c=\frac{5}{2}</span> ומצד שני נובע כי <span class="math inline">c=-\frac{4}{5}</span>. אז שני הישרים אכן נחתכים, ואפשר לחשב את נקודת החיתוך ע"י פתרון מערכת של שתי משוואות בשני נעלמים: <span class="math display">\begin{cases}
-     \begin{aligned}
-         2x+5y&amp;=7\\
-         5x-4y&amp;=1
-         \end{aligned}
-     \end{cases}</span></p>
-<p>אפשר להשתמש בשיטת ההצבה, או לחילופין להכפיל את המשוואה השנייה ב-<span class="math inline">\frac{2}{5}</span> ולהחסיר אותה מהמשוואה הראשונה (כדי להיפטר מ-<span class="math inline">x</span>): <span class="math display">0\cdot x+(5+\frac{8}{5})y=7-\frac{2}{5}\implies\frac{33}{5}y=\frac{33}{5}\implies y=1</span></p>
-<p>נציב <span class="math inline">y=1</span> במשוואה השנייה ונקבל <span class="math display">.2x+5=7\implies2x=2\implies x=1</span></p>
-<p>אז נקודת החיתוך היחידה היא <span class="math inline">(1,1)</span>, כלומר <span class="math inline">L_1\cap L_2=\Set{(1,1)}</span>.</p></li>
-<li><p><span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|2x+5y=7}</span> ו-<span class="math inline">L_3=\Set{(x,y)\in\mathbb{R}^2|4x+10y=14}</span> הם ישרים מתלכדים. וקטורי הנורמל הם קו-לינאריים כי <span class="math inline">(4,10)=2\cdot(2,5)</span>, ולכן הישרים בהכרח לא נחתכים. נסתכל על מערכת המשוואות: <span class="math display">\begin{cases}
-     \begin{aligned}
-         2x+5y&amp;=7\\
-         4x+10y&amp;=14
-         \end{aligned}
-     \end{cases}</span></p>
-<p>שתי המשוואות שקולות כי אפשר לקבל את המשוואה השנייה מהראשונה ע"י כפל ב-<span class="math inline">2</span>.</p></li>
-<li><p><span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|2x+5y=7}</span> ו-<span class="math inline">L_3=\Set{(x,y)\in\mathbb{R}^2|6x+15y=20}</span> הם ישרים מקבילים. וקטורי הנורמל הם קו-לינאריים כי <span class="math inline">(6,15)=3\cdot(2,5)</span>, ולכן שוב הישרים לא נחתכים. אבל הפעם שתי המשוואות לא שקולות: <span class="math display">\begin{cases}
-     \begin{aligned}
-         2x+5y&amp;=7\\
-         6x+15y&amp;=20
-         \end{aligned}
-     \end{cases}</span></p>
-<p>אם נכפיל את המשוואה הראשונה ב-<span class="math inline">3</span> ונחסיר ממנה את המשוואה השנייה, נקבל את המשוואה השגויה <span class="math inline">0=21-20</span> וזו סתירה.</p></li>
-</ol>
+<p>נניח כי<br>
+<span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2\mid 2x+5y=7}</span><br>
+ו־<span class="math inline">L_2=\Set{(x,y)\in\mathbb{R}^2\mid 5x-4y=1}</span> הם ישרים נחתכים.</p>
+<p>רואים זאת משום שוקטורי הנורמל שלהם, <span class="math inline">(2,5)</span> ו־<span class="math inline">(5,-4)</span>, אינם קו־לינאריים.<br>
+אם הם היו קו־לינאריים, היה קיים <span class="math inline">c\neq0</span> כך ש־<span class="math inline">(5,-4)=c\cdot(2,5)</span>.<br>
+מכאן נובע מצד אחד כי <span class="math inline">c=\tfrac{5}{2}</span>, ומצד שני כי <span class="math inline">c=-\tfrac{4}{5}</span> — סתירה.<br>
+לכן שני הישרים אכן נחתכים, וניתן לחשב את נקודת החיתוך על־ידי פתרון מערכת של שתי משוואות בשני נעלמים:</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+2x + 5y &amp;= 7 \\
+5x - 4y &amp;= 1
+\end{aligned}
+\end{cases}
+</span></p>
+<p>אפשר להשתמש בשיטת ההצבה, או לחלופין להכפיל את המשוואה השנייה ב־<span class="math inline">\tfrac{2}{5}</span><br>
+ולהחסיר אותה מהמשוואה הראשונה (כדי להיפטר מ־<span class="math inline">x</span>):</p>
+<p><span class="math display">
+0\cdot x + \left(5 + \tfrac{8}{5}\right)y = 7 - \tfrac{2}{5}
+\implies \tfrac{33}{5}y = \tfrac{33}{5} \implies y = 1
+</span></p>
+<p>נציב <span class="math inline">y = 1</span> במשוואה השנייה ונקבל:</p>
+<p><span class="math display">
+2x + 5 = 7 \implies 2x = 2 \implies x = 1
+</span></p>
+<p>מכאן שנקודת החיתוך היחידה היא <span class="math inline">(1,1)</span>, כלומר<br>
+<span class="math inline">L_1 \cap L_2 = \Set{(1,1)}</span>.</p>
+</div>
+<div class="example">
+<p><span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|2x+5y=7}</span> ו-<span class="math inline">L_3=\Set{(x,y)\in\mathbb{R}^2|4x+10y=14}</span> הם ישרים מתלכדים. וקטורי הנורמל הם קו-לינאריים כי <span class="math inline">(4,10)=2\cdot(2,5)</span>, ולכן הישרים בהכרח לא נחתכים. נסתכל על מערכת המשוואות: <span class="math display">\begin{cases}
+        \begin{aligned}
+            2x+5y&amp;=7\\
+            4x+10y&amp;=14
+            \end{aligned}
+        \end{cases}</span></p>
+<p>שתי המשוואות שקולות כי אפשר לקבל את המשוואה השנייה מהראשונה ע"י כפל ב-<span class="math inline">2</span>.</p>
+</div>
+<div class="example">
+<p><span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|2x+5y=7}</span> ו-<span class="math inline">L_3=\Set{(x,y)\in\mathbb{R}^2|6x+15y=20}</span> הם ישרים מקבילים. וקטורי הנורמל הם קו-לינאריים כי <span class="math inline">(6,15)=3\cdot(2,5)</span>, ולכן שוב הישרים לא נחתכים. אבל הפעם שתי המשוואות לא שקולות: <span class="math display">\begin{cases}
+        \begin{aligned}
+            2x+5y&amp;=7\\
+            6x+15y&amp;=20
+            \end{aligned}
+        \end{cases}</span></p>
+<p>אם נכפיל את המשוואה הראשונה ב-<span class="math inline">3</span> ונחסיר ממנה את המשוואה השנייה, נקבל את המשוואה השגויה <span class="math inline">0=21-20</span> וזו סתירה.</p>
 </div>
 <div class="exercise">
 <p>מהו המצב ההדדי בין הישר <span class="math inline">L_1=\Set{(x,y)\in\mathbb{R}^2|3x-2y=1}</span> והישר <span class="math inline">L_2=\Set{(x,y)\in\mathbb{R}^2|15x-10y=5}</span>?</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>הישרים מתלכדים כי משוואותיהם שקולות. אם נכפיל ב- <span class="math inline">5</span> את המשוואה <span class="math display">3x-2y=1</span> נקבל את המשוואה <span class="math display">.15x-10y=5</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הישרים מתלכדים כי משוואותיהם שקולות. אם נכפיל ב- <span class="math inline">5</span> את המשוואה <span class="math display">3x-2y=1</span> נקבל את המשוואה <span class="math display">.15x-10y=5</span></p>
 <p>מבחינה גיאומטרית, שני וקטורי הנורמל <span class="math inline">(3,-2),(15,-10)</span> הם קו-לינאריים ולשני הישרים יש לפחות נקודה אחת משותפת, למשל הנקודה <span class="math inline">(\frac{1}{3},0)</span>. אז זו דרך נוספת לראות שהם מתלכדים.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -722,18 +855,21 @@ window.Quarto = {
 <div class="definition">
 <p>המרחב <span class="math inline">\mathbb{R}^3</span> הוא קבוצת כל הנקודות בעלות שלוש קוארדינטות ממשיות, כלומר <span class="math display">.\mathbb{R}^3=\Set{(x,y,z)|x,y,z\in\mathbb{R}}</span></p>
 </div>
-<figure id="fig:3DVector" class="figure">
-<img src="3DVector.png" style="width:60.0%" class="figure-img">
-<figcaption>
-וקטור במרחב שיוצא מהראשית אל נקודה <span class="math inline">(<em>x</em>, <em>y</em>, <em>z</em>)</span>
+<div id="fig-3DVector" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3DVector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/3DVector.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3DVector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.5: וקטור במרחב שיוצא מהראשית אל נקודה
 </figcaption>
 </figure>
+</div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(0,0,0),(1,-2,5),(-3,-5,\pi),(\frac{3}{5},\sqrt{2},\sqrt{3}),(\pi^2,-10,\sqrt{5})\in\mathbb{R}^3</span></p></li>
-<li><p><span class="math inline">1,(1,1),(i,0,0),(0,1,2,3)\notin\mathbb{R}^3</span>.</p></li>
-</ol>
+<p>&nbsp; <span class="math inline">(0,0,0),(1,-2,5),(-3,-5,\pi),(\frac{3}{5},\sqrt{2},\sqrt{3}),(\pi^2,-10,\sqrt{5})\in\mathbb{R}^3</span></p>
+</div>
+<div class="example">
+<p><span class="math inline">1,(1,1),(i,0,0),(0,1,2,3)\notin\mathbb{R}^3</span>.</p>
 </div>
 <p>הרעיון של וקטור לא משתנה במרחב. אפשר לשנות את כל ההגדרות הרלוונטיות כך שתהיה התייחסות גם לקוארדינטה השלישית.</p>
 <div class="definition">
@@ -750,50 +886,61 @@ window.Quarto = {
 <p>גם במרחב שתי הפעולות הבסיסיות שניתן לבצע על וקטורים הן חיבור וכפל בסקלר.</p>
 <p>חיבור: <span class="math inline">(a_1,a_2,a_3)+(b_1,b_2,b_3)=(a_1+b_1,a_2+b_2,a_3+b_3)</span></p>
 <p>כפל בסקלר: <span class="math inline">c\cdot(a_1,a_2,a_3)=(ca_1,ca_2,ca_3)</span></p>
-<div id="rem-points-vector-3d" class="proof remark">
-<p><span class="proof-title"><em>Remark 4.1</em>. </span>חיסור בין שני וקטורים זה שוב כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר</p>
-<p><span id="eq-points-vector-3d"><span class="math display">
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>חיסור בין שני וקטורים זה שוב כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר</p>
+<p><span class="math display">
 (b_1,b_2,b_3)-(a_1,a_2,a_3)=(b_1-a_1,\;b_2-a_2,\;b_3-a_3)
-\tag{4.3}</span></span></p>
+</span></p>
 <p>זה הווקטור שמתחיל בנקודה <span class="math inline">(a_1,a_2,a_3)</span> ומסתיים ב-<span class="math inline">(b_1,b_2,b_3)</span>.</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(2,4,6)+(1,3,5)=(2+1,4+3,6+5)=(3,7,11)</span></p></li>
-<li><p><span class="math inline">2\cdot(5,3,1)=(10,6,2)</span></p></li>
-<li><p><span class="math inline">-3\cdot(2,5,7)=(-6,-15,-21)</span></p></li>
-<li><p><span class="math inline">(9,2,3)-(5,8,2)=(9-5,2-8,3-2)=(4,-6,1)</span></p></li>
-</ol>
+<p>א. <span class="math inline">(2,4,6)+(1,3,5)=(2+1,4+3,6+5)=(3,7,11)</span></p>
+<p>ב. <span class="math inline">2\cdot(5,3,1)=(10,6,2)</span></p>
+<p>ג. <span class="math inline">-3\cdot(2,5,7)=(-6,-15,-21)</span></p>
+<p>ד. <span class="math inline">(9,2,3)-(5,8,2)=(9-5,2-8,3-2)=(4,-6,1)</span></p>
 </div>
 <div class="exercise">
 <p>חשבו את הוקטור שיוצא מ- <span class="math inline">(3,1,5)</span> אל <span class="math inline">(2,-6,11)</span>.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>נציב את הנקודות ב- ונקבל <span class="math display">.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נציב את הנקודות ב- ונקבל <span class="math display">.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="גדלים-ב-mathbbr3" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="גדלים-ב-mathbbr3"><span class="header-section-number">4.2.2</span> גדלים ב-<span class="math inline">\mathbb{R}^3</span></h3>
 <p>לכל וקטור יש גודל וכיוון. אם נניח שהוא מתחיל בראשית, אז גודלו הוא המרחק מנקודת הסיום לראשית שניתן לחשב לפי משפט פיתגורס:</p>
 <p>גודל: <span class="math inline">\|(x,y,z)\|=\sqrt{x^2+y^2+z^2}</span></p>
-<figure id="fig:3DPythagoras" class="figure">
-<img src="images/chapter02/3DPythagoras.png" style="width:60.0%" class="figure-img">
-<figcaption>
-שני משולשים ישרי-זווית במרחב
+<div id="fig-3DPythagoras" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3DPythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/chapter02/3DPythagoras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3DPythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;4.6: שני משולשים ישרי-זווית במרחב
 </figcaption>
 </figure>
+</div>
 <p>למעשה, החישוב מבוסס על שימוש במשפט פיתגורס פעמיים. היתר הירוק שמוטל על מישור <span class="math inline">xy</span> הוא באורך <span class="math inline">\sqrt{x^2+y^2}</span> כי אורכי הניצבים הם <span class="math inline">x,y</span> (בציור, או בערך מוחלט באופן כללי). לכן, אורך היתר הכחול של המשולש השני שאורכי ניצביו הם <span class="math inline">\sqrt{x^2+y^2},|z|</span>, הוא אכן <span class="math inline">\sqrt{x^2+y^2+z^2}</span>.</p>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>אפשר גם לדבר על כיוון במרחב במונחים של שתי זוויות, אך לא נעשה זאת בקורס שלנו. נסתפק בוקטור כיוון.</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">\|(2,1,2)\|=\sqrt{2^2+1^2+2^2}=\sqrt{9}=3</span></p></li>
-<li><p><span class="math inline">\|(3,-4,2)\|=\sqrt{3^2+(-4)^2+2^2}=\sqrt{29}</span></p></li>
-<li><p><span class="math inline">\|(-3,-6,2)\|=\sqrt{(-3)^2+(-6)^2+2^2}=\sqrt{49}=7</span></p></li>
-</ol>
+<p>א. <span class="math inline">\|(2,1,2)\|=\sqrt{2^2+1^2+2^2}=\sqrt{9}=3</span></p>
+<p>ב. <span class="math inline">\|(3,-4,2)\|=\sqrt{3^2+(-4)^2+2^2}=\sqrt{29}</span></p>
+<p>ג. <span class="math inline">\|(-3,-6,2)\|=\sqrt{(-3)^2+(-6)^2+2^2}=\sqrt{49}=7</span></p>
 </div>
 <p>הטענה הבאה היא הכללה למרחב של טענה .</p>
 <div class="proposition">
@@ -802,11 +949,24 @@ window.Quarto = {
 <div class="exercise">
 <p>בדקו שההוכחה של הטענה המקורית ניתנת להכללה למרחב.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>נשתמש בהגדרות ונחשב: <span class="math display">\begin{aligned}
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נשתמש בהגדרות ונחשב: <span class="math display">\begin{aligned}
 \|c\cdot(x,y)\|&amp;=\|(cx,cy,cz)\|=\sqrt{(cx)^2+(cy)^2+(cz)^2}=\sqrt{c^2(x^2+y^2+z^2)} \\\
 &amp;=\sqrt{c^2}\sqrt{x^2+y^2+z^2}=|c|\sqrt{x^2+y^2+z^2}=|c|\cdot\|(x,y,z)\|
 \end{aligned}</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="מכפלה-סקלרית-1" class="level3" data-number="4.2.3">
@@ -816,27 +976,22 @@ window.Quarto = {
 <p>עבור וקטורים <span class="math inline">(a_1,a_2,a_3),(b_1,b_2.b_3)\in\mathbb{R}^3</span> נגדיר <span class="math display">.(a_1,a_2,a_3)\cdot(b_1,b_2,b_3)=a_1b_1+a_2b_2+a_3b_3</span></p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p><span class="math inline">(1,3,2)\cdot(2,5,-1)=1\cdot2+3\cdot5+2\cdot(-1)=15</span></p></li>
-<li><p><span class="math inline">(3,-2,1)\cdot(6,5,-3)=3\cdot6+(-2)\cdot5+1\cdot(-3)=5</span></p></li>
-<li><p><span class="math inline">(1,4,1)\cdot(-5,1,1)=1\cdot(-5)+4\cdot1+1\cdot1=0</span></p></li>
-</ol>
+<p>א. <span class="math inline">(1,3,2)\cdot(2,5,-1)=1\cdot2+3\cdot5+2\cdot(-1)=15</span></p>
+<p>ב. <span class="math inline">(3,-2,1)\cdot(6,5,-3)=3\cdot6+(-2)\cdot5+1\cdot(-3)=5</span></p>
+<p>ג. <span class="math inline">(1,4,1)\cdot(-5,1,1)=1\cdot(-5)+4\cdot1+1\cdot1=0</span></p>
 </div>
 <p>התכונות של המכפלה הסקלרית שראינו בטענה נשמרות במרחב, בלי שינוי מהותי להוכחות (רק הוספת קוארדינטה שלישית).</p>
 <div class="proposition">
-<p><strong>טענה 1.53</strong>. <em>יהיו <span class="math inline">\vec{v_1}=(x_1,y_1\text{,}z_{!}),\,\vec{v_2}=(x_2,y_2,z_2),\,\vec{v_3}=(x_3,y_3,z_3)\in\mathbb{R}^3</span> וקטורים. אז מתקיים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}</span>.</em></p></li>
-<li><p><em><span class="math inline">(\vec{v_1}+\vec{v_3})\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}</span>.</em></p></li>
-<li><p><em><span class="math inline">\vec{v_1}\cdot\vec{v_1}=\|\vec{v_1}\|^2</span>.</em></p></li>
-<li><p><em><span class="math inline">\vec{v_1}\cdot(c\vec{v_2})=c(\vec{v_1}\cdot\vec{v_2})</span>.</em></p></li>
-<li><p><em><span class="math inline">{\|\vec{v_1}\|}=0\iff\vec{v_1}=(0,0)</span>.</em></p></li>
-<li><p><em><span class="math inline">\|\frac{\vec{v_1}}{\|\vec{v_1}\|}\|=1</span> אם <span class="math inline">\vec{v_1}\neq(0,0)</span>.</em></p></li>
-</ol>
+<p><em>יהיו <span class="math inline">\vec{v_1}=(x_1,y_1\text{,}z_{!}),\,\vec{v_2}=(x_2,y_2,z_2),\,\vec{v_3}=(x_3,y_3,z_3)\in\mathbb{R}^3</span> וקטורים. אז מתקיים:</em></p>
+<p>א. <em><span class="math inline">\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}</span>.</em></p>
+<p>ב. <em><span class="math inline">(\vec{v_1}+\vec{v_3})\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}</span>.</em></p>
+<p>ג. <em><span class="math inline">\vec{v_1}\cdot\vec{v_1}=\|\vec{v_1}\|^2</span>.</em></p>
+<p>ד. <em><span class="math inline">\vec{v_1}\cdot(c\vec{v_2})=c(\vec{v_1}\cdot\vec{v_2})</span>.</em></p>
+<p>ה. <em><span class="math inline">{\|\vec{v_1}\|}=0\iff\vec{v_1}=(0,0)</span>.</em></p>
+<p>ו. <em><span class="math inline">\|\frac{\vec{v_1}}{\|\vec{v_1}\|}\|=1</span> אם <span class="math inline">\vec{v_1}\neq(0,0)</span>.</em></p>
 </div>
 <div class="proposition">
-<p><strong>טענה 1.54</strong>. <em>יהיו <span class="math inline">\vec{v},\vec{w}</span> שני וקטורים ב-<span class="math inline">\mathbb{R}^3</span> השונים מ-<span class="math inline">(0,0,0)</span>, ותהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. אז מתקיים <span class="math display">.\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}</span></em></p>
+<p><em>יהיו <span class="math inline">\vec{v},\vec{w}</span> שני וקטורים ב-<span class="math inline">\mathbb{R}^3</span> השונים מ-<span class="math inline">(0,0,0)</span>, ותהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. אז מתקיים <span class="math display">.\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}</span></em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>כאן ההוכחה היא לא הכללה מיידית. נדלג עליה, אבל נציין שכל שני וקטורים שאינם מקבילים קובעים מישור (יחיד) וניתן לחשב את הזווית ביניהם כוקטורים באותו המישור. קל להבין זאת במקרה הפרטי שבו שני הוקטורים שייכים למישור <span class="math inline">xy</span> שנתון ע"י המשוואה <span class="math inline">z=0</span>.</p>
@@ -846,7 +1001,7 @@ window.Quarto = {
 <img src="images/chapter02/XYAngle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-XYAngle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="math inline">xy</span>
+איור&nbsp;4.7: שני וקטורים השייכים למישור <span class="math inline">xy</span>
 </figcaption>
 </figure>
 </div>
@@ -864,13 +1019,26 @@ Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="
 <p>המקרה הכללי יותר מסובך (יש חשיבות לקוארדינטה השלישית), אבל אין הבדל מהותי והנוסחה עדיין מתקיימת.</p>
 </div>
 <div class="corollary">
-<p><strong>מסקנה 1.56</strong>. <em>נניח כי <span class="math inline">\vec{v},\vec{w}</span> שני וקטורים ב-<span class="math inline">\mathbb{R}^3</span> השונים מ-<span class="math inline">(0,0,0)</span>. אז הם מאונכים זה לזה אם ורק אם <span class="math inline">\vec{v}\cdot\vec{w}=0</span>.</em></p>
+<p>נניח כי <span class="math inline">\vec{v},\vec{w}</span> שני וקטורים ב-<span class="math inline">\mathbb{R}^3</span> השונים מ-<span class="math inline">(0,0,0)</span>. אז הם מאונכים זה לזה אם ורק אם <span class="math inline">\vec{v}\cdot\vec{w}=0</span>.*</p>
 </div>
 <div class="exercise">
 <p>בדקו שההוכחה למקרה של המישור לא משתנה פה.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>תהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. הנוסחה לא השתנתה ולכן שוב נקבל <span class="math display">.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}|}=0\iff\alpha=\frac{\pi}{2}</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>תהי <span class="math inline">\alpha</span> הזווית הקטנה ביניהם. הנוסחה לא השתנתה ולכן שוב נקבל <span class="math display">.\vec{v}\cdot\vec{w}=0\iff\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}|}=0\iff\alpha=\frac{\pi}{2}</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="ישרים-ב-mathbbr3" class="level3" data-number="4.2.4">
@@ -882,12 +1050,12 @@ Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="
 <p>ההבדל העיקרי לעומת ישרים במישור זה שבמרחב ההצגה האלגברית של הישר היא יותר מסורבלת (מערכת של שתי משוואות במקום אחת), ולכן ההצגה הפרמטרית היא יותר שימושית. במרחב, משוואה אחת מתארת מישור ולא ישר. למשל, ראינו כבר כי המשוואה <span class="math inline">z=0</span> מתארת את מישור <span class="math inline">xy</span> ולא ישר.</p>
 <p>אינטואיטיבית: בדרך כלל משוואה מורידה מימד. לכן מתוך המרחב שמימדו <span class="math inline">3</span>, קבוצת הפתרונות של משוואה היא מישור ממימד <span class="math inline">2</span>. אם נוסיף עוד משוואה (חדשה, לא שקולה למשוואה הקודמת), המימד יירד ל-<span class="math inline">1</span> ונקבל ישר.</p>
 <p>גיאומטרית: כאשר פותרים מערכת של שתי משוואות (לינאריות), מחשבים את החיתוך של שני מישורים. לרוב, שני מישורים נחתכים לאורך ישר ולכן ניתן לתאר ישר כחיתוך של שני מישורים שמכילים אותו. יש אינסוף מישורים כאלה.</p>
-<figure id="fig:Infinite Planes" class="figure">
-<img src="Infinite Planes.png" style="width:40.0%" class="figure-img">
-<figcaption>
-שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי)
-</figcaption>
+<div id="fig:InfinitePlanes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="simulations/Infinite Planes.html?embed=1" width="800" height="800"></p>
+<figcaption>סימולציה 1.9 - שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי)</figcaption>
 </figure>
+</div>
 <p>נעדיף לעבור מהצגה אלגברית של ישר (שהיא רחוקה מאוד מלהיות יחידה) להצגה פרמטרית, ולא להיפך. אבל ראשית צריך להבין מישורים במרחב יותר לעומק.</p>
 </section>
 <section id="מישורים-ב-mathbbr3" class="level3" data-number="4.2.5">
@@ -895,12 +1063,12 @@ Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="
 <p>מישור כללי ב-<span class="math inline">\mathbb{R}^3</span> נתון בהצגה אלגברית כקבוצת פתרונות של משוואה אחת, כלומר</p>
 <p><span class="math display">H=\Set{(x,y,z)\in\mathbb{R}^3|ax+by+cz=d}</span></p>
 <p>כאשר <span class="math inline">(a,b,c)\neq(0,0,0)</span>. נבין בקרוב שגם כאן (בדומה לישר במישור שמתואר ע"י משוואה אחת) המשמעות הגיאומטרית של <span class="math inline">(a,b,c)</span> היא וקטור נורמל שמאונך לכל וקטור שמוכל במישור.</p>
-<figure id="fig:Axis of Rotation" class="figure">
-<img src="Axis of Rotation.png" style="width:40.0%" class="figure-img">
-<figcaption>
-מישור עם וקטור נורמל
-</figcaption>
+<div id="fig:AxisofRotation" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="simulations/Axis of Rotation.html?embed=1" width="800" height="800"></p>
+<figcaption>סימולציה 1.10 - מישור עם וקטור נורמל</figcaption>
 </figure>
+</div>
 <div class="example">
 <p>נרצה למצוא נקודה על <span class="math inline">H=\Set{(x,y,z)\in\mathbb{R}^3|2x+3y-z=5}</span>. זו בחירה שרירותית, אבל אפשר למשל להציב <span class="math inline">x=y=0</span> ולקבל <span class="math inline">-z=5\implies z=-5</span>. אז <span class="math inline">(0,0,-5)\in H</span> ולכל <span class="math inline">(x,y,z)\in H</span> מתקיים <span class="math display">\begin{aligned}
     &amp;(2,3,-1)\cdot(x-0,y-0,z-(-5))=2x+3y-z-5=0\\
@@ -916,7 +1084,7 @@ Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\cdot(x-x_0,y-y_0,z-z_0)=0}\\
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\perp(x-x_0,y-y_0,z-z_0)}
 \end{aligned}
-\tag{4.4}</span></span></p>
+\tag{4.3}</span></span></p>
 <p>אז <span class="math inline">(a,b,c)</span> הוא וקטור נורמל של <span class="math inline">H</span>. הוא לא יחיד כי ההצגה האלגברית אינה יחידה, שכן ניתן להכפיל את המשוואה בכל סקלר <span class="math inline">\alpha\neq0</span> ובהתאם לקבל <span class="math inline">\alpha\cdot(a,b,c)</span> כוקטור נורמל.</p>
 </section>
 <section id="מעבר-מהצגה-אלגברית-של-מישור-להצגה-פרמטרית" class="level3" data-number="4.2.6">
@@ -925,14 +1093,27 @@ Figure&nbsp;4.1: שני וקטורים השייכים למישור <span class="
 <div class="exercise">
 <p>איזו נקודה מתאימה להצבה <span class="math inline">(t,s)=(0,0)</span>? להצבה <span class="math inline">(t,s)=(1,0)</span>? להצבה <span class="math inline">(t,s)=(0,1)</span>?</p>
 </div>
-<figure id="fig:Plane Spanned by Vectors" class="figure">
-<img src="Plane Spanned by Vectors.png" style="width:40.0%" class="figure-img">
-<figcaption>
-מישור נוצר ע”י שני וקטורים שיוצאים מאותה הנקודה
-</figcaption>
+<div id="fig:Plane-Spanned-by-Vectors" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="simulations/Plane Spanned by Vectors.html?embed=1" width="800" height="800"></p>
+<figcaption>סימולציה 1.11 - מישור נוצר ע”י שני וקטורים שיוצאים מאותה הנקודה</figcaption>
 </figure>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>הנקודה המתאימה ל- <span class="math inline">(t,s)=(0,0)</span> היא <span class="math inline">\vec{v_0}</span>. הנקודה המתאימה ל- <span class="math inline">(t,s)=(1,0)</span> היא <span class="math display">.\vec{v_0}+1\cdot(\vec{w_1}-\vec{v_0})=\vec{w_1}</span> באופן דומה, הנקודה המתאימה ל- <span class="math inline">(t,s)=(0,1)</span> היא <span class="math inline">\vec{w_2}</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הנקודה המתאימה ל- <span class="math inline">(t,s)=(0,0)</span> היא <span class="math inline">\vec{v_0}</span>. הנקודה המתאימה ל- <span class="math inline">(t,s)=(1,0)</span> היא <span class="math display">.\vec{v_0}+1\cdot(\vec{w_1}-\vec{v_0})=\vec{w_1}</span> באופן דומה, הנקודה המתאימה ל- <span class="math inline">(t,s)=(0,1)</span> היא <span class="math inline">\vec{w_2}</span>.</p>
+</div>
+</div>
 </div>
 <div class="example">
 נמצא הצגה פרמטרית של המישור שעובר דרך הנקודות <span class="math inline">(1,2,3),(1,-1,0),(2,3,1)</span>. נבחר נקודת התחלה <span class="math inline">\vec{v_0}=(1,2,3)</span> ונקבל: $$
@@ -969,14 +1150,27 @@ a+4b-2c&amp;=0
 <div class="exercise">
 <p>פתרו את מערכת המשוואות לעיל בדרך אחרת, כך שתקבלו משוואה אחת שלא כוללת את <span class="math inline">c</span>. בדקו שעדיין מקבלים אותו וקטור נורמל עד כדי כפל בסקלר.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>נחזור אל המשוואות עבור וקטור הנורמל: <span class="math display">\begin{cases}
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נחזור אל המשוואות עבור וקטור הנורמל: <span class="math display">\begin{cases}
 \begin{aligned}
 2a+3b+c&amp;=0\\
 a+4b-2c&amp;=0
 \end{aligned}
 \end{cases}</span></p>
 <p>כדי להיפטר מהמשתנה <span class="math inline">c</span>, נכפיל את המשוואה הראשונה ב- <span class="math inline">2</span> ונחבר אליה את המשוואה השנייה. כך נקבל את המשוואה <span class="math display">.5a+10b=0\iff a=-2b</span> כעת נציב <span class="math inline">a=-2b</span> באחת המשוואות המקוריות, למשל הראשונה, ונקבל: <span class="math display">.-4b+3b+c=0\iff c=b</span> אז קיבלנו משוואות שקולות למשוואות שקיבלנו בדוגמה, אבל הפעם <span class="math inline">a,c</span> תלויים ב- <span class="math inline">b</span>. נבחר <span class="math inline">b=1</span> וזה שוב יוביל לערכים <span class="math inline">a=-2, c=1</span> ולכן וקטור הנורמל וההצגה האלגברית זהים לאלה מהדוגמה. אם נבחר <span class="math inline">c=2</span> או כל ערך השונה מ- <span class="math inline">0</span>, נקבל הצגה אלגברית שקולה (כפל בסקלר של וקטור הנורמל ולכן גם של המשוואה).</p>
+</div>
+</div>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>יש דרך אחרת לחשב וקטור נורמל, שנקראת מכפלה וקטורית. זו מכפלה שלוקחת שני וקטורים ב- <span class="math inline">\mathbb{R}^3</span> ומחזירה וקטור שלישי שמאונך לשניהם. נושא זה לא נלמד בקורס, אבל נתייחס אליו בקצרה (לידע כללי) בפרק 4 כי הוא קשור לדטרמיננטה. במסגרת הקורס יש לחשב וקטורי נורמל ע"י פתרון מערכת משוואות לינאריות כמו בדוגמה.</p>
@@ -1023,24 +1217,40 @@ a+4b-2c&amp;=0
 </tbody>
 </table>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p>המישורים <span class="math display">\begin{aligned}
-H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=1} \\
-H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|3x+2y+z=3}
-\end{aligned}</span> נחתכים. הסיבה הגיאומטרית היא שוקטורי הנורמל <span class="math inline">(1,1,1),(3,2,1)</span> אינם קו-לינאריים. נוודא זאת: נניח בשלילה שקיים <span class="math inline">\alpha\in\mathbb{R}</span> כך ש- <span class="math inline">(3,2,1)=\alpha\cdot(1,1,1)</span>. אז קיבלנו <span class="math inline">\alpha=3</span> לפי הקוארדינטה הראשונה, ומצד שני <span class="math inline">\alpha=2</span> לפי הקוארדינטה השנייה. זו סתירה.</p>
-<p>אם ננסה לפתור את מערכת המשוואות (נדון בכך בהרחבה בפרק הבא), נראה שהפתרון כולל משתנה חופשי. נחסיר את המשוואה <span class="math inline">x+y+z=1</span> מהמשוואה <span class="math inline">3x+2y+z=3</span>, ונקבל <span class="math display">.2x+y=2\iff y=2-2x</span></p>
-<p><span class="math inline">x</span> הוא משתנה חופשי שניתן להציב בו ערך שרירותי, שהוא הפרמטר שיופיע בהצגה הפרמטרית של הישר. נציב <span class="math inline">x=t</span> ובהתאם <span class="math inline">y=2-2t</span> במשוואה <span class="math inline">x+y+z=1</span>, ונקבל <span class="math display">.t+2-2t+z=1\iff z=t-1</span></p>
-<p>לכן מתקיים <span class="math display">.H_1\cap H_2=\Set{(t,2-2t,t-1)|t\in\mathbb{R}}</span></p></li>
-<li><p>נסתכל על המישורים <span class="math display">\begin{aligned}
-H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3|x-2y+5z=4} \\
-H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|3x-6y+15z=13}
-\end{aligned}</span></p>
-<p>וקטורי הנורמל הם קו-לינאריים כי <span class="math inline">(3,-3,15)=3\cdot (1,-1,5)</span>. לכן המישורים או מקבילים או מתלכדים. ניתן לראות ששתי המשוואות סותרות. נכפיל את המשוואה הראשונה ב- <span class="math inline">3</span> ונחסיר אותה מהמשוואה השנייה. אז נקבל <span class="math inline">0=13-12</span> וזו אכן סתירה.</p>
-<p>לעומת זאת, המישור <span class="math display">H_3=\Set{(x,y,z)\in\mathbb{R}^3|3x-6y+15z=12}</span></p>
-<p>מתלכד עם <span class="math inline">H_1</span> כי המשוואות שקולות. כפל ב- <span class="math inline">3</span> מראה כי <span class="math display">.x-2y+5z=4 \iff 3x-6y+15z=12</span></p>
-<p>מכאן גם נובע כי <span class="math inline">H_3</span> מקביל ל- <span class="math inline">H_2</span>, וזה בעצם מיידי מהמשוואות עצמן. הן בפירוש סותרות.</p></li>
-</ol>
+<p>המישורים <span class="math display">
+\begin{aligned}
+H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3\mid x+y+z=1} \\
+H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3\mid 3x+2y+z=3}
+\end{aligned}
+</span> נחתכים. הסיבה הגיאומטרית היא שוקטורי הנורמל <span class="math inline">(1,1,1),(3,2,1)</span> אינם קו-לינאריים. נוודא זאת: נניח בשלילה שקיים <span class="math inline">\alpha\in\mathbb{R}</span> כך ש-<span class="math inline">(3,2,1)=\alpha\cdot(1,1,1)</span>. אז קיבלנו <span class="math inline">\alpha=3</span> לפי הקוארדינטה הראשונה, ומצד שני <span class="math inline">\alpha=2</span> לפי הקוארדינטה השנייה. זו סתירה.</p>
+<p>אם ננסה לפתור את מערכת המשוואות (נדון בכך בהרחבה בפרק הבא), נראה שהפתרון כולל משתנה חופשי. נחסיר את המשוואה <span class="math inline">x+y+z=1</span> מהמשוואה <span class="math inline">3x+2y+z=3</span>, ונקבל: <span class="math display">
+2x+y=2 \iff y=2-2x
+</span></p>
+<p><span class="math inline">x</span> הוא משתנה חופשי שניתן להציב בו ערך שרירותי, שהוא הפרמטר שיופיע בהצגה הפרמטרית של הישר. נציב <span class="math inline">x=t</span> ובהתאם <span class="math inline">y=2-2t</span> במשוואה <span class="math inline">x+y+z=1</span>, ונקבל: <span class="math display">
+t+2-2t+z=1 \iff z=t-1
+</span></p>
+<p>לכן מתקיים: <span class="math display">
+H_1\cap H_2=\Set{(t,2-2t,t-1)\mid t\in\mathbb{R}}
+</span></p>
+</div>
+<div class="example">
+<p>נסתכל על המישורים <span class="math display">
+\begin{aligned}
+H_1 &amp;= \Set{(x,y,z)\in\mathbb{R}^3 \mid x - 2y + 5z = 4} \\
+H_2 &amp;= \Set{(x,y,z)\in\mathbb{R}^3 \mid 3x - 6y + 15z = 13}
+\end{aligned}
+</span></p>
+<p>וקטורי הנורמל הם קו־לינאריים, כי <span class="math inline">(3,-6,15) = 3 \cdot (1,-2,5)</span>.<br>
+לכן המישורים או מקבילים או מתלכדים.<br>
+ניתן לראות ששתי המשוואות סותרות: נכפיל את המשוואה הראשונה ב־<span class="math inline">3</span> ונחסיר אותה מהשנייה, ונקבל<br>
+<span class="math inline">0 = 13 - 12</span>, וזו אכן סתירה.</p>
+<p>לעומת זאת, המישור <span class="math display">
+H_3 = \Set{(x,y,z)\in\mathbb{R}^3 \mid 3x - 6y + 15z = 12}
+</span> מתלכד עם <span class="math inline">H_1</span>, כי המשוואות שקולות.<br>
+כפל ב־<span class="math inline">3</span> מראה כי: <span class="math display">
+x - 2y + 5z = 4 \iff 3x - 6y + 15z = 12
+</span></p>
+<p>מכאן נובע גם ש־<span class="math inline">H_3</span> מקביל ל־<span class="math inline">H_2</span>, וזה למעשה מיידי מהמשוואות עצמן — הן בפירוש סותרות.</p>
 </div>
 </section>
 <section id="מצבים-הדדיים-בין-ישר-למישור-במרחב" class="level3" data-number="4.2.9">
@@ -1083,26 +1293,48 @@ H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|3x-6y+15z=13}
 </tr>
 </tbody>
 </table>
-<figure id="fig:Plane and Line" class="figure">
-<img src="Plane and Line.png" style="width:60.0%" class="figure-img">
+<div id="fig:Plane-and-Line" class="figure">
+<embed src="simulations/Plane-and-Line.html?embed=1" width="800" height="800">
 <figcaption>
-מישור וישר החותך אותו, ישר המקביל לו וישר המוכל בו
+סימולציה 1.12 - מישור וישר החותך אותו, ישר המקביל לו וישר המוכל בו
 </figcaption>
-</figure>
+</div>
 <div class="example">
-<p>&nbsp;</p>
-<ol type="1">
-<li><p>נסתכל על הישר <span class="math inline">L=\Set{(1,0,3)+t(2,-4,5)|t\in\mathbb{R}}</span> והמישור <span class="math display">.H=\Set{(x,y,z)\in\mathbb{R}^3|3x+7y+2z=4}</span></p>
-<p>נחשב את המכפלה הסקלרית של וקטור הכיוון של הישר עם וקטור הנורמל של המישור: <span class="math display">(2,-4,5)\cdot(3,7,2)=6-28+10=-12\neq 0</span></p>
-<p>לכן הישר והמישור בהכרח נחתכים. נחשב את נקודת החיתוך ע"י הצבת ההצגה הפרמטרית של הישר במשוואת המישור:</p>
-<p><span class="math display">.3(1+2t)+7(-4t)+2(3+5t)=4 \iff -12t+9=4 \iff t=\frac{5}{12}</span></p>
-<p>נציב <span class="math inline">t=\frac{5}{12}</span> בהצגה הפרמטרית ונקבל את נקודת החיתוך:</p>
-<p><span class="math display">(1+2\cdot\frac{5}{12},-4\cdot\frac{5}{12},3+5\cdot\frac{5}{12})=(\frac{11}{6},-\frac{5}{3},\frac{61}{12})</span></p></li>
-<li><p>נסתכל על הישר <span class="math inline">L=\Set{(1,0,3)+t(2,-4,5)|t\in\mathbb{R}}</span> והמישור <span class="math display">.H_1=\Set{(x,y,z)\in\mathbb{R}^3|5x-2z=1}</span></p>
-<p>וקטור הכיוון <span class="math inline">(2,-4,5)</span> מאונך לוקטור הנורמל <span class="math inline">(5,0,-2)</span> כי <span class="math display">.(2,-4,5)\cdot(5,0,-2)=10+0-10=0</span></p>
-<p>כדי לקבוע אם <span class="math inline">L</span> מקביל או מוכל ב- <span class="math inline">H_1</span>, אפשר לבדוק אם <span class="math inline">(1,0,3)\in H_1</span>. מתקיים <span class="math inline">5\cdot1-2\cdot3=-1\neq1</span>, ולכן הישר מקביל למישור. זה מספיק לקביעת המצב ההדדי, אבל אפשר גם להציב את ההצגה הפרמטרית של הישר במשוואת המישור ולקבל <span class="math display">.5(1+2t)-2(3+5t)=1 \iff -1=1</span> הסתירה מראה באופן מפורש שאין נקודת חיתוך.</p>
-<p>לעומת זאת, עבור המישור <span class="math display">H_2=\Set{(x,y,z)\in\mathbb{R}^3|5x-2z=-1}</span> החישוב לעיל (עם תיקון אגף ימין) מראה כי <span class="math inline">L</span> מוכל בו. ההצבה מובילה לזהות <span class="math inline">-1=-1</span> ולכן כל נקודה על <span class="math inline">L</span> גם נמצאת על <span class="math inline">H_2</span>.</p></li>
-</ol>
+<p>נסתכל על הישר <span class="math inline">L=\Set{(1,0,3)+t(2,-4,5)\mid t\in\mathbb{R}}</span> והמישור <span class="math display">
+H=\Set{(x,y,z)\in\mathbb{R}^3\mid 3x+7y+2z=4}
+</span></p>
+<p>נחשב את המכפלה הסקלרית של וקטור הכיוון של הישר עם וקטור הנורמל של המישור: <span class="math display">
+(2,-4,5)\cdot(3,7,2)=6-28+10=-12\neq 0
+</span></p>
+<p>לכן הישר והמישור בהכרח נחתכים.<br>
+נחשב את נקודת החיתוך ע”י הצבת ההצגה הפרמטרית של הישר במשוואת המישור: <span class="math display">
+3(1+2t)+7(-4t)+2(3+5t)=4 \iff -12t+9=4 \iff t=\frac{5}{12}
+</span></p>
+<p>נציב <span class="math inline">t=\frac{5}{12}</span> בהצגה הפרמטרית ונקבל את נקודת החיתוך: <span class="math display">
+(1+2\cdot\tfrac{5}{12},-4\cdot\tfrac{5}{12},3+5\cdot\tfrac{5}{12})
+= \left(\tfrac{11}{6},-\tfrac{5}{3},\tfrac{61}{12}\right)
+</span></p>
+</div>
+<div class="example">
+<p>נסתכל על הישר<br>
+<span class="math inline">L=\Set{(1,0,3)+t(2,-4,5)\mid t\in\mathbb{R}}</span><br>
+והמישור <span class="math display">
+H_1=\Set{(x,y,z)\in\mathbb{R}^3\mid 5x-2z=1}
+</span></p>
+<p>וקטור הכיוון <span class="math inline">(2,-4,5)</span> מאונך לוקטור הנורמל <span class="math inline">(5,0,-2)</span> כי: <span class="math display">
+(2,-4,5)\cdot(5,0,-2)=10+0-10=0
+</span></p>
+<p>כדי לקבוע אם <span class="math inline">L</span> מקביל או מוכל ב־<span class="math inline">H_1</span>, נבדוק אם <span class="math inline">(1,0,3)\in H_1</span>.<br>
+מכיוון ש־<span class="math inline">5\cdot1 - 2\cdot3 = -1 \neq 1</span>, נובע שהישר <strong>מקביל</strong> למישור.<br>
+זה מספיק לקביעת המצב ההדדי, אבל אפשר גם להציב את ההצגה הפרמטרית של הישר במשוואת המישור:</p>
+<p><span class="math display">
+5(1+2t) - 2(3+5t) = 1 \iff -1 = 1
+</span></p>
+<p>הסתירה מראה באופן מפורש שאין נקודת חיתוך.</p>
+<p>לעומת זאת, עבור המישור <span class="math display">
+H_2=\Set{(x,y,z)\in\mathbb{R}^3\mid 5x-2z=-1}
+</span> החישוב לעיל (עם אגף ימין מתוקן) מראה כי <span class="math inline">L</span> <strong>מוכל</strong> בו.<br>
+הצבה מובילה לזהות <span class="math inline">-1=-1</span>, ולכן כל נקודה על <span class="math inline">L</span> נמצאת גם על <span class="math inline">H_2</span>.</p>
 </div>
 
 

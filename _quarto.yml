@@ -16,9 +16,15 @@ book:
   - summary.qmd
   - references.qmd
   search: true
-  
-  
-  sidebar:
+ 
+language:
+  label:
+    fig: "איור"
+    tbl: "טבלה"
+    eq: "משוואה"
+  ui:
+    chapter: "פרק"
+
     tools:
     - icon: download
       href: אלגברה-לינארית.pdf
@@ -28,7 +34,11 @@ bibliography: references.bib
 
 crossref:
   chapters: true
-
+  fig-title: "איור"     # במקום "Figure" בכיתובי איורים
+  fig-prefix: "איור"    # במקום "Figure" בטקסטי הפניה (@fig-...)
+  tbl-title: "טבלה"
+  tbl-prefix: "טבלה"
+  title-delim: ":"      # המפריד בין "איור 4.1" לכיתוב (לא תמיד חל ב-PDF)
 
 
 format:
