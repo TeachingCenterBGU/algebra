@@ -71,7 +71,9 @@ format:
         name: "מסקנה"
       proof:
         name: "הוכחה"
-        numbering: false     # הוכחות בלי מספור   
+        numbering: false     # הוכחות בלי מספור
+      solution:
+        name: "פתרון"
  
         
 number-sections: true

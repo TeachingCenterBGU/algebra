@@ -55,12 +55,13 @@
 }
 
 /* ===== צבעים פסטליים לכל סביבה ===== */
+.proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
 .definition { --env-color: rgba(255, 99, 71, 0.4); }     /* אדום פסטלי */
 .example   { --env-color: rgba(138, 43, 226, 0.3); }    /* סגול פסטלי */
 .exercise  { --env-color: rgba(30, 144, 255, 0.35); }   /* כחול פסטלי */
-.remark    { --env-color: rgba(0, 0, 0, 0.15); }   /* ירוק פסטלי */
+.remark { --env-color: rgba(150, 150, 150, 0.15); }
 .theorem, .lemma, .proposition, .corollary { --env-color: rgba(255, 165, 0, 0.35); } /* שחור פסטלי */
-.proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
+
 
 
 /* למרכז תמונות וכיתובים ב‑HTML של Quarto */
@@ -137,3 +138,18 @@ figure.quarto-figure figcaption,
 }
 .sidebar #download-box{ margin-top:1rem; }
 
+/* --- Solution as callout: match look&feel of other env boxes --- */
+.callout.solution {
+  --env-color: rgba(72, 209, 204, 0.35);      /* תכלת-ירקרק פסטלי */
+  border: 1px solid var(--env-color);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 1.25rem 0;
+}
+.callout.solution .callout-header {
+  background: var(--env-color);
+  color: black;           /* כותרת בשחור כמו בשאר הסביבות */
+  font-weight: 700;
+}
+.callout.solution .callout-icon-container { display: none; } /* בלי האייקון של callout */
+.callout.solution .callout-body { padding: 0.6rem; }
