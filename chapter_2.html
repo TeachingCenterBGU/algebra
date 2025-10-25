@@ -140,15 +140,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">אלגברה לינארית</a> 
-        <div class="sidebar-tools-main">
-    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -304,11 +298,24 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <div class="exercise">
 <p>מצאו את קבוצת הפתרונות של המשוואה <span class="math inline">2x_1+x_2+3x_3+4x_4=5</span>. בדקו איך ההצגה הפרמטרית משתנה כאשר מבודדים את <span class="math inline">x_2</span> במקום <span class="math inline">x_1</span>.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>. נבודד תחילה את <span class="math inline">x_1</span> ונקבל <span class="math display">.x_1=\frac{1}{2}(5-x_2-3x_3-4x_4)</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>. נבודד תחילה את <span class="math inline">x_1</span> ונקבל <span class="math display">.x_1=\frac{1}{2}(5-x_2-3x_3-4x_4)</span></p>
 <p>נציב <span class="math inline">(x_2,x_3,x_4)=(c_2,c_3,c_4)</span> ונקבל את ההצגה הפרמטרית הבאה לקבוצת הפתרונות: <span class="math display">\Set{(\frac{1}{2}(5-c_2-3c_3-4c_4),c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}</span></p>
 <p>כעת נבודד את <span class="math inline">x_2</span> וזה יוביל להצגה פרמטרית נוספת של אותה קבוצת הפתרונות. ראשית נקבל <span class="math display">.x_2=5-2x_1-3x_3-4x_4</span></p>
 <p>נציב <span class="math inline">(x_1,x_3,x_4)=(d_1,d_3,d_4)</span> ונקבל את ההצגה הפרמטרית הבאה: <span class="math display">\Set{(d_1,5-2d_1-3d_3-4d_4,d_3,d_4)|d_1,d_3,d_4\in\mathbb R}</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="מערכות-משוואות-לינאריות" class="level2" data-number="5.2">
@@ -492,8 +499,19 @@ x_1 +  x_2 + 2x_3 - x_4+x_5 &amp;= 2 \\[4pt]
 \end{cases}</span></p>
 <p>האם <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,1,2,0)</span> הוא פתרון? אם לא, לאיזה ערך של <span class="math inline">a\in\mathbb R</span> הוקטור <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1-a,1,1,2,a)</span> הוא פתרון של הממ"ל?</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>. נציב בממ"ל <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,1,2,0)</span> ונקבל <span class="math display">.\begin{cases}
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>. נציב בממ"ל <span class="math inline">(x_1,x_2,x_3,x_4,x_5)=(1,1,1,2,0)</span> ונקבל <span class="math display">.\begin{cases}
 1+1+2-2+0=2 \\
 5-3-2+2=2\neq 0
 \end{cases}</span></p>
@@ -504,6 +522,8 @@ x_1 +  x_2 + 2x_3 - x_4+x_5 &amp;= 2 \\[4pt]
 \end{aligned}
 \end{cases}</span></p>
 <p>המשוואה הראשונה מתקיימת לכל ערך של <span class="math inline">a</span>, ואילו המשוואה השנייה מתקיימת אם ורק אם <span class="math display">.2-5a=0 \iff a=\frac{2}{5}</span> אז הפתרון מהצורה המבוקשת (יש עוד אינסוף פתרונות מסוג אחר) הוא <span class="math display">.(x_1,x_2,x_3,x_4,x_5)=(\frac{3}{5},1,1,2,\frac{2}{5})</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="מטריצות" class="level2" data-number="5.3">
@@ -598,8 +618,19 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 \end{alignedat}
 \end{cases}</span></p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>. מטריצת המקדמים המצומצמת היא <span class="math display">.\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\\
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>. מטריצת המקדמים המצומצמת היא <span class="math display">.\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\\
 0 &amp; 0 &amp; 1 &amp; -1\\
 1 &amp; 2 &amp; 2 &amp; 3
 \end{pmatrix}</span></p>
@@ -613,6 +644,8 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 2 \\
 8
 \end{pmatrix}</span>.</p>
+</div>
+</div>
 </div>
 </section>
 <section id="מטריצות-מדורגות-ומדורגות-קנונית" class="level2" data-number="5.4">
@@ -1182,8 +1215,19 @@ x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  a z &amp;= 0
 \end{cases}</span></p>
 <p>לאילו ערכי <span class="math inline">a\in\mathbb R</span> יש פתרון יחיד? אינסוף פתרונות?</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>. נחזור על הדירוג שביצענו בדוגמה. ההבדל היחיד הוא שהפעם ניתן להשמיט את העמודה הימנית כי הממ"ל הומוגנית (צריך לזכור שמסתתרת שם עמודת אפסים בכל שלב של הדירוג). אז לפי תחילת הדירוג שעשינו, מטריצת המקדמים המצומצמת שקולת שורה למטריצה</p>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>. נחזור על הדירוג שביצענו בדוגמה. ההבדל היחיד הוא שהפעם ניתן להשמיט את העמודה הימנית כי הממ"ל הומוגנית (צריך לזכור שמסתתרת שם עמודת אפסים בכל שלב של הדירוג). אז לפי תחילת הדירוג שעשינו, מטריצת המקדמים המצומצמת שקולת שורה למטריצה</p>
 <p><span class="math display">.\begin{pmatrix}
 1 &amp; a &amp; 1  \\
 0 &amp; 1-a^2 &amp; 1-a \\
@@ -1198,6 +1242,8 @@ x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  a z &amp;= 0
 <p>הדרגה היא לפחות <span class="math inline">2</span> ונקבע אותה לפי הערך בפינה התחתונה. אם מתקיים <span class="math inline">2-a-a^2\neq 0</span>, אז הדרגה היא <span class="math inline">3</span> ולכן הפתרון יחיד (והוא הפתרון הטריוויאלי). באופן מפורש, יש פתרון יחיד לכל <span class="math inline">a\notin\{-2,1\}</span> כי מתקיים</p>
 <p><span class="math display">.2-a-a^2\neq 0 \iff a\notin\{-2,1\}</span></p>
 <p>אם <span class="math inline">a\in\{-2,1\}</span> יש אינסוף פתרונות כי הדרגה קטנה מ- <span class="math inline">3</span> בשני המקרים.</p>
+</div>
+</div>
 </div>
 
 

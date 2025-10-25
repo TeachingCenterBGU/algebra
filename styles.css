@@ -153,3 +153,36 @@ figure.quarto-figure figcaption,
 }
 .callout.solution .callout-icon-container { display: none; } /* בלי האייקון של callout */
 .callout.solution .callout-body { padding: 0.6rem; }
+
+/* מרכזים את תמונת ה-figure עצמה */
+figure.quarto-figure img,
+.figure img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* תיקון סופי למרכז תמונות ו-caption גם במסמך RTL */
+.quarto-figure,
+.figure {
+  display: block;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.quarto-figure img,
+.figure img {
+  display: inline-block !important;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.quarto-figure figcaption,
+.figure .figure-caption,
+figure.quarto-figure figcaption {
+  text-align: center !important;
+  display: block;
+  margin: 0.5rem auto;
+}
+
