@@ -1,16 +1,16 @@
--- div-to-theorem-env.lua
 -- ממיר בלוקים מסוג ::: {.definition/.example/...} לסביבות LaTeX
+-- חשוב: HTML צריך להישאר עם ה-DIV כדי ש-Quarto ייצר כותרות!
 local targets = {
   "definition", "example", "exercise", "remark",
   "theorem", "lemma", "proposition", "corollary"
 }
 
-local function includes(tbl, val)
-  for _, v in ipairs(tbl) do if v == val then return true end end
-  return false
-end
-
 function Div(div)
+  -- אם זה לא PDF - לא עושים כלום, מחזירים nil כדי להשאיר את ה-DIV כמו שהוא
+  if not quarto.doc.isFormat("pdf") then
+    return nil
+  end
+
   for _, cls in ipairs(targets) do
     if div.classes:includes(cls) then
       local out = pandoc.List()

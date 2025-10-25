@@ -1113,9 +1113,15 @@ H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|3x-6y+15z=13}
 </main> <!-- /main -->
 <script>
 
+console.log('[env titles] loaded');
+
+window.__envProbe = true;
+
+
+
 /* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
 
-   גם כשהכותרת כבר קיימת מ‑Quarto */
+   גם כשהכותרת כבר קיימת מ-Quarto */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -1123,7 +1129,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const h1 = document.querySelector('main h1[data-number]');
 
-    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+    if (h1 && h1.getAttribute('data-number'))
+
+      return h1.getAttribute('data-number').split('.')[0];
 
     const sec = document.querySelector('.header-section-number');
 
@@ -1137,7 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const envs = {
+  const envs = {
 
     definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
 
@@ -1157,7 +1165,7 @@ const envs = {
 
     proof:       { label: 'הוכחה',    color: 'rgba(60, 179, 113, 0.35)',numbered: false }
 
-};
+  };
 
 
 
@@ -1171,10 +1179,6 @@ const envs = {
 
       const meta = envs[env];
 
-      // חפשי כותרת קיימת של Quarto (בכל עומק), ואם אין - צרי אחת.
-
-      // בכל מקרה קובעים לה את הטקסט העברי והמספור שלנו.
-
       let title = div.querySelector('.theorem-title');
 
       if (!title) {
@@ -1186,8 +1190,6 @@ const envs = {
         div.insertBefore(title, div.firstChild);
 
       }
-
-
 
       if (meta.numbered) {
 
@@ -1201,31 +1203,15 @@ const envs = {
 
       }
 
-
-
-      // תמיד הוסף envbox וצבע פסטלי
-
       div.classList.add('envbox');
 
       div.style.setProperty('--env-color', meta.color);
-
-
-
-      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
-
-      const firstP = div.querySelector(':scope > p');
-
-      if (firstP) {
-
-        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
-
-      }
 
     });
 
   });
 
-});
+}); // <-- סוגריים סוגרים את addEventListener
 
 </script>
 

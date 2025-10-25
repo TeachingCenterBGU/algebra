@@ -38,7 +38,7 @@ format:
     html-math-method: katex
     fig-align: center
     fig-cap-location: bottom
-    theorems: false
+
     callout:
       collapse: true
     css: 
@@ -50,33 +50,33 @@ format:
       
     filters:
       - env-to-callout.lua
-   
+    theorems:
+      numbering: true
+      within: chapter        # מספור בתוך פרק: 1.1, 1.2, ...; 2.1, 2.2, ...
+      definition:
+        name: "הגדרה"
+      example:
+        name: "דוגמה"
+      exercise:
+        name: "תרגיל"
+      remark:
+        name: "הערה"
+      theorem:
+        name: "משפט"
+      lemma:
+        name: "למה"
+      proposition:
+        name: "טענה"
+      corollary:
+        name: "מסקנה"
+      proof:
+        name: "הוכחה"
+        numbering: false     # הוכחות בלי מספור   
  
         
 number-sections: true
 
-theorems:
-  numbering: true
-  within: chapter        # מספור בתוך פרק: 1.1, 1.2, ...; 2.1, 2.2, ...
-  definition:
-    name: "הגדרה"
-  example:
-    name: "דוגמה"
-  exercise:
-    name: "תרגיל"
-  remark:
-    name: "הערה"
-  theorem:
-    name: "משפט"
-  lemma:
-    name: "למה"
-  proposition:
-    name: "טענה"
-  corollary:
-    name: "מסקנה"
-  proof:
-    name: "הוכחה"
-    numbering: false     # הוכחות בלי מספור
+
 
 resources:
   - simulations/**

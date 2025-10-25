@@ -1,0 +1,16 @@
+---
+title: "בדיקת THEOREM בסיסית"
+format:
+  html:
+    theorems: true
+    number-sections: true
+    toc: false
+---
+
+::: {.theorem}
+זה ניסוח של משפט עם טקסט קצר.
+:::
+
+::: {.proof}
+זו הוכחה קצרה.
+:::

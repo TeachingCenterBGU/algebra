@@ -493,6 +493,8 @@ const envs = {
 
   const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
 
+// ... (הקוד עד counters)
+
 
 
   Object.keys(envs).forEach(env => {
@@ -505,17 +507,9 @@ const envs = {
 
       // בכל מקרה קובעים לה את הטקסט העברי והמספור שלנו.
 
-      let title = div.querySelector('.theorem-title');
+      // חפשי כותרת קיימת של Quarto (בכל עומק), ואם אין - צרי אחת
 
-      if (!title) {
 
-        title = document.createElement('div');
-
-        title.className = 'theorem-title';
-
-        div.insertBefore(title, div.firstChild);
-
-      }
 
 
 
@@ -523,15 +517,15 @@ const envs = {
 
         counters[env] += 1;
 
-        title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+        title.textContent = `${meta.label} ${chap}.${counters[env]}`; // <-- שורות אלו מחזירות את הטקסט
 
       } else {
 
-        title.textContent = meta.label;
+        title.textContent = meta.label;                               // <-- שורות אלו מחזירות את הטקסט
 
       }
 
-
+      
 
       // תמיד הוסף envbox וצבע פסטלי
 
@@ -555,10 +549,7 @@ const envs = {
 
   });
 
-});
-
-</script>
-
+// ...
 <script>
 
 document.addEventListener('DOMContentLoaded', () => {

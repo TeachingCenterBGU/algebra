@@ -1,17 +1,21 @@
 <script>
+console.log('[env titles] loaded');
+window.__envProbe = true;
+
 /* הוספת כותרות אוטומטיות + צבע פסטלי לכל הסביבות (HTML),
-   גם כשהכותרת כבר קיימת מ‑Quarto */
+   גם כשהכותרת כבר קיימת מ-Quarto */
 document.addEventListener('DOMContentLoaded', () => {
   function chapterNumber() {
     const h1 = document.querySelector('main h1[data-number]');
-    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+    if (h1 && h1.getAttribute('data-number'))
+      return h1.getAttribute('data-number').split('.')[0];
     const sec = document.querySelector('.header-section-number');
     if (sec) return sec.textContent.trim().split('.')[0];
     return '1';
   }
   const chap = chapterNumber();
 
-const envs = {
+  const envs = {
     definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
     example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
     exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  },
@@ -21,39 +25,28 @@ const envs = {
     proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
     corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
     proof:       { label: 'הוכחה',    color: 'rgba(60, 179, 113, 0.35)',numbered: false }
-};
+  };
 
   const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
 
   Object.keys(envs).forEach(env => {
     document.querySelectorAll(`div.${env}`).forEach(div => {
       const meta = envs[env];
-      // חפשי כותרת קיימת של Quarto (בכל עומק), ואם אין - צרי אחת.
-      // בכל מקרה קובעים לה את הטקסט העברי והמספור שלנו.
       let title = div.querySelector('.theorem-title');
       if (!title) {
         title = document.createElement('div');
         title.className = 'theorem-title';
         div.insertBefore(title, div.firstChild);
       }
-
       if (meta.numbered) {
         counters[env] += 1;
         title.textContent = `${meta.label} ${chap}.${counters[env]}`;
       } else {
         title.textContent = meta.label;
       }
-
-      // תמיד הוסף envbox וצבע פסטלי
       div.classList.add('envbox');
       div.style.setProperty('--env-color', meta.color);
-
-      // ניקוי "Remark./Proof." שנדבק לפסקה הראשונה
-      const firstP = div.querySelector(':scope > p');
-      if (firstP) {
-        firstP.innerHTML = firstP.innerHTML.replace(/^\s*(Remark|Proof)\.?\s*/i, '');
-      }
     });
   });
-});
+}); // <-- סוגריים סוגרים את addEventListener
 </script>

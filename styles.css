@@ -62,9 +62,6 @@
 .theorem, .lemma, .proposition, .corollary { --env-color: rgba(255, 165, 0, 0.35); } /* שחור פסטלי */
 .proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
 
-/* הסתרת כותרות-inline שמודבקות בתוך הפסקה הראשונה */
-.remark .remark-title,
-.proof  .proof-title { display: none; }
 
 /* למרכז תמונות וכיתובים ב‑HTML של Quarto */
 figure.quarto-figure,
