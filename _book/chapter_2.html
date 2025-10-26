@@ -191,7 +191,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -278,13 +278,10 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 </div>
 <div class="example">
 <p>משוואה לינארית ב-<span class="math inline">4</span> משתנים מעל <span class="math inline">\mathbb C</span><span class="math inline">x_1+ix_2+2ix_3+x_4=1+4i</span>$</p>
-<pre><code>אחד הפתרונות של המשוואה הוא $(x_1,x_2,x_3,x_4)=(1,1,1,i)$. נבדוק זאת: $$1\cdot 1+i\cdot 1+2i\cdot 1+1\cdot i=1+4i$$ לעומת זאת, $(x_1,x_2,x_3,x_4)=(1,0,1,0)$ אינו פתרון. הפעם בדיקה מראה כי $$.1\cdot 1+i\cdot 0+2i\cdot 1+1\cdot 0=1+2i\neq1+4i$$
-
-נבודד את $x_1$ כדי למצוא את קבוצת הפתרונות: $$x_1=1+4i-ix_2-2ix_3-x_4$$
-
-זו משוואה מעל $\mathbb C$ ולכן נבחר $c_2,c_3,c_4\in\mathbb C$ שרירותיים ונציב אותם במשוואה. כך נקבל $$.x_1=1+4i-ic_2-2ic_3-c_4$$
-
-לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם $3$ פרמטרים $c_2,c_3,c_4$) ע\"י $$.\Set{(1+4i-ic_2-2ic_3-c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb C}$$</code></pre>
+<p>אחד הפתרונות של המשוואה הוא <span class="math inline">(x_1,x_2,x_3,x_4)=(1,1,1,i)</span>. נבדוק זאת: <span class="math display">1\cdot 1+i\cdot 1+2i\cdot 1+1\cdot i=1+4i</span> לעומת זאת, <span class="math inline">(x_1,x_2,x_3,x_4)=(1,0,1,0)</span> אינו פתרון. הפעם בדיקה מראה כי <span class="math display">.1\cdot 1+i\cdot 0+2i\cdot 1+1\cdot 0=1+2i\neq1+4i</span></p>
+<p>נבודד את <span class="math inline">x_1</span> כדי למצוא את קבוצת הפתרונות: <span class="math display">x_1=1+4i-ix_2-2ix_3-x_4</span></p>
+<p>זו משוואה מעל <span class="math inline">\mathbb C</span> ולכן נבחר <span class="math inline">c_2,c_3,c_4\in\mathbb C</span> שרירותיים ונציב אותם במשוואה. כך נקבל <span class="math display">.x_1=1+4i-ic_2-2ic_3-c_4</span></p>
+<p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">3</span> פרמטרים <span class="math inline">c_2,c_3,c_4</span>) ע"י <span class="math display">.\Set{(1+4i-ic_2-2ic_3-c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb C}</span></p>
 </div>
 <p>איך פותרים משוואה לינארית כללית מהצורה ? אפשר למצוא את כל הפתרונות ע"י בידוד אחד המשתנים. מקובל לעשות זאת עבור <span class="math inline">x_1</span> בהנחה ש- <span class="math inline">a_1\neq0</span> (אם <span class="math inline">a_1=0</span>, נבחר את המשתנה הראשון עם מקדם השונה מ-<span class="math inline">0</span>). ראשית מעבירים לאגף ימין את כל הביטויים של המשתנים האחרים: <span class="math display">.a_1x_1=b-a_2x_2-a_3x_3-...-a_nx_n</span> נחלק בסקלר <span class="math inline">a_1</span> ונקבל <span class="math display">.x_1=\frac{1}{a_1}(b-a_2x_2-a_3x_3-...-a_nx_n)</span></p>
 <p>זה מראה שלכל בחירה של סקלרים <span class="math inline">c_2,....,c_n\in\mathbb F</span> נקבל פתרון <span class="math display">.(x_1,x_2,x_3,...,x_n)=(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)</span></p>
@@ -292,8 +289,8 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <p>נדגיש כי <span class="math inline">a_1,a_2,a_3,...,a_n</span> נתונים במשוואה כסקלרים קבועים. <span class="math inline">c_1,c_2,...,c_n</span> הם פרמטרים שרצים על פני הקבוצה <span class="math inline">\mathbb F</span> (<span class="math inline">\mathbb R</span> או <span class="math inline">\mathbb C</span>) כדי ליצור את כל הפתרונות. זו הכללה (כלומר צורה יותר כללית של מקרה מוכר) של הצגה פרמטרית של ישר (פרמטר אחד) ושל מישור (שני פרמטרים) למספר כללי של פרמטרים, שהוא בעצם <span class="math inline">n-1</span>. בפרט, לכל <span class="math inline">n\geq2</span> יש אינסוף פתרונות למשוואה כי ניתן להציב אינסוף אפשרויות במשתנה אחד או יותר.</p>
 <p>שימו לב שהתייחסנו אל <span class="math inline">x_1</span> כמשתנה תלוי ואל <span class="math inline">x_2,x_3,...,x_n</span> כמשתנים חופשיים (הצבנו בהם ערכים שרירותיים). אם היינו מבודדים את <span class="math inline">x_2</span> או משתנה אחר במקום <span class="math inline">x_1</span>, אז הוא היה המשתנה התלוי וההצגה הפרמטרית הייתה משתנה בהתאם. עדיין, זו רק הצגה חלופית לקבוצת הפתרונות של אותה המשוואה. טבעי לבחור את <span class="math inline">x_1</span>, אך אין חובה לעשות זאת.</p>
 <div class="example">
-<p>את המשוואה <span class="math display">x_1+2x_2+3x_3+4x_4=4</span> אפשר לפתור ע"י בידוד אחד מארבעת המשתנים (זה נתון לבחירתנו). מקובל לבודד את <span class="math inline">x_1</span> ולקבל <span class="math display">.x_1=4-2x_2-3x_3-4x_4</span> בהצבת <span class="math inline">(x_2,x_3,x_4)=(c_2,c_3,c_4)</span> מקבלים את קבוצת הפתרונות <span class="math display">.\Set{(4-2c_2-3c_3-4c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}</span> אבל באותה המידה אפשר לבודד משתנה אחר, למשל <span class="math inline">x_2</span>. כך נקבל <span class="math inline">,2x_2=4-x_1-3x_3-4x_4</span> ולאחר חלוקה ב- <span class="math inline">2</span>: <span class="math display">.x_2=\frac{1}{2}(4-x_1-3x_3-4x_4)</span></p>
-<p>בהצבת סקלרים <span class="math inline">(x_1,x_3,x_4)=(d_1,d_3,d_4)</span> נקבל הצגה פרמטרית חדשה לקבוצת הפתרונות, שנתונה ע"י <span class="math display">.\Set{(d_1,\frac{1}{2}(4-d_1-3d_3-4d_4),d_3,d_4)|d_1,d_3,d_4\in\mathbb R}</span> בפרט, נובע כי מתקיים שוויון בין שתי הקבוצות. מדובר בשתי הצגות שקולות.</p>
+<p>את המשוואה <span class="math display">x_1+2x_2+3x_3+4x_4=4</span> אפשר לפתור ע"י בידוד אחד מארבעת המשתנים (זה נתון לבחירתנו). מקובל לבודד את <span class="math inline">x_1</span> ולקבל <span class="math display">x_1=4-2x_2-3x_3-4x_4</span> בהצבת <span class="math inline">(x_2,x_3,x_4)=(c_2,c_3,c_4)</span> מקבלים את קבוצת הפתרונות <span class="math display">\Set{(4-2c_2-3c_3-4c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}</span> אבל באותה המידה אפשר לבודד משתנה אחר, למשל <span class="math inline">x_2</span> כך נקבל <span class="math inline">2x_2=4-x_1-3x_3-4x_4</span> ולאחר חלוקה ב- <span class="math inline">2</span>: <span class="math display">x_2=\frac{1}{2}(4-x_1-3x_3-4x_4)</span></p>
+<p>בהצבת סקלרים <span class="math inline">(x_1,x_3,x_4)=(d_1,d_3,d_4)</span> נקבל הצגה פרמטרית חדשה לקבוצת הפתרונות, שנתונה ע"י <span class="math display">\Set{(d_1,\frac{1}{2}(4-d_1-3d_3-4d_4),d_3,d_4)|d_1,d_3,d_4\in\mathbb R}</span> בפרט, נובע כי מתקיים שוויון בין שתי הקבוצות. מדובר בשתי הצגות שקולות.</p>
 </div>
 <div class="exercise">
 <p>מצאו את קבוצת הפתרונות של המשוואה <span class="math inline">2x_1+x_2+3x_3+4x_4=5</span>. בדקו איך ההצגה הפרמטרית משתנה כאשר מבודדים את <span class="math inline">x_2</span> במקום <span class="math inline">x_1</span>.</p>
@@ -1966,8 +1963,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="סיכום">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">סיכום</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="TBD">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">TBD</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

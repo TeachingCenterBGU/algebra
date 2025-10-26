@@ -35,7 +35,7 @@
 אמרנו שוקטורים ניתנים לתיאור חצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה שקובע את הוקטור הם גודלו וכיוונו, לא נקודת ההתחלה. וקטורים זהים יופיעו כחצים מקבילים ושווי גודל במישור.
 
 ::: {#fig:LineMotion .figure}
-![](simulations/Vector Twins.html?embed=1){width=800 height=800}
+![](simulations/Vector-Twins.html?embed=1){width=800 height=800}
 <figcaption>סימולציה 1.2 - וקטורים שקולים </figcaption>
 :::
 
@@ -121,8 +121,8 @@ $$ {#eq-vector-points}
 כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור אם $c>1$, או כיווצו אם $0<c<1$, בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון ובנוסף מתיחה/כיווץ בהתאם לערך של $|c|$.
 
 
-::: {#fig:Parallelogram .figure}
-![](simulations/scalar-slider.html?embed=1){width=800 height=800}
+::: {#fig:Scalar-Slider .figure}
+![](simulations/Scalar-Slider.html?embed=1){width=800 height=800}
 <figcaption>סימולציה 1.4 - כפל וקטור בסקלר </figcaption>
 :::
 
@@ -797,7 +797,7 @@ $L=\Set{(1,1,1)+t\cdot(1,2,3)|t\in\mathbb{R}}$ ניתן להצגה חלופית 
 גיאומטרית: כאשר פותרים מערכת של שתי משוואות (לינאריות), מחשבים את החיתוך של שני מישורים. לרוב, שני מישורים נחתכים לאורך ישר ולכן ניתן לתאר ישר כחיתוך של שני מישורים שמכילים אותו. יש אינסוף מישורים כאלה.
 
 
-![סימולציה 1.9 - שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי) ](simulations/Infinite Planes.html?embed=1){#fig:InfinitePlanes width=800 height=800}
+![סימולציה 1.9 - שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי) ](simulations/Infinite-Planes.html?embed=1){#fig:InfinitePlanes width=800 height=800}
 
 
 נעדיף לעבור מהצגה אלגברית של ישר (שהיא רחוקה מאוד מלהיות יחידה) להצגה פרמטרית, ולא להיפך. אבל ראשית צריך להבין מישורים במרחב יותר לעומק.
@@ -811,7 +811,7 @@ $$H=\Set{(x,y,z)\in\mathbb{R}^3|ax+by+cz=d}$$
 כאשר $(a,b,c)\neq(0,0,0)$. נבין בקרוב שגם כאן (בדומה לישר במישור שמתואר ע\"י משוואה אחת) המשמעות הגיאומטרית של $(a,b,c)$ היא וקטור נורמל שמאונך לכל וקטור שמוכל במישור.
 
 
-![סימולציה 1.10 - מישור עם וקטור נורמל ](simulations/Axis of Rotation.html?embed=1){#fig:AxisofRotation width=800 height=800}
+![סימולציה 1.10 - מישור עם וקטור נורמל ](simulations/Axis-of-Rotation.html?embed=1){#fig:AxisofRotation width=800 height=800}
 
 ::: example
 נרצה למצוא נקודה על $H=\Set{(x,y,z)\in\mathbb{R}^3|2x+3y-z=5}$. זו בחירה שרירותית, אבל אפשר למשל להציב $x=y=0$ ולקבל $-z=5\implies z=-5$. אז $(0,0,-5)\in H$ ולכל $(x,y,z)\in H$ מתקיים $$\begin{aligned}
@@ -843,7 +843,7 @@ $$ {#eq-algebraic-normal}
 איזו נקודה מתאימה להצבה $(t,s)=(0,0)$? להצבה $(t,s)=(1,0)$? להצבה $(t,s)=(0,1)$?
 :::
 
-![סימולציה 1.11 - מישור נוצר ע"י שני וקטורים שיוצאים מאותה הנקודה ](simulations/Plane Spanned by Vectors.html?embed=1){#fig:Plane-Spanned-by-Vectors width=800 height=800}
+![סימולציה 1.11 - מישור נוצר ע"י שני וקטורים שיוצאים מאותה הנקודה ](simulations/Plane-Spanned-by-Vectors.html?embed=1){#fig:Plane-Spanned-by-Vectors width=800 height=800}
 
 
 ::: {.callout-note collapse="true" title="פתרון"}
