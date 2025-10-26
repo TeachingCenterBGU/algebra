@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ישר מסתובב עם שני וקטורי נורמל</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+  <!-- שינוי: עדכון הכותרת -->
+  <h1>ישר מסתובב עם שני וקטורי נורמל</h1>
+  <p>שני וקטורי הנורמל מסתובבים עם הישר</p>
+  <canvas id="animationPlane" width="600" height="600"></canvas>
+
+<script>
+  const canvas = document.getElementById('animationPlane');
+  const ctx = canvas.getContext('2d');
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  
+  const padding = 30;
+  const scale = 4;
+  const unitSize = (canvas.width - 2 * padding) / (scale * 2);
+  
+  let angle = 0;
+  const speed = 0.01;
+
+  function scaledToPixels(point) {
+    return {
+      x: centerX + point.x * unitSize,
+      y: centerY - point.y * unitSize
+    };
+  }
+
+  function drawGrid() {
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1;
+    for(let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0);
+      ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize);
+      ctx.lineTo(canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.moveTo(padding, centerY);
+    ctx.lineTo(canvas.width - padding, centerY);
+    ctx.moveTo(centerX, canvas.height - padding);
+    ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    const headlen = 10;
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', canvas.width - padding + 10, centerY);
+    ctx.fillText('y', centerX, padding - 15);
+  }
+
+  function drawArrow(p1, p2, color) {
+    const headlen = 10;
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const angle = Math.atan2(dy, dx);
+
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(p2.x, p2.y);
+    ctx.lineTo(p2.x - headlen * Math.cos(angle - Math.PI / 6), p2.y - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(p2.x, p2.y);
+    ctx.lineTo(p2.x - headlen * Math.cos(angle + Math.PI / 6), p2.y - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+
+  function drawLine(p1, p2, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.5;
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    angle = (angle + speed) % (2 * Math.PI);
+
+    drawGrid();
+
+    const lineRadius = canvas.width;
+    const lineP1 = { x: lineRadius * Math.cos(angle), y: lineRadius * Math.sin(angle) };
+    const lineP2 = { x: -lineP1.x, y: -lineP1.y };
+    drawLine(scaledToPixels(lineP1), scaledToPixels(lineP2), 'blue');
+    
+    const origin = {x: 0, y: 0};
+    const a = Math.cos(angle);
+    const b = Math.sin(angle);
+
+    const directionVector = { x: a, y: b };
+    const normalVector1 = { x: -b, y: a };
+    const normalVector2 = { x: b, y: -a };
+
+    drawArrow(scaledToPixels(origin), scaledToPixels(normalVector1), 'red');
+    drawArrow(scaledToPixels(origin), scaledToPixels(normalVector2), 'purple');
+
+    ctx.font = '16px Arial';
+    ctx.textAlign = 'right';
+
+    ctx.fillStyle = 'blue';
+    const dirText = `(a,b) = (${directionVector.x.toFixed(2)}, ${directionVector.y.toFixed(2)})`;
+    ctx.fillText(dirText, canvas.width - padding, padding);
+
+    ctx.fillStyle = 'red';
+    const norm1Text = `(-b,a) = (${normalVector1.x.toFixed(2)}, ${normalVector1.y.toFixed(2)})`;
+    ctx.fillText(norm1Text, canvas.width - padding, padding + 20);
+
+    ctx.fillStyle = 'purple';
+    const norm2Text = `(b,-a) = (${normalVector2.x.toFixed(2)}, ${normalVector2.y.toFixed(2)})`;
+    ctx.fillText(norm2Text, canvas.width - padding, padding + 40);
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+</script>
+
+</body>
+</html>
