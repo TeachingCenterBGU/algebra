@@ -16,6 +16,8 @@ book:
   - summary.qmd
   - references.qmd
   search: true
+  sidebar:
+    logo: logo.png
  
 language:
   label:
@@ -90,6 +92,7 @@ number-sections: true
 
 website:
   google-analytics: "G-TPY4VZJV6M"
+
 
 resources:
   - simulations/**
