@@ -320,27 +320,36 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <p>בפרק הקודם ראינו הרבה דוגמאות למערכות משוואות לינאריות (ממ"ל) מעל <span class="math inline">\mathbb R</span> עם שתי משוואות בשני משתנים (לתיאור חיתוך שני ישרים במישור) וגם לממ"ל עם שתי משוואות בשלושה משתנים (לתיאור חיתוך שני מישורים במרחב). באופן כללי, אפשר להתייחס לכל אוסף של משוואות לינאריות כמערכת אחת.</p>
 <p>בהקשר של החוק השני של ניוטון שהזכרו בתחילת הפרק כמשוואה וקטרית מהצורה <span class="math inline">\vec{F}=m\vec{a}</span>, אפשר לחשוב על ממ"ל במספר כלשהו של משתנים שקשורים לוקטורי התאוצה של מספר גופים ולכוחות הפועלים עליהם. גודל הממ"ל מקשה על האינטואיציה הגיאומטרית ומוסיף חישובים (ייתכן באופן משמעותי), אך עדיין יש גישה אלגברית אחת לפתרון של כל ממ"ל. נפתח אותה בפרק זה.</p>
 <div class="example">
-<p>&nbsp;</p>
-<p>א. ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{7}
-    x_1 &amp;{}+{}&amp; 2x_2 &amp;{}+{}&amp; 3x_3 &amp;{}+{}&amp; 4x_4 &amp;= 5 \\[4pt]
-    x_1 &amp;{}+{}&amp;  x_2 &amp;{}+{}&amp;  x_3 &amp;{}+{}&amp;  x_4 &amp;= 4
-    \end{alignedat}
-    \end{cases}</span></p>
-<p>ב. ממ"ל של שלוש משוואות בשלושה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{7}
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
-    x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
-    \end{alignedat}
-    \end{cases}</span></p>
-<pre><code>כאן חזרנו להשתמש באותיות המוכרות $x,y,z$ במקום $x_1,x_2,x_3$. הסימונים לא באמת חשובים כל עוד יש עקביות (נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים).</code></pre>
-<p>ג. ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb C</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{8}
-     &amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
-     &amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
-    \end{alignedat}
-    \end{cases}</span></p>
+<p><strong>א.</strong> ממ״ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb{R}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+x_1 &amp;{}+{}&amp; 2x_2 &amp;{}+{}&amp; 3x_3 &amp;{}+{}&amp; 4x_4 &amp;= 5 \\[4pt]
+x_1 &amp;{}+{}&amp;  x_2 &amp;{}+{}&amp;  x_3 &amp;{}+{}&amp;  x_4 &amp;= 4
+\end{alignedat}
+\end{cases}
+</span></p>
+<p><strong>ב.</strong> ממ״ל של שלוש משוואות בשלושה משתנים מעל <span class="math inline">\mathbb{R}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}
+</span></p>
+<p>כאן חזרנו להשתמש באותיות המוכרות <span class="math inline">x,y,z</span> במקום <span class="math inline">x_1,x_2,x_3</span>.<br>
+הסימונים לא באמת חשובים כל עוד יש עקביות - נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים.</p>
+<p><strong>ג.</strong> ממ״ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb{C}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{8}
+&amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
+&amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
+\end{alignedat}
+\end{cases}
+</span></p>
 </div>
 <div class="definition">
 <p>מערכת משוואות לינאריות (ממ"ל) במשתנים <span class="math inline">x_1,x_{2,}...,x_n</span> היא אוסף של מספר כלשהו (<span class="math inline">m</span>) של משוואות לינאריות מהצורה</p>
@@ -363,46 +372,51 @@ a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \d
 </div>
 <div class="example">
 <p>נחזור לדוגמה קודמת:</p>
-<pre><code>$$\begin{cases}
+<p><span class="math display">
+\begin{cases}
 \begin{alignedat}{7}
 x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
 x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
 x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
 \end{alignedat}
-\end{cases}$$
-
-כאן המקדמים הם $$.a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\,a_{22}=2,\,a_{33}=3$$ הקבועים הם $b_1=3,\,b_2=4,\,b_3=5$.</code></pre>
+\end{cases}
+</span></p>
+<p>כאן המקדמים הם<br>
+<span class="math inline">a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\; a_{22}=2,\; a_{33}=3</span>,<br>
+והקבועים הם <span class="math inline">b_1=3,\; b_2=4,\; b_3=5</span>.</p>
 </div>
 <div class="example">
-<pre><code>$$\begin{cases}
+<p><span class="math display">
+\begin{cases}
 \begin{aligned}
 x_1 + x_2 + x_3 + x_4 &amp;= 4 \\[4pt]
 \phantom{x_1 + {}}x_2 + x_3 + x_4 &amp;= 0 \\[4pt]
 x_1 + \phantom{x_2 + {}}x_3 + x_4 &amp;= 0
- \end{aligned}
-\end{cases}$$
-
-כאן הממ\"ל לא כתובה באופן מלא, כי בכל משוואה שבה חסר משתנה המשמעות היא שהמקדם המתאים הוא $0$ (הרווחים נועדו להדגשה). בכתיבה מלאה, הממ\"ל נראית כך:
-
-$$\begin{cases}
-\begin{aligned}
-1\cdot x_1 + 1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 4 \\[4pt]
-0\cdot x_1 +1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0 \\[4pt]
-1\cdot x_1 + 0\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0
 \end{aligned}
-\end{cases}$$
-
-כלומר מתקיים
-
-$$\begin{cases}
+\end{cases}
+</span></p>
+<p>כאן הממ״ל לא כתובה באופן מלא, כי בכל משוואה שבה חסר משתנה המשמעות היא שהמקדם המתאים הוא <span class="math inline">0</span> (הרווחים נועדו להדגשה).<br>
+בכתיבה מלאה, הממ״ל נראית כך:</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+1\cdot x_1 + 1\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 4 \\[4pt]
+0\cdot x_1 + 1\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 0 \\[4pt]
+1\cdot x_1 + 0\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 0
+\end{aligned}
+\end{cases}
+</span></p>
+<p>כלומר מתקיים</p>
+<p><span class="math display">
+\begin{cases}
 \begin{aligned}
 a_{11} &amp;= a_{12} = a_{13} = a_{14} = 1 \\[4pt]
-a_{21} &amp;= 0,a_{22} = a_{23} = a_{24} = 1 \\[4pt]
-a_{32} &amp;= 0, a_{31} = a_{33} = a_{34} = 1
+a_{21} &amp;= 0,\; a_{22} = a_{23} = a_{24} = 1 \\[4pt]
+a_{32} &amp;= 0,\; a_{31} = a_{33} = a_{34} = 1
 \end{aligned}
-\end{cases}$$
-
-הקבועים הם $b_1=4, b_2=b_3=0$.</code></pre>
+\end{cases}
+</span></p>
+<p>הקבועים הם <span class="math inline">b_1=4,\; b_2=b_3=0</span>.</p>
 </div>
 <p>הרבה יותר קשה לדמיין את הגיאומטריה כאשר יש מספר משתנים גבוה מ-<span class="math inline">3</span>, או אפילו משוואה אחת בשני משתנים מרוכבים. אבל מבחינה אלגברית, כל המקרים האלה שייכים לקטגוריה אחת ושיטת הפתרון משותפת לכולם. באופן כללי, נשאל את השאלות הבאות על ממ"ל:</p>
 <ol type="1">

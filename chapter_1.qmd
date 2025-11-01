@@ -97,18 +97,19 @@
 
 ![ההפרש הוקטורי מופיע בסגול לצד החיבור הוקטורי באדום](images/chapter02/Parallelogram2.png){#fig-Parallelogram2 width="40%" fig-align="center"}
 
-נוכל להתנסות בעצמינו
-
-::: {#fig:Parallelogram .figure}
-![](simulations/Parallelogram.html?embed=1){width=800 height=800}
-<figcaption>סימולציה 1.3 - כלל המקבילית </figcaption>
-:::
 
 זה גם מוביל אותנו לנוסחה שמתארת וקטור $\vec{u}$ שמתחיל בנקודה $(a_1,a_2)$ ומסתיים ב-$(b_1,b_2)$: מקבלים את ההפרש הוקטורי
 
 $$
 \vec{u} = (b_1 - a_1, b_2 - a_2)
 $$ {#eq-vector-points}
+
+נוכל להתנסות בעצמינו
+
+::: {#fig:Parallelogram .figure}
+![](simulations/Parallelogram.html?embed=1){width=800 height=800}
+<figcaption>סימולציה 1.3 - כלל המקבילית </figcaption>
+:::
 
 ::: exercise
 הראו שהוקטור שמתחיל ב-$(1,3)$ ומסתיים ב-$(5,0)$, שווה לוקטור שמתחיל ב- $(5,-1)$ ומסתיים ב- $(9,-4)$.
