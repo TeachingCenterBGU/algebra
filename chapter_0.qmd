@@ -175,13 +175,6 @@ $$
 
 נסכם את רעיון ההוכחה: מוכיחים שתי הכלות. לכל הכלה מתחילים את הטיעון ב-"יהי" כדי להצהיר שבחרנו איבר כללי מתוך הקבוצה הנתונה. אחר כך משתמשים בהגדרת הקבוצה כדי להראות שהאיבר גם מקיים את ההגדרה של הקבוצה השנייה.
 
-::: proposition
-$$
-\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C
-$$
-וכל הקבוצות שונות זו מזו.
-:::
-
 ::: {.proposition}
 $\mathbb{N\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{\mathbb{C}}}$ וכל הקבוצות שונות זו מזו.
 :::
@@ -256,6 +249,7 @@ $$
 1. הוכיחו כי $\{2n-1|n\in\mathbb{Z}\}=\{2m+1|m\in\mathbb{Z}\}$  
 2. הוכיחו כי $\{z\in\mathbb{C}|\mathrm{Im}(z)=2\mathrm{Re}(z)\}=\{t+2ti|t\in\mathbb{R}\}$  
 3. נגדיר $A=\{\frac{1}{n}|n\in\mathbb{Z},\,n\neq0\}$.  
-     א. חשבו את $A\cap\mathbb{Z}$.  
-     ב. הראו כי $A\cup\mathbb{Z}\subseteq\mathbb{Q}$, אך אין שוויון.   
+&nbsp;&nbsp;&nbsp;&nbsp;א. חשבו את $A\cap\mathbb{Z}$.  
+&nbsp;&nbsp;&nbsp;&nbsp;ב. הראו כי $A\cup\mathbb{Z}\subseteq\mathbb{Q}$, אך אין שוויון.  
+  
 :::
