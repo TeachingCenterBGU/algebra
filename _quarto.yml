@@ -88,10 +88,10 @@ format:
         
 number-sections: true
 
-
+website:
+  google-analytics: "G-TPY4VZJV6M"
 
 resources:
   - simulations/**
   - images/**
   - downloads/**
-  
