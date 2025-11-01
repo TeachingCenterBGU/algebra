@@ -93,3 +93,5 @@ number-sections: true
 resources:
   - simulations/**
   - images/**
+  - downloads/**
+  

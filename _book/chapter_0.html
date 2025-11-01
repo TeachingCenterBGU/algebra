@@ -251,8 +251,15 @@ window.Quarto = {
 <p>קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא חשיבות לסדר הופעתם.</p>
 </div>
 <p>זו הגדרה מאוד כללית, ובלבד שיהיה ברור מהגדרת הקבוצה אילו איברים שייכים לה ואילו לא. אם הקבוצה היא <span class="math inline">A</span>, אז נכתוב <span class="math inline">a\in A</span> כדי לומר שהאיבר <span class="math inline">a</span> שייך לקבוצה <span class="math inline">A</span>. אם הוא לא שייך לה, נכתוב <span class="math inline">a\notin A</span>.</p>
-<div class="center">
-<p>עיגול עם נקודה בתוכו שמסומנת כשייכת, ונקודה בחוץ שמסומנת כלא שייכת</p>
+<div id="fig-Belong" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Belong-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Belong.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Belong-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;2.1: העיגול הוא הקבוצה <span class="math inline">A</span> ומתקיים <span class="math inline">a\in A, b\notin A</span>
+</figcaption>
+</figure>
 </div>
 <div class="example">
 <p>משפחת לוי כוללת את דרור , אורית ואיתי. נקרא לקבוצת אנשים זו <span class="math inline">L</span> ונתאר אותה באופן מפורש תוך שימוש בלועזית (אפשר גם בעברית) <span class="math display">L=\{\text{{Dror, Itay, Orit}}\}</span></p>
@@ -260,6 +267,28 @@ window.Quarto = {
 </div>
 <div class="exercise">
 <p>האם מתקיים <span class="math inline">100^{100}\in\mathbb{N}</span>? <span class="math inline">100^{-100}\in\mathbb{N}</span>? <span class="math inline">(-100)^{100}\in\mathbb{N}</span>?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>מתקיים <span class="math inline">100^{100}\in\mathbb{N}</span><br>
+כי מכפלה של מספרים טבעיים היא תמיד מספר טבעי.<br>
+בנוסף, <span class="math inline">(-100)^{100}\in\mathbb{N}</span><br>
+כי <span class="math inline">(-100)^{100}=100^{100}</span> לפי הזוגיות של המעריך <span class="math inline">100</span>.</p>
+<p>אבל <span class="math inline">100^{-100}\notin\mathbb{N}</span><br>
+כי <span class="math inline">100^{-100}=\frac{1}{10^{100}}</span>,<br>
+וכל הופכי של מספר טבעי (שאינו <span class="math inline">1</span>) אינו מספר טבעי.</p>
+</div>
+</div>
 </div>
 <p>ניתן להגדיר תת-קבוצות של <span class="math inline">\mathbb{N}</span> עי שימוש בתכונות. למשל, את קבוצת המספרים הזוגיים החיוביים <span class="math inline">2\mathbb{N}</span> ניתן להגדיר באופן הבא: <span class="math display">2\mathbb{N}=\{n\in\mathbb{N}|n\text{ {is divided by} 2}\}=\{2,4,6,...\}</span></p>
 <p>הסימן <span class="math inline">\in</span> מתאר שייכות, ולכן הנוסחה <span class="math inline">n\in\mathbb{N}</span> פירושה המספר <span class="math inline">n</span> שייך לקבוצה <span class="math inline">\mathbb{N}</span>. הקו <span class="math inline">|</span> שמפריד בין הנוסחה לתנאי, פירושו כך ש-. לכן, הגדרת הקבוצה אומרת לנו שמדובר בקבוצת כל המספרים מהצורה <span class="math inline">n\in\mathbb{N}</span> כך ש-<span class="math inline">n</span> מתחלק ב-<span class="math inline">2</span>. אפשר גם להגדיר את הקבוצה הזו עי נוסחה מפורשת <span class="math inline">2n</span> שתפיק את כל המספרים הזוגיים החיוביים כאשר נציב בה כל מספר מהצורה <span class="math inline">n\in\mathbb{N}</span>. הפעם הכתיבה היא כדלקמן <span class="math display">2\mathbb{N}=\{2n|n\in\mathbb{N}\}</span></p>
@@ -283,8 +312,15 @@ window.Quarto = {
 \pi=3.14159265358979323846264338327950288419716939937...
 \end{aligned}</span> נדגיש שאלה מספרים אי-רציונליים מיוחדים כי יש להם משמעות גיאומטרית. <span class="math inline">\sqrt{2}</span> הוא אורך היתר של משולש ישר-זווית עם שני ניצבים באורך <span class="math inline">1</span>, לפי משפט פיתגורס. <span class="math inline">\pi</span> הוא היקף מעגל שקוטרו באורך <span class="math inline">1</span>.</p>
 <p>מבחינת הקורס, המספרים האי-רציונליים הרלוונטיים הם בעיקר שורשים כמו <span class="math inline">\sqrt{2}</span> שהם יחסית נוחים לחישובים. אבל טוב לזכור שיש המון מספרים אי-רציונליים (יותר מאשר מספרים רציונליים במובן מסוים), והם משלימים את המספרים הרציונליים למה שנקרא הישר הממשי. ניתן לחשוב על המספרים כנקודות על ישר עם ראשית <span class="math inline">0</span>. המספרים החיוביים מופיעים בצד ימין, ואילו המספרים השליליים מופיעים בצד שמאל.</p>
-<div class="center">
-<p>(הישר הממשי(</p>
+<div id="fig-RealLine" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RealLine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/RealLine.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RealLine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;2.2: הישר הממשי וחלק מאיבריו
+</figcaption>
+</figure>
 </div>
 <p>נשארה עוד קבוצה אחת, שהיא הגדולה ביותר מבין קבוצות המספרים שנעסוק בהן. באופן דומה להגדרת <span class="math inline">-1</span> כשורש (פתרון) של המשוואה <span class="math inline">x+1=0</span>, אפשר להגדיר את <span class="math inline">i</span> כשורש של המשוואה <span class="math inline">x^{2}+1=0</span>. זהו מספר מדומה, שהרי אין פתרון ממשי למשוואה זו (ערך המינימום של הפונקציה הוא <span class="math inline">1</span>). המספר <span class="math inline">i</span> לא ניתן למדידה במציאות אך הוא שימושי מאוד במתמטיקה, פיזיקה וחלק מההנדסות. לפי ההגדרה מתקיים <span class="math inline">i^{2}=-1</span> וזה מספיק כדי להגדיר את קבוצת המספרים המרוכבים ואת פעולות החשבון המתאימות לה.</p>
 <p><span class="math display">\mathbb{\mathbb{C}}=\{a+bi|a,b\in\mathbb{R}\}</span></p>
@@ -301,6 +337,27 @@ window.Quarto = {
 <div class="exercise">
 <p>לכל <span class="math inline">z\in\mathbb{C}</span> הראו כי המספר הצמוד ל-<span class="math inline">\overline{z}</span> הוא <span class="math inline">z</span>.</p>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>בהינתן <span class="math inline">z = x + iy</span> כאשר <span class="math inline">x,y \in \mathbb{R}</span>,<br>
+מתקיים לפי ההגדרה <span class="math inline">\overline{z} = x - yi</span>.<br>
+אם נשתמש בהגדרה שוב נקבל</p>
+<p><span class="math display">
+\overline{\overline{z}} = \overline{x - yi} = x - (-yi) = x + yi = z
+</span></p>
+</div>
+</div>
+</div>
 <p>בפרק הבא נדון בפעולות, תכונות וחלק מהשימושים של המספרים המרוכבים. את סוף הפרק הזה נקדיש לקשר בין כל קבוצות המספרים.</p>
 </section>
 <section id="תורת-הקבוצות-על-קצה-המזלג" class="level2" data-number="2.3">
@@ -311,14 +368,38 @@ window.Quarto = {
 <p>באופן קצת יותר מתמטי <span class="math inline">A\subseteq B</span> אם לכל <span class="math inline">a\in A</span> מתקיים <span class="math inline">a\in B</span>.</p>
 <p>אם ההיפך הוא הנכון, כלומר קיים <span class="math inline">a\in A</span> עבורו <span class="math inline">a\notin B</span>, אז נסמן <span class="math inline">A\nsubseteq B</span> ונאמר ש-<span class="math inline">A</span> לא מוכלת ב-<span class="math inline">B</span>.</p>
 </div>
-<div class="center">
-<p>(עיגול בתוך עיגול כדי לתאר הכלה, ושני עיגולים שרק נחתכים כדי לתאר חוסר הכלה(</p>
+<div id="fig-Contain" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Contain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Contain.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Contain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;2.3: כאן מתקיים <span class="math inline">A \subseteq B</span>, אך <span class="math inline">C \nsubseteq D</span>.
+</figcaption>
+</figure>
 </div>
 <div class="example">
 <p>עבור <span class="math inline">A=\{1,2\},\,B=\{1,2,3\}</span> מתקיים <span class="math inline">A\subseteq B</span> כי גם <span class="math inline">1\in B</span> וגם <span class="math inline">2\in B</span>. אבל <span class="math inline">B\nsubseteq A</span> כי <span class="math inline">3\in B</span> אך <span class="math inline">3\notin A</span>.</p>
 </div>
 <div class="exercise">
 <p>נגדיר <span class="math inline">A=\{1,3\},\,B=\{-1,1,2,3\},\,C=\{-1,2\}</span>. מצאו את כל זוגות הקבוצות שמקיימות קשר של הכלה.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>מתקיים <span class="math inline">A \subseteq B</span> וגם <span class="math inline">C \subseteq B</span>.</p>
+<p>אין שום הכלות אחרות. למעשה, לקבוצות <span class="math inline">A</span> ו־<span class="math inline">C</span> אין אף איבר משותף.</p>
+</div>
+</div>
 </div>
 <div class="definition">
 <p>נאמר ששתי קבוצות <span class="math inline">A,B</span> הן שוות ונסמן <span class="math inline">A=B</span> אם יש בהן בדיוק אותם האיברים, כלומר מתקיים <span class="math inline">x\in A</span> אם ורק אם <span class="math inline">x\in B</span>.</p>
@@ -343,8 +424,15 @@ window.Quarto = {
 <p>א. החיתוך <span class="math inline">A\cap B</span> הוא קבוצת כל האיברים השייכים גם ל-<span class="math inline">A</span> וגם ל-<span class="math inline">B</span>.</p>
 <p>ב. האיחוד <span class="math inline">A\cup B</span> הוא קבוצת כל האיברים השייכים לפחות לאחת משתי הקבוצות <span class="math inline">A,B</span>.</p>
 </div>
-<div class="center">
-<p>(דיאגרמות ון לשתי קבוצות האחת לחיתוך, השנייה לאיחוד עם צבע שונה(</p>
+<div id="fig-Venn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Venn.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;2.4: בצד ימין מופיע האיחוד בירוק, ובצד שמאל החיתוך בסגול
+</figcaption>
+</figure>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>במקרה של איחוד זה לא משנה אם האיבר שייך רק לקבוצה אחת או לשתיהן. בכל מקרה הוא נספר רק פעם אחת באיחוד.</p>
@@ -357,6 +445,25 @@ window.Quarto = {
 </div>
 <div class="exercise">
 <p>חשבו את <span class="math inline">A\cap B,\,A\cup B</span> עבור <span class="math inline">A=\{-1,0,1\},\,B=\{-2,0,1,2\}</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>לפי ההגדרות מתקיים</p>
+<p><span class="math display">
+A \cap B = \Set{0, 1}, \quad A \cup B = \Set{-2, -1, 0, 1, 2}
+</span></p>
+</div>
+</div>
 </div>
 <div class="proposition">
 <p>לכל שתי קבוצות <span class="math inline">A,B</span> מתקיים <span class="math display">.A\cap B\subseteq A\subseteq A\cup B</span></p>

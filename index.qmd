@@ -18,7 +18,7 @@
 </div>
 
 <div id="download-box">
-  <a class="btn" target="_blank" href="אלגברה-לינארית.pdf">להורדת הספר ב PDF</a>
+  <a class="btn" target="_blank" href="downloads/book.pdf">להורדת הספר ב PDF</a>
 </div>
 
 <script>
