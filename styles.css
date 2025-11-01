@@ -106,6 +106,21 @@ figure.quarto-figure figcaption,
 }
 .sidebar #download-box{ margin-top:1rem; }
 
+/* ממרכזת את כותרת הספר שב-sidebar */
+.sidebar-title, 
+.sidebar-title a {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  margin: 0.5rem auto 0.8rem;
+}
+
+/* קצת ריווח בין הלוגו לכותרת */
+.sidebar-logo {
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
 /* --- Home hero v2 --- */
 .home-hero{ text-align:center; margin:2.5rem 0 1.5rem; }
 .home-hero__logo{ width:180px; display:block; margin:0 auto 1.1rem; }
