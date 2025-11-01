@@ -320,27 +320,36 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <p>בפרק הקודם ראינו הרבה דוגמאות למערכות משוואות לינאריות (ממ"ל) מעל <span class="math inline">\mathbb R</span> עם שתי משוואות בשני משתנים (לתיאור חיתוך שני ישרים במישור) וגם לממ"ל עם שתי משוואות בשלושה משתנים (לתיאור חיתוך שני מישורים במרחב). באופן כללי, אפשר להתייחס לכל אוסף של משוואות לינאריות כמערכת אחת.</p>
 <p>בהקשר של החוק השני של ניוטון שהזכרו בתחילת הפרק כמשוואה וקטרית מהצורה <span class="math inline">\vec{F}=m\vec{a}</span>, אפשר לחשוב על ממ"ל במספר כלשהו של משתנים שקשורים לוקטורי התאוצה של מספר גופים ולכוחות הפועלים עליהם. גודל הממ"ל מקשה על האינטואיציה הגיאומטרית ומוסיף חישובים (ייתכן באופן משמעותי), אך עדיין יש גישה אלגברית אחת לפתרון של כל ממ"ל. נפתח אותה בפרק זה.</p>
 <div class="example">
-<p>&nbsp;</p>
-<p>א. ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{7}
-    x_1 &amp;{}+{}&amp; 2x_2 &amp;{}+{}&amp; 3x_3 &amp;{}+{}&amp; 4x_4 &amp;= 5 \\[4pt]
-    x_1 &amp;{}+{}&amp;  x_2 &amp;{}+{}&amp;  x_3 &amp;{}+{}&amp;  x_4 &amp;= 4
-    \end{alignedat}
-    \end{cases}</span></p>
-<p>ב. ממ"ל של שלוש משוואות בשלושה משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{7}
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
-    x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
-    \end{alignedat}
-    \end{cases}</span></p>
-<pre><code>כאן חזרנו להשתמש באותיות המוכרות $x,y,z$ במקום $x_1,x_2,x_3$. הסימונים לא באמת חשובים כל עוד יש עקביות (נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים).</code></pre>
-<p>ג. ממ"ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb C</span>: <span class="math display">\begin{cases}
-    \begin{alignedat}{8}
-     &amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
-     &amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
-    \end{alignedat}
-    \end{cases}</span></p>
+<p><strong>א.</strong> ממ״ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb{R}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+x_1 &amp;{}+{}&amp; 2x_2 &amp;{}+{}&amp; 3x_3 &amp;{}+{}&amp; 4x_4 &amp;= 5 \\[4pt]
+x_1 &amp;{}+{}&amp;  x_2 &amp;{}+{}&amp;  x_3 &amp;{}+{}&amp;  x_4 &amp;= 4
+\end{alignedat}
+\end{cases}
+</span></p>
+<p><strong>ב.</strong> ממ״ל של שלוש משוואות בשלושה משתנים מעל <span class="math inline">\mathbb{R}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}
+</span></p>
+<p>כאן חזרנו להשתמש באותיות המוכרות <span class="math inline">x,y,z</span> במקום <span class="math inline">x_1,x_2,x_3</span>.<br>
+הסימונים לא באמת חשובים כל עוד יש עקביות - נוח להשתמש באותיות רגילות עבור מספר קטן של משתנים.</p>
+<p><strong>ג.</strong> ממ״ל של שתי משוואות בארבעה משתנים מעל <span class="math inline">\mathbb{C}</span>:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{8}
+&amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
+&amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
+\end{alignedat}
+\end{cases}
+</span></p>
 </div>
 <div class="definition">
 <p>מערכת משוואות לינאריות (ממ"ל) במשתנים <span class="math inline">x_1,x_{2,}...,x_n</span> היא אוסף של מספר כלשהו (<span class="math inline">m</span>) של משוואות לינאריות מהצורה</p>
@@ -363,46 +372,51 @@ a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \d
 </div>
 <div class="example">
 <p>נחזור לדוגמה קודמת:</p>
-<pre><code>$$\begin{cases}
+<p><span class="math display">
+\begin{cases}
 \begin{alignedat}{7}
 x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
 x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
 x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
 \end{alignedat}
-\end{cases}$$
-
-כאן המקדמים הם $$.a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\,a_{22}=2,\,a_{33}=3$$ הקבועים הם $b_1=3,\,b_2=4,\,b_3=5$.</code></pre>
+\end{cases}
+</span></p>
+<p>כאן המקדמים הם<br>
+<span class="math inline">a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\; a_{22}=2,\; a_{33}=3</span>,<br>
+והקבועים הם <span class="math inline">b_1=3,\; b_2=4,\; b_3=5</span>.</p>
 </div>
 <div class="example">
-<pre><code>$$\begin{cases}
+<p><span class="math display">
+\begin{cases}
 \begin{aligned}
 x_1 + x_2 + x_3 + x_4 &amp;= 4 \\[4pt]
 \phantom{x_1 + {}}x_2 + x_3 + x_4 &amp;= 0 \\[4pt]
 x_1 + \phantom{x_2 + {}}x_3 + x_4 &amp;= 0
- \end{aligned}
-\end{cases}$$
-
-כאן הממ\"ל לא כתובה באופן מלא, כי בכל משוואה שבה חסר משתנה המשמעות היא שהמקדם המתאים הוא $0$ (הרווחים נועדו להדגשה). בכתיבה מלאה, הממ\"ל נראית כך:
-
-$$\begin{cases}
-\begin{aligned}
-1\cdot x_1 + 1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 4 \\[4pt]
-0\cdot x_1 +1\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0 \\[4pt]
-1\cdot x_1 + 0\cdot x_2 +1\cdot x_3 +1\cdot x_4 &amp;= 0
 \end{aligned}
-\end{cases}$$
-
-כלומר מתקיים
-
-$$\begin{cases}
+\end{cases}
+</span></p>
+<p>כאן הממ״ל לא כתובה באופן מלא, כי בכל משוואה שבה חסר משתנה המשמעות היא שהמקדם המתאים הוא <span class="math inline">0</span> (הרווחים נועדו להדגשה).<br>
+בכתיבה מלאה, הממ״ל נראית כך:</p>
+<p><span class="math display">
+\begin{cases}
+\begin{aligned}
+1\cdot x_1 + 1\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 4 \\[4pt]
+0\cdot x_1 + 1\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 0 \\[4pt]
+1\cdot x_1 + 0\cdot x_2 + 1\cdot x_3 + 1\cdot x_4 &amp;= 0
+\end{aligned}
+\end{cases}
+</span></p>
+<p>כלומר מתקיים</p>
+<p><span class="math display">
+\begin{cases}
 \begin{aligned}
 a_{11} &amp;= a_{12} = a_{13} = a_{14} = 1 \\[4pt]
-a_{21} &amp;= 0,a_{22} = a_{23} = a_{24} = 1 \\[4pt]
-a_{32} &amp;= 0, a_{31} = a_{33} = a_{34} = 1
+a_{21} &amp;= 0,\; a_{22} = a_{23} = a_{24} = 1 \\[4pt]
+a_{32} &amp;= 0,\; a_{31} = a_{33} = a_{34} = 1
 \end{aligned}
-\end{cases}$$
-
-הקבועים הם $b_1=4, b_2=b_3=0$.</code></pre>
+\end{cases}
+</span></p>
+<p>הקבועים הם <span class="math inline">b_1=4,\; b_2=b_3=0</span>.</p>
 </div>
 <p>הרבה יותר קשה לדמיין את הגיאומטריה כאשר יש מספר משתנים גבוה מ-<span class="math inline">3</span>, או אפילו משוואה אחת בשני משתנים מרוכבים. אבל מבחינה אלגברית, כל המקרים האלה שייכים לקטגוריה אחת ושיטת הפתרון משותפת לכולם. באופן כללי, נשאל את השאלות הבאות על ממ"ל:</p>
 <ol type="1">
@@ -412,25 +426,30 @@ a_{32} &amp;= 0, a_{31} = a_{33} = a_{34} = 1
 </ol>
 <p>לפני כן, נראה עוד דוגמאות לממ"ל וגם נחזור אל חלק מהדוגמאות הקודמות. קל לבדוק אם פתרון נתון הוא אכן פתרון ע"י בדיקה שהצבתו מקיימת את כל המשוואות. עבור ממ"ל פשוטה גם לא דרוש הרבה מאמץ כדי למצוא את קבוצת הפתרונות.</p>
 <div class="example">
-<p>&nbsp;</p>
-<p>א. <span class="math display">\begin{cases}
-    \begin{aligned}
-    x\phantom{+y+z} &amp;= 1 \\[4pt]
-    \phantom{x+}y\phantom{+z} &amp;= 2 \\[4pt]
-    \phantom{x+y+}z &amp;= 3
-    \end{aligned}
-    \end{cases}</span></p>
-<pre><code>זו ממ\"ל פשוטה שיש לה פתרון יחיד $(x,y,z)=(1,2,3)$, שכבר מופיע באופן מפורש.</code></pre>
-<p>ב. נחזור לדוגמה קודמת: <span class="math display">\begin{cases}
-    \begin{alignedat}{7}
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
-    x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
-    x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
-    \end{alignedat}
-    \end{cases}</span></p>
-<pre><code>ניתן לבדוק ע\"י הצבה כי $(x,y,z)=(1,1,1)$ הוא פתרון של הממ\"ל, כי כל שלוש המשוואות מתקיימות, לעומת זאת $(x,y,z)=(2,1,0)$ אינו פתרון כי הוא מקיים רק את שתי המשוואות הראשונות.
-
-האם $(x,y,z)=(1,1,1)$ הוא פתרון יחיד? נראה בהמשך שהתשובה היא כן, אבל בינתיים נשים לב שהממ\"ל מתארת חיתוך של שלושה מישורים במרחב. לפי הפרק הקודם, החיתוך בין כל שניים מהמישורים שנתונים בממ\"ל - הוא ישר. אז החיתוך בין שלושת המישורים הוא בעצם חיתוך בין שני ישרים. למשל: ישר החיתוך של שני המישורים הראשונים, וישר החיתוך של שני המישורים האחרונים. אפשר לקבוע את המצב ההדדי בין שני הישרים בעזרת ההצגות הפרמטריות שלהם, אבל נראה שיש דרך יותר מסודרת ויעילה לחישוב קבוצת הפתרונות בדוגמה זו ובאופן כללי.</code></pre>
+<p><strong>א.</strong><br>
+<span class="math display">
+\begin{cases}
+\begin{aligned}
+x\phantom{+y+z} &amp;= 1 \\[4pt]
+\phantom{x+}y\phantom{+z} &amp;= 2 \\[4pt]
+\phantom{x+y+}z &amp;= 3
+\end{aligned}
+\end{cases}
+</span></p>
+<p>זו ממ״ל פשוטה שיש לה פתרון יחיד <span class="math inline">(x,y,z)=(1,2,3)</span>, שכבר מופיע באופן מפורש.</p>
+<hr>
+<p><strong>ב.</strong> נחזור לדוגמה קודמת:<br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{7}
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 3 \\[4pt]
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;= 4 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
+\end{alignedat}
+\end{cases}
+</span></p>
+<p>ניתן לבדוק ע״י הצבה כי <span class="math inline">(x,y,z)=(1,1,1)</span> הוא פתרון של הממ״ל, כי כל שלוש המשוואות מתקיימות. לעומת זאת <span class="math inline">(x,y,z)=(2,1,0)</span> אינו פתרון כי הוא מקיים רק את שתי המשוואות הראשונות.<br>
+האם <span class="math inline">(x,y,z)=(1,1,1)</span> הוא פתרון יחיד? נראה בהמשך שהתשובה היא כן, אבל בינתיים נשים לב שהממ״ל מתארת חיתוך של שלושה מישורים במרחב. לפי הפרק הקודם, החיתוך בין כל שניים מהמישורים הוא ישר, ולכן החיתוך בין שלושתם הוא חיתוך בין שני ישרים. נראה בהמשך דרך יעילה לחישוב קבוצת הפתרונות בדוגמה זו.</p>
 <div id="fig-3Planes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3Planes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -441,59 +460,77 @@ a_{32} &amp;= 0, a_{31} = a_{33} = a_{34} = 1
 </figcaption>
 </figure>
 </div>
-<p>ג. <span class="math display">\begin{cases}
-    \begin{aligned}
-    x\phantom{+y+z}+w=1\\
-    \phantom{x+}y\phantom{+z}+w=2\\
-    \phantom{x+y+}z+w=3
-    \end{aligned}
-    \end{cases}</span></p>
-<pre><code>זו ממ\"ל יחסית פשוטה בארבעה משתנים $x,y,z,w$. אפשר להתייחס ל-$w$ כמשתנה חופשי ואז כל שאר המשתנים תלויים בו. נשתמש בפרמטר $t$, נציב $w=t$ במשוואות ואז נחסיר $t$ מכל אגף בכל משוואה. כך נקבל $$\begin{cases}
+<hr>
+<p><strong>ג.</strong><br>
+<span class="math display">
+\begin{cases}
+\begin{aligned}
+x\phantom{+y+z}+w &amp;= 1\\
+\phantom{x+}y\phantom{+z}+w &amp;= 2\\
+\phantom{x+y+}z+w &amp;= 3
+\end{aligned}
+\end{cases}
+</span></p>
+<p>זו ממ״ל בארבעה משתנים <span class="math inline">x,y,z,w</span>. נציב <span class="math inline">w=t</span> כמשתנה חופשי, ונקבל:<br>
+<span class="math display">
+\begin{cases}
 x=1-t\\
 y=2-t\\
 z=3-t
-\end{cases}$$
-
-לכן קבוצת הפתרונות של הממ\"ל היא $$.\Set{(1-t,2-t,3-t,t)|t\in\mathbb R}=\Set{(1,2,3,0)+t(-1,-1,-1,1)|t\in\mathbb R}$$
-
-אפשר לנסות לדמיין קבוצה זו כישר במרחב $\mathbb R^4$ הארבע-מימדי. זה בהחלט לא משהו שרואים ביום-יום כי העולם המוכר הוא תלת-מימדי, אבל זו עדיין הצגה אלגברית של ישר חד-מימדי. זה נובע מכך שיש משתנה חופשי יחיד, ומכאן הפרמטר $t$. אם לצורך העניין היה פרמטר נוסף בהצגה הפרמטרית (בקבוצת הפתרונות של ממ\"ל אחרת), הקבוצה הייתה \"נראית\" כמו מישור ב- $\mathbb R^{4}$ ככל שאפשר לדמיין אותו. נראה מקרה כזה בדוגמה הבאה.</code></pre>
-<p>ד. <span class="math display">\begin{cases}
-    \begin{aligned}
-    x\phantom{+y}+z+w=1\\
-    \phantom{x+}y+z+w=2\\
-    \end{aligned}
-    \end{cases}</span></p>
-<pre><code>כאן המשתנים החופשיים הם $z,w$ והמשתנים התלויים הם $x,y$. נציב ערכים שרירותיים $z=t, w=s$ ונקבל אחרי העברת אגפים
-
-$$\begin{cases}
-x=1-t-s \\
+\end{cases}
+</span></p>
+<p>מכאן קבוצת הפתרונות היא<br>
+<span class="math display">
+\Set{(1-t,2-t,3-t,t)|t\in\mathbb R}
+=\Set{(1,2,3,0)+t(-1,-1,-1,1)|t\in\mathbb R}.
+</span></p>
+<p>אפשר לדמות את קבוצת הפתרונות כישר במרחב <span class="math inline">\mathbb{R}^4</span> - חד־מימדי כי יש פרמטר יחיד.</p>
+<hr>
+<p><strong>ד.</strong><br>
+<span class="math display">
+\begin{cases}
+\begin{aligned}
+x\phantom{+y}+z+w &amp;= 1\\
+\phantom{x+}y+z+w &amp;= 2
+\end{aligned}
+\end{cases}
+</span></p>
+<p>כאן המשתנים החופשיים הם <span class="math inline">z,w</span>, ולכן נציב <span class="math inline">z=t,\; w=s</span>:<br>
+<span class="math display">
+\begin{cases}
+x=1-t-s\\
 y=2-t-s
-\end{cases}$$
-
-כלומר קיבלנו את ההצגה הפרמטרית הבאה לקבוצת הפתרונות:
-
-$$\Set{(1-s-t,2-s-t,s,t)|s,t\in\mathbb R}$$
-
-לפעמים נרצה לכתוב אותה בצורה קצת שונה. נכתוב את הוקטור של ההצגה הפרמטרית כסכום וקטורים: הוקטור של הקבועים $(1,2,0,0)$, הוקטור של כפולות של $s$ $(-s,-s,s,0)$ והוקטור של כפולות של $t$ $(-t,-t,0,t)$. במילים אחרות, נעשה חישוב \"הפוך\" וזאת כדי לראות את הקשר להצגה פרמטרית של מישור. בנוסף, כל פרמטר הוא סקלר ולכן ניתן להוציא אותו מחוץ לוקטור המתאים לו. כך נקבל את ההצגה הבאה:
-
-$$\Set{(1,2,0,0)+s(-1,-1,1,0)+t(-1,-1,0,1)|s,t\in\mathbb R}$$
-
-זו כתיבה שמזכירה הצגה פרמטרית של מישור במרחב, אלא שכאן המרחב הוא $\mathbb R^{4}$. בהמשך הקורס נלמד על המושגים של מימד ותת-מרחב (כמו ישר במישור, ומישור במרחב) באופן מדויק.</code></pre>
-<p>ה. עוד דוגמה קודמת: <span class="math display">\begin{cases}
-    \begin{alignedat}{8}
-     &amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
-     &amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
-    \end{alignedat}
-    \end{cases}</span></p>
-<pre><code>ניתן לבדוק ע\"י הצבה כי $(z_1,z_2,z_3,z_4)=(1,0,1,0)$ הוא פתרון של הממ\"ל. אינטואיטיבית, אמורים להיות אינסוף פתרונות כי מספר המשתנים גדול ממספר המשוואות. נצדיק את האינטואיציה הזו בהמשך.</code></pre>
-<p>ו. ממ"ל של שלוש משוואות בשני משתנים מעל <span class="math inline">\mathbb R</span>: <span class="math display">\begin{cases}
-    \begin{aligned}
-    x+3y&amp;=0\\
-    x-y&amp;=0\\
-    x+y&amp;=1
-    \end{aligned}
-    \end{cases}</span></p>
-<pre><code>כאן מספר המשתנים גדול ממספר המשוואות, ולמעשה אין פתרון. ניתן לראות זאת ע\"י חיבור שתי המשוואות הראשונות, מה שנותן $2x+2y=0$ או באופן שקול $x+y=0$. זו סתירה למשוואה האחרונה. המשמעות הגיאומטרית היא שאמנם כל שניים משלושת הישרים נחתכים, אבל נקודות החיתוך שונות ולכן אין נקודת חיתוך משותפת לכל השלושה.</code></pre>
+\end{cases}
+</span></p>
+<p>כלומר קבוצת הפתרונות היא<br>
+<span class="math display">
+\Set{(1-s-t,2-s-t,s,t)|s,t\in\mathbb R}
+=\Set{(1,2,0,0)+s(-1,-1,1,0)+t(-1,-1,0,1)|s,t\in\mathbb R}.
+</span></p>
+<p>זו הצגה פרמטרית של מישור במרחב <span class="math inline">\mathbb{R}^4</span>.</p>
+<hr>
+<p><strong>ה.</strong><br>
+<span class="math display">
+\begin{cases}
+\begin{alignedat}{8}
+&amp; i z_1  &amp;{}+{}&amp;      z_2 &amp;{}+{}&amp;  i z_3 &amp;{}+{}&amp;     z_4 &amp;= 2i \\[4pt]
+&amp;   z_1  &amp;{}+{}&amp; (1+i)z_2 &amp;{}+{}&amp;      z_3 &amp;{}+{}&amp; 2i z_4 &amp;= 2
+\end{alignedat}
+\end{cases}
+</span></p>
+<p>ניתן לבדוק ע״י הצבה כי <span class="math inline">(z_1,z_2,z_3,z_4)=(1,0,1,0)</span> הוא פתרון של הממ״ל. אינטואיטיבית, אמורים להיות אינסוף פתרונות כי מספר המשתנים גדול ממספר המשוואות. נצדיק זאת בהמשך.</p>
+<hr>
+<p><strong>ו.</strong><br>
+<span class="math display">
+\begin{cases}
+\begin{aligned}
+x+3y &amp;= 0\\
+x-y &amp;= 0\\
+x+y &amp;= 1
+\end{aligned}
+\end{cases}
+</span></p>
+<p>כאן אין פתרון: חיבור שתי המשוואות הראשונות נותן <span class="math inline">x+y=0</span>, שסותר את השלישית <span class="math inline">x+y=1</span>. גיאומטרית - שלושת הישרים נחתכים בזוגות, אך לא בנקודה משותפת.</p>
 <div id="fig-3Lines" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3Lines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -579,49 +616,75 @@ b_m
 </div>
 <p>בפרק הבא נבין יותר לעומק את הסימון <span class="math inline">Ax</span>. בינתיים זה סימון מקוצר, וגם <span class="math inline">x</span> הוא סימון נוח עבור וקטור (אין צורך בחץ מעליו).</p>
 <div class="example">
-<p>&nbsp; עבור הממ"ל <span class="math display">\begin{cases}
-    \begin{aligned}
-    x+y+z&amp;=3\\
-    x+2y+z&amp;=4\\
-    x+y+3z&amp;=5
-    \end{aligned}
-    \end{cases}</span></p>
-<pre><code>מטריצת המקדמים המצומצמת היא $$.\begin{pmatrix}1 &amp; 1 &amp; 1\\
+<p>עבור הממ״ל<br>
+<span class="math display">
+\begin{cases}
+\begin{aligned}
+x+y+z &amp;= 3\\
+x+2y+z &amp;= 4\\
+x+y+3z &amp;= 5
+\end{aligned}
+\end{cases}
+</span></p>
+<p>מטריצת המקדמים המצומצמת היא<br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 1 &amp; 1\\
 1 &amp; 2 &amp; 1\\
 1 &amp; 1 &amp; 3
-\end{pmatrix}$$
-
-בשביל מטריצת המקדמים המורחבת נוסיף את עמודת הקבועים ונקבל $$.\left( \begin{array}{ccc|c}
+\end{pmatrix}
+</span></p>
+<p>ובשביל מטריצת המקדמים המורחבת נוסיף את עמודת הקבועים ונקבל<br>
+<span class="math display">
+\left(
+\begin{array}{ccc|c}
 1 &amp; 1 &amp; 1 &amp; 3\\
 1 &amp; 2 &amp; 1 &amp; 4\\
 1 &amp; 1 &amp; 3 &amp; 5
-\end{array} \right)$$</code></pre>
+\end{array}
+\right)
+</span></p>
 </div>
 <div class="example">
-<pre><code>נסתכל על הממ\"ל $$.\begin{cases}
+<p>נסתכל על הממ״ל<br>
+<span class="math display">
+\begin{cases}
 \begin{alignedat}{7}
 2x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;     &amp;      &amp;= 1 \\[4pt]
- x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;  w &amp;= -1 \\[4pt]
- x &amp;{}+{}&amp;  y &amp;     &amp;     &amp;{}+{}&amp;  w &amp;= 2
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;  w &amp;= -1 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;     &amp;     &amp;{}+{}&amp;  w &amp;= 2
 \end{alignedat}
-\end{cases}$$
-
-נשים לב שמסתתרים שני אפסים: המקדם של $w$ במשוואה הראשונה, והמקדם של $z$ במשוואה השלישית. הנה כתיבה יותר מפורשת: $$.\begin{cases}
+\end{cases}
+</span></p>
+<p>נשים לב שמסתתרים שני אפסים: המקדם של <span class="math inline">w</span> במשוואה הראשונה, והמקדם של <span class="math inline">z</span> במשוואה השלישית.<br>
+הנה כתיבה יותר מפורשת:<br>
+<span class="math display">
+\begin{cases}
 \begin{alignedat}{7}
 2x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;{}+{}&amp; 0\!\cdot\! w &amp;=  1 \\[4pt]
- x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;     w &amp;= -1 \\[4pt]
- x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 0\!\cdot\! z &amp;{}+{}&amp;     w &amp;=  2
+x &amp;{}+{}&amp; 2y &amp;{}+{}&amp;  z &amp;{}+{}&amp;     w &amp;= -1 \\[4pt]
+x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 0\!\cdot\! z &amp;{}+{}&amp;     w &amp;=  2
 \end{alignedat}
-\end{cases}$$ לכן מטריצת המקדמים המצומצמת היא $$.\begin{pmatrix}2 &amp; 1 &amp; 1 &amp; 0\\
+\end{cases}
+</span></p>
+<p>לכן מטריצת המקדמים המצומצמת היא<br>
+<span class="math display">
+\begin{pmatrix}
+2 &amp; 1 &amp; 1 &amp; 0\\
 1 &amp; 2 &amp; 1 &amp; 1\\
 1 &amp; 1 &amp; 0 &amp; 1
-\end{pmatrix}$$
-
-מטריצת המקדמים המורחבת היא $$.\left( \begin{array}{cccc|c}
-    2 &amp; 1 &amp; 1 &amp; 0 &amp; 1\\
-    1 &amp; 2 &amp; 1 &amp; 1 &amp; -1\\
-    1 &amp; 1 &amp; 0 &amp; 1 &amp; 2
-\end{array} \right)$$</code></pre>
+\end{pmatrix}
+</span></p>
+<p>ומטריצת המקדמים המורחבת היא<br>
+<span class="math display">
+\left(
+\begin{array}{cccc|c}
+2 &amp; 1 &amp; 1 &amp; 0 &amp; 1\\
+1 &amp; 2 &amp; 1 &amp; 1 &amp; -1\\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 2
+\end{array}
+\right)
+</span></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>שימו לב שאם המשתנה ה- <span class="math inline">j</span> לא מופיע במשוואה ה- <span class="math inline">i</span>, זה אומר שהמקדם המתאים הוא <span class="math inline">0</span> ולכן <span class="math inline">a_{ij}=0</span> במטריצה.</p>
@@ -670,67 +733,94 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 <p>כבר נתקלנו בדוגמאות בהן הממ"ל יחסית פשוטה לפתרון, במובן שקל לזהות את המשתנים החופשיים, להציב בהם ערכים שרירותיים ולקבל את הערכים המתאימים של המשתנים התלויים ע"י קצת אלגברה (פעולות חשבון ואולי הצבות). איך מטריצת המקדמים (מצומצמת או מורחבת) נראית במקרים כאלה? לשם כך נועדה ההגדרה הבאה.</p>
 <div class="definition">
 <p>מטריצה נקראת <u>מדורגת</u> אם:</p>
-<ol type="1">
-<li><p>אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.</p></li>
-<li><p>בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו <span class="math inline">0</span> נקרא <u>האיבר המוביל</u> של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.</p></li>
-</ol>
+<p><strong>1.</strong> אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.</p>
+<p><strong>2.</strong> בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו <span class="math inline">0</span> נקרא <u>האיבר המוביל</u> של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<p>א. במטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
-    0 &amp; 1 &amp; 0\\
-    0 &amp; 0 &amp; 4
-    \end{pmatrix}</span></p>
-<pre><code>האיברים המובילים הם $1,1,4$ לפי סדר השורות והם מופיעים בסדר הנכון (זזים ימינה כאשר יורדים שורה). בנוסף, אין בכלל שורות אפסים ולכן זו מטריצה מדורגת.</code></pre>
-<p>ב. המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
-    0 &amp; 1 &amp; 0\\
-    0 &amp; 5 &amp; 4
-    \end{pmatrix}</span></p>
-<pre><code>אינה מדורגת כי האיבר המוביל של השורה השלישית ($5$) מופיע באותה העמודה של האיבר המוביל של השורה השנייה ($1$).</code></pre>
-<p>ג. המטריצה <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
-    0 &amp; 0 &amp; 4\\
-    0 &amp; 0 &amp; 0
-    \end{pmatrix}</span></p>
-<pre><code>מדורגת. שורה האפסים מופיעה בסוף, והאיבר המוביל של השורה הראשונה ($1$) מופיע משמאל לזה של השורה השנייה ($4$).</code></pre>
-<p>ד. המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 0\\
-    0 &amp; 0 &amp; 0\\
-    0 &amp; 0 &amp; 1
-    \end{pmatrix}</span></p>
-<pre><code>אינה מדורגת כי יש שורת אפסים מעל לשורה שאינה כולה אפסים.</code></pre>
+<p><strong>א.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 4
+\end{pmatrix}
+</span></p>
+<p>האיברים המובילים הם <span class="math inline">1,1,4</span> לפי סדר השורות, והם מופיעים בסדר הנכון (זזים ימינה כאשר יורדים שורה). בנוסף, אין בכלל שורות אפסים ולכן זו מטריצה מדורגת.</p>
+<hr>
+<p><strong>ב.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 5 &amp; 4
+\end{pmatrix}
+</span></p>
+<p>אינה מדורגת כי האיבר המוביל של השורה השלישית (<span class="math inline">5</span>) מופיע באותה העמודה של האיבר המוביל של השורה השנייה (<span class="math inline">1</span>).</p>
+<hr>
+<p><strong>ג.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+0 &amp; 0 &amp; 4\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}
+</span></p>
+<p>מדורגת. שורת האפסים מופיעה בסוף, והאיבר המוביל של השורה הראשונה (<span class="math inline">1</span>) מופיע משמאל לזה של השורה השנייה (<span class="math inline">4</span>).</p>
+<hr>
+<p><strong>ד.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+</span></p>
+<p>אינה מדורגת כי יש שורת אפסים מעל לשורה שאינה כולה אפסים.</p>
 </div>
 <p>מטריצות מדורגות הן יחסית נוחות, אך יש מטריצות מדורגות מסוג יותר מסוים שהוא עוד יותר נוח בפתרון ממ"ל.</p>
 <div class="definition">
 <p>מטריצה נקראת <u>מדורגת קנונית</u> אם:</p>
-<ol type="1">
-<li><p>היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.</p></li>
-<li><p>האיבר המוביל בכל שורה (אם הוא קיים) הוא <span class="math inline">1</span>. אפשר גם לקרוא לו אחד מוביל.</p></li>
-<li><p>בכל עמודה של אחד מוביל, כל שאר האיברים הם <span class="math inline">0</span> (מתחת וגם מעל לאחד המוביל).<br>
-</p></li>
-</ol>
+<p><strong>1.</strong> היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.</p>
+<p><strong>2.</strong> האיבר המוביל בכל שורה (אם הוא קיים) הוא <span class="math inline">1</span>. אפשר גם לקרוא לו אחד מוביל.</p>
+<p><strong>3.</strong> בכל עמודה של אחד מוביל, כל שאר האיברים הם <span class="math inline">0</span> (מתחת וגם מעל לאחד המוביל).</p>
 </div>
 <div class="example">
-<p>&nbsp;</p>
-<p>א. ראינו כבר את המטריצה <span class="math display">,\begin{pmatrix}1 &amp; 0 &amp; 0\\
-    0 &amp; 1 &amp; 0\\
-    0 &amp; 0 &amp; 1
-    \end{pmatrix}</span></p>
-<pre><code>שנקראת מטריצת היחידה מסדר $3\times3$. היא מדורגת קנונית כי אין בה שורת אפסים, כל האיברים המובילים הם $1$ ומופיעים בסדר הנכון, וכל שאר האיברים הם $0$.</code></pre>
-<p>ב. המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 1\\
-    0 &amp; 1 &amp; 0\\
-    0 &amp; 0 &amp; 4
-    \end{pmatrix}</span></p>
-<pre><code>מדורגת אך לא מדורגת קנונית, כי האיבר המוביל התחתון אינו $1$. בנוסף, לא כל האיברים מעליו הם $0$.</code></pre>
-<p>ג. המטריצה <span class="math display">\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 2\\
-    0 &amp; 0 &amp; 1 &amp; 3\\
-    0 &amp; 0 &amp; 0 &amp; 0
-    \end{pmatrix}</span></p>
-<pre><code>מדורגת קנונית כי שני האיברים המובילים הם $1$ ומופיעים בסדר הנכון. חוץ מהם יש רק אפסים בעמודות שלהם, וגם שורת האפסים מופיעה בסוף.</code></pre>
+<p><strong>א.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+</span></p>
+<p>זו <strong>מטריצת היחידה</strong> מסדר <span class="math inline">3\times3</span>. היא מדורגת קנונית כי אין בה שורת אפסים, כל האיברים המובילים הם <span class="math inline">1</span> ומופיעים בסדר הנכון, וכל שאר האיברים הם <span class="math inline">0</span>.</p>
+<hr>
+<p><strong>ב.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 4
+\end{pmatrix}
+</span></p>
+<p>מטריצה זו <strong>מדורגת אך לא קנונית</strong>, כי האיבר המוביל התחתון אינו <span class="math inline">1</span>. בנוסף, לא כל האיברים מעליו הם <span class="math inline">0</span>.</p>
+<hr>
+<p><strong>ג.</strong><br>
+<span class="math display">
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 2\\
+0 &amp; 0 &amp; 1 &amp; 3\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+</span></p>
+<p>מדורגת קנונית כי שני האיברים המובילים הם <span class="math inline">1</span> ומופיעים בסדר הנכון.<br>
+חוץ מהם יש רק אפסים בעמודות שלהם, וגם שורת האפסים מופיעה בסוף.</p>
 </div>
 <p>מהי הצורה הכללית של מטריצה מדורגת קנונית מסדר <span class="math inline">m\times n</span>?</p>
 <div id="fig-matrux" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-matrux-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/chapter02/Matrix.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+<img src="images/chapter02/Matrix.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrux-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 איור&nbsp;4.3: הצורה הכללית של מטריצה מדורגת קנונית
@@ -740,11 +830,8 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 <p>האיברים המובילים מופיעים בעמודות <span class="math inline">k_1,k_2,....,k_{r}</span>. <span class="math inline">r</span> הוא גם מספר השורות שאינן כולן אפסים (בכל שורה כזו יש איבר מוביל אחד).</p>
 <div class="definition">
 <p>נניח שקיבלנו צורה מדורגת קנונית של מטריצת מקדמים מצומצמת <span class="math inline">A</span> של ממ"ל <span class="math inline">Ax=b</span>.</p>
-<ol type="1">
-<li><p>כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.</p></li>
-<li><p>למספר המשתנים התלויים נקרא הדרגה של הממ"ל/מטריצה. נסמן <span class="math inline">\mathop{\mathrm{rank}}(A)</span>.<br>
-</p></li>
-</ol>
+<p><strong>1.</strong> כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.</p>
+<p><strong>2.</strong> למספר המשתנים התלויים נקרא הדרגה של הממ"ל/מטריצה. נסמן <span class="math inline">\mathop{\mathrm{rank}}(A)</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>נראה בקרוב (שיטת הדירוג של גאוס) שניתן לבצע על כל מטריצה סדרת פעולות (שנקראת דירוג) בין שורותיה, כך שבסוף מתקבלת מטריצה מדורגת קנונית. מטריצה זו היא יחידה (כלומר לא תלויה בדרך הדירוג שניתנת לבחירה) וניתן להשתמש בה כדי לקבוע את קבוצת הפתרונות של הממ"ל המקורית. הדרגה, שהיא כאמור מספר המשתנים התלויים, שווה למספר השורות בצורה המדורגת קנונית שאינן שורת אפסים. זהו גם מספר האיברים המובילים.</p>
@@ -778,53 +865,63 @@ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
 a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{pmatrix}</span> מטריצה מסדר <span class="math inline">m\times n</span> מעל <span class="math inline">\mathbb F</span>. נסמן ב-<span class="math inline">R_1,R_2,...,R_m</span> את שורות המטריצה <span class="math inline">A</span>, כלומר <span class="math inline">R_{i}=(a_{i1},a_{i2},...,a_{in})</span> לכל <span class="math inline">1\leq i\leq m</span>. להלן שלושה סוגי פעולות על שורות <span class="math inline">A</span> הנקראות <u>פעולות שורה אלמנטריות:</u></p>
-<ol type="1">
-<li><p>כפל השורה <span class="math inline">R_{i}</span> בסקלר <span class="math inline">c\in F</span> שאינו <span class="math inline">0</span>. נסמן פעולה זו כך: <span class="math inline">cR_{i}\rightarrow R_{i}</span>.</p></li>
-<li><p>הוספה לשורה <span class="math inline">R_{i}</span> את הכפולה של השורה <span class="math inline">R_{j}</span> בסקלר <span class="math inline">c\in \mathbb F</span> כאשר <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span>. השורה <span class="math inline">R_{j}</span> נשארת ללא שינוי.</p></li>
-<li><p>החלפת השורות <span class="math inline">R_{i}</span> ו-<span class="math inline">R_{j}</span> עבור <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.<br>
-</p></li>
-</ol>
+<p><strong>1.</strong> כפל השורה <span class="math inline">R_{i}</span> בסקלר <span class="math inline">c\in F</span> שאינו <span class="math inline">0</span>. נסמן פעולה זו כך: <span class="math inline">cR_{i}\rightarrow R_{i}</span>.</p>
+<p><strong>2.</strong> הוספה לשורה <span class="math inline">R_{i}</span> את הכפולה של השורה <span class="math inline">R_{j}</span> בסקלר <span class="math inline">c\in \mathbb F</span> כאשר <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span>. השורה <span class="math inline">R_{j}</span> נשארת ללא שינוי.</p>
+<p><strong>3.</strong> החלפת השורות <span class="math inline">R_{i}</span> ו-<span class="math inline">R_{j}</span> עבור <span class="math inline">i\neq j</span>. נסמן <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.</p>
 </div>
 <div class="example">
-<p>נדגים כל סוג פעולה על המטריצה <span class="math display">.\begin{pmatrix}1 &amp; 2 &amp; 3\\
+<p>נדגים כל סוג פעולה על המטריצה <span class="math display">
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
 7 &amp; 8 &amp; 9
-\end{pmatrix}</span></p>
-<ol type="1">
-<li><p>נכפיל את השורה הראשונה ב-<span class="math inline">2</span>: <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+\end{pmatrix}
+</span></p>
+<p><strong>1.</strong> נכפיל את השורה הראשונה ב-<span class="math inline">2</span>: <span class="math display">
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
 7 &amp; 8 &amp; 9
-\end{pmatrix}\overset{2R_1 \to R_1}{\underset{R_1\leftarrow \frac{1}{2}R_1}{\longleftrightarrow}}\begin{pmatrix}2 &amp; 4 &amp; 6\\
+\end{pmatrix}
+\overset{2R_1 \to R_1}{\underset{R_1\leftarrow \frac{1}{2}R_1}{\longleftrightarrow}}
+\begin{pmatrix}
+2 &amp; 4 &amp; 6\\
 4 &amp; 5 &amp; 6\\
 7 &amp; 8 &amp; 9
-\end{pmatrix}</span></p>
-<p>את הפעולה משמאל לימין ציינו מעל לחץ, ומתחתיו ציינו את הפעולה ההפוכה מימין לשמאל. פעולה זו היא כפל השורה הראשונה ב-<span class="math inline">\frac{1}{2}</span>.</p></li>
-<li><p>נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">-3</span>:</p>
-<p><span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+\end{pmatrix}
+</span> את הפעולה משמאל לימין ציינו מעל לחץ, ומתחתיו את הפעולה ההפוכה מימין לשמאל - כפל השורה הראשונה ב-<span class="math inline">\frac{1}{2}</span>.</p>
+<p><strong>2.</strong> נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">-3</span>: <span class="math display">
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
 7 &amp; 8 &amp; 9
-\end{pmatrix}\overset{R_3-3R_1 \to R_3}{\underset{R_3\leftarrow R_3+3R_1}{\longleftrightarrow}}\begin{pmatrix}1 &amp; 2 &amp; 3\\
+\end{pmatrix}
+\overset{R_3-3R_1 \to R_3}{\underset{R_3\leftarrow R_3+3R_1}{\longleftrightarrow}}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
 4 &amp; 2 &amp; 0
-\end{pmatrix}</span></p>
-<p>שימו לב שהשורה הראשונה לא משתנה. החישוב שעשינו עבור השורה השלישית הוא <span class="math inline">(7,8,9)-3(1,2,3)=(4,2,0)</span>. הפעולה ההפוכה היא הוספה לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">3</span>, כלומר הסקלר הנגדי לסקלר המקורי (שינוי סימן).</p></li>
-<li><p>נחליף בין השורה השנייה לשורה השלישית: <span class="math display">\begin{pmatrix}1 &amp; 2 &amp; 3\\
+\end{pmatrix}
+</span> שימו לב שהשורה הראשונה לא משתנה; חישבנו לשורה השלישית: <span class="math inline">(7,8,9)-3(1,2,3)=(4,2,0)</span>.</p>
+<p><strong>3.</strong> נחליף בין השורה השנייה לשורה השלישית: <span class="math display">
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
 7 &amp; 8 &amp; 9
-\end{pmatrix}\overset{R_2 \leftrightarrow R_3}{\underset{R_3 \leftrightarrow R_2}{\longleftrightarrow}}\begin{pmatrix}1 &amp; 2 &amp; 3\\
+\end{pmatrix}
+\overset{R_2 \leftrightarrow R_3}{\underset{R_3 \leftrightarrow R_2}{\longleftrightarrow}}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
 7 &amp; 8 &amp; 9\\
 4 &amp; 5 &amp; 6
-\end{pmatrix}</span></p>
-<p>כאן הפעולה ההפוכה היא אותה הפעולה: החלפה בין השורה השנייה לשורה השלישית.</p></li>
-</ol>
+\end{pmatrix}
+</span> כאן הפעולה ההפוכה היא אותה הפעולה: החלפת השורות <span class="math inline">R_2</span> ו-<span class="math inline">R_3</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>באופן כללי, כל פעולות השורה האלמנטריות הן הפיכות. נבהיר למה הכוונה בכל מקרה:</p>
-<ol type="1">
-<li><p>לכל <span class="math inline">c\neq0</span> ולכל <span class="math inline">1\leq i\leq m</span> הפעולה ההפוכה ל-<span class="math inline">cR_{i}\rightarrow R_{i}</span> היא <span class="math inline">\frac{1}{c}R_{i}\rightarrow R_{i}</span>.</p></li>
-<li><p>לכל <span class="math inline">c\in F</span> ולכל <span class="math inline">i\neq j</span> הפעולה ההפוכה ל-<span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span> היא <span class="math inline">R_{i}-cR_{j}\rightarrow R_{i}</span>. אכן, אם מבצעים את הפעולה הראשונה ואחריה את השנייה (או בסדר הפוך), התוצאה היא <span class="math inline">R_{i}+cR_{j}-cR_{j}\rightarrow R_{i}</span> או בקיצור <span class="math inline">R_{i}\to R_{i}</span>. החזרה למקור היא המשמעות של פעולה הפוכה.</p></li>
-<li><p>לכל <span class="math inline">i\neq j</span> הפעולה ההפוכה להחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span> היא אותה ההחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.</p></li>
-</ol>
+<p>א. לכל <span class="math inline">c\neq0</span> ולכל <span class="math inline">1\leq i\leq m</span> הפעולה ההפוכה ל-<span class="math inline">cR_{i}\rightarrow R_{i}</span> היא <span class="math inline">\frac{1}{c}R_{i}\rightarrow R_{i}</span>.</p>
+<p>ב. לכל <span class="math inline">c\in F</span> ולכל <span class="math inline">i\neq j</span> הפעולה ההפוכה ל-<span class="math inline">R_{i}+cR_{j}\rightarrow R_{i}</span> היא <span class="math inline">R_{i}-cR_{j}\rightarrow R_{i}</span>. אכן, אם מבצעים את הפעולה הראשונה ואחריה את השנייה (או בסדר הפוך), התוצאה היא <span class="math inline">R_{i}+cR_{j}-cR_{j}\rightarrow R_{i}</span> או בקיצור <span class="math inline">R_{i}\to R_{i}</span>. החזרה למקור היא המשמעות של פעולה הפוכה.</p>
+<p>ג. לכל <span class="math inline">i\neq j</span> הפעולה ההפוכה להחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span> היא אותה ההחלפה <span class="math inline">R_{i}\leftrightarrow R_{j}</span>.</p>
 </div>
 <div class="definition">
 <p>מטריצות <span class="math inline">A,A'</span> נקראות <u>שקולות שורה</u> אם ניתן להגיע מ- <span class="math inline">A</span> ל- <span class="math inline">A'</span> ע"י סדרה סופית של פעולות שורה אלמנטריות.</p>
@@ -838,7 +935,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <p>במילים אחרות, כל <span class="math inline">n</span>-יה <span class="math inline">(c_1,c_2,...,c_n)</span> היא פתרון של הממ"ל החדשה (שמתקבלת אחרי סדרת פעולות שורה אלמנטריות) אם ורק אם היא פתרון של הממ"ל המקורית.</p>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>לכל ממ"ל <span class="math inline">Ax=b</span> ולכל פעולת שורה אלמנטרית, כל פתרון של הממ"ל לפני הפעולה נשאר פתרון של הממ"ל שמתקבלת בעקבות הפעולה. ולהיפך, ההפיכות של הפעולה מראה שכל פתרון של הממ"ל החדשה הוא גם פתרון של הממ"ל הקודמת לה. אז קבוצת הפתרונות נשארת ללא שינוי.</p>
-<p>נמשיך כך ונבצע מספר סופי של פעולות שורה אלמנטריות כדי לקבל את הממ"ל <span class="math inline">A'x=b'</span>. קבוצת הפתרונות תישמר בכל שלב ולכן גם בסוף התהליך היא תישאר זהה לקבוצת הפתרונות המקורית.&nbsp;◻</p>
+<p>נמשיך כך ונבצע מספר סופי של פעולות שורה אלמנטריות כדי לקבל את הממ"ל <span class="math inline">A'x=b'</span>. קבוצת הפתרונות תישמר בכל שלב ולכן גם בסוף התהליך היא תישאר זהה לקבוצת הפתרונות המקורית.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>כפל שורה ב-<span class="math inline">0</span> אינה פעולה הפיכה. למעשה, הוא הופך את המשוואה המתאימה בממ"ל למשוואה <span class="math inline">0=0</span> שמתקיימת ללא קשר למשתנים. בדרך כלל זה מוביל לאובדן מידע על המשתנים, מה שישפיע על קבוצת הפתרונות (יגדיל אותה) ולכן יש להימנע מכפל שורה ב-<span class="math inline">0</span>. הנה דוגמה פשוטה במקרה של שתי משוואות בשני משתנים: <span class="math display">\begin{cases}
@@ -1080,37 +1177,25 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 <p>ניתן לאפיין את הקריטריונים לעיל באמצעות הדרגה <span class="math inline">\mathop{\mathrm{rank}}(A)</span> של מטריצת המקדמים המצומצמת, והדרגה <span class="math inline">\mathop{\mathrm{rank}}(A|b)</span> של מטריצת המקדמים המורחבת. דירוג קנוני של <span class="math inline">A</span> מתאים לדירוג קנוני של <span class="math inline">(A|b)</span>, כאשר ההבדל היחיד הוא העמודה הימנית (צריך לבצע עליה את כל פעולות השורה שבחרנו עבור <span class="math inline">A</span>).</p>
 <p>ראשית נוכיח כמה תכונות של דרגה.</p>
 <div class="proposition">
-<p>. <em></em></p>
-<ol type="1">
-<li><p><em>לכל <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb F^n</span> מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span>.</em></p></li>
-<li><p><em>מתקיים <span class="math inline">0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span> כאשר <span class="math inline">\min\{m,n\}</span> הוא המספר הקטן מבין <span class="math inline">m,n</span>.</em></p></li>
-</ol>
+<p><strong>1.</strong> לכל <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb F^n</span> מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span>.*</p>
+<p><strong>2.</strong> מתקיים <span class="math inline">0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span> כאשר <span class="math inline">\min\{m,n\}</span> הוא המספר הקטן מבין <span class="math inline">m,n</span>.*</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
-<ol type="1">
-<li><p>נניח כי הצורה המדורגת קנונית של <span class="math inline">(A|b)</span> היא <span class="math inline">(A'|b')</span>. אז בפרט, <span class="math inline">A'</span> היא הצורה המדורגת קנונית של <span class="math inline">A</span>.</p>
-<p>בהכרח מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span> כי מספר האיברים המובילים ב- <span class="math inline">(A'|b')</span> הוא לפחות מספר האיברים המובילים ב- <span class="math inline">A'</span>. או שהדרגות שוות, או שהדרגה של מטריצת המקדמים המורחבת גדולה יותר (ב-<span class="math inline">1</span>) כתוצאה משורת סתירה שמוסיפה איבר מוביל.</p></li>
-<li><p>הדרגה היא מספר טבעי (היא <span class="math inline">0</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">0</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">A</span>, מספר זה הוא לכל היותר <span class="math inline">m</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">m</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">n</span>, ובסך הכל מתקיים <span class="math display">.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span></p></li>
-</ol>
-<p>&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp; <strong>1.</strong> נניח כי הצורה המדורגת קנונית של <span class="math inline">(A|b)</span> היא <span class="math inline">(A'|b')</span>. אז בפרט, <span class="math inline">A'</span> היא הצורה המדורגת קנונית של <span class="math inline">A</span>.</p>
+<p>בהכרח מתקיים <span class="math inline">\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)</span> כי מספר האיברים המובילים ב- <span class="math inline">(A'|b')</span> הוא לפחות מספר האיברים המובילים ב- <span class="math inline">A'</span>. או שהדרגות שוות, או שהדרגה של מטריצת המקדמים המורחבת גדולה יותר (ב-<span class="math inline">1</span>) כתוצאה משורת סתירה שמוסיפה איבר מוביל.</p>
+<p><strong>2.</strong> הדרגה היא מספר טבעי (היא <span class="math inline">0</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">0</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">A</span>, מספר זה הוא לכל היותר <span class="math inline">m</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">m</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">n</span>, ובסך הכל מתקיים <span class="math display">.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}</span></p>
 </div>
 <div class="proposition">
-<p>. <em> לכל מטריצה <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb R^n</span>, מספר הפתרונות לממ"ל <span class="math inline">Ax=b</span> נקבע באופן הבא:</em></p>
-<ol type="1">
-<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)</span>, אז אין לממ"ל פתרון.</em></p></li>
-<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n</span>, אז לממ"ל יש אינסוף פתרונות.</em></p></li>
-<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n</span>, אז לממ"ל יש פתרון יחיד.</em></p></li>
-</ol>
+<p>לכל מטריצה <span class="math inline">A</span> מסדר <span class="math inline">m\times n</span> ולכל <span class="math inline">b\in\mathbb R^n</span>, מספר הפתרונות לממ"ל <span class="math inline">Ax=b</span> נקבע באופן הבא:*</p>
+<p><strong>1.</strong> אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)</span>, אז אין לממ"ל פתרון.</p>
+<p><strong>2.</strong> אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n</span>, אז לממ"ל יש אינסוף פתרונות.</p>
+<p><strong>3.</strong> אם <span class="math inline">\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n</span>, אז לממ"ל יש פתרון יחיד.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>בכל מקרה נתרגם את הנתון על הדרגות לשפה של שורת סתירה ומשתנים חופשיים.</p>
-<ol type="1">
-<li><p>במקרה זה יש שורת סתירה ולכן אין פתרון.</p></li>
-<li><p>כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p></li>
-<li><p>כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p></li>
-</ol>
-<p>&nbsp;◻</p>
+<p><strong>1.</strong> במקרה זה יש שורת סתירה ולכן אין פתרון.</p>
+<p><strong>2.</strong> כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p>
+<p><strong>3.</strong> כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p>
 </div>
 <div class="example">
 <p> נסתכל על ממ"ל שבה חלק מהמקדמים תלויים בפרמטר <span class="math inline">a</span>, כלומר קבוע (לא משתנה) שערכו אינו ידוע מראש. אפשר לחשוב על ממ"ל עם פרמטר כמשפחה של ממ"ליות - לכל הצבה של ערך הפרמטר נקבל ממ"ל מסוימת במשפחה.</p>
@@ -1144,31 +1229,43 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 <p>נרצה לחלק את השורה האחרונה בסקלר <span class="math inline">1-a</span>, אבל זה כרוך בהנחה <span class="math inline">a\neq 1</span>. במקרה המיוחד <span class="math inline">a=1</span> שתי השורות האחרונות הן שורות אפסים, והשורה הראשונה מתאימה למשוואה <span class="math inline">x+y+z=1</span>. אז במקרה זה יש שני משתנים חופשיים (והדרגה היא <span class="math inline">1</span>), ולכן יש לממ"ל אינסוף פתרונות. קבוצת הפתרונות במקרה זה נתונה ע"י</p>
 <p><span class="math display">.\Set{(1-s-t,s,t)|s,t\in\mathbb R}</span></p>
 <p>נניח כי <span class="math inline">a\neq 1</span> ונמשיך את הדירוג:</p>
-<p><span class="math display">\begin{aligned}
-\left(\begin{array}{rrr|r}
+<p><span class="math display">
+\begin{aligned}
+\left(
+\begin{array}{rrr|r}
 1 &amp; a &amp; 1 &amp; 1 \\
-0 &amp; 1-a^2 &amp; 1-a &amp; 1-a\\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a \\
 0 &amp; 1-a &amp; a-1 &amp; 0
-\end{array}\right)
-\xrightarrow{\frac{1}{1-a}R_3\to R_3}
-\left(\begin{array}{rrr|r}
+\end{array}
+\right)
+&amp;\xrightarrow{\frac{1}{1-a}R_3 \to R_3}&amp;
+\left(
+\begin{array}{rrr|r}
 1 &amp; a &amp; 1 &amp; 1 \\
-0 &amp; 1-a^2 &amp; 1-a &amp; 1-a\\
+0 &amp; 1-a^2 &amp; 1-a &amp; 1-a \\
 0 &amp; 1 &amp; -1 &amp; 0
-\end{array}\right) \\
-\xrightarrow{R_2\leftrightarrow R_3}
-\left(\begin{array}{rrr|r}
+\end{array}
+\right)
+\\[10pt]
+&amp;\xrightarrow{R_2 \leftrightarrow R_3}&amp;
+\left(
+\begin{array}{rrr|r}
 1 &amp; a &amp; 1 &amp; 1 \\
-0 &amp; 1 &amp; -1 &amp; 0\\
+0 &amp; 1 &amp; -1 &amp; 0 \\
 0 &amp; 1-a^2 &amp; 1-a &amp; 1-a
-\end{array}\right)
-\xrightarrow{R_3-(1-a^2)R_2\to R_3}
-\left(\begin{array}{rrr|r}
+\end{array}
+\right)
+\\[10pt]
+&amp;\xrightarrow{R_3 - (1-a^2)R_2 \to R_3}&amp;
+\left(
+\begin{array}{rrr|r}
 1 &amp; a &amp; 1 &amp; 1 \\
-0 &amp; 1 &amp; -1 &amp; 0\\
-0 &amp; 0 &amp; 2-a-a^2 &amp; 1-a
-\end{array}\right)
-\end{aligned}</span></p>
+0 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 2 - a - a^2 &amp; 1 - a
+\end{array}
+\right)
+\end{aligned}
+</span></p>
 <p>אם מתקיים <span class="math inline">2-a-a^2\neq 0</span>, אז הדרגה של מטריצת המקדמים המצומצמת שווה ל- <span class="math inline">3</span> וזו גם הדרגה של מטריצת המקדמים המורחבת. לכן יש פתרון יחיד לממ"ל המקורית.</p>
 <p>לעומת זאת, שורשי המשוואה <span class="math inline">2-a-a^2=0</span> הם <span class="math inline">a_1=1, a_2=-2</span>. את המקרה הראשון כבר ניתחנו וראינו שמתקבלים אינסוף פתרונות. במקרה השני נקבל שהשורה הראשונה היא <span class="math inline">(\begin{array}{rrr|r}
 0 &amp; 0 &amp; 0 &amp; 3 \\
@@ -1207,22 +1304,17 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 </div>
 <p>בניגוד לממ"ל כללית, לממ"ל הומוגנית תמיד קיים לפחות פתרון אחד. הטענה הבאה מראה זאת ומאפיינת את שני המקרים (פתרון יחיד ואינסוף פתרונות).</p>
 <div class="proposition">
-<ol type="1">
-<li><p><em>לכל ממ"ל הומוגנית <span class="math inline">Ax=0</span> קיים פתרון טריוויאלי שהוא וקטור האפס <span class="math inline">x=0</span>, כלומר הפתרון בו כל המשתנים מתאפסים.</em></p></li>
-<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)=n</span>, אז הפתרון יחיד.</em></p></li>
-<li><p><em>אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;n</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">m&lt;n</span>.</em></p></li>
-</ol>
+<p><strong>1.</strong> לכל ממ"ל הומוגנית <span class="math inline">Ax=0</span> קיים פתרון טריוויאלי שהוא וקטור האפס <span class="math inline">x=0</span>, כלומר הפתרון בו כל המשתנים מתאפסים.</p>
+<p><strong>2.</strong> אם <span class="math inline">\mathop{\mathrm{rank}}(A)=n</span>, אז הפתרון יחיד.</p>
+<p><strong>3.</strong> אם <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;n</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">m&lt;n</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
-<ol type="1">
-<li><p>נציב <span class="math inline">x_1=x_2=...=x_n=0</span> בממ"ל ונקבל <span class="math display">a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0</span></p>
-<p>כנדרש לכל <span class="math inline">1\leq i\leq n</span>.</p></li>
-<li><p>אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n</span> לכן, לפי טענה יש פתרון יחיד.</p></li>
-<li><p>הפעם מתקיים <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n</span> לכן, לפי טענה יש אינסוף פתרונות.</p>
-<p>בהינתן <span class="math inline">m&lt;n</span>, נובע מ- כי <span class="math inline">\mathop{\mathrm{rank}}(A)\leq m&lt;n</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p></li>
-</ol>
-<p>&nbsp;◻</p>
+<p><strong>1.</strong> נציב <span class="math inline">x_1=x_2=...=x_n=0</span> בממ"ל ונקבל <span class="math display">a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0</span></p>
+<p>כנדרש לכל <span class="math inline">1\leq i\leq n</span>.</p>
+<p><strong>2.</strong> אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n</span> לכן, לפי טענה יש פתרון יחיד.</p>
+<p><strong>3.</strong> הפעם מתקיים <span class="math display">.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n</span> לכן, לפי טענה יש אינסוף פתרונות.</p>
+<p>בהינתן <span class="math inline">m&lt;n</span>, נובע מ- כי <span class="math inline">\mathop{\mathrm{rank}}(A)\leq m&lt;n</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p>
 </div>
 <div class="exercise">
 <p>נחזור לממ"ל מדוגמה ונחליף את כל הקבועים ב- <span class="math inline">0</span>, כלומר נסתכל על הממ"ל הבאה:</p>
