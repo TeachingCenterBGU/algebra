@@ -5,7 +5,8 @@
 <h1 class="home-hero__title">אלגברה לינארית להנדסה</h1>
 <p class="home-hero__subtitle">ד"ר יונתן שלח, ד"ר נדב מאיר</p>
 <p class="home-hero__tagline">ספר קורס עבור סטודנטים בפקולטה להנדסה</p>
-<p class="home-hero__tagline">היחידה להוראת קורסי יסוד, אוניברסיטת בן גוריון בנגב</p>
+<p class="home-hero__tagline">היחידה להוראת קורסי יסוד</p>
+<p class="home-hero__tagline">אוניברסיטת בן גוריון בנגב</p>
 <hr class="home-hero__divider" />
 :::
 
