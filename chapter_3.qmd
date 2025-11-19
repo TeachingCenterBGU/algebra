@@ -2153,7 +2153,7 @@ $$(A\mid I_n)\rightarrow (E_1A\mid E_1)\rightarrow (E_2E_1A\mid E_2E_1)\rightarr
     0 & -1 & 2 & -2 & 0 & 1
     \end{array}
     \right)
-    \\[4pt]\[2]
+    \\[4pt] [2]
     &\xrightarrow{R_2\leftrightarrow R_3}
     \left(
     \begin{array}{ccc|ccc}
