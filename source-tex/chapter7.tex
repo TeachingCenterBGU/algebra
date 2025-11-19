@@ -1,0 +1,191 @@
+% ==============================
+% Dummy Overleaf Project (HE) — Linear Algebra Book
+% Exact environments: definition, example, exercise, remark,
+% theorem, lemma, propositionosition, corollary, proof, solution, hint
+% Numbering by chapter; solution/hint unnumbered.
+% ==============================
+\documentclass[12pt]{report} 
+
+% ---- Math & friends ----
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+\allowdisplaybreaks
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{todonotes}
+\usepackage{braket}
+\usepackage{array}
+
+% ---- Hebrew + fonts ----
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+% Overleaf has Frank Ruehl CLM in TeX Live
+\newfontfamily\hebrewfont[Script=Hebrew]{Frank Ruehl CLM}
+\newfontfamily\hebrewfontsf[Script=Hebrew]{Frank Ruehl CLM}
+\newfontfamily\hebrewfonttt[Script=Hebrew]{Frank Ruehl CLM}
+
+
+% ---- Theorem-like environments (by chapter) ----
+\theoremstyle{plain}
+\newtheorem{theorem}{משפט}[chapter]
+\newtheorem{lemma}[theorem]{למה}
+\newtheorem{proposition}[theorem]{טענה}
+\newtheorem{corollary}[theorem]{מסקנה}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{הגדרה}
+\newtheorem{example}[theorem]{דוגמה}
+\newtheorem{exercise}[theorem]{תרגיל}
+\newtheorem{remark}[theorem]{הערה}
+
+% Unnumbered for website folding
+\newtheorem*{solution}{פתרון}
+\newtheorem*{hint}{רמז}
+
+% ---- Macros (optional) ----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\0}{\mathbf{0}}
+
+
+\title{ספר אלגברה לינארית — דגם אוברליף}
+\author{צוות הקורס}
+\date{\today}
+
+\setlength {\marginparwidth }{2cm} 
+
+\begin{document}
+\maketitle
+
+\chapter{דטרמיננטה}\label{ch:determinant}
+בפרק הקודם הגדרנו מטריצות הפיכות, וראינו שיש תנאים שונים השקולים להגדרה זו. נרצה לפתח תנאי נוסף שאפשר לבטא באמצעות פונקציה שלוקחת מטריצה ריבועית ומחזירה סקלר (ע"י חישוב שתלוי בערכי המטריצה). סקלר זה ייקרא הדטרמיננטה של המטריצה, וזה גם השם של הפונקציה עצמה.
+
+הנוסחה לדטרמיננטה היא די ארוכה למטריצות ריבועיות מסדר 
+$n\times n$
+עבור 
+$n\ge 3$,
+ולא מומלץ לשנן אותה למעט המקרה 
+$n=2$.
+אז נפעל בכיוון הפוך: קודם כל נקבע את התכונות הרצויות עבור הדטרמיננטה, ואחר כך נוכיח שהתכונות האלו מגדירות את הדטרמיננטה (ביחידות) ונפתח שיטות שונות לחישוב. בנוסף, נוכיח את הקשר להפיכות ועוד טענות.
+
+נציין שהסימון לדטרמיננטה של מטריצה
+$A$
+הוא 
+$\det(A)$
+ללא קשר לסדר המטריצה. הנוסחה עצמה תלויה בסדר.
+
+\begin{definition}\label{def:det}
+עבור
+$A\in\M_{n\times n}(\F)$
+נגדיר את הדטרמיננטה של 
+$A$
+ונסמן 
+$\det(A)$
+ע"י התכונות הבאות:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$
+.\det(I_n)=1
+$
+
+
+\item 
+אם
+$A\xrightarrow{\alpha R_i\to R_i}A'$,
+אז
+$\det(A')=\alpha \det(A)$.
+
+
+\item 
+אם
+$A\xrightarrow{R_i+\alpha R_j\to R_i}A'$
+עבור
+$i\neq j$,
+אז
+$\det(A')=\det(A)$.
+
+
+\item 
+אם
+$A\xrightarrow{R_i\leftrightarrow R_j}A'$
+עבור
+$i\neq j$,
+אז
+$\det(A')=-\det(A)$.
+
+
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+עוד לא ברור שאכן קיימת פונקציה שמקיימת את כל התכונות לעיל. אבל בהנחה שהיא קיימת, כבר אפשר לראות דרך אחת לחישוב דטרמיננטה של מטריצה הפיכה: מבצעים דירוג קנוני ועוקבים אחרי השינוי בערך הדטרמיננטה בעקבות פש"אות שהן כפל שורה בסקלר או החלפה בין שתי שורות. נניח כי
+$\alpha_1,\alpha_2,...,\alpha_k\in\F$
+הם הסקלרים בהם מכפילים את שורות המטריצה לאורך הדירוג. בנוסף, נניח כי יש 
+$p$
+החלפות שורות. אז מתכונות הדטרמיננטה נובע כי
+$$
+1=\det(I_n)=(-1)^p\alpha_1\alpha_2\cdots\alpha_k\det(A) \implies \det(A)=\frac{(-1)^p}{\alpha_1\alpha_2\cdots\alpha_k}
+$$
+
+החסרונות של נוסחה זו היא שהדירוג עלול להיות ארוך, ויש יותר מדרך אחת לדרג מטריצה. אז כרגע עוד לא ברור שהתוצאה הסופית לא תלויה בדרך הדירוג.
+
+\end{remark}
+
+\begin{theorem}\label{thm:det}
+פונקציית הדטרמיננטה קיימת ויחידה.
+\end{theorem}
+ראינו יחידות למטריצות הפיכות. בהמשך נוכיח קיום וגם נתייחס למטריצות לא הפיכות. תחילה נתייחס למקרה הפרטי של
+$n=2$,
+שהוא יותר קל לניתוח וחישוב.
+
+\begin{proposition}
+עבור
+$n=2$
+הפונקציה
+$\det:\M_{2\times 2}(\F)\to\F$
+מהגדרה
+\ref{def:det}
+קיימת ויחידה. בנוסף: 
+\begin{enumerate}[label=\alph*.]
+\item
+לכל
+$$
+.A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+$$
+מתקיים
+$$
+.\det(A)=ad-bc
+$$
+
+\item 
+$A$
+הפיכה אם ורק אם
+$\det(A)\neq 0$. 
+במקרה זה מתקיים
+$$
+.A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}
+d & -b \\
+-c & a
+\end{pmatrix}
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\end{document}

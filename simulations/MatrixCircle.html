@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>טרנספורמציה ליניארית</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .canvas-container h3 {
+      width: 100%;
+      text-align: center;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+  #matrix-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  #matrix-input {
+    display: grid;
+    grid-template-columns: 50px 50px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    direction: ltr;
+  }
+  .bracket {
+      font-size: 3.5em;
+      font-weight: lighter;
+      color: #555;
+  }
+  input[type="number"] {
+    width: 40px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+  <h1>כפל מטריצה בוקטור כפעולה עליו</h1>
+  <p>הזינו את ערכי המטריצה וראו כיצד הכפל משפיע על וקטור שמסתובב סביב הראשית</p>
+
+  <div id="matrix-container">
+    <span>A =</span>
+    <span class="bracket">(</span>
+    <div id="matrix-input">
+      <input type="number" id="a11" value="1">
+      <input type="number" id="a12" value="1">
+      <input type="number" id="a21" value="0">
+      <input type="number" id="a22" value="2">
+    </div>
+    <span class="bracket">)</span>
+  </div>
+
+  <div class="container">
+    <div class="canvas-container">
+      <h3><span dir="ltr">(v)</span> <span dir="rtl">מרחב המקור</span></h3>
+      <canvas id="sourceCanvas" width="400" height="400"></canvas>
+    </div>
+    <div class="canvas-container">
+      <h3><span dir="ltr">(Av)</span> <span dir="rtl">מרחב התמונה</span></h3>
+      <canvas id="targetCanvas" width="400" height="400"></canvas>
+    </div>
+  </div>
+
+<script>
+  const sourceCanvas = document.getElementById('sourceCanvas');
+  const targetCanvas = document.getElementById('targetCanvas');
+  const sourceCtx = sourceCanvas.getContext('2d');
+  const targetCtx = targetCanvas.getContext('2d');
+  
+  const matrixInputs = {
+      a11: document.getElementById('a11'), a12: document.getElementById('a12'),
+      a21: document.getElementById('a21'), a22: document.getElementById('a22')
+  };
+
+  const centerX = sourceCanvas.width / 2;
+  const centerY = sourceCanvas.height / 2;
+  const scale = 4;
+  const unitSize = sourceCanvas.width / (scale * 2);
+
+  let angle = 0;
+  const speed = 0.02;
+  
+  function drawGridAndAxes(ctx) {
+    const padding = 20;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    for (let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0); ctx.lineTo(centerX + i * unitSize, ctx.canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize); ctx.lineTo(ctx.canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.moveTo(padding, centerY); ctx.lineTo(ctx.canvas.width - padding, centerY);
+    ctx.moveTo(centerX, ctx.canvas.height - padding); ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    const headlen = 10;
+    ctx.beginPath();
+    let axisEndX = ctx.canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', ctx.canvas.width - padding + 10, centerY + 5);
+    ctx.fillText('y', centerX, padding - 5);
+  }
+  
+  function drawArrow(ctx, p_scaled, color) {
+    const p_pixels = { x: centerX + p_scaled.x * unitSize, y: centerY - p_scaled.y * unitSize };
+    const origin_pixels = { x: centerX, y: centerY };
+    
+    if (Math.abs(p_pixels.x - origin_pixels.x) < 0.1 && Math.abs(p_pixels.y - origin_pixels.y) < 0.1) return;
+
+    const headlen = 10;
+    const dx = p_pixels.x - origin_pixels.x;
+    const dy = p_pixels.y - origin_pixels.y;
+    const angle = Math.atan2(dy, dx);
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.moveTo(origin_pixels.x, origin_pixels.y);
+    ctx.lineTo(p_pixels.x, p_pixels.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(p_pixels.x, p_pixels.y);
+    ctx.lineTo(p_pixels.x - headlen * Math.cos(angle - Math.PI / 6), p_pixels.y - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(p_pixels.x, p_pixels.y);
+    ctx.lineTo(p_pixels.x - headlen * Math.cos(angle + Math.PI / 6), p_pixels.y - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+  
+  function animate() {
+    drawGridAndAxes(sourceCtx);
+    drawGridAndAxes(targetCtx);
+
+    const a11 = parseFloat(matrixInputs.a11.value) || 0;
+    const a12 = parseFloat(matrixInputs.a12.value) || 0;
+    const a21 = parseFloat(matrixInputs.a21.value) || 0;
+    const a22 = parseFloat(matrixInputs.a22.value) || 0;
+
+    angle = (angle + speed) % (2 * Math.PI);
+    
+    // שינוי: הגדרת שלושה וקטורים
+    const v_half = { x: 0.5 * Math.cos(angle), y: 0.5 * Math.sin(angle) };
+    const v1 = { x: 1 * Math.cos(angle), y: 1 * Math.sin(angle) };
+    const v2 = { x: 2 * Math.cos(angle), y: 2 * Math.sin(angle) };
+    
+    // ציור במרחב המקור
+    sourceCtx.beginPath();
+    sourceCtx.strokeStyle = 'gray';
+    sourceCtx.lineWidth = 1;
+    sourceCtx.arc(centerX, centerY, 0.5 * unitSize, 0, 2 * Math.PI);
+    sourceCtx.moveTo(centerX + 1 * unitSize, centerY);
+    sourceCtx.arc(centerX, centerY, 1 * unitSize, 0, 2 * Math.PI);
+    sourceCtx.moveTo(centerX + 2 * unitSize, centerY);
+    sourceCtx.arc(centerX, centerY, 2 * unitSize, 0, 2 * Math.PI);
+    sourceCtx.stroke();
+    
+    drawArrow(sourceCtx, v_half, 'blue');
+    drawArrow(sourceCtx, v1, 'blue');
+    drawArrow(sourceCtx, v2, 'blue');
+
+    // חישוב וקטורים במרחב התמונה
+    const Av_half = { x: a11 * v_half.x + a12 * v_half.y, y: a21 * v_half.x + a22 * v_half.y };
+    const Av1 = { x: a11 * v1.x + a12 * v1.y, y: a21 * v1.x + a22 * v1.y };
+    const Av2 = { x: a11 * v2.x + a12 * v2.y, y: a21 * v2.x + a22 * v2.y };
+
+    // ציור אליפסות במרחב התמונה
+    targetCtx.strokeStyle = 'orange';
+    targetCtx.lineWidth = 1;
+    
+    // פונקציית עזר לציור אליפסה
+    const drawEllipse = (radius) => {
+        targetCtx.beginPath();
+        for (let i = 0; i <= 2 * Math.PI; i += 0.01) {
+            const temp_v = { x: radius * Math.cos(i), y: radius * Math.sin(i) };
+            const temp_Av = { x: a11 * temp_v.x + a12 * temp_v.y, y: a21 * temp_v.x + a22 * temp_v.y };
+            const pixels = { x: centerX + temp_Av.x * unitSize, y: centerY - temp_Av.y * unitSize };
+            if (i === 0) targetCtx.moveTo(pixels.x, pixels.y);
+            else targetCtx.lineTo(pixels.x, pixels.y);
+        }
+        targetCtx.closePath();
+        targetCtx.stroke();
+    };
+
+    drawEllipse(0.5);
+    drawEllipse(1);
+    drawEllipse(2);
+    
+    drawArrow(targetCtx, Av_half, 'red');
+    drawArrow(targetCtx, Av1, 'red');
+    drawArrow(targetCtx, Av2, 'red');
+
+    requestAnimationFrame(animate);
+  }
+
+  for (const key in matrixInputs) {
+      matrixInputs[key].addEventListener('input', () => {});
+  }
+
+  animate();
+
+</script>
+</body>
+</html>

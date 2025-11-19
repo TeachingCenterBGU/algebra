@@ -6,13 +6,14 @@ book:
   language: he
   chapters:
   - index.qmd
-  - intro.qmd
-  - chapter_0.qmd
-  - chapter_0_5.qmd
-  - chapter_1.qmd
-  - chapter_2.qmd
-  # - chapter_3.qmd
-  # - chapter_calculus.qmd
+  - intro.qmd      #chapter 0 introduction
+  - chapter_0.qmd   #chpater 1 preliminaries
+  - chapter_0_5.qmd  #chapter 2 Complex Numbers
+  - chapter_1.qmd    #chapter 3 geometry of linear equations
+  - chapter_2.qmd    #chapter 4 Systems of Linear Equations
+  - chapter_3.qmd    #chapter 5 Matrices
+  - chapter_4.qmd    #chapter 6 Determinants
+
   - summary.qmd
   - references.qmd
   search: true
@@ -59,6 +60,8 @@ format:
     include-after-body:
       - auto-env-titles.html
       - chapter-numbering.html
+      - tracking.html
+    include-in-header: _includes/head.html
       
     filters:
       - env-to-callout.lua
