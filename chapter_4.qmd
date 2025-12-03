@@ -276,6 +276,9 @@ S&=\sqrt{\|v_1\|^2\|v_2\|^2-(v_1\cdot v_2)^2}=\sqrt{(a^2+b^2)(c^2+d^2)-(ac+bd)^2
     <figcaption>בצד ימין הדטרמיננטה שלילית, ובצד שמאל היא חיובית</figcaption>
     :::
 
+    ::: {#fig:DetOperations .figure}
+    ![](simulations/DetOperations.html?embed=1){width=720 height=720}
+    :::
 
     2.  יהיו $b_1,b_2,b_3\in\mathbb{R}$. נסמן $v_1=(b_1,0,0,),v_2=(0,b_2,0),v_3=(0,0,b_3)$, נסתכל על המטריצה שאלה הם וקטורי השורה שלה: $$B=\begin{pmatrix}
     b_1 & 0 & 0 \\
