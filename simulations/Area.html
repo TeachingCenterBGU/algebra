@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דטרמיננטה ושטח מקבילית</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+  }
+  canvas {
+    border: 1px solid black;
+    background-color: #fff;
+    cursor: crosshair;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  #controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px; /* רוחב מותאם למטריצה נקייה */
+    background-color: #f9f9f9;
+  }
+  #matrix-input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+  }
+  
+  #matrix-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    direction: ltr;
+  }
+  
+  .matrix-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 6px;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+  }
+  
+  /* סימון השורה הפעילה (זו שעודכנה לאחרונה) */
+  .matrix-row.active {
+      background-color: #e6e6e6;
+      border-color: #ccc;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+
+  .bracket {
+      font-size: 4.5em;
+      font-weight: lighter;
+      color: #555;
+      line-height: 0.8;
+      margin-bottom: 5px;
+  }
+  
+  input[type="number"] {
+    width: 45px;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    pointer-events: none; /* מונע הקלדה ידנית */
+    background-color: rgba(255,255,255,0.9);
+  }
+
+  /* עיצוב שורה ראשונה - וקטור כחול */
+  #a, #b {
+      color: blue;
+      font-weight: bold;
+      border: 2px solid blue;
+  }
+
+  /* עיצוב שורה שנייה - וקטור ירוק */
+  #c, #d {
+      color: green;
+      font-weight: bold;
+      border: 2px solid green;
+  }
+
+  /* חיווי צבע עדין לרקע השורה הפעילה */
+  #row-v1.active { background-color: rgba(0, 0, 255, 0.05); border-color: rgba(0,0,255,0.2); }
+  #row-v2.active { background-color: rgba(0, 128, 0, 0.05); border-color: rgba(0,128,0,0.2); }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  #results {
+      font-size: 1.2em;
+      line-height: 1.8;
+  }
+  #results span {
+      font-weight: bold;
+      color: #c0392b;
+  }
+  h1, p {
+      margin: 5px 0;
+  }
+</style>
+</head>
+<body>
+
+  <h1>דטרמיננטה ושטח המקבילית</h1>
+  <p>א. בחרו את וקטור השורה הראשון ע"י לחיצה שמאלית, ואת הוקטור השני ע"י לחיצה ימנית</p>
+  <p>ב. בדקו שהדטרמיננטה חיובית אם ורק אם התנועה מהוקטור הכחול לוקטור הירוק היא נגד כיוון השעון</p>
+
+  <div class="main-container">
+    <canvas id="interactivePlane" width="500" height="500"></canvas>
+    
+    <div id="controls-panel">
+      <div id="matrix-input-container">
+        <span style="font-size: 1.5em; font-weight: bold; margin-left: 10px;">A =</span>
+        <span class="bracket">(</span>
+        
+        <div id="matrix-rows">
+            <!-- שורה 1: כחול -->
+            <div class="matrix-row active" id="row-v1">
+                <input type="number" id="a" value="3" readonly>
+                <input type="number" id="b" value="1" readonly>
+            </div>
+            
+            <!-- שורה 2: ירוק -->
+            <div class="matrix-row" id="row-v2">
+                <input type="number" id="c" value="1" readonly>
+                <input type="number" id="d" value="2" readonly>
+            </div>
+        </div>
+        
+        <span class="bracket">)</span>
+      </div>
+      <hr>
+      <div id="results">
+        <div>דטרמיננטה = <span id="determinant" dir="ltr">...</span></div>
+        <div>שטח המקבילית = <span id="area" dir="ltr">...</span></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const canvas = document.getElementById('interactivePlane');
+  const ctx = canvas.getContext('2d');
+  
+  // אלמנטים
+  const inputA = document.getElementById('a');
+  const inputB = document.getElementById('b');
+  const inputC = document.getElementById('c');
+  const inputD = document.getElementById('d');
+  
+  const determinantDisplay = document.getElementById('determinant');
+  const areaDisplay = document.getElementById('area');
+  
+  const rowV1 = document.getElementById('row-v1');
+  const rowV2 = document.getElementById('row-v2');
+
+  // הגדרות ציור
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const scale = 5;
+  const unitSize = canvas.width / (scale * 2);
+
+  // מניעת תפריט קליק ימני בדפדפן על הקנבס
+  canvas.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+  });
+
+  // המרת קואורדינטות רשת לפיקסלים
+  function scaledToPixels(point) { 
+      return { 
+          x: centerX + point.x * unitSize, 
+          y: centerY - point.y * unitSize 
+      }; 
+  }
+  
+  // המרת פיקסלים לקואורדינטות רשת (מספרים שלמים)
+  function pixelsToScaled(x, y) {
+      return {
+          x: Math.round((x - centerX) / unitSize),
+          y: Math.round((centerY - y) / unitSize) 
+      };
+  }
+
+  // פונקציה לעדכון הויזואלי של השורות
+  function highlightRow(vectorName) {
+      if (vectorName === 'v1') {
+          rowV1.classList.add('active');
+          rowV2.classList.remove('active');
+      } else {
+          rowV2.classList.add('active');
+          rowV1.classList.remove('active');
+      }
+  }
+
+  // אירוע לחיצה על הקנבס
+  canvas.addEventListener('mousedown', function(evt) {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = evt.clientX - rect.left;
+      const clickY = evt.clientY - rect.top;
+      
+      const point = pixelsToScaled(clickX, clickY);
+      
+      // הגבלת הטווח
+      if (point.x < -scale) point.x = -scale;
+      if (point.x > scale) point.x = scale;
+      if (point.y < -scale) point.y = -scale;
+      if (point.y > scale) point.y = scale;
+
+      // בדיקה איזה כפתור נלחץ
+      if (evt.button === 0) { 
+          // קליק שמאלי -> v1
+          inputA.value = point.x;
+          inputB.value = point.y;
+          highlightRow('v1');
+      } else if (evt.button === 2) {
+          // קליק ימני -> v2
+          inputC.value = point.x;
+          inputD.value = point.y;
+          highlightRow('v2');
+      }
+      
+      draw();
+  });
+
+  function drawGridAndAxes() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const padding = 20;
+    
+    // גריד
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    for (let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0); ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize); ctx.lineTo(canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+    
+    // צירים
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    // X
+    ctx.moveTo(padding, centerY); ctx.lineTo(canvas.width - padding, centerY);
+    // Y
+    ctx.moveTo(centerX, canvas.height - padding); ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    // חצים לצירים
+    const headlen = 10;
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'black';
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', canvas.width - padding + 10, centerY + 5);
+    ctx.fillText('y', centerX, padding - 5);
+  }
+  
+  function drawArrow(p_scaled, color) {
+    const p_pixels = scaledToPixels(p_scaled);
+    const origin_pixels = { x: centerX, y: centerY };
+    
+    const headlen = 10;
+    const dx = p_pixels.x - origin_pixels.x;
+    const dy = p_pixels.y - origin_pixels.y;
+    const angle = Math.atan2(dy, dx);
+    
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.moveTo(origin_pixels.x, origin_pixels.y);
+    ctx.lineTo(p_pixels.x, p_pixels.y);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(p_pixels.x, p_pixels.y);
+    ctx.lineTo(p_pixels.x - headlen * Math.cos(angle - Math.PI / 6), p_pixels.y - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(p_pixels.x, p_pixels.y);
+    ctx.lineTo(p_pixels.x - headlen * Math.cos(angle + Math.PI / 6), p_pixels.y - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+
+  function drawLabel(point, index, color) {
+      const p_pixels = scaledToPixels(point);
+      const dx = p_pixels.x - centerX;
+      const dy = p_pixels.y - centerY;
+      const len = Math.sqrt(dx*dx + dy*dy);
+      
+      if (len < 1) return;
+
+      const offset = 25;
+      const labelX = p_pixels.x + (dx / len) * offset;
+      const labelY = p_pixels.y + (dy / len) * offset;
+
+      ctx.fillStyle = color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      ctx.font = "italic bold 20px Times New Roman";
+      const vText = "v";
+      const vWidth = ctx.measureText(vText).width;
+      
+      ctx.fillText(vText, labelX - 4, labelY);
+      
+      ctx.font = "bold 14px Arial";
+      ctx.fillText(index, labelX + vWidth/2 - 2, labelY + 6);
+  }
+  
+  function drawAngleArc(v1, v2, determinant) {
+      const startAngle = Math.atan2(-v1.y, v1.x);
+      const endAngle = Math.atan2(-v2.y, v2.x);
+      const goCounterClockwise = determinant >= 0;
+
+      ctx.beginPath();
+      ctx.strokeStyle = '#8A2BE2'; 
+      ctx.lineWidth = 1.5;
+      ctx.arc(centerX, centerY, 50, startAngle, endAngle, goCounterClockwise);
+      ctx.stroke();
+  }
+
+  function draw() {
+    drawGridAndAxes();
+
+    const a = parseFloat(inputA.value) || 0;
+    const b = parseFloat(inputB.value) || 0;
+    const c = parseFloat(inputC.value) || 0;
+    const d = parseFloat(inputD.value) || 0;
+
+    const v1 = { x: a, y: b };
+    const v2 = { x: c, y: d };
+    const v_sum = { x: a + c, y: b + d };
+    const det = a * d - b * c;
+    const area = Math.abs(det);
+
+    const p0 = scaledToPixels({x:0, y:0});
+    const p1 = scaledToPixels(v1);
+    const p2 = scaledToPixels(v2);
+    const p_sum = scaledToPixels(v_sum);
+
+    // לוגיקה לצבע השטח: כתום אם דטרמיננטה >= 0, אדמדם אם שלילית
+    ctx.beginPath();
+    if (det >= 0) {
+        ctx.fillStyle = 'rgba(255, 165, 0, 0.5)'; // כתום רגיל
+    } else {
+        ctx.fillStyle = 'rgba(220, 50, 50, 0.4)'; // אדמדם
+    }
+    
+    ctx.moveTo(p0.x, p0.y);
+    ctx.lineTo(p1.x, p1.y);
+    ctx.lineTo(p_sum.x, p_sum.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.closePath();
+    ctx.fill();
+
+    drawArrow(v1, 'blue');
+    drawArrow(v2, 'green');
+
+    drawLabel(v1, '1', 'blue');
+    drawLabel(v2, '2', 'green');
+    
+    if ( (v1.x**2 + v1.y**2 > 0.1) && (v2.x**2 + v2.y**2 > 0.1) ) {
+      drawAngleArc(v1, v2, det);
+    }
+
+    determinantDisplay.textContent = det.toFixed(2);
+    areaDisplay.textContent = area.toFixed(2);
+  }
+
+  draw();
+</script>
+</body>
+</html>

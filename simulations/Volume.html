@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דטרמיננטה ונפח מקבילון</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
+
+  /* כותרות והנחיות */
+  #header-section {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  h1 { margin: 5px 0; font-size: 1.5em; }
+  p { margin: 3px 0; font-size: 1em; color: #333; }
+
+  /* אזור הקנבס */
+  #canvas-container {
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    min-height: 300px;
+  }
+
+  /* אזור השליטה והמטריצה */
+  #controls-panel {
+    flex: 0 0 auto;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+  }
+
+  #matrix-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+  #matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 8px;
+    direction: ltr;
+  }
+
+  .bracket {
+      font-size: 4em;
+      font-weight: lighter;
+      color: #555;
+      line-height: 0.8;
+  }
+
+  input[type="number"] {
+    width: 45px;
+    height: 30px;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+
+  /* 
+     שינוי צבעי הקלט לצבעים מדויקים של הוקטורים 
+     v1 = כחול, v2 = ירוק (כהה מעט לקריאות), v3 = אדום
+  */
+  .row-v1 input { 
+      background-color: blue; 
+      color: white; 
+      font-weight: bold;
+      border-color: darkblue;
+  }
+  .row-v2 input { 
+      background-color: #00aa00; 
+      color: white; 
+      font-weight: bold;
+      border-color: darkgreen;
+  }
+  .row-v3 input { 
+      background-color: red; 
+      color: white; 
+      font-weight: bold;
+      border-color: darkred;
+  }
+
+  /* ביטול חיצי המספרים בדפדפנים מסוימים למראה נקי יותר */
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  #results-area {
+      display: flex;
+      gap: 30px;
+      font-size: 1.2em;
+  }
+
+  #results-area div {
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 5px;
+  }
+
+  #results-area span {
+      font-weight: bold;
+      color: #c0392b;
+      margin-right: 5px;
+  }
+</style>
+</head>
+<body>
+
+  <div id="header-section">
+    <h1>דטרמיננטה ונפח המקבילון</h1>
+    <p>א. הזינו את ערכי המטריצה כדי לראות את המקבילון הנפרש ע"י וקטורי השורה</p>
+    <p>ב. בדקו שסימן הדטרמיננטה מקיים את כלל יד ימין</p>
+  </div>
+
+  <div id="canvas-container"></div>
+  
+  <div id="controls-panel">
+      <div id="matrix-wrapper">
+        <span style="font-size: 1.5em; font-weight: bold;">A =</span>
+        <span class="bracket">(</span>
+        <div id="matrix-grid">
+          <!-- v1 - כחול -->
+          <div class="row-v1" style="display:contents">
+            <input type="number" id="a11" value="3"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0">
+          </div>
+          <!-- v2 - ירוק -->
+          <div class="row-v2" style="display:contents">
+            <input type="number" id="a21" value="1"><input type="number" id="a22" value="2"><input type="number" id="a23" value="0">
+          </div>
+          <!-- v3 - אדום -->
+          <div class="row-v3" style="display:contents">
+            <input type="number" id="a31" value="1"><input type="number" id="a32" value="1"><input type="number" id="a33" value="2">
+          </div>
+        </div>
+        <span class="bracket">)</span>
+      </div>
+      
+      <div id="results-area">
+        <div>דטרמיננטה = <span id="determinant" dir="ltr">...</span></div>
+        <div>נפח המקבילון = <span id="volume" dir="ltr">...</span></div>
+      </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+window.addEventListener('load', function() {
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xffffff);
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(10, 10, 10);
+    camera.up.set(0, 0, 1);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(width, height);
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirLight.position.set(10, 20, 15);
+    scene.add(dirLight);
+
+    const gridHelper = new THREE.GridHelper(20, 20);
+    gridHelper.rotation.x = Math.PI / 2;
+    scene.add(gridHelper);
+
+    // פונקציה ליצירת תוויות (כולל אינדקס תחתון)
+    function createLabel(text, color) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 256; 
+        canvas.height = 128;
+        const ctx = canvas.getContext('2d');
+        
+        ctx.fillStyle = color;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+
+        if (text.startsWith('v') && text.length > 1) {
+            const index = text.substring(1);
+            // v בכתב נטוי
+            ctx.font = 'bold italic 80px Times New Roman'; 
+            ctx.fillText('v', 40, 60);
+            
+            const vWidth = ctx.measureText('v').width;
+            
+            // מספר קטן ומונמך
+            ctx.font = 'bold 50px Arial';
+            ctx.fillText(index, 40 + vWidth - 5, 85); 
+        } else {
+            ctx.font = 'bold 80px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(text, 128, 64);
+        }
+        
+        const texture = new THREE.CanvasTexture(canvas);
+        const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(2.5, 1.25, 1); 
+        return sprite;
+    }
+
+    // צירי XYZ
+    const origin = new THREE.Vector3(0,0,0);
+    const axisLen = 6;
+    
+    scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), origin, axisLen, 0x000000, 0.4, 0.2));
+    const lblX = createLabel('x', 'black'); lblX.position.set(axisLen + 0.5, 0, 0); scene.add(lblX);
+    
+    scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), origin, axisLen, 0x000000, 0.4, 0.2));
+    const lblY = createLabel('y', 'black'); lblY.position.set(0, axisLen + 0.5, 0); scene.add(lblY);
+    
+    scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), origin, axisLen, 0x000000, 0.4, 0.2));
+    const lblZ = createLabel('z', 'black'); lblZ.position.set(0, 0, axisLen + 0.5); scene.add(lblZ);
+
+    let dynamicObjects = [];
+
+    const inputs = {};
+    for(let i=1; i<=3; i++) {
+        for(let j=1; j<=3; j++) {
+            const id = `a${i}${j}`;
+            inputs[id] = document.getElementById(id);
+            if(inputs[id]) {
+                inputs[id].addEventListener('input', updateScene);
+            }
+        }
+    }
+    const elDet = document.getElementById('determinant');
+    const elVol = document.getElementById('volume');
+
+    function updateScene() {
+        const m = {};
+        try {
+            for (const key in inputs) {
+                m[key] = parseFloat(inputs[key].value) || 0;
+            }
+        } catch(e) { return; }
+
+        const v1 = new THREE.Vector3(m.a11, m.a12, m.a13);
+        const v2 = new THREE.Vector3(m.a21, m.a22, m.a23);
+        const v3 = new THREE.Vector3(m.a31, m.a32, m.a33);
+
+        // חישוב הדטרמיננטה
+        const det = v1.x * (v2.y * v3.z - v2.z * v3.y) - 
+                    v1.y * (v2.x * v3.z - v2.z * v3.x) + 
+                    v1.z * (v2.x * v3.y - v2.y * v3.x);
+        
+        if(elDet) elDet.textContent = det.toFixed(2);
+        if(elVol) elVol.textContent = Math.abs(det).toFixed(2);
+
+        dynamicObjects.forEach(obj => scene.remove(obj));
+        dynamicObjects = [];
+
+        function addVector(vec, color, labelText) {
+            const len = vec.length();
+            if (len > 0.001) {
+                const arrow = new THREE.ArrowHelper(vec.clone().normalize(), origin, len, color, 0.4, 0.3);
+                scene.add(arrow);
+                dynamicObjects.push(arrow);
+                
+                // המרת המספר להקס כדי להשתמש בו בפונקציית הטקסט
+                const hexColor = '#' + color.toString(16).padStart(6, '0');
+                const sprite = createLabel(labelText, hexColor); 
+                sprite.position.copy(vec).multiplyScalar(1.05); 
+                scene.add(sprite);
+                dynamicObjects.push(sprite);
+            }
+        }
+
+        // צבעים תואמים ל-CSS (Blue, #00aa00, Red)
+        addVector(v1, 0x0000ff, 'v1'); 
+        addVector(v2, 0x00aa00, 'v2'); 
+        addVector(v3, 0xff0000, 'v3'); 
+
+        const p0 = new THREE.Vector3(0,0,0);
+        const p1 = v1.clone();
+        const p2 = v2.clone();
+        const p3 = v3.clone();
+        const p4 = v1.clone().add(v2);
+        const p5 = v1.clone().add(v3);
+        const p6 = v2.clone().add(v3);
+        const p7 = v1.clone().add(v2).add(v3);
+        
+        const vertices = [p0, p1, p2, p3, p4, p5, p6, p7];
+        const geometry = new THREE.BufferGeometry().setFromPoints(vertices);
+        
+        const indices = [
+            0, 2, 1,  1, 2, 4,
+            3, 5, 7,  3, 7, 6,
+            0, 1, 5,  0, 5, 3,
+            2, 6, 7,  2, 7, 4,
+            1, 4, 7,  1, 7, 5,
+            0, 3, 6,  0, 6, 2 
+        ];
+        geometry.setIndex(indices);
+        geometry.computeVertexNormals();
+
+        // קביעת צבע המקבילון לפי סימן הדטרמיננטה
+        // כתום אם חיובי או אפס, אדום בהיר אם שלילי
+        const shapeColor = det >= 0 ? 0xffa500 : 0xff3333;
+
+        const material = new THREE.MeshPhongMaterial({
+            color: shapeColor, 
+            opacity: 0.4, 
+            transparent: true, 
+            side: THREE.DoubleSide,
+            depthWrite: false
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        dynamicObjects.push(mesh);
+
+        const edgesGeom = new THREE.EdgesGeometry(geometry);
+        const lines = new THREE.LineSegments(edgesGeom, new THREE.LineBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2 }));
+        scene.add(lines);
+        dynamicObjects.push(lines);
+    }
+
+    window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+    });
+
+    updateScene();
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+});
+</script>
+</body>
+</html>

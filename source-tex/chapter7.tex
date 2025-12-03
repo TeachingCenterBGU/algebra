@@ -28,6 +28,9 @@
 \newfontfamily\hebrewfont[Script=Hebrew]{Frank Ruehl CLM}
 \newfontfamily\hebrewfontsf[Script=Hebrew]{Frank Ruehl CLM}
 \newfontfamily\hebrewfonttt[Script=Hebrew]{Frank Ruehl CLM}
+% For bullets
+\renewcommand{\labelitemi}{$\bullet$}   % first-level bullet
+\renewcommand{\labelitemii}{$\circ$}    % second-level bullet (optional)
 
 
 % ---- Theorem-like environments (by chapter) ----
@@ -69,7 +72,19 @@
 \maketitle
 
 \chapter{דטרמיננטה}\label{ch:determinant}
+
 בפרק הקודם הגדרנו מטריצות הפיכות, וראינו שיש תנאים שונים השקולים להגדרה זו. נרצה לפתח תנאי נוסף שאפשר לבטא באמצעות פונקציה שלוקחת מטריצה ריבועית ומחזירה סקלר (ע"י חישוב שתלוי בערכי המטריצה). סקלר זה ייקרא הדטרמיננטה של המטריצה, וזה גם השם של הפונקציה עצמה.
+
+לדטרמיננטה יש חשיבות בגיאומטריה וחדו"א לצורך חישובים נפחים ושטחים (תחילה של צורות מוכרות, ואחר כך של צורות יותר מסובכות בעזרת אינטגרל). המושג של מכפלה וקטורית, שלא ניכנס אליו בקורס, גם מבוסס על דטרמיננטה וזו עוד דרך לחשב וקטור נורמל למישור במרחב. אבל אנחנו נתמקד בהיבט העיקרי של דטרמיננטה כמדד להפיכות של המטריצה. מה המשמעות שלה במובן הזה? ככל שהדטרמיננטה של
+$A$
+גדולה יותר, כך הממ"ל
+$Ax=b$
+יציבה יותר במובן הבא: הפתרון לממ"ל (הפלט
+$A^{-1}b$)
+פחות רגיש לשגיאה בקלט 
+$b$. 
+דטרמיננטה קטנה פירושה שיש רגישות גדולה לשגיאה, והמידע שמבוטא בממ"ל פחות אמין. אם הדטרמיננטה מתאפסת, אז $A$
+אינה הפיכה ומלכתחילה לא קיים פתרון יחיד לממ"ל (יש אובדן של מידע). ניגע בהיבטים המעשיים של הדטרמיננטה ביישומים בסוף הספר, אבל בקורס עצמו נתמקד בתכונות הדטרמיננטה וחישובים.
 
 הנוסחה לדטרמיננטה היא די ארוכה למטריצות ריבועיות מסדר 
 $n\times n$
@@ -77,7 +92,7 @@ $n\times n$
 $n\ge 3$,
 ולא מומלץ לשנן אותה למעט המקרה 
 $n=2$.
-אז נפעל בכיוון הפוך: קודם כל נקבע את התכונות הרצויות עבור הדטרמיננטה, ואחר כך נוכיח שהתכונות האלו מגדירות את הדטרמיננטה (ביחידות) ונפתח שיטות שונות לחישוב. בנוסף, נוכיח את הקשר להפיכות ועוד טענות.
+אז נפעל בכיוון הפוך: נקבע את התכונות הרצויות עבור הדטרמיננטה, שלמעשה מגדירות אותה. בהמשך נראה שיטות שונות לחישוב.
 
 נציין שהסימון לדטרמיננטה של מטריצה
 $A$
@@ -85,12 +100,12 @@ $A$
 $\det(A)$
 ללא קשר לסדר המטריצה. הנוסחה עצמה תלויה בסדר.
 
+\section{הגדרת הדטרמיננטה והקשר לדירוג}
+
 \begin{definition}\label{def:det}
 עבור
 $A\in\M_{n\times n}(\F)$
-נגדיר את הדטרמיננטה של 
-$A$
-ונסמן 
+נגדיר את 
 $\det(A)$
 ע"י התכונות הבאות:
 
@@ -103,10 +118,11 @@ $
 
 \item 
 אם
-$A\xrightarrow{\alpha R_i\to R_i}A'$,
+$A\xrightarrow{\alpha R_i\to R_i}A'$
+עבור
+$1\leq i \leq n$,
 אז
 $\det(A')=\alpha \det(A)$.
-
 
 \item 
 אם
@@ -130,7 +146,17 @@ $\det(A')=-\det(A)$.
 \end{definition}
 
 \begin{remark}
-עוד לא ברור שאכן קיימת פונקציה שמקיימת את כל התכונות לעיל. אבל בהנחה שהיא קיימת, כבר אפשר לראות דרך אחת לחישוב דטרמיננטה של מטריצה הפיכה: מבצעים דירוג קנוני ועוקבים אחרי השינוי בערך הדטרמיננטה בעקבות פש"אות שהן כפל שורה בסקלר או החלפה בין שתי שורות. נניח כי
+דרך שקולה להסתכל על התכונה השנייה היא שאם כבר מופיע במטריצה הנתונה כפל בסקלר של שורה כלשהי,
+אפשר להוציא את הסקלר מחוץ לדטרמיננטה. זה דומה להוצאת גורם משותף מחוץ לחישוב רגיל. בפרט, לכל
+$A=(a)\in\M_{1\times 1}(\F)$
+מתקיים
+$$
+.\det(A)=\det(a)=a\det(1)=a\det(I_1)=a\cdot1=a
+$$
+\end{remark}
+
+\begin{remark}
+כבר אפשר לראות דרך אחת לחישוב דטרמיננטה של מטריצה הפיכה: מבצעים דירוג קנוני (שיסתיים ב-$I_n$) ועוקבים אחרי השינוי בערך הדטרמיננטה בעקבות ביצוע פש"אות, שהן כפל שורה בסקלר או החלפה בין שתי שורות. נניח כי
 $\alpha_1,\alpha_2,...,\alpha_k\in\F$
 הם הסקלרים בהם מכפילים את שורות המטריצה לאורך הדירוג. בנוסף, נניח כי יש 
 $p$
@@ -139,30 +165,252 @@ $$
 1=\det(I_n)=(-1)^p\alpha_1\alpha_2\cdots\alpha_k\det(A) \implies \det(A)=\frac{(-1)^p}{\alpha_1\alpha_2\cdots\alpha_k}
 $$
 
-החסרונות של נוסחה זו היא שהדירוג עלול להיות ארוך, ויש יותר מדרך אחת לדרג מטריצה. אז כרגע עוד לא ברור שהתוצאה הסופית לא תלויה בדרך הדירוג.
+החסרונות של נוסחה זו היא שהדירוג עלול להיות ארוך, ולא ברור מראש מהם הסקלרים שמופיעים במכנה. לא תמיד זו הדרך הנוחה ביותר לחישוב דטרמיננטה, אבל זו דרך שתמיד יכולה לעבוד. נרצה שיהיו לנו כלים נוספים כדי שנוכל להסתפק בדירוג חלקי אם בכלל.
 
 \end{remark}
 
-\begin{theorem}\label{thm:det}
-פונקציית הדטרמיננטה קיימת ויחידה.
-\end{theorem}
-ראינו יחידות למטריצות הפיכות. בהמשך נוכיח קיום וגם נתייחס למטריצות לא הפיכות. תחילה נתייחס למקרה הפרטי של
-$n=2$,
-שהוא יותר קל לניתוח וחישוב.
+\begin{example}
+נחשב את הדטרמיננטה של
+$$
+.A=\begin{pmatrix}
+1 & -3 \\
+4 & 7
+\end{pmatrix}
+$$
 
-\begin{proposition}
+נקבל
+$$
+\begin{aligned}
+\det(A)&=\det\!\begin{pmatrix}
+1 & -3 \\
+4 & 7
+\end{pmatrix}\overset{R_2 - 4R_1 \to R_2}{=}\det\!\begin{pmatrix}
+1 & -3 \\
+0 & 19
+\end{pmatrix}\overset{\frac{1}{19}R_2 \to R_2}{=}19\cdot\det\!\begin{pmatrix}
+1 & -3 \\
+0 & 1
+\end{pmatrix} \\
+&\overset{R_1+3R_2\to R_1}{=}19\cdot\det(I_2)=19\cdot1=19
+\end{aligned}
+$$
+\end{example}
+
+\begin{proposition}\label{prop:det-scalar}
+יהיו
+$A\in\M_{n\times n}(\F)$
+ו-
+$\alpha\in\F$.
+אז מתקיים
+$$
+.\det(\alpha A)=\alpha^n\det(A)
+$$
+\end{proposition}
+
+\begin{proof}
+המשמעות של הכפל
+$\alpha A$
+היא שכל שורה מוכפלת באותו סקלר
+$\alpha$.
+לכן, עבור כל שורה ניתן להוציא את
+$\alpha$
+מחוץ לדטרמיננטה. לאחר שנעשה זאת לכל השורות נקבל גורם 
+$\alpha^n$
+מחוץ לדטרמיננטה, ואת המטריצה המקורית
+$A$
+בתוכה. לכן
+$$
+.\det(\alpha A)=\alpha^n\det(A)
+$$
+\end{proof}
+
+\begin{proposition}\label{prop:zero-row}
+אם למטריצה
+$A\in\M_{n\times n}(\F)$
+יש שורת אפסים,
+אז
+$\det(A)=0$.
+\end{proposition}
+
+\begin{proof}
+נניח שיש רק אפסים בשורה
+$R_i$
+של
+$A$.
+אז גם לאחר הכפלת שורה זו בכל סקלר 
+$c\neq 0$,
+המטריצה תישאר ללא שינוי. ניקח
+$c=\frac{1}{2}$
+ונקבל
+
+$$
+.\det(A)=2\det(A) \implies \det(A)=0
+$$
+\end{proof}
+
+\begin{proposition}\label{prop:diagonal-det}
+יהיו
+$D,U\in\M_{n\times n}(\F)$.
+
+\begin{enumerate}[label=\alph*.]
+\item 
+אם
+$D$
+אלכסונית מהצורה
+
+$$
+,D=\begin{pmatrix}
+d_1 &0 & \cdots & 0 \\
+0 & d_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+אז מתקיים
+
+$$
+.\det(D)=d_1d_2\cdots d_n
+$$
+
+
+\item
+אם
+$U$
+משולשית עליונה מהצורה
+
+$$
+U=\begin{pmatrix}
+d_1 &* & \cdots & * \\
+0 & d_2 & \cdots & * \\
+\vdots & \vdots & \ddots & * \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם ובנוסף
+$d_i\neq 0$
+לכל 
+$1\leq i\leq n$,
+אז מתקיים
+
+$$
+.\det(U)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}\
+\begin{enumerate}[label=\alph*.]
+\item 
+אם לפחות אחד מאיברי האלכסון הראשי הוא 
+$0$,
+אז יש שורת אפסים ולפי טענה
+\ref{prop:zero-row}
+נובע כי
+$$
+.\det(A)=0=a_1a_2\cdots a_n
+$$
+
+אז נניח כי כל איברים האלכסון הראשי שונים מ-
+$0$.
+בשביל הדירוג הקנוני צריך לבצע 
+פש"אות מהצורה
+$\frac{1}{d_i}R_i\to R_i$
+לכל 
+$1\leq i\leq n$.
+כך נקבל
+
+$$
+.1=\det(I_n)=\frac{1}{d_1}\cdot\frac{1}{d_2}\cdots\frac{1}{d_n}\det(A) \implies \det(A)=d_1d_2\cdots d_n
+$$
+
+
+\item 
+נראה שניתן להגיע מ-
+$U$
+למטריצה האלכסונית
+$D$
+מהסעיף הקודם ע"י פש"אות שלא משנות את הדטרמיננטה. נתון שלכל
+$2\leq i\leq n$
+מתקיים
+$d_i\neq 0$,
+ולכן זהו איבר מוביל וניתן להשתמש בו כדי לאפס את האיברים מעליו ע"י פש"אות מהסוג של החסרת כפל בסקלר של 
+$R_i$
+משורה מעליה. כל פש"א כזו לא משנה את ערך הדטרמיננטה, ולכן לאחר ביצוע כל הפש"אות האלו נקבל
+
+$$
+.\det(U)=\det(D)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+בהמשך נראה שהנוסחה מתקיימת גם למטריצה משולשית עליונה עם 
+$0$
+אחד או יותר על האלכסון הראשי (ואז הדטרמיננטה שווה ל-
+$0$).
+באופן דומה, גם נראה שלכל מטריצה משולשית תחתונה הדטרמיננטה נתונה כמכפלת איברי האלכסון הראשי.
+\end{remark}
+
+\begin{example}
+ניקח
+$$
+.A = \begin{pmatrix}
+1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 10
+\end{pmatrix}
+$$
+
+תחילה נשתמש בפעולות שלא משנות את הדטרמיננטה:
+
+$$
+\det(A)\overset{R_2 - 4R_1 \to R_2}{\overset{R_3 - 7R_1 \to R_3}{=}}
+\det\!\begin{pmatrix}
+1 & 2 & 3\\
+0 & -3 & -6\\
+0 & -6 & -11
+\end{pmatrix}\overset{R_3 - 2R_2 \to R_3}{=}\det\!\begin{pmatrix}
+1 & 2 & 3\\
+0 & -3 & -6\\
+0 & 0 & 1
+\end{pmatrix}
+$$
+
+קיבלנו מטריצה משולשית עליונה. אז מטענה
+\ref{prop:diagonal-det}
+נובע כי
+$$
+.\det(A)=1(-3)1=-3
+$$
+
+\end{example}
+
+\section{תכונות נוספות של הדטרמיננטה}
+\subsection{מטריצות מסדר 2 על 2}
+
+כעת נתמקד במקרה הפרטי של
+$n=2$,
+שהוא יותר קל לניתוח וחישוב. כאן כדאי לזכור את נוסחת הדטרמיננטה שנקבל.
+
+\begin{proposition}\label{prop:det-order-2}
 עבור
 $n=2$
 הפונקציה
 $\det:\M_{2\times 2}(\F)\to\F$
 מהגדרה
 \ref{def:det}
-קיימת ויחידה. בנוסף: 
+מקיימת:
 \begin{enumerate}[label=\alph*.]
 \item
 לכל
 $$
-.A=\begin{pmatrix}
+A=\begin{pmatrix}
 a & b \\
 c & d
 \end{pmatrix}
@@ -187,5 +435,1333 @@ $$
 
 \end{enumerate}
 \end{proposition}
+
+\begin{proof}\
+\begin{enumerate}[label=\alph*.]
+\item
+נפריד בין שלושה מקרים.
+נניח תחילה כי
+$a\neq 0$.
+אז מתקיים
+$$
+.\det(A)=\det\!\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\overset{R_2-\frac{c}{a}R_1 \to R_1}{=} \det\!\begin{pmatrix}
+a & b \\
+0 & d-\frac{bc}{a}
+\end{pmatrix}
+$$
+קיבלנו מטריצה משולשית עליונה, ולכן לפי טענה 
+\ref{prop:diagonal-det}
+נובע כי
+$$
+.\det(A)=a(d-\frac{bc}{a})=ad-bc
+$$
+
+אם 
+$a=0$
+אך
+$c\neq 0$,
+אז נוכל לבצע החלפה בין השורות ולהשתמש בנוסחה שהוכחנו למקרה הקודם:
+
+$$
+\det(A)=-\det\!\begin{pmatrix}
+c & d \\
+a & b
+\end{pmatrix}
+=-(bc-ad)=ad-bc
+$$
+
+אם
+$a=c=0$,
+אז יש שני מקרים: או שיש שורת אפסים,
+או שבלי הגבלת הכלליות
+$d\neq 0$
+ואפשר לאפס את האיבר מעליו ע"י הפעולה
+$R_1-\frac{b}{d}R_2\to R_1$.
+אז בכל מקרה מתקבלת שורת אפסים ולפי טענה
+\ref{prop:zero-row},
+נובע כי
+
+$$
+.\det(A)=\det\!\begin{pmatrix}
+    0 & b \\
+    0 & d
+    \end{pmatrix}=\det\!\begin{pmatrix}
+    0 & 0 \\
+    0 & d
+    \end{pmatrix}=0=0\cdot d-b\cdot 0=ad-bc
+$$
+
+\item 
+כיוון ראשון: אם
+$\det(A)\neq 0$,
+נראה כי הנוסחה עבור
+$A^{-1}$
+אכן מקיימת
+$A^{-1}A=I_2$.
+
+נכפיל ונקבל
+$$
+.A^{-1}A=\frac{1}{ad-bc}\begin{pmatrix}
+d & -b \\
+-c & a
+\end{pmatrix}\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}=\frac{1}{ad-bc}\begin{pmatrix}
+ad-bc & 0 \\
+0 & ad-bc 
+\end{pmatrix}=I_2
+$$
+
+אז
+$A$
+אכן הפיכה והנוסחה מתקיימת.
+
+כיוון שני: נניח כי 
+$\det(A)=0$.
+ראינו בסעיף הקודם שהנחה זו מובילה לשורת אפסים לאחר דירוג, וזה אומר ש-
+$\rank(A)<2$
+ולכן 
+$A$
+אינה הפיכה.
+
+\end{enumerate}
+\end{proof}
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item 
+המטריצה
+$$
+A=\begin{pmatrix}
+1 & 4 \\
+3 & 15
+\end{pmatrix}
+$$
+הפיכה כי
+$$
+.\det(A)=1\cdot15-4\cdot3=3\neq 0
+$$
+בנוסף, מתקיים
+$$
+.A^{-1}=\frac{1}{3}\begin{pmatrix}
+15 & -4 \\
+-3 & 1
+\end{pmatrix}=\begin{pmatrix}
+5 & -\frac{4}{3} \\
+-1 & \frac{1}{3}
+\end{pmatrix}
+$$
+
+\item 
+המטריצה
+$$
+A=\begin{pmatrix}
+1 & 5 \\
+3 & 15
+\end{pmatrix}
+$$
+אינה הפיכה כי
+$$
+.\det(A)=1\cdot15-5\cdot 3=0
+$$
+אכן, גם רואים שדרגתה היא 
+$1$
+כי השורה השנייה מתקבלת מהראשונה ע"י כפל ב-
+$3$.
+
+\end{enumerate}
+\end{example}
+
+התרגיל הבא מראה שלדטרמיננטה של מטריצה מסדר 
+$2\times2$
+יש משמעות גיאומטרית של שטח מקבילית, עד כדי ערך מוחלט.
+
+\begin{exercise}
+יהיו 
+$v_1=(a,b),v_2=(c,d)$
+וקטורים ב-
+$\R^2$.
+נסמן ב-
+$A$
+את המטריצה ששורותיה הן 
+$v_1,v_2$.  
+הראו כי
+$|\det(A)|$
+שווה לשטח המקבילית עם וקטורי צלעות
+$v_1,v_2$.
+
+רמז: השטח נתון ע"י 
+$S=\|v_1\|\|v_2\|\sin(\theta)$,
+כאשר 
+$\theta$
+היא הזווית הקטנה בין וקטורי הצלעות ונתונה ע"י
+$$
+.\cos(\theta)=\frac{v_1\cdot v_2}{\|v_1\|\|v_2\|}
+$$
+\end{exercise}
+
+\begin{solution}
+נשתמש בזהות הטריגונומטרית
+$$
+.\sin^2(\theta)+\cos^2(\theta)=1\implies \sin(\theta)=\sqrt{1-\cos^2(\theta)}
+$$
+
+נציב את הביטוי לעיל בנוסחת השטח וגם נשתמש בנוסחה למכפלה סקלרית, ונקבל
+
+$$
+\begin{aligned}
+S&=\sqrt{\|v_1\|^2\|v_2\|^2-(v_1\cdot v_2)^2}=\sqrt{(a^2+b^2)(c^2+d^2)-(ac+bd)^2}\\
+&=\sqrt{(ad)^2+(bc)^2-2ad\cdot bc}=\sqrt{(ad-bc)^2}=|ad-bc|=|\det(A)|
+\end{aligned}
+$$
+
+\end{solution}
+
+\begin{example}\label{ex:area-volume}\
+\begin{enumerate}[label=\alph*.]
+\item
+יהיו 
+$a,c,d\in\R$.
+עבור
+$v_1=(a,0),v_2=(c,d)$,
+אורך בסיס המקבילית הוא
+$|a|$
+ואורך הגובה הוא
+$|d|$.
+לכן שטח המקבילית הוא
+$|ad|$,
+ואכן מתקיים
+$$
+.\Bigl|\det\!\begin{pmatrix}
+a & 0 \\
+c & d
+\end{pmatrix}\Bigr|=|ad|
+$$
+
+מהי משמעות הסימן של הדטרמיננטה? אם 
+$a,d>0$,
+אז 
+$ad>0$
+והוקטורים
+$v_1,v_2$
+מקיימים את התכונה הבאה: כדי לסובב את 
+$v_1$
+לכיוון
+$v_2$,
+הסיבוב הוא נגד כיוון השעון. תכונה זו מתקיימת גם אם
+$a,d<0$
+(עדיין
+$ad>0$).
+
+לעומת זאת, אם יש הבדל סימן בין 
+$a$
+ל-$d$,
+כלומר
+$ad<0$,
+אז התכונה ההפוכה מתקיימת: כדי לסובב את 
+$v_1$
+לכיוון
+$v_2$,
+הסיבוב הוא עם כיוון השעון. 
+
+המשמעות הגיאומטרית של סימן הדטרמיננטה נכונה באופן כללי למטריצה
+$$
+,A=\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+$$
+גם אם
+$b\neq 0$.
+סימן חיובי פירושו סיבוב נגד כיוון הראשון כדי לסובב את וקטור השורה הראשון לוקטור השורה השני, וסימן שלילי פירושו סיבוב עם כיוון השעון. הדטרמיננטה מתאפסת אם ורק אם שני הוקטורים קו-לינאריים,
+ואז ה"מקבילית" מנוונת (שטח
+$0$).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Area.png}
+    \caption{בצד ימין הדטרמיננטה שלילית, ובצד שמאל היא חיובית}
+    \label{fig:Area}
+\end{figure}
+
+% Insert link to DetOperations.html right after the link to Area.html. 
+
+\item
+יהיו
+$b_1,b_2,b_3\in\R$.
+נסמן
+$v_1=(b_1,0,0,),v_2=(0,b_2,0),v_3=(0,0,b_3)$,
+נסתכל על המטריצה שאלה הם וקטורי השורה שלה:
+$$
+B=\begin{pmatrix}
+b_1 & 0 & 0 \\
+0 & b_2 & 0 \\
+0 & 0 & b_3
+\end{pmatrix}
+$$
+
+נפח התיבה שצלעותיה מתאימות לשלושת הוקטורים 
+$v_1,v_2,v_3$
+הוא
+$|b_1b_2b_3|$,
+וזה בדיוק
+$|\det(B)|$
+לפי טענה
+\ref{prop:diagonal-det}.
+
+כאשר
+$b_1,b_2,b_3>0$
+הדטרמיננטה חיובית, והמשמעות הגיאומטרית היא כלל יד ימין: הוקטורים
+$v_1,v_2$
+יוצרים "יד ימין" - כלומר אם מציבים את האצבע המורה לאורך
+$v_1$
+ואת האמה לאורך
+$v_2$,
+אז האגודל יפנה פחות או יותר לכיוון
+$v_3$
+(הזווית ביניהם תהיה חדה).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/Thumb.png}
+    \caption{כלל יד ימין}
+    \label{fig:Thumb}
+\end{figure}
+
+להבדיל, אם
+$b_1,b_2>0$
+אך
+$b_3<0$,
+אז במקרה זה הדטרמיננטה שלילית ואכן כלל יד ימין לא מתקיים בגלל ההיפוך של אחד הוקטורים. זה חל גם על שאר המקרים שבהם יש היפוך בוקטור אחד בדיוק, או אפילו בכל השלושה (מספר אי-זוגי של היפוכים שבעקבותיו הדטרמיננטה שלילית).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Volume.png}
+    \caption{הדטרמיננטה חיובית רק בצד ימין}
+    \label{fig:Volume}
+\end{figure}
+
+בהמשך ניתן דוגמה חישובית יותר כללית למשמעות של דטרמיננטה במרחב כנפח של מקבילון (לא בהכרח תיבה), עד כדי סימן בהתאם לכלל יד ימין.
+
+\end{enumerate}
+\end{example}
+
+\subsection{מטריצות ריבועיות כלליות}
+\begin{proposition}\label{prop:elementary-det}
+יהיו 
+$E,A\in\M_{n\times n}(\F)$
+כך ש-
+$E$
+מטריצה אלמנטרית המתאימה לפש"א
+$S$,
+כלומר
+$E=S(I_n)$.
+אז מתקיים
+$$
+.\det(EA)=\det(E)\det(A)
+$$
+\end{proposition}
+
+\begin{proof}
+לפי טענה
+\ref{prop:elementary}
+מתקיים
+$EA=S(A)$.
+לכן
+$$
+.\det(EA)=\det(S(A))=\begin{cases}
+\alpha\det(A), & S=(\alpha R_i\to R_i) \\
+\det(A), & S=(R_i+\alpha R_j\to R_i) \\
+-\det(A), & S=(R_i\leftrightarrow R_j)
+\end{cases}
+$$
+
+באופן דומה:
+
+$$
+.\det(E)=\det(S(I_n))=\begin{cases}
+\alpha, & S=(\alpha R_i\to R_i) \\
+1, & S=(R_i+\alpha R_j\to R_i) \\
+-1, & S=(R_i\leftrightarrow R_j)
+\end{cases}
+$$
+
+לכן, בכל מקרה מתקיים
+
+$$
+.\det(EA)=\det(E)\det(A)
+$$
+
+\end{proof}
+
+יש לנו כבר מספיק כלים כדי להוכיח את אחד השימושים העיקריים של הדטרמיננטה, שהוא תנאי שקול להפיכות עבור מטריצות ריבועיות מסדר כללי.
+
+\begin{theorem}\label{thm:det-invertible}
+תהי
+$A\in\M_{n\times n}(F)$.
+אז 
+$A$
+הפיכה אם ורק אם
+$\det(A)\neq 0$.
+\end{theorem}
+
+\begin{proof}
+בכיוון הראשון, נניח כי
+$A$
+הפיכה. אז לפי מסקנה
+\ref{cor:elementary-product}
+היא מכפלה של מטריצות אלמנטריות. לכן מתקיים
+$$
+A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k
+$$
+כאשר
+$\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k$
+הן מטריצות אלמנטריות
+(למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני).
+אז לפי שימוש חוזר ב-
+\ref{prop:elementary-det}
+נובע כי
+$$
+.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0
+$$
+נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ-
+$0$
+כי היא שווה ל- 
+$\pm 1$
+או
+$\alpha\neq 0$.
+
+בכיוון השני, נניח כי
+$A$
+אינה הפיכה. אז לפי משפט
+\ref{thm:invertible},
+היא אינה שקולת שורה ל-
+$I_n$
+אלא למטריצה מדורגת קנונית 
+$A'$
+עם שורת אפסים (לפחות אחת).
+אז הפעם מתקיים
+$$
+A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'
+$$
+כאשר
+$E_1,E_2,...,E_k$
+הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן
+$$
+.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0
+$$
+
+הסיבה לשוויון ל-
+$0$
+היא העובדה שמתקיים
+$\det(A')=0$
+לפי טענה
+\ref{prop:zero-row}.
+\end{proof}
+
+\begin{exercise}
+לאילו ערכי
+$t\in\C$
+המטריצה
+$$
+A=\begin{pmatrix}
+t & 1 \\
+-1 & t
+\end{pmatrix}
+$$
+הפיכה? חשבו את
+$A^{-1}$
+עבור ערכים אלו.
+\end{exercise}
+
+\begin{solution}
+    נחשב את הדטרמיננטה לפי הנוסחה בטענה
+    \ref{prop:det-order-2}
+   ונקבל
+  $.\det(A)=t^2+1$
+  אז לפי משפט
+  \ref{thm:det-invertible}
+  נובע כי 
+  $A$
+  הפיכה אם ורק אם
+$$
+.t^2+1\neq 0 \iff t^2\neq-1 \iff t\neq\pm i
+$$
+בנוסף, לכל
+$t\neq\pm i$
+מתקיים
+$$
+.A^{-1}=\frac{1}{t^2+1}\begin{pmatrix}
+t & -1 \\
+1 & t
+\end{pmatrix}
+$$
+
+\end{solution}
+
+כעת נוכיח תכונה חשובה שנקראת כפליות הדטרמיננטה:
+\begin{proposition}\label{prop:det-product}
+יהיו 
+$A,B\in\M_{n\times n}(\F)$.
+אז מתקיים
+$$
+.\det(AB)=\det(A)\det(B)
+$$
+\end{proposition}
+
+\begin{proof}
+נחלק למקרים:
+\begin{enumerate}[label=\alph*.]
+\item
+$AB$
+אינה הפיכה:
+לפי תרגיל
+\ref{exer:inverse-product}
+לפחות אחת מ-
+$A$
+ו-
+$B$
+אינה הפיכה. אז לפי משפט
+\ref{thm:det-invertible}
+נובע כי
+$$
+,\det(AB)=0=\det(A)\det(B)
+$$
+וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל-
+$0$.
+
+\item 
+$AB$
+הפיכה:
+תחילה נראה שגם
+$A$
+וגם
+$B$
+הפיכות. נסמן
+$C=(AB)^{-1}$.
+אז מתקיים
+$$
+,A(BC)=(AB)C=I_n
+$$
+ולכן
+$A$
+הפיכה מימין ובכלל. באופן דומה:
+$$
+,(CA)B=C(AB)=I_n
+$$
+ולכן
+$B$
+הפיכה משמאל ובכלל.
+
+אז לפי טענה
+\ref{cor:elementary-product}
+גם 
+$A$
+וגם
+$B$
+הן מכפלות של מטריצות אלמנטריות, כלומר
+קיימות מטריצות אלמנטריות
+$E_1,E_2,...,E_k,E_{k+1},...,E_l$
+כך ש-
+$$
+.A=E_l\cdots E_{k+1}\quad,\quad B=E_k\cdots E_1
+$$
+לכן
+$$
+,AB=E_l\cdots E_{k+1}E_k\cdots E_1
+$$
+ולפי שימוש חוזר בטענה
+\ref{prop:elementary-det}
+נובע כי
+$$
+\begin{aligned}
+\det(AB)&=\det(E_l)\cdots \det(E_{k+1})\det(E_k)\cdots \det(E_1)\\
+&=\det(E_l\cdots E_{k+1})\det(E_k\cdots E_1)=\det(A)\det(B)
+\end{aligned}
+$$
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}\label{cor:det-inverse}
+תהי
+$A\in\M_{n\times n}(\F)$
+הפיכה. אז מתקיים
+$$
+.\det(A^{-1})=\frac{1}{\det(A)}
+$$
+\end{corollary}
+
+\begin{proof}
+לפי
+\ref{prop:det-product}
+מתקיים
+$$
+.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1
+$$
+נחלק ב-
+$\det(A)$
+ונקבל
+$$
+.\det(A^{-1})=\frac{1}{\det(A)}
+$$
+\end{proof}
+
+\begin{exercise}
+יהיו
+$A,P\in\M_{n\times n}(\F)$
+כך ש-
+$P$
+הפיכה. הראו כי
+$$
+.\det(PAP^{-1})=\det(A)
+$$
+\end{exercise}
+
+\begin{solution}
+לפי טענה
+\ref{prop:det-product}
+ומסקנה
+\ref{cor:det-inverse}
+מתקיים
+$$
+.\det(PAP^{-1})=\det(P)\det(A)\det(P^{-1})=\det(P)\det(A)\cdot\frac{1}{\det(P)}=\det(A)
+$$
+השתמשנו בחוק החילוף לסקלרים שמתקיים ב-
+$\F$ 
+גם אם 
+$A,P$
+אינן מתחלפות.
+\end{solution}
+
+\begin{remark}
+המטריצה 
+$PAP^{-1}$
+נקראת דומה ל-
+$A$.
+נבין את החשיבות של דמיון מטריצות בהמשך הקורס, אבל כבר ראינו שלמטריצות דומות יש דטרמיננטות שוות.
+\end{remark}
+
+\begin{proposition}\label{prop:det-transpose}
+תהי
+$A\in\M_{n\times n}(\F)$.
+אז מתקיים
+$$
+.\det(A^t)=\det(A)
+$$
+\end{proposition}
+
+\begin{proof}
+שוב נפצל למקרים לפי הפיכות 
+$A$.
+
+\begin{enumerate}[label=\alph*.]
+\item
+נניח כי
+$A$
+אינה הפיכה. לא ייתכן כי
+$A^t$
+הפיכה, כי אז לפי
+\ref{exer:inverse-product}
+גם 
+$A=(A^t)^t$
+הפיכה וזו סתירה. לכן, לפי
+\ref{thm:det-invertible}
+נובע כי
+$$
+.\det(A^t)=0=\det(A)
+$$
+
+
+\item 
+נניח כי
+$A$
+הפיכה. אז לפי
+\ref{cor:elementary-product}
+היא מכפלה של מטריצות אלמנטריות
+$E_1,\cdots,E_k$.
+לכן
+$$
+A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t
+$$
+ואז לפי טענה
+\ref{prop:det-product}
+נובע כי
+$$
+.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)
+$$
+
+לאור חוק החילוף ב-
+$\F$,
+מה שנשאר לסיום ההוכחה זה להראות כי
+$\det(E^t)=\det(E)$
+לכל 
+$E\in\M_{n\times n}(\F)$
+אלמנטרית.
+\begin{itemize}
+\item
+אם
+$E$
+מתאימה לפש"א 
+$S=(R_i\leftrightarrow R_j)$,
+אז
+$E^t=E$
+והדטרמיננטות גם שוות (לערך
+$-1$).
+
+
+\item
+אם 
+$E$
+מתאימה לפש"א
+$S=(\alpha R_i\to R_i)$,
+אז 
+$E$
+היא מטריצה אלכסונית (עם 
+$1$
+לאורך האלכסון הראשי חוץ מ-
+$\alpha$
+בשורה ה-
+$i$)
+ושוב
+$E^t=E$.
+
+
+\item
+אם
+$E$
+מתאימה לפש"א 
+$S=(R_i+\alpha R_j\to R_i)$,
+אז הפעם
+$E^t$
+מתאימה לפש"א
+$S=(R_j+\alpha R_i\to R_j)$.
+במקרה זה 
+$E^t\neq E$,
+אבל מתקיים
+$$
+.\det(E^t)=1=\det(E)
+$$
+\end{itemize}
+\end{enumerate}
+\end{proof}
+
+נחזור לחלק השני של טענה
+\ref{prop:diagonal-det}
+והפעם לא נניח שאיברי האלכסון הראשי שונים מ-
+$0$.
+
+\begin{corollary}
+תהי
+$U,L\in\M_{n\times n}(\F)$.
+
+\begin{enumerate}[label=\alph*.]
+\item
+אם
+$U$
+משולשית עליונה מהצורה
+
+$$
+U=\begin{pmatrix}
+d_1 &* & \cdots & * \\
+0 & d_2 & \cdots & * \\
+\vdots & \vdots & \ddots & * \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם,
+אז מתקיים
+
+$$
+.\det(U)=d_1d_2\cdots d_n
+$$
+
+\item 
+אם
+$L$
+משולשית תחתונה מהצורה
+
+$$
+L=\begin{pmatrix}
+d_1 &0 & \cdots & 0 \\
+* & d_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+* & * & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם,
+אז מתקיים
+
+$$
+.\det(L)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}\
+\begin{enumerate}[label=\alph*.]
+\item
+ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ-
+$0$.
+לכן, נניח שקיים 
+$1\leq i\leq n$
+כך ש-
+$d_i=0$,
+אז
+$U$
+מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ-
+$n$. 
+אז לפי משפט
+\ref{thm:invertible}
+היא אינה הפיכה, ולפי משפט
+\ref{thm:det-invertible}
+בהכרח מתקיים
+$$
+.\det(U)=0=d_1d_2\cdots d_n
+$$
+
+
+\item 
+נסתכל על 
+$L^t$,
+שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של 
+$L$. 
+אז לפי הסעיף הקודם וטענה
+\ref{prop:det-transpose}
+מתקיים
+
+$$
+.\det(L)=\det(L^t)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+תהי
+$A\in\M_{n\times n}(\F)$
+כאשר 
+$n$
+אי-זוגי. השתמשו בדטרמיננטה כדי להוכיח את הטענות הבאות:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+אם 
+$\F=\R$,
+לא ייתכן כי
+$A^2=-I_n$.
+
+\item 
+אם 
+$A$
+אנטי-סימטרית, אז היא אינה הפיכה.
+
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}\
+\begin{enumerate}[label=\alph*.]
+\item
+נניח בשלילה כי 
+$A^2=-I_n$
+ונפעיל דטרמיננטה. אז לפי טענה 
+\ref{prop:det-scalar}
+מתקיים
+$$
+\det(A^2)=\det(-I_n)=(-1)^n\det(I_n)=-1
+$$
+כי 
+$n$
+אי-זוגי.
+נשתמש בכפליות הדטרמיננטה (טענה
+\ref{prop:det-product})
+ונקבל
+$$
+,(\det(A))^2=\det(A^2)=-1
+$$
+אך זו סתירה כי 
+$\det(A)\in\R$,
+שכן כל ערכי 
+$A$
+ממשיים.
+
+
+\item 
+נתון כי
+$A^t=-A$
+ולכן הפעם נקבל
+$$
+.\det(A^t)=\det(-A)=(-1)^n\det(A)=-\det(A)
+$$
+מצד שני, לפי טענה
+\ref{prop:det-transpose}
+מתקיים 
+$$
+.\det(A)=\det(A^t) \implies \det(A)=-\det(A) \implies \det(A)=0
+$$
+לכן, 
+$A$
+אינה הפיכה לפי משפט
+\ref{thm:det-invertible}.
+
+
+\end{enumerate}
+\end{solution}
+
+\section{פיתוח דטרמיננטה לפי שורה או עמודה}
+ראינו שיש נוסחה פשוטה לדטרמיננטה עבור מטריצות מסדר
+$2\times 2$,
+ותמיד אפשר להשתמש בדירוג (לא בהכרח קנוני) כדי לקבל מטריצה משולשית עליונה שגם עבורה הנוסחה ידועה. נשאלת השאלה אם יש קיצור דרך, והתשובה חיובית בהרבה מקרים.
+
+\begin{definition}
+תהי
+$A\in\M_{n\times n}(\F)$.
+נגדיר את המינור
+$M_{i,j}(A)$
+להיות המטריצה שמתקבלת מ-
+$A$
+ע"י מחיקת השורה ה-
+$i$
+והעמודה ה-
+$j$.
+\end{definition}
+
+\begin{remark}
+כאן
+$M_{i,j}(A)\in\M_{(n-1)\times(n-1)}(\F)$.
+הסדר של המינור יותר קטן מזה של המטריצה המקורית, וזה מקל על חישוב הדטרמיננטה.
+\end{remark}
+
+\begin{example}
+ניקח
+$$
+.A=\begin{pmatrix}
+1 & 0 & 2 & 0 \\
+3 & 5 & 7 & 9\\
+-1 & 2 & 5 & 8 \\
+0 & 3 & 0 & -3 
+\end{pmatrix}
+$$
+
+נמחק את השורה הרביעית והעמודה השנייה, ונקבל
+$$
+.M_{4,2}(A)=\begin{pmatrix}
+1 & 2 & 0 \\
+3 & 7 & 9\\
+-1 & 5 & 8
+\end{pmatrix}
+$$
+
+נמחק את השורה השנייה והעמודה הרביעית, ונקבל
+$$
+.M_{2,4}(A)=\begin{pmatrix}
+1 & 0 & 2 \\
+-1 & 2 & 5 \\
+0 & 3 & 0 
+\end{pmatrix}
+$$
+
+\end{example}
+
+\begin{proposition}\label{prop:laplace}
+תהי
+$$
+.A=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}
+$$
+אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item
+לכל
+$1\leq i \leq n$, 
+ניתן לפתח את הדטרמיננטה לפי השורה ה-
+$i$:
+$$
+\det(A)=\sum_{j=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+$$
+
+
+\item
+לכל
+$1\leq j \leq n$, 
+ניתן לפתח את הדטרמיננטה לפי העמודה ה-
+$j$:
+$$
+\det(A)=\sum_{i=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+שתי הנוסחאות עלולות להיראות זהות במבט ראשון, אבל בפיתוח לפי שורה הסכימה היא על פני האינדקס 
+$j$
+ואילו בפיתוח לפי עמודה הסכימה היא על פני האינדקס 
+$i$.
+\end{remark}
+
+נדחה את עיקר ההוכחה לפרק על העתקות לינאריות, אבל בינתיים נראה איך פיתוח לפי עמודה נובע מפיתוח לפי שורה (בעזרת שחלוף):
+
+\begin{proof}\
+\begin{enumerate}[label=\alph*.]
+\item
+נוכיח את נוסחה זו בהמשך הקורס. לעת עתה נציין שהביטוי
+$(-1)^{i+j}$
+קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות.
+
+
+\item 
+נניח שהנוסחה לפיתוח לפי שורה נכונה, לכל שורה. 
+
+יהי 
+$1\leq j\leq n$.
+לפי טענה
+\ref{prop:det-transpose}
+מתקיים
+$\det(A)=\det(A^t)$.
+נפתח את אגף ימין לפי השורה ה-
+$j$
+(בהתאם לעמודה ה-
+$j$
+של המטריצה המקורית)
+ונשתמש באינדקס סכימה
+$i$:
+$$
+\begin{aligned}
+.\det(A)&=\det(A^t)=\sum_{i=1}^n(-1)^{j+i}(A^t)_{ji}\det(M_{j,i}(A^t))\\
+&=\sum_{i=1}^n(-1)^{i+j}a_{ij}\det((M_{i,j}(A))^t) =\sum_{i=1}^n(-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+\end{aligned}
+$$
+
+השתמשנו בעובדה שהמינור
+$M_{j,i}(A^t)$
+מתקבל ממחיקת השורה ה-
+$j$ 
+והעמודה ה-
+$i$
+של
+$A^t$, 
+כאשר אין הבדל בין זה לבין השחלוף של המינור
+$M_{i,j}(A)$
+(אפשר לבצע את המחיקה לפני או אחרי השחלוף).
+
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item 
+נראה שעבור מטריצה
+$$
+A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+$$
+פיתוח לפי כל שורה/עמודה משחזר את הנוסחה הידועה מטענה
+\ref{prop:det-order-2}.
+
+לפי השורה הראשונה נקבל:
+
+$$
+\begin{aligned}
+\det(A)&=(-1)^{1+1}a\cdot \det(M_{1,1}(A))+(-1)^{1+2}b\cdot \det(M_{1,2}(A))\\
+&=a\det(d)-b\det(c)=ad-bc
+\end{aligned}
+$$
+
+לפי השורה השנייה נקבל:
+
+$$
+\begin{aligned}
+\det(A)&=(-1)^{2+1}c\cdot \det(M_{2,1}(A))+(-1)^{2+2}d\cdot \det(M_{2,2}(A))\\
+&=-c\det(b)+d\det(a)=ad-bc
+\end{aligned}
+$$
+
+לפי העמודה הראשונה נקבל:
+
+$$
+\begin{aligned}
+\det(A)&=(-1)^{1+1}a\cdot \det(M_{1,1}(A))+(-1)^{2+1}c\cdot \det(M_{2,1}(A))\\
+&=a\det(d)-c\det(b)=ad-bc
+\end{aligned}
+$$
+
+לפי העמודה השנייה נקבל:
+
+$$
+\begin{aligned}
+\det(A)&=(-1)^{1+2}b\cdot \det(M_{1,2}(A))+(-1)^{2+2}d\cdot \det(M_{2,2}(A))\\
+&=-b\det(c)+d\det(a)=ad-bc
+\end{aligned}
+$$
+
+\item 
+עבור
+$$
+B=\begin{pmatrix}
+1 & i & 1+i \\
+2 & 3 & -i \\
+0 & 2+i & 4
+\end{pmatrix}
+$$
+נבחר לפתח לפי השורה השלישית, כי אחד מאיבריה הוא 
+$0$
+(ולכן מספיק לחשב דטרמיננטות של שני מינורים). נקבל
+$$
+\begin{aligned}
+\det(B)&=0+(-1)^{3+2}(2+i)\det(M_{3,2}(B))+(-1)^{3+3}4\det(M_{3,3}(B)) \\
+&=-(2+i)\det\!\begin{pmatrix}
+1 & 1+i \\
+2 & -i
+\end{pmatrix}+4\det\!\begin{pmatrix}
+1 & i \\
+2 & 3
+\end{pmatrix}\\
+&=-(2+i)\bigl(-i-2(1+i)\bigr)+4(3-2i)=(2+i)(2+3i)+12-8i\\
+&=1+8i+12-8i=13
+\end{aligned}
+$$
+
+לחילופין, נוח גם לפתח לפי העמודה הראשונה. כך נקבל
+
+$$
+\begin{aligned}
+\det(B)&=(-1)^{1+1}1\cdot
+\det\!\begin{pmatrix}
+3 & -i \\
+2+i & 4
+\end{pmatrix}
++(-1)^{1+2}
+2\cdot
+\det\!\begin{pmatrix}
+i & 1+i \\
+2+i & 4
+\end{pmatrix}+0 \\
+&=1\bigl((3\cdot 4 - (-i)(2+i)\bigr)
+-
+2\bigl(4i - (1+i)(2+i)\bigr)
+\\
+&=
+1(11+2i)
+-
+2(i-1)
+=
+11+2i -2i+2
+=
+13
+\end{aligned}
+$$
+
+
+\end{enumerate}
+\end{example}
+
+חוץ מפיתוח לפי שורה/עמודה תמיד כדאי לזכור שדירוג יכול להיות שימושי כחלק מהחישוב, גם אם הוא חלקי. בדוגמה הבאה נשתמש קודם בדירוג חלקי כדי לאפס את איברי העמודה הראשונה חוץ מהראשון, כך שנוכל לפתח את הדטרמיננטה לפי העמודה הראשונה יחסית בקלות.
+
+\begin{example}
+
+$$
+\begin{aligned}
+&\det\!\begin{pmatrix}
+1 & 2 & 3 & 4\\
+0 & 1 & 5 & 6\\
+2 & 0 & 1 & 3\\
+1 & 1 & 0 & 1
+\end{pmatrix}
+\overset{R_3 - 2R_1 \to R_3}{\overset{R_4 - R_1 \to R_1}{=}}
+\det\!\begin{pmatrix}
+1 & 2 & 3 & 4\\
+0 & 1 & 5 & 6\\
+0 & -4 & -5 & -5\\
+0 & -1 & -3 & -3
+\end{pmatrix}\\
+&=
+1\cdot
+\det\!\begin{pmatrix}
+1 & 5 & 6\\
+-4 & -5 & -5\\
+-1 & -3 & -3
+\end{pmatrix}
+\end{aligned}
+$$
+
+עשינו פיתוח לפי העמודה הראשונה. מכאן אפשר לעשות פיתוח לפי כל שורה או עמודה, אבל לא יזיק שוב לאפס את איברי העמודה הראשונה חוץ מהראשון:
+
+$$
+\begin{aligned}
+&\det\!\begin{pmatrix}
+1 & 5 & 6\\
+-4 & -5 & -5\\
+-1 & -3 & -3
+\end{pmatrix}
+\overset{R_2 +4R_1 \to R_2}{\overset{R_3 + R_1 \to R_3}{=}}\det\!\begin{pmatrix}
+1 & 5 & 6\\
+0 & 15 & 19\\
+0 & 2 & 3
+\end{pmatrix}=1\cdot\det \begin{pmatrix}
+15 & 19 \\
+2 & 3
+\end{pmatrix}\\
+&=45-38=7
+\end{aligned}
+$$
+
+\end{example}
+
+החישוב הבא מתאים לנפח של מקבילון שבסיסו מונח על מישור 
+$xy$.
+זהו מקרה יותר כללי מהתיבה שראינו בדוגמה
+\ref{ex:area-volume}.
+
+\begin{example}
+נסתכל על הוקטורים הבאים ב-
+$\R^3$:
+$$
+.v_1=(a,b,0),v_2=(c,d,0),v_3=(0,0,h)
+$$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/Piped.png}
+    \caption{המקבילון המתואר}
+    \label{fig:Piped}
+\end{figure}
+
+הוקטור 
+$v_3$
+מאונך לוקטורים
+$v_1,v_2$
+ולכן נפח המקבילון מתקבל משטח המקבילית (שנפרשת ע"י
+$v_1,v_2$)
+ע"י כפל בגובה
+$|h|$,
+כלומר הנפח הוא
+$|(ad-bc)h|$.
+נוודא שזהו אכן הערך המוחלט של הדטרמיננטה של המטריצה ששורותיה הן
+$v_1,v_2,v_3$, 
+ולצורך כך נעשה פיתוח לפי השורה השלישית (גם העמודה השלישית נוחה):
+
+$$
+.\det\!\begin{pmatrix}
+a & b & 0 \\
+c & d & 0 \\
+0 & 0 & h
+\end{pmatrix}=0+0+(-1)^{3+3}h\cdot\det\!\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}=(ad-bc)h
+$$
+
+אז הנפח אכן שווה לערך המוחלט של הדטרמיננטה (והסימן שלה מקיים את כלל יד ימין, כאמור).
+
+\end{example}
+
+\begin{remark}
+עוד לא ראינו הסבר כללי לכך שהערך המוחלט של הדטרמיננטה של מטריצה מסדר 
+$3\times 3$
+שווה לנפח המקבילון המתאים, גם אם אין וקטור שורה שמאונך לשניים האחרים. נוכל להוכיח זאת כשנחזור לגיאומטריה בסוף הקורס.
+\end{remark}
+
+\begin{exercise}
+לאילו ערכי
+$a\in\R$
+קיים פתרון יחיד לממ"ל
+$Ax=0$
+כאשר
+$$
+?A=\begin{pmatrix}
+a & 2a & 3 \\
+2a & a & 2a \\
+3 & 2a & a
+\end{pmatrix}
+$$
+\end{exercise}
+
+\begin{solution}
+לפי משפט
+\ref{thm:det-invertible}
+קיים לממ"ל פתרון יחיד (הטריוויאלי) אם ורק אם
+$\det(A)\neq 0$.
+נעשה חישוב, כאשר תחילה נוציא את הסקלר 
+$a$
+מהשורה השנייה אל מחוץ לדטרמיננטה:
+
+$$
+\begin{aligned}
+\det(A)&=\det\!\begin{pmatrix}
+a & 2a & 3 \\
+2a & a & 2a \\
+3 & 2a & a
+\end{pmatrix}=a\cdot\det\!\begin{pmatrix}
+a & 2a & 3 \\
+2 & 1 & 2 \\
+3 & 2a & a
+\end{pmatrix}\\
+&\overset{R_3 - R_1 \to R_3}{=}a\cdot\det\!\begin{pmatrix}
+a & 2a & 3 \\
+2 & 1 & 2 \\
+3-a & 0 & a-3
+\end{pmatrix}
+=a(a-3)\det\!\begin{pmatrix}
+a & 2a & 3 \\
+2 & 1 & 2 \\
+-1 & 0 & 1
+\end{pmatrix}
+\end{aligned}
+$$
+
+עכשיו נוח, אך לא חובה, לשחלף את המטריצה בהתאם לטענה 
+\ref{prop:det-transpose}
+ואז לבצע עוד פש"א:
+
+$$
+\det(A)=a(a-3)\det\!\begin{pmatrix}
+a & 2 & -1 \\
+2a & 1 & 0 \\
+3 & 2 & 1
+\end{pmatrix}\overset{R_1+R_3\to R_1}{=}a(a-3)\det\!\begin{pmatrix}
+a+3 & 4 & 0 \\
+2a & 1 & 0 \\
+3 & 2 & 1
+\end{pmatrix}
+$$
+
+נפתח לפי העמודה השלישית ונקבל
+
+$$
+.\det(A)=a(a-3)\cdot 1\cdot\det\!\begin{pmatrix}
+a+3 & 4 \\
+2a & 1
+\end{pmatrix}=a(a-3)(a+3-8a)=a(a-3)(3-7a)
+$$
+
+לכן, לממ"ל
+$Ax=0$
+קיים פתרון יחיד אם ורק אם
+
+$$
+.a(a-3)(3-7a)\neq 0 \iff a\notin\Set{0,\frac{3}{7},3}
+$$
+
+\end{solution}
 
 \end{document}
