@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פעולות שורה ומטריצות</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    color: #333;
+  }
+
+  h1 { margin-bottom: 5px; font-size: 1.8em; }
+  p.subtitle { margin-top: 0; color: #666; margin-bottom: 15px; }
+
+  /* מיכל ראשי */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* קנבס - גובה מוקטן */
+  canvas {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: default;
+    margin-bottom: 15px;
+  }
+
+  /* החלק התחתון: פאנל מימין, מטריצה משמאל */
+  .bottom-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+  }
+
+  /* צד ימין: פאנל הפעולות */
+  .operations-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 360px;
+  }
+
+  /* צד שמאל: מטריצה ודטרמיננטה */
+  .matrix-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px; /* צמצמתי רווחים מעט */
+    padding-top: 5px;
+  }
+
+  /* שורות משוואה (A =, det =, Area =) */
+  .equation-row {
+    display: flex;
+    align-items: center;
+    direction: ltr;
+    gap: 15px;
+    font-size: 1.4em;
+  }
+
+  .label {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    min-width: 80px; /* רוחב אחיד ליישור */
+    text-align: right;
+  }
+
+  /* עיצוב המטריצה */
+  .matrix-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 50px 50px;
+    gap: 8px;
+  }
+
+  .bracket {
+    font-size: 3em;
+    font-weight: 300;
+    color: #555;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  input.cell {
+    width: 45px;
+    height: 35px;
+    font-size: 0.8em;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-weight: bold;
+    background-color: #fdfdfd;
+  }
+
+  /* צבעים */
+  .row-v1 { color: blue; border-color: blue; background-color: rgba(0,0,255,0.05); }
+  .row-v2 { color: green; border-color: green; background-color: rgba(0,128,0,0.05); }
+
+  /* תוצאות מספריות */
+  .value-display {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.1em;
+  }
+
+  /* כרטיסי פעולה */
+  .op-card {
+    background-color: #f1f3f5;
+    border: 1px solid #e9ecef;
+    padding: 8px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .op-card button {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: #495057;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.1s;
+    text-align: center;
+    direction: ltr;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .op-card button:hover { 
+      background-color: #343a40; 
+  }
+
+  /* מחלקה לכפתור פעיל - !important כדי לדרוס סגנונות אחרים */
+  .active-btn {
+      background-color: #228be6 !important; /* כחול בולט */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+      transform: translateY(1px);
+  }
+
+  /* כפתור איפוס */
+  .btn-reset {
+    margin-top: 10px;
+    background-color: #e03131 !important;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  .btn-reset:hover { background-color: #c92a2a !important; }
+
+  /* שדה קלט לסקלר */
+  .scalar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    direction: ltr;
+  }
+  
+  input.scalar-input {
+    width: 40px;
+    padding: 4px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+
+  sub, sup { font-size: 0.75em; }
+
+</style>
+</head>
+<body>
+
+  <h1>פעולות שורה ודטרמיננטה</h1>
+  <p class="subtitle">השתמשו בכפתורים מימין כדי לשנות את המטריצה ולראות את ההשפעה על המקבילית</p>
+
+  <div class="main-container">
+    
+    <!-- חלק עליון: מערכת צירים -->
+    <canvas id="plane" width="600" height="280"></canvas>
+
+    <!-- חלק תחתון: שורה שמכילה את הפאנל (מימין) והמטריצה (משמאל) -->
+    <div class="bottom-section">
+      
+      <!-- צד ימין: פאנל הפעולות -->
+      <div class="operations-panel">
+        
+        <!-- החלפת שורות -->
+        <div class="op-card">
+          <button onclick="swapRows(this)">R<sub>1</sub> &harr; R<sub>2</sub></button>
+        </div>
+
+        <!-- כפל שורה 1 -->
+        <div class="op-card">
+          <button onclick="multRow1(this)">R<sub>1</sub> &larr; c &#183; R<sub>1</sub></button>
+          <div class="scalar-wrap">
+            <label>c=</label>
+            <input type="number" id="c-mult1" class="scalar-input" value="2" step="0.5">
+          </div>
+        </div>
+
+        <!-- כפל שורה 2 -->
+        <div class="op-card">
+          <button onclick="multRow2(this)">R<sub>2</sub> &larr; c &#183; R<sub>2</sub></button>
+          <div class="scalar-wrap">
+            <label>c=</label>
+            <input type="number" id="c-mult2" class="scalar-input" value="2" step="0.5">
+          </div>
+        </div>
+
+        <!-- הוספה ל-1 -->
+        <div class="op-card">
+          <button onclick="addR2toR1(this)">R<sub>1</sub> &larr; R<sub>1</sub> + c &#183; R<sub>2</sub></button>
+          <div class="scalar-wrap">
+            <label>c=</label>
+            <input type="number" id="c-add21" class="scalar-input" value="1" step="0.5">
+          </div>
+        </div>
+
+        <!-- הוספה ל-2 -->
+        <div class="op-card">
+          <button onclick="addR1toR2(this)">R<sub>2</sub> &larr; R<sub>2</sub> + c &#183; R<sub>1</sub></button>
+          <div class="scalar-wrap">
+            <label>c=</label>
+            <input type="number" id="c-add12" class="scalar-input" value="1" step="0.5">
+          </div>
+        </div>
+
+        <!-- שחלוף -->
+        <div class="op-card">
+          <button onclick="transpose(this)" style="background-color: #6741d9; font-family: Arial, sans-serif;">שחלוף (A<sup>T</sup>)</button>
+        </div>
+
+        <button class="btn-reset" onclick="resetMatrix(this)">איפוס למצב התחלתי</button>
+      </div>
+
+      <!-- צד שמאל: המטריצה והדטרמיננטה -->
+      <div class="matrix-section">
+        
+        <!-- משוואת המטריצה -->
+        <div class="equation-row">
+          <span class="label">A =</span>
+          <div class="matrix-wrapper">
+            <span class="bracket">(</span>
+            <div class="matrix-grid">
+              <input type="number" id="a11" class="cell row-v1" readonly>
+              <input type="number" id="a12" class="cell row-v1" readonly>
+              <input type="number" id="a21" class="cell row-v2" readonly>
+              <input type="number" id="a22" class="cell row-v2" readonly>
+            </div>
+            <span class="bracket">)</span>
+          </div>
+        </div>
+
+        <!-- משוואת הדטרמיננטה -->
+        <div class="equation-row">
+          <span class="label">det(A) =</span>
+          <span id="det-display" class="value-display">...</span>
+        </div>
+
+        <!-- משוואת השטח -->
+        <div class="equation-row">
+          <span class="label">Area =</span>
+          <span id="area-display" class="value-display">...</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  // מצב המטריצה
+  let mat = {
+      a: 3, b: 0, // וקטור 1 (כחול)
+      c: 1, d: 2  // וקטור 2 (ירוק)
+  };
+
+  // הפניות ל-DOM
+  const canvas = document.getElementById('plane');
+  const ctx = canvas.getContext('2d');
+  
+  const inputs = {
+      a: document.getElementById('a11'),
+      b: document.getElementById('a12'),
+      c: document.getElementById('a21'),
+      d: document.getElementById('a22')
+  };
+  const detOutput = document.getElementById('det-display');
+  const areaOutput = document.getElementById('area-display');
+
+  // הגדרות ציור
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const scale = 8; // זום
+  const unitSize = 25; // גודל יחידה בפיקסלים
+
+  // פונקציית עזר: סימון כפתור כפעיל
+  function setActive(btn) {
+      // מציאת כל הכפתורים בפאנל הפעולות
+      const allButtons = document.querySelectorAll('.operations-panel button');
+      // הסרת המחלקה מכולם
+      allButtons.forEach(b => b.classList.remove('active-btn'));
+      
+      // הוספה לכפתור הנוכחי (אם הוא קיים)
+      if (btn) {
+          btn.classList.add('active-btn');
+      }
+  }
+
+  // המרה מקואורדינטות לפיקסלים
+  function toPixel(x, y) {
+      return {
+          x: centerX + x * unitSize,
+          y: centerY - y * unitSize
+      };
+  }
+
+  // פונקציה לציור ראש חץ כללי
+  function drawArrowHead(ctx, x, y, angle, color) {
+      const headLen = 12;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-headLen, -6);
+      ctx.lineTo(-headLen, 6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+  }
+
+  // ציור גריד וצירים
+  function drawSystem() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // רשת
+      ctx.beginPath();
+      ctx.strokeStyle = '#f1f1f1';
+      ctx.lineWidth = 1;
+      
+      // מחשבים כמה קווים נכנסים במסך
+      const maxLinesX = Math.ceil(centerX / unitSize);
+      const maxLinesY = Math.ceil(centerY / unitSize);
+      const maxGrid = Math.max(maxLinesX, maxLinesY);
+
+      for(let i = -maxGrid; i <= maxGrid; i++) {
+          let p1 = toPixel(i, -maxGrid);
+          let p2 = toPixel(i, maxGrid);
+          ctx.moveTo(p1.x, 0); ctx.lineTo(p2.x, canvas.height);
+          
+          p1 = toPixel(-maxGrid, i);
+          p2 = toPixel(maxGrid, i);
+          ctx.moveTo(0, p1.y); ctx.lineTo(canvas.width, p2.y);
+      }
+      ctx.stroke();
+
+      // צירים ראשיים
+      ctx.beginPath();
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      
+      const margin = 15;
+      
+      // ציר Y
+      ctx.moveTo(centerX, canvas.height - margin); 
+      ctx.lineTo(centerX, margin);
+      
+      // ציר X
+      ctx.moveTo(margin, centerY); 
+      ctx.lineTo(canvas.width - margin, centerY);
+      
+      ctx.stroke();
+
+      // ראשי חצים לצירים
+      drawArrowHead(ctx, canvas.width - margin, centerY, 0, '#333');
+      drawArrowHead(ctx, centerX, margin, -Math.PI / 2, '#333');
+      
+      // אותיות צירים
+      ctx.fillStyle = '#000';
+      ctx.font = 'italic bold 22px Times New Roman'; 
+      ctx.fillText('x', canvas.width - margin - 10, centerY + 25);
+      ctx.fillText('y', centerX - 25, margin + 10);
+  }
+
+  // ציור וקטור בודד
+  function drawVector(x, y, color, label) {
+      if (Math.abs(x) < 0.01 && Math.abs(y) < 0.01) return;
+
+      const origin = toPixel(0, 0);
+      const target = toPixel(x, y);
+      
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+      ctx.moveTo(origin.x, origin.y);
+      ctx.lineTo(target.x, target.y);
+      ctx.stroke();
+      
+      const angle = Math.atan2(target.y - origin.y, target.x - origin.x);
+      drawArrowHead(ctx, target.x, target.y, angle, color);
+
+      ctx.fillStyle = color;
+      ctx.font = 'bold italic 18px Times New Roman';
+      ctx.fillText(label.charAt(0), target.x + 15, target.y);
+      ctx.font = 'bold 12px Arial';
+      ctx.fillText(label.charAt(1), target.x + 25, target.y + 5);
+  }
+
+  // ציור המקבילית
+  function drawParallelogram() {
+      const v1 = {x: mat.a, y: mat.b};
+      const v2 = {x: mat.c, y: mat.d};
+      const det = mat.a * mat.d - mat.b * mat.c;
+      
+      const p0 = toPixel(0, 0);
+      const p1 = toPixel(v1.x, v1.y);
+      const p2 = toPixel(v2.x, v2.y);
+      const pSum = toPixel(v1.x + v2.x, v1.y + v2.y);
+
+      ctx.beginPath();
+      
+      // צבעים דינמיים
+      if (det > 0.001) ctx.fillStyle = 'rgba(255, 165, 0, 0.4)';
+      else if (det < -0.001) ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+      else ctx.fillStyle = 'transparent';
+
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(p1.x, p1.y);
+      ctx.lineTo(pSum.x, pSum.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.closePath();
+      ctx.fill();
+      
+      ctx.strokeStyle = '#aaa';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 5]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+  }
+
+  function update() {
+      inputs.a.value = parseFloat(mat.a.toPrecision(4));
+      inputs.b.value = parseFloat(mat.b.toPrecision(4));
+      inputs.c.value = parseFloat(mat.c.toPrecision(4));
+      inputs.d.value = parseFloat(mat.d.toPrecision(4));
+
+      const det = mat.a * mat.d - mat.b * mat.c;
+      detOutput.textContent = parseFloat(det.toPrecision(4));
+      
+      // עדכון שטח
+      const area = Math.abs(det);
+      areaOutput.textContent = parseFloat(area.toPrecision(4));
+      
+      if (det >= 0) detOutput.style.color = '#d35400';
+      else detOutput.style.color = 'red';
+
+      // ציור
+      drawSystem();
+      drawParallelogram();
+      drawVector(mat.a, mat.b, 'blue', 'v1');
+      drawVector(mat.c, mat.d, 'green', 'v2');
+  }
+
+  // --- פעולות ---
+
+  function resetMatrix(btn) {
+      setActive(btn);
+      mat = { a: 3, b: 0, c: 1, d: 2 };
+      update();
+  }
+
+  function swapRows(btn) {
+      setActive(btn);
+      const tA = mat.a, tB = mat.b;
+      mat.a = mat.c; 
+      mat.b = mat.d;
+      mat.c = tA; 
+      mat.d = tB;
+      update();
+  }
+
+  function multRow1(btn) {
+      setActive(btn);
+      const c = parseFloat(document.getElementById('c-mult1').value) || 1;
+      mat.a *= c;
+      mat.b *= c;
+      update();
+  }
+
+  function multRow2(btn) {
+      setActive(btn);
+      const c = parseFloat(document.getElementById('c-mult2').value) || 1;
+      mat.c *= c;
+      mat.d *= c;
+      update();
+  }
+
+  function addR2toR1(btn) {
+      setActive(btn);
+      const c = parseFloat(document.getElementById('c-add21').value) || 0;
+      mat.a += c * mat.c;
+      mat.b += c * mat.d;
+      update();
+  }
+
+  function addR1toR2(btn) {
+      setActive(btn);
+      const c = parseFloat(document.getElementById('c-add12').value) || 0;
+      mat.c += c * mat.a;
+      mat.d += c * mat.b;
+      update();
+  }
+
+  function transpose(btn) {
+      setActive(btn);
+      const temp = mat.b;
+      mat.b = mat.c;
+      mat.c = temp;
+      update();
+  }
+
+  // הפעלה ראשונית
+  update();
+
+</script>
+</body>
+</html>
