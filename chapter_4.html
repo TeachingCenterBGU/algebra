@@ -85,6 +85,49 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="rtl-baseline.css">
 <link rel="stylesheet" href="styles.css">
@@ -192,15 +235,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#הגדרת-הדטרמיננטה-והקשר-לדירוג" id="toc-הגדרת-הדטרמיננטה-והקשר-לדירוג" class="nav-link active" data-scroll-target="#הגדרת-הדטרמיננטה-והקשר-לדירוג"><span class="header-section-number">6.1</span> הגדרת הדטרמיננטה והקשר לדירוג</a></li>
+  <li><a href="#תכונות-נוספות-של-הדטרמיננטה" id="toc-תכונות-נוספות-של-הדטרמיננטה" class="nav-link" data-scroll-target="#תכונות-נוספות-של-הדטרמיננטה"><span class="header-section-number">6.2</span> תכונות נוספות של הדטרמיננטה</a>
+  <ul class="collapse">
+  <li><a href="#מטריצות-מסדר-2-על-2." id="toc-מטריצות-מסדר-2-על-2." class="nav-link" data-scroll-target="#מטריצות-מסדר-2-על-2."><span class="header-section-number">6.2.1</span> מטריצות מסדר 2 על 2.</a></li>
+  <li><a href="#מטריצות-ריבועיות-כלליות" id="toc-מטריצות-ריבועיות-כלליות" class="nav-link" data-scroll-target="#מטריצות-ריבועיות-כלליות"><span class="header-section-number">6.2.2</span> מטריצות ריבועיות כלליות</a></li>
+  </ul></li>
+  <li><a href="#פיתוח-דטרמיננטה-לפי-שורה-או-עמודה" id="toc-פיתוח-דטרמיננטה-לפי-שורה-או-עמודה" class="nav-link" data-scroll-target="#פיתוח-דטרמיננטה-לפי-שורה-או-עמודה"><span class="header-section-number">6.3</span> פיתוח דטרמיננטה לפי שורה או עמודה</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></h1>
+<h1 class="title"><span id="ch:determinant" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></span></h1>
 </div>
 
 
@@ -217,9 +272,696 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>TBD</p>
+<p>בפרק הקודם הגדרנו מטריצות הפיכות, וראינו שיש תנאים שונים השקולים להגדרה זו. נרצה לפתח תנאי נוסף שאפשר לבטא באמצעות פונקציה שלוקחת מטריצה ריבועית ומחזירה סקלר (ע"י חישוב שתלוי בערכי המטריצה). סקלר זה ייקרא הדטרמיננטה של המטריצה, וזה גם השם של הפונקציה עצמה.</p>
+<p>לדטרמיננטה יש חשיבות בגיאומטריה וחדו"א לצורך חישובים נפחים ושטחים (תחילה של צורות מוכרות, ואחר כך של צורות יותר מסובכות בעזרת אינטגרל). המושג של מכפלה וקטורית, שלא ניכנס אליו בקורס, גם מבוסס על דטרמיננטה וזו עוד דרך לחשב וקטור נורמל למישור במרחב. אבל אנחנו נתמקד בהיבט העיקרי של דטרמיננטה כמדד להפיכות של המטריצה. מה המשמעות שלה במובן הזה? ככל שהדטרמיננטה של <span class="math inline">A</span> גדולה יותר, כך הממ"ל <span class="math inline">Ax=b</span> יציבה יותר במובן הבא: הפתרון לממ"ל (הפלט <span class="math inline">A^{-1}b</span>) פחות רגיש לשגיאה בקלט <span class="math inline">b</span>. דטרמיננטה קטנה פירושה שיש רגישות גדולה לשגיאה, והמידע שמבוטא בממ"ל פחות אמין. אם הדטרמיננטה מתאפסת, אז <span class="math inline">A</span> אינה הפיכה ומלכתחילה לא קיים פתרון יחיד לממ"ל (יש אובדן של מידע). ניגע בהיבטים המעשיים של הדטרמיננטה ביישומים בסוף הספר, אבל בקורס עצמו נתמקד בתכונות הדטרמיננטה וחישובים.</p>
+<p>הנוסחה לדטרמיננטה היא די ארוכה למטריצות ריבועיות מסדר <span class="math inline">n\times n</span> עבור <span class="math inline">n\ge 3</span>, ולא מומלץ לשנן אותה למעט המקרה <span class="math inline">n=2</span>. אז נפעל בכיוון הפוך: נקבע את התכונות הרצויות עבור הדטרמיננטה, שלמעשה מגדירות אותה. בהמשך נראה שיטות שונות לחישוב.</p>
+<p>נציין שהסימון לדטרמיננטה של מטריצה <span class="math inline">A</span> הוא <span class="math inline">\det(A)</span> ללא קשר לסדר המטריצה. הנוסחה עצמה תלויה בסדר.</p>
+<section id="הגדרת-הדטרמיננטה-והקשר-לדירוג" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="הגדרת-הדטרמיננטה-והקשר-לדירוג"><span class="header-section-number">6.1</span> הגדרת הדטרמיננטה והקשר לדירוג</h2>
+<div class="definition">
+<p> עבור <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> נגדיר את <span class="math inline">\det(A)</span> ע"י התכונות הבאות:</p>
+<ol type="1">
+<li><p><span class="math inline">.\det(I_n)=1</span></p></li>
+<li><p>אם <span class="math inline">A\xrightarrow{\alpha R_i\to R_i}A'</span> עבור <span class="math inline">1\leq i \leq n</span>, אז <span class="math inline">\det(A')=\alpha \det(A)</span>.</p></li>
+<li><p>אם <span class="math inline">A\xrightarrow{R_i+\alpha R_j\to R_i}A'</span> עבור <span class="math inline">i\neq j</span>, אז <span class="math inline">\det(A')=\det(A)</span>.</p></li>
+<li><p>אם <span class="math inline">A\xrightarrow{R_i\leftrightarrow R_j}A'</span> עבור <span class="math inline">i\neq j</span>, אז <span class="math inline">\det(A')=-\det(A)</span>.</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>דרך שקולה להסתכל על התכונה השנייה היא שאם כבר מופיע במטריצה הנתונה כפל בסקלר של שורה כלשהי, אפשר להוציא את הסקלר מחוץ לדטרמיננטה. זה דומה להוצאת גורם משותף מחוץ לחישוב רגיל. בפרט, לכל <span class="math inline">A=(a)\in\mathbb{M}_{1\times 1}(\mathbb{F})</span> מתקיים <span class="math display">.\det(A)=\det(a)=a\det(1)=a\det(I_1)=a\cdot1=a</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כבר אפשר לראות דרך אחת לחישוב דטרמיננטה של מטריצה הפיכה: מבצעים דירוג קנוני (שיסתיים ב-<span class="math inline">I_n</span>) ועוקבים אחרי השינוי בערך הדטרמיננטה בעקבות ביצוע פש"אות, שהן כפל שורה בסקלר או החלפה בין שתי שורות. נניח כי <span class="math inline">\alpha_1,\alpha_2,...,\alpha_k\in\mathbb{F}</span> הם הסקלרים בהם מכפילים את שורות המטריצה לאורך הדירוג. בנוסף, נניח כי יש <span class="math inline">p</span> החלפות שורות. אז מתכונות הדטרמיננטה נובע כי <span class="math display">1=\det(I_n)=(-1)^p\alpha_1\alpha_2\cdots\alpha_k\det(A) \implies \det(A)=\frac{(-1)^p}{\alpha_1\alpha_2\cdots\alpha_k}</span></p>
+<p>החסרונות של נוסחה זו היא שהדירוג עלול להיות ארוך, ולא ברור מראש מהם הסקלרים שמופיעים במכנה. לא תמיד זו הדרך הנוחה ביותר לחישוב דטרמיננטה, אבל זו דרך שתמיד יכולה לעבוד. נרצה שיהיו לנו כלים נוספים כדי שנוכל להסתפק בדירוג חלקי אם בכלל.</p>
+</div>
+<div class="example">
+<p>נחשב את הדטרמיננטה של <span class="math display">.A=\begin{pmatrix}
+1 &amp; -3 \\
+4 &amp; 7
+\end{pmatrix}</span></p>
+<p>נקבל <span class="math display">\begin{aligned}
+\det(A)&amp;=\det\!\begin{pmatrix}
+1 &amp; -3 \\
+4 &amp; 7
+\end{pmatrix}\overset{R_2 - 4R_1 \to R_2}{=}\det\!\begin{pmatrix}
+1 &amp; -3 \\
+0 &amp; 19
+\end{pmatrix}\overset{\frac{1}{19}R_2 \to R_2}{=}19\cdot\det\!\begin{pmatrix}
+1 &amp; -3 \\
+0 &amp; 1
+\end{pmatrix} \\
+&amp;\overset{R_1+3R_2\to R_1}{=}19\cdot\det(I_2)=19\cdot1=19
+\end{aligned}</span></p>
+</div>
+<div class="proposition">
+<p><em> יהיו <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> ו- <span class="math inline">\alpha\in\mathbb{F}</span>. אז מתקיים <span class="math display">.\det(\alpha A)=\alpha^n\det(A)</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> המשמעות של הכפל <span class="math inline">\alpha A</span> היא שכל שורה מוכפלת באותו סקלר <span class="math inline">\alpha</span>. לכן, עבור כל שורה ניתן להוציא את <span class="math inline">\alpha</span> מחוץ לדטרמיננטה. לאחר שנעשה זאת לכל השורות נקבל גורם <span class="math inline">\alpha^n</span> מחוץ לדטרמיננטה, ואת המטריצה המקורית <span class="math inline">A</span> בתוכה. לכן <span class="math display">.\det(\alpha A)=\alpha^n\det(A)</span>&nbsp;◻</p>
+</div>
+<div class="proposition">
+<p><em> אם למטריצה <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> יש שורת אפסים, אז <span class="math inline">\det(A)=0</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נניח שיש רק אפסים בשורה <span class="math inline">R_i</span> של <span class="math inline">A</span>. אז גם לאחר הכפלת שורה זו בכל סקלר <span class="math inline">c\neq 0</span>, המטריצה תישאר ללא שינוי. ניקח <span class="math inline">c=\frac{1}{2}</span> ונקבל</p>
+<p><span class="math display">.\det(A)=2\det(A) \implies \det(A)=0</span>&nbsp;◻</p>
+</div>
+<div class="proposition">
+<p><em> יהיו <span class="math inline">D,U\in\mathbb{M}_{n\times n}(\mathbb{F})</span>.</em></p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">D</span> אלכסונית מהצורה</em></p>
+<p><em><span class="math display">,D=\begin{pmatrix}
+d_1 &amp;0 &amp; \cdots &amp; 0 \\
+0 &amp; d_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; 0 \\
+0 &amp; 0 &amp; \cdots &amp; d_n
+\end{pmatrix}</span></em></p>
+<p><em>אז מתקיים</em></p>
+<p><em><span class="math display">.\det(D)=d_1d_2\cdots d_n</span></em></p></li>
+<li><p><em>אם <span class="math inline">U</span> משולשית עליונה מהצורה</em></p>
+<p><em><span class="math display">U=\begin{pmatrix}
+d_1 &amp;* &amp; \cdots &amp; * \\
+0 &amp; d_2 &amp; \cdots &amp; * \\
+\vdots &amp; \vdots &amp; \ddots &amp; * \\
+0 &amp; 0 &amp; \cdots &amp; d_n
+\end{pmatrix}</span></em></p>
+<p><em>כאשר הכוכביות מציינות איברים כלשהם ובנוסף <span class="math inline">d_i\neq 0</span> לכל <span class="math inline">1\leq i\leq n</span>, אז מתקיים</em></p>
+<p><em><span class="math display">.\det(U)=d_1d_2\cdots d_n</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<ol type="1">
+<li><p>אם לפחות אחד מאיברי האלכסון הראשי הוא <span class="math inline">0</span>, אז יש שורת אפסים ולפי טענה נובע כי <span class="math display">.\det(A)=0=a_1a_2\cdots a_n</span></p>
+<p>אז נניח כי כל איברים האלכסון הראשי שונים מ- <span class="math inline">0</span>. בשביל הדירוג הקנוני צריך לבצע פש"אות מהצורה <span class="math inline">\frac{1}{d_i}R_i\to R_i</span> לכל <span class="math inline">1\leq i\leq n</span>. כך נקבל</p>
+<p><span class="math display">.1=\det(I_n)=\frac{1}{d_1}\cdot\frac{1}{d_2}\cdots\frac{1}{d_n}\det(A) \implies \det(A)=d_1d_2\cdots d_n</span></p></li>
+<li><p>נראה שניתן להגיע מ- <span class="math inline">U</span> למטריצה האלכסונית <span class="math inline">D</span> מהסעיף הקודם ע"י פש"אות שלא משנות את הדטרמיננטה. נתון שלכל <span class="math inline">2\leq i\leq n</span> מתקיים <span class="math inline">d_i\neq 0</span>, ולכן זהו איבר מוביל וניתן להשתמש בו כדי לאפס את האיברים מעליו ע"י פש"אות מהסוג של החסרת כפל בסקלר של <span class="math inline">R_i</span> משורה מעליה. כל פש"א כזו לא משנה את ערך הדטרמיננטה, ולכן לאחר ביצוע כל הפש"אות האלו נקבל</p>
+<p><span class="math display">.\det(U)=\det(D)=d_1d_2\cdots d_n</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בהמשך נראה שהנוסחה מתקיימת גם למטריצה משולשית עליונה עם <span class="math inline">0</span> אחד או יותר על האלכסון הראשי (ואז הדטרמיננטה שווה ל- <span class="math inline">0</span>). באופן דומה, גם נראה שלכל מטריצה משולשית תחתונה הדטרמיננטה נתונה כמכפלת איברי האלכסון הראשי.</p>
+</div>
+<div class="example">
+<p>ניקח <span class="math display">.A = \begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 10
+\end{pmatrix}</span></p>
+<p>תחילה נשתמש בפעולות שלא משנות את הדטרמיננטה:</p>
+<p><span class="math display">\det(A)\overset{R_2 - 4R_1 \to R_2}{\overset{R_3 - 7R_1 \to R_3}{=}}
+\det\!\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+0 &amp; -3 &amp; -6\\
+0 &amp; -6 &amp; -11
+\end{pmatrix}\overset{R_3 - 2R_2 \to R_3}{=}\det\!\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+0 &amp; -3 &amp; -6\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}</span></p>
+<p>קיבלנו מטריצה משולשית עליונה. אז מטענה נובע כי <span class="math display">.\det(A)=1(-3)1=-3</span></p>
+</div>
+</section>
+<section id="תכונות-נוספות-של-הדטרמיננטה" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="תכונות-נוספות-של-הדטרמיננטה"><span class="header-section-number">6.2</span> תכונות נוספות של הדטרמיננטה</h2>
+<section id="מטריצות-מסדר-2-על-2." class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="מטריצות-מסדר-2-על-2."><span class="header-section-number">6.2.1</span> מטריצות מסדר 2 על 2.</h3>
+<p>כעת נתמקד במקרה הפרטי של <span class="math inline">n=2</span>, שהוא יותר קל לניתוח וחישוב. כאן כדאי לזכור את נוסחת הדטרמיננטה שנקבל.</p>
+<div class="proposition">
+<p><em> עבור <span class="math inline">n=2</span> הפונקציה <span class="math inline">\det:\mathbb{M}_{2\times 2}(\mathbb{F})\to\mathbb{F}</span> מהגדרה מקיימת:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math display">A=\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}</span> מתקיים <span class="math display">.\det(A)=ad-bc</span></em></p></li>
+<li><p><em><span class="math inline">A</span> הפיכה אם ורק אם <span class="math inline">\det(A)\neq 0</span>. במקרה זה מתקיים <span class="math display">.A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}
+d &amp; -b \\
+-c &amp; a
+\end{pmatrix}</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<ol type="1">
+<li><p>נפריד בין שלושה מקרים. נניח תחילה כי <span class="math inline">a\neq 0</span>. אז מתקיים <span class="math display">.\det(A)=\det\!\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}\overset{R_2-\frac{c}{a}R_1 \to R_1}{=} \det\!\begin{pmatrix}
+a &amp; b \\
+0 &amp; d-\frac{bc}{a}
+\end{pmatrix}</span> קיבלנו מטריצה משולשית עליונה, ולכן לפי טענה נובע כי <span class="math display">.\det(A)=a(d-\frac{bc}{a})=ad-bc</span></p>
+<p>אם <span class="math inline">a=0</span> אך <span class="math inline">c\neq 0</span>, אז נוכל לבצע החלפה בין השורות ולהשתמש בנוסחה שהוכחנו למקרה הקודם:</p>
+<p><span class="math display">\det(A)=-\det\!\begin{pmatrix}
+c &amp; d \\
+a &amp; b
+\end{pmatrix}
+=-(bc-ad)=ad-bc</span></p>
+<p>אם <span class="math inline">a=c=0</span>, אז יש שני מקרים: או שיש שורת אפסים, או שבלי הגבלת הכלליות <span class="math inline">d\neq 0</span> ואפשר לאפס את האיבר מעליו ע"י הפעולה <span class="math inline">R_1-\frac{b}{d}R_2\to R_1</span>. אז בכל מקרה מתקבלת שורת אפסים ולפי טענה , נובע כי</p>
+<p><span class="math display">.\det(A)=\det\!\begin{pmatrix}
+    0 &amp; b \\
+    0 &amp; d
+    \end{pmatrix}=\det\!\begin{pmatrix}
+    0 &amp; 0 \\
+    0 &amp; d
+    \end{pmatrix}=0=0\cdot d-b\cdot 0=ad-bc</span></p></li>
+<li><p>כיוון ראשון: אם <span class="math inline">\det(A)\neq 0</span>, נראה כי הנוסחה עבור <span class="math inline">A^{-1}</span> אכן מקיימת <span class="math inline">A^{-1}A=I_2</span>.</p>
+<p>נכפיל ונקבל <span class="math display">.A^{-1}A=\frac{1}{ad-bc}\begin{pmatrix}
+d &amp; -b \\
+-c &amp; a
+\end{pmatrix}\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}=\frac{1}{ad-bc}\begin{pmatrix}
+ad-bc &amp; 0 \\
+0 &amp; ad-bc
+\end{pmatrix}=I_2</span></p>
+<p>אז <span class="math inline">A</span> אכן הפיכה והנוסחה מתקיימת.</p>
+<p>כיוון שני: נניח כי <span class="math inline">\det(A)=0</span>. ראינו בסעיף הקודם שהנחה זו מובילה לשורת אפסים לאחר דירוג, וזה אומר ש- <span class="math inline">\mathop{\mathrm{rank}}(A)&lt;2</span> ולכן <span class="math inline">A</span> אינה הפיכה.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>המטריצה <span class="math display">A=\begin{pmatrix}
+1 &amp; 4 \\
+3 &amp; 15
+\end{pmatrix}</span> הפיכה כי <span class="math display">.\det(A)=1\cdot15-4\cdot3=3\neq 0</span> בנוסף, מתקיים <span class="math display">.A^{-1}=\frac{1}{3}\begin{pmatrix}
+15 &amp; -4 \\
+-3 &amp; 1
+\end{pmatrix}=\begin{pmatrix}
+5 &amp; -\frac{4}{3} \\
+-1 &amp; \frac{1}{3}
+\end{pmatrix}</span></p></li>
+<li><p>המטריצה <span class="math display">A=\begin{pmatrix}
+1 &amp; 5 \\
+3 &amp; 15
+\end{pmatrix}</span> אינה הפיכה כי <span class="math display">.\det(A)=1\cdot15-5\cdot 3=0</span> אכן, גם רואים שדרגתה היא <span class="math inline">1</span> כי השורה השנייה מתקבלת מהראשונה ע"י כפל ב- <span class="math inline">3</span>.</p></li>
+</ol>
+</div>
+<p>התרגיל הבא מראה שלדטרמיננטה של מטריצה מסדר <span class="math inline">2\times2</span> יש משמעות גיאומטרית של שטח מקבילית, עד כדי ערך מוחלט.</p>
+<div class="exercise">
+<p>יהיו <span class="math inline">v_1=(a,b),v_2=(c,d)</span> וקטורים ב- <span class="math inline">\mathbb{R}^2</span>. נסמן ב- <span class="math inline">A</span> את המטריצה ששורותיה הן <span class="math inline">v_1,v_2</span>. הראו כי <span class="math inline">|\det(A)|</span> שווה לשטח המקבילית עם וקטורי צלעות <span class="math inline">v_1,v_2</span>.</p>
+<p>רמז: השטח נתון ע"י <span class="math inline">S=\|v_1\|\|v_2\|\sin(\theta)</span>, כאשר <span class="math inline">\theta</span> היא הזווית הקטנה בין וקטורי הצלעות ונתונה ע"י <span class="math display">.\cos(\theta)=\frac{v_1\cdot v_2}{\|v_1\|\|v_2\|}</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נשתמש בזהות הטריגונומטרית <span class="math display">.\sin^2(\theta)+\cos^2(\theta)=1\implies \sin(\theta)=\sqrt{1-\cos^2(\theta)}</span></p>
+<p>נציב את הביטוי לעיל בנוסחת השטח וגם נשתמש בנוסחה למכפלה סקלרית, ונקבל</p>
+<p><span class="math display">\begin{aligned}
+S&amp;=\sqrt{\|v_1\|^2\|v_2\|^2-(v_1\cdot v_2)^2}=\sqrt{(a^2+b^2)(c^2+d^2)-(ac+bd)^2}\\
+&amp;=\sqrt{(ad)^2+(bc)^2-2ad\cdot bc}=\sqrt{(ad-bc)^2}=|ad-bc|=|\det(A)|
+\end{aligned}</span></p>
+</div>
+</div>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>יהיו <span class="math inline">a,c,d\in\mathbb{R}</span>. עבור <span class="math inline">v_1=(a,0),v_2=(c,d)</span>, אורך בסיס המקבילית הוא <span class="math inline">|a|</span> ואורך הגובה הוא <span class="math inline">|d|</span>. לכן שטח המקבילית הוא <span class="math inline">|ad|</span>, ואכן מתקיים <span class="math display">.\Bigl|\det\!\begin{pmatrix}
+a &amp; 0 \\
+c &amp; d
+\end{pmatrix}\Bigr|=|ad|</span></p>
+<p>מהי משמעות הסימן של הדטרמיננטה? אם <span class="math inline">a,d&gt;0</span>, אז <span class="math inline">ad&gt;0</span> והוקטורים <span class="math inline">v_1,v_2</span> מקיימים את התכונה הבאה: כדי לסובב את <span class="math inline">v_1</span> לכיוון <span class="math inline">v_2</span>, הסיבוב הוא נגד כיוון השעון. תכונה זו מתקיימת גם אם <span class="math inline">a,d&lt;0</span> (עדיין <span class="math inline">ad&gt;0</span>).</p>
+<p>לעומת זאת, אם יש הבדל סימן בין <span class="math inline">a</span> ל-<span class="math inline">d</span>, כלומר <span class="math inline">ad&lt;0</span>, אז התכונה ההפוכה מתקיימת: כדי לסובב את <span class="math inline">v_1</span> לכיוון <span class="math inline">v_2</span>, הסיבוב הוא עם כיוון השעון.</p>
+<p>המשמעות הגיאומטרית של סימן הדטרמיננטה נכונה באופן כללי למטריצה <span class="math display">,A=\begin{pmatrix}
+a &amp; b\\
+c &amp; d
+\end{pmatrix}</span> גם אם <span class="math inline">b\neq 0</span>. סימן חיובי פירושו סיבוב נגד כיוון הראשון כדי לסובב את וקטור השורה הראשון לוקטור השורה השני, וסימן שלילי פירושו סיבוב עם כיוון השעון. הדטרמיננטה מתאפסת אם ורק אם שני הוקטורים קו-לינאריים, ואז ה"מקבילית" מנוונת (שטח <span class="math inline">0</span>).</p>
+<div id="fig:Area" class="figure">
+<embed src="simulations/Area.html?embed=1" width="720" height="720">
+<figcaption>
+בצד ימין הדטרמיננטה שלילית, ובצד שמאל היא חיובית
+</figcaption>
+</div>
+<ol start="2" type="1">
+<li>יהיו <span class="math inline">b_1,b_2,b_3\in\mathbb{R}</span>. נסמן <span class="math inline">v_1=(b_1,0,0,),v_2=(0,b_2,0),v_3=(0,0,b_3)</span>, נסתכל על המטריצה שאלה הם וקטורי השורה שלה: <span class="math display">B=\begin{pmatrix}
+b_1 &amp; 0 &amp; 0 \\
+0 &amp; b_2 &amp; 0 \\
+0 &amp; 0 &amp; b_3
+\end{pmatrix}</span></li>
+</ol>
+<p>נפח התיבה שצלעותיה מתאימות לשלושת הוקטורים <span class="math inline">v_1,v_2,v_3</span> הוא <span class="math inline">|b_1b_2b_3|</span>, וזה בדיוק <span class="math inline">|\det(B)|</span> לפי טענה .</p>
+<p>כאשר <span class="math inline">b_1,b_2,b_3&gt;0</span> הדטרמיננטה חיובית, והמשמעות הגיאומטרית היא כלל יד ימין: הוקטורים <span class="math inline">v_1,v_2</span> יוצרים "יד ימין" - כלומר אם מציבים את האצבע המורה לאורך <span class="math inline">v_1</span> ואת האמה לאורך <span class="math inline">v_2</span>, אז האגודל יפנה פחות או יותר לכיוון <span class="math inline">v_3</span> (הזווית ביניהם תהיה חדה).</p>
+<figure id="fig:Thumb" class="figure">
+<p><img src="images/Thumb.png" style="width:20.0%" class="figure-img"></p>
+<figcaption>
+<p>כלל יד ימין</p>
+</figcaption>
+</figure>
+<p>להבדיל, אם <span class="math inline">b_1,b_2&gt;0</span> אך <span class="math inline">b_3&lt;0</span>, אז במקרה זה הדטרמיננטה שלילית ואכן כלל יד ימין לא מתקיים בגלל ההיפוך של אחד הוקטורים. זה חל גם על שאר המקרים שבהם יש היפוך בוקטור אחד בדיוק, או אפילו בכל השלושה (מספר אי-זוגי של היפוכים שבעקבותיו הדטרמיננטה שלילית).</p>
+<div id="fig:Volume" class="figure">
+<embed src="simulations/Volume.html?embed=1" width="720" height="720">
+<figcaption>
+הדטרמיננטה חיובית רק בצד ימין
+</figcaption>
+</div>
+<p>בהמשך ניתן דוגמה חישובית יותר כללית למשמעות של דטרמיננטה במרחב כנפח של מקבילון (לא בהכרח תיבה), עד כדי סימן בהתאם לכלל יד ימין.</p></li>
+</ol>
+</div>
+</section>
+<section id="מטריצות-ריבועיות-כלליות" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="מטריצות-ריבועיות-כלליות"><span class="header-section-number">6.2.2</span> מטריצות ריבועיות כלליות</h3>
+<div class="proposition">
+<p><em> יהיו <span class="math inline">E,A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> כך ש- <span class="math inline">E</span> מטריצה אלמנטרית המתאימה לפש"א <span class="math inline">S</span>, כלומר <span class="math inline">E=S(I_n)</span>. אז מתקיים <span class="math display">.\det(EA)=\det(E)\det(A)</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> לפי טענה מתקיים <span class="math inline">EA=S(A)</span>. לכן <span class="math display">.\det(EA)=\det(S(A))=\begin{cases}
+\alpha\det(A), &amp; S=(\alpha R_i\to R_i) \\
+\det(A), &amp; S=(R_i+\alpha R_j\to R_i) \\
+-\det(A), &amp; S=(R_i\leftrightarrow R_j)
+\end{cases}</span></p>
+<p>באופן דומה:</p>
+<p><span class="math display">.\det(E)=\det(S(I_n))=\begin{cases}
+\alpha, &amp; S=(\alpha R_i\to R_i) \\
+1, &amp; S=(R_i+\alpha R_j\to R_i) \\
+-1, &amp; S=(R_i\leftrightarrow R_j)
+\end{cases}</span></p>
+<p>לכן, בכל מקרה מתקיים</p>
+<p><span class="math display">.\det(EA)=\det(E)\det(A)</span>&nbsp;◻</p>
+</div>
+<p>יש לנו כבר מספיק כלים כדי להוכיח את אחד השימושים העיקריים של הדטרמיננטה, שהוא תנאי שקול להפיכות עבור מטריצות ריבועיות מסדר כללי.</p>
+<div class="theorem">
+<p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(F)</span>. אז <span class="math inline">A</span> הפיכה אם ורק אם <span class="math inline">\det(A)\neq 0</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> בכיוון הראשון, נניח כי <span class="math inline">A</span> הפיכה. אז לפי מסקנה היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k</span> כאשר <span class="math inline">\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- נובע כי <span class="math display">.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">0</span> כי היא שווה ל- <span class="math inline">\pm 1</span> או <span class="math inline">\alpha\neq 0</span>.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">A</span> אינה הפיכה. אז לפי משפט , היא אינה שקולת שורה ל- <span class="math inline">I_n</span> אלא למטריצה מדורגת קנונית <span class="math inline">A'</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'</span> כאשר <span class="math inline">E_1,E_2,...,E_k</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0</span></p>
+<p>הסיבה לשוויון ל- <span class="math inline">0</span> היא העובדה שמתקיים <span class="math inline">\det(A')=0</span> לפי טענה .&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>לאילו ערכי <span class="math inline">t\in\mathbb{C}</span> המטריצה <span class="math display">A=\begin{pmatrix}
+t &amp; 1 \\
+-1 &amp; t
+\end{pmatrix}</span> הפיכה? חשבו את <span class="math inline">A^{-1}</span> עבור ערכים אלו.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נחשב את הדטרמיננטה לפי הנוסחה בטענה ונקבל <span class="math inline">.\det(A)=t^2+1</span> אז לפי משפט נובע כי <span class="math inline">A</span> הפיכה אם ורק אם <span class="math display">.t^2+1\neq 0 \iff t^2\neq-1 \iff t\neq\pm i</span> בנוסף, לכל <span class="math inline">t\neq\pm i</span> מתקיים <span class="math display">.A^{-1}=\frac{1}{t^2+1}\begin{pmatrix}
+t &amp; -1 \\
+1 &amp; t
+\end{pmatrix}</span></p>
+</div>
+</div>
+</div>
+<p>כעת נוכיח תכונה חשובה שנקראת כפליות הדטרמיננטה:</p>
+<div class="proposition">
+<p><em> יהיו <span class="math inline">A,B\in\mathbb{M}_{n\times n}(\mathbb{F})</span>. אז מתקיים <span class="math display">.\det(AB)=\det(A)\det(B)</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נחלק למקרים:</p>
+<ol type="1">
+<li><p><span class="math inline">AB</span> אינה הפיכה: לפי תרגיל לפחות אחת מ- <span class="math inline">A</span> ו- <span class="math inline">B</span> אינה הפיכה. אז לפי משפט נובע כי <span class="math display">,\det(AB)=0=\det(A)\det(B)</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">0</span>.</p></li>
+<li><p><span class="math inline">AB</span> הפיכה: תחילה נראה שגם <span class="math inline">A</span> וגם <span class="math inline">B</span> הפיכות. נסמן <span class="math inline">C=(AB)^{-1}</span>. אז מתקיים <span class="math display">,A(BC)=(AB)C=I_n</span> ולכן <span class="math inline">A</span> הפיכה מימין ובכלל. באופן דומה: <span class="math display">,(CA)B=C(AB)=I_n</span> ולכן <span class="math inline">B</span> הפיכה משמאל ובכלל.</p>
+<p>אז לפי טענה גם <span class="math inline">A</span> וגם <span class="math inline">B</span> הן מכפלות של מטריצות אלמנטריות, כלומר קיימות מטריצות אלמנטריות <span class="math inline">E_1,E_2,...,E_k,E_{k+1},...,E_l</span> כך ש- <span class="math display">.A=E_l\cdots E_{k+1}\quad,\quad B=E_k\cdots E_1</span> לכן <span class="math display">,AB=E_l\cdots E_{k+1}E_k\cdots E_1</span> ולפי שימוש חוזר בטענה נובע כי <span class="math display">\begin{aligned}
+\det(AB)&amp;=\det(E_l)\cdots \det(E_{k+1})\det(E_k)\cdots \det(E_1)\\
+&amp;=\det(E_l\cdots E_{k+1})\det(E_k\cdots E_1)=\det(A)\det(B)
+\end{aligned}</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="corollary">
+<p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> הפיכה. אז מתקיים <span class="math display">.\det(A^{-1})=\frac{1}{\det(A)}</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> לפי מתקיים <span class="math display">.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1</span> נחלק ב- <span class="math inline">\det(A)</span> ונקבל <span class="math display">.\det(A^{-1})=\frac{1}{\det(A)}</span>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math inline">A,P\in\mathbb{M}_{n\times n}(\mathbb{F})</span> כך ש- <span class="math inline">P</span> הפיכה. הראו כי <span class="math display">.\det(PAP^{-1})=\det(A)</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>לפי טענה ומסקנה מתקיים <span class="math display">.\det(PAP^{-1})=\det(P)\det(A)\det(P^{-1})=\det(P)\det(A)\cdot\frac{1}{\det(P)}=\det(A)</span> השתמשנו בחוק החילוף לסקלרים שמתקיים ב- <span class="math inline">\mathbb{F}</span> גם אם <span class="math inline">A,P</span> אינן מתחלפות.</p>
+</div>
+</div>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>המטריצה <span class="math inline">PAP^{-1}</span> נקראת דומה ל- <span class="math inline">A</span>. נבין את החשיבות של דמיון מטריצות בהמשך הקורס, אבל כבר ראינו שלמטריצות דומות יש דטרמיננטות שוות.</p>
+</div>
+<div class="proposition">
+<p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span>. אז מתקיים <span class="math display">.\det(A^t)=\det(A)</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> שוב נפצל למקרים לפי הפיכות <span class="math inline">A</span>.</p>
+<ol type="1">
+<li><p>נניח כי <span class="math inline">A</span> אינה הפיכה. לא ייתכן כי <span class="math inline">A^t</span> הפיכה, כי אז לפי גם <span class="math inline">A=(A^t)^t</span> הפיכה וזו סתירה. לכן, לפי נובע כי <span class="math display">.\det(A^t)=0=\det(A)</span></p></li>
+<li><p>נניח כי <span class="math inline">A</span> הפיכה. אז לפי היא מכפלה של מטריצות אלמנטריות <span class="math inline">E_1,\cdots,E_k</span>. לכן <span class="math display">A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t</span> ואז לפי טענה נובע כי <span class="math display">.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)</span></p>
+<p>לאור חוק החילוף ב- <span class="math inline">\mathbb{F}</span>, מה שנשאר לסיום ההוכחה זה להראות כי <span class="math inline">\det(E^t)=\det(E)</span> לכל <span class="math inline">E\in\mathbb{M}_{n\times n}(\mathbb{F})</span> אלמנטרית.</p>
+<ul>
+<li><p>אם <span class="math inline">E</span> מתאימה לפש"א <span class="math inline">S=(R_i\leftrightarrow R_j)</span>, אז <span class="math inline">E^t=E</span> והדטרמיננטות גם שוות (לערך <span class="math inline">-1</span>).</p></li>
+<li><p>אם <span class="math inline">E</span> מתאימה לפש"א <span class="math inline">S=(\alpha R_i\to R_i)</span>, אז <span class="math inline">E</span> היא מטריצה אלכסונית (עם <span class="math inline">1</span> לאורך האלכסון הראשי חוץ מ- <span class="math inline">\alpha</span> בשורה ה- <span class="math inline">i</span>) ושוב <span class="math inline">E^t=E</span>.</p></li>
+<li><p>אם <span class="math inline">E</span> מתאימה לפש"א <span class="math inline">S=(R_i+\alpha R_j\to R_i)</span>, אז הפעם <span class="math inline">E^t</span> מתאימה לפש"א <span class="math inline">S=(R_j+\alpha R_i\to R_j)</span>. במקרה זה <span class="math inline">E^t\neq E</span>, אבל מתקיים <span class="math display">.\det(E^t)=1=\det(E)</span></p></li>
+</ul></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<p>נחזור לחלק השני של טענה והפעם לא נניח שאיברי האלכסון הראשי שונים מ- <span class="math inline">0</span>.</p>
+<div class="corollary">
+<p><em>תהי <span class="math inline">U,L\in\mathbb{M}_{n\times n}(\mathbb{F})</span>.</em></p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">U</span> משולשית עליונה מהצורה</em></p>
+<p><em><span class="math display">U=\begin{pmatrix}
+d_1 &amp;* &amp; \cdots &amp; * \\
+0 &amp; d_2 &amp; \cdots &amp; * \\
+\vdots &amp; \vdots &amp; \ddots &amp; * \\
+0 &amp; 0 &amp; \cdots &amp; d_n
+\end{pmatrix}</span></em></p>
+<p><em>כאשר הכוכביות מציינות איברים כלשהם, אז מתקיים</em></p>
+<p><em><span class="math display">.\det(U)=d_1d_2\cdots d_n</span></em></p></li>
+<li><p><em>אם <span class="math inline">L</span> משולשית תחתונה מהצורה</em></p>
+<p><em><span class="math display">L=\begin{pmatrix}
+d_1 &amp;0 &amp; \cdots &amp; 0 \\
+* &amp; d_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; 0 \\
+* &amp; * &amp; \cdots &amp; d_n
+\end{pmatrix}</span></em></p>
+<p><em>כאשר הכוכביות מציינות איברים כלשהם, אז מתקיים</em></p>
+<p><em><span class="math display">.\det(L)=d_1d_2\cdots d_n</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<ol type="1">
+<li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">0</span>. לכן, נניח שקיים <span class="math inline">1\leq i\leq n</span> כך ש- <span class="math inline">d_i=0</span>, אז <span class="math inline">U</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">n</span>. אז לפי משפט היא אינה הפיכה, ולפי משפט בהכרח מתקיים <span class="math display">.\det(U)=0=d_1d_2\cdots d_n</span></p></li>
+<li><p>נסתכל על <span class="math inline">L^t</span>, שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של <span class="math inline">L</span>. אז לפי הסעיף הקודם וטענה מתקיים</p>
+<p><span class="math display">.\det(L)=\det(L^t)=d_1d_2\cdots d_n</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> כאשר <span class="math inline">n</span> אי-זוגי. השתמשו בדטרמיננטה כדי להוכיח את הטענות הבאות:</p>
+<ol type="1">
+<li><p>אם <span class="math inline">\mathbb{F}=\mathbb{R}</span>, לא ייתכן כי <span class="math inline">A^2=-I_n</span>.</p></li>
+<li><p>אם <span class="math inline">A</span> אנטי-סימטרית, אז היא אינה הפיכה.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נניח בשלילה כי <span class="math inline">A^2=-I_n</span> ונפעיל דטרמיננטה. אז לפי טענה מתקיים <span class="math display">\det(A^2)=\det(-I_n)=(-1)^n\det(I_n)=-1</span> כי <span class="math inline">n</span> אי-זוגי. נשתמש בכפליות הדטרמיננטה (טענה ) ונקבל <span class="math display">,(\det(A))^2=\det(A^2)=-1</span> אך זו סתירה כי <span class="math inline">\det(A)\in\mathbb{R}</span>, שכן כל ערכי <span class="math inline">A</span> ממשיים.</p></li>
+<li><p>נתון כי <span class="math inline">A^t=-A</span> ולכן הפעם נקבל <span class="math display">.\det(A^t)=\det(-A)=(-1)^n\det(A)=-\det(A)</span> מצד שני, לפי טענה מתקיים <span class="math display">.\det(A)=\det(A^t) \implies \det(A)=-\det(A) \implies \det(A)=0</span> לכן, <span class="math inline">A</span> אינה הפיכה לפי משפט .</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="פיתוח-דטרמיננטה-לפי-שורה-או-עמודה" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="פיתוח-דטרמיננטה-לפי-שורה-או-עמודה"><span class="header-section-number">6.3</span> פיתוח דטרמיננטה לפי שורה או עמודה</h2>
+<p>ראינו שיש נוסחה פשוטה לדטרמיננטה עבור מטריצות מסדר <span class="math inline">2\times 2</span>, ותמיד אפשר להשתמש בדירוג (לא בהכרח קנוני) כדי לקבל מטריצה משולשית עליונה שגם עבורה הנוסחה ידועה. נשאלת השאלה אם יש קיצור דרך, והתשובה חיובית בהרבה מקרים.</p>
+<div class="definition">
+<p>תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span>. נגדיר את המינור <span class="math inline">M_{i,j}(A)</span> להיות המטריצה שמתקבלת מ- <span class="math inline">A</span> ע"י מחיקת השורה ה- <span class="math inline">i</span> והעמודה ה- <span class="math inline">j</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כאן <span class="math inline">M_{i,j}(A)\in\mathbb{M}_{(n-1)\times(n-1)}(\mathbb{F})</span>. הסדר של המינור יותר קטן מזה של המטריצה המקורית, וזה מקל על חישוב הדטרמיננטה.</p>
+</div>
+<div class="example">
+<p>ניקח <span class="math display">.A=\begin{pmatrix}
+1 &amp; 0 &amp; 2 &amp; 0 \\
+3 &amp; 5 &amp; 7 &amp; 9\\
+-1 &amp; 2 &amp; 5 &amp; 8 \\
+0 &amp; 3 &amp; 0 &amp; -3
+\end{pmatrix}</span></p>
+<p>נמחק את השורה הרביעית והעמודה השנייה, ונקבל <span class="math display">.M_{4,2}(A)=\begin{pmatrix}
+1 &amp; 2 &amp; 0 \\
+3 &amp; 7 &amp; 9\\
+-1 &amp; 5 &amp; 8
+\end{pmatrix}</span></p>
+<p>נמחק את השורה השנייה והעמודה הרביעית, ונקבל <span class="math display">.M_{2,4}(A)=\begin{pmatrix}
+1 &amp; 0 &amp; 2 \\
+-1 &amp; 2 &amp; 5 \\
+0 &amp; 3 &amp; 0
+\end{pmatrix}</span></p>
+</div>
+<div class="proposition">
+<p><em> תהי <span class="math display">.A=\begin{pmatrix}a_{11} &amp; \cdots &amp; a_{1n}\\
+\vdots &amp; \ddots &amp; \vdots\\
+a_{n1} &amp; \cdots &amp; a_{nn}
+\end{pmatrix}</span> אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">1\leq i \leq n</span>, ניתן לפתח את הדטרמיננטה לפי השורה ה- <span class="math inline">i</span>: <span class="math display">\det(A)=\sum_{j=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))</span></em></p></li>
+<li><p><em>לכל <span class="math inline">1\leq j \leq n</span>, ניתן לפתח את הדטרמיננטה לפי העמודה ה- <span class="math inline">j</span>: <span class="math display">\det(A)=\sum_{i=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))</span></em></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>שתי הנוסחאות עלולות להיראות זהות במבט ראשון, אבל בפיתוח לפי שורה הסכימה היא על פני האינדקס <span class="math inline">j</span> ואילו בפיתוח לפי עמודה הסכימה היא על פני האינדקס <span class="math inline">i</span>.</p>
+</div>
+<p>נדחה את עיקר ההוכחה לפרק על העתקות לינאריות, אבל בינתיים נראה איך פיתוח לפי עמודה נובע מפיתוח לפי שורה (בעזרת שחלוף):</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<ol type="1">
+<li><p>נוכיח את נוסחה זו בהמשך הקורס. לעת עתה נציין שהביטוי <span class="math inline">(-1)^{i+j}</span> קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות.</p></li>
+<li><p>נניח שהנוסחה לפיתוח לפי שורה נכונה, לכל שורה.</p>
+<p>יהי <span class="math inline">1\leq j\leq n</span>. לפי טענה מתקיים <span class="math inline">\det(A)=\det(A^t)</span>. נפתח את אגף ימין לפי השורה ה- <span class="math inline">j</span> (בהתאם לעמודה ה- <span class="math inline">j</span> של המטריצה המקורית) ונשתמש באינדקס סכימה <span class="math inline">i</span>: <span class="math display">\begin{aligned}
+.\det(A)&amp;=\det(A^t)=\sum_{i=1}^n(-1)^{j+i}(A^t)_{ji}\det(M_{j,i}(A^t))\\
+&amp;=\sum_{i=1}^n(-1)^{i+j}a_{ij}\det((M_{i,j}(A))^t) =\sum_{i=1}^n(-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+\end{aligned}</span></p>
+<p>השתמשנו בעובדה שהמינור <span class="math inline">M_{j,i}(A^t)</span> מתקבל ממחיקת השורה ה- <span class="math inline">j</span> והעמודה ה- <span class="math inline">i</span> של <span class="math inline">A^t</span>, כאשר אין הבדל בין זה לבין השחלוף של המינור <span class="math inline">M_{i,j}(A)</span> (אפשר לבצע את המחיקה לפני או אחרי השחלוף).</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נראה שעבור מטריצה <span class="math display">A=\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}</span> פיתוח לפי כל שורה/עמודה משחזר את הנוסחה הידועה מטענה .</p>
+<p>לפי השורה הראשונה נקבל:</p>
+<p><span class="math display">\begin{aligned}
+\det(A)&amp;=(-1)^{1+1}a\cdot \det(M_{1,1}(A))+(-1)^{1+2}b\cdot \det(M_{1,2}(A))\\
+&amp;=a\det(d)-b\det(c)=ad-bc
+\end{aligned}</span></p>
+<p>לפי השורה השנייה נקבל:</p>
+<p><span class="math display">\begin{aligned}
+\det(A)&amp;=(-1)^{2+1}c\cdot \det(M_{2,1}(A))+(-1)^{2+2}d\cdot \det(M_{2,2}(A))\\
+&amp;=-c\det(b)+d\det(a)=ad-bc
+\end{aligned}</span></p>
+<p>לפי העמודה הראשונה נקבל:</p>
+<p><span class="math display">\begin{aligned}
+\det(A)&amp;=(-1)^{1+1}a\cdot \det(M_{1,1}(A))+(-1)^{2+1}c\cdot \det(M_{2,1}(A))\\
+&amp;=a\det(d)-c\det(b)=ad-bc
+\end{aligned}</span></p>
+<p>לפי העמודה השנייה נקבל:</p>
+<p><span class="math display">\begin{aligned}
+\det(A)&amp;=(-1)^{1+2}b\cdot \det(M_{1,2}(A))+(-1)^{2+2}d\cdot \det(M_{2,2}(A))\\
+&amp;=-b\det(c)+d\det(a)=ad-bc
+\end{aligned}</span></p></li>
+<li><p>עבור <span class="math display">B=\begin{pmatrix}
+1 &amp; i &amp; 1+i \\
+2 &amp; 3 &amp; -i \\
+0 &amp; 2+i &amp; 4
+\end{pmatrix}</span> נבחר לפתח לפי השורה השלישית, כי אחד מאיבריה הוא <span class="math inline">0</span> (ולכן מספיק לחשב דטרמיננטות של שני מינורים). נקבל <span class="math display">\begin{aligned}
+\det(B)&amp;=0+(-1)^{3+2}(2+i)\det(M_{3,2}(B))+(-1)^{3+3}4\det(M_{3,3}(B)) \\
+&amp;=-(2+i)\det\!\begin{pmatrix}
+1 &amp; 1+i \\
+2 &amp; -i
+\end{pmatrix}+4\det\!\begin{pmatrix}
+1 &amp; i \\
+2 &amp; 3
+\end{pmatrix}\\
+&amp;=-(2+i)\bigl(-i-2(1+i)\bigr)+4(3-2i)=(2+i)(2+3i)+12-8i\\
+&amp;=1+8i+12-8i=13
+\end{aligned}</span></p>
+<p>לחילופין, נוח גם לפתח לפי העמודה הראשונה. כך נקבל</p>
+<p><span class="math display">\begin{aligned}
+\det(B)&amp;=(-1)^{1+1}1\cdot
+\det\!\begin{pmatrix}
+3 &amp; -i \\
+2+i &amp; 4
+\end{pmatrix}
++(-1)^{1+2}
+2\cdot
+\det\!\begin{pmatrix}
+i &amp; 1+i \\
+2+i &amp; 4
+\end{pmatrix}+0 \\
+&amp;=1\bigl((3\cdot 4 - (-i)(2+i)\bigr)
+-
+2\bigl(4i - (1+i)(2+i)\bigr)
+\\
+&amp;=
+1(11+2i)
+-
+2(i-1)
+=
+11+2i -2i+2
+=
+13
+\end{aligned}</span></p></li>
+</ol>
+</div>
+<p>חוץ מפיתוח לפי שורה/עמודה תמיד כדאי לזכור שדירוג יכול להיות שימושי כחלק מהחישוב, גם אם הוא חלקי. בדוגמה הבאה נשתמש קודם בדירוג חלקי כדי לאפס את איברי העמודה הראשונה חוץ מהראשון, כך שנוכל לפתח את הדטרמיננטה לפי העמודה הראשונה יחסית בקלות.</p>
+<div class="example">
+<p><span class="math display">\begin{aligned}
+&amp;\det\!\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+0 &amp; 1 &amp; 5 &amp; 6\\
+2 &amp; 0 &amp; 1 &amp; 3\\
+1 &amp; 1 &amp; 0 &amp; 1
+\end{pmatrix}
+\overset{R_3 - 2R_1 \to R_3}{\overset{R_4 - R_1 \to R_1}{=}}
+\det\!\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4\\
+0 &amp; 1 &amp; 5 &amp; 6\\
+0 &amp; -4 &amp; -5 &amp; -5\\
+0 &amp; -1 &amp; -3 &amp; -3
+\end{pmatrix}\\
+&amp;=
+1\cdot
+\det\!\begin{pmatrix}
+1 &amp; 5 &amp; 6\\
+-4 &amp; -5 &amp; -5\\
+-1 &amp; -3 &amp; -3
+\end{pmatrix}
+\end{aligned}</span></p>
+<p>עשינו פיתוח לפי העמודה הראשונה. מכאן אפשר לעשות פיתוח לפי כל שורה או עמודה, אבל לא יזיק שוב לאפס את איברי העמודה הראשונה חוץ מהראשון:</p>
+<p><span class="math display">\begin{aligned}
+&amp;\det\!\begin{pmatrix}
+1 &amp; 5 &amp; 6\\
+-4 &amp; -5 &amp; -5\\
+-1 &amp; -3 &amp; -3
+\end{pmatrix}
+\overset{R_2 +4R_1 \to R_2}{\overset{R_3 + R_1 \to R_3}{=}}\det\!\begin{pmatrix}
+1 &amp; 5 &amp; 6\\
+0 &amp; 15 &amp; 19\\
+0 &amp; 2 &amp; 3
+\end{pmatrix}=1\cdot\det \begin{pmatrix}
+15 &amp; 19 \\
+2 &amp; 3
+\end{pmatrix}\\
+&amp;=45-38=7
+\end{aligned}</span></p>
+</div>
+<p>החישוב הבא מתאים לנפח של מקבילון שבסיסו מונח על מישור <span class="math inline">xy</span>. זהו מקרה יותר כללי מהתיבה שראינו בדוגמה .</p>
+<div class="example">
+<p>נסתכל על הוקטורים הבאים ב- <span class="math inline">\mathbb{R}^3</span>: <span class="math display">.v_1=(a,b,0),v_2=(c,d,0),v_3=(0,0,h)</span></p>
+<figure id="fig:Piped" class="figure">
+<img src="images/Piped.png" style="width:40.0%" class="figure-img">
+<figcaption>
+המקבילון המתואר
+</figcaption>
+</figure>
+<p>הוקטור <span class="math inline">v_3</span> מאונך לוקטורים <span class="math inline">v_1,v_2</span> ולכן נפח המקבילון מתקבל משטח המקבילית (שנפרשת ע"י <span class="math inline">v_1,v_2</span>) ע"י כפל בגובה <span class="math inline">|h|</span>, כלומר הנפח הוא <span class="math inline">|(ad-bc)h|</span>. נוודא שזהו אכן הערך המוחלט של הדטרמיננטה של המטריצה ששורותיה הן <span class="math inline">v_1,v_2,v_3</span>, ולצורך כך נעשה פיתוח לפי השורה השלישית (גם העמודה השלישית נוחה):</p>
+<p><span class="math display">.\det\!\begin{pmatrix}
+a &amp; b &amp; 0 \\
+c &amp; d &amp; 0 \\
+0 &amp; 0 &amp; h
+\end{pmatrix}=0+0+(-1)^{3+3}h\cdot\det\!\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}=(ad-bc)h</span></p>
+<p>אז הנפח אכן שווה לערך המוחלט של הדטרמיננטה (והסימן שלה מקיים את כלל יד ימין, כאמור).</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>עוד לא ראינו הסבר כללי לכך שהערך המוחלט של הדטרמיננטה של מטריצה מסדר <span class="math inline">3\times 3</span> שווה לנפח המקבילון המתאים, גם אם אין וקטור שורה שמאונך לשניים האחרים. נוכל להוכיח זאת כשנחזור לגיאומטריה בסוף הקורס.</p>
+</div>
+<div class="exercise">
+<p>לאילו ערכי <span class="math inline">a\in\mathbb{R}</span> קיים פתרון יחיד לממ"ל <span class="math inline">Ax=0</span> כאשר <span class="math display">?A=\begin{pmatrix}
+a &amp; 2a &amp; 3 \\
+2a &amp; a &amp; 2a \\
+3 &amp; 2a &amp; a
+\end{pmatrix}</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>לפי משפט קיים לממ"ל פתרון יחיד (הטריוויאלי) אם ורק אם <span class="math inline">\det(A)\neq 0</span>. נעשה חישוב, כאשר תחילה נוציא את הסקלר <span class="math inline">a</span> מהשורה השנייה אל מחוץ לדטרמיננטה:</p>
+<p><span class="math display">\begin{aligned}
+\det(A)&amp;=\det\!\begin{pmatrix}
+a &amp; 2a &amp; 3 \\
+2a &amp; a &amp; 2a \\
+3 &amp; 2a &amp; a
+\end{pmatrix}=a\cdot\det\!\begin{pmatrix}
+a &amp; 2a &amp; 3 \\
+2 &amp; 1 &amp; 2 \\
+3 &amp; 2a &amp; a
+\end{pmatrix}\\
+&amp;\overset{R_3 - R_1 \to R_3}{=}a\cdot\det\!\begin{pmatrix}
+a &amp; 2a &amp; 3 \\
+2 &amp; 1 &amp; 2 \\
+3-a &amp; 0 &amp; a-3
+\end{pmatrix}
+=a(a-3)\det\!\begin{pmatrix}
+a &amp; 2a &amp; 3 \\
+2 &amp; 1 &amp; 2 \\
+-1 &amp; 0 &amp; 1
+\end{pmatrix}
+\end{aligned}</span></p>
+<p>עכשיו נוח, אך לא חובה, לשחלף את המטריצה בהתאם לטענה ואז לבצע עוד פש"א:</p>
+<p><span class="math display">\det(A)=a(a-3)\det\!\begin{pmatrix}
+a &amp; 2 &amp; -1 \\
+2a &amp; 1 &amp; 0 \\
+3 &amp; 2 &amp; 1
+\end{pmatrix}\overset{R_1+R_3\to R_1}{=}a(a-3)\det\!\begin{pmatrix}
+a+3 &amp; 4 &amp; 0 \\
+2a &amp; 1 &amp; 0 \\
+3 &amp; 2 &amp; 1
+\end{pmatrix}</span></p>
+<p>נפתח לפי העמודה השלישית ונקבל</p>
+<p><span class="math display">.\det(A)=a(a-3)\cdot 1\cdot\det\!\begin{pmatrix}
+a+3 &amp; 4 \\
+2a &amp; 1
+\end{pmatrix}=a(a-3)(a+3-8a)=a(a-3)(3-7a)</span></p>
+<p>לכן, לממ"ל <span class="math inline">Ax=0</span> קיים פתרון יחיד אם ורק אם</p>
+<p><span class="math display">.a(a-3)(3-7a)\neq 0 \iff a\notin\Set{0,\frac{3}{7},3}</span></p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
