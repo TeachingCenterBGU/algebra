@@ -13,7 +13,8 @@ book:
   - chapter_2.qmd    #chapter 4 Systems of Linear Equations
   - chapter_3.qmd    #chapter 5 Matrices
   - chapter_4.qmd    #chapter 6 Determinants
-
+  - chapter_5.qmd    #TBD
+  - chapter_6.qmd    #chapter 8 subspaces
   - summary.qmd
   - references.qmd
   search: true

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חיתוך וסכום תת-מרחבים</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    height: 100vh;
+  }
+
+  #sidebar {
+    width: 340px;
+    background: #f7f7f7;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  h2 { margin: 0 0 10px 0; color: #333; font-size: 1.2rem; }
+  h3 { margin: 10px 0 5px 0; font-size: 1.1rem; color: #333; border-bottom: 1px solid #ddd; padding-bottom: 5px;}
+
+  /* עיצוב כותרות W1 W2 בצבעים */
+  .header-w1 { color: #2e7d32; font-weight: bold; } /* ירוק */
+  .header-w2 { color: #fbc02d; font-weight: bold; text-shadow: 0px 0px 1px #999; } /* צהוב כהה לקריאות */
+
+  .control-group {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+    direction: ltr; /* תיקון קריטי למיקום המינוס */
+    justify-content: flex-end; /* יישור לימין ויזואלית בגלל ה-RTL של הדף */
+  }
+
+  /* תווית בעברית ליד הקלט */
+  .input-label {
+      direction: rtl;
+      margin-left: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    padding: 4px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: monospace; 
+  }
+
+  button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+  button:hover { background-color: #555; }
+
+  #legend {
+    margin-top: auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .color-box { width: 15px; height: 15px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); }
+
+  #canvas-container {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+    font-weight: bold;
+  }
+
+  /* פונט מתמטי */
+  .math { 
+      font-family: 'Times New Roman', serif; 
+      font-style: italic; 
+  }
+  .math-r {
+      font-family: 'Times New Roman', serif;
+      font-style: normal;
+  }
+  sub, sup { font-size: 0.7em; }
+
+</style>
+<!-- טעינת Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+<div id="sidebar">
+  <h2>הגדרת תת-מרחבים</h2>
+
+  <!-- W1 Controls -->
+  <div class="control-group" style="border-left: 5px solid #4CAF50;">
+    <h3 class="header-w1"><span class="math">W<sub>1</sub></span> (ירוק)</h3>
+    <div class="radio-group">
+      <label><input type="radio" name="w1type" value="line" checked onchange="toggleInputs('w1')"> ישר (וקטור)</label>
+      <label><input type="radio" name="w1type" value="plane" onchange="toggleInputs('w1')"> מישור (משוואה)</label>
+    </div>
+    
+    <div id="w1-line-inputs">
+      <div class="input-row">
+        (<input type="number" id="w1-vx" value="1">,
+         <input type="number" id="w1-vy" value="1">,
+         <input type="number" id="w1-vz" value="0">)
+         <span class="input-label">וקטור:</span>
+      </div>
+    </div>
+
+    <div id="w1-plane-inputs" style="display:none;">
+      <div class="input-row" style="direction: ltr; justify-content: flex-end;">
+        <input type="number" id="w1-pa" value="0">x + 
+        <input type="number" id="w1-pb" value="0">y + 
+        <input type="number" id="w1-pc" value="1">z = 0
+      </div>
+    </div>
+  </div>
+
+  <!-- W2 Controls -->
+  <div class="control-group" style="border-left: 5px solid #FFEB3B;">
+    <h3 class="header-w2"><span class="math">W<sub>2</sub></span> (צהוב)</h3>
+    <div class="radio-group">
+      <label><input type="radio" name="w2type" value="line" onchange="toggleInputs('w2')"> ישר (וקטור)</label>
+      <label><input type="radio" name="w2type" value="plane" checked onchange="toggleInputs('w2')"> מישור (משוואה)</label>
+    </div>
+    
+    <div id="w2-line-inputs" style="display:none;">
+      <div class="input-row">
+        (<input type="number" id="w2-vx" value="0">,
+         <input type="number" id="w2-vy" value="1">,
+         <input type="number" id="w2-vz" value="0">)
+         <span class="input-label">וקטור:</span>
+      </div>
+    </div>
+
+    <div id="w2-plane-inputs">
+      <div class="input-row">
+        <input type="number" id="w2-pa" value="1">x + 
+        <input type="number" id="w2-pb" value="0">y + 
+        <input type="number" id="w2-pc" value="0">z = 0
+      </div>
+    </div>
+  </div>
+
+  <button onclick="updateScene()">חשב ושרטט</button>
+
+  <div id="legend">
+    <div class="legend-item">
+        <div class="color-box" style="background:#4CAF50; opacity:0.6;"></div>
+        <span class="math">W<sub>1</sub></span>
+    </div>
+    <div class="legend-item">
+        <div class="color-box" style="background:#FFEB3B; opacity:0.6;"></div>
+        <span class="math">W<sub>2</sub></span>
+    </div>
+    <div class="legend-item">
+        <div class="color-box" style="background:red;"></div>
+        <span>חיתוך (<span class="math">W<sub>1</sub> &cap; W<sub>2</sub></span>)</span>
+    </div>
+    <!-- כאן העדכון לצבע הכחול האחיד -->
+    <div class="legend-item">
+        <div class="color-box" style="background:#2196F3;"></div>
+        <span>סכום (<span class="math">W<sub>1</sub> + W<sub>2</sub></span>)</span>
+    </div>
+  </div>
+  
+  <!-- תיבת התוצאה הדינמית -->
+  <div id="result-text" style="font-size: 0.9em; margin-top:10px; line-height: 1.5;"></div>
+</div>
+
+<div id="canvas-container">
+  <div class="overlay-text">סובבו עם העכבר | גלגלת לזום</div>
+</div>
+
+<script>
+  // --- משתנים גלובליים ---
+  let scene, camera, renderer, controls;
+  const objects = []; // לשמירת אובייקטים למחיקה
+
+  // צבעים מעודכנים
+  const COLOR_W1 = 0x4CAF50; // ירוק
+  const COLOR_W2 = 0xFFEB3B; // צהוב
+  const COLOR_INT = 0xff0000; // אדום
+  const COLOR_SUM = 0x2196F3; // כחול (תואם למקרא)
+  const COLOR_AXIS = 0x000000; // שחור לצירים
+  
+  // צבעי רקע
+  const BG_COLOR = 0xffffff;
+  // צבע רקע למרחב כולו - גרסה בהירה מאוד של COLOR_SUM
+  const BG_COLOR_FULL_SPACE = 0xE3F2FD; 
+
+  // --- אתחול ---
+  function init() {
+    const container = document.getElementById('canvas-container');
+    
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(BG_COLOR);
+
+    camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    // מיקום התחלתי כך שרואים את ציר Z עולה למעלה
+    camera.position.set(12, 12, 8); 
+    camera.up.set(0, 0, 1); // Z הוא למעלה
+    camera.lookAt(0, 0, 0);
+
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    // תאורה
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirLight.position.set(10, 10, 20);
+    scene.add(dirLight);
+    const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+    dirLight2.position.set(-10, -10, -5);
+    scene.add(dirLight2);
+
+    // גריד וצירים
+    const gridHelper = new THREE.GridHelper(20, 20, 0xdddddd, 0xeeeeee);
+    gridHelper.geometry.rotateX(Math.PI / 2); // סיבוב כך שיהיה על XY
+    scene.add(gridHelper);
+    
+    addCustomAxes();
+
+    window.addEventListener('resize', onWindowResize);
+    
+    // ציור ראשוני
+    updateScene();
+    animate();
+  }
+
+  function addCustomAxes() {
+      const len = 8;
+      const headLen = 0.5;
+      const headWidth = 0.3;
+
+      // X Axis (Black)
+      const dirX = new THREE.Vector3(1, 0, 0);
+      const arrowX = new THREE.ArrowHelper(dirX, new THREE.Vector3(0,0,0), len, COLOR_AXIS, headLen, headWidth);
+      scene.add(arrowX);
+      addLabel('x', new THREE.Vector3(len + 0.5, 0, 0));
+
+      // Y Axis (Black)
+      const dirY = new THREE.Vector3(0, 1, 0);
+      const arrowY = new THREE.ArrowHelper(dirY, new THREE.Vector3(0,0,0), len, COLOR_AXIS, headLen, headWidth);
+      scene.add(arrowY);
+      addLabel('y', new THREE.Vector3(0, len + 0.5, 0));
+
+      // Z Axis (Black) - Up
+      const dirZ = new THREE.Vector3(0, 0, 1);
+      const arrowZ = new THREE.ArrowHelper(dirZ, new THREE.Vector3(0,0,0), len, COLOR_AXIS, headLen, headWidth);
+      scene.add(arrowZ);
+      addLabel('z', new THREE.Vector3(0, 0, len + 0.5));
+  }
+
+  function addLabel(text, pos) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.font = 'Bold 60px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.position.copy(pos);
+      sprite.scale.set(1.5, 0.75, 1);
+      scene.add(sprite);
+  }
+
+  function onWindowResize() {
+    const container = document.getElementById('canvas-container');
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
+  window.toggleInputs = function(prefix) {
+    const type = document.querySelector(`input[name="${prefix}type"]:checked`).value;
+    if (type === 'line') {
+      document.getElementById(`${prefix}-line-inputs`).style.display = 'block';
+      document.getElementById(`${prefix}-plane-inputs`).style.display = 'none';
+    } else {
+      document.getElementById(`${prefix}-line-inputs`).style.display = 'none';
+      document.getElementById(`${prefix}-plane-inputs`).style.display = 'block';
+    }
+  }
+
+  window.updateScene = function() {
+    objects.forEach(obj => scene.remove(obj));
+    objects.length = 0;
+    
+    // איפוס רקע לברירת מחדל
+    scene.background = new THREE.Color(BG_COLOR);
+
+    // קריאת נתונים W1
+    const w1Type = document.querySelector('input[name="w1type"]:checked').value;
+    let w1Data;
+    if (w1Type === 'line') {
+      w1Data = new THREE.Vector3(
+        parseFloat(document.getElementById('w1-vx').value) || 0,
+        parseFloat(document.getElementById('w1-vy').value) || 0,
+        parseFloat(document.getElementById('w1-vz').value) || 0
+      );
+    } else {
+      w1Data = new THREE.Vector3(
+        parseFloat(document.getElementById('w1-pa').value) || 0,
+        parseFloat(document.getElementById('w1-pb').value) || 0,
+        parseFloat(document.getElementById('w1-pc').value) || 0
+      );
+    }
+
+    // קריאת נתונים W2
+    const w2Type = document.querySelector('input[name="w2type"]:checked').value;
+    let w2Data;
+    if (w2Type === 'line') {
+      w2Data = new THREE.Vector3(
+        parseFloat(document.getElementById('w2-vx').value) || 0,
+        parseFloat(document.getElementById('w2-vy').value) || 0,
+        parseFloat(document.getElementById('w2-vz').value) || 0
+      );
+    } else {
+      w2Data = new THREE.Vector3(
+        parseFloat(document.getElementById('w2-pa').value) || 0,
+        parseFloat(document.getElementById('w2-pb').value) || 0,
+        parseFloat(document.getElementById('w2-pc').value) || 0
+      );
+    }
+
+    if (w1Data.lengthSq() === 0) w1Data.set(1, 0, 0); 
+    if (w2Data.lengthSq() === 0) w2Data.set(1, 0, 0);
+
+    // ציור המרחבים המקוריים
+    if (w1Type === 'line') drawLine(w1Data, COLOR_W1, 0.6);
+    else drawPlane(w1Data, COLOR_W1, 0.3);
+
+    if (w2Type === 'line') drawLine(w2Data, COLOR_W2, 0.6);
+    else drawPlane(w2Data, COLOR_W2, 0.3);
+
+    // חישוב חיתוך וסכום
+    let intersectionType = 'origin'; 
+    let intersectionData = new THREE.Vector3(0,0,0);
+    
+    let sumType = 'space'; 
+    let sumData = null; 
+    let note = ""; 
+
+    const epsilon = 0.0001;
+    const areParallel = (v1, v2) => {
+        const c = new THREE.Vector3().copy(v1).cross(v2);
+        return c.lengthSq() < epsilon;
+    };
+
+    // מקרה 1: ישר + ישר
+    if (w1Type === 'line' && w2Type === 'line') {
+        if (areParallel(w1Data, w2Data)) {
+            intersectionType = 'line'; intersectionData = w1Data;
+            sumType = 'line'; sumData = w1Data;
+            note = `<span class="math">W<sub>1</sub> = W<sub>2</sub></span> (המרחבים מתלכדים)`;
+        } else {
+            intersectionType = 'origin';
+            sumType = 'plane';
+            sumData = new THREE.Vector3().copy(w1Data).cross(w2Data);
+        }
+    }
+    // מקרה 2: מישור + מישור (נורמלים)
+    else if (w1Type === 'plane' && w2Type === 'plane') {
+        if (areParallel(w1Data, w2Data)) {
+            intersectionType = 'plane'; intersectionData = w1Data;
+            sumType = 'plane'; sumData = w1Data;
+            note = `<span class="math">W<sub>1</sub> = W<sub>2</sub></span> (המרחבים מתלכדים)`;
+        } else {
+            intersectionType = 'line';
+            intersectionData = new THREE.Vector3().copy(w1Data).cross(w2Data);
+            sumType = 'space';
+        }
+    }
+    // מקרה 3: ישר (v) + מישור (n)
+    else {
+        let v = (w1Type === 'line') ? w1Data : w2Data;
+        let n = (w1Type === 'line') ? w2Data : w1Data;
+
+        // בדיקה אם הישר מוכל במישור (v מאונך לנורמל n)
+        if (Math.abs(v.dot(n)) < epsilon) {
+            intersectionType = 'line'; intersectionData = v;
+            sumType = 'plane'; sumData = n;
+            
+            if (w1Type === 'line') 
+                note = `<span class="math">W<sub>1</sub> &sub; W<sub>2</sub></span>`;
+            else 
+                note = `<span class="math">W<sub>2</sub> &sub; W<sub>1</sub></span>`;
+        } else {
+            intersectionType = 'origin';
+            sumType = 'space';
+        }
+    }
+
+    // ציור חיתוך (אדום)
+    if (intersectionType === 'origin') {
+        drawPoint(new THREE.Vector3(0,0,0), COLOR_INT);
+    } else if (intersectionType === 'line') {
+        drawLine(intersectionData, COLOR_INT, 1.0, 0.08); 
+    } else if (intersectionType === 'plane') {
+        drawPlane(intersectionData, COLOR_INT, 0.5);
+    }
+
+    // ציור סכום (כחול)
+    if (sumType === 'space') {
+        // שינוי צבע הרקע כדי להמחיש את "כל המרחב"
+        scene.background = new THREE.Color(BG_COLOR_FULL_SPACE);
+        // אין צורך לצייר קוביה או רשת נוספת
+    } else if (sumType === 'plane' && intersectionType !== 'plane') {
+        drawPlane(sumData, COLOR_SUM, 0.2);
+    }
+    
+    // קריאה לעדכון הטקסט בסוף החישוב
+    updateText(intersectionType, sumType, note);
+  }
+
+  function updateText(intType, sumT, note) {
+        let intStr = "";
+        if (intType === 'origin') intStr = "{0}";
+        else if (intType === 'line') intStr = "ישר";
+        else if (intType === 'plane') intStr = "מישור";
+
+        let sumStr = "";
+        if (sumT === 'line') sumStr = "ישר";
+        if (sumT === 'plane') sumStr = "מישור";
+        if (sumT === 'space') sumStr = 'כל המרחב <span class="math-r">&#8477;<sup>3</sup></span>';
+
+        let htmlContent = `
+            חיתוך (<span class="math">W<sub>1</sub> &cap; W<sub>2</sub></span>): <b>${intStr}</b><br>
+            סכום (<span class="math">W<sub>1</sub> + W<sub>2</sub></span>): <b>${sumStr}</b>
+        `;
+        
+        if (note) {
+            htmlContent += `<br><span style="color:#d81b60;">${note}</span>`;
+        }
+
+        document.getElementById('result-text').innerHTML = htmlContent;
+    }
+
+  // פונקציות עזר לציור
+  function drawLine(vec, color, opacity, thickness = 0.04) {
+      if (vec.lengthSq() === 0) return;
+      const material = new THREE.MeshPhongMaterial({ color: color, transparent: true, opacity: opacity });
+      const geometry = new THREE.CylinderGeometry(thickness, thickness, 20, 8); 
+      const mesh = new THREE.Mesh(geometry, material);
+      
+      const axis = new THREE.Vector3(0, 1, 0);
+      const target = vec.clone().normalize();
+      const quaternion = new THREE.Quaternion().setFromUnitVectors(axis, target);
+      mesh.setRotationFromQuaternion(quaternion);
+      
+      scene.add(mesh);
+      objects.push(mesh);
+  }
+
+  function drawPlane(normal, color, opacity) {
+      if (normal.lengthSq() === 0) return;
+      const material = new THREE.MeshPhongMaterial({ 
+          color: color, 
+          transparent: true, 
+          opacity: opacity, 
+          side: THREE.DoubleSide,
+          depthWrite: false
+      });
+      const geometry = new THREE.PlaneGeometry(15, 15);
+      const mesh = new THREE.Mesh(geometry, material);
+      
+      const axis = new THREE.Vector3(0, 0, 1);
+      const target = normal.clone().normalize();
+      const quaternion = new THREE.Quaternion().setFromUnitVectors(axis, target);
+      mesh.setRotationFromQuaternion(quaternion);
+      
+      scene.add(mesh);
+      objects.push(mesh);
+  }
+
+  function drawPoint(pos, color) {
+      const material = new THREE.MeshPhongMaterial({ color: color });
+      const geometry = new THREE.SphereGeometry(0.2, 16, 16);
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.copy(pos);
+      scene.add(mesh);
+      objects.push(mesh);
+  }
+
+  init();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; תת-מרחבים – אלגברה לינארית</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./chapter_5.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TPY4VZJV6M"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-TPY4VZJV6M');
+
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="rtl-baseline.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_6.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">תת-מרחבים</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">אלגברה לינארית</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">מידע כללי</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">הקדמה</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מטריצות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">מרחבים וקטורים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">תת-מרחבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ביבליוגרפיה</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#פעולות-החיתוך-והסכום" id="toc-פעולות-החיתוך-והסכום" class="nav-link active" data-scroll-target="#פעולות-החיתוך-והסכום"><span class="header-section-number">8.1</span> פעולות החיתוך והסכום</a></li>
+  <li><a href="#נוסחת-המימדים" id="toc-נוסחת-המימדים" class="nav-link" data-scroll-target="#נוסחת-המימדים"><span class="header-section-number">8.2</span> נוסחת המימדים</a></li>
+  <li><a href="#מציאת-בסיסים" id="toc-מציאת-בסיסים" class="nav-link" data-scroll-target="#מציאת-בסיסים"><span class="header-section-number">8.3</span> מציאת בסיסים</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="ch:subspaces" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">תת-מרחבים</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="פעולות-החיתוך-והסכום" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="פעולות-החיתוך-והסכום"><span class="header-section-number">8.1</span> פעולות החיתוך והסכום</h2>
+<p>בהינתן מ"ו וקטורי <span class="math inline">V</span>, ראינו את ההגדרה של תת-מרחב <span class="math inline">W\subseteq V</span> וגם את הקשר בין המימדים במסקנה . בפרק זה נרצה להבין מהן הפעולות שאפשר לבצע על שני תת-מרחבים (או יותר), כאשר המטרה היא לקבל תת-מרחבים נוספים.</p>
+<p>קודם כל ניזכר בהגדרה של פעולת החיתוך מפרק , אבל הפעם נתאים אותה לתת-מרחבים במקום קבוצות כלליות.</p>
+<div class="definition">
+<p>יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז החיתוך <span class="math inline">W_1\cap W_2</span> הוא קבוצת כל הוקטורים השייכים גם ל- <span class="math inline">W_1</span> וגם ל- <span class="math inline">W_2</span>, כלומר <span class="math display">.W_1\cap W_2=\Set{v\in V|v\in W_1,v\in W_2}</span></p>
+</div>
+<div class="example">
+<p>&nbsp;למעשה, כבר דיברנו על חיתוך של תת-מרחבים בהקשר של פרק ופרק .</p>
+<ol type="1">
+<li><p>נסתכל על ישרים ב- <span class="math inline">\mathbb{R}^2</span> שעוברים דרך הראשית ונתונים ע"י <span class="math display">.L_1=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y=0},L_2=\Set{(x,y)\in\mathbb{R}^2|a_2x+b_2y=0}</span> אם הם אינם מתלכדים, מתקיים <span class="math inline">L_1\cap L_2=\Set{(0,0)}</span>. אם הם מתלכדים (כלומר וקטורי הנורמל הם קו-לינאריים), אז <span class="math inline">L_1\cap L_2=L_1=L_2</span>.</p></li>
+<li><p>נסתכל על מישורים ב- <span class="math inline">\mathbb{R}^3</span> שעוברים דרך הראשית ונתונים ע"י: <span class="math display">\begin{aligned}
+H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_1x+b_1y+c_1z=0} \\
+H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_2x+b_2y+c_2z=0}
+\end{aligned}</span> מתקיים <span class="math display">.H_1\cap H_2=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y+c_1z=0,a_2x+b_2y+c_2z=0}</span> אם הישרים אינם מתלכדים, אז הנורמלים <span class="math inline">(a_1,b_1,c_1),(a_2,b_2,c_2)</span> מהווים קבוצה בת"ל והדרגה של מטריצת המקדמים של הממ"ל היא <span class="math inline">2</span>. לפי משפט הדרגה, המימד של קבוצת הפתרונות הוא <span class="math inline">3-2=1</span>. לכן, החיתוך של שני מישורים כנ"ל הוא אכן ישר. אבל אם המישורים מתלכדים, החיתוך ביניהם הוא המישור <span class="math inline">H_1=H_2</span>.</p></li>
+<li><p>נכליל את הדוגמאות הקודמות: עבור <span class="math inline">A\in\mathbb{M}_{m\times n}(\mathbb{F})</span>, נסתכל על <span class="math inline">\mathop{\mathrm{N}}(A)</span> - מרחב הפתרונות של הממ"ל <span class="math inline">Ax=0</span>. נסתכל גם על <span class="math inline">\mathop{\mathrm{N}}(B)</span> עבור <span class="math inline">B\in\mathbb{M}_{k\times n}(\mathbb{F})</span>. אז <span class="math inline">\mathop{\mathrm{N}}(A)\cap \mathop{\mathrm{N}}(B)=\mathop{\mathrm{N}}\begin{pmatrix}
+A \\
+B
+\end{pmatrix}</span>, כאשר <span class="math inline">\begin{pmatrix}
+A \\
+B
+\end{pmatrix}\in\mathbb{M}_{(m+k)\times n}(\mathbb{F})</span> היא המטריצה שמתקבלת ע"י כתיבת שורות <span class="math inline">A</span> למעלה ושורות <span class="math inline">B</span> למטה. הסיבה לשוויון היא החישוב הבא:</p>
+<p><span class="math display">\begin{aligned}
+v\in \mathop{\mathrm{N}}\begin{pmatrix}
+A \\
+B
+\end{pmatrix} &amp;\iff \begin{pmatrix}
+A \\
+B
+\end{pmatrix}v=\begin{pmatrix}
+0\\
+\vdots\\
+0
+\end{pmatrix} \iff \begin{pmatrix}
+Av \\
+Bv
+\end{pmatrix}=\begin{pmatrix}
+0\\
+\vdots\\
+0
+\end{pmatrix} \\
+&amp;\iff v\in\mathop{\mathrm{N}}(A)\cap\mathop{\mathrm{N}}(B)
+\end{aligned}</span></p></li>
+<li><p>ב- <span class="math inline">\mathbb{M}_{n\times n}(\mathbb{F})</span> נסתכל על תת-המרחב <span class="math inline">W_1</span> של כל המטריצות המשולשיות עליונות, ותת-המרחב <span class="math inline">W_2</span> של כל המטריצות המשולשיות תחתונות. אז <span class="math inline">W_1\cap W_2</span> הוא תת-המרחב של כל המטריצות האלכסוניות.</p>
+<p>עבור <span class="math inline">n=2</span> ניתן למצוא את הבסיסים הבאים:</p>
+<p><span class="math inline">B_1=\Set{\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}}</span> היא בסיס ל- <span class="math inline">W_1</span>, ולכן <span class="math inline">\dim(W_1)=3</span>.</p>
+<p><span class="math inline">B_2=\Set{\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}}</span> היא בסיס ל- <span class="math inline">W_2</span>, ולכן <span class="math inline">\dim(W_2)=3</span>.</p>
+<p>ו- <span class="math inline">B=\Set{\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}}</span> היא בסיס ל- <span class="math inline">W_1\cap W_2</span>, ולכן <span class="math inline">\dim(W_1\cap W_2)=2</span>.</p>
+<p>עבור <span class="math inline">n\in\mathbb{N}</span> כללי, במטריצה מסדר <span class="math inline">n\times n</span> יש <span class="math inline">n</span> איברים על האלכסון הראשי. לכן, מתקיים <span class="math inline">\dim(W_1\cap W_2)=n</span> כמספר המטריצות בבסיס הבא: <span class="math display">\Set{\begin{pmatrix}
+1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0
+\end{pmatrix},...,\begin{pmatrix}
+0 &amp; \cdots &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 1
+\end{pmatrix}}</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>בסעיף ד’ של הדוגמה האחרונה, מהם <span class="math inline">\dim(W_1),\dim(W_2)</span> עבור <span class="math inline">n\in\mathbb{N}</span> כללי?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>ראינו שמימד החיתוך הוא <span class="math inline">n</span>, כמספר המשבצות על האלכסון הראשי. בשביל <span class="math inline">\dim(W_1)</span> צריך להוסיף את מספר המשבצות מעל האלכסון הראשי. דרך אחת לחשב אותו הוא ע"י הנוסחה לסכום סדרה חשבונית, אבל נשתמש בדרך אחרת. משיקולי סימטריה, מספר זה שווה למספר המשבצות מתחת לאלכסון הראשי. אם נסמן מספר זה ב- <span class="math inline">k</span>, הרי שניתן לספור את כלל המשבצות בשתי דרכים שונות ולקבל <span class="math display">.2k+n=n^2 \implies k=\frac{n^2-n}{2}</span> מכאן נובע כי <span class="math display">.\dim(W_1)=\dim(W_2)=k+n=\frac{n^2-n}{2}+n=\frac{n(n+1)}{2}</span></p>
+</div>
+</div>
+</div>
+<p>בכל הדוגמאות לעיל, חיתוך של תת-מרחבים הוא תת-מרחב. נוכיח זאת באופן כללי.</p>
+<div class="proposition">
+<p><em>יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז <span class="math inline">W_1\cap W_2</span> הוא תת-מרחב של <span class="math inline">V</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה , צריך להראות כי <span class="math inline">0_V\in W_1\cap W_2</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<ul>
+<li><p>מתקיים <span class="math inline">0_V\in W_1</span> וגם <span class="math inline">0_V\in W_2</span>. לכן, לפי הגדרת החיתוך נובע כי <span class="math inline">0_V\in W_1\cap W_2</span>.</p></li>
+<li><p>סגירות לחיבור: יהיו <span class="math inline">v_1,v_2\in W_1\cap W_2</span>. בפרט, <span class="math inline">v_1,v_2\in W_1</span> ולכן <span class="math inline">v_1+v_2\in W_1</span> כי <span class="math inline">W_1</span> סגור לחיבור. באופן דומה, מתקיים <span class="math inline">v_1+v_2\in W_2</span> ולכן <span class="math inline">v_1+v_2\in W_1\cap W_2</span>.</p></li>
+<li><p>סגירות לכפל סקלר: יהיו <span class="math inline">v\in W_1\cap W_2</span> ו- <span class="math inline">\alpha\in\mathbb{F}</span>. בפרט, <span class="math inline">v\in W_1</span> ולכן <span class="math inline">\alpha v\in W_1</span> מסגירות <span class="math inline">W_1</span> לכפל בסקלר. באופן דומה, גם מתקיים <span class="math inline">\alpha v\in W_2</span>, ולכן <span class="math inline">\alpha v\in W_1\cap W_2</span>.</p></li>
+</ul>
+<p>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>נסמן את תת-המרחבים הבאים ב- <span class="math inline">\mathbb{R}^4</span>: <span class="math display">.W_1=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1\\1\\0\\1\end{pmatrix},\begin{pmatrix}2\\1\\1\\0\end{pmatrix}\right),\quad W_2=\mathop{\mathrm{Span}}\left(\begin{pmatrix}0\\1\\-1\\0\end{pmatrix},\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right)</span> מצאו את <span class="math inline">W_1\cap W_2</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>דרך פתרון אחת היא למצוא מטריצות <span class="math inline">A,B\in\mathbb{M}_{2\times 4}(\mathbb{R})</span> כך ש- <span class="math display">,\mathop{\mathrm{N}}(A)=W_1,\mathop{\mathrm{N}}(B)=W_2</span> ואז לחשב את <span class="math display">.W_1\cap W_2=\mathop{\mathrm{N}}\begin{pmatrix}
+A \\
+B
+\end{pmatrix}</span></p>
+<p>דרך זו ארוכה כי מדובר בפתרון של שלוש ממ"ליות. בדרך הבאה נצטרך לפתור ממ"ל אחת בלבד: מאחר שהמטרה היא למצוא איבר כללי בחיתוך, נרצה לדעת אילו וקטורים הם גם ב- <span class="math inline">W_1</span> וגם ב- <span class="math inline">W_2</span>. כלומר, אילו צירופים לינאריים של <span class="math inline">\begin{pmatrix}1\\1\\0\\1\end{pmatrix},\begin{pmatrix}2\\1\\1\\0\end{pmatrix}</span> הם גם צירופים לינאריים של <span class="math inline">\begin{pmatrix}0\\1\\-1\\0\end{pmatrix},\begin{pmatrix}1\\0\\1\\1\end{pmatrix}</span>? לשם כך, נחפש <span class="math inline">a,b,c,d\in\mathbb{R}</span> כך ש- <span class="math display">\begin{pmatrix}1\\1\\0\\1\end{pmatrix}+b\begin{pmatrix}2\\1\\1\\0\end{pmatrix}=c\begin{pmatrix}0\\1\\-1\\0\end{pmatrix}+d\begin{pmatrix}1\\0\\1\\1\end{pmatrix}</span></p>
+<p>העברת אגפים מובילה לממ"ל הומוגנית המיוצגת ע"י המטריצה הבאה:</p>
+<p><span class="math display">\begin{pmatrix}
+1 &amp; 2 &amp; 0 &amp; -1 \\
+1 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; -1 \\
+1 &amp; 0 &amp; 0 &amp; -1
+\end{pmatrix}</span></p>
+<p>לאחר דירוג מקבלים את הצורה המדורגת קנונית הבאה:</p>
+<p><span class="math display">\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -2 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}</span> ולכן, הקשר בין הסקלרים הוא בהכרח: <span class="math display">.a=2d,b=0,c=d</span> נציב זאת באגף שמאל של משוואה . (אפשר גם באגף ימין) ונקבל <span class="math display">.W_1\cap W_2=\Set{2d\begin{pmatrix}1\\1\\0\\1\end{pmatrix}|d\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(
+\begin{pmatrix}1\\1\\0\\1\end{pmatrix}
+\right)</span></p>
+</div>
+</div>
+</div>
+<p>ראינו בפרק שבתורת הקבוצות הפעולה הטבעית הנלווית לחיתוך היא איחוד. עבור שני תת-מרחבים <span class="math inline">W_1,W_2\subseteq V</span> האיחוד <span class="math inline">W_1\cup W_2</span> הוא קבוצת כל הוקטורים השייכים לפחות לאחד מ- <span class="math inline">W_1</span> ו- <span class="math inline">W_2</span>. נדגיש שפעולה זו אינה שימושית עבור תת-מרחבים, כי איחוד של שני תת-מרחבים אינו בהכרח תת-מרחב. אמנם אין בעיה עם וקטור האפס וגם לא עם סגירות לכפל בסקלר, אבל לא בהכרח מתקיימת סגירות לחיבור. אינטואיטיבית, האיחוד "לא יודע" על פעולת החיבור.</p>
+<div class="example">
+<p>ב- <span class="math inline">\mathbb{R}^2</span> נסתכל על <span class="math inline">W_1=\mathop{\mathrm{Span}}((1,0)), W_2=\mathop{\mathrm{Span}}((0,1))</span>. אז מתקיים <span class="math display">,W_1\cup W_2=\Set{(t,0)|t\in\mathbb{R}}\cup\Set{(0,s)|s\in\mathbb{R}}</span> שזה איחוד של שני ישרים (ציר <span class="math inline">x</span> וציר <span class="math inline">y</span>). מתקיים <span class="math inline">(1,0),(0,1)\in W_1\cup W_2</span>, אך עבור החיבור נקבל <span class="math inline">(1,0)+(0,1)=(1,1)\notin W_1\cup W_2</span> כפי שרואים באיור למטה. לכן, אין סגירות לחיבור ו- <span class="math inline">W_1\cup W_2</span> אינו תת-מרחב.</p>
+<figure id="fig:UnionNotClosed" class="figure">
+<img src="images/UnionNotClosed.png" style="width:60.0%" class="figure-img">
+<figcaption>
+שני הוקטורים שייכים לאיחוד של תת-המרחבים (שני הצירים), אך סכומם נמצא מחוץ לאיחוד
+</figcaption>
+</figure>
+</div>
+<div class="exercise">
+<p>יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span> ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז <span class="math inline">W_1\cup W_2</span> הוא תת-מרחב אם ורק אם <span class="math inline">W_1\subseteq W_2</span> או <span class="math inline">W_2\subseteq W_1</span>.</p>
+<p>רמז: בשביל הכיוון הקשה יותר כדאי להניח בשלילה שקיימים <span class="math inline">w_1\in W_1,w_2\in W_2</span> כך כ- <span class="math inline">w_1\notin W_2,w_2\notin W_1</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>בכיוון אחד, נניח כי <span class="math inline">W_1\subseteq W_2</span> (המקרה של <span class="math inline">W_2\subseteq W_1</span> דומה משיקולי סימטריה). אז מתקיים <span class="math inline">W_1\cup W_2=W_2</span>, ובפרט זהו תת-מרחב.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">W_1\cup W_2</span> הוא תת-מרחב. נניח בשלילה שקיימים <span class="math inline">w_1,w_2</span> כמו ברמז. אז לא ייתכן כי <span class="math inline">w_1+w_2\in W_1</span>, כי אחרת <span class="math inline">w_2=(w_1+w_2)+(-w_1)\in W_1</span> מסגירות לחיבור של <span class="math inline">W_1</span>. זו סתירה.</p>
+<p>אז <span class="math inline">w_1+w_2\notin W_1</span>, ובאופן דומה <span class="math inline">w_1+w_2\notin W_2</span>. לכן, מתקיים <span class="math inline">w_1+w_2\notin W_1\cup W_2</span> וזו סתירה לסגירות לחיבור של <span class="math inline">W_1\cup W_2</span>.</p>
+</div>
+</div>
+</div>
+<p>איזו פעולה על תת-מרחבים <span class="math inline">W_1,W_2</span> אפשר להגדיר כך שהתוצאה תהיה תת-המרחב הקטן ביותר שמכיל את שניהם? הבנו שיש צורך לקחת בחשבון את פעולת החיבור. למעשה, לכל <span class="math inline">w_1\in W_1</span> ולכל <span class="math inline">w_2\in W_2</span> צריך לדרוש שהחיבור <span class="math inline">w_1+w_2</span> יהיה בתת-המרחב החדש. זה מוביל להגדרה הבאה:</p>
+<div class="definition">
+<p>&nbsp;יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז הסכום <span class="math inline">W_1+W_2</span> מוגדר ע"י <span class="math display">.W_1+W_2=\Set{w_1+w_2|w_1\in W_1,w_2\in W_2}</span></p>
+</div>
+<p>במילים אחרות, בקבוצה החדשה <span class="math inline">W_1+W_2</span> נמצאים כל הוקטורים שהם סכום של וקטור מ- <span class="math inline">W_1</span> עם וקטור מ- <span class="math inline">W_2</span>. הרעיון דומה לפרישה ויש קשר, אך כאן הפעולה יותר כללית.</p>
+<div id="fig:IntersectionSum" class="figure">
+<embed src="simulations/IntersectionSum.html?embed=1" width="720" height="720">
+<figcaption>
+תת-מרחב אחד הוא ישר (בירוק) ותת-המרחב השני הוא מישור (בצהוב), כאשר החיתוך (נקודה) מופיע באדום והסכום (כל המרחב) מופיע בכחול
+</figcaption>
+</div>
+<div class="proposition">
+<p><em>יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז <span class="math inline">W_1+W_2</span> הוא תת-מרחב של <span class="math inline">V</span>, המקיים <span class="math inline">W_1\subseteq W_1+W_2</span> וגם <span class="math inline">W_2\subseteq W_1+W_2</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה , כדי להוכיח כי <span class="math inline">W_1+W_2</span> הוא תת-מרחב, יש להראות כי <span class="math inline">0_V\in W_1+W_2</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<ul>
+<li><p>מתקיים <span class="math inline">0_V\in W_1</span> וגם <span class="math inline">0_V\in W_2</span>. לכן, נובע כי <span class="math display">.0_V=0_V+0_V\in W_1+W_2</span></p></li>
+<li><p>סגירות לחיבור: יהיו <span class="math inline">u_1,u_2\in W_1+W_2</span>. לכן, קיימים <span class="math inline">v_1,v_2\in W_1,w_1,w_2\in W_2</span> עבורם <span class="math display">.u_1=v_1+w_1,u_2=v_2+w_2</span> <span class="math inline">W_1</span> ו- <span class="math inline">W_2</span> סגורים לחיבור, ולכן מתקיים <span class="math inline">v_1+v_2\in W_1, w_1+w_2\in W_2</span>. מכאן נובע כי <span class="math display">.u_1+u_2=(v_1+w_1)+(v_2+w_2)=(v_1+v_2)+(w_1+w_2)\in W_1+W_2</span></p></li>
+<li><p>סגירות לכפל בסקלר: יהי <span class="math inline">u\in W_1+W_2</span> ויהי <span class="math inline">\alpha\in\mathbb{F}</span>. קיימים <span class="math inline">v\in W_1, w\in W_2</span> עבורם <span class="math inline">u=v+w</span>. מסגירות לכפל בסקלר של <span class="math inline">W_1</span> ו- <span class="math inline">W_2</span> מתקיים <span class="math inline">\alpha u_1\in W_1</span> וגם <span class="math inline">\alpha u_2\in W_2</span>. לכן, נובע כי <span class="math display">.\alpha (u_1+u_2)=\alpha u_1+\alpha u_2\in W_1+W_2</span></p></li>
+</ul>
+<p>הוכחנו ש- <span class="math inline">W_1+W_2</span> הוא אכן תת-מרחב. לבסוף, לכל <span class="math inline">v\in W_1,w\in W_2</span> מתקיים: <span class="math display">\begin{aligned}
+v&amp;=v+0_V\in W_1+W_2 \\
+w&amp;=0_V+w\in W_1+W_2
+\end{aligned}</span> כלומר, מתקיים <span class="math inline">W_1\subseteq W_1+W_2</span> וגם <span class="math inline">W_2\subseteq W_1+W_2</span>, כנדרש.&nbsp;◻</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נסמן ב- <span class="math inline">\mathbb{R}^2</span> את <span class="math inline">W_1=\mathop{\mathrm{Span}}((1,2))</span> ו- <span class="math inline">W_2=\mathop{\mathrm{Span}}((2,1))</span>. אז מתקיים <span class="math display">.W_1+W_2=\Set{s(1,2)+t(2,1)|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}((1,2),(2,1))=\mathbb{R}^2</span> השוויון האחרון נובע מכך שהוקטורים הם בת"ל (לא קו-לינאריים). השוויון לפניו נכון מהגדרת הפרישה.</p></li>
+<li><p>נסמן ב- <span class="math inline">\mathbb{R}^3</span> את <span class="math inline">W_1=\mathop{\mathrm{Span}}((1,0,0),(1,1,1))</span> ו- <span class="math inline">W_2=\mathop{\mathrm{Span}}((0,1,0),(1,1,1)))</span>. לא קשה לבדוק כי <span class="math inline">W_1\neq W_2</span>, ולכן באופן אינטואיטיבי <span class="math inline">W_1+W_2</span> אמור להיות ממימד גבוה יותר מ- <span class="math inline">W_1</span> וגם מ- <span class="math inline">W_2</span> (במקרה זה הם שווי-מימד). אז אמור להתקיים <span class="math inline">\dim(W_1+W_2)=3</span>, כי אין אפשרות למימד גבוה מזה ב- <span class="math inline">\mathbb{R}^3</span>. בהמשך נראה טיעון פורמלי מסוג זה, המסתמך על שיקולי מימד, אבל בינתיים נראה כי <span class="math inline">W_1+W_2=\mathbb{R}^3</span> לפי הגדרת הסכום. נשים לב כי <span class="math inline">(1,1,1)\in W_1\cap W_2</span> ונשתמש בעובדה זו כדי להציג את הסכום בצורה פשוטה יותר, במקום לחזור על <span class="math inline">(1,1,1)</span>. <span class="math display">\begin{aligned}
+W_1+W_2&amp;=\Set{q(1,0,0)+r(1,1,1)+s(0,1,0)+t(1,1,1)|q,r,s,t\in\mathbb{R}} \\
+&amp;=\Set{q(1,0,0)+s(0,1,0)+(r+t)(1,1,1)|q,r,s,t\in\mathbb{R}} \\
+&amp;=\Set{q(1,0,0)+s(0,1,0)+p(1,1,1)|p,q,s\in\mathbb{R}} \\
+&amp;=\mathop{\mathrm{Span}}((1,0,0),(0,1,0),(1,1,1))=\mathbb{R}^3
+\end{aligned}</span> השתמשנו בהצבה <span class="math inline">p=r+t</span>. נלמד בהמשך דרך כללית יותר למצוא בסיסים לחיתוך וסכום של תת-מרחבים. השוויון האחרון נכון לפי משפט , למשל כי <span class="math display">.\det\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1
+\end{pmatrix}=1^3=1\neq 0</span></p></li>
+<li><p>נסמן ב- <span class="math inline">\mathbb{M}_{2\times 2}(\mathbb{R})</span> את <span class="math display">.W_1=\mathop{\mathrm{Span}}(I_2), W_2=\Set{\begin{pmatrix}
+0 &amp; a \\
+b &amp; 0
+\end{pmatrix}|a,b\in\mathbb{R}
+}</span></p>
+<p>ניקח את הסכום ונקבל: <span class="math display">\begin{aligned}
+W_1+W_2&amp;=\Set{\begin{pmatrix}
+t &amp; 0 \\
+0 &amp; t
+\end{pmatrix}+\begin{pmatrix}
+0 &amp; a \\
+b &amp; 0
+\end{pmatrix}|t,a,b\in\mathbb{R}
+}=\Set{\begin{pmatrix}
+t &amp; a \\
+b &amp; t
+\end{pmatrix}|t,a,b\in\mathbb{R}} \\
+&amp;=\mathop{\mathrm{Span}}\left(I_2,\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix}\right)
+\end{aligned}</span></p></li>
+</ol>
+</div>
+<p>התרגיל הבא חשוב כי הוא מראה איך למצוא סכום של שני תת-מרחבים שנתונים ע"י <span class="math inline">\mathop{\mathrm{Span}}</span>, כמו ברוב המקרים שנעסוק בהם.</p>
+<div class="exercise">
+<p>יהי <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">w_1,...,w_k,v_1,...,v_m\in V</span>. נסמן <span class="math display">.W_1=\mathop{\mathrm{Span}}(w_1,...,w_k),\quad W_2=\mathop{\mathrm{Span}}(v_1,...,v_m)</span> הראו כי <span class="math display">.W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_k,v_1,...,v_m)</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>מתקיים <span class="math display">\begin{aligned}
+&amp;w\in W_1+W_2 \iff \exists w_1\in W_1, w_2\in W_2 \quad w=w_1+w_2 \\
+&amp;\iff \exists \alpha_1,...,\alpha_k,\beta_1,...,\beta_m\in\mathbb{F}\quad w=\alpha_1w_1+...\alpha_kw_k+\beta_1v_1+...+\beta_mv_m \\
+&amp;\iff w\in\mathop{\mathrm{Span}}(w_1,...,w_k,v_1,...,v_m)
+\end{aligned}</span> לכן יש שוויון בין הקבוצות.</p>
+</div>
+</div>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>סכום בין תת-מרחבים לא מקיים את כל התכונות הרגילות של חיבור וקטורי (בין וקטורים בודדים). אמנם מתקיים חוק החילוף: <span class="math display">W_1+W_2=W_2+W_1</span> ואפילו יש איבר ניטרלי <span class="math inline">\Set{0_V}</span>: <span class="math display">W+\Set{0_V}=W</span> אבל לתת-מרחב <span class="math inline">W\neq\Set{0_V}</span> אין איבר נגדי. נראה זאת: נניח בשלילה שקיים איבר נגדי, שהוא תת-מרחב <span class="math inline">U\subseteq V</span>. אבל מתקיים <span class="math inline">W\subseteq W+U</span>, ובפרט <span class="math inline">W+U\neq \Set{0_V}</span> וזו סתירה.</p>
+</div>
+<div class="exercise">
+<p>הוכיחו או הפריכו את הטענה הבאה: יהיו <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span> ויהיו <span class="math inline">W_1,W_2,W_3\subseteq V</span> תת-מרחבים. אם <span class="math inline">W_1+W_3=W_2+W_3</span>, אז <span class="math inline">W_1=W_2</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הטענה אינה נכונה. נפריך אותה ע"י הדוגמה הנגדית הבאה:</p>
+<p>נבחר <span class="math inline">V=\mathbb{R}^2</span> ונסמן <span class="math display">.W_1=\mathop{\mathrm{Span}}(e_1),\quad W_2=\mathop{\mathrm{Span}}(e_1+e_2),\quad W_3=\mathop{\mathrm{Span}}(e_2)</span></p>
+<p>אז מתקיים <span class="math inline">W_1\neq W_2</span>, כי <span class="math inline">e_1,e_1+e_2</span> אינם קו-לינאריים. ובכל זאת: <span class="math display">.W_1+W_3=\mathop{\mathrm{Span}}(e_1,e_2)=\mathbb{R}^2=\mathop{\mathrm{Span}}(e_1+e_2,e_2)=W_2+W_3</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="נוסחת-המימדים" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="נוסחת-המימדים"><span class="header-section-number">8.2</span> נוסחת המימדים</h2>
+<p>נרצה להבין את הקשר בין המימדים של שני תת-מרחבים, חיתוכם וסכומם. קשר אחד כבר קל להסיק:</p>
+<div class="corollary">
+<p><strong>מסקנה 1.14</strong>. <em>יהיו <span class="math inline">V</span> מ"ו מעל <span class="math inline">\mathbb{F}</span> ו- <span class="math inline">W_1,W_2\subseteq V</span>. אז מתקיים: <span class="math display">\begin{aligned}
+\dim(W_1\cap W_2)\leq \dim(W_1)\leq\dim(W_1+W_2)\leq\dim(V)
+\end{aligned}</span> ובאופן דומה: <span class="math display">\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה ישירה משילוב של מסקנה וההכלות הבאות:</p>
+<p><span class="math display">\begin{aligned}
+&amp;W_1\cap W_2\subseteq W_1\subseteq W_1+W_2\subseteq V \\
+&amp;W_1\cap W_2\subseteq W_2\subseteq W_1+W_2\subseteq V
+\end{aligned}</span>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>כהמשך למסקנה לעיל, הוכיחו שאם מתקיים <span class="math inline">\dim(W_1+W_2)=\dim(W_2)</span>, אז <span class="math inline">W_1\subseteq W_2</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נניח כי <span class="math inline">\dim(W_1+W_2)=\dim(W_2)</span>. מאחר שמתקיים <span class="math inline">W_2\subseteq W_1+W_2</span>, שוויון מימדים גורר <span class="math inline">W_2=W_1+W_2</span> לפי מסקנה . אבל גם מתקיים <span class="math inline">W_1\subseteq W_1+W_2</span>, ולכן <span class="math inline">W_1\subseteq W_2</span>.</p>
+</div>
+</div>
+</div>
+<p>הנוסחה במשפט הבא נקראת נוסחת המימדים, והיא מבטאת את קשר יותר מדויק בין המימדים של שני תת-מרחבים, חיתוכם וסכומם.</p>
+<div class="theorem">
+<p><em> יהי <span class="math inline">V</span> מ"ו נוצר סופית מעל <span class="math inline">\mathbb{F}</span>, ויהיו <span class="math inline">W_1,W_2\subseteq V</span> תת-מרחבים. אז מתקיים <span class="math display">.\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)</span></em></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>זו הנוסחה האנלוגית לנוסחה שמבטאת את הקשר בין הגדלים של שתי קבוצות סופיות <span class="math inline">A,B</span>, חיתוכן ואיחודן. אם <span class="math inline">|X|</span> מייצג את הגודל של קבוצה <span class="math inline">X</span>, אז מתקיים <span class="math display">.|A\cup B|=|A|+|B|-|A\cap B|</span> במשפט מדובר על מימד במקום גודל, ועל סכום במקום איחוד. אבל נבין דרך ההוכחה את האנלוגיה.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">k=\dim(W_1), l=\dim(W_2), m=\dim(W_1\cap W_2)</span>.</p>
+<p>קיים בסיס <span class="math inline">B_0=\Set{w_1,...,w_m}</span> ל- <span class="math inline">W_1\cap W_2</span>. זהו תת-מרחב לא רק של <span class="math inline">V</span>, אלא גם של <span class="math inline">W_1</span>. לכן, ניתן להשלים את <span class="math inline">B_0</span> לבסיס של <span class="math inline">W_1</span> ע"י הוספת <span class="math inline">k-m</span> וקטורים. כך נקבל את <span class="math inline">B_1=\Set{w_1,...,w_m,w_{m+1},...,w_k}</span>. באופן דומה, <span class="math inline">W_1\cap W_2</span> הוא גם תת-מרחב של <span class="math inline">W_2</span>, ולכן ניתן להשלים את <span class="math inline">B_0</span> לבסיס של <span class="math inline">W_2</span> ע"י הוספת <span class="math inline">l-m</span> וקטורים. כך נקבל את הבסיס <span class="math inline">B_2=\Set{w_1,...,w_m,u_1,...,u_{l-m}}</span>.</p>
+<p>נסמן <span class="math inline">B=B_1\cup B_2=\Set{w_1,...,w_k,u_1,...,u_{l-m}}</span>. זו קבוצה הפורשת את <span class="math inline">W_1+W_2</span> כי מתקיים <span class="math display">.W_1=\mathop{\mathrm{Span}}(B_1),W_2=\mathop{\mathrm{Span}}(B_2) \implies W_1+W_2=\mathop{\mathrm{Span}}(B_1\cup B_2)=\mathop{\mathrm{Span}}(B)</span> יותר מכך, נראה כי <span class="math inline">B</span> היא בת"ל ולכן היא בסיס ל- <span class="math inline">W_1+W_2</span>.</p>
+<p>נניח שקיימים <span class="math inline">\alpha_1,...,\alpha_k,\beta_1,...,\beta_{l-m}\in\mathbb{F}</span> כך שמתקיים <span class="math display">\label{eqn:adjoining}
+.\alpha_1 w_1+...+\alpha_k w_k+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0</span></p>
+<p>נחסיר משני האגפים את <span class="math inline">\beta_1 u_1+...+\beta_{l-m} u_{l-m}</span>, ונקבל <span class="math display">.\alpha_1 w_1+...+\alpha_k w_k=-\beta_1 u_1+...-\beta_{l-m} u_{l-m}</span> נשים לב כי אגף שמאל שייך ל- <span class="math inline">W_1</span>, ואילו אגף ימין שייך ל- <span class="math inline">W_2</span>. לכן, שניהם שייכים ל- <span class="math inline">W_1\cap W_2</span>. בפרט, שניהם שווים לצירוף לינארי של איברי הבסיס <span class="math inline">B_0</span>. אז קיימים <span class="math inline">\gamma_1,...,\gamma_m\in\mathbb{F}</span> כך שמתקיים <span class="math display">\alpha_1 w_1+...+\alpha_m w_m+\alpha_{m+1} w_{m+1}+...+\alpha_k w_k=\gamma_1w_1+...+\gamma w_m</span></p>
+<p>הקבוצה <span class="math inline">B_1=\Set{w_1,...,w_m,w_{k+1},...,w_m}</span> היא בסיס, ולכן הסקלרים נקבעים ביחידות לפי טענה . מכאן <span class="math display">.\alpha_i=\begin{cases}
+\gamma_i,\quad &amp;1\leq i\leq m \\
+0, \quad &amp;m+1\leq i\leq k
+\end{cases}</span></p>
+<p>לכל <span class="math inline">m+1\leq i\leq k</span> נציב <span class="math inline">\alpha_i=0</span> במשוואה , ונקבל <span class="math display">.\alpha_1 w_1+...+\alpha_m w_m+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0</span> אגף שמאל הוא צירוף לינארי של איברי הבסיס <span class="math inline">B_2</span> (נפטרנו מהוקטורים שלא מופיעים בו), ולכן בהכרח כל הסקלרים מתאפסים. אז <span class="math inline">B</span> בת"ל ולכן מדובר בבסיס ל- <span class="math inline">W_1+W_2</span>. לבסוף, נשים לב כי <span class="math display">.\dim(W_1+W_2)=k+l-m=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)</span>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>ב- <span class="math inline">\mathbb{R}^2</span>, לכל שני ישרים מהצורה <span class="math inline">L_1=\mathop{\mathrm{Span}}(v_1),L_2=\mathop{\mathrm{Span}}(v_2)</span> כך ש- <span class="math inline">L_1\neq L_2</span> מתקיים: <span class="math display">\begin{aligned}
+\dim(L_1)&amp;=\dim(L_2)=1 \\
+\dim(L_1\cap L_2)&amp;=\dim(\Set{0})=0
+\end{aligned}</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">,\dim(L_1+L_2)=2=1+1-0=2</span> ולכן <span class="math inline">L_1+L_2=\mathbb{R}^2</span> כי זהו תת-המרחב היחיד של <span class="math inline">\mathbb{R}^2</span> ממימד <span class="math inline">2</span>.</p>
+<p>לעומת זאת, אם <span class="math inline">L_1=L_2</span> נקבל: <span class="math display">\begin{aligned}
+\dim(L_1+L_2)&amp;=\dim(L_1)=1\\
+\dim(L_1\cap L_2)&amp;=\dim(L_1)=1
+\end{aligned}</span></p>
+<p>ועדיין הנוסחה מתקיימת: <span class="math display">\dim(L_1+L_2)=1=1+1-1=\dim(L_1)+\dim(L_2)-\dim(L_1\cap L_2)</span></p></li>
+<li><p>ב- <span class="math inline">\mathbb{R}^3</span>, כל שני מישורים מהצורה <span class="math inline">H_1=\mathop{\mathrm{Span}}(v_1,v_2),H_2=\mathop{\mathrm{Span}}(v_3,v_4)</span> כך ש- <span class="math inline">H_1\neq H_2</span> נחתכים לאורך ישר <span class="math inline">L</span> כלשהו. אז מתקיים: <span class="math display">\begin{aligned}
+\dim(H_1)&amp;=\dim(H_2)=2 \\
+\dim(H_1\cap H_2)&amp;=\dim(L)=1
+\end{aligned}</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">,\dim(H_1+H_2)=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)=2+2-1=3</span> ולכן <span class="math inline">H_1+H_2=\mathbb{R}^3</span>.</p>
+<p>אם <span class="math inline">H_1=H_2</span> נקבל <span class="math display">\begin{aligned}
+\dim(H_1+H_2)&amp;=\dim(H_1)=2\\
+\dim(H_1\cap H_2)&amp;=\dim(H_1)=2
+\end{aligned}</span></p>
+<p>שוב הנוסחה מתקיימת: <span class="math display">\dim(H_1+H_2)=2=2+2-2=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)</span></p></li>
+<li><p>ב- <span class="math inline">\mathbb{F}^n</span>, נסתכל על שני על-מישורים שונים <span class="math inline">H_1,H_2</span>. הכוונה היא לתת-מרחבים ממימד <span class="math inline">n-1</span>. מהו מימד הסכום? מימד החיתוך? יותר קל לענות על השאלה הראשונה, כי מתקיים <span class="math display">.H_1\subseteq H_1+H_2\subseteq \mathbb{F}^n \implies n-1=\dim(H_1)\leq\dim(H_1+H_2)\leq n</span></p>
+<p>לא ייתכן כי <span class="math inline">\dim(H_1)=\dim(H_1+H_2)</span>, שהרי זה גורר <span class="math inline">H_1=H_1+H_2</span> ומכאן <span class="math inline">H_2\subseteq H_1</span>. זו סתירה כי <span class="math inline">\dim(H_2)=\dim(H_1)</span>, אך <span class="math inline">H_2\neq H_1</span>. לכן, מתקיים <span class="math inline">\dim(H_1+H_2)\neq n-1</span>, ואז בהכרח נובע כי <span class="math display">.\dim(H_1+H_2)=n=\dim(\mathbb{F}^n) \implies H_1+H_2=\mathbb{F}^n</span></p>
+<p>נציב את המימדים הידועים בנוסחת המימדים ונקבל</p>
+<p><span class="math display">.n=n-1+n-1-\dim(H_1\cap H_2) \implies \dim(H_1\cap H_2)=n-2</span></p></li>
+<li><p>ב- <span class="math inline">\mathbb{M}_{n\times n}(\mathbb{F})</span> נסמן את תת-המרחבים של מטריצות סימטריות ואנטי-סימטריות: <span class="math display">\begin{aligned}
+W_1&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=A} \\
+W_2&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=-A}
+\end{aligned}</span></p>
+<p>לפי טענה מתקיים: <span class="math display">\begin{aligned}
+W_1\cap W_2&amp;=\Set{\mathbf{0}_{n\times n}} \implies \dim(W_1\cap W_2)=0 \\
+W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
+\end{aligned}</span></p>
+<p>כיצד זה מתיישב עם נוסחת המימדים? נציין מראש שכדאי לנסות לחשוב לבד על המקרה <span class="math inline">n=3</span> כדי להבין יותר טוב את הפרטים הטכניים של המקרה הכללי, שדורש סימונים חדשים.</p>
+<p>נמצא בסיס ל- <span class="math inline">W_1</span>:</p>
+<p><span class="math display">B_1=\Set{D(i)|1\leq i\leq n}\cup\Set{S(i,j)|1\leq i&lt;j\leq n}</span> כאשר <span class="math inline">D(i)</span> היא המטריצה שכל איבריה <span class="math inline">0</span> חוץ מ- <span class="math inline">1</span> במשבצת ה- <span class="math inline">(i,i)</span>, ו- <span class="math inline">S(i,j)</span> היא המטריצה שכל איבריה <span class="math inline">0</span> חוץ מ- <span class="math inline">1</span> במשבצות ה- <span class="math inline">(i,j)</span> וה- <span class="math inline">(j,i)</span>. קל לראות ש- <span class="math inline">B_1</span> היא קבוצה בת"ל, כי אין חיתוך בין המשבצות בהן המטריצות לא מתאפסות (לכל מטריצה יש את המשבצות שלה, או רק אחת). גם קל לראות שהיא פורשת את <span class="math inline">W_1</span>: לכל <span class="math inline">A\in W_1</span> מתקיים</p>
+<p><span class="math display">A=(A)_{11}D(1)+...+(A)_{nn}D(n)+(A)_{12}S(1,2)+...+(A)_{n-1,n}S(n-1,n)</span></p>
+<p>אז מהו <span class="math inline">\dim(W_1)</span>? יש <span class="math inline">n</span> מטריצות מהצורה <span class="math inline">D(i)</span>. כדי למנות את המטריצות מהצורה <span class="math inline">S(i,j)</span>, נשים לב שלכל <span class="math inline">2\leq j\leq n</span> יש <span class="math inline">j-1</span> מספרים טבעיים הקטנים ממנו (עבור <span class="math inline">j=1</span> אין מספר טבעי כזה). נשתמש בנוסחה לסכום סדרה חשבונית ונקבל <span class="math display">,\sum_{j=2}^n(j-1)=1+...+(n-1)=\frac{n(n-1)}{2}</span> ובסך הכל <span class="math display">.\dim(W_1)=n+\frac{n(n-1)}{2}=\frac{n(n+1)}{2}</span></p>
+<p>נמצא בסיס ל- <span class="math inline">W_2</span>:</p>
+<p><span class="math display">B_2=\Set{T(i,j)|1\leq i&lt;j\leq n}</span> כאשר <span class="math inline">T(i,j)</span> היא המטריצה שכל איבריה <span class="math inline">0</span> חוץ מ- <span class="math inline">1</span> במשבצת ה- <span class="math inline">(i,j)</span>, ו- <span class="math inline">(-1)</span> במשבצת ה- <span class="math inline">(j,i)</span>. בדומה לבדיקה עבור <span class="math inline">B_1</span>, ניתן לבדוק כי <span class="math inline">B_2</span> היא אכן בת"ל ופורשת את <span class="math inline">W_2</span>. מתקיים <span class="math display">,\dim(W_2)=1+...+(n-1)=\frac{n(n-1)}{2}</span> וכצפוי (לפי נוסחת המימדים) <span class="math display">.n^2=\frac{n(n+1)}{2}+\frac{n(n-1)}{2}-0</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math inline">W_1,W_2</span> תת-מרחבים של <span class="math inline">\mathbb{C}^4</span>.</p>
+<ol type="1">
+<li><p>נניח כי <span class="math inline">\dim(W_1)=\dim(W_2)=2</span>. הוכיחו כי <span class="math inline">W_1+W_2=\mathbb{C}^4</span> אם ורק אם <span class="math inline">W_1\cap W_2=\Set{0}</span>.</p></li>
+<li><p>נניח כי <span class="math inline">\dim(W_1)=3,\dim(W_2)=2</span>. מהן האפשרויות ל- <span class="math inline">\dim(W_1\cap W_2)</span>? מצאו דוגמה ל- <span class="math inline">W_1,W_2</span> עבור כל אפשרות.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>לפי מסקנה , מתקיים <span class="math display">,W_1+W_2=\mathbb{C}^4 \iff \dim(W_1+W_2)=4</span> ולפי נוסחת המימדים נובע כי <span class="math display">.\dim(W_1+W_2)=4 \iff 2+2-\dim(W_1\cap W_2)=4 \iff \dim(W_1\cap W_2)=0</span></p>
+<p>לכן, מתקיים <span class="math display">.W_1+W_2=\mathbb{C}^4 \iff W_1\cap W_2=\Set{0}</span></p></li>
+<li><p>מתקיים <span class="math display">,3=\dim(W_1)\leq \dim(W_1+W_2)\leq 4</span> ולפי נוסחת המימדים (לאחר העברת אגפים) נובע כי <span class="math display">.1=5-4\leq \dim(W_1\cap W_2)=3+2-\dim(W_1+W_2)\leq 5-3=2</span> האפשרות ל- <span class="math inline">\dim(W_1\cap W_2)=1</span> מתקבלת (למשל) עבור <span class="math display">.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=(e_3,e_4) \implies W_1\cap W_2=\mathop{\mathrm{Span}}(e_3)</span> באופן דומה, האפשרות ל- <span class="math inline">\dim(W_1\cap W_2)=2</span> מתקבלת (למשל) עבור <span class="math display">.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=\mathop{\mathrm{Span}}(e_2,e_3) \implies W_1\cap W_2=W_2</span> כדוגמה לאפשרות האחרונה, ניתן לבחור כל <span class="math inline">W_1</span> ממימד <span class="math inline">3</span> וכל <span class="math inline">W_2\subseteq W_1</span> ממימד <span class="math inline">2</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="מציאת-בסיסים" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="מציאת-בסיסים"><span class="header-section-number">8.3</span> מציאת בסיסים</h2>
+<p>יהיו <span class="math inline">W_1,W_2</span> תת-מרחבים של מ"ו <span class="math inline">V</span> מעל <span class="math inline">\mathbb{F}</span>. הדבר החשוב ביותר שיש לדעת על תת-מרחב הוא בסיס. נניח שמצאנו בסיס <span class="math inline">B_1=\Set{w_1,...,w_m}</span> ל- <span class="math inline">W_1</span> ובסיס <span class="math inline">B_2=\Set{u_1,...,u_k}</span> ל- <span class="math inline">W_2</span>. אז איך נמצא בסיסים ל- <span class="math inline">W_1\cap W_2,W_1+W_2</span>? מתקיים <span class="math display">,W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_m,u_1,...,u_k)</span> ולכן כבר יש לנו קבוצה פורשת - אך היא לא בהכרח בת"ל. למעשה, היא בת"ל אם ורק אם <span class="math inline">W_1\cap W_2= \Set{0_V}</span>. אכן, לפי משפט ("שלישי חינם") קבוצה פורשת היא בת"ל אם ורק אם גודלה שווה למימד תת-המרחב, ולפי נוסחת המימדים מתקיים:</p>
+<p><span class="math display">\begin{aligned}
+\dim(W_1+W_2)=\dim(W_1)+\dim(W_2) &amp;\iff \dim(W_1\cap W_2)=0 \\
+&amp;\iff W_1\cap W_2= \Set{0_V}
+\end{aligned}</span></p>
+<p>אם זה לא המקרה, צריך לחלץ בסיס מתוך <span class="math inline">\Set{w_1,...,w_m,u_1,...,u_k}</span>. נניח כי <span class="math inline">V=\mathbb{F}^n</span> (אחרת נשתמש בוקטורי קוארדינטות) ונסתכל על המטריצה הבאה:</p>
+<p><span class="math display">\begin{pmatrix}
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid \\
+w_1  &amp; \cdots &amp; w_m  &amp; u_1  &amp; \cdots &amp; u_k \\
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
+\end{pmatrix}</span></p>
+<p>בתת-פרק ראינו שניתן למצוא בסיס למרחב העמודות ע"י דירוג קנוני, לפיו העמודות בהן יש איברים מובילים מתאימות לעמודות המקוריות שמהוות יחד בסיס למרחב העמודות (אין לקחת את העמודות החדשות, כי הדירוג משנה את מרחב העמודות). במקרה זה, מרחב העמודות הוא <span class="math inline">W_1+W_2</span>.</p>
+<p>מה לגבי בסיס ל- <span class="math inline">W_1\cap W_2</span>? נשאלת השאלה: אילו צירופים לינאריים של <span class="math inline">w_1,...,w_m</span> הם גם צירופים לינאריים של <span class="math inline">u_1,...,u_k</span>? באופן שקול, צריך למצוא <span class="math inline">\alpha_1,...,\alpha_m,\gamma_1,...,\gamma_k\in\mathbb{F}</span> כך ש- <span class="math display">\label{eqn:intersection2}
+.\alpha_1 w_1+...+\alpha_m w_m=\gamma_1 u_1+...+\gamma_k u_k</span> לאחר העברת אגפים מקבלים ממ"ל הומוגנית שמיוצגת ע"י המטריצה הבאה: <span class="math display">\begin{pmatrix}
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid \\
+w_1  &amp; \cdots &amp; w_m  &amp; -u_1  &amp; \cdots &amp; -u_k \\
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
+\end{pmatrix}</span> זו לא בדיוק המטריצה הקודמת, ולכאורה דרוש דירוג קינוני חדש. אך יש דרך קיצור, כי במשוואה ניתן להציב <span class="math inline">\gamma_1=-\beta_1,...,\gamma_k=-\beta_k</span>, ואז המטריצה המתאימה לממ"ל החדשה בנעלמים <span class="math inline">\alpha_1,...,\alpha_m,\beta_1,....,\beta_k</span> היא המטריצה שכבר דירגנו: <span class="math display">\begin{pmatrix}
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid \\
+w_1  &amp; \cdots &amp; w_m  &amp; u_1  &amp; \cdots &amp; u_k \\
+\mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
+\end{pmatrix}</span> כך נמצא את הפתרון הכללי עבור <span class="math inline">\alpha_1,...,\alpha_m</span> ונציב אותו בביטוי <span class="math inline">\alpha_1w_1+...+\alpha_mw_m</span> כדי לקבל את הצורה הכללית של איבר ב- <span class="math inline">W_1\cap W_2</span>. זה יוביל לקבוצה פורשת, שהיא למעשה בסיס.</p>
+<div class="example">
+<p>נסתכל על תת-המרחבים הבאים של <span class="math inline">\mathbb{R}^4</span>: <span class="math display">W_1=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+0 \\
+2 \\
+0   
+\end{pmatrix}\right),W_2=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+-1   
+\end{pmatrix}\right)</span></p>
+<p>מתקיים <span class="math display">,W_1+W_2=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+0 \\
+2 \\
+0   
+\end{pmatrix},\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+-1   
+\end{pmatrix}\right)</span> אך צריך לבדוק אם הקבוצה בת"ל. נכתוב את ארבעת הוקטורים כעמודות מטריצה, ולאחר דירוג קנוני נקבל:</p>
+<p><span class="math display">\begin{pmatrix}
+1 &amp; 1 &amp; 2 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; -1 \\
+1 &amp; 2 &amp; 3 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; -1
+\end{pmatrix} \xrightarrow{} \begin{pmatrix}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}</span></p>
+<p>אין איבר מוביל בעמודה השלישית, ולכן הוקטור <span class="math inline">\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1
+\end{pmatrix}</span> מיותר. אז הקבוצה הבאה היא בסיס ל- <span class="math inline">W_1+W_2</span>: <span class="math display">\Set{\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+0 \\
+2 \\
+0   
+\end{pmatrix},\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+-1   
+\end{pmatrix}}</span> הדירוג גם מראה שאם מתקיים <span class="math display">,\alpha_1\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1   
+\end{pmatrix}+\alpha_2\begin{pmatrix}
+1 \\
+0 \\
+2 \\
+0   
+\end{pmatrix}=-\beta_1\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1   
+\end{pmatrix}-\beta_2\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+-1   
+\end{pmatrix}</span> אז בהכרח קיים <span class="math inline">t\in\mathbb{R}</span> כך ש- <span class="math display">.\alpha_1=\alpha_2=-t,\beta_1=t,\beta_2=0</span> לכן: <span class="math display">W_1\cap W_2=\Set{-t\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1   
+\end{pmatrix}-t\begin{pmatrix}
+1 \\
+0 \\
+2 \\
+0   
+\end{pmatrix}|t\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1   
+\end{pmatrix}\right)</span> לכן, הקבוצה הבאה היא בסיס ל- <span class="math inline">W_1\cap W_2</span>: <span class="math display">\Set{\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1   
+\end{pmatrix}}</span></p>
+<p>נשים לב כי נוסחת המימדים אכן מתקיימת: <span class="math display">3=\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)=2+2-1</span></p>
+</div>
+<div class="exercise">
+<p>נסתכל על תת-המרחבים הבאים של <span class="math inline">\mathbb{R}^4</span>: <span class="math display">,W_1=\mathop{\mathrm{N}}(A), W_2=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1\\0\\0\\-1\end{pmatrix},\begin{pmatrix}1\\-1\\1\\-1\end{pmatrix}\right)</span> כאשר <span class="math display">.A=\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; -1 &amp; 1 &amp; -1
+\end{pmatrix}</span> מצאו בסיסים ל- <span class="math inline">W_1\cap W_2,W_1+W_2</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>דרך אחת לפתור את התרגיל היא למצוא בסיס ל- <span class="math inline">\mathop{\mathrm{N}}(A)</span>. בבסיס זה יש שני וקטורים, ולכן יחד עם הוקטורים בקבוצה הפורשת את <span class="math inline">W_2</span>, נקבל מטריצה של <span class="math inline">4</span> עמודות. אין שום בעיה עם דרך זו, אך היא דורשת שני דירוגים וכדאי להכיר גישה קצת שונה.</p>
+<p>אמנם המרחב הוא <span class="math inline">\mathbb{R}^4</span> ולא <span class="math inline">\mathbb{R}^3</span>, אך יש דמיון לחיתוך בין מישור שנתון ע"י ממ"ל לישר שנתון בהצגה פרמטרית. כאן <span class="math inline">W_1</span> נתון ע"י ממ"ל ו- <span class="math inline">W_2</span> נתון בהצגה פרמטרית (אבל שניהם ממימד <span class="math inline">2</span>). גם כאן ניתן למצוא את החיתוך ע"י הצבת ההצגה הפרמטרית של <span class="math inline">W_2</span> בממ"ל המתאימה ל- <span class="math inline">A</span>. נשים לב כי <span class="math display">.W_2=\Set{s\begin{pmatrix}1\\0\\0\\-1\end{pmatrix}+t\begin{pmatrix}1\\-1\\1\\-1\end{pmatrix}|s,t\in\mathbb{R}}=\Set{\begin{pmatrix}s+t\\-t\\t\\-s-t\end{pmatrix}|s,t\in\mathbb{R}}</span></p>
+<p>הממ"ל המתאימה ל- <span class="math inline">A</span> היא: <span class="math display">\begin{cases}
+x_1+x_2+x_3+x_4=0 \\
+x_1-x_2+x_3-x_4=0
+\end{cases}</span></p>
+<p>נציב <span class="math inline">\begin{pmatrix}x_1\\x_2\\x_3\\x_4\end{pmatrix}=\begin{pmatrix}s+t\\-t\\t\\-s-t\end{pmatrix}</span> ונקבל: <span class="math display">\begin{cases}
+s+t-t+t-s-t=0 \\
+s+t+t+t+s+t=0
+\end{cases} \implies s=-2t</span> נחזור להצגה של <span class="math inline">W_2</span> ונציב <span class="math inline">s=-2t</span>:</p>
+<p><span class="math display">W_2\Set{\begin{pmatrix}-t\\-t\\t\\t\end{pmatrix}|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}\right)</span></p>
+<p>קיבלנו שהקבוצה <span class="math inline">\Set{\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}}</span> היא בסיס ל- <span class="math inline">W_1\cap W_2</span>, ולכן <span class="math inline">\dim(W_1\cap W_2)=1</span>. בנוסף, <span class="math inline">\dim(W_2)=2</span> כי הקבוצה הפורשת אותו היא בת"ל (הוקטורים אינם קו-לינאריים) ולכן בסיס. באופן דומה, <span class="math inline">\dim(W_1)=4-\mathop{\mathrm{rank}}(A)=4-2=2</span> לפי משפט (משפט הדרגה). לכן, לפי נוסחת המימדים נובע כי <span class="math display">.\dim(W_1+W_2)=2+2-1=3</span> כדי למצוא בסיס ל- <span class="math inline">W_1+W_2</span> מספיק להוסיף לקבוצה הפורשת את <span class="math inline">W_2</span> כל וקטור ב- <span class="math inline">W_1</span> שאינו בחיתוך, כי זה בדיוק אומר שהוא לא נפרש ע"י וקטורי הבסיס של <span class="math inline">W_2</span>. כך נקבל קבוצה בת"ל ב- <span class="math inline">W_1+W_2</span> שגודלה שווה למימדו, ולכן היא בהכרח בסיס.</p>
+<p>מספיק למצוא וקטור אחד ב- <span class="math inline">\mathop{\mathrm{N}}(A)</span> שאינו כפל בסקלר של <span class="math inline">\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}</span>. דוגמה לוקטור כזה היא <span class="math inline">\begin{pmatrix}1 \\ 0 \\ -1 \\ 0\end{pmatrix}</span>, שאפשר למצוא ע"י הצבת <span class="math inline">x_2=x_4=0</span> במשוואות או ע"י דירוג <span class="math inline">A</span>. למען הסר ספק, צורתה המדורגת קנונית של <span class="math inline">A</span> היא <span class="math display">.\begin{pmatrix}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 1
+\end{pmatrix}</span> בכל אופן, נוסיף את הוקטור שמצאנו לבסיס הנתון ל- <span class="math inline">W_2</span> ונקבל את הבסיס הבא ל- <span class="math inline">W_1+W_2</span>: <span class="math display">\Set{\begin{pmatrix}1\\0\\0\\-1\end{pmatrix},\begin{pmatrix}1\\-1\\1\\-1\end{pmatrix},\begin{pmatrix}1 \\ 0 \\ -1 \\ 0\end{pmatrix}}</span></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+/* כותרות אוטומטיות + צבע פסטלי לסביבות; טיפול מדויק ב-solution כך שיישאר callout מתקפל */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+
+  // --- מספר פרק נוכחי למספור לפי פרק ---
+
+  function chapterNumber() {
+
+    const h1 = document.querySelector('main h1[data-number]');
+
+    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+
+    const sec = document.querySelector('.header-section-number');
+
+    if (sec) return sec.textContent.trim().split('.')[0];
+
+    return '1';
+
+  }
+
+  const chap = chapterNumber();
+
+
+
+  // --- מפת סביבות: תווית, צבע, והאם ממוספרת ---
+
+  const envs = {
+
+    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
+
+    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
+
+    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  },
+
+    remark:      { label: 'הערה',     color: 'rgba(60, 179, 113, 0.35)', numbered: true  },
+
+    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    proof:       { label: 'הוכחה',    color: 'rgba(0, 0, 0, 0.15)', numbered: false },
+
+    solution:    { label: 'פתרון',    color: 'rgba(72, 209, 204, 0.35)',numbered: false } // ללא מספור
+
+  };
+
+
+
+  // --- נרמול פתרון: שמירה כ-callout מתקפל וזיהוי כ-solution ---
+
+  document.querySelectorAll('div.callout.callout-note[title="הצג פתרון"], div.callout.callout-note[title="Solution"]').forEach(div => {
+
+    div.classList.add('solution');          // מוסיפים solution
+
+    div.setAttribute('collapse', 'true');   // קיפול נשמר
+
+    div.setAttribute('title', 'פתרון');     // כותרת callout
+
+  });
+
+
+
+  // --- תיקון כפילות מחלקות: אם יש proof+solution יחד – להסיר proof ---
+
+  document.querySelectorAll('div.solution.proof').forEach(div => div.classList.remove('proof'));
+
+  document.querySelectorAll('div.remark.proof').forEach(div => div.classList.remove('proof'));
+
+
+
+  // --- אם יש solution בלי מבנה callout, נבנה header+body כדי לקבל תיבה מתקפלת ---
+
+  document.querySelectorAll('div.solution:not(.callout)').forEach(div => {
+
+    div.classList.add('callout', 'callout-note');
+
+    div.setAttribute('collapse', 'true');
+
+    // header
+
+    const header = document.createElement('div');
+
+    header.className = 'callout-header';
+
+    const titleWrap = document.createElement('div');
+
+    titleWrap.className = 'callout-title-container';
+
+    const title = document.createElement('div');
+
+    title.className = 'callout-title';
+
+    title.textContent = 'פתרון';
+
+    titleWrap.appendChild(title);
+
+    header.appendChild(titleWrap);
+
+    div.insertBefore(header, div.firstChild);
+
+    // body
+
+    const body = document.createElement('div');
+
+    body.className = 'callout-body';
+
+    while (header.nextSibling) body.appendChild(header.nextSibling);
+
+    div.appendChild(body);
+
+  });
+
+
+
+  // --- מספור וכותרות לכל הסביבות הלא-callout ---
+
+  const boxEnvs = ['definition','example','exercise','remark','theorem','lemma','proposition','corollary','proof'];
+
+  const counters = Object.fromEntries(Object.keys(envs).map(k => [k, 0]));
+
+
+
+  boxEnvs.forEach(env => {
+
+    document.querySelectorAll(`div.${env}`).forEach(div => {
+
+      const meta = envs[env];
+
+
+
+      // לא לגעת ב-callout כלל
+
+      if (div.classList.contains('callout')) return;
+
+
+
+      // אם חסרה כותרת – נוסיף
+
+      let title = div.querySelector(':scope > .theorem-title');
+
+      if (!title) {
+
+        title = document.createElement('div');
+
+        title.className = 'theorem-title';
+
+        if (meta.numbered) {
+
+          counters[env] += 1;
+
+          title.textContent = `${meta.label} ${chap}.${counters[env]}`;
+
+        } else {
+
+          title.textContent = meta.label;
+
+        }
+
+        div.insertBefore(title, div.firstChild);
+
+      }
+
+
+
+      // צבע וצביעת קופסה
+
+      div.style.setProperty('--env-color', meta.color);
+
+      div.classList.add('envbox');
+
+
+
+      // ניקוי כפילות טקסט בראש פסקה ב-remark/proof אם דבוק "Remark./Proof."
+
+      if (env === 'remark' || env === 'proof') {
+
+        const firstP = div.querySelector(':scope > p');
+
+        if (firstP) {
+
+          const labels = new Set(['definition','example','exercise','theorem','lemma','proposition','corollary','remark','proof','solution']);
+
+          const leadingWord = () => {
+
+            const html = firstP.innerHTML
+
+              .replace(/^(\s|&nbsp;)+/i, '')
+
+              .replace(/^<(?:em|i|strong|b|span)[^>]*>/i, '')
+
+              .replace(/<\/(?:em|i|strong|b|span)>/i, '');
+
+            const m = html.match(/^([A-Za-z]+)\b/);
+
+            return m ? m[1].toLowerCase() : '';
+
+          };
+
+          let guard = 0;
+
+          while (labels.has(leadingWord()) && guard++ < 5) {
+
+            firstP.innerHTML = firstP.innerHTML
+
+              .replace(/^(\s|&nbsp;)*<(?:em|i|strong|b|span)[^>]*>(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*<\/(?:em|i|strong|b|span)>(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '')
+
+              .replace(/^(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '');
+
+          }
+
+        }
+
+      }
+
+    });
+
+  });
+
+
+
+  // --- צביעת פתרון כ-callout לפי המפה ---
+
+  document.querySelectorAll('div.callout.solution').forEach(div => {
+
+    div.style.setProperty('--env-color', envs.solution.color);
+
+  });
+
+
+
+});
+
+</script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // בחר את כל כותרות הפרקים הראשיים
+
+  const chapters = document.querySelectorAll('main h1[data-number]');
+
+  let counter = 0;
+
+  chapters.forEach(h1 => {
+
+    counter++;
+
+    if (counter <= 3) {
+
+      // שני פרקים ראשונים ברומי
+
+      const roman = ['I','II'][counter-1];
+
+      h1.setAttribute('data-number', roman);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = roman;
+
+    } else {
+
+      // חזרה למספרים רגילים החל מ-1
+
+      const normal = counter - 3;
+
+      h1.setAttribute('data-number', normal);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = normal;
+
+    }
+
+  });
+
+});
+
+</script>
+<script src="tracking.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_5.html" class="pagination-link" aria-label="מרחבים וקטורים">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">מרחבים וקטורים</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link" aria-label="TBD">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">TBD</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
