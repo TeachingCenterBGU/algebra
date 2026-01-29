@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>וקטורים: תלות ואי-תלות לינארית</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  /* כותרת עליונה צפה */
+  #header {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 10;
+    width: 85%;
+    max-width: 900px;
+  }
+
+  h1 { margin: 0 0 10px 0; font-size: 1.4rem; color: #2c3e50; }
+
+  #instruction-text {
+    font-weight: bold;
+    color: #1565c0;
+    font-size: 1.1em;
+    line-height: 1.5;
+  }
+
+  /* פאנל שליטה (סליידרים) */
+  #controls-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 10;
+    width: 360px;
+    display: none; 
+  }
+
+  /* פאנל קואורדינטות */
+  #coords-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 10;
+    width: 220px;
+    display: none;
+    font-family: monospace;
+    direction: ltr; /* מספרים משמאל לימין */
+  }
+
+  .coord-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1.1em;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+
+  /* כיוון RTL לסליידרים - מינוס בימין */
+  input[type=range] {
+    flex-grow: 1;
+    cursor: pointer;
+    direction: ltr; 
+  }
+
+  .slider-label {
+    width: 30px;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2em;
+  }
+  
+  /* ערך הסליידר */
+  .slider-value {
+      width: 40px;
+      text-align: right;
+      direction: ltr; /* מבטיח שהמינוס יופיע משמאל למספר */
+      font-family: monospace;
+      font-weight: bold;
+  }
+
+  /* תצוגת המשוואה */
+  #equation-box {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    direction: ltr; /* נוסחה מתמטית משמאל לימין */
+  }
+
+  #equation-text {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #d32f2f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  #ld-status {
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 5px;
+    direction: rtl; /* טקסט עברי */
+  }
+
+  /* כפתור איפוס */
+  #reset-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 8px 16px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  #reset-btn:hover { background-color: #d32f2f; }
+
+  /* תוויות על הקנבס */
+  .label-3d {
+      position: absolute;
+      font-family: 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 16px;
+      pointer-events: none;
+      text-shadow: 0 0 3px white, 0 0 3px white;
+      user-select: none;
+  }
+  .label-3d i { font-style: italic; }
+  .label-3d sub { font-style: normal; font-size: 0.8em; }
+
+  /* מחלקות עזר */
+  .math { font-family: 'Times New Roman', serif; font-weight: bold; }
+  .math i { font-style: italic; }
+  .math sub { font-style: normal; font-size: 0.8em; }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <div id="header">
+    <h1>תלות ואי-תלות לינארית במרחב</h1>
+    <div id="instruction-text"></div>
+  </div>
+
+  <button id="reset-btn" onclick="initDemo()">התחל מחדש</button>
+
+  <div id="controls-panel">
+      <div id="sliders-container"></div>
+      
+      <div id="equation-box">
+          <div id="ld-status"></div>
+          <div id="equation-text"></div>
+      </div>
+  </div>
+
+  <!-- פאנל קואורדינטות -->
+  <div id="coords-panel"></div>
+
+  <div id="labels-container"></div>
+
+<script>
+  // --- משתנים גלובליים ---
+  let scene, camera, renderer, controls;
+  let raycaster, mouse;
+  
+  let vectors = []; 
+  let dependentVector = null; 
+  let dependentArrow = null; 
+  
+  let invisibleSphere; 
+  let labels = []; 
+
+  const colors = [0x0000ff, 0x008000, 0xff0000]; // v1, v2, v3
+  const colorV4 = 0x9c27b0; // v4 (סגול)
+  const colorDependent = 0xff9800; // u (orange)
+
+  // מחרוזות HTML
+  const htmlV1 = '<span class="math" style="color:blue"><i>v</i><sub>1</sub></span>';
+  const htmlV2 = '<span class="math" style="color:green"><i>v</i><sub>2</sub></span>';
+  const htmlV3 = '<span class="math" style="color:red"><i>v</i><sub>3</sub></span>';
+  const htmlV4 = '<span class="math" style="color:#9c27b0"><i>v</i><sub>4</sub></span>';
+  const htmlU  = '<span class="math" style="color:#ff9800"><i>u</i></span>';
+
+  // --- אתחול Three.js ---
+  function init3D() {
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xf4f4f9);
+
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(10, 6, 10);
+      camera.lookAt(0, 0, 0);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      scene.add(ambientLight);
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+      dirLight.position.set(5, 10, 7);
+      scene.add(dirLight);
+
+      const gridHelper = new THREE.GridHelper(20, 20, 0xcccccc, 0xeeeeee);
+      scene.add(gridHelper);
+      
+      addAxes(); 
+
+      const geometry = new THREE.SphereGeometry(5, 32, 32); 
+      const material = new THREE.MeshBasicMaterial({ 
+          color: 0xffff00, 
+          transparent: true, 
+          opacity: 0.0, 
+          side: THREE.DoubleSide,
+          depthWrite: false 
+      });
+      invisibleSphere = new THREE.Mesh(geometry, material);
+      scene.add(invisibleSphere);
+
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('pointerdown', onPointerDown);
+
+      animate();
+  }
+
+  function addAxes() {
+      const len = 7;
+      
+      // X Axis
+      const arrowX = new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), len, 0x333333, 0.5, 0.3);
+      scene.add(arrowX);
+      addHtmlLabel("x", new THREE.Vector3(len + 0.8, 0, 0), "black");
+
+      // Y Axis
+      const arrowY = new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), len, 0x333333, 0.5, 0.3);
+      scene.add(arrowY);
+      addHtmlLabel("y", new THREE.Vector3(0, len + 0.8, 0), "black");
+
+      // Z Axis
+      const arrowZ = new THREE.ArrowHelper(new THREE.Vector3(0,0,1), new THREE.Vector3(0,0,0), len, 0x333333, 0.5, 0.3);
+      scene.add(arrowZ);
+      // z מעל החץ
+      addHtmlLabel("z", new THREE.Vector3(0, 0.8, len + 0.8), "black");
+  }
+
+  // --- לוגיקה ---
+
+  function initDemo() {
+      vectors = [];
+      if (dependentArrow) {
+          scene.remove(dependentArrow);
+          dependentArrow = null;
+      }
+      dependentVector = null;
+
+      const toRemove = scene.children.filter(child => child.userData.isVector || child.userData.isSpan || child.userData.isV4);
+      toRemove.forEach(obj => scene.remove(obj));
+
+      const container = document.getElementById('labels-container');
+      container.innerHTML = '';
+      labels = [];
+      
+      // שחזור תוויות צירים
+      addHtmlLabel("x", new THREE.Vector3(7.8, 0, 0), "black");
+      addHtmlLabel("y", new THREE.Vector3(0, 7.8, 0), "black");
+      addHtmlLabel("z", new THREE.Vector3(0, 0.8, 7.8), "black");
+
+      document.getElementById('controls-panel').style.display = 'none';
+      document.getElementById('coords-panel').style.display = 'none';
+      document.getElementById('equation-text').innerHTML = '';
+      document.getElementById('ld-status').innerText = '';
+      
+      updateInstruction();
+  }
+
+  function updateCoordinatesPanel() {
+      const panel = document.getElementById('coords-panel');
+      
+      if (vectors.length === 0) {
+          panel.style.display = 'none';
+          return;
+      }
+      
+      panel.style.display = 'block';
+      let html = '';
+
+      vectors.forEach((vec, i) => {
+          let nameHtml = '';
+          if (i < 3) {
+              nameHtml = `<span class="math" style="color:#${new THREE.Color(colors[i]).getHexString()}">v<sub>${i+1}</sub></span>`;
+          } else {
+              nameHtml = htmlV4;
+          }
+          
+          html += `
+            <div class="coord-row">
+                ${nameHtml} 
+                <span>(${vec.x.toFixed(1)}, ${vec.y.toFixed(1)}, ${vec.z.toFixed(1)})</span>
+            </div>
+          `;
+      });
+
+      // מציגים את u רק אם אנחנו לפני השלב של v4
+      if (dependentVector && vectors.length < 4) {
+          html += `
+            <div class="coord-row">
+                ${htmlU} 
+                <span>(${dependentVector.x.toFixed(1)}, ${dependentVector.y.toFixed(1)}, ${dependentVector.z.toFixed(1)})</span>
+            </div>
+          `;
+      }
+
+      panel.innerHTML = html;
+  }
+
+  function updateInstruction() {
+      const el = document.getElementById('instruction-text');
+      const panel = document.getElementById('controls-panel');
+      const slidersDiv = document.getElementById('sliders-container');
+      const eqBox = document.getElementById('equation-box');
+      const statusLd = document.getElementById('ld-status');
+
+      slidersDiv.innerHTML = ''; 
+      eqBox.style.display = 'block';
+      statusLd.innerText = '';
+      document.getElementById('equation-text').innerHTML = '';
+
+      if (vectors.length === 0) {
+          el.innerHTML = `לחצו על נקודה כלשהי במרחב כדי לבחור וקטור ראשון ${htmlV1}.`;
+          panel.style.display = 'none';
+      } 
+      else if (vectors.length === 1) {
+          el.innerHTML = `ליצירת קבוצה ת"ל {${htmlV1}, ${htmlU}} השתמשו במחוון כדי לבחור סקלר, או לחילופין בחרו עוד וקטור ${htmlV2} ליצירת קבוצה בת"ל {${htmlV1}, ${htmlV2}}.`;
+          panel.style.display = 'block';
+          statusLd.innerText = 'נוצרה קבוצה תלויה לינארית:';
+          createSliders(1);
+          updateEquation();
+      } 
+      else if (vectors.length === 2) {
+          el.innerHTML = `ליצירת קבוצה ת"ל {${htmlV1}, ${htmlV2}, ${htmlU}} השתמשו במחוונים כדי לבחור שני סקלרים, או לחילופין בחרו עוד וקטור ${htmlV3} ליצירת קבוצה בת"ל {${htmlV1}, ${htmlV2}, ${htmlV3}}.`;
+          panel.style.display = 'block';
+          statusLd.innerText = 'נוצרה קבוצה תלויה לינארית:';
+          createSliders(2);
+          updateEquation();
+      } 
+      else if (vectors.length === 3) {
+          // שלב 3: הסתרה של המחוונים והמתנה ל-v4
+          el.innerHTML = `בחרו וקטור נוסף ${htmlV4} כדי ליצור קבוצה ת"ל.`;
+          panel.style.display = 'none'; 
+          
+          // מחיקת u
+          if (dependentArrow) {
+              scene.remove(dependentArrow);
+              dependentArrow = null;
+          }
+          dependentVector = null;
+          removeLabelU();
+      }
+      else if (vectors.length === 4) {
+          el.innerHTML = `הקבוצה {${htmlV1}, ${htmlV2}, ${htmlV3}, ${htmlV4}} ת"ל והמשוואה שמתארת את התלות מופיעה למטה. ניתן ללחוץ שוב במרחב כדי להזיז את ${htmlV4}.`;
+          panel.style.display = 'block'; 
+          eqBox.style.display = 'block';
+          statusLd.innerText = 'משוואת התלות הלינארית:';
+      }
+      
+      updateCoordinatesPanel();
+  }
+
+  function createSliders(count) {
+      const container = document.getElementById('sliders-container');
+      container.innerHTML = '';
+
+      for (let i = 0; i < count; i++) {
+          const row = document.createElement('div');
+          row.className = 'slider-row';
+          
+          const colorHex = '#' + new THREE.Color(colors[i]).getHexString();
+          
+          // סליידר עם ערכי מינוס בצד שמאל (ltr רגיל)
+          row.innerHTML = `
+            <div class="slider-label" style="color:${colorHex}">c<sub>${i+1}</sub></div>
+            <input type="range" min="-3" max="3" step="0.1" value="1" data-index="${i}" oninput="onSliderChange()">
+            <span id="val-${i}" class="slider-value">1.0</span>
+          `;
+          container.appendChild(row);
+      }
+      
+      onSliderChange(); 
+  }
+
+  function formatNumberLeftMinus(num) {
+      // פורמט סטנדרטי: -1.5
+      return num.toFixed(1);
+  }
+
+  window.onSliderChange = function() {
+      const inputs = document.querySelectorAll('#sliders-container input');
+      let newVec = new THREE.Vector3(0,0,0);
+      let scalars = [];
+
+      inputs.forEach((input, idx) => {
+          const val = parseFloat(input.value);
+          document.getElementById(`val-${idx}`).innerText = formatNumberLeftMinus(val);
+          scalars.push(val);
+          
+          const component = vectors[idx].clone().multiplyScalar(val);
+          newVec.add(component);
+      });
+
+      dependentVector = newVec;
+      updateDependentArrow();
+      updateEquationText(scalars);
+      updateCoordinatesPanel();
+  }
+
+  function updateDependentArrow() {
+      if (dependentArrow) {
+          scene.remove(dependentArrow);
+      }
+      removeLabelU();
+
+      if (!dependentVector || dependentVector.lengthSq() < 0.01) return;
+
+      const dir = dependentVector.clone().normalize();
+      const len = dependentVector.length();
+      
+      dependentArrow = new THREE.ArrowHelper(dir, new THREE.Vector3(0,0,0), len, colorDependent, 0.5, 0.3);
+      dependentArrow.userData.isVector = true;
+      scene.add(dependentArrow);
+
+      addHtmlLabel("u", dependentVector, '#ff9800', null, true);
+  }
+
+  function removeLabelU() {
+      const uLabelIndex = labels.findIndex(l => l.isU);
+      if (uLabelIndex !== -1) {
+          labels[uLabelIndex].element.remove();
+          labels.splice(uLabelIndex, 1);
+      }
+  }
+
+  function updateEquationText(scalars) {
+      const el = document.getElementById('equation-text');
+      let html = "";
+      
+      scalars.forEach((scalar, i) => {
+          const colorHex = '#' + new THREE.Color(colors[i]).getHexString();
+          const sign = (i > 0 && scalar >= 0) ? "+" : ""; 
+          const formattedNum = scalar.toFixed(1); // מינוס משמאל
+
+          html += `<span>${sign}</span> <span>${formattedNum}</span> <span class="math" style="color:${colorHex}"><i>v</i><sub>${i+1}</sub></span> `;
+      });
+
+      html += `- 1 <span class="math" style="color:#ff9800"><i>u</i></span> = 0`;
+      
+      el.innerHTML = html;
+  }
+
+  function onPointerDown(event) {
+      if (event.target.tagName === 'BUTTON' || event.target.tagName === 'INPUT') return;
+
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(invisibleSphere);
+
+      if (intersects.length > 0) {
+          const point = intersects[0].point;
+          const vec = new THREE.Vector3(
+              Math.round(point.x * 10) / 10,
+              Math.round(point.y * 10) / 10,
+              Math.round(point.z * 10) / 10
+          );
+
+          if (vec.lengthSq() < 0.1) return; 
+
+          if (vectors.length < 3) {
+              if (checkDependency(vec)) {
+                  alert("הוקטור שבחרת תלוי לינארית בקודמים! אנא בחר וקטור אחר.");
+                  return;
+              }
+              addBasisVector(vec);
+          } 
+          else if (vectors.length === 3) {
+              // הוספה ראשונית של v4
+              addV4(vec);
+          }
+          else if (vectors.length === 4) {
+              // עדכון v4 קיים
+              updateV4(vec);
+          }
+      }
+  }
+
+  function checkDependency(newVec) {
+      if (vectors.length === 0) return false;
+      
+      if (vectors.length === 1) {
+          const cross = new THREE.Vector3().copy(vectors[0]).cross(newVec);
+          return cross.lengthSq() < 0.1;
+      }
+      
+      if (vectors.length === 2) {
+          const normal = new THREE.Vector3().copy(vectors[0]).cross(vectors[1]);
+          const det = normal.dot(newVec);
+          return Math.abs(det) < 0.1;
+      }
+      return false;
+  }
+
+  function addBasisVector(vec) {
+      vectors.push(vec);
+      const idx = vectors.length - 1;
+      
+      const color = colors[idx];
+      const dir = vec.clone().normalize();
+      const len = vec.length();
+      
+      const arrow = new THREE.ArrowHelper(dir, new THREE.Vector3(0,0,0), len, color, 0.4, 0.2);
+      arrow.userData.isVector = true;
+      scene.add(arrow);
+
+      const cssColor = '#' + new THREE.Color(color).getHexString();
+      addHtmlLabel("v", vec, cssColor, (idx+1).toString());
+
+      if (dependentArrow) {
+          scene.remove(dependentArrow);
+          dependentArrow = null;
+          dependentVector = null;
+      }
+      removeLabelU();
+
+      if (vectors.length === 1) drawSpanLine(vec);
+      if (vectors.length === 2) drawSpanPlane(vectors[0], vectors[1]);
+
+      updateInstruction();
+  }
+
+  function addV4(vec) {
+      vectors.push(vec);
+      drawV4(vec);
+      
+      const coeffs = solveLinearSystem(vectors[0], vectors[1], vectors[2], vec);
+      updateInstruction(); 
+      displayFinalEquation(coeffs);
+  }
+
+  function updateV4(vec) {
+      vectors[3] = vec;
+      
+      const oldV4 = scene.children.find(c => c.userData.isV4);
+      if (oldV4) scene.remove(oldV4);
+      
+      const oldLblIdx = labels.findIndex(l => l.isV4);
+      if (oldLblIdx !== -1) {
+          labels[oldLblIdx].element.remove();
+          labels.splice(oldLblIdx, 1);
+      }
+
+      drawV4(vec);
+      const coeffs = solveLinearSystem(vectors[0], vectors[1], vectors[2], vec);
+      displayFinalEquation(coeffs);
+      updateCoordinatesPanel();
+  }
+
+  function drawV4(vec) {
+      const color = colorV4;
+      const dir = vec.clone().normalize();
+      const len = vec.length();
+      
+      const arrow = new THREE.ArrowHelper(dir, new THREE.Vector3(0,0,0), len, color, 0.4, 0.2);
+      arrow.userData.isVector = true;
+      arrow.userData.isV4 = true; 
+      scene.add(arrow);
+
+      addHtmlLabel("v", vec, '#9c27b0', "4", false, true);
+  }
+
+  function solveLinearSystem(v1, v2, v3, target) {
+      const v2xv3 = new THREE.Vector3().copy(v2).cross(v3);
+      const detA = v1.dot(v2xv3);
+
+      const det1 = target.dot(v2xv3);
+      const det2 = v1.dot(target.clone().cross(v3));
+      const det3 = v1.dot(v2.clone().cross(target));
+
+      return [det1/detA, det2/detA, det3/detA];
+  }
+
+  function displayFinalEquation(coeffs) {
+      const el = document.getElementById('equation-text');
+      let html = "";
+      
+      coeffs.forEach((scalar, i) => {
+          const colorHex = '#' + new THREE.Color(colors[i]).getHexString();
+          
+          let op = "";
+          let val = Math.abs(scalar).toFixed(2);
+          
+          if (i === 0) {
+              if (scalar < 0) op = "-";
+          } else {
+              if (scalar >= 0) op = "+ ";
+              else op = "- ";
+          }
+
+          html += `<span>${op} ${val}</span> <span class="math" style="color:${colorHex}"><i>v</i><sub>${i+1}</sub></span> `;
+      });
+
+      html += `- 1 <span class="math" style="color:#9c27b0"><i>v</i><sub>4</sub></span> = 0`;
+      el.innerHTML = html;
+  }
+
+  // --- עזרי ציור ---
+
+  function drawSpanLine(vec) {
+      const material = new THREE.LineBasicMaterial({ color: 0x0000ff, opacity: 0.3, transparent: true });
+      const points = [
+          vec.clone().multiplyScalar(10),
+          vec.clone().multiplyScalar(-10)
+      ];
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, material);
+      line.userData.isSpan = true;
+      scene.add(line);
+  }
+
+  function drawSpanPlane(v1, v2) {
+      const normal = new THREE.Vector3().copy(v1).cross(v2).normalize();
+      const geometry = new THREE.PlaneGeometry(30, 30);
+      const material = new THREE.MeshBasicMaterial({ 
+          color: 0x00ff00, 
+          side: THREE.DoubleSide, 
+          opacity: 0.15, 
+          transparent: true,
+          depthWrite: false 
+      });
+      const plane = new THREE.Mesh(geometry, material);
+      plane.lookAt(normal);
+      plane.userData.isSpan = true;
+      scene.add(plane);
+  }
+
+  function addHtmlLabel(text, position, color, sub, isU = false, isV4 = false) {
+      const container = document.getElementById('labels-container');
+      const div = document.createElement('div');
+      div.className = 'label-3d';
+      div.style.color = color;
+      
+      let html = `<i>${text}</i>`;
+      if (sub) html += `<sub>${sub}</sub>`;
+      div.innerHTML = html;
+      
+      container.appendChild(div);
+      
+      labels.push({
+          element: div,
+          position: position,
+          isU: isU,
+          isV4: isV4
+      });
+  }
+
+  function updateLabels() {
+      labels.forEach(lbl => {
+          const tempV = lbl.position.clone();
+          tempV.project(camera);
+
+          const x = (tempV.x * .5 + .5) * window.innerWidth;
+          const y = (tempV.y * -.5 + .5) * window.innerHeight;
+
+          if (Math.abs(tempV.z) > 1) {
+              lbl.element.style.display = 'none';
+          } else {
+              lbl.element.style.display = 'block';
+              lbl.element.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+          }
+      });
+  }
+
+  function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      updateLabels();
+      renderer.render(scene, camera);
+  }
+
+  function updateEquation() {
+      onSliderChange();
+  }
+
+  init3D();
+  initDemo();
+
+</script>
+</body>
+</html>
