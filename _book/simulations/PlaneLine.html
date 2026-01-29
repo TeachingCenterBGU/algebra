@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חיתוך ישר ומישור</title>
+<style>
+  body { margin: 0; }
+  canvas { display: block; }
+  #info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display:block;
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: rgba(255,255,255,0.5);
+    padding: 5px;
+  }
+  #controls-panel {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 280px;
+  }
+  .slider-row {
+      display: grid;
+      grid-template-columns: 20px 1fr 40px;
+      gap: 10px;
+      align-items: center;
+  }
+  #intersection-coords {
+      font-weight: bold;
+      color: red;
+      font-size: 1.1em;
+      text-align: center;
+      margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+  <div id="info">
+    <h1>חיתוך ישר ומישור</h1>
+    <p>המישור הנתון הוא x+y+z=1</p>
+    <p id="instructions">השתמשו במחוונים כדי לקבוע את שתי הנקודות המגדירות את הישר</p>
+  </div>
+  
+  <div id="controls-panel">
+      <h3 style="color: green;">נקודה ראשונה</h3>
+      <div class="slider-row"><label>X:</label><input type="range" id="p1x" min="-2" max="2" value="1" step="0.1"><span id="p1x-val">1.0</span></div>
+      <div class="slider-row"><label>Y:</label><input type="range" id="p1y" min="-2" max="2" value="-1" step="0.1"><span id="p1y-val">-1.0</span></div>
+      <div class="slider-row"><label>Z:</label><input type="range" id="p1z" min="-2" max="2" value="0.5" step="0.1"><span id="p1z-val">0.5</span></div>
+      <hr>
+      <h3 style="color: purple;">נקודה שנייה</h3>
+      <div class="slider-row"><label>X:</label><input type="range" id="p2x" min="-2" max="2" value="-1.5" step="0.1"><span id="p2x-val">-1.5</span></div>
+      <div class="slider-row"><label>Y:</label><input type="range" id="p2y" min="-2" max="2" value="1.5" step="0.1"><span id="p2y-val">1.5</span></div>
+      <div class="slider-row"><label>Z:</label><input type="range" id="p2z" min="-2" max="2" value="1" step="0.1"><span id="p2z-val">1.0</span></div>
+      <hr>
+      <h4>נקודת חיתוך:</h4>
+      <div id="intersection-coords">...</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  // 1. הגדרות בסיסיות ו-UI
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const intersectionCoordsDisplay = document.getElementById('intersection-coords');
+  const sliders = {
+      p1x: document.getElementById('p1x'), p1y: document.getElementById('p1y'), p1z: document.getElementById('p1z'),
+      p2x: document.getElementById('p2x'), p2y: document.getElementById('p2y'), p2z: document.getElementById('p2z'),
+  };
+  const values = {
+      p1x: document.getElementById('p1x-val'), p1y: document.getElementById('p1y-val'), p1z: document.getElementById('p1z-val'),
+      p2x: document.getElementById('p2x-val'), p2y: document.getElementById('p2y-val'), p2z: document.getElementById('p2z-val'),
+  };
+
+  // 2. תאורה, שליטה ואוריינטציה
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(6, 6, 6);
+  controls.update();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  // 3. עזרי המחשה
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+  const axisLength = 5;
+  const origin = new THREE.Vector3(0,0,0);
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), origin, axisLength, 0x000000));
+  
+  function createAxisLabel(text, position) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = 'Bold 60px Arial';
+      context.fillStyle = 'rgba(0,0,0,1.0)';
+      context.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(2, 1, 1.0);
+      sprite.position.copy(position);
+      return sprite;
+  }
+  const labelOffset = 0.4;
+  scene.add(createAxisLabel('x', new THREE.Vector3(axisLength + labelOffset, 0, 0)));
+  scene.add(createAxisLabel('y', new THREE.Vector3(0, axisLength + labelOffset, 0)));
+  scene.add(createAxisLabel('z', new THREE.Vector3(0, 0, axisLength + labelOffset)));
+
+  // --- תיקון: יצירת המישור x+y+z=1 בצורה נכונה ---
+  const planeNormal = new THREE.Vector3(1, 1, 1).normalize();
+  const planeDistance = 1 / Math.sqrt(3); // d / ||n||
+  const planeGeom = new THREE.PlaneGeometry(12, 12);
+  const planeMat = new THREE.MeshPhongMaterial({color: 0xffa500, opacity: 0.5, transparent: true, side: THREE.DoubleSide});
+  const planeMesh = new THREE.Mesh(planeGeom, planeMat);
+  // יצירת קווטרניון לסיבוב מהנורמל של הגיאומטריה (0,0,1) לנורמל של המישור שלנו
+  const quaternion = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1), planeNormal);
+  planeMesh.applyQuaternion(quaternion);
+  // מיקום מרכז המישור במרחק הנכון מהראשית לאורך הנורמל
+  planeMesh.position.copy(planeNormal).multiplyScalar(planeDistance);
+  scene.add(planeMesh);
+  // --------------------------------------------------
+
+  // 4. לוגיקת אינטראקציה
+  let currentObjects = [];
+  const p1 = new THREE.Vector3();
+  const p2 = new THREE.Vector3();
+
+  function updateScene() {
+    clearTemporaryObjects();
+    p1.set(parseFloat(sliders.p1x.value), parseFloat(sliders.p1y.value), parseFloat(sliders.p1z.value));
+    p2.set(parseFloat(sliders.p2x.value), parseFloat(sliders.p2y.value), parseFloat(sliders.p2z.value));
+    for (const key in values) {
+        values[key].textContent = parseFloat(sliders[key].value).toFixed(2);
+    }
+    const p1Mesh = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshBasicMaterial({color: 0x00ff00}));
+    p1Mesh.position.copy(p1);
+    scene.add(p1Mesh);
+    currentObjects.push(p1Mesh);
+    const p2Mesh = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshBasicMaterial({color: 0x800080}));
+    p2Mesh.position.copy(p2);
+    scene.add(p2Mesh);
+    currentObjects.push(p2Mesh);
+    const lineGeom = new THREE.BufferGeometry().setFromPoints([p1.clone().add(p2.clone().sub(p1).multiplyScalar(-20)), p2.clone().add(p2.clone().sub(p1).multiplyScalar(20))]);
+    const line = new THREE.Line(lineGeom, new THREE.LineBasicMaterial({color: 0x0000ff}));
+    scene.add(line);
+    currentObjects.push(line);
+    calculateAndDrawIntersection();
+  }
+
+  function calculateAndDrawIntersection() {
+    const normal = new THREE.Vector3(1, 1, 1);
+    const D = 1;
+    const lineDir = new THREE.Vector3().subVectors(p2, p1);
+    if (lineDir.length() < 1e-6) {
+        intersectionCoordsDisplay.textContent = "הגדירו שתי נקודות שונות";
+        return;
+    }
+    lineDir.normalize();
+    const denominator = normal.dot(lineDir);
+    if (Math.abs(denominator) < 1e-6) {
+      const dist = normal.dot(p1) - D;
+      intersectionCoordsDisplay.textContent = (Math.abs(dist) < 1e-6) ? "הישר מוכל במישור" : "הישר מקביל למישור";
+    } else {
+      const t = (D - normal.dot(p1)) / denominator;
+      const intersectionPoint = p1.clone().add(lineDir.multiplyScalar(t));
+      const point = new THREE.Mesh(new THREE.SphereGeometry(0.12), new THREE.MeshBasicMaterial({color: 0xff0000}));
+      point.position.copy(intersectionPoint);
+      scene.add(point);
+      currentObjects.push(point);
+      const splashGeom = new THREE.CircleGeometry(0.3, 32);
+      const splashMat = new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.DoubleSide, transparent: true, opacity: 0.5});
+      const splashCircle = new THREE.Mesh(splashGeom, splashMat);
+      splashCircle.position.copy(intersectionPoint);
+      splashCircle.lookAt(intersectionPoint.clone().add(normal));
+      scene.add(splashCircle);
+      currentObjects.push(splashCircle);
+      const projectionPoint = intersectionPoint.clone();
+      projectionPoint.z = 0;
+      const linePoints = [intersectionPoint, projectionPoint];
+      const lineGeom = new THREE.BufferGeometry().setFromPoints(linePoints);
+      const lineMat = new THREE.LineDashedMaterial({ color: 0x888888, dashSize: 0.1, gapSize: 0.1});
+      const projectionLine = new THREE.Line(lineGeom, lineMat);
+      projectionLine.computeLineDistances();
+      scene.add(projectionLine);
+      currentObjects.push(projectionLine);
+      intersectionCoordsDisplay.textContent = `(${intersectionPoint.x.toFixed(2)}, ${intersectionPoint.y.toFixed(2)}, ${intersectionPoint.z.toFixed(2)})`;
+    }
+  }
+
+  function clearTemporaryObjects() {
+      currentObjects.forEach(obj => scene.remove(obj));
+      currentObjects = [];
+  }
+
+  for (const key in sliders) {
+      sliders[key].addEventListener('input', updateScene);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  
+  updateScene();
+  animate();
+</script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מישור הנפרש על ידי וקטורים</title>
+<style>
+  body { margin: 0; }
+  canvas { display: block; }
+  #info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display:block;
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: rgba(255,255,255,0.5);
+    padding: 5px;
+  }
+  .controls {
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #z-slider {
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    height: 150px;
+  }
+  #st-controls {
+      bottom: 20px;
+      top: auto;
+      flex-direction: row;
+      gap: 20px;
+  }
+  .slider-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+  }
+</style>
+</head>
+<body>
+  <div id="info">
+    <h1>המישור הנפרש על ידי שני וקטורים</h1>
+    <p id="instructions">לחצו על נקודה במישור כדי לקבוע את ההיטל של הוקטור הראשון</p>
+  </div>
+  
+  <div id="z-controls" class="controls">
+      <label for="z-slider">קבעו גובה</label>
+      <input type="range" id="z-slider" min="-5" max="5" value="0" step="0.1">
+      <span id="z-value">0.0</span>
+      <button id="confirm-button">קבעו וקטור</button>
+  </div>
+  
+  <div id="st-controls" class="controls">
+      <div class="slider-group">
+          <label for="s-slider" style="color: blue; font-weight: bold;">סקלר עבור הוקטור הראשון</label>
+          <input type="range" id="s-slider" min="-1" max="1" value="1" step="0.1">
+          <span id="s-value">1.0</span>
+      </div>
+      <div class="slider-group">
+          <label for="t-slider" style="color: green; font-weight: bold;">סקלר עבור הוקטור השני</label>
+          <input type="range" id="t-slider" min="-1" max="1" value="1" step="0.1">
+          <span id="t-value">1.0</span>
+      </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const instructions = document.getElementById('instructions');
+  const zControls = document.getElementById('z-controls');
+  const zSlider = document.getElementById('z-slider');
+  const zValueDisplay = document.getElementById('z-value');
+  const confirmButton = document.getElementById('confirm-button');
+  const stControls = document.getElementById('st-controls');
+  const sSlider = document.getElementById('s-slider');
+  const tSlider = document.getElementById('t-slider');
+  const sValueDisplay = document.getElementById('s-value');
+  const tValueDisplay = document.getElementById('t-value');
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(10, 10, 10);
+  controls.update();
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  const gridHelper = new THREE.GridHelper(20, 20);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+
+  const axisLength = 7;
+  const origin = new THREE.Vector3(0,0,0);
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), origin, axisLength, 0x000000));
+  
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  const interactionPlane = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.MeshBasicMaterial({ visible: false }));
+  scene.add(interactionPlane);
+
+  let clickVectors = [];
+  let currentObjects = [];
+  let tempPoint = null;
+  let previewArrow = null;
+  let combinationPoint = null;
+  const pointGeometry = new THREE.SphereGeometry(0.2, 16, 8);
+  const pointMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  
+  function onMouseClick(event) {
+    if (zControls.style.display === 'flex') return;
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(interactionPlane);
+    if (intersects.length > 0) {
+      if (clickVectors.length >= 2) {
+        clickVectors = [];
+        stControls.style.display = 'none';
+      }
+      tempPoint = intersects[0].point.clone();
+      tempPoint.z = 0;
+      zSlider.value = 0;
+      zValueDisplay.textContent = '0.0';
+      zControls.style.display = 'flex';
+      controls.enabled = false;
+      if (clickVectors.length === 0) {
+        instructions.textContent = 'הזיזו את המחוון כדי לקבוע את הגובה של נקודת הסיום של הוקטור הראשון';
+      } else {
+        instructions.textContent = 'הזיזו את המחוון כדי לקבוע את הגובה של נקודת הסיום של הוקטור השני';
+      }
+      drawPreview();
+    }
+  }
+
+  zSlider.addEventListener('input', () => {
+    zValueDisplay.textContent = parseFloat(zSlider.value).toFixed(1);
+    drawPreview();
+  });
+  sSlider.addEventListener('input', updateCombinationPoint);
+  tSlider.addEventListener('input', updateCombinationPoint);
+
+  confirmButton.addEventListener('click', () => {
+    const finalPoint = tempPoint.clone();
+    finalPoint.z = parseFloat(zSlider.value);
+    clickVectors.push(finalPoint);
+    if(previewArrow) scene.remove(previewArrow);
+    previewArrow = null;
+    zControls.style.display = 'none';
+    controls.enabled = true;
+    tempPoint = null;
+    drawScene();
+  });
+
+  function drawPreview() {
+    if (previewArrow) scene.remove(previewArrow);
+    const currentZ = parseFloat(zSlider.value);
+    const previewPoint = tempPoint.clone();
+    previewPoint.z = currentZ;
+    if (previewPoint.length() === 0) return;
+    previewArrow = new THREE.ArrowHelper(previewPoint.clone().normalize(), origin, previewPoint.length(), 0x808080);
+    scene.add(previewArrow);
+  }
+
+  function updateCombinationPoint() {
+      if (clickVectors.length < 2) return;
+      const s = parseFloat(sSlider.value);
+      const t = parseFloat(tSlider.value);
+      sValueDisplay.textContent = s.toFixed(1);
+      tValueDisplay.textContent = t.toFixed(1);
+      const v = clickVectors[0];
+      const w = clickVectors[1];
+      const scaledV = v.clone().multiplyScalar(s);
+      const scaledW = w.clone().multiplyScalar(t);
+      const combinedVector = new THREE.Vector3().addVectors(scaledV, scaledW);
+      if (!combinationPoint) {
+          combinationPoint = new THREE.Mesh(pointGeometry, pointMaterial);
+          scene.add(combinationPoint);
+          currentObjects.push(combinationPoint);
+      }
+      combinationPoint.position.copy(combinedVector);
+  }
+
+  function drawScene() {
+    currentObjects.forEach(obj => scene.remove(obj));
+    currentObjects = [];
+
+    if (clickVectors.length === 0) {
+      instructions.textContent = 'לחצו על נקודה במישור כדי לקבוע את ההיטל של הוקטור הראשון';
+      return;
+    }
+
+    const v = clickVectors[0];
+    const arrowV = new THREE.ArrowHelper(v.clone().normalize(), origin, v.length(), 0x0000ff);
+    scene.add(arrowV);
+    currentObjects.push(arrowV);
+    scene.add(createLabel('v', v.clone().multiplyScalar(1.1), true));
+    
+    if (clickVectors.length < 2) {
+      instructions.textContent = 'לחצו על נקודה במישור כדי לקבוע את ההיטל של הוקטור השני';
+      return;
+    }
+
+    const w = clickVectors[1];
+    const arrowW = new THREE.ArrowHelper(w.clone().normalize(), origin, w.length(), 0x00ff00);
+    scene.add(arrowW);
+    currentObjects.push(arrowW);
+    scene.add(createLabel('w', w.clone().multiplyScalar(1.1), true));
+    
+    // שינוי: תיקון שגיאת כתיב
+    instructions.textContent = 'השתמשו במחוונים כדי למצוא כל נקודה על המישור כצירוף לינארי';
+    
+    const range = 1.0;
+    const corner1 = v.clone().multiplyScalar(-range).add(w.clone().multiplyScalar(-range));
+    const corner2 = v.clone().multiplyScalar(range).add(w.clone().multiplyScalar(-range));
+    const corner3 = v.clone().multiplyScalar(range).add(w.clone().multiplyScalar(range));
+    const corner4 = v.clone().multiplyScalar(-range).add(w.clone().multiplyScalar(range));
+
+    const planeGeom = new THREE.BufferGeometry().setFromPoints([corner1, corner2, corner3, corner4]);
+    planeGeom.setIndex([0, 1, 3, 1, 2, 3]);
+    planeGeom.computeVertexNormals();
+    
+    const planeMat = new THREE.MeshPhongMaterial({ color: 0xffa500, opacity: 0.5, transparent: true, side: THREE.DoubleSide });
+    const spannedPlane = new THREE.Mesh(planeGeom, planeMat);
+    scene.add(spannedPlane);
+    currentObjects.push(spannedPlane);
+
+    stControls.style.display = 'flex';
+    sSlider.value = 1;
+    tSlider.value = 1;
+    updateCombinationPoint();
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('click', onMouseClick);
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+  
+  function createLabel(text, position, isTemporary = false) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = 'Bold 60px Arial';
+      context.fillStyle = 'rgba(0,0,0,1.0)';
+      context.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(2, 1, 1.0);
+      sprite.position.copy(position);
+      
+      if (isTemporary) {
+        currentObjects.push(sprite);
+      }
+      return sprite;
+  }
+  
+  const labelOffset = 0.4;
+  scene.add(createLabel('x', new THREE.Vector3(axisLength + labelOffset, 0, 0)));
+  scene.add(createLabel('y', new THREE.Vector3(0, axisLength + labelOffset, 0)));
+  scene.add(createLabel('z', new THREE.Vector3(0, 0, axisLength + labelOffset)));
+
+  animate();
+</script>
+</body>
+</html>

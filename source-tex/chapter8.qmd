@@ -1,3 +1,6 @@
+\maketitle
+\tableofcontents
+
 # מרחבים וקטוריים {#ch:vectorspaces}
 
 ## הגדרת מרחבים וקטוריים
@@ -63,7 +66,7 @@
 ניתן להוכיח תכונות נוספות של מרחבים וקטוריים בעזרת האקסיומות:
 
 ::: proposition
-*`\label{prop:vector-properties}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. אז לכל $v,w_1,w_2\in V$ מתקיים:*
+**טענה 1.6**. *`\label{prop:vector-properties}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. אז לכל $v,w_1,w_2\in V$ מתקיים:*
 
 1.  *$w_1+v=w_2+v \implies w_1=w_2$*
 
@@ -75,6 +78,7 @@
 :::
 
 ::: proof
+*Proof.*  
 
 1.  נניח כי מתקיים $w_1+v=w_2+v$. נשתמש באיבר הנגדי $-v$ ונחבר אותו לשני אגפי המשוואה: $$w_1+(v+(-v))=w_2+(v+(-v)) \implies w_1+0_V=w_2+0_V \implies w_1=w_2$$ תחילה השתמשנו באסוציאטיביות ואחר כך בניטרליות של $0_V$.
 
@@ -98,6 +102,7 @@
 :::
 
 ::: proof
+*Proof.*
 
 1.  יהיו $0_V,0'_V$ שני וקטורי אפס. לפי הניטרליות של $0'_V$, מצד אחד מתקיים $$.0_V+0'_V=0_V$$ מצד שני, לפי הניטרליות של $0_V$ וחוק החילוף, נובע כי $$.0_V+0'_V=0'_V$$
 
@@ -153,7 +158,7 @@ $$\forall w_1,w_2\in W\ \forall \alpha\in\mathbb{F}:\ w_1+w_2\in W,\quad \alpha 
 :::
 
 ::: proposition
-*`\label{prop:subspace}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. תהי $W\subseteq V$. התנאים הבאים שקולים:*
+**טענה 1.14**. *`\label{prop:subspace}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. תהי $W\subseteq V$. התנאים הבאים שקולים:*
 
 -   *$W$ תת-מרחב של $V$.*
 
@@ -161,7 +166,7 @@ $$\forall w_1,w_2\in W\ \forall \alpha\in\mathbb{F}:\ w_1+w_2\in W,\quad \alpha 
 :::
 
 ::: proof
-בכיוון הראשון: אם $W$ תת-מרחב של $V$, אז הוא מקיים את כל התכונות של הגדרה `\ref{def:vector-space}`{=latex} למרחב וקטורי. לא רק שיש וקטור אפס ב- $W$, מדובר על $0_V$ עצמו כי לכל $w\in W$ מתקיים $0_V=0\cdot w\in W$ לפי טענה `\ref{prop:vector-properties}`{=latex}.
+*Proof.* בכיוון הראשון: אם $W$ תת-מרחב של $V$, אז הוא מקיים את כל התכונות של הגדרה `\ref{def:vector-space}`{=latex} למרחב וקטורי. לא רק שיש וקטור אפס ב- $W$, מדובר על $0_V$ עצמו כי לכל $w\in W$ מתקיים $0_V=0\cdot w\in W$ לפי טענה `\ref{prop:vector-properties}`{=latex}.
 
 בכיוון השני: נתון שאקסיומת הסגירות מתקיימת עבור $W$, וגם האקסיומה של קיום וקטור האפס. כמעט כל שאר האקסיומות מתקיימות באופן אוטומטי לכל תת-קבוצה של $V$, אבל צריך לוודא קיום איבר נגדי לכל $w\in W$. זה נובע מסגירות לכפל בסקלר ומטענה `\ref{prop:vector-properties}`{=latex} כי מתקיים $-w=(-1)w\in W$. ◻
 :::
@@ -184,8 +189,8 @@ $W=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=0}$ היא תת-מרחב של $\mathbb{R}^4
 שימו לב כי תת-מרחב זה אמנם \"דומה\" ל- $\mathbb{R}^3$, אך הוא מוכל ב- $\mathbb{R}^4$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-נבדוק את התנאים לתת-מרחב:
+::: solution
+**פתרון 1.1**. נבדוק את התנאים לתת-מרחב:
 
 קיום וקטור האפס: מתקיים $(0,0,0,0)\in W$ כי $(0,0,0)\in\mathbb{R}^3$.
 
@@ -199,11 +204,11 @@ $W=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=0}$ היא תת-מרחב של $\mathbb{R}^4
 :::
 
 ::: proposition
-*$\mathop{\mathrm{N}}(A)$ הוא תת-מרחב של $\mathbb{F}^n$.*
+**טענה 1.18**. *$\mathop{\mathrm{N}}(A)$ הוא תת-מרחב של $\mathbb{F}^n$.*
 :::
 
 ::: proof
-ראשית, וקטור האפס $\underline{0}\in\mathbb{F}^n$ מקיים $\underline{0}\in \mathop{\mathrm{N}}(A)$ כי $A\underline{0}=\underline{0}$.
+*Proof.* ראשית, וקטור האפס $\underline{0}\in\mathbb{F}^n$ מקיים $\underline{0}\in \mathop{\mathrm{N}}(A)$ כי $A\underline{0}=\underline{0}$.
 
 יהיו $w_1,w_2\in \mathop{\mathrm{N}}(A)$. אז לפי ההגדרה מתקיים $Aw_1=\underline{0}=Aw_2$, ולכן $$.A(w_1+w_2)=Aw_1+Aw_2=\underline{0}+\underline{0}=\underline{0} \implies w_1+w_2\in \mathop{\mathrm{N}}(A)$$ בנוסף, לכל $\alpha\in \mathbb{F}$ מתקיים $$.A(\alpha w_1)=\alpha Aw_1=\alpha\cdot \underline{0}=\underline{0} \implies \alpha w_1\in \mathop{\mathrm{N}}(A)$$ אם כן, הראינו כי $\mathop{\mathrm{N}}(A)$ הוא תת-מרחב של $\mathbb{F}^n$ לפי טענה `\ref{prop:subspace}`{=latex}. ◻
 :::
@@ -216,8 +221,8 @@ $W=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=0}$ היא תת-מרחב של $\mathbb{R}^4
 הראו כי המישור $$H=\Set{(1+s,t,s+t)|s,t\in\mathbb{R}}$$ אינו תת-מרחב של $\mathbb{R}^3$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-אפשר לזהות קבוצה זו כקבוצת הפתרונות של המשוואה הלינארית $x+y-z=1$, שאינה הומוגנית ולכן קבוצת הפתרונות אינה תת-מרחב. אבל גם בלי המשוואה אפשר לבדוק שוקטור האפס לא שייך ל- $H$. נשווה את ההצגה הפרמטרית לוקטור האפס ונקבל: $$(1+s,t,s+t)=(0,0,0)$$ כך מקבלים $s=-1,t=0$ מצד אחד, ואת המשוואה $s+t=0$ מצד שני. סתירה.
+::: solution
+**פתרון 1.2**. אפשר לזהות קבוצה זו כקבוצת הפתרונות של המשוואה הלינארית $x+y-z=1$, שאינה הומוגנית ולכן קבוצת הפתרונות אינה תת-מרחב. אבל גם בלי המשוואה אפשר לבדוק שוקטור האפס לא שייך ל- $H$. נשווה את ההצגה הפרמטרית לוקטור האפס ונקבל: $$(1+s,t,s+t)=(0,0,0)$$ כך מקבלים $s=-1,t=0$ מצד אחד, ואת המשוואה $s+t=0$ מצד שני. סתירה.
 :::
 
 מה לגבי מטריצות? הבנו שאפשר להתייחס לקבוצה $\mathbb{M}_{m\times n}(\mathbb{F})$ כמרחב וקטורי (זה מעט מבלבל בהתחלה), אז אילו תת-מרחבים יש לה? הדוגמאות החשובות הן עבור מטריצות ריבועיות ($m=n$), ולמעשה כבר ראינו אותן.
@@ -242,8 +247,8 @@ $W=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=0}$ היא תת-מרחב של $\mathbb{R}^4
 בדקו שכל הדוגמאות הן אכן תת-מרחבים של $V=\mathbb{M}_{n\times n}(\mathbb{F})$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-קל לראות שמטריצת האפס שייכת לכל אחת מהקבוצות לעיל. היא אלכסונית (ולכן גם משולשית עליונה וגם משולשית תחתונה), סימטרית ואנטי-סימטרית. נסתפק בבדיקת הסגירות עבור $W_1$ כי שאר הבדיקות דומות.
+::: solution
+**פתרון 1.3**. קל לראות שמטריצת האפס שייכת לכל אחת מהקבוצות לעיל. היא אלכסונית (ולכן גם משולשית עליונה וגם משולשית תחתונה), סימטרית ואנטי-סימטרית. נסתפק בבדיקת הסגירות עבור $W_1$ כי שאר הבדיקות דומות.
 
 יהיו $A,B\in W_1$. אז לפי ההגדרה, לכל $i>j$ מתקיים $(A)_{ij}=0=(B)_{ij}$. לכן $$\forall i>j \quad (A+B)_{ij}=(A)_{ij}+(B)_{ij}=0+0=0$$ וזה בדיוק אומר שמתקיים $A+B\in W_1$. באופן דומה, לכל $\alpha\in\mathbb{F}$ מתקיים $$\forall i>j \quad (\alpha A)_{ij}=\alpha(A)_{ij}=\alpha\cdot 0=0$$ ולכן $\alpha A\in W_1$.
 :::
@@ -277,8 +282,8 @@ B=\begin{pmatrix}
 האם קבוצת כל המטריצות ההפיכות מסדר $2\times 2$ היא תת-מרחב של $\mathbb{M}_{2\times 2}(\mathbb{R})$?
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-מדובר על הקבוצה $W=\Set{A\in M_{2\times 2}(\mathbb{R})|\det(A)\neq 0}$. ניתן להראות שהיא לא מקיימת סגירות לחיבור וגם לא לכפל בסקלר (בגלל סקלר ה- $0$), אבל לפני הכל בולטת העובדה שמתקיים $$.\begin{pmatrix}
+::: solution
+**פתרון 1.4**. מדובר על הקבוצה $W=\Set{A\in M_{2\times 2}(\mathbb{R})|\det(A)\neq 0}$. ניתן להראות שהיא לא מקיימת סגירות לחיבור וגם לא לכפל בסקלר (בגלל סקלר ה- $0$), אבל לפני הכל בולטת העובדה שמתקיים $$.\begin{pmatrix}
 0 & 0 \\
 0 & 0
 \end{pmatrix}\notin W$$ בהעדר מטריצת האפס, $W$ בהכרח אינה תת-מרחב.
@@ -297,9 +302,6 @@ B=\begin{pmatrix}
 <figcaption>פרישה של שני וקטורים לדוגמה במישור ע"י שני וקטורים נתונים, כאשר בכחול מסומן הישר הנפרש ע"י וקטור אחד</figcaption>
 </figure>
 
-::: {#fig:Span2D .figure}
-![](simulations/Span2D.html?embed=1){width=720 height=720}
-:::
 באופן כללי, נרצה להגדיר צירוף לינארי של מספר וקטורים (אולי יותר גדול משניים):
 
 ::: definition
@@ -314,8 +316,8 @@ $(1,2,3,0)\in \mathbb{R}^4$ הוא צ\"ל של שלושת הוקטורים $$(1,
 האם $(0,0,0)$ הוא צ\"ל של $(1,0,0),(1,2,3)$?
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-כן, ואין צורך לפתור שום ממ\"ל. תמיד ניתן לקבל את וקטור האפס ע\"י בחירת כל הסקלרים להיות $0$. מתקיים $$.0(1,0,0)+0(1,2,3)=(0,0,0)$$
+::: solution
+**פתרון 1.5**. כן, ואין צורך לפתור שום ממ\"ל. תמיד ניתן לקבל את וקטור האפס ע\"י בחירת כל הסקלרים להיות $0$. מתקיים $$.0(1,0,0)+0(1,2,3)=(0,0,0)$$
 :::
 
 הרעיון של לקחת את כל הצירופים הלינאריים של קבוצה נתונה של וקטורים, נקרא פרישה. אפשר להשתמש בפרישה כדי להגדיר תת-מרחב חדש.
@@ -334,16 +336,13 @@ $(1,2,3,0)\in \mathbb{R}^4$ הוא צ\"ל של שלושת הוקטורים $$(1,
 <img src="images/Span3D.png" style="width:40.0%" />
 <figcaption>פרישה של שני וקטורים לדוגמה במרחב ע"י שלושה וקטורים נתונים, כאשר בכחול מסומן הישר הנפרש ע"י וקטור אחד ובירוק מסומן המישור הנפרש ע"י שני וקטורים</figcaption>
 </figure>
-::: {#fig:Span3D .figure}
-![](simulations/Span3D.html?embed=1){width=720 height=720}
-:::
 
 ::: proposition
-*`\label{prop:span-subspace}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$, ויהיו $v_1,v_2,...,v_k\in V$. אז $\mathop{\mathrm{Span}}(v_1,...,v_k)$ הוא תת-מרחב של $V$ המקיים $v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)$.*
+**טענה 1.33**. *`\label{prop:span-subspace}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$, ויהיו $v_1,v_2,...,v_k\in V$. אז $\mathop{\mathrm{Span}}(v_1,...,v_k)$ הוא תת-מרחב של $V$ המקיים $v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)$.*
 :::
 
 ::: proof
- נבדוק את התנאים של טענה `\ref{prop:subspace}`{=latex}.
+*Proof.* נבדוק את התנאים של טענה `\ref{prop:subspace}`{=latex}.
 
 -   קיום וקטור האפס: מתקיים $$.0_V=0\cdot v_1+0\cdot v_2+...+0\cdot v_k\in\mathop{\mathrm{Span}}(v_1,...,v_k)$$
 
@@ -373,11 +372,11 @@ $(1,2,3,0)\in \mathbb{R}^4$ הוא צ\"ל של שלושת הוקטורים $$(1,
 הטענה הבאה מראה שניתן לאפיין את $\mathop{\mathrm{Span}}(v_1,...,v_k)$ כתת-המרחב הקטן ביותר שמכיל את $\Set{v_1,...,v_k}$. הכוונה ב\"קטן ביותר\" היא שכל תת-מרחב אחר שמכיל את $\Set{v_1,...,v_k}$ בהכרח מכיל את $\mathop{\mathrm{Span}}(v_1,...,v_k)$.
 
 ::: proposition
-*`\label{prop:vector-span}`{=latex} יהי $W$ תת-מרחב של מ\"ו $V$ מעל $\mathbb{F}$. אז לכל $v_1,...,v_k\in V$ מתקיים $$.v_1,...,v_k\in W \iff \mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W$$*
+**טענה 1.35**. *`\label{prop:vector-span}`{=latex} יהי $W$ תת-מרחב של מ\"ו $V$ מעל $\mathbb{F}$. אז לכל $v_1,...,v_k\in V$ מתקיים $$.v_1,...,v_k\in W \iff \mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W$$*
 :::
 
 ::: proof
- הכיוון $\implies$: נניח כי $v_1,...,v_k\in W$. אז לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים: $$\forall 1\leq j\leq n\quad \alpha_jv_j\in W$$ מסגירות לכפל בסקלר. לכן, נובע מסגירות לחיבור כי $$.\alpha_1v_1+...+\alpha_kv_k\in W$$ הראינו שכל צירוף לינארי של $v_1,...,v_k$ שייך ל- $W$, כלומר $$.\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W$$
+*Proof.* הכיוון $\implies$: נניח כי $v_1,...,v_k\in W$. אז לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים: $$\forall 1\leq j\leq n\quad \alpha_jv_j\in W$$ מסגירות לכפל בסקלר. לכן, נובע מסגירות לחיבור כי $$.\alpha_1v_1+...+\alpha_kv_k\in W$$ הראינו שכל צירוף לינארי של $v_1,...,v_k$ שייך ל- $W$, כלומר $$.\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W$$
 
 הכיוון $\impliedby$: נניח כי $\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W$. לפי טענה `\ref{prop:span-subspace}`{=latex} מתקיים $$,v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)$$ ולכן $$.v_1,...,v_k\in W$$ ◻
 :::
@@ -427,8 +426,8 @@ $(1,2,3,0)\in \mathbb{R}^4$ הוא צ\"ל של שלושת הוקטורים $$(1,
 2.  מצאו קבוצה פורשת עבור תת-המרחב של המטריצות האנטי-סימטריות.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
- 
+::: solution
+**פתרון 1.6**.  
 
 1.  כל מטריצה סימטרית היא מהצורה $$.\begin{pmatrix}
     a & b\\
@@ -495,11 +494,11 @@ $(1,2,3,0)\in \mathbb{R}^4$ הוא צ\"ל של שלושת הוקטורים $$(1,
 הטענה הבאה מראה את הקשר בין מרחב עמודות לממ\"ל.
 
 ::: proposition
-*`\label{prop:column-space}`{=latex} תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$. אז לכל וקטור עמודה $w\in\mathbb{F}^m$ מתקיים $w\in\mathop{\mathrm{Col}}(A)$ אם ורק אם קיים פתרון לממ\"ל $Ax=w$.*
+**טענה 1.41**. *`\label{prop:column-space}`{=latex} תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$. אז לכל וקטור עמודה $w\in\mathbb{F}^m$ מתקיים $w\in\mathop{\mathrm{Col}}(A)$ אם ורק אם קיים פתרון לממ\"ל $Ax=w$.*
 :::
 
 ::: proof
- נכתוב את $A$ בהתאם לוקטורי העמודות שלה:
+*Proof.* נכתוב את $A$ בהתאם לוקטורי העמודות שלה:
 
 $$A=\begin{pmatrix}
 | & | & & | \\
@@ -650,8 +649,8 @@ $$\begin{aligned}
 \end{pmatrix}$$
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-נפתור את הממ\"ל ההומוגנית $Ax=\underline{0}$ ע\"י דירוג, ונראה שהוקטורים הפורשים מסתתרים בתוך ההצגה הפרמטרית.
+::: solution
+**פתרון 1.7**. נפתור את הממ\"ל ההומוגנית $Ax=\underline{0}$ ע\"י דירוג, ונראה שהוקטורים הפורשים מסתתרים בתוך ההצגה הפרמטרית.
 
 $$\begin{pmatrix}
 1 & 1 & 0 & -1 \\
@@ -831,20 +830,16 @@ t
 <figcaption>תלות לינארית בין ארבעה וקטורים במרחב, כאשר אף שלושה אינם על מישור אחד</figcaption>
 </figure>
 
-::: {#fig:LinearIndependence .figure}
-![](simulations/LinearIndependence.html?embed=1){width=720 height=720}
-:::
-
 ::: exercise
 במ\"ו $V$ מעל $\mathbb{F}$, האם ייתכן שקבוצה של וקטור יחיד היא ת\"ל?
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-הקבוצה $\Set{0_V}$ היא ת\"ל כי מתקיים $$1\cdot 0_V=0_V$$ וזהו צירוף לינארי לא טריוויאלי. לעומת זאת, לכל $v\neq 0_V$ הקבוצה $\Set{v}$ היא בת\"ל כי מתקיים $$.\alpha v=0_V \implies \alpha=0$$ ניתן להסיק $\alpha=0$ כי אחרת ניתן לחלק ב- $\alpha$ ולקבל סתירה.
+::: solution
+**פתרון 1.8**. הקבוצה $\Set{0_V}$ היא ת\"ל כי מתקיים $$1\cdot 0_V=0_V$$ וזהו צירוף לינארי לא טריוויאלי. לעומת זאת, לכל $v\neq 0_V$ הקבוצה $\Set{v}$ היא בת\"ל כי מתקיים $$.\alpha v=0_V \implies \alpha=0$$ ניתן להסיק $\alpha=0$ כי אחרת ניתן לחלק ב- $\alpha$ ולקבל סתירה.
 :::
 
 ::: proposition
-*`\label{prop:linear-dependence}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$ ויהיו $v_1,...,v_k\in V$. אז $\Set{v_1,...,v_k}$ ת\"ל אם ורק אם קיים $1\leq i\leq k$ כך ש- $$.v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$$*
+**טענה 1.49**. *`\label{prop:linear-dependence}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$ ויהיו $v_1,...,v_k\in V$. אז $\Set{v_1,...,v_k}$ ת\"ל אם ורק אם קיים $1\leq i\leq k$ כך ש- $$.v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$$*
 :::
 
 ::: remark
@@ -854,7 +849,7 @@ t
 :::
 
 ::: proof
- בכיוון הראשון, נניח שקיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. אז קיימים $\alpha_1,...,\alpha_{i-1}\in\mathbb{F}$ כך ש- $$.v_i=\alpha_1v_1+...+\alpha_{i-1}v_{i-1} \implies \alpha_1v_1+...+\alpha_{i-1}v_{i-1}+(-1)v_i+0\cdot v_{i+1}+...+0\cdot v_k=0_V$$ קיבלנו צירוף לינארי השווה ל- $0_V$ שבו לא כל הסקלרים $0$, ולכן $\Set{v_1,...,v_k}$ ת\"ל.
+*Proof.* בכיוון הראשון, נניח שקיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. אז קיימים $\alpha_1,...,\alpha_{i-1}\in\mathbb{F}$ כך ש- $$.v_i=\alpha_1v_1+...+\alpha_{i-1}v_{i-1} \implies \alpha_1v_1+...+\alpha_{i-1}v_{i-1}+(-1)v_i+0\cdot v_{i+1}+...+0\cdot v_k=0_V$$ קיבלנו צירוף לינארי השווה ל- $0_V$ שבו לא כל הסקלרים $0$, ולכן $\Set{v_1,...,v_k}$ ת\"ל.
 
 בכיוון השני, נניח כי $\Set{v_1,...,v_k}$ ת\"ל. אז קיימים $\alpha_1,...,\alpha_k\in\mathbb{F}$ לא כולם $0$ כך ש- $$.\alpha_1v_1+...+\alpha_kv_k=0_V$$ נבחר את ה- $i$ המקסימלי שמקיים $\alpha_i\neq0$. אם $i<k$ אז $\alpha_j=0$ לכל $i<j\leq k$. בכל מקרה מתקיים $$\begin{aligned}
 &\alpha_1v_1+...+\alpha_iv_i=0_V \implies \alpha_iv_i=-\alpha_1v_1-...-\alpha_{i-1}v_{i-1} \\
@@ -871,7 +866,7 @@ t
 :::
 
 ::: proof
- שני הסעיפים שקולים לוגית, כי \"בלתי תלויים לינארית\" זו השלילה של \"תלויים לינארית\". נוכיח את הסעיף הראשון: נניח כי $\Set{v_1,...,v_k}$ ת\"ל. אז לפי טענה `\ref{prop:linear-dependence}`{=latex} קיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. ושוב לפי הטענה, זה גם מראה כי $\Set{v_1,...,v_k,v_{k+1},...,v_l}$ ת\"ל. ◻
+*Proof.* שני הסעיפים שקולים לוגית, כי \"בלתי תלויים לינארית\" זו השלילה של \"תלויים לינארית\". נוכיח את הסעיף הראשון: נניח כי $\Set{v_1,...,v_k}$ ת\"ל. אז לפי טענה `\ref{prop:linear-dependence}`{=latex} קיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. ושוב לפי הטענה, זה גם מראה כי $\Set{v_1,...,v_k,v_{k+1},...,v_l}$ ת\"ל. ◻
 :::
 
 ::: remark
@@ -883,7 +878,7 @@ t
 :::
 
 ::: proof
- נניח בשלילה כי $\Set{v_1,...,v_k,w}$ ת\"ל. אז לפי טענה `\ref{prop:linear-dependence}`{=latex}, אחד הוקטורים נפרש ע\"י הוקטורים הקודמים לו. נתון כי $w\notin\mathop{\mathrm{Span}}(v_1,...v_k)$, ולכן קיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. אז $\Set{v_1,...,v_k}$ ת\"ל וזו סתירה להנחה. ◻
+*Proof.* נניח בשלילה כי $\Set{v_1,...,v_k,w}$ ת\"ל. אז לפי טענה `\ref{prop:linear-dependence}`{=latex}, אחד הוקטורים נפרש ע\"י הוקטורים הקודמים לו. נתון כי $w\notin\mathop{\mathrm{Span}}(v_1,...v_k)$, ולכן קיים $1\leq i\leq k$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. אז $\Set{v_1,...,v_k}$ ת\"ל וזו סתירה להנחה. ◻
 :::
 
 המסקנה הבאה נקראת \"למת הדילול\" והיא תשמש אותנו בהמשך הפרק. היא מסבירה איך ניתן לחלץ מקבוצה הפורשת מ\"ו תת-קבוצה שהיא בת\"ל וגם פורשת. הרעיון הוא \"לדלל\" את כל הוקטורים העודפים/מיותרים שנפרשים ע\"י הוקטורים האחרים.
@@ -897,7 +892,7 @@ t
 :::
 
 ::: proof
- בלי הגבלת הכלליות, קיים $1\leq l\leq k$ כך ש- $$\Set{v_1,...,v_l}=\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}$$ (הנחנו שהוקטורים התלויים בקודמיהם מופיעים בסוף הרשימה, וניתן לדאוג לכך ע\"י שינוי האינדקסים שלהם). אז לפי טענה `\ref{prop:linear-dependence}`{=latex}, זו קבוצה בת\"ל כי אחרת קיים $1\leq i\leq l$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$ וזו סתירה להגדרה של תת-הקבוצה.
+*Proof.* בלי הגבלת הכלליות, קיים $1\leq l\leq k$ כך ש- $$\Set{v_1,...,v_l}=\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}$$ (הנחנו שהוקטורים התלויים בקודמיהם מופיעים בסוף הרשימה, וניתן לדאוג לכך ע\"י שינוי האינדקסים שלהם). אז לפי טענה `\ref{prop:linear-dependence}`{=latex}, זו קבוצה בת\"ל כי אחרת קיים $1\leq i\leq l$ כך ש- $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$ וזו סתירה להגדרה של תת-הקבוצה.
 
 כדי להראות כי $V=\mathop{\mathrm{Span}}(v_1,...,v_l)$, די לבדוק שמתקיים $v_{l+1},...,v_k\in\mathop{\mathrm{Span}}(v_1,...,v_l)$ כי אז ינבע לפי טענה `\ref{prop:vector-span}`{=latex} $$V=\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq\mathop{\mathrm{Span}}(v_1,...,v_l)\subseteq V$$ ומכאן השוויון. נשים לב שלפי ההגדרה לכל $l+1\leq i\leq k$ מתקיים $v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})$. ולכן $$\begin{aligned}
 &v_{l+1}\in\mathop{\mathrm{Span}}(v_1,...,v_l) \implies v_{l+2}\in\mathop{\mathrm{Span}}(v_1,...,v_l,v_{l+1})=\mathop{\mathrm{Span}}(v_1,...,v_l) \\
@@ -911,8 +906,8 @@ t
 ב- $\mathbb{R}^4$ נסתכל על הקבוצה $$S_1=\Set{(1,1,0,1),(0,1,1,1),(1,2,1,2),(2,1,-1,1)}$$ הפורשת תת-מרחב $W$. מצאו תת-קבוצה $S_2\subseteq S_1$ בת\"ל הפורשת את $W$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-נרכיב את המטריצה שעמודותיה הן הוקטורים: $$A=\begin{pmatrix}
+::: solution
+**פתרון 1.9**. נרכיב את המטריצה שעמודותיה הן הוקטורים: $$A=\begin{pmatrix}
 1&0&1&2\\
 1&1&2&1\\
 0&1&1&-1\\
@@ -990,7 +985,7 @@ $$\begin{pmatrix}
 :::
 
 ::: proposition
-*יהי $V$ מ\"ו מעל $\mathbb{F}$. אז התנאים הבאים שקולים:*
+**טענה 1.62**. *יהי $V$ מ\"ו מעל $\mathbb{F}$. אז התנאים הבאים שקולים:*
 
 -   *ל- $V$ קיים בסיס.*
 
@@ -998,13 +993,13 @@ $$\begin{pmatrix}
 :::
 
 ::: proof
- בכיוון הראשון, נניח כי $\Set{v_1,...,v_n}$ היא בסיס ל- $V$. אז בפרט $V=\mathop{\mathrm{Span}}(v_1,...,v_n)$, ולכן $V$ נוצר סופית.
+*Proof.* בכיוון הראשון, נניח כי $\Set{v_1,...,v_n}$ היא בסיס ל- $V$. אז בפרט $V=\mathop{\mathrm{Span}}(v_1,...,v_n)$, ולכן $V$ נוצר סופית.
 
 בכיוון השני, נניח כי $V$ נוצר סופית ולכן קיימת $\Set{v_1,...,v_k}$ כך ש- $V=\mathop{\mathrm{Span}}(v_1,...,v_k)$. לפי מסקנה `\ref{cor:basis-extraction}`{=latex} (למת הדילול) קיימת תת-קבוצה בת\"ל של $\Set{v_1,...,v_k}$ הפורשת את $V$, כלומר היא בסיס. ◻
 :::
 
 ::: proposition
-*`\label{prop:unique-scalars}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. יהיו $v_1,...,v_n\in V$. אז התנאים הבאים שקולים:*
+**טענה 1.63**. *`\label{prop:unique-scalars}`{=latex} יהי $V$ מ\"ו מעל $\mathbb{F}$. יהיו $v_1,...,v_n\in V$. אז התנאים הבאים שקולים:*
 
 -   *$\Set{v_1,...,v_n}$ היא בסיס ל- $V$.*
 
@@ -1016,7 +1011,7 @@ $$\begin{pmatrix}
 :::
 
 ::: proof
- בכיוון הראשון, נניח כי $\Set{v_1,...,v_n}$ היא בסיס ל- $V$. יהי $v\in V$. הקבוצה פורשת את $V$, ולכן קיימים $\alpha_1,...,\alpha_n\in\mathbb{F}$ כך ש- $\alpha_1v_1+...+\alpha_nv_n=v$. כדי להראות שהם יחידים, נניח שקיימים בנוסף $\beta_1,...,\beta_n\in\mathbb{F}$ כך ש- $\beta_1v_1+...+\beta_nv_n=v$. אז נובע כי $$.\alpha_1v_1+...+\alpha_nv_n=\beta_1v_1+...+\beta_nv_n$$ נעביר אגף ונקבל $$.(\alpha_1-\beta_1)v_1+...+(\alpha_n-\beta_n)v_n=0_V$$
+*Proof.* בכיוון הראשון, נניח כי $\Set{v_1,...,v_n}$ היא בסיס ל- $V$. יהי $v\in V$. הקבוצה פורשת את $V$, ולכן קיימים $\alpha_1,...,\alpha_n\in\mathbb{F}$ כך ש- $\alpha_1v_1+...+\alpha_nv_n=v$. כדי להראות שהם יחידים, נניח שקיימים בנוסף $\beta_1,...,\beta_n\in\mathbb{F}$ כך ש- $\beta_1v_1+...+\beta_nv_n=v$. אז נובע כי $$.\alpha_1v_1+...+\alpha_nv_n=\beta_1v_1+...+\beta_nv_n$$ נעביר אגף ונקבל $$.(\alpha_1-\beta_1)v_1+...+(\alpha_n-\beta_n)v_n=0_V$$
 
 נתון כי $v_1,...,v_n$ גם בת\"ל ולכן: $$\forall 1\leq j\leq n \quad \alpha_j-\beta_j=0 \implies \alpha_j=\beta_j$$
 
@@ -1042,7 +1037,7 @@ v_1 & v_2 & \cdots & v_n \\
 עבור $w=0$ ניתן לראות את הקשר לתלות לינארית. מכאן הטענה הבאה:
 
 ::: proposition
-*`\label{prop:nullity}`{=latex} יהיו $v_1,...,v_k\in\mathbb{F}^n$. אז הוקטורים הנ\"ל הם בת\"ל אם ורק אם קיים פתרון יחיד לממ\"ל $Ax=\underline{0}$ כאשר $$,A=\begin{pmatrix}
+**טענה 1.65**. *`\label{prop:nullity}`{=latex} יהיו $v_1,...,v_k\in\mathbb{F}^n$. אז הוקטורים הנ\"ל הם בת\"ל אם ורק אם קיים פתרון יחיד לממ\"ל $Ax=\underline{0}$ כאשר $$,A=\begin{pmatrix}
 | & | & & | \\
 v_1 & v_2 & \cdots & v_k \\
 | & | & & |
@@ -1050,7 +1045,7 @@ v_1 & v_2 & \cdots & v_k \\
 :::
 
 ::: proof
- לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים
+*Proof.* לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים
 
 $$.\alpha_1v_1+...+\alpha_kv_k=0 \iff Ax=\underline{0}$$
 
@@ -1068,7 +1063,7 @@ $$.\alpha_1v_1+...+\alpha_kv_k=0 \iff Ax=\underline{0}$$
 :::
 
 ::: proof
- נסתכל על $$.A=\begin{pmatrix}
+*Proof.* נסתכל על $$.A=\begin{pmatrix}
 | & | & & | \\
 v_1 & v_2 & \cdots & v_k \\
 | & | & & |
@@ -1124,7 +1119,7 @@ v_1 & v_2 & \cdots & v_k \\
 :::
 
 ::: proof
- תשעת הסעיפים הראשונים שקולים לפי `\ref{thm:invertible}`{=latex} ו- `\ref{thm:det-invertible}`{=latex}. לפי `\ref{prop:column-space}`{=latex} ו- `\ref{prop:nullity}`{=latex} מתקיים $$(\text{י}) \iff (\text{ג})\iff(\text{ה})\iff(\text{יא})$$ מכאן שגם $(\text{יב})$ שקול לכל התנאים הקודמים, כי הוא שילוב של $(\text{י})$ ו- $(\text{יא})$.
+*Proof.* תשעת הסעיפים הראשונים שקולים לפי `\ref{thm:invertible}`{=latex} ו- `\ref{thm:det-invertible}`{=latex}. לפי `\ref{prop:column-space}`{=latex} ו- `\ref{prop:nullity}`{=latex} מתקיים $$(\text{י}) \iff (\text{ג})\iff(\text{ה})\iff(\text{יא})$$ מכאן שגם $(\text{יב})$ שקול לכל התנאים הקודמים, כי הוא שילוב של $(\text{י})$ ו- $(\text{יא})$.
 
 בשביל שלושת הסעיפים האחרונים נסתכל על $A^t$. $(\text{טו})-(\text{יג})$ שקולים להפיכות של $A^t$, ולפי תרגיל `\ref{exer:inverse-product}`{=latex}, $A^t$ הפיכה אם ורק אם $A$ הפיכה. לכן, $(\text{טו})-(\text{יג})$ שקולים לכל שאר הסעיפים. ◻
 :::
@@ -1146,7 +1141,7 @@ v_1 & v_2 & \cdots & v_k \\
 :::
 
 ::: proof
- יש שלושה כיוונים להוכיח (אחד לכל זוג).
+*Proof.* יש שלושה כיוונים להוכיח (אחד לכל זוג).
 
 $:\text{(ג)}\impliedby \text{(ב)}+\text{(א)}$ הוכחנו זאת במסקנה `\ref{cor:size-dim}`{=latex}.
 
@@ -1307,11 +1302,11 @@ $$\begin{aligned}
 :::
 
 ::: proposition
-*`\label{prop:row-space-invariance}`{=latex} לכל $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ ולכל פש\"א $S$, מתקיים $\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)$.*
+**טענה 1.72**. *`\label{prop:row-space-invariance}`{=latex} לכל $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ ולכל פש\"א $S$, מתקיים $\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)$.*
 :::
 
 ::: proof
- תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ עם שורות $R_1,...,R_m\in\mathbb{F}^n$, ותהי $S$ פש\"א. אם מדובר בהחלפה בין שורות, ברור כי $\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)$ שהרי אין חשיבות לסדר הוקטורים הפורשים (לפי חוק החילוף). בכל מקרה אחר, $S$ משפיעה רק על שורה אחת $R_i$.
+*Proof.* תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ עם שורות $R_1,...,R_m\in\mathbb{F}^n$, ותהי $S$ פש\"א. אם מדובר בהחלפה בין שורות, ברור כי $\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)$ שהרי אין חשיבות לסדר הוקטורים הפורשים (לפי חוק החילוף). בכל מקרה אחר, $S$ משפיעה רק על שורה אחת $R_i$.
 
 נוכיח כי $\mathop{\mathrm{Row}}(S(A))\subseteq \mathop{\mathrm{Row}}(A)$: לפי טענה `\ref{prop:vector-span}`{=latex}, מספיק לבדוק שהשורה החדשה $R'_i$ במקום $R_i$ מקיימת $R'_i\in\mathop{\mathrm{Span}}(R_1,...,R_m)$. נשארו שני מקרים:
 
@@ -1333,7 +1328,7 @@ $$\begin{aligned}
 :::
 
 ::: proof
- לפי הנתון קיימות פש\"אות $S_1,...,S_k$ כך ש- $B=S_k(...(S_1(A))$, או באופן שקול קיימות מטריצות אלמנטריות $E_1,...,E_k\in\mathbb{M}_{m\times m}$ כך ש- $B=E_k\cdots E_1A$. אז לפי טענה `\ref{prop:row-space-invariance}`{=latex} נובע כי $$.\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(E_1A)=....=\mathop{\mathrm{Row}}(E_k\cdots E_1A)=\mathop{\mathrm{Row}}(B)$$ ◻
+*Proof.* לפי הנתון קיימות פש\"אות $S_1,...,S_k$ כך ש- $B=S_k(...(S_1(A))$, או באופן שקול קיימות מטריצות אלמנטריות $E_1,...,E_k\in\mathbb{M}_{m\times m}$ כך ש- $B=E_k\cdots E_1A$. אז לפי טענה `\ref{prop:row-space-invariance}`{=latex} נובע כי $$.\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(E_1A)=....=\mathop{\mathrm{Row}}(E_k\cdots E_1A)=\mathop{\mathrm{Row}}(B)$$ ◻
 :::
 
 ::: remark
@@ -1348,8 +1343,8 @@ $$\begin{aligned}
 2.  אם $B$ הפיכה, אז מתקיים $\mathop{\mathrm{Row}}(BA)=\mathop{\mathrm{Row}}(A)$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
- 
+::: solution
+**פתרון 1.10**.  
 
 1.  נראה כי כל שורה של $BA$ היא צירוף לינארי של שורות $A$, ולכן ינבע מטענה `\ref{prop:vector-span}`{=latex} כי $\mathop{\mathrm{Row}}(BA)\subseteq \mathop{\mathrm{Row}}(A)$. נסמן את שורות $A$ ב- $R_1,...,R_n$, ובנוסף נסמן $$.B=\begin{pmatrix}
     b_{11} &\cdots &b_{1n} \\
@@ -1550,8 +1545,8 @@ $$\begin{aligned}
 \end{pmatrix}\right]_B$
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-ראשית, בהכרח מתקיים $$\left[\begin{pmatrix}
+::: solution
+**פתרון 1.11**. ראשית, בהכרח מתקיים $$\left[\begin{pmatrix}
 0 \\
 0
 \end{pmatrix}\right]_B=\begin{pmatrix}
@@ -1628,7 +1623,7 @@ $$\begin{aligned}
 לוקטור קוארדינטות יש תכונות בסיסיות אך חשובות:
 
 ::: proposition
-*`\label{prop:coordinates-linear}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$ ו- $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$. אז לכל $v,w\in V$ ו- $\alpha\in F$. מתקיים:*
+**טענה 1.82**. *`\label{prop:coordinates-linear}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$ ו- $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$. אז לכל $v,w\in V$ ו- $\alpha\in F$. מתקיים:*
 
 1.  *$$[v+w]_B=[v]_B+[w]_B$$*
 
@@ -1644,7 +1639,7 @@ $$\begin{aligned}
 :::
 
 ::: proof
- יהיו $v,w\in V$. קיימים $a_1,...,a_n,b_1,...,b_n\in\mathbb{F}$ כך ש- $$.v=a_1v_1+...+a_nv_n,\quad w=b_1v_1+...+b_nv_n$$ כלומר מתקיים $$.[v]_B=\begin{pmatrix}
+*Proof.* יהיו $v,w\in V$. קיימים $a_1,...,a_n,b_1,...,b_n\in\mathbb{F}$ כך ש- $$.v=a_1v_1+...+a_nv_n,\quad w=b_1v_1+...+b_nv_n$$ כלומר מתקיים $$.[v]_B=\begin{pmatrix}
 a_1 \\
 \vdots \\
 a_n
@@ -1694,7 +1689,7 @@ b_n
 :::
 
 ::: proof
- לפי טענה `\ref{prop:coordinates-linear}`{=latex}, כל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים: $$\begin{aligned}
+*Proof.* לפי טענה `\ref{prop:coordinates-linear}`{=latex}, כל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים: $$\begin{aligned}
 u=\alpha_1w_1+...+\alpha_kw_k &\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 &\iff [u]_B=\alpha_1[w_1]_B+...+\alpha_k[w_k]_B
 \end{aligned}$$ אז מתקיים $$.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)$$ ◻
@@ -1715,7 +1710,7 @@ u=\alpha_1w_1+...+\alpha_kw_k &\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 :::
 
 ::: proof
-
+*Proof.*
 
 1.  לפי טענה `\ref{prop:coordinates-linear}`{=latex}, לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ מתקיים: $$\begin{aligned}
     \alpha_1v_1+...+\alpha_kv_k=0_V &\iff [\alpha_1v_1+...+\alpha_kv_k]_B=[0_V]_B \\
@@ -1839,7 +1834,7 @@ $$\begin{aligned}
 :::
 
 ::: proof
- נסתכל על וקטורי הקוארדינטות ביחס ל- $B$ ונשתמש במשפט `\ref{thm:test-by-coordinates}`{=latex} ומסקנה `\ref{cor:size-dim}`{=latex}.
+*Proof.* נסתכל על וקטורי הקוארדינטות ביחס ל- $B$ ונשתמש במשפט `\ref{thm:test-by-coordinates}`{=latex} ומסקנה `\ref{cor:size-dim}`{=latex}.
 
 1.  נניח כי $\Set{v_1,...,v_k}$ בת\"ל. אז $\Set{[v_1]_B,...,[v_k]_B}$ בת\"ל ב- $\mathbb{F}^n$, ולכן $k\leq n$.
 
@@ -1874,8 +1869,8 @@ $$\begin{aligned}
 2.  האם קיימת $\Set{B_1,B_2,B_3}\subseteq\mathbb{M}_{2\times 2}(\mathbb{R})$ שפורשת את $\mathbb{M}_{2\times 2}(\mathbb{R})$?
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-נשים לב שמתקיים $\dim(\mathbb{M}_{2\times 2}(\mathbb{R}))=4$.
+::: solution
+**פתרון 1.12**. נשים לב שמתקיים $\dim(\mathbb{M}_{2\times 2}(\mathbb{R}))=4$.
 
 1.  התשובה היא לא. לפי מסקנה `\ref{cor:size-dim2}`{=latex}, הגודל המקסימלי של קבוצה בת\"ל ב- $\mathbb{M}_{2\times 2}(\mathbb{R})$ הוא $4$.
 
@@ -1895,8 +1890,8 @@ i & 1
 \end{pmatrix}\right)$$ מהו $\dim(W)$? מצאו בסיס ל- $W$ והשלימו אותו לבסיס ל- $\mathbb{M}_{2\times 2}(\mathbb{C})$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-נשתמש בוקטורי קוארדינטות לפי הבסיס הסטנדרטי $E$ של $\mathbb{M}_{2\times 2}(\mathbb{C})$. נכתוב אותם כשורות מטריצה (כי המטרה היא להשלים את הבסיס), נדרג אותה ונקבל $$\begin{aligned}
+::: solution
+**פתרון 1.13**. נשתמש בוקטורי קוארדינטות לפי הבסיס הסטנדרטי $E$ של $\mathbb{M}_{2\times 2}(\mathbb{C})$. נכתוב אותם כשורות מטריצה (כי המטרה היא להשלים את הבסיס), נדרג אותה ונקבל $$\begin{aligned}
 \begin{pmatrix}
 1 & i & i & 1 \\
 0 & 1 & 1 & 0 \\
@@ -1945,7 +1940,7 @@ i & 1
 :::
 
 ::: proof
- מהנתון $\dim(V)=n$ נובע שקיים בסיס $B$ ל- $V$ בגודל $n$. נסמן $S=\Set{v_1,...,v_k}$ ונסתכל על הקבוצה $S_B=\Set{[v_1]_B,...,[v_k]_B}\subseteq\mathbb{F}^n$. אז לפי משפט `\ref{thm:3-for-2}`{=latex}, כל שניים מהתנאים הבאים גורר את התנאי השלישי:
+*Proof.* מהנתון $\dim(V)=n$ נובע שקיים בסיס $B$ ל- $V$ בגודל $n$. נסמן $S=\Set{v_1,...,v_k}$ ונסתכל על הקבוצה $S_B=\Set{[v_1]_B,...,[v_k]_B}\subseteq\mathbb{F}^n$. אז לפי משפט `\ref{thm:3-for-2}`{=latex}, כל שניים מהתנאים הבאים גורר את התנאי השלישי:
 
 1.  $S_B$ בת\"ל.
 
@@ -1960,8 +1955,8 @@ i & 1
 יהי $V$ מ\"ו מעל $\mathbb{F}$ בעל בסיס $B=\Set{v_1,v_2,v_3}$. הוכיחו כי גם $$B'=\Set{v_1,v_1+v_2,v_1+v_2+v_3}$$ היא בסיס ל- $V$.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-ניתן לפתור את התרגיל בעזרת וקטורי קוארדינטות, אבל לא נעשה זאת. לפי הנתון $\dim(V)=3$, ובנוסף ב- $B'$ יש שלושה וקטורים. לכן, לפי משפט \"שלישי חינם\" מספיק להוכיח ש- $B'$ פורשת את $V$. כך נקבל שהיא גם בת\"ל ולכן בסיס ל- $V$.
+::: solution
+**פתרון 1.14**. ניתן לפתור את התרגיל בעזרת וקטורי קוארדינטות, אבל לא נעשה זאת. לפי הנתון $\dim(V)=3$, ובנוסף ב- $B'$ יש שלושה וקטורים. לכן, לפי משפט \"שלישי חינם\" מספיק להוכיח ש- $B'$ פורשת את $V$. כך נקבל שהיא גם בת\"ל ולכן בסיס ל- $V$.
 
 בשביל הפרישה די להראות כי $v_1,v_2,v_3\in\mathop{\mathrm{Span}}(B)$, שהרי אז ינבע כי $$.V=\mathop{\mathrm{Span}}(B)\subseteq \mathop{\mathrm{Span}}(B')\subseteq V \implies \mathop{\mathrm{Span}}(B')=V$$
 
@@ -1984,7 +1979,7 @@ v_3&=(v_1+v_2+v_3)-(v_1+v_2)\in\mathop{\mathrm{Span}}(B')
 :::
 
 ::: proof
- נסמן $\dim(V)=n$.
+*Proof.* נסמן $\dim(V)=n$.
 
 1.  אם $W=\Set{0_V}$, אז הוא נוצר סופית ומתקיים $\dim(W)=0\leq\dim(V)$. אחרת, קיים $0_V\neq w_1\in W$ כך ש- $\mathop{\mathrm{Span}}(w_1)\subseteq W$. אם מתקיים שוויון, אז $\dim(W)=1$ וסיימנו. לחילופין, נוסיף $w_2\in W$ כך ש- $w_2\notin\mathop{\mathrm{Span}}(W_1)$, ונקבל $\Set{w_1,w_2}$ בת\"ל כך ש- $\mathop{\mathrm{Span}}(w_1,w_2)\subseteq W$. אם עדיין אין שוויון, נמשיך באופן דומה ע\"י הוספת וקטור בכל שלב עד שנקבל $B=\Set{w_1,...,w_k}$ בת\"ל כך ש- $\mathop{\mathrm{Span}}(w_1,...,w_k)=W$. התהליך חייב להסתיים עם שוויון עבור $k\leq n$ וקטורים, כי לא קיימת קבוצה בת\"ל ב- $V$ בגודל $n+1$ לפי מסקנה `\ref{cor:size-dim2}`{=latex}. אז $W$ נוצר סופית כי $B$ היא בסיס שלו, ומתקיים $$.\dim(W)=k\leq n=\dim(V)$$
 
@@ -2131,8 +2126,8 @@ $$\begin{aligned}
 `\label{exer:column-dim}`{=latex} יהיו $\Set{v_1,...,v_k}\subseteq\mathbb{F}^n$ ו- $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. הוכיחו כי $\Set{Av_1,...,Av_k}$ בת\"ל אם ורק אם $\Set{v_1,...,v_k}$ בת\"ל.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
-בכיוון הראשון, נניח כי $\Set{v_1,...,v_k}$ בת\"ל וקיימים $\alpha_1,..,\alpha_k\in\mathbb{F}$ כך ש- $$.\alpha_1Av_1+...+\alpha_kAv_k=0 \iff A(\alpha_1v_1+...+\alpha_kv_k)=\underline{0}$$ מהפיכות $A$ נובע כי $\alpha_1v_1+...+\alpha_kv_k=\underline{0}$, ומהנתון על $\Set{v_1,...,v_k}$ נובע כי בהכרח $\alpha_1=...=\alpha_k=0$. אז $\Set{Av_1,...,Av_k}$ בת\"ל.
+::: solution
+**פתרון 1.15**. בכיוון הראשון, נניח כי $\Set{v_1,...,v_k}$ בת\"ל וקיימים $\alpha_1,..,\alpha_k\in\mathbb{F}$ כך ש- $$.\alpha_1Av_1+...+\alpha_kAv_k=0 \iff A(\alpha_1v_1+...+\alpha_kv_k)=\underline{0}$$ מהפיכות $A$ נובע כי $\alpha_1v_1+...+\alpha_kv_k=\underline{0}$, ומהנתון על $\Set{v_1,...,v_k}$ נובע כי בהכרח $\alpha_1=...=\alpha_k=0$. אז $\Set{Av_1,...,Av_k}$ בת\"ל.
 
 בכיוון השני (שלא דורש הפיכות), נניח כי $\Set{Av_1,...,Av_k}$ בת\"ל וקיימים $\alpha_1,..,\alpha_k\in\mathbb{F}$ כך ש- $$.\alpha_Av_1+...+\alpha_kv_k=\underline{0}$$ נכפיל את שני האגפים ב- $A$ ונקבל $$.A(\alpha_1v_1+...+\alpha_kv_k)=A\underline{0} \iff \alpha_1Av_1+...+\alpha_kAv_k=\underline{0}$$ לכן, בהכרח מתקיים $\alpha_1=...=\alpha_k=0$ לפי ההנחה. אז $\Set{v_1,...,v_k}$ בת\"ל.
 :::
@@ -2406,7 +2401,8 @@ $$
 2.  $\dim(\mathop{\mathrm{N}}(A))\geq n-m$
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
+::: solution
+**פתרון 1.16**.  
 
 1.  לפי סעיף א' של משפט `\ref{thm:rank-nullity}`{=latex}, מתקיים $$.\mathop{\mathrm{rank}}(A^t)=\dim(\mathop{\mathrm{Col}}(A^t))=\dim(\mathop{\mathrm{Row}}(A))=\mathop{\mathrm{rank}}(A)$$
 
@@ -2433,7 +2429,8 @@ $$
 2.  מצאו מטריצה $A$ כנ\"ל.
 :::
 
-::: {.callout-note collapse="true" title="פתרון"}
+::: solution
+**פתרון 1.17**.
 
 1.  מספר העמודות של $A$ הוא בהכרח $4$, כי מספר העמודות שווה למספר המשתנים של הממ\"ל $Ax=\underline{0}$ ונתון שקבוצת הפתרונות היא תת-מרחב של $\mathbb{R}^4$. הקבוצה $\Set{\begin{pmatrix}
     1 \\

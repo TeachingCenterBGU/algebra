@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דירוג מטריצה מורחבת</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 { margin-bottom: 20px; color: #2c3e50; }
+  
+  .container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 1100px; /* רחב יותר למטריצה כפולה */
+    width: 100%;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .info-bar { margin-bottom: 20px; min-height: 40px; }
+
+  .stage-indicator {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: all 0.3s;
+  }
+  
+  .stage-indicator.done { background-color: #e8f5e9; color: #2e7d32; }
+
+  /* --- אזור התצוגה המרכזי --- */
+  .display-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    direction: ltr; /* זרימה משמאל לימין */
+    gap: 15px;
+  }
+
+  /* צד שמאל: תווית או חץ */
+  .left-pane {
+      display: flex;
+      align-items: center;     
+      justify-content: flex-end; 
+      width: 250px;            
+      height: 120px;           
+      position: relative;
+  }
+
+  /* עיצוב טקסט מתמטי ללא ספרייה חיצונית */
+  .math { font-family: 'Times New Roman', serif; font-style: italic; }
+  .math-bold { font-family: 'Times New Roman', serif; font-weight: bold; font-style: normal; font-size: 2.2em; }
+
+  .matrix-label {
+    white-space: nowrap;
+    line-height: 1;
+    margin-top: -5px;
+  }
+
+  /* חץ ונוסחה */
+  .arrow-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  svg.arrow-svg {
+    width: 200px;
+    height: 24px;
+    overflow: visible;
+    display: block;
+  }
+
+  .arrow-line {
+    stroke: #333;
+    stroke-width: 2;
+    fill: none;
+    marker-end: url(#arrowhead);
+  }
+
+  .formula {
+    margin-top: 5px;
+    font-size: 1.3em;
+    color: #d32f2f;
+    font-family: 'Times New Roman', serif;
+    white-space: nowrap;
+  }
+
+  /* --- המטריצה המורחבת --- */
+  .matrix-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .bracket {
+      width: 15px;
+      border: 3px solid #333;
+      margin-bottom: 4px;
+  }
+  
+  .bracket-left {
+      border-right: none;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+  }
+
+  .bracket-right {
+      border-left: none;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+  }
+
+  /* הגריד: 6 עמודות (3 למטריצה A ו-3 ל-I) */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 60px);
+    grid-gap: 8px;
+    margin: 0 8px;
+    padding: 10px 0;
+  }
+
+  .cell {
+    width: 60px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 0.9em;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    direction: ltr; 
+    transition: background-color 0.3s;
+  }
+
+  /* קו הפרדה אנכי בין A ל-I (אחרי התא השלישי בכל שורה) */
+  /* הנוסחה: 6n+3 בוחרת את האלמנטים 3, 9, 15 */
+  .cell:nth-child(6n+3) {
+      border-right: 3px solid #333;
+      margin-right: 5px; /* מרווח קטן מהקו */
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+  }
+  .cell:nth-child(6n+4) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+
+  .active-row {
+    background-color: #fffde7;
+    border-color: #fbc02d;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* כפתורים */
+  .controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    direction: rtl;
+  }
+
+  button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.2s;
+    background-color: #37474f;
+    color: white;
+  }
+
+  button:hover { background-color: #546e7a; }
+  button:disabled { background-color: #cfd8dc; cursor: not-allowed; }
+  #btnReset { background-color: #c62828; }
+  #btnReset:hover { background-color: #d32f2f; }
+
+  /* שברים ב-HTML נקי */
+  .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.85em;
+      margin: 0 2px;
+  }
+  .fraction > span { display: block; padding: 0 2px; }
+  .fraction span.top { border-bottom: 1px solid #000; }
+  
+  .negative-sign { margin-right: 1px; }
+
+</style>
+</head>
+<body>
+
+  <!-- SVG Marker Definition -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+      refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+      </marker>
+    </defs>
+  </svg>
+
+  <h1>דירוג מטריצה מורחבת למציאת ההופכית</h1>
+  
+  <div class="container">
+    
+    <div class="info-bar">
+        <div id="stageText" class="stage-indicator">טוען...</div>
+    </div>
+
+    <div class="display-area">
+        
+        <!-- צד שמאל: תווית או חץ -->
+        <div class="left-pane">
+            
+            <!-- תווית התחלה/סוף -->
+            <!-- שימוש ב-HTML נקי למתמטיקה למניעת תקלות טעינה -->
+            <div id="matrixLabel" class="matrix-label math-bold" style="display:none;">
+                [<span class="math">A</span> | <span class="math">I</span>] =
+            </div>
+            
+            <!-- חץ ונוסחה -->
+            <div id="arrowContainer" class="arrow-container" style="display: none;">
+                <svg class="arrow-svg">
+                    <line x1="0" y1="12" x2="190" y2="12" class="arrow-line" marker-end="url(#arrowhead)" />
+                </svg>
+                <div id="formulaText" class="formula"></div>
+            </div>
+
+        </div>
+
+        <!-- המטריצה המורחבת -->
+        <div class="matrix-wrapper">
+            <div class="bracket bracket-left"></div>
+            <div class="matrix-grid" id="grid"></div>
+            <div class="bracket bracket-right"></div>
+        </div>
+
+    </div>
+
+    <div class="controls">
+      <button onclick="prevStep()" id="btnPrev" disabled>צעד אחורה</button>
+      <button onclick="togglePlay()" id="btnPlay">נגן אנימציה</button>
+      <button onclick="nextStep()" id="btnNext">צעד קדימה</button>
+      <button onclick="reset()" id="btnReset">איפוס</button>
+    </div>
+  </div>
+
+<script>
+  // המטריצה המורחבת ההתחלתית [A | I]
+  // אינדקסים 0-2 הם A, אינדקסים 3-5 הם I
+  const initialAugmentedMatrix = [
+    [1, 2, 1,  1, 0, 0],
+    [0, 1, 2,  0, 1, 0],
+    [1, 3, 0,  0, 0, 1]
+  ];
+
+  // פונקציות עזר לביצוע פעולות על שורה שלמה (אורך 6)
+  const rowOps = {
+      // חיסור: Target = Target - Factor * Source
+      subtractRows: (m, targetIdx, sourceIdx, factor = 1) => {
+          for(let i=0; i<6; i++) {
+              m[targetIdx][i] -= factor * m[sourceIdx][i];
+          }
+      },
+      // כפל בסקלר: Target = Target * Factor
+      scaleRow: (m, targetIdx, factor) => {
+          for(let i=0; i<6; i++) {
+              m[targetIdx][i] *= factor;
+          }
+      }
+  };
+
+  // רשימת הפעולות (בפורמט HTML נקי)
+  const operations = [
+    { 
+      text: "R<sub>3</sub> - R<sub>1</sub> &rarr; R<sub>3</sub>", 
+      func: (m) => rowOps.subtractRows(m, 2, 0, 1),
+      activeRow: 2 
+    },
+    { 
+      text: "R<sub>3</sub> - R<sub>2</sub> &rarr; R<sub>3</sub>", 
+      func: (m) => rowOps.subtractRows(m, 2, 1, 1),
+      activeRow: 2 
+    },
+    { 
+      text: "-<span class='fraction'><span class='top'>1</span><span class='bottom'>3</span></span>R<sub>3</sub> &rarr; R<sub>3</sub>", 
+      func: (m) => rowOps.scaleRow(m, 2, -1/3),
+      activeRow: 2 
+    },
+    { 
+      text: "R<sub>2</sub> - 2R<sub>3</sub> &rarr; R<sub>2</sub>", 
+      func: (m) => rowOps.subtractRows(m, 1, 2, 2),
+      activeRow: 1 
+    },
+    { 
+      text: "R<sub>1</sub> - R<sub>3</sub> &rarr; R<sub>1</sub>", 
+      func: (m) => rowOps.subtractRows(m, 0, 2, 1),
+      activeRow: 0 
+    },
+    { 
+      text: "R<sub>1</sub> - 2R<sub>2</sub> &rarr; R<sub>1</sub>", 
+      func: (m) => rowOps.subtractRows(m, 0, 1, 2),
+      activeRow: 0 
+    }
+  ];
+
+  let timeline = [];
+
+  function generateTimeline() {
+    timeline = [];
+    
+    // --- שלב 0: מצב התחלתי ---
+    let currentMat = JSON.parse(JSON.stringify(initialAugmentedMatrix));
+    
+    timeline.push({
+      matrix: JSON.parse(JSON.stringify(currentMat)),
+      mode: 'label', 
+      content: '[<span class="math">A</span> | <span class="math">I</span>] =',
+      stage: "מטריצה התחלתית: A משמאל, I מימין",
+      activeRow: -1
+    });
+
+    // --- שלבי הדירוג ---
+    operations.forEach(op => {
+      op.func(currentMat);
+      timeline.push({
+        matrix: JSON.parse(JSON.stringify(currentMat)),
+        mode: 'arrow',
+        content: op.text,
+        stage: "ביצוע פעולות שורה במקביל על שני הצדדים",
+        activeRow: op.activeRow
+      });
+    });
+
+    // --- שלב סופי ---
+    // העתק של המטריצה האחרונה כדי להציג את התווית הסופית ללא חץ
+    timeline.push({
+        matrix: JSON.parse(JSON.stringify(currentMat)),
+        mode: 'label',
+        content: '[<span class="math">I</span> | <span class="math">A</span><sup>-1</sup>] =',
+        stage: "סיום: צד ימין מכיל את המטריצה ההופכית",
+        activeRow: -1
+    });
+  }
+
+  // --- עזרים למתמטיקה (GCD, Format) ---
+  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+
+  function formatNumber(val) {
+      if (Math.abs(val) < 0.0001) return "0";
+      if (Math.abs(val - Math.round(val)) < 0.0001) return Math.round(val).toString();
+
+      for (let den = 2; den <= 20; den++) {
+          let num = Math.round(val * den);
+          if (Math.abs(val * den - num) < 0.0001) {
+              let commonDivisor = gcd(Math.abs(num), den);
+              let simpleNum = Math.abs(num) / commonDivisor;
+              let simpleDen = den / commonDivisor;
+              let sign = (val < 0) ? "<span class='negative-sign'>-</span>" : "";
+              if (simpleDen === 1) return (val < 0 ? "-" : "") + simpleNum;
+              return `${sign}<div class="fraction"><span class="top">${simpleNum}</span><span class="bottom">${simpleDen}</span></div>`;
+          }
+      }
+      return val.toFixed(2);
+  }
+
+  // --- ניהול ה-DOM ---
+  const gridEl = document.getElementById('grid');
+  const matrixLabelEl = document.getElementById('matrixLabel');
+  const arrowContainerEl = document.getElementById('arrowContainer');
+  const formulaTextEl = document.getElementById('formulaText');
+  const stageTextEl = document.getElementById('stageText');
+  
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  const btnPlay = document.getElementById('btnPlay');
+
+  let currentStep = 0;
+  let isPlaying = false;
+  let playTimeout = null;
+
+  function renderStep(index) {
+    const data = timeline[index];
+    
+    // כותרת
+    stageTextEl.textContent = data.stage;
+    if (index === timeline.length - 1) stageTextEl.classList.add('done');
+    else stageTextEl.classList.remove('done');
+
+    // תצוגת צד שמאל: תווית או חץ
+    if (data.mode === 'label') {
+        arrowContainerEl.style.display = 'none';
+        matrixLabelEl.style.display = 'block';
+        matrixLabelEl.innerHTML = data.content;
+    } else {
+        matrixLabelEl.style.display = 'none';
+        arrowContainerEl.style.display = 'flex';
+        formulaTextEl.innerHTML = data.content;
+    }
+
+    // ציור הגריד
+    gridEl.innerHTML = '';
+    data.matrix.forEach((row, rIndex) => {
+      row.forEach((val, cIndex) => {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        
+        // הדגשת שורה פעילה (רק בשלב שבו יש פעולה)
+        if (rIndex === data.activeRow && data.mode === 'arrow') {
+            cell.classList.add('active-row');
+        }
+        
+        cell.innerHTML = formatNumber(val);
+        gridEl.appendChild(cell);
+      });
+    });
+
+    // מצב כפתורים
+    btnPrev.disabled = index === 0;
+    btnNext.disabled = index === timeline.length - 1;
+  }
+
+  function nextStep() {
+    if (currentStep < timeline.length - 1) {
+      currentStep++;
+      renderStep(currentStep);
+    } else {
+      stopPlay();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      renderStep(currentStep);
+    }
+  }
+
+  function togglePlay() {
+    if (isPlaying) stopPlay();
+    else startPlay();
+  }
+
+  function startPlay() {
+    isPlaying = true;
+    btnPlay.textContent = "השהה";
+    
+    if (currentStep === timeline.length - 1) {
+      currentStep = 0;
+      renderStep(0);
+    }
+    playLoop();
+  }
+
+  function playLoop() {
+      if (!isPlaying) return;
+
+      if (currentStep >= timeline.length - 1) {
+          stopPlay();
+          return;
+      }
+
+      playTimeout = setTimeout(() => {
+          if (isPlaying) {
+              nextStep();
+              playLoop();
+          }
+      }, 2000); // 2 שניות לכל צעד
+  }
+
+  function stopPlay() {
+    isPlaying = false;
+    btnPlay.textContent = "נגן אנימציה";
+    clearTimeout(playTimeout);
+  }
+
+  function reset() {
+    stopPlay();
+    currentStep = 0;
+    renderStep(0);
+  }
+
+  // הפעלה מיידית
+  generateTimeline();
+  renderStep(0);
+
+</script>
+</body>
+</html>

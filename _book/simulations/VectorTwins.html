@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>וקטורים שקולים</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+  <h1>וקטורים שקולים</h1>
+  <p id="instructions">לחצו על נקודת ההתחלה של הוקטור</p>
+  <canvas id="interactivePlane" width="600" height="600"></canvas>
+  <p id="vector-coords"></p>
+
+<script>
+  const canvas = document.getElementById('interactivePlane');
+  const ctx = canvas.getContext('2d');
+  const instructions = document.getElementById('instructions');
+  const vectorCoordsDisplay = document.getElementById('vector-coords');
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  
+  const padding = 30;
+  const scale = 5;
+  const unitSize = (canvas.width - 2 * padding) / (scale * 2);
+  
+  let clickPoints = [];
+
+  function scaledToPixels(point) {
+    return {
+      x: centerX + point.x * unitSize,
+      y: centerY - point.y * unitSize
+    };
+  }
+
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1;
+    for(let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0);
+      ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize);
+      ctx.lineTo(canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    // ציר X
+    ctx.moveTo(padding, centerY);
+    ctx.lineTo(canvas.width - padding, centerY);
+    // ציר Y
+    ctx.moveTo(centerX, canvas.height - padding);
+    ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    // --- שינוי: הוספת חיצים ותוויות לצירים ---
+    const headlen = 10;
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    // חץ לציר X
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    // חץ לציר Y
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', canvas.width - padding + 10, centerY);
+    ctx.fillText('y', centerX, padding - 15);
+    // --- סוף השינוי ---
+  }
+
+  function drawArrow(p1, p2, color) {
+    const headlen = 10;
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const angle = Math.atan2(dy, dx);
+
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(p2.x, p2.y);
+    ctx.lineTo(p2.x - headlen * Math.cos(angle - Math.PI / 6), p2.y - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(p2.x, p2.y);
+    ctx.lineTo(p2.x - headlen * Math.cos(angle + Math.PI / 6), p2.y - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+
+  function drawPoint(p, color = 'black') {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(p.x, p.y, 4, 0, 2 * Math.PI);
+      ctx.fill();
+  }
+  
+  function drawScene() {
+    drawGrid();
+    vectorCoordsDisplay.textContent = '';
+
+    if (clickPoints.length < 1) return;
+
+    const p1 = clickPoints[0];
+    drawPoint(scaledToPixels(p1));
+
+    if (clickPoints.length < 2) return;
+
+    const p2 = clickPoints[1];
+    const origin = {x: 0, y: 0};
+    
+    const vector = {
+      x: p2.x - p1.x,
+      y: p2.y - p1.y
+    };
+    
+    const equivalentVectorEnd = vector;
+
+    const p1_pixels = scaledToPixels(p1);
+    const p2_pixels = scaledToPixels(p2);
+    const origin_pixels = scaledToPixels(origin);
+    const equivalentEnd_pixels = scaledToPixels(equivalentVectorEnd);
+
+    drawArrow(p1_pixels, p2_pixels, 'blue');
+    drawArrow(origin_pixels, equivalentEnd_pixels, 'red');
+    
+    vectorCoordsDisplay.innerHTML = `הווקטור: &nbsp; <span dir="ltr">(${vector.x.toFixed(2)}, ${vector.y.toFixed(2)})</span>`;
+  }
+
+  drawGrid();
+
+  canvas.addEventListener('click', function(event) {
+    if (clickPoints.length >= 2) {
+      clickPoints = [];
+    }
+    
+    const rect = canvas.getBoundingClientRect();
+    const pixelX = event.clientX - rect.left;
+    const pixelY = event.clientY - rect.top;
+
+    const scaledX = (pixelX - centerX) / unitSize;
+    const scaledY = ((pixelY - centerY) * -1) / unitSize;
+
+    clickPoints.push({x: scaledX, y: scaledY});
+
+    if (clickPoints.length === 1) {
+      instructions.textContent = 'לחצו על נקודת הסיום של הוקטור';
+    } else if (clickPoints.length === 2){
+      instructions.textContent = 'נהדר! לחצו שוב כדי להתחיל מחדש';
+    } else {
+      instructions.textContent = 'לחצו על נקודת ההתחלה של הוקטור';
+    }
+    
+    drawScene();
+  });
+</script>
+
+</body>
+</html>
