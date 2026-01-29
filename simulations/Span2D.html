@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פרישה לינארית</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 { margin-bottom: 10px; color: #2c3e50; }
+
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  /* שורת ההנחיות - סטטוס */
+  #status-bar {
+    margin-bottom: 15px;
+    padding: 12px 20px;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* משתנים מתמטיים בתוך הטקסט */
+  .math {
+      font-family: 'Times New Roman', serif;
+      font-weight: bold;
+  }
+  .math i { font-style: italic; }
+  .math sub { font-style: normal; font-size: 0.8em; }
+
+  /* קנבס */
+  canvas {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: crosshair;
+      border-radius: 4px;
+      margin-bottom: 20px;
+  }
+
+  /* אזור הנוסחאות */
+  #formulas-container {
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+
+  .formula-row {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center; /* מרכוז */
+    padding: 8px 0;
+    border-bottom: 1px solid #f9f9f9;
+    direction: ltr; /* זרימה משמאל לימין למתמטיקה */
+    gap: 20px;
+    font-size: 1.2em;
+  }
+
+  .coords {
+      font-family: monospace;
+      color: #555;
+      font-weight: bold;
+      width: 100px;
+      text-align: right;
+  }
+
+  .equation {
+      font-family: 'Times New Roman', serif;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 200px; /* רוחב מינימלי כדי לשמור על יישור יחסי */
+  }
+
+  .scalar { color: #444; font-family: Arial, sans-serif; font-weight: normal; font-size: 0.9em; margin: 0 3px; }
+
+  button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #ff5252;
+    color: white;
+    transition: background 0.2s;
+  }
+  button:hover { background-color: #d32f2f; }
+
+</style>
+</head>
+<body>
+
+  <h1>הדגמת פרישה וצירוף לינארי</h1>
+  
+  <div class="container">
+    <div id="status-bar"></div>
+    <canvas id="plane" width="600" height="500"></canvas>
+    <div id="formulas-container"></div>
+    <button onclick="init()">התחל מחדש</button>
+  </div>
+
+<script>
+  // --- הגדרות ---
+  const canvas = document.getElementById('plane');
+  const ctx = canvas.getContext('2d');
+  const statusEl = document.getElementById('status-bar');
+  const formulasEl = document.getElementById('formulas-container');
+
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 40; 
+  const MAX_VECTORS = 6;
+
+  // צבעים
+  const colorV1 = 'blue';
+  const colorV2 = 'green';
+  const extraColors = ['#d32f2f', '#9c27b0', '#ff9800', '#009688'];
+
+  // משתני מצב
+  let step = 0; 
+  let v1 = null;
+  let v2 = null;
+  let extraVectors = []; 
+
+  // --- מחרוזות HTML מוכנות לוקטורים ---
+  const htmlV1 = '<span class="math" style="color:blue"><i>v</i><sub>1</sub></span>';
+  const htmlV2 = '<span class="math" style="color:green"><i>v</i><sub>2</sub></span>';
+
+  function getHtmlVec(index, color) {
+      return `<span class="math" style="color:${color}"><i>v</i><sub>${index}</sub></span>`;
+  }
+
+  // --- אתחול ---
+  function init() {
+      step = 0;
+      v1 = null;
+      v2 = null;
+      extraVectors = [];
+      formulasEl.innerHTML = '';
+      
+      // הוספת רווח ברור לפני שם הוקטור
+      setStatus(`לחצו על נקודה כלשהי כדי לבחור את הוקטור הראשון &nbsp;${htmlV1}`, '#e3f2fd', '#1565c0');
+      draw();
+  }
+
+  function setStatus(html, bg, color) {
+      statusEl.innerHTML = html;
+      statusEl.style.backgroundColor = bg;
+      statusEl.style.color = color;
+  }
+
+  // --- חישובים ---
+  function toMath(cx, cy) {
+      const x = (cx - centerX) / scale;
+      const y = -(cy - centerY) / scale;
+      return { x: parseFloat(x.toFixed(1)), y: parseFloat(y.toFixed(1)) };
+  }
+
+  function toCanvas(mx, my) {
+      return { x: centerX + mx * scale, y: centerY - my * scale };
+  }
+
+  // --- ציור ---
+  function drawArrow(from, to, color) {
+      const headLen = 10;
+      const dx = to.x - from.x;
+      const dy = to.y - from.y;
+      const angle = Math.atan2(dy, dx);
+
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = color;
+      ctx.moveTo(from.x, from.y);
+      ctx.lineTo(to.x, to.y);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.moveTo(to.x, to.y);
+      ctx.lineTo(to.x - headLen * Math.cos(angle - Math.PI / 6), to.y - headLen * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(to.x - headLen * Math.cos(angle + Math.PI / 6), to.y - headLen * Math.sin(angle + Math.PI / 6));
+      ctx.fill();
+  }
+
+  function drawLabel(text, sub, x, y, color) {
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.font = 'bold italic 20px Times New Roman';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, x, y);
+      const w = ctx.measureText(text).width;
+      ctx.font = 'bold 12px Arial';
+      ctx.fillText(sub, x + w, y + 6);
+      ctx.restore();
+  }
+
+  function drawSystem() {
+      ctx.clearRect(0, 0, width, height);
+
+      // גריד
+      ctx.beginPath();
+      ctx.strokeStyle = '#f0f0f0';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= width; i+=scale) {
+          ctx.moveTo(centerX + i, 0); ctx.lineTo(centerX + i, height);
+          ctx.moveTo(centerX - i, 0); ctx.lineTo(centerX - i, height);
+      }
+      for (let i = 0; i <= height; i+=scale) {
+          ctx.moveTo(0, centerY + i); ctx.lineTo(width, centerY + i);
+          ctx.moveTo(0, centerY - i); ctx.lineTo(width, centerY - i);
+      }
+      ctx.stroke();
+
+      // צירים
+      ctx.beginPath();
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      ctx.moveTo(0, centerY); ctx.lineTo(width, centerY);
+      ctx.moveTo(centerX, 0); ctx.lineTo(centerX, height);
+      ctx.stroke();
+
+      // חיצים וטקסט צירים
+      drawArrow({x: width-15, y: centerY}, {x: width, y: centerY}, '#333');
+      drawArrow({x: centerX, y: 15}, {x: centerX, y: 0}, '#333');
+
+      ctx.font = 'italic bold 22px Times New Roman';
+      ctx.fillStyle = '#000';
+      ctx.textAlign = 'right';
+      ctx.fillText('x', width - 5, centerY + 25);
+      ctx.textAlign = 'left';
+      ctx.fillText('y', centerX + 10, 20);
+  }
+
+  function drawSpanLine(v) {
+      const p1 = toCanvas(v.x * 100, v.y * 100);
+      const p2 = toCanvas(v.x * -100, v.y * -100);
+      
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(0, 0, 255, 0.2)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+  }
+
+  function draw() {
+      drawSystem();
+      const origin = toCanvas(0, 0);
+
+      if (v1) {
+          if (step >= 1) drawSpanLine(v1);
+          const p1 = toCanvas(v1.x, v1.y);
+          drawArrow(origin, p1, colorV1);
+          drawLabel('v', '1', p1.x + 10, p1.y - 10, colorV1);
+      }
+
+      if (v2) {
+          const p2 = toCanvas(v2.x, v2.y);
+          drawArrow(origin, p2, colorV2);
+          drawLabel('v', '2', p2.x + 10, p2.y - 10, colorV2);
+      }
+
+      extraVectors.forEach(item => {
+          const p = toCanvas(item.vec.x, item.vec.y);
+          drawArrow(origin, p, item.color);
+          drawLabel('v', item.index, p.x + 10, p.y - 10, item.color);
+      });
+  }
+
+  // --- הוספת מידע לרשימה למטה ---
+
+  function addBaseVectorInfo(vec, index, color, htmlSymbol) {
+      const div = document.createElement('div');
+      div.className = 'formula-row';
+      div.innerHTML = `
+        <div class="coords">(${vec.x}, ${vec.y})</div>
+        <div class="equation">
+            ${htmlSymbol}
+        </div>
+      `;
+      formulasEl.appendChild(div);
+      formulasEl.scrollTop = formulasEl.scrollHeight;
+  }
+
+  function addLinearCombination(target, idx, color) {
+      const det = v1.x * v2.y - v2.x * v1.y;
+      const det1 = target.x * v2.y - v2.x * target.y;
+      const det2 = v1.x * target.y - target.x * v1.y;
+
+      let c1 = parseFloat((det1 / det).toFixed(2));
+      let c2 = parseFloat((det2 / det).toFixed(2));
+
+      const sign = c2 >= 0 ? "+" : "-";
+      const absC2 = Math.abs(c2);
+
+      const div = document.createElement('div');
+      div.className = 'formula-row';
+      div.innerHTML = `
+        <div class="coords">(${target.x}, ${target.y})</div>
+        <div class="equation">
+            ${getHtmlVec(idx, color)} <span class="scalar">=</span> 
+            <span class="scalar">${c1}</span>${htmlV1} 
+            <span class="scalar">${sign} ${absC2}</span>${htmlV2}
+        </div>
+      `;
+      formulasEl.appendChild(div);
+      formulasEl.scrollTop = formulasEl.scrollHeight;
+  }
+
+  // --- אינטראקציה ---
+  canvas.addEventListener('mousedown', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const m = toMath(e.clientX - rect.left, e.clientY - rect.top);
+
+      if (step === 0) {
+          // v1
+          if (m.x === 0 && m.y === 0) return;
+          v1 = m;
+          step = 1;
+          setStatus(`כעת בחרו נקודה מחוץ לישר הכחול לקביעת וקטור שני &nbsp;${htmlV2}`, '#e8f5e9', '#2e7d32');
+          draw();
+          addBaseVectorInfo(v1, 1, colorV1, htmlV1);
+      } 
+      else if (step === 1) {
+          // v2
+          const det = v1.x * m.y - v1.y * m.x;
+          if (Math.abs(det) < 0.1) {
+              setStatus(`הנקודה על הישר! בחרו נקודה שאינה תלויה לינארית ב-&nbsp;${htmlV1}`, '#ffebee', '#c62828');
+              return;
+          }
+          v2 = m;
+          step = 2;
+          setStatus(`הקבוצה {${htmlV2}, ${htmlV1}} פורשת את כל המישור! לחצו ליצירת וקטורים נוספים`, '#fff3e0', '#e65100');
+          draw();
+          addBaseVectorInfo(v2, 2, colorV2, htmlV2);
+      } 
+      else if (step === 2) {
+          if (2 + extraVectors.length >= MAX_VECTORS) {
+              setStatus("הגעתם למקסימום הוקטורים (6). לחצו על 'התחל מחדש'", '#eee', '#555');
+              return;
+          }
+
+          const idx = 3 + extraVectors.length;
+          const color = extraColors[extraVectors.length % extraColors.length];
+          
+          extraVectors.push({ vec: m, index: idx, color: color });
+          draw();
+          addLinearCombination(m, idx, color);
+      }
+  });
+
+  // התחלה
+  init();
+
+</script>
+</body>
+</html>

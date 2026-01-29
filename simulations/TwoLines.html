@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חיתוך בין ישרים</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .main-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+  #info-panel {
+    direction: ltr;
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.8;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 280px;
+  }
+  .control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  input[type="range"] {
+    width: 150px;
+  }
+  #intersection-point {
+    font-weight: bold;
+    color: #c0392b;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>חיתוך בין ישרים</h1>
+  <p>הזיזו את המחוונים כדי לשנות את הישר הירוק ולראות את נקודת החיתוך</p>
+
+  <div class="main-container">
+    <canvas id="interactivePlane" width="600" height="600"></canvas>
+    <div id="info-panel">
+      <div style="color: blue;">ישר 1: x + y = 0</div>
+      <hr>
+      <div style="color: green;">ישר 2: x + ty = s</div>
+      <div class="control-row">
+        <label for="t-slider">t =</label>
+        <input type="range" id="t-slider" min="-5" max="5" value="2" step="0.1">
+        <span id="t-value">2.0</span>
+      </div>
+      <div class="control-row">
+        <label for="s-slider">s =</label>
+        <input type="range" id="s-slider" min="-5" max="5" value="3" step="0.1">
+        <span id="s-value">3.0</span>
+      </div>
+      <hr>
+      <div>נקודת חיתוך (x,y):</div>
+      <div id="intersection-point">(1.00, -1.00)</div>
+    </div>
+  </div>
+
+<script>
+  const canvas = document.getElementById('interactivePlane');
+  const ctx = canvas.getContext('2d');
+  const tSlider = document.getElementById('t-slider');
+  const sSlider = document.getElementById('s-slider');
+  const tValueDisplay = document.getElementById('t-value');
+  const sValueDisplay = document.getElementById('s-value');
+  const intersectionDisplay = document.getElementById('intersection-point');
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  
+  const padding = 30;
+  const scale = 5;
+  const unitSize = (canvas.width - 2 * padding) / (scale * 2);
+
+  function scaledToPixels(point) {
+    return {
+      x: centerX + point.x * unitSize,
+      y: centerY - point.y * unitSize
+    };
+  }
+
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1;
+    for(let i = -scale; i <= scale; i++) {
+      ctx.moveTo(centerX + i * unitSize, 0);
+      ctx.lineTo(centerX + i * unitSize, canvas.height);
+      ctx.moveTo(0, centerY + i * unitSize);
+      ctx.lineTo(canvas.width, centerY + i * unitSize);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.moveTo(padding, centerY);
+    ctx.lineTo(canvas.width - padding, centerY);
+    ctx.moveTo(centerX, canvas.height - padding);
+    ctx.lineTo(centerX, padding);
+    ctx.stroke();
+
+    // --- שינוי 1: הוספת חיצים ותוויות לצירים ---
+    const headlen = 10;
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    let axisEndX = canvas.width - padding;
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY - headlen / 2);
+    ctx.moveTo(axisEndX, centerY);
+    ctx.lineTo(axisEndX - headlen, centerY + headlen / 2);
+    
+    let axisEndY = padding;
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX - headlen / 2, axisEndY + headlen);
+    ctx.moveTo(centerX, axisEndY);
+    ctx.lineTo(centerX + headlen / 2, axisEndY + headlen);
+    ctx.stroke();
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('x', canvas.width - padding + 10, centerY);
+    ctx.fillText('y', centerX, padding - 15);
+    // ------------------------------------------
+  }
+  
+  function drawLine(p1, p2, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+  }
+  
+  function drawPoint(p, color = 'red') {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+      ctx.fill();
+  }
+
+  function drawSceneAndCalc() {
+    drawGrid();
+    
+    const t = parseFloat(tSlider.value);
+    const s = parseFloat(sSlider.value);
+
+    const line1_p1 = scaledToPixels({ x: -scale, y: scale });
+    const line1_p2 = scaledToPixels({ x: scale, y: -scale });
+    drawLine(line1_p1, line1_p2, 'blue');
+
+    const y1 = -scale * 2;
+    const x1 = s - t * y1;
+    const y2 = scale * 2;
+    const x2 = s - t * y2;
+    const line2_p1 = scaledToPixels({ x: x1, y: y1 });
+    const line2_p2 = scaledToPixels({ x: x2, y: y2 });
+    drawLine(line2_p1, line2_p2, 'green');
+
+    if (Math.abs(1 - t) < 0.01) {
+      if (Math.abs(s) < 0.01) {
+        intersectionDisplay.textContent = "הישרים מתלכדים";
+      } else {
+        intersectionDisplay.textContent = "הישרים מקבילים";
+      }
+    } else {
+      const x = s / (1 - t);
+      const y = -x;
+      
+      // --- שינוי 2: הצגת הקואורדינטות תמיד ---
+      intersectionDisplay.textContent = `(${x.toFixed(2)}, ${y.toFixed(2)})`;
+      
+      // ציור הנקודה רק אם היא בתוך הגבולות
+      if (Math.abs(x) <= scale && Math.abs(y) <= scale) {
+        drawPoint(scaledToPixels({x, y}));
+      }
+      // ------------------------------------------
+    }
+  }
+
+  function updateValues() {
+    tValueDisplay.textContent = parseFloat(tSlider.value).toFixed(1);
+    sValueDisplay.textContent = parseFloat(sSlider.value).toFixed(1);
+    drawSceneAndCalc();
+  }
+
+  tSlider.addEventListener('input', updateValues);
+  sSlider.addEventListener('input', updateValues);
+
+  updateValues();
+
+</script>
+
+</body>
+</html>

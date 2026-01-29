@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חיתוך בין מישורים</title>
+<style>
+  body { margin: 0; }
+  canvas { display: block; }
+  #info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display:block;
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: rgba(255,255,255,0.5);
+    padding: 5px;
+  }
+  #controls-panel {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 280px;
+  }
+  .slider-row {
+      display: grid;
+      grid-template-columns: 20px 1fr 40px;
+      gap: 10px;
+      align-items: center;
+  }
+</style>
+</head>
+<body>
+  <div id="info">
+    <h1>חיתוך בין מישורים</h1>
+    <!-- שינוי כאן: עדכון ההסבר -->
+    <p>שנו את המקדמים של משוואת המישור הכתום כדי לבדוק את ההשפעה על ישר החיתוך</p>
+  </div>
+  
+  <div id="controls-panel">
+      <div style="font-weight: bold; color: blue;">מישור 1: x+y+z=0</div>
+      <div style="font-weight: bold; color: orange;">מישור 2: ax+by+cz=1</div>
+      <hr>
+      <div class="slider-row"><label>a:</label><input type="range" id="a-slider" min="-1" max="1" value="0.5" step="0.01"><span id="a-val">0.50</span></div>
+      <div class="slider-row"><label>b:</label><input type="range" id="b-slider" min="-1" max="1" value="-0.5" step="0.01"><span id="b-val">-0.50</span></div>
+      <div class="slider-row"><label>c:</label><input type="range" id="c-slider" min="-1" max="1" value="0.8" step="0.01"><span id="c-val">0.80</span></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  // ... (כל קוד ה-JavaScript נשאר זהה) ...
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const sliders = {
+      a: document.getElementById('a-slider'), b: document.getElementById('b-slider'), c: document.getElementById('c-slider')
+  };
+  const values = {
+      a: document.getElementById('a-val'), b: document.getElementById('b-val'), c: document.getElementById('c-val')
+  };
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(5, 5, 5);
+  controls.update();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+  const axisLength = 5;
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), new THREE.Vector3(0,0,0), axisLength, 0x000000));
+  
+  function createAxisLabel(text, position) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = 'Bold 60px Arial';
+      context.fillStyle = 'rgba(0,0,0,1.0)';
+      context.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(2, 1, 1.0);
+      sprite.position.copy(position);
+      return sprite;
+  }
+  const labelOffset = 0.4;
+  scene.add(createAxisLabel('x', new THREE.Vector3(axisLength + labelOffset, 0, 0)));
+  scene.add(createAxisLabel('y', new THREE.Vector3(0, axisLength + labelOffset, 0)));
+  scene.add(createAxisLabel('z', new THREE.Vector3(0, 0, axisLength + labelOffset)));
+
+  const staticNormal = new THREE.Vector3(1, 1, 1).normalize();
+  const staticPlaneGeom = new THREE.PlaneGeometry(12, 12);
+  const staticPlaneMat = new THREE.MeshPhongMaterial({color: 0x0000ff, opacity: 0.3, transparent: true, side: THREE.DoubleSide});
+  const staticPlaneMesh = new THREE.Mesh(staticPlaneGeom, staticPlaneMat);
+  const staticQuaternion = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1), staticNormal);
+  staticPlaneMesh.applyQuaternion(staticQuaternion);
+  scene.add(staticPlaneMesh);
+
+  let dynamicPlaneMesh = null;
+  let intersectionLine = null;
+
+  function updateScene() {
+    if (dynamicPlaneMesh) scene.remove(dynamicPlaneMesh);
+    if (intersectionLine) scene.remove(intersectionLine);
+
+    const a = parseFloat(sliders.a.value);
+    const b = parseFloat(sliders.b.value);
+    const c = parseFloat(sliders.c.value);
+    values.a.textContent = a.toFixed(2);
+    values.b.textContent = b.toFixed(2);
+    values.c.textContent = c.toFixed(2);
+
+    const dynamicNormal = new THREE.Vector3(a, b, c);
+
+    if (dynamicNormal.length() < 1e-6) return;
+    
+    const distance = 1 / dynamicNormal.length();
+    dynamicNormal.normalize();
+
+    const dynamicPlaneGeom = new THREE.PlaneGeometry(12, 12);
+    const dynamicPlaneMat = new THREE.MeshPhongMaterial({color: 0xffa500, opacity: 0.5, transparent: true, side: THREE.DoubleSide});
+    dynamicPlaneMesh = new THREE.Mesh(dynamicPlaneGeom, dynamicPlaneMat);
+    const dynamicQuaternion = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1), dynamicNormal);
+    dynamicPlaneMesh.applyQuaternion(dynamicQuaternion);
+    dynamicPlaneMesh.position.copy(dynamicNormal).multiplyScalar(distance);
+    scene.add(dynamicPlaneMesh);
+
+    const lineDir = new THREE.Vector3().crossVectors(staticNormal, dynamicNormal);
+    
+    if (lineDir.length() < 1e-6) return; 
+    lineDir.normalize();
+
+    const d = a - b;
+    let pointOnLine;
+    if (Math.abs(d) > 1e-6) {
+        const x = 1 / d;
+        const y = -x;
+        pointOnLine = new THREE.Vector3(x, y, 0);
+    } else {
+        const d2 = a - c;
+        if (Math.abs(d2) < 1e-6) return;
+        const x = 1 / d2;
+        const z = -x;
+        pointOnLine = new THREE.Vector3(x, 0, z);
+    }
+    
+    const lineGeom = new THREE.BufferGeometry().setFromPoints([
+        pointOnLine.clone().add(lineDir.clone().multiplyScalar(-20)),
+        pointOnLine.clone().add(lineDir.clone().multiplyScalar(20))
+    ]);
+    const lineMat = new THREE.LineBasicMaterial({color: 0xff0000, linewidth: 3});
+    intersectionLine = new THREE.Line(lineGeom, lineMat);
+    scene.add(intersectionLine);
+  }
+
+  for (const key in sliders) {
+      sliders[key].addEventListener('input', updateScene);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  
+  updateScene();
+  animate();
+</script>
+</body>
+</html>
