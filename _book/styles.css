@@ -220,3 +220,10 @@ figure.quarto-figure figcaption {
   margin: 0.5rem auto;
 }
 
+/* הוספת ריבוע סיום הוכחה (QED) מיושר לשמאל */
+.proof > :last-child::after {
+    content: " \25A0";   /* קוד התו של ריבוע מלא */
+    float: left;         /* דוחף אותו לקצה השמאלי של השורה */
+    margin-left: 0.2rem;
+    color: #555;         /* אפור כהה כדי שלא יהיה צעקני מדי */
+}
