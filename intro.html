@@ -338,6 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // מחיקת כותרות ברירת המחדל של Quarto באנגלית (כמו Remark / Proof)
+
+  document.querySelectorAll('.proof-title').forEach(el => el.remove());
+
+
+
   // --- מספר פרק נוכחי למספור לפי פרק ---
 
   function chapterNumber() {
@@ -508,50 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       div.classList.add('envbox');
 
-
-
-      // ניקוי כפילות טקסט בראש פסקה ב-remark/proof אם דבוק "Remark./Proof."
-
-      if (env === 'remark' || env === 'proof') {
-
-        const firstP = div.querySelector(':scope > p');
-
-        if (firstP) {
-
-          const labels = new Set(['definition','example','exercise','theorem','lemma','proposition','corollary','remark','proof','solution']);
-
-          const leadingWord = () => {
-
-            const html = firstP.innerHTML
-
-              .replace(/^(\s|&nbsp;)+/i, '')
-
-              .replace(/^<(?:em|i|strong|b|span)[^>]*>/i, '')
-
-              .replace(/<\/(?:em|i|strong|b|span)>/i, '');
-
-            const m = html.match(/^([A-Za-z]+)\b/);
-
-            return m ? m[1].toLowerCase() : '';
-
-          };
-
-          let guard = 0;
-
-          while (labels.has(leadingWord()) && guard++ < 5) {
-
-            firstP.innerHTML = firstP.innerHTML
-
-              .replace(/^(\s|&nbsp;)*<(?:em|i|strong|b|span)[^>]*>(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*<\/(?:em|i|strong|b|span)>(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '')
-
-              .replace(/^(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '');
-
-          }
-
-        }
-
-      }
-
     });
 
   });
@@ -571,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-
 <script>
 
 document.addEventListener('DOMContentLoaded', () => {

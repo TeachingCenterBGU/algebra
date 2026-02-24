@@ -329,13 +329,13 @@ window.Quarto = {
 <p><em> יהיו <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> ו- <span class="math inline">\alpha\in\mathbb{F}</span>. אז מתקיים <span class="math display">.\det(\alpha A)=\alpha^n\det(A)</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> המשמעות של הכפל <span class="math inline">\alpha A</span> היא שכל שורה מוכפלת באותו סקלר <span class="math inline">\alpha</span>. לכן, עבור כל שורה ניתן להוציא את <span class="math inline">\alpha</span> מחוץ לדטרמיננטה. לאחר שנעשה זאת לכל השורות נקבל גורם <span class="math inline">\alpha^n</span> מחוץ לדטרמיננטה, ואת המטריצה המקורית <span class="math inline">A</span> בתוכה. לכן <span class="math display">.\det(\alpha A)=\alpha^n\det(A)</span>&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>המשמעות של הכפל <span class="math inline">\alpha A</span> היא שכל שורה מוכפלת באותו סקלר <span class="math inline">\alpha</span>. לכן, עבור כל שורה ניתן להוציא את <span class="math inline">\alpha</span> מחוץ לדטרמיננטה. לאחר שנעשה זאת לכל השורות נקבל גורם <span class="math inline">\alpha^n</span> מחוץ לדטרמיננטה, ואת המטריצה המקורית <span class="math inline">A</span> בתוכה. לכן <span class="math display">.\det(\alpha A)=\alpha^n\det(A)</span>&nbsp;◻</p>
 </div>
 <div class="proposition">
 <p><em> אם למטריצה <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> יש שורת אפסים, אז <span class="math inline">\det(A)=0</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נניח שיש רק אפסים בשורה <span class="math inline">R_i</span> של <span class="math inline">A</span>. אז גם לאחר הכפלת שורה זו בכל סקלר <span class="math inline">c\neq 0</span>, המטריצה תישאר ללא שינוי. ניקח <span class="math inline">c=\frac{1}{2}</span> ונקבל</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נניח שיש רק אפסים בשורה <span class="math inline">R_i</span> של <span class="math inline">A</span>. אז גם לאחר הכפלת שורה זו בכל סקלר <span class="math inline">c\neq 0</span>, המטריצה תישאר ללא שינוי. ניקח <span class="math inline">c=\frac{1}{2}</span> ונקבל</p>
 <p><span class="math display">.\det(A)=2\det(A) \implies \det(A)=0</span>&nbsp;◻</p>
 </div>
 <div class="proposition">
@@ -362,7 +362,7 @@ d_1 &amp;* &amp; \cdots &amp; * \\
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
 <li><p>אם לפחות אחד מאיברי האלכסון הראשי הוא <span class="math inline">0</span>, אז יש שורת אפסים ולפי טענה נובע כי <span class="math display">.\det(A)=0=a_1a_2\cdots a_n</span></p>
 <p>אז נניח כי כל איברים האלכסון הראשי שונים מ- <span class="math inline">0</span>. בשביל הדירוג הקנוני צריך לבצע פש"אות מהצורה <span class="math inline">\frac{1}{d_i}R_i\to R_i</span> לכל <span class="math inline">1\leq i\leq n</span>. כך נקבל</p>
@@ -414,7 +414,7 @@ d &amp; -b \\
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
 <li><p>נפריד בין שלושה מקרים. נניח תחילה כי <span class="math inline">a\neq 0</span>. אז מתקיים <span class="math display">.\det(A)=\det\!\begin{pmatrix}
 a &amp; b \\
@@ -552,7 +552,7 @@ b_1 &amp; 0 &amp; 0 \\
 <p><em> יהיו <span class="math inline">E,A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> כך ש- <span class="math inline">E</span> מטריצה אלמנטרית המתאימה לפש"א <span class="math inline">S</span>, כלומר <span class="math inline">E=S(I_n)</span>. אז מתקיים <span class="math display">.\det(EA)=\det(E)\det(A)</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> לפי טענה מתקיים <span class="math inline">EA=S(A)</span>. לכן <span class="math display">.\det(EA)=\det(S(A))=\begin{cases}
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה מתקיים <span class="math inline">EA=S(A)</span>. לכן <span class="math display">.\det(EA)=\det(S(A))=\begin{cases}
 \alpha\det(A), &amp; S=(\alpha R_i\to R_i) \\
 \det(A), &amp; S=(R_i+\alpha R_j\to R_i) \\
 -\det(A), &amp; S=(R_i\leftrightarrow R_j)
@@ -571,7 +571,7 @@ b_1 &amp; 0 &amp; 0 \\
 <p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(F)</span>. אז <span class="math inline">A</span> הפיכה אם ורק אם <span class="math inline">\det(A)\neq 0</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> בכיוון הראשון, נניח כי <span class="math inline">A</span> הפיכה. אז לפי מסקנה היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k</span> כאשר <span class="math inline">\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- נובע כי <span class="math display">.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">0</span> כי היא שווה ל- <span class="math inline">\pm 1</span> או <span class="math inline">\alpha\neq 0</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון, נניח כי <span class="math inline">A</span> הפיכה. אז לפי מסקנה היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k</span> כאשר <span class="math inline">\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- נובע כי <span class="math display">.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">0</span> כי היא שווה ל- <span class="math inline">\pm 1</span> או <span class="math inline">\alpha\neq 0</span>.</p>
 <p>בכיוון השני, נניח כי <span class="math inline">A</span> אינה הפיכה. אז לפי משפט , היא אינה שקולת שורה ל- <span class="math inline">I_n</span> אלא למטריצה מדורגת קנונית <span class="math inline">A'</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'</span> כאשר <span class="math inline">E_1,E_2,...,E_k</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0</span></p>
 <p>הסיבה לשוויון ל- <span class="math inline">0</span> היא העובדה שמתקיים <span class="math inline">\det(A')=0</span> לפי טענה .&nbsp;◻</p>
 </div>
@@ -605,7 +605,7 @@ t &amp; -1 \\
 <p><em> יהיו <span class="math inline">A,B\in\mathbb{M}_{n\times n}(\mathbb{F})</span>. אז מתקיים <span class="math display">.\det(AB)=\det(A)\det(B)</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> נחלק למקרים:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נחלק למקרים:</p>
 <ol type="1">
 <li><p><span class="math inline">AB</span> אינה הפיכה: לפי תרגיל לפחות אחת מ- <span class="math inline">A</span> ו- <span class="math inline">B</span> אינה הפיכה. אז לפי משפט נובע כי <span class="math display">,\det(AB)=0=\det(A)\det(B)</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">0</span>.</p></li>
 <li><p><span class="math inline">AB</span> הפיכה: תחילה נראה שגם <span class="math inline">A</span> וגם <span class="math inline">B</span> הפיכות. נסמן <span class="math inline">C=(AB)^{-1}</span>. אז מתקיים <span class="math display">,A(BC)=(AB)C=I_n</span> ולכן <span class="math inline">A</span> הפיכה מימין ובכלל. באופן דומה: <span class="math display">,(CA)B=C(AB)=I_n</span> ולכן <span class="math inline">B</span> הפיכה משמאל ובכלל.</p>
@@ -620,7 +620,7 @@ t &amp; -1 \\
 <p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span> הפיכה. אז מתקיים <span class="math display">.\det(A^{-1})=\frac{1}{\det(A)}</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> לפי מתקיים <span class="math display">.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1</span> נחלק ב- <span class="math inline">\det(A)</span> ונקבל <span class="math display">.\det(A^{-1})=\frac{1}{\det(A)}</span>&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי מתקיים <span class="math display">.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1</span> נחלק ב- <span class="math inline">\det(A)</span> ונקבל <span class="math display">.\det(A^{-1})=\frac{1}{\det(A)}</span>&nbsp;◻</p>
 </div>
 <div class="exercise">
 <p>יהיו <span class="math inline">A,P\in\mathbb{M}_{n\times n}(\mathbb{F})</span> כך ש- <span class="math inline">P</span> הפיכה. הראו כי <span class="math display">.\det(PAP^{-1})=\det(A)</span></p>
@@ -648,7 +648,7 @@ t &amp; -1 \\
 <p><em> תהי <span class="math inline">A\in\mathbb{M}_{n\times n}(\mathbb{F})</span>. אז מתקיים <span class="math display">.\det(A^t)=\det(A)</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> שוב נפצל למקרים לפי הפיכות <span class="math inline">A</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>שוב נפצל למקרים לפי הפיכות <span class="math inline">A</span>.</p>
 <ol type="1">
 <li><p>נניח כי <span class="math inline">A</span> אינה הפיכה. לא ייתכן כי <span class="math inline">A^t</span> הפיכה, כי אז לפי גם <span class="math inline">A=(A^t)^t</span> הפיכה וזו סתירה. לכן, לפי נובע כי <span class="math display">.\det(A^t)=0=\det(A)</span></p></li>
 <li><p>נניח כי <span class="math inline">A</span> הפיכה. אז לפי היא מכפלה של מטריצות אלמנטריות <span class="math inline">E_1,\cdots,E_k</span>. לכן <span class="math display">A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t</span> ואז לפי טענה נובע כי <span class="math display">.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)</span></p>
@@ -686,7 +686,7 @@ d_1 &amp;0 &amp; \cdots &amp; 0 \\
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
 <li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">0</span>. לכן, נניח שקיים <span class="math inline">1\leq i\leq n</span> כך ש- <span class="math inline">d_i=0</span>, אז <span class="math inline">U</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">n</span>. אז לפי משפט היא אינה הפיכה, ולפי משפט בהכרח מתקיים <span class="math display">.\det(U)=0=d_1d_2\cdots d_n</span></p></li>
 <li><p>נסתכל על <span class="math inline">L^t</span>, שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של <span class="math inline">L</span>. אז לפי הסעיף הקודם וטענה מתקיים</p>
@@ -765,7 +765,7 @@ a_{n1} &amp; \cdots &amp; a_{nn}
 </div>
 <p>נדחה את עיקר ההוכחה לפרק על העתקות לינאריות, אבל בינתיים נראה איך פיתוח לפי עמודה נובע מפיתוח לפי שורה (בעזרת שחלוף):</p>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><em>Proof.</em> &nbsp;</p>
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
 <li><p>נוכיח את נוסחה זו בהמשך הקורס. לעת עתה נציין שהביטוי <span class="math inline">(-1)^{i+j}</span> קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות.</p></li>
 <li><p>נניח שהנוסחה לפיתוח לפי שורה נכונה, לכל שורה.</p>
@@ -987,6 +987,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // מחיקת כותרות ברירת המחדל של Quarto באנגלית (כמו Remark / Proof)
+
+  document.querySelectorAll('.proof-title').forEach(el => el.remove());
+
+
+
   // --- מספר פרק נוכחי למספור לפי פרק ---
 
   function chapterNumber() {
@@ -1157,50 +1163,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       div.classList.add('envbox');
 
-
-
-      // ניקוי כפילות טקסט בראש פסקה ב-remark/proof אם דבוק "Remark./Proof."
-
-      if (env === 'remark' || env === 'proof') {
-
-        const firstP = div.querySelector(':scope > p');
-
-        if (firstP) {
-
-          const labels = new Set(['definition','example','exercise','theorem','lemma','proposition','corollary','remark','proof','solution']);
-
-          const leadingWord = () => {
-
-            const html = firstP.innerHTML
-
-              .replace(/^(\s|&nbsp;)+/i, '')
-
-              .replace(/^<(?:em|i|strong|b|span)[^>]*>/i, '')
-
-              .replace(/<\/(?:em|i|strong|b|span)>/i, '');
-
-            const m = html.match(/^([A-Za-z]+)\b/);
-
-            return m ? m[1].toLowerCase() : '';
-
-          };
-
-          let guard = 0;
-
-          while (labels.has(leadingWord()) && guard++ < 5) {
-
-            firstP.innerHTML = firstP.innerHTML
-
-              .replace(/^(\s|&nbsp;)*<(?:em|i|strong|b|span)[^>]*>(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*<\/(?:em|i|strong|b|span)>(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '')
-
-              .replace(/^(\s|&nbsp;)*([A-Za-z]+)(\s|&nbsp;)*\d*(?:\.\d+)?\s*[\.,:\-]?\s*/i, '');
-
-          }
-
-        }
-
-      }
-
     });
 
   });
@@ -1220,7 +1182,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-
 <script>
 
 document.addEventListener('DOMContentLoaded', () => {
