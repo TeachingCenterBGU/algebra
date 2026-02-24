@@ -227,3 +227,8 @@ figure.quarto-figure figcaption {
     margin-left: 0.2rem;
     color: #555;         /* אפור כהה כדי שלא יהיה צעקני מדי */
 }
+
+/* הופך רשימות של אותיות אנגליות למספור עברי תקני */
+ol[type="a"] {
+  list-style-type: hebrew;
+}

@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -272,58 +272,67 @@ window.Quarto = {
 </header>
 
 
-<div class="flushright">
-
-</div>
 <p>אלגברה לינארית היא אחת מאבני היסוד של המתמטיקה המודרנית. בתור התחלה, היא קשורה באופן הדוק לגיאומטריה של המישור וגם לגיאומטריה של המרחב. בחטיבת הביניים לומדים על משוואה בנעלם אחד, וגם על מערכת של שתי משוואות בשני נעלמים. למשל:</p>
-<p><span class="math display">\begin{cases}
+<p><span class="math display">
+\begin{cases}
 3x+2y=8\\
 x+y=3
-\end{cases}</span></p>
-<p>יש יותר מדרך אחת לפתור מערכת כזו, כמו להכפיל את המשוואה השנייה ב-<span class="math inline">2</span> ואז להחסיר אותה מהמשוואה הראשונה. כך מקבלים <span class="math inline">x=2</span> ולבסוף <span class="math inline">y=1</span> עי הצבה באחת המשוואות. מבחינה גיאומטרית, כל משוואה מייצגת קו ישר במישור, ופתרון המערכת מוביל לנקודת החיתוך של שני הישרים.</p>
-<div class="quarto-figure">
-<img src="images/intro/intro_img_1.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%">
-<figcaption>
-איור 1.1 - שני ישרים ונקודת החיתוך
-</figcaption>
+\end{cases}
+</span></p>
+<p>יש יותר מדרך אחת לפתור מערכת כזו, כמו להכפיל את המשוואה השנייה ב-<span class="math inline">2</span> ואז להחסיר אותה מהמשוואה הראשונה. כך מקבלים <span class="math inline">x=2</span> ולבסוף <span class="math inline">y=1</span> ע”י הצבה באחת המשוואות. מבחינה גיאומטרית, כל משוואה מייצגת קו ישר במישור, ופתרון המערכת מוביל לנקודת החיתוך של שני הישרים.</p>
+<div id="fig-Intersection-Point" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Intersection-Point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/intro/intro_img_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
-<p>בבסיסה אלגברה לינארית עוסקת בפתרון מערכת של משוואות לינאריות, כלומר משוואות ממעלה ראשונה במספר נעלמים. בתחומים רבים במדע ובכלל יכולים להופיע הרבה נעלמים והרבה (אילוצים) , בהתאם למה שידוע לנו על הבעיה הרלוונטית.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Intersection-Point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;1: שני הישרים ונקודת החיתוך
+</figcaption>
+</figure>
+</div>
+<p>בבסיסה אלגברה לינארית עוסקת בפתרון מערכת של משוואות לינאריות, כלומר משוואות ממעלה ראשונה במספר נעלמים. בתחומים רבים במדע ובכלל יכולים להופיע הרבה נעלמים והרבה אילוצים (משוואות), בהתאם למה שידוע לנו על הבעיה הרלוונטית.</p>
 <div class="example">
-תומר נוסע מאילת צפונה, ואלה נוסעת מתל אביב דרומה. המרחק ההתחלתי ביניהם הוא <span class="math inline">350</span> ק”מ. תומר נוסע במהירות <span class="math inline">60</span> קמ”ש במשך <span class="math inline">t_{1}</span> שעות, וממשיך במהירות <span class="math inline">90</span> קמ”ש במשך <span class="math inline">t_{2}</span> שעות עד שהוא חולף על פני המכונית של אלה ומזהה אותה. עד לרגע זה אלה נסעה במהירות <span class="math inline">90</span> ק”מ במשך <span class="math inline">t_{3}</span> שעות ואחר כך במהירות <span class="math inline">110</span> ק”מ במשך <span class="math inline">t_{4}</span> שעות. אם נשווה בין סכומי זמני התנועה של שתי המכוניות וגם נדרוש שסכום הדרכים יהיה המרחק ההתחלתי, נקבל שתי משוואות בארבעה נעלמים:<br>
-
-<span class="math display">\begin{cases}
+<p>תומר נוסע מאילת צפונה, ואלה נוסעת מתל אביב דרומה. המרחק ההתחלתי ביניהם הוא <span class="math inline">350</span> ק”מ. תומר נוסע במהירות <span class="math inline">60</span> קמ”ש במשך <span class="math inline">t_{1}</span> שעות, וממשיך במהירות <span class="math inline">90</span> קמ”ש במשך <span class="math inline">t_{2}</span> שעות עד שהוא חולף על פני המכונית של אלה ומזהה אותה. עד לרגע זה אלה נסעה במהירות <span class="math inline">90</span> ק”מ במשך <span class="math inline">t_{3}</span> שעות ואחר כך במהירות <span class="math inline">110</span> ק”מ במשך <span class="math inline">t_{4}</span> שעות. אם נשווה בין סכומי זמני התנועה של שתי המכוניות וגם נדרוש שסכום הדרכים יהיה המרחק ההתחלתי, נקבל שתי משוואות בארבעה נעלמים:</p>
+<p><span class="math display">
+\begin{cases}
 t_{1} + t_{2} = t_{3} + t_{4} \\
 60t_{1} + 90t_{2} + 90t_{3} + 110t_{4} = 350
-\end{cases}</span>
-<br>
-למערכת משוואות לינארית (ממ”ל בראשי תיבות) זו יש אינסוף פתרונות בתחום ההגדרה הרלוונטי של מספרים חיוביים. אם למשל נציב <span class="math inline">t_{3}=t_{4}=1</span> בשתי המשוואות, נקבל ממ”ל חדשה של שתי משוואות בשני נעלמים:<br>
-
-<span class="math display">\begin{cases}
+\end{cases}
+</span></p>
+<p>למערכת משוואות לינארית (ממ”ל בראשי תיבות) זו יש אינסוף פתרונות בתחום ההגדרה הרלוונטי של מספרים חיוביים. אם למשל נציב <span class="math inline">t_{3}=t_{4}=1</span> בשתי המשוואות, נקבל ממ”ל חדשה של שתי משוואות בשני נעלמים:</p>
+<p><span class="math display">
+\begin{cases}
 t_{1} + t_{2} = 2 \\
 60t_{1} + 90t_{2} = 150
-\end{cases}</span>
-<br>
-אפשר לפתור את הממ”ל הזו כרגיל, אבל קל לבדוק שהפתרון הוא <span class="math inline">t_{1}=t_{2}=1</span>. לכן, אחד הפתרונות של הממ”ל המקורית (בארבעה נעלמים) הוא <span class="math inline">t_{1}=t_{2}=t_{3}=t_{4}=1</span>. אבל זה לא הפתרון היחיד כי בחרנו את הערכים של <span class="math inline">t_{3},t_{4}</span> באופן שרירותי (נוח לחישובים, אך לא יותר מזה). באותה מידה אפשר להציב <span class="math inline">t_{3}=\frac{2}{3},\,t_{4}=\frac{4}{3}</span> ולקבל ממ”ל קצת שונה מהקודמת:<br>
-
-<span class="math display">\begin{cases}
+\end{cases}
+</span></p>
+<p>אפשר לפתור את הממ”ל הזו כרגיל, אבל קל לבדוק שהפתרון הוא <span class="math inline">t_{1}=t_{2}=1</span>. לכן, אחד הפתרונות של הממ”ל המקורית (בארבעה נעלמים) הוא <span class="math inline">t_{1}=t_{2}=t_{3}=t_{4}=1</span>. אבל זה לא הפתרון היחיד כי בחרנו את הערכים של <span class="math inline">t_{3},t_{4}</span> באופן שרירותי (נוח לחישובים, אך לא יותר מזה). באותה מידה אפשר להציב <span class="math inline">t_{3}=\frac{2}{3},\,t_{4}=\frac{4}{3}</span> ולקבל ממ”ל קצת שונה מהקודמת:</p>
+<p><span class="math display">
+\begin{cases}
 t_{1} + t_{2} = 2 \\
 60t_{1} + 90t_{2} = \frac{430}{3}
-\end{cases}</span>
-<p><br>
-הפעם אפשר לבדוק שהפתרון הוא <span class="math inline">t_{1}=\frac{11}{9},\,t_{2}=\frac{7}{9}</span>. כלומר יש פתרון נוסף לממ”ל המקורית, שנתון ע”י <span class="math inline">t_{1}=\frac{11}{9},\,t_{2}=\frac{7}{9}\text{,}\,t_{3}=\frac{2}{3},\,t_{4}=\frac{4}{3}</span>.</p>
+\end{cases}
+</span></p>
+<p>הפעם אפשר לבדוק שהפתרון הוא <span class="math inline">t_{1}=\frac{11}{9},\,t_{2}=\frac{7}{9}</span>. כלומר יש פתרון נוסף לממ”ל המקורית, שנתון ע”י <span class="math inline">t_{1}=\frac{11}{9},\,t_{2}=\frac{7}{9}\text{,}\,t_{3}=\frac{2}{3},\,t_{4}=\frac{4}{3}</span>.</p>
 </div>
 <p>באופן כללי, נשאל את השאלות הבאות:</p>
-<p>• כיצד פותרים ממל שבה הרבה נעלמים?</p>
-<p>• כיצד פותרים ממל שבה הרבה משוואות?</p>
-<p>• האם בכלל קיימים פתרונות לממל? אם כן, אז כמה?</p>
+<ul>
+<li>כיצד פותרים ממ”ל שבה הרבה נעלמים?</li>
+<li>כיצד פותרים ממ”ל שבה הרבה משוואות?</li>
+<li>האם בכלל קיימים פתרונות לממ”ל? אם כן, אז כמה?</li>
+</ul>
 <p>כדי לענות על שאלות כאלו באופן מלא ומסודר, ישמשו אותנו שני מושגים יסודיים: וקטורים ומטריצות. נדחה את ההגדרות שלהם לפרקים הרלוונטיים, אבל לעת עתה מספיק לחשוב עליהם כאובייקטים מתמטיים שבהם מופיעים כמה מספרים. למשל, הזוג הסדור <span class="math inline">(x,y)</span> של שני מספרים <span class="math inline">x</span> ו-<span class="math inline">y</span> הוא וקטור עם שני רכיבים (קוארדינטות). בחטיבת הביניים ובתיכון ראינו שאפשר לחשוב על זוג כזה כעל נקודה סטטית במישור, אבל בלימודי הפיזיקה יש הסתכלות דינמית על וקטור כאובייקט בעל גודל וכיוון, לדוגמא כוח שפועל על גוף. נראה שאפשר לאמץ את שתי הגישות (סטטית ודינמית) במקביל, כאשר האינטואיציה הפיזיקלית מועילה מאוד אך ממש לא הכרחית להבנת הקורס.</p>
-<p>לאחר שנתרגל לוקטורים ומטריצות, נראה שאפשר להסתכל עליהם באופן מופשט (תיאורטי) ולשאול עליהם כל מיני שאלות שלא בהכרח קשורות לממל כזו או אחרת. במתמטיקה, דבר אחד מוביל למשנהו וזה טוב לשמור על ראש פתוח כשלומדים מושגים חדשים. הגישה המופשטת של אלגברה לינארית מאפשרת יישומים מגוונים, גם מחוץ לגיאומטריה ופיזיקה. לטובת הסקרנים, נעסוק קצת בפיזיקה דרך הנדסה בחלק מהיישומים בסוף הספר שחורגים מהקורס עצמו. אבל גם נעסוק ביישומים שקשורים למאגר גדול של נתונים כמו למידת מכונה.</p>
+<p>לאחר שנתרגל לוקטורים ומטריצות, נראה שאפשר להסתכל עליהם באופן מופשט (תיאורטי) ולשאול עליהם כל מיני שאלות שלא בהכרח קשורות לממ”ל כזו או אחרת. במתמטיקה, דבר אחד מוביל למשנהו וזה טוב לשמור על ראש פתוח כשלומדים מושגים חדשים. הגישה המופשטת של אלגברה לינארית מאפשרת יישומים מגוונים, גם מחוץ לגיאומטריה ופיזיקה. לטובת הסקרנים, נעסוק קצת בפיזיקה דרך הנדסה בחלק מהיישומים בסוף הספר שחורגים מהקורס עצמו. אבל גם נעסוק ביישומים שקשורים למאגר גדול של נתונים כמו למידת מכונה.</p>
 <p>רבים מכם לומדים חשבון דיפרנציאלי ואינטגרלי במקביל. אפשר לומר שאלגברה לינארית מופיעה בחשבון דיפרנציאלי ואינטגרלי הרבה יותר מאשר להיפך. מושג הנגזרת מוביל לקירוב לינארי של פונקציה נתונה ע”י פונקציה לינארית שמתארת את הישר המשיק לגרף הפונקציה בנקודה נתונה. בנוסף, הקשר לאלגברה לינארית מתבטא בחישוב שטחים (במישור) ונפחים (במרחב) בעזרת כלי שנקרא דטרמיננטה. נפתח אותו בהמשך הדרך.</p>
-<div class="quarto-figure">
-<img src="images/TangentLinePlane.png" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%">
-<figcaption>
-איור 1.2 - מישור משיק בצד ימין, ישר משיק צד שמאל
+<div id="fig-Tangents" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Tangents-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/TangentLinePlane.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Tangents-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;2: מישור משיק בצד ימין, ישר משיק צד שמאל
 </figcaption>
+</figure>
 </div>
 <p>בספר מופיעות דוגמאות רבות, תרגילים פתורים וגם קישורים לסרטונים. תוכלו לחזור אליו בהמשך התואר ככל שתצטרכו להשתמש באלגברה לינארית.</p>
 
