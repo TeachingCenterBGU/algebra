@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הדגמת פרישה במרחב (3D)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  /* כותרת עליונה צפה */
+  #header {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 10;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  h1 { margin: 0 0 10px 0; font-size: 1.5rem; color: #2c3e50; }
+
+  #status-bar {
+    font-weight: bold;
+    color: #1565c0;
+    font-size: 1.1em;
+  }
+
+  /* כפתור איפוס */
+  #reset-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 10px 20px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  #reset-btn:hover { background-color: #d32f2f; }
+
+  /* רשימת הנוסחאות - צפה בצד */
+  #formulas-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 10;
+    font-family: 'Times New Roman', serif;
+    direction: ltr; /* משמאל לימין */
+    display: none;
+  }
+
+  .formula-row {
+    font-size: 1.1em;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+  }
+
+  .coords {
+      font-family: monospace;
+      font-size: 0.9em;
+      color: #333;
+      margin-right: 15px;
+      font-weight: bold;
+      min-width: 90px;
+  }
+
+  /* אלמנטים של טקסט צף */
+  .label-3d {
+      position: absolute;
+      font-family: 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 16px;
+      pointer-events: none;
+      text-shadow: 0 0 3px white, 0 0 3px white;
+      user-select: none;
+  }
+  .label-3d i { font-style: italic; }
+  .label-3d sub { font-style: normal; font-size: 0.8em; }
+
+  /* מחלקות עזר ל-HTML */
+  .math-style { font-family: 'Times New Roman', serif; font-weight: bold; }
+  .math-style i { font-style: italic; }
+  .math-style sub { font-style: normal; font-size: 0.8em; }
+  .scalar { color: #444; font-family: Arial, sans-serif; font-weight: normal; margin: 0 2px; }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <div id="header">
+    <h1>הדגמת פרישה במרחב (3D)</h1>
+    <div id="status-bar"></div>
+  </div>
+
+  <button id="reset-btn" onclick="initDemo()">התחל מחדש</button>
+
+  <div id="formulas-panel"></div>
+
+  <!-- כאן יווצרו התוויות הצפות -->
+  <div id="labels-container"></div>
+
+<script>
+  // --- משתנים גלובליים ---
+  let scene, camera, renderer, controls;
+  let raycaster, mouse;
+  
+  let step = 0;
+  let v1 = null, v2 = null, v3 = null;
+  let basisVectors = []; 
+  let extraVectors = [];
+  
+  let invisibleSphere; 
+  let spanLine = null; 
+  let spanPlane = null; 
+
+  let labels = []; 
+
+  const colorV1 = 0x0000ff; // כחול
+  const colorV2 = 0x008000; // ירוק
+  const colorV3 = 0xff0000; // אדום
+  const colorsExtra = [0x9c27b0, 0xff9800, 0x00bcd4, 0xe91e63];
+
+  const htmlV1 = '<span class="math-style" style="color:blue"><i>v</i><sub>1</sub></span>';
+  const htmlV2 = '<span class="math-style" style="color:green"><i>v</i><sub>2</sub></span>';
+  const htmlV3 = '<span class="math-style" style="color:red"><i>v</i><sub>3</sub></span>';
+
+  // --- אתחול Three.js ---
+  function init3D() {
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xf4f4f9);
+
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(8, 5, 8);
+      camera.lookAt(0, 0, 0);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      scene.add(ambientLight);
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+      dirLight.position.set(5, 10, 7);
+      scene.add(dirLight);
+
+      const gridHelper = new THREE.GridHelper(20, 20, 0xcccccc, 0xeeeeee);
+      scene.add(gridHelper);
+
+      addAxes();
+
+      // כדור אינטראקציה (בלתי נראה)
+      const geometry = new THREE.SphereGeometry(4, 32, 32); 
+      const material = new THREE.MeshBasicMaterial({ 
+          color: 0xffff00, 
+          transparent: true, 
+          opacity: 0.0, 
+          side: THREE.DoubleSide,
+          depthWrite: false 
+      });
+      invisibleSphere = new THREE.Mesh(geometry, material);
+      scene.add(invisibleSphere);
+
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('pointerdown', onPointerDown);
+
+      animate();
+  }
+
+  function addAxes() {
+      function createAxis(dir, color, length) {
+          const arrowHelper = new THREE.ArrowHelper(dir, new THREE.Vector3(0,0,0), length, color, 0.5, 0.3);
+          scene.add(arrowHelper);
+          return arrowHelper;
+      }
+
+      const len = 6;
+      createAxis(new THREE.Vector3(1, 0, 0), 0x333333, len);
+      addHtmlLabel("x", new THREE.Vector3(len + 0.5, 0, 0), "black");
+
+      createAxis(new THREE.Vector3(0, 1, 0), 0x333333, len);
+      addHtmlLabel("y", new THREE.Vector3(0, len + 0.5, 0), "black");
+
+      createAxis(new THREE.Vector3(0, 0, 1), 0x333333, len);
+      addHtmlLabel("z", new THREE.Vector3(0, 0, len + 0.5), "black");
+  }
+
+  function initDemo() {
+      step = 0;
+      v1 = null; v2 = null; v3 = null;
+      basisVectors = [];
+      extraVectors = [];
+      
+      const objectsToRemove = scene.children.filter(child => child.userData.isDynamic);
+      objectsToRemove.forEach(obj => scene.remove(obj));
+
+      const container = document.getElementById('labels-container');
+      container.innerHTML = '';
+      labels = []; 
+      
+      addHtmlLabel("x", new THREE.Vector3(6.5, 0, 0), "black");
+      addHtmlLabel("y", new THREE.Vector3(0, 6.5, 0), "black");
+      addHtmlLabel("z", new THREE.Vector3(0, 0, 6.5), "black");
+
+      document.getElementById('formulas-panel').innerHTML = '';
+      document.getElementById('formulas-panel').style.display = 'none';
+
+      updateStatus("init");
+  }
+
+  function updateStatus(state) {
+      const el = document.getElementById('status-bar');
+      if (state === "init") {
+          el.innerHTML = `לחצו וגררו לסיבוב נקודת המבט. לחצו על נקודה במרחב לבחירת ${htmlV1}`;
+      } else if (state === "pick_v2") {
+          el.innerHTML = `כעת בחרו נקודה (לא על הישר) לבחירת ${htmlV2}`;
+      } else if (state === "dependent_v2") {
+          el.innerHTML = `הנקודה על הישר! בחרו נקודה בלתי תלויה.`;
+      } else if (state === "pick_v3") {
+          el.innerHTML = `הקבוצה {${htmlV1}, ${htmlV2}} פורשת מישור. בחרו נקודה מחוצה לו לבחירת ${htmlV3}`;
+      } else if (state === "dependent_v3") {
+          el.innerHTML = `הנקודה על המישור! בחרו נקודה בלתי תלויה.`;
+      } else if (state === "span_all") {
+          el.innerHTML = `הקבוצה {${htmlV1}, ${htmlV2}, ${htmlV3}} פורשת את כל המרחב! בחרו כל נקודה להצגה כצירוף לינארי.`;
+      }
+  }
+
+  function onPointerDown(event) {
+      if (event.target.tagName === 'BUTTON' || event.target.closest('#formulas-panel')) return;
+
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(invisibleSphere);
+
+      if (intersects.length > 0) {
+          const point = intersects[0].point;
+          const vec = new THREE.Vector3(
+              Math.round(point.x * 10) / 10,
+              Math.round(point.y * 10) / 10,
+              Math.round(point.z * 10) / 10
+          );
+
+          if (step === 0) {
+              if (vec.lengthSq() < 0.1) return;
+              v1 = vec;
+              addArrow(v1, colorV1, "v", "1");
+              createSpanLine(v1);
+              addBaseVectorInfo(v1, htmlV1);
+              step = 1;
+              updateStatus("pick_v2");
+          } 
+          else if (step === 1) {
+              const cross = new THREE.Vector3().copy(v1).cross(vec);
+              if (cross.lengthSq() < 0.1) {
+                  updateStatus("dependent_v2");
+                  return;
+              }
+              v2 = vec;
+              addArrow(v2, colorV2, "v", "2");
+              createSpanPlane(v1, v2);
+              addBaseVectorInfo(v2, htmlV2);
+              step = 2;
+              updateStatus("pick_v3");
+          } 
+          else if (step === 2) {
+              const normal = new THREE.Vector3().copy(v1).cross(v2);
+              const det = normal.dot(vec);
+              
+              if (Math.abs(det) < 0.1) {
+                  updateStatus("dependent_v3");
+                  return;
+              }
+              v3 = vec;
+              addArrow(v3, colorV3, "v", "3");
+              addBaseVectorInfo(v3, htmlV3);
+              step = 3;
+              updateStatus("span_all");
+          } 
+          else if (step === 3) {
+              const idx = 4 + extraVectors.length;
+              const color = colorsExtra[extraVectors.length % colorsExtra.length];
+              
+              addArrow(vec, color, "v", idx);
+              addFormula(vec, idx, color);
+              
+              extraVectors.push(vec);
+          }
+      }
+  }
+
+  // --- פונקציות גרפיות ---
+
+  function addArrow(vec, color, labelText, labelSub) {
+      const dir = vec.clone().normalize();
+      const len = vec.length();
+      const origin = new THREE.Vector3(0,0,0);
+      
+      const arrow = new THREE.ArrowHelper(dir, origin, len, color, 0.4, 0.2);
+      arrow.userData.isDynamic = true;
+      scene.add(arrow);
+
+      const cssColor = '#' + new THREE.Color(color).getHexString();
+      addHtmlLabel(labelText, vec, cssColor, labelSub);
+  }
+
+  function createSpanLine(vec) {
+      const material = new THREE.LineBasicMaterial({ color: 0x0000ff, opacity: 0.3, transparent: true });
+      const points = [];
+      const farPoint1 = vec.clone().multiplyScalar(10);
+      const farPoint2 = vec.clone().multiplyScalar(-10);
+      points.push(farPoint1, farPoint2);
+      
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, material);
+      line.userData.isDynamic = true;
+      scene.add(line);
+  }
+
+  function createSpanPlane(vecA, vecB) {
+      const normal = new THREE.Vector3().copy(vecA).cross(vecB).normalize();
+      
+      const geometry = new THREE.PlaneGeometry(50, 50);
+      const material = new THREE.MeshBasicMaterial({ 
+          color: 0x00ff00, 
+          side: THREE.DoubleSide, 
+          opacity: 0.2, 
+          transparent: true,
+          depthWrite: false 
+      });
+      const plane = new THREE.Mesh(geometry, material);
+      
+      plane.lookAt(normal);
+      plane.userData.isDynamic = true;
+      scene.add(plane);
+  }
+
+  // --- פאנל מידע ---
+
+  function addBaseVectorInfo(vec, htmlLabel) {
+      const panel = document.getElementById('formulas-panel');
+      panel.style.display = 'block';
+      
+      const div = document.createElement('div');
+      div.className = 'formula-row';
+      div.innerHTML = `
+        <span class="coords">(${vec.x}, ${vec.y}, ${vec.z})</span>
+        ${htmlLabel}
+      `;
+      panel.appendChild(div);
+      panel.scrollTop = panel.scrollHeight;
+  }
+
+  function addFormula(target, idx, cssColorHex) {
+      const v2xv3 = new THREE.Vector3().copy(v2).cross(v3);
+      const D = v1.dot(v2xv3);
+
+      const D1 = target.dot(v2xv3);
+      const c1 = D1 / D;
+
+      const tarxv3 = new THREE.Vector3().copy(target).cross(v3);
+      const D2 = v1.dot(tarxv3);
+      const c2 = D2 / D;
+
+      const v2xtar = new THREE.Vector3().copy(v2).cross(target);
+      const D3 = v1.dot(v2xtar);
+      const c3 = D3 / D;
+
+      const sc1 = formatScalar(c1);
+      const sc2 = formatScalar(c2, true);
+      const sc3 = formatScalar(c3, true);
+
+      const panel = document.getElementById('formulas-panel');
+      const div = document.createElement('div');
+      div.className = 'formula-row';
+      
+      const colorStr = typeof cssColorHex === 'number' ? '#' + new THREE.Color(cssColorHex).getHexString() : cssColorHex;
+
+      div.innerHTML = `
+        <span class="coords">(${target.x}, ${target.y}, ${target.z})</span>
+        <span class="math-style" style="color:${colorStr}"><i>v</i><sub>${idx}</sub></span>
+        <span class="scalar">=</span>
+        <span class="scalar">${sc1}</span>${htmlV1}
+        <span class="scalar">${sc2}</span>${htmlV2}
+        <span class="scalar">${sc3}</span>${htmlV3}
+      `;
+      
+      panel.appendChild(div);
+      panel.scrollTop = panel.scrollHeight;
+  }
+
+  function formatScalar(num, showSign = false) {
+      let n = parseFloat(num.toFixed(2));
+      let str = Math.abs(n).toString();
+      let sign = n >= 0 ? "+" : "-";
+      
+      if (!showSign) {
+          return n < 0 ? "-" + str : str;
+      } else {
+          return sign + " " + str;
+      }
+  }
+
+  // --- תוויות ---
+  function addHtmlLabel(text, positionVector, color, subscript) {
+      const container = document.getElementById('labels-container');
+      const div = document.createElement('div');
+      div.className = 'label-3d';
+      div.style.color = color;
+      
+      let html = `<i>${text}</i>`;
+      if (subscript) {
+          html += `<sub>${subscript}</sub>`;
+      }
+      div.innerHTML = html;
+      
+      container.appendChild(div);
+      
+      labels.push({
+          element: div,
+          position: positionVector
+      });
+  }
+
+  function updateLabels() {
+      labels.forEach(lbl => {
+          const tempV = lbl.position.clone();
+          tempV.project(camera);
+
+          const x = (tempV.x * .5 + .5) * window.innerWidth;
+          const y = (tempV.y * -.5 + .5) * window.innerHeight;
+
+          if (Math.abs(tempV.z) > 1) {
+              lbl.element.style.display = 'none';
+          } else {
+              lbl.element.style.display = 'block';
+              lbl.element.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+          }
+      });
+  }
+
+  function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      updateLabels();
+      renderer.render(scene, camera);
+  }
+
+  init3D();
+  initDemo();
+
+</script>
+</body>
+</html>
