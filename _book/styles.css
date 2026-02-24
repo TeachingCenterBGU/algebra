@@ -75,8 +75,7 @@ figure.quarto-figure figcaption,
   text-align: center !important;
   margin: 0.5rem auto;
 }
-
-/* רשימות בתוך סביבות: שהמספור יהיה בתוך התיבה ולא ייחתך */
+/* רשימות בתוך סביבות: סידור מספור, מניעת גלישה ויישור שורות */
 .definition ol, .definition ul,
 .example   ol, .example   ul,
 .exercise  ol, .exercise  ul,
@@ -86,11 +85,31 @@ figure.quarto-figure figcaption,
 .corollary ol, .corollary ul,
 .remark    ol, .remark    ul,
 .proof     ol, .proof     ul {
-  list-style-position: inside;   /* המספר/תבליט בתוך הקופסה */
-  padding-inline-start: 0;       /* לא צריך ריווח שמאלה (או ימינה ב‑RTL) */
-  margin: 0.4rem 0;              /* ריווח אנכי נעים */
-  direction: rtl;                /* מוודא RTL גם ברשימה */
-  text-align: right;
+  list-style-position: outside !important;
+  padding-right: 2.5rem !important;  /* ה-!important מונע מהריווח של התיבה לדרוס אותנו */
+  padding-left: 0 !important;
+  margin: 0.4rem 0 !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* מניעת ירידת שורה של הפסקה הראשונה (מחבר את הטקסט למספר) */
+.definition li > p:first-child,
+.example li > p:first-child,
+.exercise li > p:first-child,
+.theorem li > p:first-child,
+.lemma li > p:first-child,
+.proposition li > p:first-child,
+.corollary li > p:first-child,
+.remark li > p:first-child,
+.proof li > p:first-child {
+  display: inline;
+}
+
+/* מסדר את הכיווניות של המספר עצמו (1. במקום .1) */
+.definition li, .example li, .exercise li, .theorem li, 
+.lemma li, .proposition li, .corollary li, .remark li, .proof li {
+  direction: rtl;
 }
 /* --- Home hero --- */
 .home-hero{ text-align:center; margin:2.2rem 0 1.4rem; }

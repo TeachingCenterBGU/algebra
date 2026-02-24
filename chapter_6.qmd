@@ -302,7 +302,7 @@ w&=0_V+w\in W_1+W_2
 נרצה להבין את הקשר בין המימדים של שני תת-מרחבים, חיתוכם וסכומם. קשר אחד כבר קל להסיק:
 
 ::: corollary
-**מסקנה 1.14**. *יהיו $V$ מ\"ו מעל $\mathbb{F}$ ו- $W_1,W_2\subseteq V$. אז מתקיים: $$\begin{aligned}
+ *יהיו $V$ מ\"ו מעל $\mathbb{F}$ ו- $W_1,W_2\subseteq V$. אז מתקיים: $$\begin{aligned}
 \dim(W_1\cap W_2)\leq \dim(W_1)\leq\dim(W_1+W_2)\leq\dim(V)
 \end{aligned}$$ ובאופן דומה: $$\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)$$*
 :::
