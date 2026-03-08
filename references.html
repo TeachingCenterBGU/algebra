@@ -166,7 +166,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">תכונות ושימושים של המספרים המרוכבים</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -227,6 +227,29 @@ div.csl-indent {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<div style="display: none;">
+
+$$
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\M}{\mathbb{M}}
+
+\newcommand{\0}{\mathbf{0}}
+
+$$
+
+</div>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -247,8 +270,9 @@ div.csl-indent {
 </header>
 
 
+<div id="refs" role="list" style="display: none">
 
-
+</div>
 
 
 
@@ -401,6 +425,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // --- התיקון: מחיקת הכותרת האנגלית המובנית של Quarto ---
+
+    // Quarto שותל את הכותרת שלו בתור תגית span בתוך הפסקה הראשונה
+
+    const quartoNativeTitle = div.querySelector('span.theorem-title');
+
+    if (quartoNativeTitle) {
+
+      quartoNativeTitle.remove(); // מעלים את Theorem 2.1
+
+    }
+
+
+
     // מזהים איזו סביבה זו מתוך הרשימה שלנו
 
     const env = boxEnvs.find(e => div.classList.contains(e));
@@ -411,15 +449,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // הוספת הכותרת עם המונה המשותף
+    // הוספת הכותרת שלנו עם המונה המשותף בעברית
 
-    let title = div.querySelector(':scope > .theorem-title');
+    let title = div.querySelector(':scope > div.theorem-title');
 
     if (!title) {
 
       title = document.createElement('div');
 
-      title.className = 'theorem-title';
+      title.className = 'theorem-title custom-title';
 
       if (meta.numbered) {
 
@@ -447,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  
+
 
   // --- צביעת פתרון כ-callout לפי המפה ---
 
