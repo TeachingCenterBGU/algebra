@@ -49,17 +49,7 @@ format:
   html:
     toc: true
     number-sections: true
-    html-math-method: 
-      method: katex
-      macros: 
-        "\\N": "\\mathbb{N}"
-        "\\Z": "\\mathbb{Z}"
-        "\\Q": "\\mathbb{Q}"
-        "\\R": "\\mathbb{R}"
-        "\\C": "\\mathbb{C}"
-        "\\F": "\\mathbb{F}"
-        "\\M": "\\mathbb{M}"
-        "\\0": "\\mathbf{0}"
+    html-math-method: mathjax
     fig-align: center
     fig-cap-location: bottom
 
@@ -68,6 +58,8 @@ format:
     css: 
       - rtl-baseline.css
       - styles.css
+    include-before-body:
+      - math-macros.html
     include-after-body:
       - auto-env-titles.html
       - chapter-numbering.html

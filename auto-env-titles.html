@@ -72,16 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // לא לגעת ב-callout (כמו פתרונות)
     if (div.classList.contains('callout')) return;
 
+    // --- התיקון: מחיקת הכותרת האנגלית המובנית של Quarto ---
+    // Quarto שותל את הכותרת שלו בתור תגית span בתוך הפסקה הראשונה
+    const quartoNativeTitle = div.querySelector('span.theorem-title');
+    if (quartoNativeTitle) {
+      quartoNativeTitle.remove(); // מעלים את Theorem 2.1
+    }
+
     // מזהים איזו סביבה זו מתוך הרשימה שלנו
     const env = boxEnvs.find(e => div.classList.contains(e));
     if (!env) return;
     const meta = envs[env];
 
-    // הוספת הכותרת עם המונה המשותף
-    let title = div.querySelector(':scope > .theorem-title');
+    // הוספת הכותרת שלנו עם המונה המשותף בעברית
+    let title = div.querySelector(':scope > div.theorem-title');
     if (!title) {
       title = document.createElement('div');
-      title.className = 'theorem-title';
+      title.className = 'theorem-title custom-title';
       if (meta.numbered) {
         sharedCounter += 1; // מקדם את המונה המשותף
         title.textContent = `${meta.label} ${chap}.${sharedCounter}`;
@@ -95,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div.style.setProperty('--env-color', meta.color);
     div.classList.add('envbox');
   });
-  
+
   // --- צביעת פתרון כ-callout לפי המפה ---
   document.querySelectorAll('div.callout.solution').forEach(div => {
     div.style.setProperty('--env-color', envs.solution.color);

@@ -85,22 +85,8 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -191,7 +177,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">תכונות ושימושים של המספרים המרוכבים</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -256,12 +242,34 @@ window.Quarto = {
   <li><a href="#קבוצות-מספרים-נוספות" id="toc-קבוצות-מספרים-נוספות" class="nav-link" data-scroll-target="#קבוצות-מספרים-נוספות"><span class="header-section-number">1.2</span> קבוצות מספרים נוספות</a></li>
   <li><a href="#תורת-הקבוצות-על-קצה-המזלג" id="toc-תורת-הקבוצות-על-קצה-המזלג" class="nav-link" data-scroll-target="#תורת-הקבוצות-על-קצה-המזלג"><span class="header-section-number">1.3</span> תורת הקבוצות על קצה המזלג</a></li>
   <li><a href="#פעולות-בין-קבוצות" id="toc-פעולות-בין-קבוצות" class="nav-link" data-scroll-target="#פעולות-בין-קבוצות"><span class="header-section-number">1.4</span> פעולות בין קבוצות</a></li>
-  <li><a href="#תרגילים" id="toc-תרגילים" class="nav-link" data-scroll-target="#תרגילים">תרגילים</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<div style="display: none;">
+
+$$
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\M}{\mathbb{M}}
+
+\newcommand{\0}{\mathbf{0}}
+
+$$
+
+</div>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -284,38 +292,38 @@ window.Quarto = {
 
 <section id="קבוצת-המספרים-הטבעיים-והגדרת-קבוצה" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="קבוצת-המספרים-הטבעיים-והגדרת-קבוצה"><span class="header-section-number">1.1</span> קבוצת המספרים הטבעיים והגדרת קבוצה</h2>
-<p>המתמטיקה מתחילה בחשבון, וחשבון מבוסס על ספירה. המספר <span class="math inline">1</span> מתאר את היחידה הבסיסית, לצורך העניין אצבע אחת (שבעזרתה אפשר לספור כל מיני דברים). ניתן להוסיף <span class="math inline">1</span> לספירה כאוות נפשנו, ואם נמשיך כך לנצח (בדמיון שלנו לפחות) נייצר אינסוף מספרים שלא בהכרח נדע איך לקרוא להם כי השמות יהיו ארוכים מאוד. אבל יש שם לקבוצה של כל המספרים האלה: מספרים טבעיים. הסימון המקובל הוא <span class="math inline">\mathbb{N}</span>, ואפשר למנות את איברי הקבוצה באופן הבא:</p>
-<p><span class="math display">
-\mathbb{N}=\{1,1+1,1+1+1,...\}=\{1,2,3,...\}
-</span></p>
-<p>הסוגריים המסולסלים מתארים קבוצה שאיבריה מופיעים בין הסוגריים ומופרדים ע”י פסיקים. מאחר שהקבוצה אינסופית, אנחנו נאלצים לכתוב “…” מתוך הנחה שברור איך להמשיך ע”י הוספת <span class="math inline">1</span> בכל שלב.</p>
+<p>המתמטיקה מתחילה בחשבון, וחשבון מבוסס על ספירה. המספר <span class="math inline">\(1\)</span> מתאר את היחידה הבסיסית, לצורך העניין אצבע אחת (שבעזרתה אפשר לספור כל מיני דברים). ניתן להוסיף <span class="math inline">\(1\)</span> לספירה כאוות נפשנו, ואם נמשיך כך לנצח (בדמיון שלנו לפחות) נייצר אינסוף מספרים שלא בהכרח נדע איך לקרוא להם כי השמות יהיו ארוכים מאוד. אבל יש שם לקבוצה של כל המספרים האלה: מספרים טבעיים. הסימון המקובל הוא <span class="math inline">\(\N\)</span>, ואפשר למנות את איברי הקבוצה באופן הבא:</p>
+<p><span class="math display">\[
+\N=\{1,1+1,1+1+1,...\}=\{1,2,3,...\}
+\]</span></p>
+<p>הסוגריים המסולסלים מתארים קבוצה שאיבריה מופיעים בין הסוגריים ומופרדים ע”י פסיקים. מאחר שהקבוצה אינסופית, אנחנו נאלצים לכתוב “…” מתוך הנחה שברור איך להמשיך ע”י הוספת <span class="math inline">\(1\)</span> בכל שלב.</p>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>לפעמים גם <span class="math inline">0</span> נחשב מספר טבעי, אבל לא בקורס שלנו וזה לא באמת חשוב. מבחינה היסטורית ופילוסופית, <span class="math inline">0</span> הוא מספר מוזר ומיוחד כי לא רואים אותו בטבע. הוא מתאר את מה שאינו.</p>
+<p><span class="proof-title"><em>Remark</em>. </span>לפעמים גם <span class="math inline">\(0\)</span> נחשב מספר טבעי, אבל לא בקורס שלנו וזה לא באמת חשוב. מבחינה היסטורית ופילוסופית, <span class="math inline">\(0\)</span> הוא מספר מוזר ומיוחד כי לא רואים אותו בטבע. הוא מתאר את מה שאינו.</p>
 </div>
 <div class="definition">
 <p>קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא חשיבות לסדר הופעתם.</p>
 </div>
-<p>זו הגדרה מאוד כללית, ובלבד שיהיה ברור מהגדרת הקבוצה אילו איברים שייכים לה ואילו לא. אם הקבוצה היא <span class="math inline">A</span>, אז נכתוב <span class="math inline">a\in A</span> כדי לומר שהאיבר <span class="math inline">a</span> שייך לקבוצה <span class="math inline">A</span>. אם הוא לא שייך לה, נכתוב <span class="math inline">a\notin A</span>.</p>
+<p>זו הגדרה מאוד כללית, ובלבד שיהיה ברור מהגדרת הקבוצה אילו איברים שייכים לה ואילו לא. אם הקבוצה היא <span class="math inline">\(A\)</span>, אז נכתוב <span class="math inline">\(a\in A\)</span> כדי לומר שהאיבר <span class="math inline">\(a\)</span> שייך לקבוצה <span class="math inline">\(A\)</span>. אם הוא לא שייך לה, נכתוב <span class="math inline">\(a\notin A\)</span>.</p>
 <div id="fig-belong" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-belong-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/Belong.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-belong-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;1.1: העיגול הוא הקבוצה <span class="math inline">A</span> ומתקיים <span class="math inline">a\in A,b\notin A</span>
+איור&nbsp;1.1: העיגול הוא הקבוצה <span class="math inline">\(A\)</span> ומתקיים <span class="math inline">\(a\in A,b\notin A\)</span>
 </figcaption>
 </figure>
 </div>
 <div class="example">
-<p>משפחת לוי כוללת את דרור (האב), אורית (האם) ואיתי (הבן). נקרא לקבוצת אנשים זו <span class="math inline">L</span> ונתאר אותה באופן מפורש תוך שימוש בעברית: <span class="math display">
+<p>משפחת לוי כוללת את דרור (האב), אורית (האם) ואיתי (הבן). נקרא לקבוצת אנשים זו <span class="math inline">\(L\)</span> ונתאר אותה באופן מפורש תוך שימוש בעברית: <span class="math display">\[
 L=\{\text{דרור, איתי, אורית}\}
-</span></p>
-<p>בפרט, מתקיים <span class="math display">\text{איתי}\in L</span> אך <span class="math display">\text{עופר}\notin L</span> כי מבין השניים האלה רק איתי שייך למשפחה. נדגיש שאין חשיבות לסדר האיברים בתוך הקבוצה, ובדרך כלל יש יותר מדרך אחת להציג את הקבוצה. למשל, כאן גם מתקיים: <span class="math display">
+\]</span></p>
+<p>בפרט, מתקיים <span class="math display">\[\text{איתי}\in L\]</span> אך <span class="math display">\[\text{עופר}\notin L\]</span> כי מבין השניים האלה רק איתי שייך למשפחה. נדגיש שאין חשיבות לסדר האיברים בתוך הקבוצה, ובדרך כלל יש יותר מדרך אחת להציג את הקבוצה. למשל, כאן גם מתקיים: <span class="math display">\[
 L=\{\text{דרור, איתי, אורית}\}=\{\text{דרור, אורית, איתי}\}
-</span></p>
+\]</span></p>
 </div>
 <div class="exercise">
-<p>האם מתקיים <span class="math inline">100^{100}\in\mathbb{N}</span>? <span class="math inline">100^{-100}\in\mathbb{N}</span>? <span class="math inline">(-100)^{100}\in\mathbb{N}</span>?</p>
+<p>האם מתקיים <span class="math inline">\(100^{100}\in\N\)</span>? <span class="math inline">\(100^{-100}\in\N\)</span>? <span class="math inline">\((-100)^{100}\in\N\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -329,49 +337,49 @@ L=\{\text{דרור, איתי, אורית}\}=\{\text{דרור, אורית, אית
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>מתקיים <span class="math inline">100^{100}\in\mathbb{N}</span> כי מכפלה של מספרים טבעיים היא תמיד מספר טבעי. בנוסף, <span class="math inline">(-100)^{100}\in\mathbb{N}</span> כי <span class="math inline">(-100)^{100}=100^{100}</span> לפי הזוגיות של המעריך <span class="math inline">100</span>.</p>
-<p>אבל <span class="math inline">100^{-100}\notin\mathbb{N}</span> כי <span class="math inline">100^{-100}=\frac{1}{10^{100}}</span>, וכל הופכי של מספר טבעי (שאינו <span class="math inline">1</span>) אינו מספר טבעי.</p>
+<p>מתקיים <span class="math inline">\(100^{100}\in\N\)</span> כי מכפלה של מספרים טבעיים היא תמיד מספר טבעי. בנוסף, <span class="math inline">\((-100)^{100}\in\N\)</span> כי <span class="math inline">\((-100)^{100}=100^{100}\)</span> לפי הזוגיות של המעריך <span class="math inline">\(100\)</span>.</p>
+<p>אבל <span class="math inline">\(100^{-100}\notin\N\)</span> כי <span class="math inline">\(100^{-100}=\frac{1}{10^{100}}\)</span>, וכל הופכי של מספר טבעי (שאינו <span class="math inline">\(1\)</span>) אינו מספר טבעי.</p>
 </div>
 </div>
 </div>
-<p>ניתן להגדיר תת-קבוצות של <span class="math inline">\mathbb{N}</span> ע”י שימוש בתכונות. למשל, את קבוצת המספרים הזוגיים החיוביים <span class="math inline">2\mathbb{N}</span> ניתן להגדיר באופן הבא: <span class="math display">
-2\mathbb{N}=\{n\in\mathbb{N}|2 \text{ מתחלק ב- }\:n\}=\{2,4,6,...\}
-</span></p>
-<p>הסימן <span class="math inline">\in</span> מתאר שייכות, ולכן הנוסחה <span class="math inline">n\in\mathbb{N}</span> פירושה שהמספר <span class="math inline">n</span> שייך לקבוצה <span class="math inline">\mathbb{N}</span>. הקו <span class="math inline">|</span> שמפריד בין הנוסחה לתנאי, פירושו “כך ש-”. לכן, הגדרת הקבוצה אומרת לנו שמדובר בקבוצת כל המספרים מהצורה <span class="math inline">n\in\mathbb{N}</span> כך ש-<span class="math inline">n</span> מתחלק ב-<span class="math inline">2</span>. אפשר גם להגדיר את הקבוצה הזו ע”י נוסחה מפורשת <span class="math inline">2n</span> שתפיק את כל המספרים הזוגיים החיוביים כאשר נציב בה כל מספר מהצורה <span class="math inline">n\in\mathbb{N}</span>. הפעם הכתיבה היא כדלקמן: <span class="math display">
-2\mathbb{N}=\{2n|n\in\mathbb{N}\}
-</span></p>
-<p>שימו לב ששתי צורות הכתיבה דומות (נוסחה בצד שמאל ותנאי בצד ימין, עם קו מפריד באמצע). ההבדל הוא שבצורה הראשונה הנוסחה מתייחסת לקבוצה ידועה <span class="math inline">(\mathbb{N})</span> והתנאי דרוש כדי לקבוע את השייכות לקבוצה החדשה. בצורה השנייה יש נוסחה של משתנה <span class="math inline">n</span>, והתנאי מתייחס לערכי המשתנה שיש להציב בנוסחה (כאן התנאי הוא זה שמתייחס ל-<span class="math inline">\mathbb{N}</span>). בהמשך הפרק נוכיח שאכן שתי ההגדרות של קבוצת הזוגיים הן הגדרות שקולות, כלומר שתיהן אכן מתארות את המספרים <span class="math inline">2,4,6,...</span> ושום מספר אחר. זה אולי כבר נראה ברור, אבל נשאלת השאלה איך כותבים הוכחה מסודרת.</p>
+<p>ניתן להגדיר תת-קבוצות של <span class="math inline">\(\N\)</span> ע”י שימוש בתכונות. למשל, את קבוצת המספרים הזוגיים החיוביים <span class="math inline">\(2\N\)</span> ניתן להגדיר באופן הבא: <span class="math display">\[
+2\N=\{n\in\N|2 \text{מתחלק ב-}\:n\}=\{2,4,6,...\}
+\]</span></p>
+<p>הסימן <span class="math inline">\(\in\)</span> מתאר שייכות, ולכן הנוסחה <span class="math inline">\(n\in\N\)</span> פירושה שהמספר <span class="math inline">\(n\)</span> שייך לקבוצה <span class="math inline">\(\N\)</span>. הקו <span class="math inline">\(|\)</span> שמפריד בין הנוסחה לתנאי, פירושו “כך ש-”. לכן, הגדרת הקבוצה אומרת לנו שמדובר בקבוצת כל המספרים מהצורה <span class="math inline">\(n\in\N\)</span> כך ש-<span class="math inline">\(n\)</span> מתחלק ב-<span class="math inline">\(2\)</span>. אפשר גם להגדיר את הקבוצה הזו ע”י נוסחה מפורשת <span class="math inline">\(2n\)</span> שתפיק את כל המספרים הזוגיים החיוביים כאשר נציב בה כל מספר מהצורה <span class="math inline">\(n\in\N\)</span>. הפעם הכתיבה היא כדלקמן: <span class="math display">\[
+2\N=\{2n|n\in\N\}
+\]</span></p>
+<p>שימו לב ששתי צורות הכתיבה דומות (נוסחה בצד שמאל ותנאי בצד ימין, עם קו מפריד באמצע). ההבדל הוא שבצורה הראשונה הנוסחה מתייחסת לקבוצה ידועה <span class="math inline">\((\N)\)</span> והתנאי דרוש כדי לקבוע את השייכות לקבוצה החדשה. בצורה השנייה יש נוסחה של משתנה <span class="math inline">\(n\)</span>, והתנאי מתייחס לערכי המשתנה -שיש להציב בנוסחה (כאן התנאי הוא זה שמתייחס ל ). בהמשך הפרק נוכיח שאכן שתי ההגדרות של קבוצת הזוגיים הן הגדרות שקולות, כלומר שתיהן אכן מתארות את המספרים <span class="math inline">\(2,4,6,...\)</span> ושום מספר אחר. זה אולי כבר נראה ברור, אבל נשאלת השאלה איך כותבים הוכחה מסודרת.</p>
 </section>
 <section id="קבוצות-מספרים-נוספות" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="קבוצות-מספרים-נוספות"><span class="header-section-number">1.2</span> קבוצות מספרים נוספות</h2>
-<p>ב-<span class="math inline">\mathbb{N}</span> יש פעולות חיבור וכפל. הפעולות ההפוכות, חיסור וחילוק, דורשות הרחבה של <span class="math inline">\mathbb{N}</span> לקבוצות יותר גדולות. למשל, למשוואה <span class="math inline">x+2=1</span> אין פתרון טבעי ואנחנו יודעים שאפשר לפתור אותה ע”י חיסור <span class="math inline">2</span> מכל אגף ואז הפתרון יהיה <span class="math inline">x=-1</span>, שהוא מספר שלילי. בעצם, מגדירים את <span class="math inline">-1</span> כפתרון של המשוואה <span class="math inline">x+1=0</span> וזה מוביל להגדרה של המספרים השלמים: <span class="math display">
-\mathbb{Z}=\{...,-3,-2,-1,0,1,2,3,...\}=\{n-m|n,m\in\mathbb{N}\}
-</span></p>
-<p>שימו לב לכתיבה בצד ימין. זו דרך להגדיר את קבוצת השלמים בעזרת קבוצת הטבעיים, כאשר הכוונה היא לקבוצת כל המספרים מהצורה <span class="math inline">n-m</span> כאשר <span class="math inline">n,m</span> הם מספרים טבעיים (פה יש שני משתנים). יש יותר מדרך אחת לכתוב מספר שלם כהפרש של מספרים טבעיים (למעשה אינסוף).</p>
-<p>ניתן גם להרחיב את <span class="math inline">\mathbb{Z}</span> כך שיהיה ניתן לבצע חילוק. בתור התחלה מגדירים לכל <span class="math inline">m\neq0</span> שלם את המספר ההופכי <span class="math inline">\frac{1}{m}</span>, וכדי לאפשר כפל גם מוסיפים את כל השברים מהצורה <span class="math inline">\frac{n}{m}</span> כאשר <span class="math inline">n\in\mathbb{Z}</span>. כך מקבלים את קבוצת המספרים הרציונליים: <span class="math display">
-\mathbb{Q}=\{\frac{n}{m}|m,n\in\mathbb{Z},\,m\neq0\}
-</span></p>
+<p>ב-<span class="math inline">\(\N\)</span> יש פעולות חיבור וכפל. הפעולות ההפוכות, חיסור וחילוק, דורשות הרחבה של <span class="math inline">\(\N\)</span> לקבוצות יותר גדולות. למשל, למשוואה <span class="math inline">\(x+2=1\)</span> אין פתרון טבעי ואנחנו יודעים שאפשר לפתור אותה ע”י חיסור <span class="math inline">\(2\)</span> מכל אגף ואז הפתרון יהיה <span class="math inline">\(x=-1\)</span>, שהוא מספר שלילי. בעצם, מגדירים את <span class="math inline">\(-1\)</span> כפתרון של המשוואה <span class="math inline">\(x+1=0\)</span> וזה מוביל להגדרה של המספרים השלמים: <span class="math display">\[
+\Z=\{...,-3,-2,-1,0,1,2,3,...\}=\{n-m|n,m\in\N\}
+\]</span></p>
+<p>שימו לב לכתיבה בצד ימין. זו דרך להגדיר את קבוצת השלמים בעזרת קבוצת הטבעיים, כאשר הכוונה היא לקבוצת כל המספרים מהצורה <span class="math inline">\(n-m\)</span> כאשר <span class="math inline">\(n,m\)</span> הם מספרים טבעיים (פה יש שני משתנים). יש יותר מדרך אחת לכתוב מספר שלם כהפרש של מספרים טבעיים (למעשה אינסוף).</p>
+<p>ניתן גם להרחיב את <span class="math inline">\(\Z\)</span> כך שיהיה ניתן לבצע חילוק. בתור התחלה מגדירים לכל <span class="math inline">\(m\neq0\)</span> שלם את המספר ההופכי <span class="math inline">\(\frac{1}{m}\)</span>, וכדי לאפשר כפל גם מוסיפים את כל השברים מהצורה <span class="math inline">\(\frac{n}{m}\)</span> כאשר <span class="math inline">\(n\in\Z\)</span>. כך מקבלים את קבוצת המספרים הרציונליים: <span class="math display">\[
+\Q=\{\frac{n}{m}|m,n\in\Z,\,m\neq0\}
+\]</span></p>
 <p>גם כאן יש אינסוף דרכים להציג מספר רציונלי כמנה של מספרים שלמים, ואין עם זה בעיה מבחינת הגדרת הקבוצה. אנחנו רגילים להצגה הפשוטה ביותר, לאחר צמצום המחלקים המשותפים של המונה והמכנה.</p>
-<p>זה מביא אותנו לקבוצת המספרים הממשיים <span class="math inline">\mathbb{R}</span>, שהיא הקבוצה העיקרית שנתמקד בה בקורס. קבוצה זו מכילה את קבוצת המספרים הרציונליים (כל מספר רציונלי הוא ממשי), אבל יש בה מספרים נוספים שנקראים אי-רציונליים. יש הרבה מה לומר על מספרים ממשיים, אבל הדיון המלא מתאים לקורס בחשבון דיפרנציאלי ואינטגרלי. אז נסתפק באפיון הבא: ניתן להציג כל <span class="math inline">x\in\mathbb{R}</span> בהצגה עשרונית מהצורה <span class="math display">
+<p>זה מביא אותנו לקבוצת המספרים הממשיים <span class="math inline">\(\R\)</span>, שהיא הקבוצה העיקרית שנתמקד בה בקורס. קבוצה זו מכילה את קבוצת המספרים הרציונליים (כל מספר רציונלי הוא ממשי), אבל יש בה מספרים נוספים שנקראים אי-רציונליים. יש הרבה מה לומר על מספרים ממשיים, אבל הדיון המלא מתאים לקורס בחשבון דיפרנציאלי ואינטגרלי. אז נסתפק באפיון הבא: ניתן להציג כל <span class="math inline">\(x\in\R\)</span> בהצגה עשרונית מהצורה <span class="math display">\[
 x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
-</span> כאשר <span class="math inline">d_{n},d_{n-1},...,d_{0},d_{-1},d_{-2},...</span> הן ספרות עשרוניות בין <span class="math inline">0</span> ל-<span class="math inline">9</span> (כולל), והנקודה העשרונית מפרידה בין החלק השלם משמאל לחלק השברי מימין. <span class="math inline">x</span> הוא רציונלי כאשר סדרת הספרות העשרוניות היא מחזורית החל משלב מסוים. למשל:</p>
-<p><span class="math display">
+\]</span> כאשר <span class="math inline">\(d_{n},d_{n-1},...,d_{0},d_{-1},d_{-2},...\)</span> הן ספרות עשרוניות בין <span class="math inline">\(0\)</span> ל-<span class="math inline">\(9\)</span> (כולל), והנקודה העשרונית מפרידה בין החלק השלם משמאל לחלק השברי מימין. <span class="math inline">\(x\)</span> הוא רציונלי כאשר סדרת הספרות העשרוניות היא מחזורית החל משלב מסוים. למשל:</p>
+<p><span class="math display">\[
 \begin{aligned}
 \frac{1}{5}=0.200000000000... \\
 \frac{1}{6}=0.166666666666...\\
 \frac{1}{7}=0.142857142857...
 \end{aligned}
-</span></p>
-<p>במקרה הראשון הספרה <span class="math inline">0</span> חוזרת על עצמה (אפשר להשמיט אותה ולקבל הצגה סופית), במקרה השני הספרה <span class="math inline">6</span> חוזרת על עצמה, ובמקרה השלישי הרצף <span class="math inline">142857</span> חוזר על עצמו. המחזוריות נובעת מאופן החישוב של הספרות העשרוניות (לפי חילוק ארוך).</p>
+\]</span></p>
+<p>במקרה הראשון הספרה <span class="math inline">\(0\)</span> חוזרת על עצמה (אפשר להשמיט אותה ולקבל הצגה סופית), במקרה השני הספרה <span class="math inline">\(6\)</span> חוזרת על עצמה, ובמקרה השלישי הרצף <span class="math inline">\(142857\)</span> חוזר על עצמו. המחזוריות נובעת מאופן החישוב של הספרות העשרוניות (לפי חילוק ארוך).</p>
 <p>המספר הוא אי-רציונלי כאשר אין מחזוריות באף שלב של ההצגה העשרונית, ואז החוקיות של סדרת הספרות העשרוניות עלולה להיות מסובכת מאוד. למשל:</p>
-<p><span class="math display">
+<p><span class="math display">\[
 \begin{aligned}
 \sqrt{2}=1.41421356237309504880168872420969807856967187537...\\
 \pi=3.14159265358979323846264338327950288419716939937...
 \end{aligned}
-</span></p>
-<p>נדגיש שאלה מספרים אי-רציונליים מיוחדים כי יש להם משמעות גיאומטרית. <span class="math inline">\sqrt{2}</span> הוא אורך היתר של משולש ישר-זווית עם שני ניצבים באורך <span class="math inline">1</span>, לפי משפט פיתגורס. <span class="math inline">\pi</span> הוא היקף מעגל שקוטרו באורך <span class="math inline">1</span>.</p>
-<p>מבחינת הקורס, המספרים האי-רציונליים הרלוונטיים הם בעיקר שורשים כמו <span class="math inline">\sqrt{2}</span> שהם יחסית נוחים לחישובים. אבל טוב לזכור שיש המון מספרים אי-רציונליים (יותר מאשר מספרים רציונליים במובן מסוים), והם משלימים את המספרים הרציונליים למה שנקרא הישר הממשי. ניתן לחשוב על המספרים כנקודות על ישר עם ראשית <span class="math inline">0</span>. המספרים החיוביים מופיעים בצד ימין, ואילו המספרים השליליים מופיעים בצד שמאל.</p>
+\]</span></p>
+<p>נדגיש שאלה מספרים אי-רציונליים מיוחדים כי יש להם משמעות גיאומטרית. <span class="math inline">\(\sqrt{2}\)</span> הוא אורך היתר של משולש ישר-זווית עם שני ניצבים באורך <span class="math inline">\(1\)</span>, לפי משפט פיתגורס. <span class="math inline">\(\pi\)</span> הוא היקף מעגל שקוטרו באורך <span class="math inline">\(1\)</span>.</p>
+<p>מבחינת הקורס, המספרים האי-רציונליים הרלוונטיים הם בעיקר שורשים כמו <span class="math inline">\(\sqrt{2}\)</span> שהם יחסית נוחים לחישובים. אבל טוב לזכור שיש המון מספרים אי-רציונליים (יותר מאשר מספרים רציונליים במובן מסוים), והם משלימים את המספרים הרציונליים למה שנקרא הישר הממשי. ניתן לחשוב על המספרים כנקודות על ישר עם ראשית <span class="math inline">\(0\)</span>. המספרים החיוביים מופיעים בצד ימין, ואילו המספרים השליליים מופיעים בצד שמאל.</p>
 <div id="fig-real-line" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-real-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -382,24 +390,24 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 </figcaption>
 </figure>
 </div>
-<p>נשארה עוד קבוצה אחת, שהיא הגדולה ביותר מבין קבוצות המספרים שנעסוק בהן. באופן דומה להגדרת <span class="math inline">-1</span> כשורש (פתרון) של המשוואה <span class="math inline">x+1=0</span>, אפשר להגדיר את <span class="math inline">i</span> כשורש של המשוואה <span class="math inline">x^{2}+1=0</span>. זהו מספר מדומה, שהרי אין פתרון ממשי למשוואה זו (ערך המינימום של הפונקציה הוא <span class="math inline">1</span>). המספר <span class="math inline">i</span> לא ניתן למדידה במציאות אך הוא שימושי מאוד במתמטיקה, פיזיקה וחלק מההנדסות. לפי ההגדרה מתקיים <span class="math inline">i^{2}=-1</span> וזה מספיק כדי להגדיר את קבוצת המספרים המרוכבים ואת פעולות החשבון המתאימות לה.</p>
-<p><span class="math display">
-\mathbb{C}=\{a+bi|a,b\in\mathbb{R}\}
-</span></p>
-<p>ההצגה <span class="math inline">a+bi</span> עבור <span class="math inline">a,b\in\mathbb{R}</span> הינה יחידה. כלומר, אם מתקיים <span class="math inline">a+bi=c+di</span> עבור <span class="math inline">c,d\in\mathbb{R}</span>, אז בהכרח <span class="math inline">a=c,\,b=d</span>.</p>
+<p>נשארה עוד קבוצה אחת, שהיא הגדולה ביותר מבין קבוצות המספרים שנעסוק בהן. באופן דומה להגדרת <span class="math inline">\(-1\)</span> כשורש (פתרון) של המשוואה <span class="math inline">\(x+1=0\)</span>, אפשר להגדיר את <span class="math inline">\(i\)</span> כשורש של המשוואה <span class="math inline">\(x^{2}+1=0\)</span>. זהו מספר מדומה, שהרי אין פתרון ממשי למשוואה זו (ערך המינימום של הפונקציה הוא <span class="math inline">\(1\)</span>). המספר <span class="math inline">\(i\)</span> לא ניתן למדידה במציאות אך הוא שימושי מאוד במתמטיקה, פיזיקה וחלק מההנדסות. לפי ההגדרה מתקיים <span class="math inline">\(i^{2}=-1\)</span> וזה מספיק כדי להגדיר את קבוצת המספרים המרוכבים ואת פעולות החשבון המתאימות לה.</p>
+<p><span class="math display">\[
+\C=\{a+bi|a,b\in\R\}
+\]</span></p>
+<p>ההצגה <span class="math inline">\(a+bi\)</span> עבור <span class="math inline">\(a,b\in\R\)</span> הינה יחידה. כלומר, אם מתקיים <span class="math inline">\(a+bi=c+di\)</span> עבור <span class="math inline">\(c,d\in\R\)</span>, אז בהכרח <span class="math inline">\(a=c,\,b=d\)</span>.</p>
 <div class="definition">
-<p>עבור <span class="math inline">z=x+yi</span> מרוכב עם <span class="math inline">x,y\in\mathbb{R}</span> נגדיר את החלק הממשי <span class="math inline">\text{Re}(z)=x</span> ואת החלק המדומה <span class="math inline">\text{Im}(z)=y</span>. בנוסף, נגדיר את המספר הצמוד <span class="math inline">\overline{z}=x-yi</span>.</p>
+<p>עבור <span class="math inline">\(z=x+yi\)</span> מרוכב עם <span class="math inline">\(x,y\in\R\)</span> נגדיר את החלק הממשי <span class="math inline">\(\text{Re}(z)=x\)</span> ואת החלק המדומה <span class="math inline">\(\text{Im}(z)=y\)</span>. בנוסף, נגדיר את המספר הצמוד <span class="math inline">\(\overline{z}=x-yi\)</span>.</p>
 </div>
-<p>שימו לב כי בניגוד לשמו, החלק המדומה הוא מספר ממשי (זהו המקדם של <span class="math inline">i</span>, שהוא עצמו באמת מדומה). מספר מרוכב נקרא מדומה אם החלק הממשי שלו הוא <span class="math inline">0</span>, כלומר זה מספר מהצורה <span class="math inline">yi</span> כאשר <span class="math inline">y\in\mathbb{R}</span>.</p>
+<p>שימו לב כי בניגוד לשמו, החלק המדומה הוא מספר ממשי (זהו המקדם של <span class="math inline">\(i\)</span>, שהוא עצמו באמת מדומה). מספר מרוכב נקרא מדומה אם החלק הממשי שלו הוא <span class="math inline">\(0\)</span>, כלומר זה מספר מהצורה <span class="math inline">\(yi\)</span> כאשר <span class="math inline">\(y\in\R\)</span>.</p>
 <div class="example">
 <ol type="a">
-<li><span class="math inline">\text{Re}(3+5i)=3,\:\text{Im}(3+5i)=5,\:\overline{3+5i}=3-5i</span></li>
-<li><span class="math inline">\text{Re}(4i)=0,\:\text{Im}(4i)=4,\:\overline{4i}=-4i</span></li>
-<li><span class="math inline">\text{Re}(3)=3,\:\text{Im}(3)=0,\:\overline{3}=3</span> כאשר זיהינו את <span class="math inline">3</span> כמספר מרוכב עם חלק מדומה <span class="math inline">0</span> לפי ההצגה <span class="math inline">3=3+0\cdot i</span>.</li>
+<li><span class="math inline">\(\text{Re}(3+5i)=3,\:\text{Im}(3+5i)=5,\:\overline{3+5i}=3-5i\)</span></li>
+<li><span class="math inline">\(\text{Re}(4i)=0,\:\text{Im}(4i)=4,\:\overline{4i}=-4i\)</span></li>
+<li><span class="math inline">\(\text{Re}(3)=3,\:\text{Im}(3)=0,\:\overline{3}=3\)</span> כאשר זיהינו את <span class="math inline">\(3\)</span> כמספר מרוכב עם חלק מדומה <span class="math inline">\(0\)</span> לפי ההצגה <span class="math inline">\(3=3+0\cdot i\)</span>.</li>
 </ol>
 </div>
 <div class="exercise">
-<p>לכל <span class="math inline">z\in\mathbb{C}</span> הראו כי המספר הצמוד ל-<span class="math inline">\overline{z}</span> הוא <span class="math inline">z</span>.</p>
+<p>לכל <span class="math inline">\(z\in\C\)</span> הראו כי המספר הצמוד ל-<span class="math inline">\(\overline{z}\)</span> הוא <span class="math inline">\(z\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -413,9 +421,9 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>בהינתן <span class="math inline">z=x+iy</span> כאשר <span class="math inline">x,y\in\mathbb{R}</span>, מתקיים לפי ההגדרה <span class="math inline">\overline{z}=x-yi</span>. אם נשתמש בהגדרה שוב נקבל: <span class="math display">
+<p>בהינתן <span class="math inline">\(z=x+iy\)</span> כאשר <span class="math inline">\(x,y\in\R\)</span>, מתקיים לפי ההגדרה <span class="math inline">\(\overline{z}=x-yi\)</span>. אם נשתמש בהגדרה שוב נקבל <span class="math display">\[
 \overline{\overline{z}}=\overline{x-yi}=x-(-yi)=x+yi=z
-</span></p>
+\]</span></p>
 </div>
 </div>
 </div>
@@ -423,11 +431,11 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 </section>
 <section id="תורת-הקבוצות-על-קצה-המזלג" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="תורת-הקבוצות-על-קצה-המזלג"><span class="header-section-number">1.3</span> תורת הקבוצות על קצה המזלג</h2>
-<p>ראינו את יחס השייכות בין איבר <span class="math inline">a</span> לקבוצה <span class="math inline">A</span>, וסימנו <span class="math inline">a\in A</span>. בקורס שלנו הקבוצות יהיו יחסית פשוטות, ולכן לא ניתקל בקבוצה שאיבריה הם גם קבוצות. זה בהחלט תרחיש אפשרי במתמטיקה (למשל קבוצה של שני ישרים, כאשר כל ישר הוא קבוצת נקודות), אבל בקורס נעסוק בקבוצות מספרים וקבוצות וקטורים (וקטורים אינם קבוצות). בכל אופן, ייתכן קשר יותר טבעי בין שתי קבוצות <span class="math inline">A,B</span>.</p>
+<p>ראינו את יחס השייכות בין איבר <span class="math inline">\(a\)</span> לקבוצה <span class="math inline">\(A\)</span>, וסימנו <span class="math inline">\(a\in A\)</span>. בקורס שלנו הקבוצות יהיו יחסית פשוטות, ולכן לא ניתקל בקבוצה שאיבריה הם גם קבוצות. זה בהחלט תרחיש אפשרי במתמטיקה (למשל קבוצה של שני ישרים, כאשר כל ישר הוא קבוצת נקודות), אבל בקורס נעסוק בקבוצות מספרים וקבוצות וקטורים (וקטורים אינם קבוצות). בכל אופן, ייתכן קשר יותר טבעי בין שתי קבוצות <span class="math inline">\(A,B\)</span>.</p>
 <div class="definition">
-<p>נאמר ש-<span class="math inline">A</span> מוכלת ב-<span class="math inline">B</span> ונסמן <span class="math inline">A\subseteq B</span> אם כל איבר של <span class="math inline">A</span> הוא גם איבר של <span class="math inline">B</span>.</p>
-<p>באופן קצת יותר מתמטי: <span class="math inline">A\subseteq B</span> אם לכל <span class="math inline">a\in A</span> מתקיים <span class="math inline">a\in B</span>.</p>
-<p>אם ההיפך הוא הנכון, כלומר קיים <span class="math inline">a\in A</span> עבורו <span class="math inline">a\notin B</span>, אז נסמן <span class="math inline">A\nsubseteq B</span> ונאמר ש-<span class="math inline">A</span> לא מוכלת ב-<span class="math inline">B</span>.</p>
+<p>נאמר ש-<span class="math inline">\(A\)</span> מוכלת ב-<span class="math inline">\(B\)</span> ונסמן <span class="math inline">\(A\subseteq B\)</span> אם כל איבר של <span class="math inline">\(A\)</span> הוא גם איבר של <span class="math inline">\(B\)</span>.</p>
+<p>באופן קצת יותר מתמטי: <span class="math inline">\(A\subseteq B\)</span> אם לכל <span class="math inline">\(a\in A\)</span> מתקיים <span class="math inline">\(a\in B\)</span>.</p>
+<p>אם ההיפך הוא הנכון, כלומר קיים <span class="math inline">\(a\in A\)</span> עבורו <span class="math inline">\(a\notin B\)</span>, אז נסמן <span class="math inline">\(A\nsubseteq B\)</span> ונאמר ש-<span class="math inline">\(A\)</span> לא מוכלת ב-<span class="math inline">\(B\)</span>.</p>
 </div>
 <div id="fig-contain" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -435,15 +443,15 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 <img src="images/Contain.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;1.3: כאן מתקיים <span class="math inline">A\subseteq B</span>, אך <span class="math inline">C\nsubseteq D</span>.
+איור&nbsp;1.3: כאן מתקיים <span class="math inline">\(A\subseteq B\)</span>, אך <span class="math inline">\(C\nsubseteq D\)</span>.
 </figcaption>
 </figure>
 </div>
 <div class="example">
-<p>עבור <span class="math inline">A=\{1,2\},\,B=\{1,2,3\}</span> מתקיים <span class="math inline">A\subseteq B</span> כי גם <span class="math inline">1\in B</span> וגם <span class="math inline">2\in B</span>. אבל <span class="math inline">B\nsubseteq A</span> כי <span class="math inline">3\in B</span>, אך <span class="math inline">3\notin A</span>.</p>
+<p>עבור <span class="math inline">\(A=\{1,2\},\,B=\{1,2,3\}\)</span> מתקיים <span class="math inline">\(A\subseteq B\)</span> כי גם <span class="math inline">\(1\in B\)</span> וגם <span class="math inline">\(2\in B\)</span>. אבל <span class="math inline">\(B\nsubseteq A\)</span> כי <span class="math inline">\(3\in B\)</span>, אך <span class="math inline">\(3\notin A\)</span>.</p>
 </div>
 <div class="exercise">
-<p>נגדיר <span class="math inline">A=\{1,3\},\,B=\{-1,1,2,3\},\,C=\{-1,2\}</span>. מצאו את כל זוגות הקבוצות שמקיימות קשר של הכלה.</p>
+<p>נגדיר <span class="math inline">\(A=\{1,3\},\,B=\{-1,1,2,3\},\,C=\{-1,2\}\)</span>. מצאו את כל זוגות הקבוצות שמקיימות קשר של הכלה.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -457,43 +465,43 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>מתקיים <span class="math inline">A\subseteq B</span> וגם <span class="math inline">C\subseteq B</span>.</p>
-<p>אין שום הכלות אחרות. למעשה, לקבוצות <span class="math inline">A,C</span> אין אף איבר משותף.</p>
+<p>מתקיים <span class="math inline">\(A\subseteq B\)</span> וגם <span class="math inline">\(C\subseteq B\)</span>.</p>
+<p>אין שום הכלות אחרות. למעשה, לקבוצות <span class="math inline">\(A,C\)</span> אין אף איבר משותף.</p>
 </div>
 </div>
 </div>
 <div class="definition">
-<p>נאמר ששתי קבוצות <span class="math inline">A,B</span> הן שוות ונסמן <span class="math inline">A=B</span> אם יש בהן בדיוק אותם האיברים, כלומר מתקיים <span class="math inline">x\in A</span> אם ורק אם <span class="math inline">x\in B</span>.</p>
+<p>נאמר ששתי קבוצות <span class="math inline">\(A,B\)</span> הן שוות ונסמן <span class="math inline">\(A=B\)</span> אם יש בהן בדיוק אותם האיברים, כלומר מתקיים <span class="math inline">\(x\in A\)</span> אם ורק אם <span class="math inline">\(x\in B\)</span>.</p>
 </div>
 <div class="definition">
-<p>כדי להוכיח כי <span class="math inline">A=B</span>, הדרך המקובלת היא להוכיח כי <span class="math inline">A\subseteq B</span> וגם <span class="math inline">B\subseteq A</span>. דרך הוכחה זו נקראת הכלה דו-צדדית.</p>
+<p>כדי להוכיח כי <span class="math inline">\(A=B\)</span>, הדרך המקובלת היא להוכיח כי <span class="math inline">\(A\subseteq B\)</span> וגם <span class="math inline">\(B\subseteq A\)</span>. דרך הוכחה זו נקראת הכלה דו-צדדית.</p>
 </div>
 <div class="example">
-<p>הגדרנו את קבוצת המספרים הזוגיים החיוביים בשתי דרכים שונות. נוכיח שאכן מתקיים: <span class="math display">
-\{2n|n\in\mathbb{N}\}=\{n\in\mathbb{N}|2 \text{ מתחלק ב- }\:n\}
-</span></p>
-<p>נסמן <span class="math inline">A=\{2n|n\in\mathbb{N}\}, B=\{n\in\mathbb{N}|2 \text{ מתחלק ב- }\:n\}</span>.</p>
-<p>נוכיח תחילה כי <span class="math inline">A\subseteq B</span>: יהי <span class="math inline">a\in A</span>. אז לפי ההגדרה קיים <span class="math inline">n\in\mathbb{N}</span> כך ש-<span class="math inline">a=2n</span>. מספר זה מתחלק ב-<span class="math inline">2</span> כי <span class="math inline">\frac{a}{2}=n</span> הוא מספר טבעי. לכן <span class="math inline">a\in B</span> כנדרש, ומאחר ש-<span class="math inline">a</span> נבחר באופן שרירותי נובע כי <span class="math inline">A\subseteq B</span>.</p>
-<p>נעבור לכיוון השני, ההכלה <span class="math inline">B\subseteq A</span>: יהי <span class="math inline">b\in B</span>. אז לפי ההגדרה <span class="math inline">b</span> מתחלק ב-<span class="math inline">2</span>, כלומר <span class="math inline">\frac{b}{2}\in\mathbb{N}</span>. נסמן <span class="math inline">n=\frac{b}{2}</span> והרי שקיבלנו כי <span class="math inline">b=2n</span> כאשר <span class="math inline">n\in\mathbb{N}</span>, ולכן <span class="math inline">b\in A</span>. אז נובע כי <span class="math inline">B\subseteq A</span>.</p>
-<p>משתי ההכלות נובע כי <span class="math inline">A=B</span>.</p>
+<p>הגדרנו את קבוצת המספרים הזוגיים החיוביים בשתי דרכים שונות. נוכיח שאכן מתקיים: <span class="math display">\[
+\{2n|n\in\N\}=\{n\in\N|2 \text{מתחלק ב-}\:n\}
+\]</span></p>
+<p>נסמן <span class="math inline">\(A=\{2n|n\in\N\}, B=\{n\in\N|2 \text{מתחלק ב-}\:n\}\)</span>.</p>
+<p>נוכיח תחילה כי <span class="math inline">\(A\subseteq B\)</span>: יהי <span class="math inline">\(a\in A\)</span>. אז לפי ההגדרה קיים <span class="math inline">\(n\in\N\)</span> כך ש-<span class="math inline">\(a=2n\)</span>. מספר זה מתחלק ב-<span class="math inline">\(2\)</span> כי <span class="math inline">\(\frac{a}{2}=n\)</span> הוא מספר טבעי. לכן <span class="math inline">\(a\in B\)</span> כנדרש, ומאחר ש-<span class="math inline">\(a\)</span> נבחר באופן שרירותי נובע כי <span class="math inline">\(A\subseteq B\)</span>.</p>
+<p>נעבור לכיוון השני, ההכלה <span class="math inline">\(B\subseteq A\)</span>: יהי <span class="math inline">\(b\in B\)</span>. אז לפי ההגדרה <span class="math inline">\(b\)</span> מתחלק ב-<span class="math inline">\(2\)</span>, כלומר <span class="math inline">\(\frac{b}{2}\in\N\)</span>. נסמן <span class="math inline">\(n=\frac{b}{2}\)</span> והרי שקיבלנו כי <span class="math inline">\(b=2n\)</span> כאשר <span class="math inline">\(n\in\N\)</span>, ולכן <span class="math inline">\(b\in A\)</span>. אז נובע כי <span class="math inline">\(B\subseteq A\)</span>.</p>
+<p>משתי ההכלות נובע כי <span class="math inline">\(A=B\)</span>.</p>
 </div>
 <p>נסכם את רעיון ההוכחה: מוכיחים שתי הכלות. לכל הכלה מתחילים את הטיעון ב-“יהי” כדי להצהיר שבחרנו איבר כללי מתוך הקבוצה הנתונה. אחר כך משתמשים בהגדרת הקבוצה כדי להראות שהאיבר גם מקיים את ההגדרה של הקבוצה השנייה.</p>
 <div class="proposition">
-<p><span class="math inline">\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{C}</span> וכל הקבוצות שונות זו מזו.</p>
+<p><span class="math inline">\(\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C\)</span> וכל הקבוצות שונות זו מזו.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>ברור כי <span class="math inline">\mathbb{N}\subseteq\mathbb{Z}</span> לפי הגדרת <span class="math inline">\mathbb{Z}</span> כהרחבה של <span class="math inline">\mathbb{N}</span>, ורואים שאין שוויון כי <span class="math inline">-1\notin\mathbb{N}</span>. גם דיברנו על ההכלה <span class="math inline">\mathbb{Q}\subseteq\mathbb{R}</span> שאינה שוויון, כי המספרים הרציונליים הם בדיוק המספרים הממשיים שיש להם הצגה עשרונית שהיא מחזורית החל ממקום מסוים. יש הרבה מספרים ממשיים שאינם כאלה, למשל <span class="math inline">\sqrt{2}\notin\mathbb{Q}</span>.</p>
-<p>נוכיח כי <span class="math inline">\mathbb{Z}\subseteq\mathbb{Q}</span>: יהי <span class="math inline">n\in\mathbb{Z}</span>. מתקיים <span class="math inline">n=\frac{n}{1}</span> וזו מנה של מספרים שלמים, ולכן <span class="math inline">n\in\mathbb{Q}</span>. אז <span class="math inline">\mathbb{Z}\subseteq\mathbb{Q}</span>, ואין שוויון כי למשל <span class="math inline">\frac{1}{2}\in\mathbb{Q}</span> אך <span class="math inline">\frac{1}{2}\notin\mathbb{Z}</span>.</p>
-<p>נוכיח כי <span class="math inline">\mathbb{R}\subseteq\mathbb{C}</span>: יהי <span class="math inline">x\in\mathbb{R}</span>. מתקיים <span class="math inline">x=x+0\cdot i</span> וזו הצגה של מספר מרוכב, ולכן <span class="math inline">x\in\mathbb{C}</span>. אז <span class="math inline">\mathbb{R}\subseteq\mathbb{C}</span>, ואין שוויון כי למשל <span class="math inline">i\in\mathbb{C}</span> אך <span class="math inline">i\notin\mathbb{R}</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>ברור כי <span class="math inline">\(\N\subseteq\Z\)</span> לפי הגדרת <span class="math inline">\(\Z\)</span> כהרחבה של <span class="math inline">\(\N\)</span>, ורואים שאין שוויון כי <span class="math inline">\(-1\notin\N\)</span>. גם דיברנו על ההכלה <span class="math inline">\(\Q\subseteq\R\)</span> שאינה שוויון, כי המספרים הרציונליים הם בדיוק המספרים הממשיים שיש להם הצגה עשרונית שהיא מחזורית החל ממקום מסוים. יש הרבה מספרים ממשיים שאינם כאלה, למשל <span class="math inline">\(\sqrt{2}\notin\Q\)</span>.</p>
+<p>נוכיח כי <span class="math inline">\(\Z\subseteq\Q\)</span>: יהי <span class="math inline">\(n\in\Z\)</span>. מתקיים <span class="math inline">\(n=\frac{n}{1}\)</span> וזו מנה של מספרים שלמים, ולכן <span class="math inline">\(n\in\Q\)</span>. אז <span class="math inline">\(\Z\subseteq\Q\)</span>, ואין שוויון כי למשל <span class="math inline">\(\frac{1}{2}\in\Q\)</span> אך <span class="math inline">\(\frac{1}{2}\notin\Z\)</span>.</p>
+<p>נוכיח כי <span class="math inline">\(\R\subseteq\C\)</span>: יהי <span class="math inline">\(x\in\R\)</span>. מתקיים <span class="math inline">\(x=x+0\cdot i\)</span> וזו הצגה של מספר מרוכב, ולכן <span class="math inline">\(x\in\C\)</span>. אז <span class="math inline">\(\R\subseteq\C\)</span>, ואין שוויון כי למשל <span class="math inline">\(i\in\C\)</span> אך <span class="math inline">\(i\notin\R\)</span>.</p>
 </div>
 </section>
 <section id="פעולות-בין-קבוצות" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="פעולות-בין-קבוצות"><span class="header-section-number">1.4</span> פעולות בין קבוצות</h2>
 <div class="definition">
-<p>בהינתן שתי קבוצות <span class="math inline">A,B</span> נגדיר את הקבוצות הבאות:</p>
+<p>בהינתן שתי קבוצות <span class="math inline">\(A,B\)</span> נגדיר את הקבוצות הבאות:</p>
 <ol type="a">
-<li>החיתוך <span class="math inline">A\cap B</span> הוא קבוצת כל האיברים השייכים גם ל-<span class="math inline">A</span> וגם ל-<span class="math inline">B</span>.</li>
-<li>האיחוד <span class="math inline">A\cup B</span> הוא קבוצת כל האיברים השייכים לפחות לאחת משתי הקבוצות <span class="math inline">A,B</span>.</li>
+<li>החיתוך <span class="math inline">\(A\cap B\)</span> הוא קבוצת כל האיברים השייכים גם ל-<span class="math inline">\(A\)</span> וגם ל-<span class="math inline">\(B\)</span>.</li>
+<li>האיחוד <span class="math inline">\(A\cup B\)</span> הוא קבוצת כל האיברים השייכים לפחות לאחת משתי הקבוצות <span class="math inline">\(A,B\)</span>.</li>
 </ol>
 </div>
 <div id="fig-venn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -511,25 +519,25 @@ x=\pm d_{n}...d_{2}d_{1}d_{0}.d_{-1}d_{-2}d_{-3}...
 </div>
 <div class="example">
 <ol type="a">
-<li><p>עבור <span class="math inline">A=\{1,2,3\},\,B=\{2,3,4\}</span> מתקיים <span class="math display">
+<li><p>עבור <span class="math inline">\(A=\{1,2,3\},\,B=\{2,3,4\}\)</span> מתקיים <span class="math display">\[
 A\cap B=\{2,3\},\,A\cup B=\{1,2,3,4\}
-</span></p></li>
-<li><p>מתקיים <span class="math inline">\mathbb{R}\cap\mathbb{C}=\mathbb{R},\,\mathbb{R}\cup\mathbb{C}=\mathbb{C}</span> כי <span class="math inline">\mathbb{R}\subseteq\mathbb{C}</span>.</p></li>
-<li><p>נגדיר קבוצות <span class="math display">
-D=\{n\in\mathbb{N}|5 \text{ מתחלק ב- }\:n\}, C=\{n\in\mathbb{N}|3 \text{ מתחלק ב- }\:n\}
-</span> אז לפי הגדרת החיתוך והעובדה ש-<span class="math inline">3,5</span> הם מספרים זרים (המחלק המשותף היחיד שלהם הוא <span class="math inline">1</span>) נובע כי החיתוך נתון באופן הבא: <span class="math display">
+\]</span></p></li>
+<li><p>מתקיים <span class="math inline">\(\R\cap\C=\R,\,\R\cup\C=\C\)</span> כי <span class="math inline">\(\R\subseteq\C\)</span>.</p></li>
+<li><p>נגדיר קבוצות <span class="math display">\[
+D=\{n\in\N|5 \text{מתחלק ב-}\:n\}, C=\{n\in\N|3 \text{מתחלק ב-}\:n\}
+\]</span> אז לפי הגדרת החיתוך והעובדה ש-<span class="math inline">\(3,5\)</span> הם מספרים זרים (המחלק המשותף היחיד שלהם הוא <span class="math inline">\(1\)</span>) נובע כי החיתוך נתון באופן הבא: <span class="math display">\[
 \begin{aligned}
-C\cap D&amp;=\{n\in\mathbb{N}|\text{מתחלק ב-3 וגם ב-5}\:n\}=\{n\in\mathbb{N}|15 \text{ מתחלק ב- }\:n\}\\
+C\cap D&amp;=\{n\in\N|\text{מתחלק ב-3 וגם ב-5}\:n\}=\{n\in\N|15 \text{מתחלק ב-}\:n\}\\
 &amp;=\{15,30,45,...\}
 \end{aligned}
-</span></p></li>
+\]</span></p></li>
 </ol>
 </div>
-<p>האפיון של האיחוד פחות פשוט: מדובר בקבוצת כל המספרים שמתחלקים ב-<span class="math inline">3</span>, <span class="math inline">5</span> או בשניהם (כלומר ב-<span class="math inline">15</span>, המקרה של החיתוך). כך נקבל: <span class="math display">
+<p>האפיון של האיחוד פחות פשוט: מדובר בקבוצת כל המספרים שמתחלקים ב-<span class="math inline">\(3\)</span>, <span class="math inline">\(5\)</span> או בשניהם (כלומר ב-<span class="math inline">\(15\)</span>, המקרה של החיתוך). כך נקבל <span class="math display">\[
 C\cup D=\{3,5,6,9,10,12,15,18,20,21,24,25,27,30...\}
-</span></p>
+\]</span></p>
 <div class="exercise">
-<p>חשבו את <span class="math inline">A\cap B,\,A\cup B</span> עבור <span class="math inline">A=\{-1,0,1\},\,B=\{-2,0,1,2\}</span>.</p>
+<p>חשבו את <span class="math inline">\(A\cap B,\,A\cup B\)</span> עבור <span class="math inline">\(A=\{-1,0,1\},\,B=\{-2,0,1,2\}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -543,39 +551,25 @@ C\cup D=\{3,5,6,9,10,12,15,18,20,21,24,25,27,30...\}
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>לפי ההגדרות מתקיים: <span class="math display">
+<p>לפי ההגדרות מתקיים <span class="math display">\[
 A\cap B=\{0,1\}, \quad A\cup B=\{-2,-1,0,1,2\}
-</span></p>
+\]</span></p>
 </div>
 </div>
 </div>
 <div class="proposition">
-<p>לכל שתי קבוצות <span class="math inline">A,B</span> מתקיים: <span class="math display">
+<p>לכל שתי קבוצות <span class="math inline">\(A,B\)</span> מתקיים <span class="math display">\[
 A\cap B\subseteq A\subseteq A\cup B
-</span></p>
+\]</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>יש כאן שתי הכלות. נוכיח תחילה כי <span class="math inline">A\cap B\subseteq A</span>: יהי <span class="math inline">a\in A\cap B</span>. אז מיידית לפי הגדרת החיתוך מתקיים <span class="math inline">a\in A</span> ולכן <span class="math inline">A\cap B\subseteq A</span>.</p>
-<p>כעת נוכיח כי <span class="math inline">A\subseteq A\cup B</span>. גם כאן זה מיידי כי כל <span class="math inline">x\in A</span> מקיים את הגדרת האיחוד (בין אם <span class="math inline">x\in B</span> ובין אם לאו).</p>
+<p><span class="proof-title"><em>Proof</em>. </span>יש כאן שתי הכלות. נוכיח תחילה כי <span class="math inline">\(A\cap B\subseteq A\)</span>: יהי <span class="math inline">\(a\in A\cap B\)</span>. אז מיידית לפי הגדרת החיתוך מתקיים <span class="math inline">\(a\in A\)</span> ולכן <span class="math inline">\(A\cap B\subseteq A\)</span>.</p>
+<p>כעת נוכיח כי <span class="math inline">\(A\subseteq A\cup B\)</span>. גם כאן זה מיידי כי כל <span class="math inline">\(x\in A\)</span> מקיים את הגדרת האיחוד (בין אם <span class="math inline">\(x\in B\)</span> ובין אם לאו).</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>באותו אופן (או משיקולי סימטריה) גם מתקיים: <span class="math display">
+<p><span class="proof-title"><em>Remark</em>. </span>באותו אופן (או משיקולי סימטריה) גם מתקיים <span class="math display">\[
 A\cap B\subseteq B\subseteq A\cup B
-</span></p>
-</div>
-</section>
-<section id="תרגילים" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="תרגילים">תרגילים</h2>
-<div class="exercise">
-<ol type="1">
-<li>הוכיחו כי <span class="math inline">\{2n-1|n\in\mathbb{Z}\}=\{2m+1|m\in\mathbb{Z}\}</span></li>
-<li>הוכיחו כי <span class="math inline">\{z\in\mathbb{C}|\mathrm{Im}(z)=2\mathrm{Re}(z)\}=\{t+2ti|t\in\mathbb{R}\}</span></li>
-<li>נגדיר <span class="math inline">A=\{\frac{1}{n}|n\in\mathbb{Z},\,n\neq0\}</span>.
-<ol type="a">
-<li>חשבו את <span class="math inline">A\cap\mathbb{Z}</span>.</li>
-<li>הראו כי <span class="math inline">A\cup\mathbb{Z}\subseteq\mathbb{Q}</span>, אך אין שוויון.</li>
-</ol></li>
-</ol>
+\]</span></p>
 </div>
 
 
@@ -730,6 +724,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // --- התיקון: מחיקת הכותרת האנגלית המובנית של Quarto ---
+
+    // Quarto שותל את הכותרת שלו בתור תגית span בתוך הפסקה הראשונה
+
+    const quartoNativeTitle = div.querySelector('span.theorem-title');
+
+    if (quartoNativeTitle) {
+
+      quartoNativeTitle.remove(); // מעלים את Theorem 2.1
+
+    }
+
+
+
     // מזהים איזו סביבה זו מתוך הרשימה שלנו
 
     const env = boxEnvs.find(e => div.classList.contains(e));
@@ -740,15 +748,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // הוספת הכותרת עם המונה המשותף
+    // הוספת הכותרת שלנו עם המונה המשותף בעברית
 
-    let title = div.querySelector(':scope > .theorem-title');
+    let title = div.querySelector(':scope > div.theorem-title');
 
     if (!title) {
 
       title = document.createElement('div');
 
-      title.className = 'theorem-title';
+      title.className = 'theorem-title custom-title';
 
       if (meta.numbered) {
 
@@ -776,7 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  
+
 
   // --- צביעת פתרון כ-callout לפי המפה ---
 
@@ -1243,8 +1251,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_0_5.html" class="pagination-link" aria-label="המספרים המרוכבים">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">המספרים המרוכבים</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_0_5.html" class="pagination-link" aria-label="תכונות ושימושים של המספרים המרוכבים">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">תכונות ושימושים של המספרים המרוכבים</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
