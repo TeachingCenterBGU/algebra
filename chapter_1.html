@@ -285,6 +285,8 @@ $$
 
 \newcommand{\0}{\mathbf{0}}
 
+\newcommand{\Set}[1]{\left\{#1\right\}}
+
 $$
 
 </div>
@@ -325,18 +327,32 @@ $$
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>מבחינה אלגברית לא נבחין בין וקטור לנקודה המתאימה, ולכן גם נשתמש באותו סימון <span class="math inline">\((x,y)\)</span>. אבל מבחינה גיאומטרית, נחשוב על וקטור כחץ שיוצא מהראשית <span class="math inline">\((0,0)\)</span> ומסתיים בנקודה <span class="math inline">\((x,y)\)</span>.</p>
 </div>
-<div id="fig:LineMotion" class="figure">
+<div id="fig-Point-Vector" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Point-Vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Point-Vector.html?embed=1" width="720" height="720">
 <figcaption>
-סימולציה 1.1 וקטורים במישור שיוצאים מהראשית
+סימולציה - וקטורים במישור שיוצאים מהראשית
 </figcaption>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Point-Vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.1
+</figcaption>
+</figure>
+</div>
 <p>אמרנו שוקטורים ניתנים לתיאור חצים שיוצאים מהראשית, אבל הם יכולים לצאת מכל נקודה. מה שקובע את הוקטור הם גודלו וכיוונו, לא נקודת ההתחלה. וקטורים זהים יופיעו כחצים מקבילים ושווי גודל במישור.</p>
-<div id="fig:LineMotion" class="figure">
+<div id="fig-Vector-Twins" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Vector-Twins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Vector-Twins.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.2 - וקטורים שקולים
+סימולציה - וקטורים שקולים
 </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Vector-Twins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.2
+</figcaption>
+</figure>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>וקטורים שווים אם ורק אם יש שוויון בכל קוארדינטה, כלומר <span class="math inline">\((a,b)=(c,d)\)</span> אם ורק אם <span class="math inline">\(a=c\)</span> וגם <span class="math inline">\(b=d\)</span>. למשל, <span class="math inline">\((1,2)=(1,2)\)</span> אך <span class="math inline">\((1,2)\neq(1,-2)\)</span>. שני הוקטורים האחרונים שווים בגודלם אך הכיוונים שונים. בנוסף, גם מתקיים <span class="math inline">\((1,2)\neq (2,1)\)</span> ובאופן כללי יש חשיבות לסדר הקוארדינטות.</p>
@@ -353,7 +369,8 @@ $$
 <p>ד. <span class="math inline">\((9,2)-(11,8)=(9-11,2-8)=(-2,-6)\)</span></p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר <span class="math inline">\(-1\)</span>. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר: <span class="math display">\[(a_1,a_2)-(b_1,b_2)=(a_1,a_2)+(-1)\cdot(b_1,b_2)=(a_1-b_1,a_2-b_2)\]</span></p>
+<p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר <span class="math inline">\(-1\)</span>. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר:<br>
+<span id="eq-points-vector-3d"><span class="math display">\[(a_1,a_2)-(b_1,b_2)=(a_1,a_2)+(-1)\cdot(b_1,b_2)=(a_1-b_1,a_2-b_2) \tag{3.1}\]</span></span></p>
 </div>
 <div class="exercise">
 <p>בצעו את הפעולות הבאות:</p>
@@ -390,7 +407,7 @@ $$
 <img src="images/chapter02/Parallelogram1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Parallelogram1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.1: החיבור הוקטורי מתאים לאלכסון המוצג
+איור&nbsp;3.3: החיבור הוקטורי מתאים לאלכסון המוצג
 </figcaption>
 </figure>
 </div>
@@ -401,20 +418,27 @@ $$
 <img src="images/chapter02/Parallelogram2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Parallelogram2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.2: ההפרש הוקטורי מופיע בסגול לצד החיבור הוקטורי באדום
+איור&nbsp;3.4: ההפרש הוקטורי מופיע בסגול לצד החיבור הוקטורי באדום
 </figcaption>
 </figure>
 </div>
 <p>זה גם מוביל אותנו לנוסחה שמתארת וקטור <span class="math inline">\(\vec{u}\)</span> שמתחיל בנקודה <span class="math inline">\((a_1,a_2)\)</span> ומסתיים ב-<span class="math inline">\((b_1,b_2)\)</span>: מקבלים את ההפרש הוקטורי</p>
 <p><span id="eq-vector-points"><span class="math display">\[
 \vec{u} = (b_1 - a_1, b_2 - a_2)
-\tag{3.1}\]</span></span></p>
+\tag{3.2}\]</span></span></p>
 <p>נוכל להתנסות בעצמינו</p>
-<div id="fig:Parallelogram" class="figure">
+<div id="fig-Parallelogram" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Parallelogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Parallelogram.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.3 - כלל המקבילית
+סימולציה - כלל המקבילית
 </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Parallelogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.5
+</figcaption>
+</figure>
 </div>
 <div class="exercise">
 <p>הראו שהוקטור שמתחיל ב-<span class="math inline">\((1,3)\)</span> ומסתיים ב-<span class="math inline">\((5,0)\)</span>, שווה לוקטור שמתחיל ב- <span class="math inline">\((5,-1)\)</span> ומסתיים ב- <span class="math inline">\((9,-4)\)</span>.</p>
@@ -436,11 +460,18 @@ $$
 </div>
 </div>
 <p>כפל בסקלר זו פעולה שאפשר לפרש גיאומטרית כמתיחה של הוקטור אם <span class="math inline">\(c&gt;1\)</span>, או כיווצו אם <span class="math inline">\(0&lt;c&lt;1\)</span>, בלי לשנות כיוון. כאשר הסקלר שלילי, יש היפוך כיוון ובנוסף מתיחה/כיווץ בהתאם לערך של <span class="math inline">\(|c|\)</span>.</p>
-<div id="fig:Scalar-Slider" class="figure">
+<div id="fig-Scalar-Slider" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Scalar-Slider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Scalar-Slider.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.4 - כפל וקטור בסקלר
+סימולציה - כפל וקטור בסקלר
 </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Scalar-Slider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.6
+</figcaption>
+</figure>
 </div>
 </section>
 <section id="גדלים-וזוויות-ב-mathbbr2" class="level3" data-number="3.1.2">
@@ -454,11 +485,11 @@ $$
 <img src="images/chapter02/Pythagoras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.3: משולש ישר-זווית שבו היתר מתאים לוקטור הנתון
+איור&nbsp;3.7: משולש ישר-זווית שבו היתר מתאים לוקטור הנתון
 </figcaption>
 </figure>
 </div>
-<p>החישוב של גודל הוקטור נובע ממשפט פיתגורס. בציור <span class="math inline">\(c\)</span> הוא הסימון של <span class="math inline">\(\|(a,b)\|\)</span> ולפי משפט פיתגורס מתקיים <span class="math display">\[a^2+b^2=c^2\implies \|(a,b)\|=c=\sqrt{a^2+b^2}\]</span> כבר דיברנו על החישוב המדויק של <span class="math inline">\(\theta\)</span> בסוף פרק <span class="math inline">\(0\)</span>. לא ממש נצטרך לחשב זוויות בקורס, אבל זה טוב לידע כללי.</p>
+<p>החישוב של גודל הוקטור נובע ממשפט פיתגורס. בציור <span class="math inline">\(c\)</span> הוא הסימון של <span class="math inline">\(\|(a,b)\|\)</span> ולפי משפט פיתגורס מתקיים <span class="math display">\[a^2+b^2=c^2\implies \|(a,b)\|=c=\sqrt{a^2+b^2}\]</span> בר דיברנו על החישוב המדויק של <span class="math inline">\(\theta\)</span> בסוף פרק <a href="chapter_0_5.html" class="quarto-xref"><span>2</span></a>. לא ממש נצטרך לחשב זוויות בקורס, אבל זה טוב לידע כללי.</p>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>כל וקטור נקבע ביחידות ע"י הגודל והכיוון שלו. קוארדינטות פולריות מתארות גודל וכיוון, אבל בשביל פעולות בין וקטורים יותר נוח להשתמש בקוארדינטות קרטזיות. כך נעשה בקורס.</p>
 </div>
@@ -468,8 +499,8 @@ $$
 <p>ג. <span class="math inline">\(\|(-3,-7)\|=\sqrt{(-3)^2+(-7)^2}=\sqrt{58}\)</span></p>
 </div>
 <p>אם כפל בסקלר מתאים למתיחה/כיווץ, זה אמור להתבטא בגודל. מכאן הטענה הבאה:</p>
-<div id="prop-norm-scalar" class="proposition">
-<p><span class="math inline">\(\|c\cdot(a,b)\| = |c|\cdot\|(a,b)\|\)</span> לכל וקטור <span class="math inline">\((a,b)\in\mathbb{R}^2\)</span> ולכל סקלר <span class="math inline">\(c\in\mathbb{R}\)</span>.</p>
+<div id="prp-norm-scalar" class="proposition theorem" data-label="משפט 3.12">
+<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> <span class="math inline">\(\|c\cdot(a,b)\| = |c|\cdot\|(a,b)\|\)</span> לכל וקטור <span class="math inline">\((a,b)\in\mathbb{R}^2\)</span> ולכל סקלר <span class="math inline">\(c\in\mathbb{R}\)</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נשתמש בהגדרות ונחשב: <span class="math display">\[\begin{aligned}
@@ -487,11 +518,18 @@ $$
 <div class="example">
 <p>הישר שמשוואתו <span class="math inline">\(y=2x\)</span> עובר דרך הראשית והנקודה <span class="math inline">\((1,2)\)</span>. דרך נוספת לתאר את הישר היא כקבוצת כל הכפולות (בסקלר ממשי) של הוקטור <span class="math inline">\((1,2)\)</span>. כל הוקטורים האלה מתאימים לנקודות על הישר, וכותבים את הנקודות כמו הוקטורים (כי הם יוצאים מהראשית). כך נקבל את ההצגה הבאה לישר כקבוצת נקודות: <span class="math display">\[\Set{t(1,2)|t\in\mathbb{R}}=\Set{(t,2t)|t\in\mathbb{R}}\]</span></p>
 </div>
-<div id="fig:LineMotion" class="figure">
+<div id="fig-LineMotion" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LineMotion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Line-Motion.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.5 - הצגה פרמטרית של ישר
+סימולציה - הצגה פרמטרית של ישר
 </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-LineMotion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.8
+</figcaption>
+</figure>
 </div>
 <p>אכן, זה מיידי שכל נקודה מהצורה <span class="math inline">\((t,2t)\)</span> מקיימת את המשוואה <span class="math inline">\(y=2x\)</span>.</p>
 <p>באופן כללי, הישר שעובר דרך הראשית בכיוון הוקטור <span class="math inline">\(\vec{v}\)</span> נתון ע"י ההצגה <span class="math inline">\(\Set{t\vec{v}|t\in\mathbb{R}}\)</span>. נשים לב שעבור <span class="math inline">\(t&lt;0\)</span> מקבלים וקטורים עם כיוון מנוגד (הצד השני של הישר).</p>
@@ -558,8 +596,8 @@ $$
 <p>ג. <span class="math inline">\((1,5)\cdot(-5,1)=1\cdot(-5)+5\cdot1=0\)</span></p>
 </div>
 <p>למכפלה סקלרית יש קשר לגודל. יש מספר תכונות שכדאי לזכור:</p>
-<div id="prop-dot-product-properties" class="proposition">
-<p>יהיו <span class="math inline">\(\vec{v_1}=(x_1,y_1),\,\vec{v_2}=(x_2,y_2),\,\vec{v_3}=(x_3,y_3)\in\mathbb{R}^2\)</span> וקטורים. אז מתקיים:</p>
+<div id="prp-dot-product-properties" class="proposition theorem" data-label="משפט 3.20">
+<p><span class="theorem-title"><strong>Proposition 3.2</strong></span> יהיו <span class="math inline">\(\vec{v_1}=(x_1,y_1),\,\vec{v_2}=(x_2,y_2),\,\vec{v_3}=(x_3,y_3)\in\mathbb{R}^2\)</span> וקטורים. אז מתקיים:</p>
 <ol type="1">
 <li><span class="math inline">\(\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}\)</span><br>
 </li>
@@ -579,17 +617,24 @@ $$
 <p>סכום ריבועים (של מספרים ממשיים) הוא אי-שלילי, והוא מתאפס אם ורק אם כל מחובר מתאפס. במקרה זה <span class="math inline">\(x_1^2=y_1^2=0\)</span> גורר <span class="math inline">\(x_1=y_1=0\)</span>, או באופן שקול <span class="math inline">\(\vec{v_1}=(0,0)\)</span>.&nbsp;◻</p>
 </div>
 <p>מכפלה סקלרית גם קשורה לזווית בין שני וקטורים. ליתר דיוק, הכוונה היא לזווית הקטנה ביניהם (בין <span class="math inline">\(0\)</span> ל-<span class="math inline">\(\pi\)</span> ברדיאנים).</p>
-<div id="fig:Angle" class="figure">
+<div id="fig-Angle" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Angle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Angle.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.6 - שני וקטורים והזוית שביניהם
+סימולציה - שני וקטורים והזוית שביניהם
 </figcaption>
 </div>
-<div id="prop-cosine-scalar" class="proposition">
-<p>יהיו <span class="math inline">\(\vec{v},\vec{w}\)</span> שני וקטורים ב-<span class="math inline">\(\mathbb{R}^2\)</span> השונים מ-<span class="math inline">\((0,0)\)</span>, ותהי <span class="math inline">\(\alpha\)</span> הזווית הקטנה ביניהם. אז מתקיים:</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Angle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.9
+</figcaption>
+</figure>
+</div>
+<div id="prp-cosine-scalar" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 3.3</strong></span> יהיו <span class="math inline">\(\vec{v},\vec{w}\)</span> שני וקטורים ב-<span class="math inline">\(\mathbb{R}^2\)</span> השונים מ-<span class="math inline">\((0,0)\)</span>, ותהי <span class="math inline">\(\alpha\)</span> הזווית הקטנה ביניהם. אז מתקיים:</p>
 <p><span id="eq-cosine-scalar"><span class="math display">\[
 \cos\alpha = \frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}
-\tag{3.2}\]</span></span></p>
+\tag{3.3}\]</span></span></p>
 </div>
 <p>ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.</p>
 <div class="proof">
@@ -600,7 +645,7 @@ $$
 <img src="images/chapter02/Cosine Law.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cosine-Law-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.4: המשולש המתאים לשני הוקטורים יחד עם וקטור ההפרש
+איור&nbsp;3.10: המשולש המתאים לשני הוקטורים יחד עם וקטור ההפרש
 </figcaption>
 </figure>
 </div>
@@ -636,10 +681,14 @@ $$
 <p>וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר (התחלה וסיום) נקרא נורמל לישר.</p>
 </div>
 <p>באופן כללי, לישר עם הצגה פרמטרית <span class="math inline">\(\Set{(x_0,y_0)+t(a,b)|t\in\mathbb{R}}\)</span> יש וקטור נורמל <span class="math inline">\((-b,a)\)</span> המאונך לוקטור הכיוון <span class="math inline">\((a,b)\)</span>. אבל וקטור הנורמל אינו יחיד, כי אם נכפיל אותו בסקלר <span class="math inline">\(c\neq0\)</span> הוא יישאר מאונך לוקטור הכיוון של הישר. כל שני וקטורים מאונכים יישארו מאונכים גם אם נכפיל את אחד מהם (או שניהם) בסקלר.</p>
-<div id="fig:Rotating-line" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><embed src="simulations/Rotating-Line.html?embed=1" width="800" height="800"></p>
-<figcaption>סימולציה 1.7 - ישר ושני וקטורי נורמל לדוגמה</figcaption>
+<div id="fig-Rotating-line" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Rotating-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Rotating-Line.html?embed=1" width="800" height="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Rotating-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.11: סימולציה - ישר ושני וקטורי נורמל לדוגמה
+</figcaption>
 </figure>
 </div>
 <p>כדי לעבור להצגה אלגברית נשתמש בוקטור שמתחיל ב-<span class="math inline">\((x_0,y_0)\)</span> ומסתיים ב-<span class="math inline">\((x,y)\)</span>, כלומר הוקטור <span class="math inline">\((x-x_0,y-y_0)\)</span>. וקטור זה בהכרח מאונך לוקטור הנורמל <span class="math inline">\((-b,a)\)</span>, ולכן צריך להתקיים: <span class="math display">\[\begin{aligned}
@@ -708,10 +757,14 @@ $$
 <section id="מצבים-הדדיים-בין-ישרים-במישור" class="level3" data-number="3.1.7">
 <h3 data-number="3.1.7" class="anchored" data-anchor-id="מצבים-הדדיים-בין-ישרים-במישור"><span class="header-section-number">3.1.7</span> מצבים הדדיים בין ישרים במישור</h3>
 <p>קיימים שלושה מצבים הדדיים אפשריים בין שני ישרים במישור: נחתכים, מקבילים ומתלכדים.</p>
-<div id="fig:two-lines" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><embed src="simulations/two-lines.html?embed=1" width="800" height="800"></p>
-<figcaption>סימולציה 1.8 - חיתוך בין שני ישרים</figcaption>
+<div id="fig-two-lines" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-two-lines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/two-lines.html?embed=1" width="800" height="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-two-lines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.12: סימולציה - חיתוך בין שני ישרים
+</figcaption>
 </figure>
 </div>
 <p>נתחיל בדוגמאות לפני שנעבור לאפיון.</p>
@@ -912,7 +965,7 @@ y &amp;= 1 + 2t = 1 - 2s
 <img src="images/chapter02/3DVector.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3DVector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.5: וקטור במרחב שיוצא מהראשית אל נקודה
+איור&nbsp;3.13: וקטור במרחב שיוצא מהראשית אל נקודה
 </figcaption>
 </figure>
 </div>
@@ -965,7 +1018,7 @@ y &amp;= 1 + 2t = 1 - 2s
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>נציב את הנקודות ב- <span class="math inline">\(\ref{equation:points-vector-3d}\)</span> ונקבל <span class="math display">\[.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)\]</span></p>
+<p>נציב את הנקודות ב-<a href="#eq-points-vector-3d" class="quarto-xref"><span>3.1</span></a> ונקבל <span class="math display">\[.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)\]</span></p>
 </div>
 </div>
 </div>
@@ -980,7 +1033,7 @@ y &amp;= 1 + 2t = 1 - 2s
 <img src="images/chapter02/3DPythagoras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3DPythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.6: שני משולשים ישרי-זווית במרחב
+איור&nbsp;3.14: שני משולשים ישרי-זווית במרחב
 </figcaption>
 </figure>
 </div>
@@ -993,9 +1046,9 @@ y &amp;= 1 + 2t = 1 - 2s
 <p>ב. <span class="math inline">\(\|(3,-4,2)\|=\sqrt{3^2+(-4)^2+2^2}=\sqrt{29}\)</span></p>
 <p>ג. <span class="math inline">\(\|(-3,-6,2)\|=\sqrt{(-3)^2+(-6)^2+2^2}=\sqrt{49}=7\)</span></p>
 </div>
-<p>הטענה הבאה היא הכללה למרחב של טענה <span class="math inline">\(\ref{proposition:norm-scalar}\)</span>.</p>
+<p>הטענה הבאה היא הכללה למרחב של טענה <a href="#prp-norm-scalar" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>.</p>
 <div class="proposition">
-<p><strong>טענה 1.49</strong>. <em><span class="math inline">\(\|c\cdot(x,y,z)\|=|c|\cdot\|(x,y,z)\|\)</span> לכל וקטור <span class="math inline">\((x,y,z)\in\mathbb{R}^3\)</span> ולכל סקלר <span class="math inline">\(c\in\mathbb{R}\)</span>.</em></p>
+<p><em><span class="math inline">\(\|c\cdot(x,y,z)\|=|c|\cdot\|(x,y,z)\|\)</span> לכל וקטור <span class="math inline">\((x,y,z)\in\mathbb{R}^3\)</span> ולכל סקלר <span class="math inline">\(c\in\mathbb{R}\)</span>.</em></p>
 </div>
 <div class="exercise">
 <p>בדקו שההוכחה של הטענה המקורית ניתנת להכללה למרחב.</p>
@@ -1031,7 +1084,7 @@ y &amp;= 1 + 2t = 1 - 2s
 <p>ב. <span class="math inline">\((3,-2,1)\cdot(6,5,-3)=3\cdot6+(-2)\cdot5+1\cdot(-3)=5\)</span></p>
 <p>ג. <span class="math inline">\((1,4,1)\cdot(-5,1,1)=1\cdot(-5)+4\cdot1+1\cdot1=0\)</span></p>
 </div>
-<p>התכונות של המכפלה הסקלרית שראינו בטענה <span class="math inline">\(\ref{prop:dot-product-properties}\)</span> נשמרות במרחב, בלי שינוי מהותי להוכחות (רק הוספת קוארדינטה שלישית).</p>
+<p>התכונות של המכפלה הסקלרית שראינו בטענה <a href="#prp-dot-product-properties" class="quarto-xref"><span>3.2</span></a> נשמרות במרחב, בלי שינוי מהותי להוכחות (רק הוספת קוארדינטה שלישית).</p>
 <div class="proposition">
 <p><em>יהיו <span class="math inline">\(\vec{v_1}=(x_1,y_1\text{,}z_{!}),\,\vec{v_2}=(x_2,y_2,z_2),\,\vec{v_3}=(x_3,y_3,z_3)\in\mathbb{R}^3\)</span> וקטורים. אז מתקיים:</em></p>
 <p>א. <em><span class="math inline">\(\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}\)</span>.</em></p>
@@ -1052,7 +1105,7 @@ y &amp;= 1 + 2t = 1 - 2s
 <img src="images/chapter02/XYAngle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-XYAngle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-איור&nbsp;3.7: שני וקטורים השייכים למישור <span class="math inline">\(xy\)</span>
+איור&nbsp;3.15: שני וקטורים השייכים למישור <span class="math inline">\(xy\)</span>
 </figcaption>
 </figure>
 </div>
@@ -1101,10 +1154,14 @@ y &amp;= 1 + 2t = 1 - 2s
 <p>ההבדל העיקרי לעומת ישרים במישור זה שבמרחב ההצגה האלגברית של הישר היא יותר מסורבלת (מערכת של שתי משוואות במקום אחת), ולכן ההצגה הפרמטרית היא יותר שימושית. במרחב, משוואה אחת מתארת מישור ולא ישר. למשל, ראינו כבר כי המשוואה <span class="math inline">\(z=0\)</span> מתארת את מישור <span class="math inline">\(xy\)</span> ולא ישר.</p>
 <p>אינטואיטיבית: בדרך כלל משוואה מורידה מימד. לכן מתוך המרחב שמימדו <span class="math inline">\(3\)</span>, קבוצת הפתרונות של משוואה היא מישור ממימד <span class="math inline">\(2\)</span>. אם נוסיף עוד משוואה (חדשה, לא שקולה למשוואה הקודמת), המימד יירד ל-<span class="math inline">\(1\)</span> ונקבל ישר.</p>
 <p>גיאומטרית: כאשר פותרים מערכת של שתי משוואות (לינאריות), מחשבים את החיתוך של שני מישורים. לרוב, שני מישורים נחתכים לאורך ישר ולכן ניתן לתאר ישר כחיתוך של שני מישורים שמכילים אותו. יש אינסוף מישורים כאלה.</p>
-<div id="fig:InfinitePlanes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><embed src="simulations/Infinite-Planes.html?embed=1" width="800" height="800"></p>
-<figcaption>סימולציה 1.9 - שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי)</figcaption>
+<div id="fig-InfinitePlanes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-InfinitePlanes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Infinite-Planes.html?embed=1" width="800" height="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-InfinitePlanes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.16: סימולציה - שני מישורים נחתכים לאורך ישר (שמוצג באופן חלקי)
+</figcaption>
 </figure>
 </div>
 <p>נעדיף לעבור מהצגה אלגברית של ישר (שהיא רחוקה מאוד מלהיות יחידה) להצגה פרמטרית, ולא להיפך. אבל ראשית צריך להבין מישורים במרחב יותר לעומק.</p>
@@ -1114,10 +1171,14 @@ y &amp;= 1 + 2t = 1 - 2s
 <p>מישור כללי ב-<span class="math inline">\(\mathbb{R}^3\)</span> נתון בהצגה אלגברית כקבוצת פתרונות של משוואה אחת, כלומר</p>
 <p><span class="math display">\[H=\Set{(x,y,z)\in\mathbb{R}^3|ax+by+cz=d}\]</span></p>
 <p>כאשר <span class="math inline">\((a,b,c)\neq(0,0,0)\)</span>. נבין בקרוב שגם כאן (בדומה לישר במישור שמתואר ע"י משוואה אחת) המשמעות הגיאומטרית של <span class="math inline">\((a,b,c)\)</span> היא וקטור נורמל שמאונך לכל וקטור שמוכל במישור.</p>
-<div id="fig:AxisofRotation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><embed src="simulations/Axis-of-Rotation.html?embed=1" width="800" height="800"></p>
-<figcaption>סימולציה 1.10 - מישור עם וקטור נורמל</figcaption>
+<div id="fig-AxisofRotation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-AxisofRotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Axis-of-Rotation.html?embed=1" width="800" height="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AxisofRotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.17: סימולציה - מישור עם וקטור נורמל
+</figcaption>
 </figure>
 </div>
 <div class="example">
@@ -1135,7 +1196,7 @@ y &amp;= 1 + 2t = 1 - 2s
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\cdot(x-x_0,y-y_0,z-z_0)=0}\\
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\perp(x-x_0,y-y_0,z-z_0)}
 \end{aligned}
-\tag{3.3}\]</span></span></p>
+\tag{3.4}\]</span></span></p>
 <p>אז <span class="math inline">\((a,b,c)\)</span> הוא וקטור נורמל של <span class="math inline">\(H\)</span>. הוא לא יחיד כי ההצגה האלגברית אינה יחידה, שכן ניתן להכפיל את המשוואה בכל סקלר <span class="math inline">\(\alpha\neq0\)</span> ובהתאם לקבל <span class="math inline">\(\alpha\cdot(a,b,c)\)</span> כוקטור נורמל.</p>
 </section>
 <section id="מעבר-מהצגה-אלגברית-של-מישור-להצגה-פרמטרית" class="level3" data-number="3.2.6">
@@ -1144,10 +1205,14 @@ y &amp;= 1 + 2t = 1 - 2s
 <div class="exercise">
 <p>איזו נקודה מתאימה להצבה <span class="math inline">\((t,s)=(0,0)\)</span>? להצבה <span class="math inline">\((t,s)=(1,0)\)</span>? להצבה <span class="math inline">\((t,s)=(0,1)\)</span>?</p>
 </div>
-<div id="fig:Plane-Spanned-by-Vectors" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><embed src="simulations/Plane-Spanned-by-Vectors.html?embed=1" width="800" height="800"></p>
-<figcaption>סימולציה 1.11 - מישור נוצר ע”י שני וקטורים שיוצאים מאותה הנקודה</figcaption>
+<div id="fig-Plane-Spanned-by-Vectors" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Plane-Spanned-by-Vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Plane-Spanned-by-Vectors.html?embed=1" width="800" height="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Plane-Spanned-by-Vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.18: סימולציה - מישור נוצר ע”י שני וקטורים שיוצאים מאותה הנקודה
+</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
@@ -1193,7 +1258,7 @@ H&amp;=\Set{(4,0,0)+t(0-4,2-0,0-0)+s(0-4,0-0,4-0)|t,s\in\mathbb{R}}\\&amp;=\Set{
 2a+3b+c&amp;=0\\
 a+4b-2c&amp;=0
 \end{aligned}
-\end{cases}\]</span> נרצה לקבל משוואה עם שני משתנים במקום שלושה. אפשר לבודד את <span class="math inline">\(a\)</span> במשוואה השנייה ולהציב אותו במשוואה הראשונה, או לחילופין להכפיל את המשוואה השנייה ב-<span class="math inline">\(2\)</span> ואז להחסיר ממנה את המשוואה הראשונה. כך נקבל <span class="math inline">\(5b-5c=0\)</span> או באופן שקול <span class="math inline">\(b=c\)</span>. נציב את מה שקיבלנו באחת מהמשוואות המקוריות, למשל המשוואה השנייה, ונקבל <span class="math inline">\(a+2c=0\)</span> או באופן שקול <span class="math inline">\(a=-2c\)</span>. אז כל וקטור נורמל הוא מהצורה <span class="math inline">\(c(-2,1,1)\)</span> ונוח לבחור <span class="math inline">\(c=1\)</span>. כדי למצוא הצגה אלגברית צריך להציב את נקודת ההתחלה ואת <span class="math inline">\(a,b,c\)</span> שחישבנו ב- <span class="math inline">\(\eqref{eq:algebraic-normal}\)</span>: <span class="math display">\[\begin{aligned}
+\end{cases}\]</span> נרצה לקבל משוואה עם שני משתנים במקום שלושה. אפשר לבודד את <span class="math inline">\(a\)</span> במשוואה השנייה ולהציב אותו במשוואה הראשונה, או לחילופין להכפיל את המשוואה השנייה ב-<span class="math inline">\(2\)</span> ואז להחסיר ממנה את המשוואה הראשונה. כך נקבל <span class="math inline">\(5b-5c=0\)</span> או באופן שקול <span class="math inline">\(b=c\)</span>. נציב את מה שקיבלנו באחת מהמשוואות המקוריות, למשל המשוואה השנייה, ונקבל <span class="math inline">\(a+2c=0\)</span> או באופן שקול <span class="math inline">\(a=-2c\)</span>. אז כל וקטור נורמל הוא מהצורה <span class="math inline">\(c(-2,1,1)\)</span> ונוח לבחור <span class="math inline">\(c=1\)</span>. כדי למצוא הצגה אלגברית צריך להציב את נקודת ההתחלה ואת <span class="math inline">\(a,b,c\)</span> שחישבנו ב- <a href="#eq-algebraic-normal" class="quarto-xref"><span>3.4</span></a>: <span class="math display">\[\begin{aligned}
   H&amp;=\Set{(x,y,z)\in\mathbb{R}^3|-2x+y+z=-2\cdot 1+(-1)+0}\\
   &amp;=\Set{(x,y,z)\in\mathbb{R}^3|-2x+y+z=-3}  
 \end{aligned}\]</span></p>
@@ -1344,11 +1409,18 @@ x - 2y + 5z = 4 \iff 3x - 6y + 15z = 12
 </tr>
 </tbody>
 </table>
-<div id="fig:Plane-and-Line" class="figure">
+<div id="fig-Plane-and-Line" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Plane-and-Line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <embed src="simulations/Plane-and-Line.html?embed=1" width="800" height="800">
 <figcaption>
-סימולציה 1.12 - מישור וישר החותך אותו, ישר המקביל לו וישר המוכל בו
+סימולציה - מישור וישר החותך אותו, ישר המקביל לו וישר המוכל בו
 </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Plane-and-Line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;3.19
+</figcaption>
+</figure>
 </div>
 <div class="example">
 <p>נסתכל על הישר <span class="math inline">\(L=\Set{(1,0,3)+t(2,-4,5)\mid t\in\mathbb{R}}\)</span> והמישור <span class="math display">\[
