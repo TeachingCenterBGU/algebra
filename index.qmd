@@ -4,7 +4,8 @@
 <img src="logo.png" alt="לוגו" class="home-hero__logo" />
 <h1 class="home-hero__title">אלגברה לינארית להנדסה</h1>
 <p class="home-hero__subtitle">ד"ר יונתן שלח, ד"ר נדב מאיר</p>
-<p class="home-hero__tagline">ספר קורס עבור סטודנטים וסטודנטיות בפקולטה להנדסה</p>
+<p class="home-hero__tagline">ספר קורס </p>
+<p class="home-hero__tagline">מיועד לסטודנטים ולסטודנטיות בפקולטה להנדסה</p>
 <p class="home-hero__tagline">היחידה להוראת קורסי יסוד</p>
 <p class="home-hero__tagline">אוניברסיטת בן גוריון בנגב</p>
 <hr class="home-hero__divider" />
