@@ -57,47 +57,37 @@
   text-align: center; /* משאיר את המשוואות הגדולות במרכז */
 }
 
-
-/* --- פתרון סופי ומאוזן למשוואות MathJax --- */
-/* --- פתרון סופי: יישור ממורכז למשוואות ותמיכה מלאה בעברית --- */
-
 /* 1. יישור כללי של המכולה המתמטית */
-/* משוואות בשורה נפרדת ($$) יהיו ממורכזות, ומשוואות בתוך הטקסט יזרמו איתו */
+/* --- מצב יציב: משוואות ממורכזות ומתמטיקה תקנית (LTR) --- */
+
+/* מרכוז משוואות גדולות ($$) */
 mjx-container[display="true"] {
   text-align: center !important;
   display: block;
   margin: 1.5em 0 !important;
-  direction: ltr !important; /* המתמטיקה עצמה נשארת LTR */
+  direction: ltr !important; /* מבטיח שהסוגריים והסימנים לא יתהפכו */
 }
 
-mjx-container:not([display="true"]) {
+/* הגדרה גלובלית לכל רכיבי המתמטיקה - חזרה לברירת המחדל של המנוע */
+mjx-container {
   direction: ltr !important;
 }
 
-/* 2. תיקון למילים בעברית (בתוך \text) - שומר עליהן כגוש RTL תקין */
-mjx-mtext {
-  direction: rtl !important;
-  display: inline-block !important;
-  unicode-bidi: isolate !important;
-  /* מרווח עדין שמונע הצמדה למספרים */
-  margin: 0 0.35em !important; 
-}
-
-/* 3. תיקון לאותיות בודדות - מבטל את הריווח המוגזם בתוך המילה */
-mjx-utext {
-  direction: rtl !important;
-  display: inline-block !important;
-  unicode-bidi: plaintext !important;
-  margin: 0 !important; 
+/* פותר את עיוות האותיות האנגליות (Re/Im) */
+mjx-mtext, mjx-utext {
+  direction: ltr !important;
+  display: inline !important;
+  unicode-bidi: normal !important;
+  margin: 0 !important;
   padding: 0 !important;
 }
 
-/* 4. הגנה על מספרים, סימנים ואותיות אנגליות (Re, Im, x, n, N) */
-mjx-mn, mjx-mi, mjx-mo, mjx-ms {
-  direction: ltr !important;
-  unicode-bidi: isolate !important;
-  display: inline-block !important;
+/* תיקון הפופ-אפים של הרפרנסים (שלא יסתירו את הלינק) */
+.quarto-xref-popup {
+  margin-top: 15px !important;
+  z-index: 1060 !important;
 }
+
 /* ===== צבעים פסטליים לכל סביבה ===== */
 .proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
 .definition { --env-color: rgba(255, 99, 71, 0.4); }     /* אדום פסטלי */
