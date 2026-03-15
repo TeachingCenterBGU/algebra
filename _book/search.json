@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "אלגברה לינארית",
     "section": "",
-    "text": "$$\n\n\\newcommand{\\R}{\\mathbb{R}}\n\n\\newcommand{\\N}{\\mathbb{N}}\n\n\\newcommand{\\Z}{\\mathbb{Z}}\n\n\\newcommand{\\Q}{\\mathbb{Q}}\n\n\\newcommand{\\C}{\\mathbb{C}}\n\n\\newcommand{\\F}{\\mathbb{F}}\n\n\\newcommand{\\M}{\\mathbb{M}}\n\n\\newcommand{\\0}{\\mathbf{0}}\n\n\\newcommand{\\Set}[1]{\\left\\{#1\\right\\}}\n\n$$\n\n\n\n\n\n\n\nמידע כללי\n\n\n\nאלגברה לינארית להנדסה\n\n\nד”ר יונתן שלח, ד”ר נדב מאיר\n\n\nספר קורס עבור סטודנטים וסטודנטיות בפקולטה להנדסה\n\n\nהיחידה להוראת קורסי יסוד\n\n\nאוניברסיטת בן גוריון בנגב\n\n\n\n\n\nתודות\n\n\nד”ר מוטקה פורת\n\n\nהיחידה להוראת קורסי יסוד, אוניברסיטת בן גוריון בנגב\n\n\nד”ר ענבל צרפתי-ברעד\n\n\nהיחידה לקידום איכות ההוראה והלמידה, אוניברסיטת בן גוריון בנגב\n\n\n\nלהורדת הספר ב PDF",
+    "text": "$$\n\n\\newcommand{\\R}{\\mathbb{R}}\n\n\\newcommand{\\N}{\\mathbb{N}}\n\n\\newcommand{\\Z}{\\mathbb{Z}}\n\n\\newcommand{\\Q}{\\mathbb{Q}}\n\n\\newcommand{\\C}{\\mathbb{C}}\n\n\\newcommand{\\F}{\\mathbb{F}}\n\n\\newcommand{\\M}{\\mathbb{M}}\n\n\\newcommand{\\0}{\\mathbf{0}}\n\n\\newcommand{\\Set}[1]{\\left\\{#1\\right\\}}\n\n$$\n\n\n\n\n\n\n\nמידע כללי\n\n\n\nאלגברה לינארית להנדסה\n\n\nד”ר יונתן שלח, ד”ר נדב מאיר\n\n\nספר קורס\n\n\nמיועד לסטודנטים ולסטודנטיות בפקולטה להנדסה\n\n\nהיחידה להוראת קורסי יסוד\n\n\nאוניברסיטת בן גוריון בנגב\n\n\n\n\n\nתודות\n\n\nד”ר מוטקה פורת\n\n\nהיחידה להוראת קורסי יסוד, אוניברסיטת בן גוריון בנגב\n\n\nד”ר ענבל צרפתי-ברעד\n\n\nהיחידה לקידום איכות ההוראה והלמידה, אוניברסיטת בן גוריון בנגב\n\n\n\nלהורדת הספר ב PDF",
     "crumbs": [
       "מידע כללי"
     ]
