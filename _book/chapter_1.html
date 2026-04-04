@@ -373,7 +373,7 @@ $$
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>הוקטור הנגדי (שווה גודל אך הפוך בכיוון) מתקבל ע"י כפל בסקלר <span class="math inline">\(-1\)</span>. חיסור בין שני וקטורים זה כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר:</p>
-<p><span id="eq-points-vector-3d"><span class="math display">\[(a_1,a_2)-(b_1,b_2)=(a_1,a_2)+(-1)\cdot(b_1,b_2)=(a_1-b_1,a_2-b_2) \tag{4.1}\]</span></span></p>
+<p><span class="math display">\[(a_1,a_2)-(b_1,b_2)=(a_1,a_2)+(-1)\cdot(b_1,b_2)=(a_1-b_1,a_2-b_2)\]</span></p>
 </div>
 <div class="exercise">
 <p>בצעו את הפעולות הבאות:</p>
@@ -428,7 +428,7 @@ $$
 <p>זה גם מוביל אותנו לנוסחה שמתארת וקטור <span class="math inline">\(\vec{u}\)</span> שמתחיל בנקודה <span class="math inline">\((a_1,a_2)\)</span> ומסתיים ב-<span class="math inline">\((b_1,b_2)\)</span>: מקבלים את ההפרש הוקטורי</p>
 <p><span id="eq-vector-points"><span class="math display">\[
 \vec{u} = (b_1 - a_1, b_2 - a_2)
-\tag{4.2}\]</span></span></p>
+\tag{4.1}\]</span></span></p>
 <p>נוכל להתנסות בעצמינו</p>
 <div id="fig-Parallelogram" class="figure quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -637,7 +637,7 @@ $$
 <p><span class="theorem-title"><strong>Proposition 4.3</strong></span> יהיו <span class="math inline">\(\vec{v},\vec{w}\)</span> שני וקטורים ב-<span class="math inline">\(\mathbb{R}^2\)</span> השונים מ-<span class="math inline">\((0,0)\)</span>, ותהי <span class="math inline">\(\alpha\)</span> הזווית הקטנה ביניהם. אז מתקיים:</p>
 <p><span id="eq-cosine-scalar"><span class="math display">\[
 \cos\alpha = \frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}.
-\tag{4.3}\]</span></span></p>
+\tag{4.2}\]</span></span></p>
 </div>
 <p>ההוכחה תדגים היטב את השימוש בתכונות של מכפלה סקלרית.</p>
 <div class="proof">
@@ -977,7 +977,7 @@ y &amp;= 1 + 2t = 1 - 2s
 <p><span class="proof-title"><em>Remark</em>. </span>חיסור בין שני וקטורים זה שוב כמו חיבור בין הראשון לגרסה הנגדית של השני, כלומר:</p>
 <p><span id="eq-points-vector-3d-r3"><span class="math display">\[
 (b_1,b_2,b_3)-(a_1,a_2,a_3)=(b_1-a_1,b_2-a_2,b_3-a_3)
-\tag{4.4}\]</span></span></p>
+\tag{4.3}\]</span></span></p>
 <p>זה הווקטור שמתחיל בנקודה <span class="math inline">\((a_1,a_2,a_3)\)</span> ומסתיים ב-<span class="math inline">\((b_1,b_2,b_3)\)</span>.</p>
 </div>
 <div class="example">
@@ -1001,7 +1001,7 @@ y &amp;= 1 + 2t = 1 - 2s
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>נציב את הנקודות ב-<a href="#eq-points-vector-3d-r3" class="quarto-xref"><span>4.4</span></a> ונקבל <span class="math display">\[.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)\]</span></p>
+<p>נציב את הנקודות ב-<a href="#eq-points-vector-3d-r3" class="quarto-xref"><span>4.3</span></a> ונקבל <span class="math display">\[.(2,-6,11)-(3,1,5)=(2-3,-6-1,11-5)=(-1,-7,6)\]</span></p>
 </div>
 </div>
 </div>
@@ -1179,7 +1179,7 @@ y &amp;= 1 + 2t = 1 - 2s
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\cdot(x-x_0,y-y_0,z-z_0)=0}\\
       &amp; = \Set{(x,y,z)\in\mathbb{R}^3|(a,b,c)\perp(x-x_0,y-y_0,z-z_0)}
 \end{aligned}
-\tag{4.5}\]</span></span></p>
+\tag{4.4}\]</span></span></p>
 <p>אז <span class="math inline">\((a,b,c)\)</span> הוא וקטור נורמל של <span class="math inline">\(H\)</span>. הוא לא יחיד כי ההצגה האלגברית אינה יחידה, שכן ניתן להכפיל את המשוואה בכל סקלר <span class="math inline">\(\alpha\neq0\)</span> ובהתאם לקבל <span class="math inline">\(\alpha\cdot(a,b,c)\)</span> כוקטור נורמל.</p>
 </section>
 <section id="מעבר-מהצגה-אלגברית-של-מישור-להצגה-פרמטרית" class="level3" data-number="4.2.6">
@@ -1241,7 +1241,7 @@ H&amp;=\Set{(4,0,0)+t(0-4,2-0,0-0)+s(0-4,0-0,4-0)|t,s\in\mathbb{R}}\\&amp;=\Set{
 2a+3b+c&amp;=0\\
 a+4b-2c&amp;=0
 \end{aligned}
-\end{cases}\]</span> נרצה לקבל משוואה עם שני משתנים במקום שלושה. אפשר לבודד את <span class="math inline">\(a\)</span> במשוואה השנייה ולהציב אותו במשוואה הראשונה, או לחילופין להכפיל את המשוואה השנייה ב-<span class="math inline">\(2\)</span> ואז להחסיר ממנה את המשוואה הראשונה. כך נקבל <span class="math inline">\(5b-5c=0\)</span> או באופן שקול <span class="math inline">\(b=c\)</span>. נציב את מה שקיבלנו באחת מהמשוואות המקוריות, למשל המשוואה השנייה, ונקבל <span class="math inline">\(a+2c=0\)</span> או באופן שקול <span class="math inline">\(a=-2c\)</span>. אז כל וקטור נורמל הוא מהצורה <span class="math inline">\(c(-2,1,1)\)</span> ונוח לבחור <span class="math inline">\(c=1\)</span>. כדי למצוא הצגה אלגברית צריך להציב את נקודת ההתחלה ואת <span class="math inline">\(a,b,c\)</span> שחישבנו ב- <a href="#eq-algebraic-normal" class="quarto-xref"><span>4.5</span></a>: <span class="math display">\[\begin{aligned}
+\end{cases}\]</span> נרצה לקבל משוואה עם שני משתנים במקום שלושה. אפשר לבודד את <span class="math inline">\(a\)</span> במשוואה השנייה ולהציב אותו במשוואה הראשונה, או לחילופין להכפיל את המשוואה השנייה ב-<span class="math inline">\(2\)</span> ואז להחסיר ממנה את המשוואה הראשונה. כך נקבל <span class="math inline">\(5b-5c=0\)</span> או באופן שקול <span class="math inline">\(b=c\)</span>. נציב את מה שקיבלנו באחת מהמשוואות המקוריות, למשל המשוואה השנייה, ונקבל <span class="math inline">\(a+2c=0\)</span> או באופן שקול <span class="math inline">\(a=-2c\)</span>. אז כל וקטור נורמל הוא מהצורה <span class="math inline">\(c(-2,1,1)\)</span> ונוח לבחור <span class="math inline">\(c=1\)</span>. כדי למצוא הצגה אלגברית צריך להציב את נקודת ההתחלה ואת <span class="math inline">\(a,b,c\)</span> שחישבנו ב- <a href="#eq-algebraic-normal" class="quarto-xref"><span>4.4</span></a>: <span class="math display">\[\begin{aligned}
   H&amp;=\Set{(x,y,z)\in\mathbb{R}^3|-2x+y+z=-2\cdot 1+(-1)+0}\\
   &amp;=\Set{(x,y,z)\in\mathbb{R}^3|-2x+y+z=-3}  
 \end{aligned}\]</span></p>
