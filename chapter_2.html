@@ -305,9 +305,9 @@ $$
 <h2 data-number="5.1" class="anchored" data-anchor-id="משוואה-לינארית-במספר-משתנים"><span class="header-section-number">5.1</span> משוואה לינארית במספר משתנים</h2>
 <p>איך נראית משוואה לינארית כללית? נשתמש במשתנים <span class="math inline">\(x_1,x_{2,}...,x_n\)</span> במקום אותיות רגילות, כי לצורך העניין <span class="math inline">\(n\)</span> יכול להיות גדול בהרבה ממספר האותיות באלף בית הלועזי (<span class="math inline">\(26\)</span>) או בכל שפה אחרת. גם נראה בהמשך שצריך לבחור איזשהו סדר בין המשתנים, אז אם מספרם גדול זה נוח להשתמש באינדקס מספרי כדי להדגיש את הסדר ביניהם. זה נוח גם למספר משתנים לא גדול במיוחד.</p>
 <div class="definition">
-<p>משוואה לינארית במשתנים <span class="math inline">\(x_1,x_{2,}...,x_n\)</span> היא משוואה מהצורה <span class="math display">\[
+<p>משוואה לינארית במשתנים <span class="math inline">\(x_1,x_{2,}...,x_n\)</span> היא משוואה מהצורה <span id="eq-linear-eq"><span class="math display">\[
 a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
-\]</span></p>
+\tag{5.1}\]</span></span></p>
 <p>כאשר <span class="math inline">\(a_1,...,a_n\)</span> הם סקלרים נתונים שנקראים מקדמים, ו-<span class="math inline">\(b\)</span> הוא סקלר נתון שנקרא קבוע או איבר חופשי. אם כל הסקלרים והמשתנים ממשיים, נאמר שזו משוואה לינארית מעל <span class="math inline">\(\mathbb R\)</span>. אם לפחות סקלר אחד הוא מרוכב ו/או המשתנים מרוכבים, נאמר שזו משוואה לינארית מעל <span class="math inline">\(\mathbb C\)</span>. אם נרצה להכליל בלי לציין שמדובר ב-<span class="math inline">\(\mathbb R\)</span> או <span class="math inline">\(\mathbb C\)</span>, נכתוב <span class="math inline">\(\mathbb F\)</span> ונזכור שקבוצה זו היא או <span class="math inline">\(\mathbb R\)</span> או <span class="math inline">\(\mathbb C\)</span>.</p>
 </div>
 <div class="example">
@@ -316,37 +316,36 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <p>ג. <span class="math inline">\(0=0\)</span> זו משוואה לינארית במספר כלשהו של משתנים, מעל <span class="math inline">\(\mathbb R\)</span> או <span class="math inline">\(\mathbb C\)</span>. בכתיבה מלאה עבור <span class="math inline">\(n\)</span> משתנים מדובר על המשוואה <span class="math display">\[.0\cdot x_1+0\cdot x_2+0+...+0\cdot x_n=0\]</span> כל בחירה של סקלרים <span class="math inline">\((x_1,x_2,...,x_n)=(c_1,c_2,...,c_n)\)</span> היא פתרון למשוואה זו, שהיא פסוק אמת שלא תלוי בערכי המשתנים.</p>
 </div>
 <div class="definition">
-<p>סדרת סקלרים <span class="math inline">\((c_1,c_2,...,c_n)\)</span> נקראת <span class="math inline">\(n\)</span>-יה, או וקטור באורך <span class="math inline">\(n\)</span>. נגדיר את מרחב ה-<span class="math inline">\(n\)</span>-יות מעל <span class="math inline">\(\mathbb R\)</span>: <span class="math display">\[\mathbb R^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb R}\]</span> וגם את מרחב ה-<span class="math inline">\(n\)</span>-יות מעל <span class="math inline">\(\mathbb C\)</span>: <span class="math display">\[\mathbb C^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb C}\]</span></p>
+<p>סדרת סקלרים <span class="math inline">\((c_1,c_2,...,c_n)\)</span> נקראת <span class="math inline">\(n\)</span>-יה, או וקטור באורך <span class="math inline">\(n\)</span>. נגדיר את מרחב ה-<span class="math inline">\(n\)</span>-יות מעל <span class="math inline">\(\mathbb R\)</span>: <span class="math display">\[\mathbb R^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb R}.\]</span> וגם את מרחב ה-<span class="math inline">\(n\)</span>-יות מעל <span class="math inline">\(\mathbb C\)</span>: <span class="math display">\[\mathbb C^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb C}.\]</span></p>
 <p>לעיתים נכתוב <span class="math inline">\(\mathbb F^n\)</span> במקום לפרט אם הכוונה היא ל-<span class="math inline">\(\mathbb R^n\)</span> או ל-<span class="math inline">\(\mathbb C^n\)</span>.</p>
 </div>
 <p>יש לנו אינטואיציה גיאומטרית טובה לגבי המישור הדו-מימדי <span class="math inline">\(\mathbb R^2\)</span> והמרחב התלת-מימדי <span class="math inline">\(\mathbb R^3\)</span>. החל מ- <span class="math inline">\(\mathbb R^4\)</span> ו- <span class="math inline">\(\mathbb C^2\)</span> כבר אין לנו יכולת לדמיין את המרחבים האלה באופן מלא, אבל נתרגל גם אליהם מבחינה אלגברית.</p>
 <div class="definition">
-<p>פתרון של משוואה לינארית הינו <span class="math inline">\(n\)</span>-יה <span class="math inline">\((c_1,c_2,...,c_n)\in\mathbb F^{n}\)</span> כך שבהצבת <span class="math display">\[x_1=c_1,x_2=c_2,...,x_n=c_n\]</span></p>
+<p>פתרון של משוואה לינארית הינו <span class="math inline">\(n\)</span>-יה <span class="math inline">\((c_1,c_2,...,c_n)\in\mathbb F^{n}\)</span> כך שבהצבת <span class="math display">\[x_1=c_1,x_2=c_2,...,x_n=c_n.\]</span></p>
 <p>המשוואה מתקיימת.</p>
 </div>
 <div class="example">
-<p>משוואה לינארית ב-<span class="math inline">\(5\)</span> משתנים מעל <span class="math inline">\(\mathbb R\)</span></p>
+<p>א. משוואה לינארית ב-<span class="math inline">\(5\)</span> משתנים מעל <span class="math inline">\(\mathbb R\)</span></p>
 <p><span class="math display">\[x_1+x_2+x_3+x_4+x_5=100\]</span></p>
 <p>אחד הפתרונות של המשוואה הוא <span class="math display">\[(x_1,x_2,x_3,x_4,x_5)=(20,20,20,20,20)\]</span> פתרון נוסף הוא <span class="math display">\[(x_1,x_2,x_3,x_4,x_5)=(60,10,10,10,10)\]</span> ויש עוד אינסוף אחרים. לעומת זאת, <span class="math display">\[(x_1,x_2,x_3,x_4,x_5)=(0,0,0,0,0)\]</span> אינו פתרון כי ההצבה נותנת <span class="math inline">\(0=100\)</span> וזה כמובן לא מתקיים.</p>
 <p>כדי למצוא את קבוצת כל הפתרונות נבודד את אחד המשתנים. נוח לבחור את <span class="math inline">\(x_1\)</span> כי הוא הראשון. נקבל <span class="math display">\[x_1=100-x_2-x_3-x_4-x_5\]</span></p>
-<p>זה למעשה מראה שניתן לבחור את ערכיהם של <span class="math inline">\(x_2,x_3,x_4,x_5\)</span> באופן שרירותי. זו משוואה מעל <span class="math inline">\(\mathbb R\)</span> ולכן נבחר <span class="math inline">\(c_2,c_3,c_4,c_5\in\mathbb R\)</span> שרירותיים ונציב במשוואה <span class="math display">\[(x_2,x_3,x_4,x_5)=(c_2,c_3,c_4,c_5)\]</span> כך נקבל <span class="math display">\[x_1=100-c_2-c_3-c_4-c_5\]</span></p>
-<p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">\(4\)</span> פרמטרים <span class="math inline">\(c_2,c_3,c_4,c_5\)</span>) ע"י <span class="math display">\[\Set{(100-c_2-c_3-c_4-c_5,c_2,c_3,c_4,c_5)|c_2,c_3,c_4,c_5\in\mathbb R}\]</span></p>
-</div>
-<div class="example">
-<p>משוואה לינארית ב-<span class="math inline">\(4\)</span> משתנים מעל <span class="math inline">\(\mathbb C\)</span><span class="math inline">\(x_1+ix_2+2ix_3+x_4=1+4i\)</span>$</p>
+<p>זה למעשה מראה שניתן לבחור את ערכיהם של <span class="math inline">\(x_2,x_3,x_4,x_5\)</span> באופן שרירותי. זו משוואה מעל <span class="math inline">\(\mathbb R\)</span> ולכן נבחר <span class="math inline">\(c_2,c_3,c_4,c_5\in\mathbb R\)</span> שרירותיים ונציב במשוואה <span class="math display">\[(x_2,x_3,x_4,x_5)=(c_2,c_3,c_4,c_5)\]</span> כך נקבל <span class="math display">\[x_1=100-c_2-c_3-c_4-c_5.\]</span></p>
+<p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">\(4\)</span> פרמטרים <span class="math inline">\(c_2,c_3,c_4,c_5\)</span>) ע"י <span class="math display">\[\Set{(100-c_2-c_3-c_4-c_5,c_2,c_3,c_4,c_5)|c_2,c_3,c_4,c_5\in\mathbb R}.\]</span></p>
+<hr>
+<p>ב. משוואה לינארית ב-<span class="math inline">\(4\)</span> משתנים מעל <span class="math inline">\(\mathbb{C}\)</span>: <span class="math display">\[x_1+ix_2+2ix_3+x_4=1+4i\]</span></p>
 <p>אחד הפתרונות של המשוואה הוא <span class="math inline">\((x_1,x_2,x_3,x_4)=(1,1,1,i)\)</span>. נבדוק זאת: <span class="math display">\[1\cdot 1+i\cdot 1+2i\cdot 1+1\cdot i=1+4i\]</span> לעומת זאת, <span class="math inline">\((x_1,x_2,x_3,x_4)=(1,0,1,0)\)</span> אינו פתרון. הפעם בדיקה מראה כי <span class="math display">\[.1\cdot 1+i\cdot 0+2i\cdot 1+1\cdot 0=1+2i\neq1+4i\]</span></p>
 <p>נבודד את <span class="math inline">\(x_1\)</span> כדי למצוא את קבוצת הפתרונות: <span class="math display">\[x_1=1+4i-ix_2-2ix_3-x_4\]</span></p>
 <p>זו משוואה מעל <span class="math inline">\(\mathbb C\)</span> ולכן נבחר <span class="math inline">\(c_2,c_3,c_4\in\mathbb C\)</span> שרירותיים ונציב אותם במשוואה. כך נקבל <span class="math display">\[.x_1=1+4i-ic_2-2ic_3-c_4\]</span></p>
 <p>לכן, קבוצת הפתרונות נתונה באופן פרמטרי (עם <span class="math inline">\(3\)</span> פרמטרים <span class="math inline">\(c_2,c_3,c_4\)</span>) ע"י <span class="math display">\[.\Set{(1+4i-ic_2-2ic_3-c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb C}\]</span></p>
 </div>
-<p>איך פותרים משוואה לינארית כללית מהצורה <span class="math inline">\(\ref{eqn:linear-eq}\)</span>? אפשר למצוא את כל הפתרונות ע"י בידוד אחד המשתנים. מקובל לעשות זאת עבור <span class="math inline">\(x_1\)</span> בהנחה ש- <span class="math inline">\(a_1\neq0\)</span> (אם <span class="math inline">\(a_1=0\)</span>, נבחר את המשתנה הראשון עם מקדם השונה מ-<span class="math inline">\(0\)</span>). ראשית מעבירים לאגף ימין את כל הביטויים של המשתנים האחרים: <span class="math display">\[.a_1x_1=b-a_2x_2-a_3x_3-...-a_nx_n\]</span> נחלק בסקלר <span class="math inline">\(a_1\)</span> ונקבל <span class="math display">\[.x_1=\frac{1}{a_1}(b-a_2x_2-a_3x_3-...-a_nx_n)\]</span></p>
+<p>איך פותרים משוואה לינארית כללית מהצורה <a href="#eq-linear-eq" class="quarto-xref"><span>5.1</span></a>? אפשר למצוא את כל הפתרונות ע"י בידוד אחד המשתנים. מקובל לעשות זאת עבור <span class="math inline">\(x_1\)</span> בהנחה ש- <span class="math inline">\(a_1\neq0\)</span> (אם <span class="math inline">\(a_1=0\)</span>, נבחר את המשתנה הראשון עם מקדם השונה מ-<span class="math inline">\(0\)</span>). ראשית מעבירים לאגף ימין את כל הביטויים של המשתנים האחרים: <span class="math display">\[.a_1x_1=b-a_2x_2-a_3x_3-...-a_nx_n\]</span> נחלק בסקלר <span class="math inline">\(a_1\)</span> ונקבל <span class="math display">\[.x_1=\frac{1}{a_1}(b-a_2x_2-a_3x_3-...-a_nx_n)\]</span></p>
 <p>זה מראה שלכל בחירה של סקלרים <span class="math inline">\(c_2,....,c_n\in\mathbb F\)</span> נקבל פתרון <span class="math display">\[.(x_1,x_2,x_3,...,x_n)=(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)\]</span></p>
-<p>לכן, קבוצת הפתרונות של המשוואה נתונה בהצגה פרמטרית ע"י <span class="math display">\[.\Set{(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)|c_1,c_2,...,c_n\in\mathbb F}\]</span></p>
-<p>נדגיש כי <span class="math inline">\(a_1,a_2,a_3,...,a_n\)</span> נתונים במשוואה כסקלרים קבועים. <span class="math inline">\(c_1,c_2,...,c_n\)</span> הם פרמטרים שרצים על פני הקבוצה <span class="math inline">\(\mathbb F\)</span> (<span class="math inline">\(\mathbb R\)</span> או <span class="math inline">\(\mathbb C\)</span>) כדי ליצור את כל הפתרונות. זו הכללה (כלומר צורה יותר כללית של מקרה מוכר) של הצגה פרמטרית של ישר (פרמטר אחד) ושל מישור (שני פרמטרים) למספר כללי של פרמטרים, שהוא בעצם <span class="math inline">\(n-1\)</span>. בפרט, לכל <span class="math inline">\(n\geq2\)</span> יש אינסוף פתרונות למשוואה <span class="math inline">\(\ref{eqn:linear-eq}\)</span> כי ניתן להציב אינסוף אפשרויות במשתנה אחד או יותר.</p>
+<p>לכן, קבוצת הפתרונות של המשוואה נתונה בהצגה פרמטרית ע"י <span class="math display">\[.\Set{(\frac{1}{a_1}(b-a_2c_2-a_3c_3-...-a_nc_n),c_2,c_3,...,c_n)|c_1,c_2,...,c_n\in\mathbb F}.\]</span></p>
+<p>נדגיש כי <span class="math inline">\(a_1,a_2,a_3,...,a_n\)</span> נתונים במשוואה כסקלרים קבועים. <span class="math inline">\(c_1,c_2,...,c_n\)</span> הם פרמטרים שרצים על פני הקבוצה <span class="math inline">\(\mathbb F\)</span> (<span class="math inline">\(\mathbb R\)</span> או <span class="math inline">\(\mathbb C\)</span>) כדי ליצור את כל הפתרונות. זו הכללה (כלומר צורה יותר כללית של מקרה מוכר) של הצגה פרמטרית של ישר (פרמטר אחד) ושל מישור (שני פרמטרים) למספר כללי של פרמטרים, שהוא בעצם <span class="math inline">\(n-1\)</span>. בפרט, לכל <span class="math inline">\(n\geq2\)</span> יש אינסוף פתרונות ל<a href="#eq-linear-eq" class="quarto-xref"><span>5.1</span></a> כי ניתן להציב אינסוף אפשרויות במשתנה אחד או יותר.</p>
 <p>שימו לב שהתייחסנו אל <span class="math inline">\(x_1\)</span> כמשתנה תלוי ואל <span class="math inline">\(x_2,x_3,...,x_n\)</span> כמשתנים חופשיים (הצבנו בהם ערכים שרירותיים). אם היינו מבודדים את <span class="math inline">\(x_2\)</span> או משתנה אחר במקום <span class="math inline">\(x_1\)</span>, אז הוא היה המשתנה התלוי וההצגה הפרמטרית הייתה משתנה בהתאם. עדיין, זו רק הצגה חלופית לקבוצת הפתרונות של אותה המשוואה. טבעי לבחור את <span class="math inline">\(x_1\)</span>, אך אין חובה לעשות זאת.</p>
 <div class="example">
-<p>את המשוואה <span class="math display">\[x_1+2x_2+3x_3+4x_4=4\]</span> אפשר לפתור ע"י בידוד אחד מארבעת המשתנים (זה נתון לבחירתנו). מקובל לבודד את <span class="math inline">\(x_1\)</span> ולקבל <span class="math display">\[x_1=4-2x_2-3x_3-4x_4\]</span> בהצבת <span class="math inline">\((x_2,x_3,x_4)=(c_2,c_3,c_4)\)</span> מקבלים את קבוצת הפתרונות <span class="math display">\[\Set{(4-2c_2-3c_3-4c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}\]</span> אבל באותה המידה אפשר לבודד משתנה אחר, למשל <span class="math inline">\(x_2\)</span> כך נקבל <span class="math inline">\(2x_2=4-x_1-3x_3-4x_4\)</span> ולאחר חלוקה ב- <span class="math inline">\(2\)</span>: <span class="math display">\[x_2=\frac{1}{2}(4-x_1-3x_3-4x_4)\]</span></p>
-<p>בהצבת סקלרים <span class="math inline">\((x_1,x_3,x_4)=(d_1,d_3,d_4)\)</span> נקבל הצגה פרמטרית חדשה לקבוצת הפתרונות, שנתונה ע"י <span class="math display">\[\Set{(d_1,\frac{1}{2}(4-d_1-3d_3-4d_4),d_3,d_4)|d_1,d_3,d_4\in\mathbb R}\]</span> בפרט, נובע כי מתקיים שוויון בין שתי הקבוצות. מדובר בשתי הצגות שקולות.</p>
+<p>את המשוואה <span class="math display">\[x_1+2x_2+3x_3+4x_4=4\]</span> אפשר לפתור ע"י בידוד אחד מארבעת המשתנים (זה נתון לבחירתנו). מקובל לבודד את <span class="math inline">\(x_1\)</span> ולקבל <span class="math display">\[x_1=4-2x_2-3x_3-4x_4\]</span> בהצבת <span class="math inline">\((x_2,x_3,x_4)=(c_2,c_3,c_4)\)</span> מקבלים את קבוצת הפתרונות <span class="math display">\[\Set{(4-2c_2-3c_3-4c_4,c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}.\]</span> אבל באותה המידה אפשר לבודד משתנה אחר, למשל <span class="math inline">\(x_2\)</span> כך נקבל <span class="math inline">\(2x_2=4-x_1-3x_3-4x_4\)</span> ולאחר חלוקה ב- <span class="math inline">\(2\)</span>: <span class="math display">\[x_2=\frac{1}{2}(4-x_1-3x_3-4x_4)\]</span></p>
+<p>בהצבת סקלרים <span class="math inline">\((x_1,x_3,x_4)=(d_1,d_3,d_4)\)</span> נקבל הצגה פרמטרית חדשה לקבוצת הפתרונות, שנתונה ע"י <span class="math display">\[\Set{(d_1,\frac{1}{2}(4-d_1-3d_3-4d_4),d_3,d_4)|d_1,d_3,d_4\in\mathbb R}.\]</span> בפרט, נובע כי מתקיים שוויון בין שתי הקבוצות. מדובר בשתי הצגות שקולות.</p>
 </div>
 <div class="exercise">
 <p>מצאו את קבוצת הפתרונות של המשוואה <span class="math inline">\(2x_1+x_2+3x_3+4x_4=5\)</span>. בדקו איך ההצגה הפרמטרית משתנה כאשר מבודדים את <span class="math inline">\(x_2\)</span> במקום <span class="math inline">\(x_1\)</span>.</p>
@@ -364,9 +363,9 @@ a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>. נבודד תחילה את <span class="math inline">\(x_1\)</span> ונקבל <span class="math display">\[.x_1=\frac{1}{2}(5-x_2-3x_3-4x_4)\]</span></p>
-<p>נציב <span class="math inline">\((x_2,x_3,x_4)=(c_2,c_3,c_4)\)</span> ונקבל את ההצגה הפרמטרית הבאה לקבוצת הפתרונות: <span class="math display">\[\Set{(\frac{1}{2}(5-c_2-3c_3-4c_4),c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}\]</span></p>
+<p>נציב <span class="math inline">\((x_2,x_3,x_4)=(c_2,c_3,c_4)\)</span> ונקבל את ההצגה הפרמטרית הבאה לקבוצת הפתרונות: <span class="math display">\[\Set{(\frac{1}{2}(5-c_2-3c_3-4c_4),c_2,c_3,c_4)|c_2,c_3,c_4\in\mathbb R}.\]</span></p>
 <p>כעת נבודד את <span class="math inline">\(x_2\)</span> וזה יוביל להצגה פרמטרית נוספת של אותה קבוצת הפתרונות. ראשית נקבל <span class="math display">\[.x_2=5-2x_1-3x_3-4x_4\]</span></p>
-<p>נציב <span class="math inline">\((x_1,x_3,x_4)=(d_1,d_3,d_4)\)</span> ונקבל את ההצגה הפרמטרית הבאה: <span class="math display">\[\Set{(d_1,5-2d_1-3d_3-4d_4,d_3,d_4)|d_1,d_3,d_4\in\mathbb R}\]</span></p>
+<p>נציב <span class="math inline">\((x_1,x_3,x_4)=(d_1,d_3,d_4)\)</span> ונקבל את ההצגה הפרמטרית הבאה: <span class="math display">\[\Set{(d_1,5-2d_1-3d_3-4d_4,d_3,d_4)|d_1,d_3,d_4\in\mathbb R}.\]</span></p>
 </div>
 </div>
 </div>
@@ -409,7 +408,7 @@ x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
 </div>
 <div class="definition">
 <p>מערכת משוואות לינאריות (ממ"ל) במשתנים <span class="math inline">\(x_1,x_{2,}...,x_n\)</span> היא אוסף של מספר כלשהו (<span class="math inline">\(m\)</span>) של משוואות לינאריות מהצורה</p>
-<p><span class="math display">\[
+<p><span id="eq-linear-eqs"><span class="math display">\[
 \begin{cases}
 \begin{alignedat}{7}
 a_{11}x_1 &amp;{}+{}&amp; a_{12}x_2 &amp;{}+{}&amp; a_{13}x_3 &amp;{}+{}&amp; \dots + a_{1n}x_n &amp;= b_1 \\[4pt]
@@ -419,7 +418,7 @@ a_{31}x_1 &amp;{}+{}&amp; a_{32}x_2 &amp;{}+{}&amp; a_{33}x_3 &amp;{}+{}&amp; \d
 a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \dots + a_{mn}x_n &amp;= b_m
 \end{alignedat}
 \end{cases}
-\]</span></p>
+\tag{5.2}\]</span></span></p>
 <p>אם כל המקדמים והקבועים הם מספרים ממשיים, נאמר שהממ"ל מעל <span class="math inline">\(\mathbb R\)</span>. אחרת, נאמר שהממ"ל מעל <span class="math inline">\(\mathbb C\)</span>.</p>
 </div>
 <p>שימו לב לאינדקס הכפול: <span class="math inline">\(a_{ij}\)</span> הוא המקדם של המשתנה <span class="math inline">\(x_{j}\)</span> במשוואה ה- <span class="math inline">\(i\)</span> (כלומר בשורה ה-<span class="math inline">\(i\)</span>). <span class="math inline">\(b_{i}\)</span> הוא הקבוע (איבר חופשי) במשוואה ה- <span class="math inline">\(i\)</span>. צריך להתרגל לכתיבה עם שני אינדקסים, אבל זו הדרך הטבעית להתייחס גם למספר המשתנה וגם למספר המשוואה. נדגיש ש- <span class="math inline">\(ij\)</span> אינו מכפלה וגם לא מספר דו-ספרתי בהקשר זה. בנוסף, כאן <span class="math inline">\(i\)</span> אינו המספר המדומה אלא אינדקס שמתאר את מספר השורה, ואילו <span class="math inline">\(j\)</span> הוא אינדקס שמתאר את מספר העמודה. אלה הסימונים המקובלים בקורס, והכוונה אמורה להיות ברורה כי אינדקס מופיע בכתב תחתי.</p>
@@ -427,7 +426,7 @@ a_{m1}x_1 &amp;{}+{}&amp; a_{m2}x_2 &amp;{}+{}&amp; a_{m3}x_3 &amp;{}+{}&amp; \d
 <p>פתרון של ממ"ל הינו סדרת סקלרים <span class="math inline">\((c_1,c_2,...,c_n)\)</span> כך שבהצבת <span class="math display">\[x_1=c_1,x_2=c_2,...,x_n=c_n\]</span> <u>כל</u> המשוואות בממ"ל מתקיימות.</p>
 </div>
 <div class="example">
-<p>נחזור לדוגמה קודמת:</p>
+<p>א. נחזור לדוגמה קודמת:</p>
 <p><span class="math display">\[
 \begin{cases}
 \begin{alignedat}{7}
@@ -440,9 +439,8 @@ x &amp;{}+{}&amp;  y &amp;{}+{}&amp; 3z &amp;= 5
 <p>כאן המקדמים הם<br>
 <span class="math inline">\(a_{11}=a_{12}=a_{13}=a_{21}=a_{23}=a_{31}=a_{32}=1,\; a_{22}=2,\; a_{33}=3\)</span>,<br>
 והקבועים הם <span class="math inline">\(b_1=3,\; b_2=4,\; b_3=5\)</span>.</p>
-</div>
-<div class="example">
-<p><span class="math display">\[
+<hr>
+<p>ב. <span class="math display">\[
 \begin{cases}
 \begin{aligned}
 x_1 + x_2 + x_3 + x_4 &amp;= 4 \\[4pt]
@@ -636,7 +634,7 @@ x_1 +  x_2 + 2x_3 - x_4+x_5 &amp;= 2 \\[4pt]
 </section>
 <section id="מטריצות" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="מטריצות"><span class="header-section-number">5.3</span> מטריצות</h2>
-<p>ראינו בפרק הקודם, למשל עבור ממ"ל של שתי משוואות בשני נעלמים, שניתן לחבר בין שתי משוואות כדי לנסות לקבל משוואה יותר פשוטה שנובעת מהממ"ל. למעשה, פעולה זו משפיעה רק על המקדמים והקבועים של הממ"ל. כאשר מחברים את שתי המשוואות הראשונות של <span class="math inline">\(\ref{eqn:linear-eqs}\)</span> מקבלים <span class="math display">\[(a_{11}+a_{21})x_1+(a_{12}+a_{22})x_2+(a_{13}+a_{23})x_3+...+(a_{1n}+a_{2n})x_n=b_1+b_2\]</span></p>
+<p>ראינו בפרק הקודם, למשל עבור ממ"ל של שתי משוואות בשני נעלמים, שניתן לחבר בין שתי משוואות כדי לנסות לקבל משוואה יותר פשוטה שנובעת מהממ"ל. למעשה, פעולה זו משפיעה רק על המקדמים והקבועים של הממ"ל. כאשר מחברים את שתי המשוואות הראשונות של <a href="#eq-linear-eqs" class="quarto-xref"><span>5.2</span></a> מקבלים <span class="math display">\[(a_{11}+a_{21})x_1+(a_{12}+a_{22})x_2+(a_{13}+a_{23})x_3+...+(a_{1n}+a_{2n})x_n=b_1+b_2\]</span></p>
 <p>לצורך העניין, אפשר לשים את המשתנים בצד ולחזור אליהם בסוף. המידע של הממ"ל אמנם קשור למשתנים, אבל הוא מגולם בסקלרים (מקדמים וקבועים). אז זה שימושי לייצג את הממ"ל כטבלה שבה מופיעים רק הסקלרים. טבלה כזו נקראת מטריצה.</p>
 <div class="definition">
 <p>מטריצה מסדר <span class="math inline">\(m\times n\)</span> מעל <span class="math inline">\(\mathbb F\)</span> היא טבלה בת <span class="math inline">\(m\)</span> שורות ו-<span class="math inline">\(n\)</span> עמודות כך שבכל משבצת מופיע סקלר ב-<span class="math inline">\(\mathbb F\)</span>. בהקשר של הממ"ל <span class="math display">\[,\begin{cases}
@@ -668,11 +666,11 @@ x_n
 b_2\\
 \vdots\\
 b_m
-\end{pmatrix}\)</span>. דרך מקוצרת לכתיבת הממ"ל <span class="math inline">\(\ref{eqn:linear-eqs}\)</span> היא המשוואה הוקטורית <span class="math inline">\(Ax=b\)</span>.</p>
+\end{pmatrix}\)</span>. דרך מקוצרת לכתיבת הממ”ל <a href="#eq-linear-eqs" class="quarto-xref"><span>5.2</span></a> היא המשוואה הוקטורית <span class="math inline">\(Ax=b\)</span>.</p>
 </div>
 <p>בפרק הבא נבין יותר לעומק את הסימון <span class="math inline">\(Ax\)</span>. בינתיים זה סימון מקוצר, וגם <span class="math inline">\(x\)</span> הוא סימון נוח עבור וקטור (אין צורך בחץ מעליו).</p>
 <div class="example">
-<p>עבור הממ״ל<br>
+<p>א. עבור הממ״ל<br>
 <span class="math display">\[
 \begin{cases}
 \begin{aligned}
@@ -700,9 +698,7 @@ x+y+3z &amp;= 5
 \end{array}
 \right)
 \]</span></p>
-</div>
-<div class="example">
-<p>נסתכל על הממ״ל<br>
+<p>ב. נסתכל על הממ״ל<br>
 <span class="math display">\[
 \begin{cases}
 \begin{alignedat}{7}
@@ -1022,8 +1018,8 @@ x=1\\
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>במקרה של ממ"ל הומוגנית, וקטור הקבועים מיותר מבחינת פעולות השורה האלמנטריות. הסיבה לכך היא שכל פעולת חיבור בין אפסים תיתן 0, וכנ"ל לכפל בסקלר (כי <span class="math inline">\(a\cdot 0=0\)</span> לכל סקלר <span class="math inline">\(a\)</span> ממשי או מרוכב). לכן זה מוצדק להסתפק במטריצת המקדמים המצומצמת במקרה זה (ורק במקרה זה), וכמובן הממ"ל החדשה גם תהיה הומוגנית.</p>
 </div>
-<div class="example">
-<p> נסתכל על ממ"ל הומוגנית: <span class="math display">\[\begin{cases}
+<div id="exm-gauss" class="example theorem">
+<p><span class="theorem-title"><strong>Example 5.1</strong></span> נסתכל על ממ”ל הומוגנית: <span class="math display">\[\begin{cases}
 \begin{alignedat}{5}
 x &amp;{}+{}&amp; y &amp;{}+{}&amp; z &amp;= 0 \\[4pt]
 2x &amp;{}{}&amp;    &amp;{}+{}&amp; 2z &amp;= 0 \\[4pt]
@@ -1031,9 +1027,7 @@ x &amp;{}+{}&amp; y &amp;{}+{}&amp; z &amp;= 0 \\[4pt]
 \end{alignedat}
 \end{cases}\]</span></p>
 <p>נבצע סדרה של פעולות על מטריצת המקדמים המצומצמת:</p>
-$$
 <span class="math display">\[\begin{aligned}
-{3}
         &amp;\begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 2 &amp; 0 &amp; 2 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
         &amp;&amp;\xrightarrow{\dfrac{1}{2}R_2 \to R_2}
         \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
@@ -1050,7 +1044,6 @@ $$
         &amp;&amp;
     
 \end{aligned}\]</span>
-<p>$$</p>
 <p>נסביר בהמשך איך בחרנו את הפעולות האלו. בינתיים נציין שסדרה כזו של פעולות נקראת <u>דירוג מטריצה</u>, וכאן היא מראה כי הממ"ל המקורית שקולה לממ"ל ההומוגנית שמתאימה למטריצה האחרונה שקיבלנו: <span class="math display">\[\begin{cases}
 x=0\\
 y=0\\
@@ -1079,7 +1072,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <li><p>עוצרים אחרי שעברנו על כל העמודות, או כאשר כל השורות מתחת לאחד המוביל האחרון הן שורות אפסים (ואז אין מה לעשות איתן).</p></li>
 </ol>
 <div class="example">
-<p>נחזור לדוגמה <span class="math inline">\(\ref{ex:gauss}\)</span>, אבל הפעם נעבוד קצת שונה וגם נסביר את בחירת הפעולות. ניתן לבצע מספר פעולות במקביל אם הן בלתי תלויות, כמו להחסיר כפולות של שורה כלשהי משורות אחרות (לכל שורה כפולה משלה).</p>
+<p>נחזור לדוגמה <a href="#exm-gauss">5.34</a>, אבל הפעם נעבוד קצת שונה וגם נסביר את בחירת הפעולות. ניתן לבצע מספר פעולות במקביל אם הן בלתי תלויות, כמו להחסיר כפולות של שורה כלשהי משורות אחרות (לכל שורה כפולה משלה).</p>
 <p><span class="math display">\[\begin{aligned}
         \begin{pmatrix}1 &amp; 1 &amp; 1 \\ 2 &amp; 0 &amp; 2 \\ 3 &amp; 5 &amp; 7 \end{pmatrix}
         &amp;\xrightarrow[R_2-2R_1 \to R_2]{R_3-3R_1 \to R_3}
@@ -1169,7 +1162,7 @@ z+17w &amp;= -1
 \end{aligned}
 \end{cases}\]</span></p>
 <p>המשתנה החופשי הוא <span class="math inline">\(w\)</span>. נציב <span class="math inline">\(w=t\)</span> ונבודד את שאר המשתנים כדי לקבל את קבוצת הפתרונות:</p>
-<p><span class="math display">\[\Set{(2-13t,3+8t,-1-17t,t)|t\in\mathbb R}\]</span></p>
+<p><span class="math display">\[\Set{(2-13t,3+8t,-1-17t,t)|t\in\mathbb R}.\]</span></p>
 </div>
 <div class="example">
 <p>נפתור את הממ"ל הבאה מעל <span class="math inline">\(\mathbb C\)</span>:</p>
@@ -1232,8 +1225,8 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 </ol>
 <p>ניתן לאפיין את הקריטריונים לעיל באמצעות הדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span> של מטריצת המקדמים המצומצמת, והדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A|b)\)</span> של מטריצת המקדמים המורחבת. דירוג קנוני של <span class="math inline">\(A\)</span> מתאים לדירוג קנוני של <span class="math inline">\((A|b)\)</span>, כאשר ההבדל היחיד הוא העמודה הימנית (צריך לבצע עליה את כל פעולות השורה שבחרנו עבור <span class="math inline">\(A\)</span>).</p>
 <p>ראשית נוכיח כמה תכונות של דרגה.</p>
-<div class="proposition">
-<p><strong>1.</strong> לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.*</p>
+<div id="prp-rank-ineq" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> <strong>1.</strong> לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.*</p>
 <p><strong>2.</strong> מתקיים <span class="math inline">\(0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\)</span> כאשר <span class="math inline">\(\min\{m,n\}\)</span> הוא המספר הקטן מבין <span class="math inline">\(m,n\)</span>.*</p>
 </div>
 <div class="proof">
@@ -1241,8 +1234,8 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 <p>בהכרח מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span> כי מספר האיברים המובילים ב- <span class="math inline">\((A'|b')\)</span> הוא לפחות מספר האיברים המובילים ב- <span class="math inline">\(A'\)</span>. או שהדרגות שוות, או שהדרגה של מטריצת המקדמים המורחבת גדולה יותר (ב-<span class="math inline">\(1\)</span>) כתוצאה משורת סתירה שמוסיפה איבר מוביל.</p>
 <p><strong>2.</strong> הדרגה היא מספר טבעי (היא <span class="math inline">\(0\)</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">\(0\)</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">\(A\)</span>, מספר זה הוא לכל היותר <span class="math inline">\(m\)</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">\(m\)</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">\(n\)</span>, ובסך הכל מתקיים <span class="math display">\[.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\]</span></p>
 </div>
-<div class="proposition">
-<p>לכל מטריצה <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb R^n\)</span>, מספר הפתרונות לממ"ל <span class="math inline">\(Ax=b\)</span> נקבע באופן הבא:*</p>
+<div id="prp-rank-number" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 5.2</strong></span> לכל מטריצה <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb R^n\)</span>, מספר הפתרונות לממ”ל <span class="math inline">\(Ax=b\)</span> נקבע באופן הבא:*</p>
 <p><strong>1.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)\)</span>, אז אין לממ"ל פתרון.</p>
 <p><strong>2.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n\)</span>, אז לממ"ל יש אינסוף פתרונות.</p>
 <p><strong>3.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n\)</span>, אז לממ"ל יש פתרון יחיד.</p>
@@ -1253,8 +1246,8 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 <p><strong>2.</strong> כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p>
 <p><strong>3.</strong> כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p>
 </div>
-<div class="example">
-<p> נסתכל על ממ"ל שבה חלק מהמקדמים תלויים בפרמטר <span class="math inline">\(a\)</span>, כלומר קבוע (לא משתנה) שערכו אינו ידוע מראש. אפשר לחשוב על ממ"ל עם פרמטר כמשפחה של ממ"ליות - לכל הצבה של ערך הפרמטר נקבל ממ"ל מסוימת במשפחה.</p>
+<div id="exm-1-parameter" class="example theorem">
+<p><span class="theorem-title"><strong>Example 5.2</strong></span> נסתכל על ממ”ל שבה חלק מהמקדמים תלויים בפרמטר <span class="math inline">\(a\)</span>, כלומר קבוע (לא משתנה) שערכו אינו ידוע מראש. אפשר לחשוב על ממ"ל עם פרמטר כמשפחה של ממ"ליות - לכל הצבה של ערך הפרמטר נקבל ממ"ל מסוימת במשפחה.</p>
 <p><span class="math display">\[\begin{cases}
 \begin{alignedat}{7}
 a x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 1 \\[4pt]
@@ -1283,7 +1276,7 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 \end{array}\right)
 \end{aligned}\]</span></p>
 <p>נרצה לחלק את השורה האחרונה בסקלר <span class="math inline">\(1-a\)</span>, אבל זה כרוך בהנחה <span class="math inline">\(a\neq 1\)</span>. במקרה המיוחד <span class="math inline">\(a=1\)</span> שתי השורות האחרונות הן שורות אפסים, והשורה הראשונה מתאימה למשוואה <span class="math inline">\(x+y+z=1\)</span>. אז במקרה זה יש שני משתנים חופשיים (והדרגה היא <span class="math inline">\(1\)</span>), ולכן יש לממ"ל אינסוף פתרונות. קבוצת הפתרונות במקרה זה נתונה ע"י</p>
-<p><span class="math display">\[.\Set{(1-s-t,s,t)|s,t\in\mathbb R}\]</span></p>
+<p><span class="math display">\[.\Set{(1-s-t,s,t)|s,t\in\mathbb R}.\]</span></p>
 <p>נניח כי <span class="math inline">\(a\neq 1\)</span> ונמשיך את הדירוג:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1353,7 +1346,7 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 \end{array}\right)
 \end{aligned}\]</span></p>
 <p>בסוף השתמשנו בחישוב <span class="math display">\[.1-\frac{a}{a+2}-\frac{1}{a+2}=\frac{1}{a+2}\]</span></p>
-<p>נסכם: כאשר <span class="math inline">\(a\notin\{-2,1\}\)</span> מתקבל פתרון יחיד <span class="math display">\[.(x,y,z)=(\frac{1}{a+2},\frac{1}{a+2},\frac{1}{a+2})\]</span> כאשר <span class="math inline">\(a=1\)</span> מתקבלת קבוצת פתרונות אינסופית <span class="math display">\[.\Set{(1-s-t,s,t)|s,t\in\mathbb R}\]</span> כאשר <span class="math inline">\(a=-2\)</span> אין פתרון.</p>
+<p>נסכם: כאשר <span class="math inline">\(a\notin\{-2,1\}\)</span> מתקבל פתרון יחיד <span class="math display">\[.(x,y,z)=(\frac{1}{a+2},\frac{1}{a+2},\frac{1}{a+2}).\]</span> כאשר <span class="math inline">\(a=1\)</span> מתקבלת קבוצת פתרונות אינסופית <span class="math display">\[.\Set{(1-s-t,s,t)|s,t\in\mathbb R}\]</span> כאשר <span class="math inline">\(a=-2\)</span> אין פתרון.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>בשאלות שקשורות רק למספר הפתרונות, אין צורך בדירוג קנוני. אפשר להסתפק בדירוג רגיל (חלקי) לחישוב הדרגות.</p>
@@ -1365,15 +1358,14 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 <p><strong>3.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;n\)</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">\(m&lt;n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
-<p><strong>1.</strong> נציב <span class="math inline">\(x_1=x_2=...=x_n=0\)</span> בממ"ל ונקבל <span class="math display">\[a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0\]</span></p>
+<p><span class="proof-title"><em>Proof</em>. </span><strong>1.</strong> נציב <span class="math inline">\(x_1=x_2=...=x_n=0\)</span> בממ”ל ונקבל <span class="math display">\[a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0\]</span></p>
 <p>כנדרש לכל <span class="math inline">\(1\leq i\leq n\)</span>.</p>
-<p><strong>2.</strong> אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n\]</span> לכן, לפי טענה <span class="math inline">\(\ref{prop:rank-number}\)</span> יש פתרון יחיד.</p>
-<p><strong>3.</strong> הפעם מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n\]</span> לכן, לפי טענה <span class="math inline">\(\ref{prop:rank-number}\)</span> יש אינסוף פתרונות.</p>
-<p>בהינתן <span class="math inline">\(m&lt;n\)</span>, נובע מ- <span class="math inline">\(\ref{rank-inequalities}\)</span> כי <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq m&lt;n\)</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p>
+<p><strong>2.</strong> אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש פתרון יחיד.</p>
+<p><strong>3.</strong> הפעם מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש אינסוף פתרונות.</p>
+<p>בהינתן <span class="math inline">\(m&lt;n\)</span>, נובע מ<a href="#prp-rank-ineq">טענה 5.39</a> כי <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq m&lt;n\)</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p>
 </div>
 <div class="exercise">
-<p>נחזור לממ"ל מדוגמה <span class="math inline">\(\ref{ex:1-parameter}\)</span> ונחליף את כל הקבועים ב- <span class="math inline">\(0\)</span>, כלומר נסתכל על הממ"ל הבאה:</p>
+<p>נחזור לממ”ל מדוגמה <a href="#exm-1-parameter">5.41</a>, ונחליף את כל הקבועים ב- <span class="math inline">\(0\)</span>, כלומר נסתכל על הממ"ל הבאה:</p>
 <p><span class="math display">\[\begin{cases}
 \begin{alignedat}{7}
 a x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  z &amp;= 0 \\[4pt]
@@ -1408,7 +1400,7 @@ x &amp;{}+{}&amp;  y &amp;{}+{}&amp;  a z &amp;= 0
 0 &amp; 0 &amp; 2-a-a^2
 \end{pmatrix}\]</span></p>
 <p>הדרגה היא לפחות <span class="math inline">\(2\)</span> ונקבע אותה לפי הערך בפינה התחתונה. אם מתקיים <span class="math inline">\(2-a-a^2\neq 0\)</span>, אז הדרגה היא <span class="math inline">\(3\)</span> ולכן הפתרון יחיד (והוא הפתרון הטריוויאלי). באופן מפורש, יש פתרון יחיד לכל <span class="math inline">\(a\notin\{-2,1\}\)</span> כי מתקיים</p>
-<p><span class="math display">\[.2-a-a^2\neq 0 \iff a\notin\{-2,1\}\]</span></p>
+<p><span class="math display">\[.2-a-a^2\neq 0 \iff a\notin\{-2,1\}.\]</span></p>
 <p>אם <span class="math inline">\(a\in\{-2,1\}\)</span> יש אינסוף פתרונות כי הדרגה קטנה מ- <span class="math inline">\(3\)</span> בשני המקרים.</p>
 </div>
 </div>
