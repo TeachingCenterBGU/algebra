@@ -20,7 +20,11 @@ book:
   search: true
   sidebar:
     logo: logo.png
- 
+    tools:
+      - icon: download
+        href: אלגברה-לינארית.pdf
+        text: הורדת הספר כ-PDF
+
 language:
   label:
     fig: "איור"
@@ -28,12 +32,6 @@ language:
     eq: "משוואה"
   ui:
     chapter: "פרק"
-
-    tools:
-    - icon: download
-      href: אלגברה-לינארית.pdf
-      text: הורדת הספר כ-PDF
-    logo: logo.png
 bibliography: references.bib
 
 crossref:
