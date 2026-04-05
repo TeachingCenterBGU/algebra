@@ -384,7 +384,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <h2 data-number="6.1" class="anchored" data-anchor-id="פעולות-על-מטריצות"><span class="header-section-number">6.1</span> פעולות על מטריצות</h2>
 <section id="חיבור-וכפל-בסקלר" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="חיבור-וכפל-בסקלר"><span class="header-section-number">6.1.1</span> חיבור וכפל בסקלר</h3>
-<p>ראינו בדוגמה <a href="#exm-bus">דוגמה 6.1</a> שיש טעם בהגדרת פעולת חיבור בין מטריצות, בדיוק כמו חיבור וקטורי (עושים חיבור בכל קוארדינטה/רכיב לחוד). קודם כל נכליל חיבור וקטורי וכפל בסקלר (שהגדרנו בפרק <a href="#ch:geometry">פרק 4</a> במישור ובמרחב) ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
+<p>ראינו בדוגמה <a href="#exm-bus">6.1</a> שיש טעם בהגדרת פעולת חיבור בין מטריצות, בדיוק כמו חיבור וקטורי (עושים חיבור בכל קוארדינטה/רכיב לחוד). קודם כל נכליל חיבור וקטורי וכפל בסקלר (שהגדרנו ב<a href="#ch:geometry">פרק 4</a> במישור ובמרחב) ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
 <div class="definition">
 <p>עבור וקטורים <span class="math inline">\(v=(a_1,...,a_n)\in\mathbb{F}^n,w=(b_1,...,b_n)\in\mathbb{F}^n\)</span> וסקלר <span class="math inline">\(c\in\mathbb{F}\)</span> נגדיר את הפעולות הבאות:</p>
 <ol type="1">
@@ -481,21 +481,21 @@ A+B&amp;=\begin{pmatrix} 1+7-5i &amp; i+2+7i \\
 <p>המטריצה השמאלית היא מסדר <span class="math inline">\(2\times 2\)</span> והימנית היא מסדר <span class="math inline">\(2\times 3\)</span>.</p>
 </div>
 <div class="example">
-<ol type="1">
-<li><p>כפל בסקלר של מטריצה מסדר <span class="math inline">\(3\times 3\)</span> מעל <span class="math inline">\(\mathbb{C}\)</span>: <span class="math display">\[\begin{aligned}
-&amp;i\begin{pmatrix} 1 &amp; i &amp; 1+i \\
-1-i &amp; 2i &amp; 3 \\
-2+3i &amp; 3-2i &amp; 5
-\end{pmatrix}=\begin{pmatrix} i\cdot1 &amp; i\cdot i &amp; i(1+i) \\
-i(1-i) &amp; i\cdot 2i &amp; i\cdot3 \\
-i(2+3i) &amp; i(3-2i) &amp; i\cdot5
-\end{pmatrix}\\
-&amp;=\begin{pmatrix}i &amp; -1 &amp; -1+i \\
-1+i &amp; -2 &amp; 3i \\
--3+2i &amp; 2+3i &amp; 5i
-\end{pmatrix}
-\end{aligned}\]</span></p></li>
-<li><p>שילוב של כפל בסקלר וחיבור מטריצות מסדר <span class="math inline">\(2\times 2\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[\begin{aligned}
+<p>(דוגמאות נוספות) 1. כפל בסקלר של מטריצה מסדר <span class="math inline">\(3\times 3\)</span> מעל <span class="math inline">\(\mathbb{C}\)</span>: <span class="math display">\[\begin{aligned}
+    &amp;i\begin{pmatrix} 1 &amp; i &amp; 1+i \\
+    1-i &amp; 2i &amp; 3 \\
+    2+3i &amp; 3-2i &amp; 5
+    \end{pmatrix}=\begin{pmatrix} i\cdot1 &amp; i\cdot i &amp; i(1+i) \\
+    i(1-i) &amp; i\cdot 2i &amp; i\cdot3 \\
+    i(2+3i) &amp; i(3-2i) &amp; i\cdot5
+    \end{pmatrix}\\
+    &amp;=\begin{pmatrix}i &amp; -1 &amp; -1+i \\
+    1+i &amp; -2 &amp; 3i \\
+    -3+2i &amp; 2+3i &amp; 5i
+    \end{pmatrix}
+    \end{aligned}\]</span></p>
+<ol start="2" type="1">
+<li>שילוב של כפל בסקלר וחיבור מטריצות מסדר <span class="math inline">\(2\times 2\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[\begin{aligned}
 &amp;2 \begin{pmatrix} 11 &amp; 2 \\
 -2 &amp; 4
 \end{pmatrix}+3\begin{pmatrix} -4 &amp; 5 \\
@@ -508,7 +508,7 @@ i(2+3i) &amp; i(3-2i) &amp; i\cdot5
 &amp;=\begin{pmatrix} 22-12 &amp; 4+15 \\
 -4+18 &amp; 8-9
 \end{pmatrix}
-\end{aligned}\]</span></p></li>
+\end{aligned}\]</span></li>
 </ol>
 </div>
 <div class="definition">
@@ -532,10 +532,10 @@ i(2+3i) &amp; i(3-2i) &amp; i\cdot5
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** כל התכונות עוברות בירושה מחיבור וכפל ב- <span class="math inline">\(\mathbb{F}\)</span> (מדובר בתכונות מוכרות של <span class="math inline">\(\mathbb{R}\)</span> וראינו בפרק <a href="#ch:complex">פרק 3</a> שהן עוברות בירושה ל- <span class="math inline">\(\mathbb{C}\)</span>). נוכיח למשל את חוק הפילוג: נתמקד באיבר הכללי של כל מטריצה בשוויון שצריך להוכיח. לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> מתקיים</p>
+<p><span class="proof-title"><em>Proof</em>. </span>כל התכונות עוברות בירושה מחיבור וכפל ב- <span class="math inline">\(\mathbb{F}\)</span> (מדובר בתכונות מוכרות של <span class="math inline">\(\mathbb{R}\)</span> וראינו בפרק <a href="#ch:complex">פרק 3</a> שהן עוברות בירושה ל- <span class="math inline">\(\mathbb{C}\)</span>). נוכיח למשל את חוק הפילוג: נתמקד באיבר הכללי של כל מטריצה בשוויון שצריך להוכיח. לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> מתקיים</p>
 <p><span class="math display">\[.(\alpha(A+B))_{ij}=\alpha(A+B)_{ij}=\alpha((A)_{ij}+(B)_{ij})=\alpha (A)_{ij}+\alpha (B)_{ij}\]</span> שימו לב שהמעבר האחרון נכון לפי חוק הפילוג ב-<span class="math inline">\(\mathbb{F}\)</span>. לכן נובע כי <span class="math display">\[.\alpha(A+B)=\alpha A+\beta A\]</span></p>
 <p>נוכיח גם את ניטרליות מטריצת האפס: <span class="math display">\[(A+\mathbf{0}_{m\times n})_{ij}=(A)_{ij}+(\mathbf{0}_{m\times n})_{ij}=(A)_{ij}+0=(A)_{ij}\]</span> לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span>, ולכן <span class="math display">\[,A+\mathbf{0}_{m\times n}=A\]</span></p>
-<p>ההוכחות של שאר הסעיפים דומות, כאשר הרעיון הכללי הוא שימוש ב- <a href="#def-entry-formula">הגדרה 6.00</a> והתכונות המתאימות של חיבור/כפל ב- <span class="math inline">\(\mathbb{F}\)</span>.&nbsp;◻</p>
+<p>ההוכחות של שאר הסעיפים דומות, כאשר הרעיון הכללי הוא שימוש ב- <a href="#def-entry-formula">הגדרה 6.9</a> והתכונות המתאימות של חיבור/כפל ב- <span class="math inline">\(\mathbb{F}\)</span>.&nbsp;◻</p>
 </div>
 <div class="exercise">
 <p>הוכיחו את חוק הקיבוץ לכפל בסקלר.</p>
@@ -609,7 +609,7 @@ y_m
 <p>לכן, השוויון הוקטורי <span class="math inline">\(Ax=b\)</span> אכן שקול לממ"ל.</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>למעשה יש זיהוי בין <span class="math inline">\(\mathbb{M}_{1\times n}(\mathbb{F})\)</span> לבין <span class="math inline">\(\mathbb{F}^n\)</span>, לפי הגדרה <a href="#def-F-n">הגדרה 5.00</a> שהתייחסה לוקטורי שורה. אבל נרשה לעצמנו להשתמש בסימון <span class="math inline">\(\mathbb{F}^n\)</span> גם עבור וקטורי עמודה באורך <span class="math inline">\(n\)</span>, כלומר עבור הקבוצה <span class="math inline">\(\mathbb{M}_{n\times 1}(\mathbb{F})\)</span>. לפעמים ההבדל בין וקטור שורה לוקטור עמודה הוא אסתטי בלבד, אבל כאשר מכפילים מטריצה בוקטור בהחלט יש חשיבות לסוג הוקטור (הוא צריך להיות וקטור עמודה). אז ככלל נזכור לשים לב להבדל כאשר מופיעה מכפלה של מטריצה בוקטור, ובשאר המקרים אפשר לכתוב את הוקטור כשורה או עמודה לפי טעם אישי.</p>
+<p><span class="proof-title"><em>Remark</em>. </span>למעשה יש זיהוי בין <span class="math inline">\(\mathbb{M}_{1\times n}(\mathbb{F})\)</span> לבין <span class="math inline">\(\mathbb{F}^n\)</span>, לפי הגדרה <a href="#def-F-n">5.3</a> שהתייחסה לוקטורי שורה. אבל נרשה לעצמנו להשתמש בסימון <span class="math inline">\(\mathbb{F}^n\)</span> גם עבור וקטורי עמודה באורך <span class="math inline">\(n\)</span>, כלומר עבור הקבוצה <span class="math inline">\(\mathbb{M}_{n\times 1}(\mathbb{F})\)</span>. לפעמים ההבדל בין וקטור שורה לוקטור עמודה הוא אסתטי בלבד, אבל כאשר מכפילים מטריצה בוקטור בהחלט יש חשיבות לסוג הוקטור (הוא צריך להיות וקטור עמודה). אז ככלל נזכור לשים לב להבדל כאשר מופיעה מכפלה של מטריצה בוקטור, ובשאר המקרים אפשר לכתוב את הוקטור כשורה או עמודה לפי טעם אישי.</p>
 </div>
 <div class="example">
 <p>&nbsp;</p>
@@ -733,7 +733,7 @@ v = \begin{pmatrix}
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** בכל סעיף נראה שוויון בין הקוארדינטות ה- <span class="math inline">\(i\)</span> של שני האגפים, לכל <span class="math inline">\(1\leq i\leq m\)</span>. ראשית נסמן <span class="math display">\[.v=\begin{pmatrix}
+<p><span class="proof-title"><em>Proof</em>. </span>בכל סעיף נראה שוויון בין הקוארדינטות ה- <span class="math inline">\(i\)</span> של שני האגפים, לכל <span class="math inline">\(1\leq i\leq m\)</span>. ראשית נסמן <span class="math display">\[.v=\begin{pmatrix}
 v_1 \\
 v_2 \\
 \vdots \\
@@ -785,10 +785,10 @@ w_n
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** יהיו <span class="math inline">\(v,w\in\mathbb{F}^n\)</span> פתרונות של הממ"ל.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>יהיו <span class="math inline">\(v,w\in\mathbb{F}^n\)</span> פתרונות של הממ"ל.</p>
 <ol type="1">
-<li><p>לפי טענה <a href="#prp-matrix-vector">טענה 6.00</a> מתקיים <span class="math display">\[.A(v+w)=Av+Aw=0+0=0.\]</span> כלומר <span class="math inline">\(v+w\)</span> הוא פתרון של הממ"ל.</p></li>
-<li><p>שוב, לפי טענה <a href="#prp-matrix-vector">טענה 6.00</a> לכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים</p>
+<li><p>לפי טענה <a href="#prp-matrix-vector">6.23</a> מתקיים <span class="math display">\[.A(v+w)=Av+Aw=0+0=0.\]</span> כלומר <span class="math inline">\(v+w\)</span> הוא פתרון של הממ"ל.</p></li>
+<li><p>שוב, לפי טענה <a href="#prp-matrix-vector">6.23</a> לכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים</p>
 <p><span class="math display">\[.A(\alpha v)=\alpha Av=\alpha\cdot 0=0.\]</span> כלומר <span class="math inline">\(\alpha v\)</span> הוא פתרון של הממ"ל.</p></li>
 </ol>
 </div>
@@ -806,7 +806,7 @@ y_0
 \end{pmatrix}|t\in\mathbb{R}}\]</span> כאשר <span class="math inline">\(\begin{pmatrix}
 \alpha \\
 \beta
-\end{pmatrix}\in\mathbb{R}^2\)</span> הוא וקטור כיוון (בפרק <a href="#ch:geometry">פרק 4</a> השתמשנו בוקטורי שורה, אבל בהקשר של כפל צריך לקחת וקטורי עמודה). אם הישר מתאר קבוצת פתרונות של ממ"ל <span class="math inline">\(\begin{pmatrix}a_1 &amp;a_2\end{pmatrix}\begin{pmatrix}
+\end{pmatrix}\in\mathbb{R}^2\)</span> הוא וקטור כיוון (בפרק <a href="chapter_1.html" class="quarto-xref"><span>4</span></a>) השתמשנו בוקטורי שורה, אבל בהקשר של כפל צריך לקחת וקטורי עמודה). אם הישר מתאר קבוצת פתרונות של ממ"ל <span class="math inline">\(\begin{pmatrix}a_1 &amp;a_2\end{pmatrix}\begin{pmatrix}
 x \\
 y
 \end{pmatrix}=b\)</span>, אז וקטור הכיוון הוא פתרון של הממ"ל ההומוגנית. כלומר מתקיים <span class="math inline">\(\begin{pmatrix}a_1 &amp;a_2\end{pmatrix}\begin{pmatrix}
@@ -1027,19 +1027,19 @@ Av_1 &amp; Av_2 &amp; \cdots &amp; Av_n \\
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** רוב הסעיפים נובעים משילוב בין טענה <a href="#prp-matrix-vector">טענה 6.00</a> לטענה <a href="#prp-product-column">טענה 6.00</a>. לכן נסתפק בהוכחת סעיף ג’ (חוק הקיבוץ לכפל מטריצות), שהוא היוצא מן הכלל. נניח כי <span class="math display">\[.(A_1)_{ik} = a_{ik}, \quad
+<p><span class="proof-title"><em>Proof</em>. </span>** רוב הסעיפים נובעים משילוב בין טענה <a href="#prp-matrix-vector">טענה 6.23</a> לטענה <a href="#prp-product-column">טענה 6.32</a>. לכן נסתפק בהוכחת סעיף ג’ (חוק הקיבוץ לכפל מטריצות), שהוא היוצא מן הכלל. נניח כי <span class="math display">\[.(A_1)_{ik} = a_{ik}, \quad
 (B_1)_{kl} = b_{kl}, \quad
 (C)_{lj} = c_{lj}\]</span></p>
 <p>אם כן:</p>
-<p><span class="math display">\[(B_1C)_{kj} = \sum_{l=1}^{p} b_{kl} c_{lj},\]</span> ולכן <span class="math display">\[ {#eq-associativity1}
+<p><span class="math display">\[(B_1C)_{kj} = \sum_{l=1}^{p} b_{kl} c_{lj},\]</span> ולכן <span id="eq-associativity1"><span class="math display">\[
 .(A_1(B_1C))_{ij} = \sum_{k=1}^{n}a_{ik}(B_1C)_{kj}
              = \sum_{k=1}^{n} a_{ik} \left( \sum_{l=1}^{p} b_{kl} c_{lj} \right)
-             = \sum_{k=1}^{n} \sum_{l=1}^{p}a_{ik}b_{kl}c_{lj}.\]</span></p>
-<p>כעת נחשב את <span class="math inline">\(((A_1B_1)C)_{ij}\)</span>: <span class="math display">\[(A_1B_1)_{il} = \sum_{k=1}^{n}a_{ik}b_{kl},\]</span> ולכן <span class="math display">\[ {#eq-associativity2}
+             = \sum_{k=1}^{n} \sum_{l=1}^{p}a_{ik}b_{kl}c_{lj}. \tag{6.1}\]</span></span></p>
+<p>כעת נחשב את <span class="math inline">\(((A_1B_1)C)_{ij}\)</span>: <span class="math display">\[(A_1B_1)_{il} = \sum_{k=1}^{n}a_{ik}b_{kl},\]</span> ולכן <span id="eq-associativity2"><span class="math display">\[
 .((A_1B_1)C)_{ij} = \sum_{l=1}^{p}(A_1B_1)_{il}c_{l j}
               = \sum_{l=1}^{p} \left( \sum_{k=1}^{n}a_{ik}b_{kl}\right) c_{l j}
-              = \sum_{l=1}^{p}\sum_{k=1}^{n} a_{ik}b_{kl}c_{lj}.\]</span></p>
-<p>נשים לב כי יש שוויון בין שני הביטויים בצד ימין של <a href="#eq-associativity1">(6.00)</a> ו- <a href="#eq-associativity2">(6.00)</a>, כי לפי חוק החילוף אין חשיבות לסדר הסכימה (אפשר לסכום קודם לפי <span class="math inline">\(l\)</span> או קודם לפי <span class="math inline">\(k\)</span> בלי לשנות את הסכום). לכן, לכל <span class="math inline">\(i,j\)</span> מתקיים <span class="math inline">\((A_1(B_1C))_{ij}=((A_1B_1)C)_{ij}\)</span>, ומכאן <span class="math display">\[.A_1(B_1C)=(A_1B_1)C\]</span>&nbsp;◻</p>
+              = \sum_{l=1}^{p}\sum_{k=1}^{n} a_{ik}b_{kl}c_{lj}. \tag{6.2}\]</span></span></p>
+<p>נשים לב כי יש שוויון בין שני הביטויים בצד ימין של <a href="#eq-associativity1" class="quarto-xref"><span>6.1</span></a> ו-<a href="#eq-associativity2" class="quarto-xref"><span>6.2</span></a> כי לפי חוק החילוף אין חשיבות לסדר הסכימה (אפשר לסכום קודם לפי <span class="math inline">\(l\)</span> או קודם לפי <span class="math inline">\(k\)</span> בלי לשנות את הסכום). לכן, לכל <span class="math inline">\(i,j\)</span> מתקיים <span class="math inline">\((A_1(B_1C))_{ij}=((A_1B_1)C)_{ij}\)</span>, ומכאן <span class="math display">\[.A_1(B_1C)=(A_1B_1)C\]</span>&nbsp;◻</p>
 </div>
 <div class="definition">
 <p>מטריצת היחידה מסדר <span class="math inline">\(n\times n\)</span> (אפשר גם לומר מסדר <span class="math inline">\(n\)</span>) מוגדרת להיות <span class="math display">\[.I_n=I_{n\times n}=.
@@ -1388,7 +1388,7 @@ i &amp;3 &amp;-1  \\
 </ol>
 </div>
 <div id="prp-sym-antisym" class="proposition theorem">
-<p><span class="theorem-title"><strong>Proposition 6.5</strong></span> <em>תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מטריצה ריבועית.</em></p>
+<p><span class="theorem-title"><strong>Proposition 6.5</strong></span> תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מטריצה ריבועית.</p>
 <ol type="1">
 <li><p><em>אם <span class="math inline">\(P\)</span> אנטי-סימטרית, אז כל איבריה על האלכסון הראשי שווים ל- <span class="math inline">\(0\)</span>.</em></p></li>
 <li><p><em>אם <span class="math inline">\(P\)</span> סימטרית וגם אנטי-סימטרית, אז <span class="math inline">\(P=0\)</span>.</em></p></li>
@@ -1402,7 +1402,7 @@ i &amp;3 &amp;-1  \\
 <li><p>מצד אחד <span class="math inline">\(P^t=P\)</span> ומצד שני <span class="math inline">\(.P^t=-P\)</span> לכן</p>
 <p><span class="math display">\[P=-P \implies P+P=-P+P \implies 2P=0 \implies P=0\]</span></p>
 <p>למעשה, השתמשנו באלגברה רגילה כדי לקבל <span class="math inline">\(P=0\)</span> כמו עבור משוואה במשתנה סקלרי. מותר לחלק בסקלר <span class="math inline">\(2\)</span>, שזה כמו להכפיל בסקלר <span class="math inline">\(\frac{1}{2}\)</span>.</p></li>
-<li><p>ניקח <span class="math display">\[.S=\frac{1}{2}(B+B^t), \quad A=\frac{1}{2}(B-B^t)\]</span> אז לפי טענה <a href="#prp-transpose">טענה 6.00</a> מתקיים <span class="math display">\[\begin{aligned}
+<li><p>ניקח <span class="math display">\[.S=\frac{1}{2}(B+B^t), \quad A=\frac{1}{2}(B-B^t)\]</span> אז לפי טענה <a href="#prp-transpose">טענה 6.41</a> מתקיים <span class="math display">\[\begin{aligned}
 S^t&amp;=\frac{1}{2}(B+B^t)^t=\frac{1}{2}(B^t+B)=S \\
 A^t&amp;=\frac{1}{2}(B-B^t)^t=\frac{1}{2}(B^t-B)=-A \\
 B&amp;=\frac{1}{2}(B+B^t)+\frac{1}{2}(B-B^t)=S+A
@@ -1501,7 +1501,7 @@ B=\begin{pmatrix}
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>לכל <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> סימטריות ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> נקבל לפי טענה <a href="#prp-transpose">טענה 6.00</a> <span class="math display">\[\begin{aligned}
+<li><p>לכל <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> סימטריות ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> נקבל לפי טענה <a href="#prp-transpose">טענה 6.41</a> <span class="math display">\[\begin{aligned}
 (A+B)^t&amp;=A^t+B^t=A+B \\
 (\alpha A)^t&amp;=\alpha A^t=\alpha A
 \end{aligned}\]</span> ולכן אלו מטריצות סימטריות.</p></li>
@@ -1795,7 +1795,7 @@ g &amp;h &amp;r
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** נסמן <span class="math inline">\(E=S(I_m)\)</span> עם איברים <span class="math inline">\(e_{ij}=(E)_{ij}\)</span>. נראה ש- <span class="math inline">\(EA\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בדיוק ע"י הפעלת <span class="math inline">\(S\)</span> על שורות <span class="math inline">\(A\)</span>. נחלק לשלושה מקרים:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(E=S(I_m)\)</span> עם איברים <span class="math inline">\(e_{ij}=(E)_{ij}\)</span>. נראה ש- <span class="math inline">\(EA\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בדיוק ע"י הפעלת <span class="math inline">\(S\)</span> על שורות <span class="math inline">\(A\)</span>. נחלק לשלושה מקרים:</p>
 <ol type="1">
 <li><p><span class="math inline">\(S=(R_i\leftrightarrow R_j)\)</span></p>
 <p><span class="math inline">\(E\)</span> מזכירה את מטריצת היחידה, אבל יש ארבעה הבדלים: <span class="math display">\[e_{ii}=e_{jj}=0, \quad e_{ij}=e_{ji}=1\]</span></p>
@@ -1820,11 +1820,11 @@ a_{ik} + \alpha a_{jk}, &amp; r = i
 <p>&nbsp;◻</p>
 </div>
 <div id="cor-left" class="corollary theorem">
-<p><span class="theorem-title"><strong>Corollary 6.1</strong></span> <strong>מסקנה 6.00</strong>. <em>יהיו <span class="math inline">\(A,A'\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> שקולות שורה. אז קיימת <span class="math inline">\(B\in\mathbb{M}_{m\times m}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(A'=BA\)</span>.</em></p>
+<p><span class="theorem-title"><strong>Corollary 6.1</strong></span> <em>יהיו <span class="math inline">\(A,A'\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> שקולות שורה. אז קיימת <span class="math inline">\(B\in\mathbb{M}_{m\times m}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(A'=BA\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** לפי הנתון קיימות פש"אות <span class="math inline">\(S_1,S_2,...,S_k\)</span> כך שמתקיים <span class="math inline">\(,A'=S_k(...(S_1(A))...)\)</span> כלומר <span class="math inline">\(A'\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בעקבות הפעלת <span class="math inline">\(S_1\)</span>, אחריה <span class="math inline">\(S_2\)</span> וכן הלאה עד <span class="math inline">\(S_k\)</span>.</p>
-<p>לפי טענה <a href="#prp-elementary">טענה 6.00</a>, ניתן לפתוח את הסוגריים בהדרגה כאשר בכל שלב הפעולה הרלוונטית הופכת לכפל במטריצה האלמנטרית המתאימה לה:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי הנתון קיימות פש"אות <span class="math inline">\(S_1,S_2,...,S_k\)</span> כך שמתקיים <span class="math inline">\(,A'=S_k(...(S_1(A))...)\)</span> כלומר <span class="math inline">\(A'\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בעקבות הפעלת <span class="math inline">\(S_1\)</span>, אחריה <span class="math inline">\(S_2\)</span> וכן הלאה עד <span class="math inline">\(S_k\)</span>.</p>
+<p>לפי טענה <a href="#prp-elementary">6.66</a>, ניתן לפתוח את הסוגריים בהדרגה כאשר בכל שלב הפעולה הרלוונטית הופכת לכפל במטריצה האלמנטרית המתאימה לה:</p>
 <p><span class="math display">\[\begin{aligned}
 A'&amp;=S_k(I_m)S_{k-1}(...(S_1(A))...)=S_k(I_m)S_{k-1}(I_m)S_{k-2}(...(S_1(A))...)=...\\
 &amp;=S_k(I_m)S_{k-1}(I_m)S_{k-2}(I_m)\cdots S_1(I_m)A
@@ -2065,7 +2065,7 @@ E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. היא שקולת שורה למטריצה מתאימה <span class="math inline">\(A'\)</span> שהיא מדורגת קנונית, ונשים לב כי כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי המקביל לו בטענה <a href="#prp-RREF">טענה 6.00</a> עם <span class="math inline">\(A'\)</span> במקום <span class="math inline">\(A\)</span>. הסיבה לכך היא שמתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A')\)</span> לפי הגדרת דרגה, וגם קבוצת הפתרונות של הממ"ל <span class="math inline">\(Ax=b\)</span> שווה לקבוצת הפתרונות של הממ"ל <span class="math inline">\(A'x=b'\)</span>. לכן, כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי <span class="math inline">\(A'=I_n\)</span>, שזה בדיוק <span class="math inline">\(\text{(א)}\)</span>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>** תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. היא שקולת שורה למטריצה מתאימה <span class="math inline">\(A'\)</span> שהיא מדורגת קנונית, ונשים לב כי כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי המקביל לו בטענה <a href="#prp-RREF">6.72</a> עם <span class="math inline">\(A'\)</span> במקום <span class="math inline">\(A\)</span>. הסיבה לכך היא שמתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A')\)</span> לפי הגדרת דרגה, וגם קבוצת הפתרונות של הממ"ל <span class="math inline">\(Ax=b\)</span> שווה לקבוצת הפתרונות של הממ"ל <span class="math inline">\(A'x=b'\)</span>. לכן, כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי <span class="math inline">\(A'=I_n\)</span>, שזה בדיוק <span class="math inline">\(\text{(א)}\)</span>.&nbsp;◻</p>
 </div>
 <p>משפט זה מראה שיש משהו מיוחד לגבי מטריצות ריבועיות שהן שקולות שורה למטריצת יחידה. נראה שיש דרך חלופית להגדיר אותן, שקשורה לכפל מטריצות. בהתחלה ההגדרה תיראה שונה, ובסוף נוכיח שזו הגדרה שקולה.</p>
 <div class="definition">
@@ -2087,9 +2087,9 @@ E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>** כבר הוכחנו שחמשת התנאים הראשונים שקולים. נראה כי <span class="math display">\[(\text{ג}) \impliedby (\text{ו}) \impliedby (\text{א})\]</span> וגם <span class="math display">\[(\text{ז}) \iff (\text{ה})\]</span> ומכאן נסיק שכל אחד מהתנאים <span class="math inline">\((\text{ח}) ,(\text{ז}) ,(\text{ו})\)</span> שקול לכל שאר התנאים.</p>
-<p><span class="math inline">\(:(\text{ו}) \impliedby (\text{א})\)</span> זה נובע ישירות ממסקנה <a href="#cor-left">מסקנה 6.00</a> עם <span class="math inline">\(A'=I_n\)</span>.</p>
+<p><span class="math inline">\(:(\text{ו}) \impliedby (\text{א})\)</span> זה נובע ישירות ממסקנה <a href="#cor-left">6.68</a> עם <span class="math inline">\(A'=I_n\)</span>.</p>
 <p><span class="math inline">\(:(\text{ג}) \impliedby (\text{ו})\)</span> נניח כי קיימת <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(BA=I_n\)</span>. אז כדי לפתור את הממ"ל <span class="math inline">\(Ax=0\)</span> נכפיל את שני האגפים ב- <span class="math inline">\(B\)</span> משמאל: <span class="math display">\[B(Ax)=B\cdot0 \implies I_n x=0 \implies x=0\]</span> לכן יש פתרון יחיד.</p>
-<p><span class="math inline">\(:(\text{ז}) \impliedby (\text{ה})\)</span> המטרה היא למצוא <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. נסמן את העמודות של <span class="math inline">\(C\)</span> ע"י <span class="math inline">\(v_1,v_2,...,v_n\in\mathbb{F}^n\)</span>, ואז לפי <a href="#prp-product-column">טענה 6.00</a> מתקיים <span class="math display">\[.AC=\begin{pmatrix}
+<p><span class="math inline">\(:(\text{ז}) \impliedby (\text{ה})\)</span> המטרה היא למצוא <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. נסמן את העמודות של <span class="math inline">\(C\)</span> ע"י <span class="math inline">\(v_1,v_2,...,v_n\in\mathbb{F}^n\)</span>, ואז לפי <a href="#prp-product-column">טענה 6.32</a> מתקיים <span class="math display">\[.AC=\begin{pmatrix}
 | &amp; | &amp; &amp; | \\
 Av_1 &amp; Av_2 &amp; \cdots &amp; Av_n \\
 | &amp; | &amp; &amp; |
@@ -2113,7 +2113,7 @@ x_2 \\
 \vdots \\
 x_n
 \end{pmatrix}\]</span> עם <span class="math inline">\(.x=\sum_{j=1}^n \beta_j v_j\)</span> לכן נקבל <span class="math display">\[.Ax=A(\sum_{j=1}^n \beta_j v_j)=\sum_{j=1}^n \beta_j Av_j=\sum_{j=1}^n \beta_j e_j=b.\]</span></p>
-<p>ניתן להכניס את <span class="math inline">\(A\)</span> לתוך הסכימה לפי טענה <a href="#prp-matrix-vector">טענה 6.00</a>.&nbsp;◻</p>
+<p>ניתן להכניס את <span class="math inline">\(A\)</span> לתוך הסכימה לפי טענה <a href="#prp-matrix-vector">טענה 6.23</a>.&nbsp;◻</p>
 </div>
 <p>לכאורה, הפיכות מימין והפיכות משמאל מתייחסות לשתי מטריצות <span class="math inline">\(B,C\)</span> שיכולות להיות שונות, אבל ראינו כי הפיכות משמאל שקולה להפיכות מימין. אז אמור להיות קשר בין המטריצות, ואכן:</p>
 <div id="prp-inverses" class="proposition theorem">
@@ -2126,7 +2126,7 @@ x_n
 <p><strong>מסקנה 1.77</strong>. <em>יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.AB=I_n \iff BA=I_n\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** אם <span class="math inline">\(BA=I_n\)</span>, אז <span class="math inline">\(A\)</span> הפיכה משמאל. לפי משפט <a href="#thm-invertible">משפט 6.00</a> היא גם הפיכה מימין, ולכן קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. אבל אז נובע מטענה <a href="#prp-inverses">טענה 6.00</a> כי <span class="math inline">\(B=C\)</span>, ולכן <span class="math inline">\(AB=I_n\)</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>** אם <span class="math inline">\(BA=I_n\)</span>, אז <span class="math inline">\(A\)</span> הפיכה משמאל. לפי משפט <a href="#thm-invertible">6.73</a> היא גם הפיכה מימין, ולכן קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. אבל אז נובע מטענה <a href="#prp-inverses">6.76</a> כי <span class="math inline">\(B=C\)</span>, ולכן <span class="math inline">\(AB=I_n\)</span>.</p>
 <p>הכיוון השני דומה, למשל משיקולי סימטריה (משחק תפקידים בין <span class="math inline">\(A\)</span> ל- <span class="math inline">\(B\)</span>).&nbsp;◻</p>
 </div>
 <p>האם בהינתן מטריצה הפיכה <span class="math inline">\(A\)</span>, המטריצה <span class="math inline">\(B\)</span> שמקיימת <span class="math inline">\(AB=I_n=BA\)</span> נקבעת ביחידות ע"י <span class="math inline">\(A\)</span>? התשובה חיובית. לפני שנתאר את החישוב, נוכיח את היחידות:</p>
@@ -2134,7 +2134,7 @@ x_n
 <p><strong>מסקנה 1.78</strong>. <em>יהיו <span class="math inline">\(A,B_1,B_2\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(B_1A=B_2A=I_n\)</span>. אז <span class="math inline">\(B_1=B_2\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** <span class="math inline">\(A\)</span> הפיכה משמאל ולכן גם מימין לפי משפט <a href="#thm-invertible">משפט 6.00</a>. כלומר קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. לכן, נובע <span class="math inline">\(B_1=C=B_2\)</span> מטענה <a href="#prp-inverses">טענה 6.00</a>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>** <span class="math inline">\(A\)</span> הפיכה משמאל ולכן גם מימין לפי משפט <a href="#thm-invertible">6.73</a>. כלומר קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. לכן, נובע <span class="math inline">\(B_1=C=B_2\)</span> מטענה <a href="#prp-inverses">6.76</a>.&nbsp;◻</p>
 </div>
 <div class="definition">
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. נסמן ב- <span class="math inline">\(A^{-1}\)</span> את המטריצה שמקיימת <span class="math display">\[.AA^{-1}=A^{-1}A=I_n\]</span> נקרא לה המטריצה ההופכית ל- <span class="math inline">\(A\)</span>.</p>
@@ -2182,7 +2182,7 @@ x_n
 </div>
 <section id="חישוב-מטריצה-הופכית" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="חישוב-מטריצה-הופכית"><span class="header-section-number">6.3.1</span> חישוב מטריצה הופכית</h3>
-<p>הבנו שכל מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה שקולת שורה ל- <span class="math inline">\(I_n\)</span>. יותר מכך, לפי ההוכחה של מסקנה <a href="#cor-left">מסקנה 6.00</a> יש התאמה בין <span class="math inline">\(A^{-1}\)</span> לבין הפש"אות שמובילות ל- <span class="math inline">\(I_n\)</span> בדירוג של <span class="math inline">\(A\)</span>. נחדד את נקודה זו כמסקנה נוספת:</p>
+<p>הבנו שכל מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה שקולת שורה ל- <span class="math inline">\(I_n\)</span>. יותר מכך, לפי ההוכחה של מסקנה <a href="#cor-left">6.68</a> יש התאמה בין <span class="math inline">\(A^{-1}\)</span> לבין הפש"אות שמובילות ל- <span class="math inline">\(I_n\)</span> בדירוג של <span class="math inline">\(A\)</span>. נחדד את נקודה זו כמסקנה נוספת:</p>
 <div class="corollary">
 <p><strong>מסקנה 1.84</strong>. <em>&nbsp;</em></p>
 <ol type="1">
@@ -2193,8 +2193,8 @@ x_n
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>** &nbsp;</p>
 <ol type="1">
-<li><p>זהו מקרה פרטי של מסקנה <a href="#cor-left">מסקנה 6.00</a> עבור <span class="math inline">\(A'=I_n\)</span>. כאן <span class="math inline">\(B=A^{-1}\)</span>.</p></li>
-<li><p>לפי תרגיל <a href="#exr-inverse-product">תרגיל 6.00</a> הפעולה של הפיכת מטריצה הופכת את סדר המטריצות במכפלה. אפשר להבין זאת מחישוב הדרגתי:</p>
+<li><p>זהו מקרה פרטי של מסקנה <a href="#cor-left">6.68</a> עבור <span class="math inline">\(A'=I_n\)</span>. כאן <span class="math inline">\(B=A^{-1}\)</span>.</p></li>
+<li><p>לפי תרגיל <a href="#exr-inverse-product">6.81</a> הפעולה של הפיכת מטריצה הופכת את סדר המטריצות במכפלה. אפשר להבין זאת מחישוב הדרגתי:</p>
 <p><span class="math display">\[\begin{aligned}
 A^{-1}&amp;=E_kE_{k-1}\cdots E_1 \\
 \implies A&amp;=((E_kE_{k-1}\cdots E_2) E_1)^{-1}=E_1^{-1}((E_kE_{k-1}\cdots E_3)E_2)^{-1}\\
