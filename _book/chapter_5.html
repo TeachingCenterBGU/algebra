@@ -314,54 +314,45 @@ $$
 <p>במערכת כזו ניתן לבצע שתי פעולות טבעיות: חיבור שני מצבים (שילוב השפעות של מערכות שונות), וכפל מצב במספר ממשי (הגברה או החלשה אחידה של כל ההשפעות). קיים גם מצב אפס <span class="math inline">\((0,0,0)\)</span>, המייצג מערכת כבויה, ולכל מצב יש מצב נגדי המבטל אותו.</p>
 <p>אוסף כל המצבים האפשריים יחד עם פעולות אלו מקיים את כל האקסיומות של מרחב וקטורי, שנגדיר כעת.</p>
 </div>
-<div class="definition">
-<p> מרחב וקטורי (מ"ו) <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span> הוא קבוצה של איברים (שנקראים וקטורים) עם פעולות של חיבור וקטורי <span class="math inline">\(+\)</span> וכפל בסקלר <span class="math inline">\(\cdot\)</span> כך שמתקיימות האקסיומות הבאות לכל <span class="math inline">\(v_1,v_2,v_3,v \in V\)</span> ולכל <span class="math inline">\(\alpha,\beta \in \mathbb{F}\)</span> :</p>
-<ol type="1">
-<li><p>סגירות: <span class="math inline">\(v_1+v_2\in V\)</span> וגם <span class="math inline">\(\alpha\cdot v\in V\)</span>.</p></li>
-<li><p>אסוציאטיביות (חוק הקיבוץ) של חיבור: <span class="math inline">\(v_1 + (v_2 + v_3) = (v_1 + v_2) + v_3\)</span>.</p></li>
-<li><p>קומוטטיביות (חוק החילוף) של חיבור: <span class="math inline">\(v_1 + v_2 = v_2 + v_1\)</span>.</p></li>
-<li><p>קיום איבר ניטרלי לחיבור (וקטור האפס): קיים איבר <span class="math inline">\(0_V \in V\)</span> כך שלכל <span class="math inline">\(v \in V\)</span> מתקיים <span class="math inline">\(v + 0_V = v\)</span>.</p></li>
-<li><p>קיום איבר נגדי: לכל <span class="math inline">\(v \in V\)</span> קיים <span class="math inline">\(-v \in V\)</span> כך ש <span class="math inline">\(v + (-v) = 0\)</span>.</p></li>
-<li><p>אסוציאטיביות של כפל בסקלר: לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math inline">\(\alpha\cdot(\beta v) = (\alpha\beta)\cdot v\)</span>.</p></li>
-<li><p>לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math inline">\(1\cdot v = v\)</span>.</p></li>
-<li><p>דיסטריביוטיביות (חוק הפילוג הראשון): <span class="math inline">\(\alpha\cdot(v_1 + v_2) = \alpha\cdot v_1 + \alpha\cdot v_2\)</span>.</p></li>
-<li><p>דיסטריביוטיביות (חוק הפילוג השני): לכל <span class="math inline">\(v \in V\)</span> מתקיים <span class="math inline">\((\alpha + \beta)\cdot v = \alpha\cdot v + \beta\cdot v\)</span>.</p></li>
-</ol>
+<div id="def-vector-space" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 8.1</strong></span> מרחב וקטורי (מ"ו) <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span> הוא קבוצה של איברים (שנקראים וקטורים) עם פעולות של חיבור וקטורי <span class="math inline">\(+\)</span> וכפל בסקלר <span class="math inline">\(\cdot\)</span> כך שמתקיימות האקסיומות הבאות לכל <span class="math inline">\(v_1,v_2,v_3,v \in V\)</span> ולכל <span class="math inline">\(\alpha,\beta \in \mathbb{F}\)</span> :</p>
+<p>א. סגירות: <span class="math inline">\(v_1+v_2\in V\)</span> וגם <span class="math inline">\(\alpha\cdot v\in V\)</span>.</p>
+<p>ב. אסוציאטיביות (חוק הקיבוץ) של חיבור: <span class="math inline">\(v_1 + (v_2 + v_3) = (v_1 + v_2) + v_3\)</span>.</p>
+<p>ג. קומוטטיביות (חוק החילוף) של חיבור: <span class="math inline">\(v_1 + v_2 = v_2 + v_1\)</span>.</p>
+<p>ד. קיום איבר ניטרלי לחיבור (וקטור האפס): קיים איבר <span class="math inline">\(0_V \in V\)</span> כך שלכל <span class="math inline">\(v \in V\)</span> מתקיים <span class="math inline">\(v + 0_V = v\)</span>.</p>
+<p>ה. קיום איבר נגדי: לכל <span class="math inline">\(v \in V\)</span> קיים <span class="math inline">\(-v \in V\)</span> כך ש <span class="math inline">\(v + (-v) = 0\)</span>.</p>
+<p>ו. אסוציאטיביות של כפל בסקלר: לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math inline">\(\alpha\cdot(\beta v) = (\alpha\beta)\cdot v\)</span>.</p>
+<p>ז. לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math inline">\(1\cdot v = v\)</span>.</p>
+<p>ח. דיסטריביוטיביות (חוק הפילוג הראשון): <span class="math inline">\(\alpha\cdot(v_1 + v_2) = \alpha\cdot v_1 + \alpha\cdot v_2\)</span>.</p>
+<p>ט. דיסטריביוטיביות (חוק הפילוג השני): לכל <span class="math inline">\(v \in V\)</span> מתקיים <span class="math inline">\((\alpha + \beta)\cdot v = \alpha\cdot v + \beta\cdot v\)</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>נקרא לאיבר הניטרלי <span class="math inline">\(0_V\)</span> וקטור האפס של המ"ו <span class="math inline">\(V\)</span>. נזכור שתפקידו להיות ניטרלי ביחס לפעולת החיבור.</p>
 </div>
 <div class="example">
 <p>בכל אחת מהדוגמאות הבאות, פעולות החיבור והכפל בסקלר כבר הוגדרו בשלב מוקדם יותר בספר. כלל האקסיומות הן קלות לבדיקה (כי הן נובעות מתכונות החיבור והכפל של <span class="math inline">\(\mathbb{R}\)</span>).</p>
-<ol type="1">
-<li><p><span class="math inline">\(\mathbb{R}^2\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbb{R}^3\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbb{R}^n\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span> לכל <span class="math inline">\(n\in\mathbb{N}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbb{C}^n\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{C}\)</span> לכל <span class="math inline">\(n\in\mathbb{N}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{R})\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span> לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{C})\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{C}\)</span> לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span>.</p></li>
-</ol>
+<p>א. <span class="math inline">\(\mathbb{R}^2\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>ב. <span class="math inline">\(\mathbb{R}^3\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>ג. <span class="math inline">\(\mathbb{R}^n\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span> לכל <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>ד. <span class="math inline">\(\mathbb{C}^n\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{C}\)</span> לכל <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>ה. <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{R})\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span> לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span>.</p>
+<p>ו. <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{C})\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{C}\)</span> לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>כל מ"ו מעל <span class="math inline">\(\mathbb{C}\)</span> הוא גם מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span>, כי <span class="math inline">\(\mathbb{R}\subseteq\mathbb{C}\)</span> ותמיד אפשר לצמצם את הגדרת הכפל בסקלר רק לסקלרים ממשיים. בפרט, <span class="math inline">\(\mathbb{C}^2\)</span> הוא מ"ו מעל <span class="math inline">\(\mathbb{R}\)</span> אם מניחים שהסקלרים בהם מכפילים וקטורים, הם ממשיים בלבד (אבל הוקטורים עצמם ב- <span class="math inline">\(\mathbb{C}^2\)</span>, לא בהכרח ב- <span class="math inline">\(\mathbb{R}^2\)</span>). למען הסר ספק, לרוב נעסוק ב- <span class="math inline">\(\mathbb{R}^n\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>, וב- <span class="math inline">\(\mathbb{C}^n\)</span> מעל <span class="math inline">\(\mathbb{C}\)</span>.</p>
 </div>
 <p>ניתן להוכיח תכונות נוספות של מרחבים וקטוריים בעזרת האקסיומות:</p>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. אז לכל <span class="math inline">\(v,w_1,w_2\in V\)</span> מתקיים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(w_1+v=w_2+v \implies w_1=w_2\)</span></em></p></li>
-<li><p><em><span class="math inline">\(0\cdot v=0_V\)</span></em></p>
-<p><em>(שימו לב להבדל בין הסקלר <span class="math inline">\(0\in\mathbb{F}\)</span> לבין וקטור האפס <span class="math inline">\(0_V\in V\)</span>.)</em></p></li>
-<li><p><em><span class="math inline">\((-1)\cdot v=-v\)</span></em></p></li>
-</ol>
+<div id="prp-vector-properties" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.1</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. אז לכל <span class="math inline">\(v,w_1,w_2\in V\)</span> מתקיים:</em></p>
+<p>א. <em><span class="math inline">\(w_1+v=w_2+v \implies w_1=w_2\)</span></em></p>
+<p>ב. <em><span class="math inline">\(0\cdot v=0_V\)</span></em></p>
+<p><em>(שימו לב להבדל בין הסקלר <span class="math inline">\(0\in\mathbb{F}\)</span> לבין וקטור האפס <span class="math inline">\(0_V\in V\)</span>.)</em></p>
+<p>ג. <em><span class="math inline">\((-1)\cdot v=-v\)</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span></p>
-<ol type="1">
-<li><p>נניח כי מתקיים <span class="math inline">\(w_1+v=w_2+v\)</span>. נשתמש באיבר הנגדי <span class="math inline">\(-v\)</span> ונחבר אותו לשני אגפי המשוואה: <span class="math display">\[w_1+(v+(-v))=w_2+(v+(-v)) \implies w_1+0_V=w_2+0_V \implies w_1=w_2\]</span> תחילה השתמשנו באסוציאטיביות ואחר כך בניטרליות של <span class="math inline">\(0_V\)</span>.</p></li>
-<li><p>לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.0\cdot v=(0+0)\cdot v=0\cdot v+0\cdot v\]</span> קיים איבר נגדי <span class="math inline">\(-(0\cdot v)\)</span> וניתן לחבר אותו לשני אגפי המשוואה: <span class="math display">\[0\cdot v+(-(0\cdot v))=0\cdot v+0\cdot v+(-(0\cdot v)) \implies 0_V=0\cdot v+0_V \implies 0_V=0\cdot v\]</span></p></li>
-<li><p>לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.(1+(-1))v=0\cdot v\]</span> לפי האקסיומה האחרונה ולפי סעיף ב’ נובע כי <span class="math display">\[.1\cdot v+(-1)v=0_V\]</span> לפי עוד אקסיומה מתקיים <span class="math inline">\(1\cdot v=v\)</span>, ובנוסף קיים איבר נגדי <span class="math inline">\(-v\)</span>. נחבר אותו לשני אגפי המשוואה משמאל ונקבל <span class="math display">\[-v+v+(-1)v=-v+0_V \implies 0_V+(-1)v=-v \implies (-1)v=-v\]</span></p></li>
-</ol>
+<p><span class="proof-title"><em>Proof</em>. </span>א. נניח כי מתקיים <span class="math inline">\(w_1+v=w_2+v\)</span>. נשתמש באיבר הנגדי <span class="math inline">\(-v\)</span> ונחבר אותו לשני אגפי המשוואה: <span class="math display">\[w_1+(v+(-v))=w_2+(v+(-v)) \implies w_1+0_V=w_2+0_V \implies w_1=w_2\]</span> תחילה השתמשנו באסוציאטיביות ואחר כך בניטרליות של <span class="math inline">\(0_V\)</span>.</p>
+<p>ב. לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.0\cdot v=(0+0)\cdot v=0\cdot v+0\cdot v\]</span> קיים איבר נגדי <span class="math inline">\(-(0\cdot v)\)</span> וניתן לחבר אותו לשני אגפי המשוואה: <span class="math display">\[0\cdot v+(-(0\cdot v))=0\cdot v+0\cdot v+(-(0\cdot v)) \implies 0_V=0\cdot v+0_V \implies 0_V=0\cdot v\]</span></p>
+<p>ג. לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.(1+(-1))v=0\cdot v\]</span> לפי האקסיומה האחרונה ולפי סעיף ב’ נובע כי <span class="math display">\[.1\cdot v+(-1)v=0_V\]</span> לפי עוד אקסיומה מתקיים <span class="math inline">\(1\cdot v=v\)</span>, ובנוסף קיים איבר נגדי <span class="math inline">\(-v\)</span>. נחבר אותו לשני אגפי המשוואה משמאל ונקבל <span class="math display">\[-v+v+(-1)v=-v+0_V \implies 0_V+(-1)v=-v \implies (-1)v=-v\]</span></p>
 <p>&nbsp;◻</p>
 </div>
 <div class="proof remark">
@@ -369,29 +360,20 @@ $$
 </div>
 <div class="exercise">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>.</p>
-<ol type="1">
-<li><p>הראו כי וקטור האפס הוא יחיד, כלומר אם <span class="math inline">\(0_V,\mathbf{0}'_V\)</span> שניהם מקיימים את האקסיומה של וקטור האפס (ניטרליות לחיבור), אז בהכרח <span class="math inline">\(0_V=0'_V\)</span>.</p></li>
-<li><p>הראו כי לכל <span class="math inline">\(v\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.\alpha\cdot0_V=0_V\]</span> רמז: השתמשו בשוויון <span class="math inline">\(0_V+0_V=0_V\)</span>.</p></li>
-</ol>
+<p>א. הראו כי וקטור האפס הוא יחיד, כלומר אם <span class="math inline">\(0_V,\mathbf{0}'_V\)</span> שניהם מקיימים את האקסיומה של וקטור האפס (ניטרליות לחיבור), אז בהכרח <span class="math inline">\(0_V=0'_V\)</span>.</p>
+<p>ב. הראו כי לכל <span class="math inline">\(v\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.\alpha\cdot0_V=0_V\]</span> רמז: השתמשו בשוויון <span class="math inline">\(0_V+0_V=0_V\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span></p>
-<ol type="1">
-<li><p>יהיו <span class="math inline">\(0_V,0'_V\)</span> שני וקטורי אפס. לפי הניטרליות של <span class="math inline">\(0'_V\)</span>, מצד אחד מתקיים <span class="math display">\[.0_V+0'_V=0_V\]</span> מצד שני, לפי הניטרליות של <span class="math inline">\(0_V\)</span> וחוק החילוף, נובע כי <span class="math display">\[.0_V+0'_V=0'_V\]</span></p>
-<p>מכאן <span class="math inline">\(0_V=0'_V\)</span>, כנדרש.</p></li>
-<li><p>יהיו <span class="math inline">\(v\in V\)</span> ו- <span class="math inline">\(\alpha\in \mathbb{F}\)</span>. אז מתקיים <span class="math display">\[.\alpha\cdot(0_V+0_V)=\alpha\cdot 0_V\]</span> לפי דיסטריביוטיביות נובע כי <span class="math display">\[.\alpha\cdot 0_V+\alpha\cdot 0_V=\alpha\cdot 0_V\]</span> נחבר את האיבר הנגדי <span class="math inline">\(-(\alpha\cdot 0_V)\)</span> לשני אגפי המשוואה, ונקבל <span class="math display">\[\alpha\cdot 0_V+\alpha\cdot 0_V-(\alpha\cdot 0_V)=\alpha\cdot 0_V-(\alpha\cdot 0_V) \implies \alpha\cdot 0_V=0_V\]</span></p></li>
-</ol>
+<p><span class="proof-title"><em>Proof</em>. </span>א. יהיו <span class="math inline">\(0_V,0'_V\)</span> שני וקטורי אפס. לפי הניטרליות של <span class="math inline">\(0'_V\)</span>, מצד אחד מתקיים <span class="math display">\[.0_V+0'_V=0_V\]</span> מצד שני, לפי הניטרליות של <span class="math inline">\(0_V\)</span> וחוק החילוף, נובע כי <span class="math display">\[.0_V+0'_V=0'_V\]</span></p>
+<pre><code>מכאן $0_V=0'_V$, כנדרש.</code></pre>
+<p>ב. יהיו <span class="math inline">\(v\in V\)</span> ו- <span class="math inline">\(\alpha\in \mathbb{F}\)</span>. אז מתקיים <span class="math display">\[.\alpha\cdot(0_V+0_V)=\alpha\cdot 0_V\]</span> לפי דיסטריביוטיביות נובע כי <span class="math display">\[.\alpha\cdot 0_V+\alpha\cdot 0_V=\alpha\cdot 0_V\]</span> נחבר את האיבר הנגדי <span class="math inline">\(-(\alpha\cdot 0_V)\)</span> לשני אגפי המשוואה, ונקבל <span class="math display">\[\alpha\cdot 0_V+\alpha\cdot 0_V-(\alpha\cdot 0_V)=\alpha\cdot 0_V-(\alpha\cdot 0_V) \implies \alpha\cdot 0_V=0_V\]</span></p>
 <p>&nbsp;◻</p>
 </div>
 <p>ניתן דוגמאות למרחבים וקטוריים נוספים הקשורים לחדו"א, אך נציין מראש שלא נעסוק בהם בקורס. טוב לדעת שמרחבים וקטוריים יכולים לצוץ במקומות לכאורה לא צפויים.</p>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>מרחב הסדרות הממשיות: <span class="math display">\[\mathbb{R}^{\mathbb{N}}=\Set{(a_n)_{n=1}^\infty|a_1,a_2,...\in\mathbb{R}}\]</span> עם חיבור וקטורי שמוגדר ע"י <span class="math display">\[,(a_n)_{n=1}^\infty+(b_n)_{n=1}^\infty=(a_n+b_n)_{n=1}^\infty\]</span> כפל בסקלר שמוגדר ע"י <span class="math display">\[\alpha\cdot(a_n)_{n=1}^\infty=(\alpha a_n)_{n=1}^\infty\]</span> ובתור וקטור האפס ניקח את סדרת האפסים הקבועה <span class="math display">\[.0_V=(0)_{n=1}^\infty\]</span></p></li>
-<li><p>מרחב הפונקציות הממשיות: <span class="math display">\[\mathbb{R}^{\mathbb{R}}=\Set{f:\mathbb{R}\to\mathbb{R}}\]</span> עם חיבור וקטורי המוגדר ע"י <span class="math display">\[,\forall x\in\mathbb{R}\quad (f+g)(x)=f(x)+g(x)\]</span></p>
-<p>כפל בסקלר המוגדר ע"י <span class="math display">\[\forall x\in\mathbb{R}\quad (\alpha f)(x)=\alpha\cdot f(x)\]</span></p>
-<p>ובתור וקטור האפס ניקח את פונקציית האפס הקבועה <span class="math display">\[.\forall x\in\mathbb{R}\quad 0_V(x)=0\]</span></p></li>
-</ol>
+<p>א. מרחב הסדרות הממשיות: <span class="math display">\[\mathbb{R}^{\mathbb{N}}=\Set{(a_n)_{n=1}^\infty|a_1,a_2,...\in\mathbb{R}}\]</span> עם חיבור וקטורי שמוגדר ע"י <span class="math display">\[,(a_n)_{n=1}^\infty+(b_n)_{n=1}^\infty=(a_n+b_n)_{n=1}^\infty\]</span> כפל בסקלר שמוגדר ע"י <span class="math display">\[\alpha\cdot(a_n)_{n=1}^\infty=(\alpha a_n)_{n=1}^\infty\]</span> ובתור וקטור האפס ניקח את סדרת האפסים הקבועה <span class="math display">\[.0_V=(0)_{n=1}^\infty\]</span></p>
+<p>ב. מרחב הפונקציות הממשיות: <span class="math display">\[\mathbb{R}^{\mathbb{R}}=\Set{f:\mathbb{R}\to\mathbb{R}}\]</span> עם חיבור וקטורי המוגדר ע"י <span class="math display">\[,\forall x\in\mathbb{R}\quad (f+g)(x)=f(x)+g(x)\]</span> כפל בסקלר המוגדר ע"י <span class="math display">\[\forall x\in\mathbb{R}\quad (\alpha f)(x)=\alpha\cdot f(x)\]</span> ובתור וקטור האפס ניקח את פונקציית האפס הקבועה <span class="math display">\[.\forall x\in\mathbb{R}\quad 0_V(x)=0\]</span></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>אחת הסיבות שלא נעסוק בשני המרחבים לעיל היא שהמימד שלהם הוא אינסופי. עוד לא הגדרנו מימד, אבל אפשר לחשוב עליו כעל מספר הפרמטרים הדרושים לתיאור המרחב. במקרה של המישור מדובר ב- <span class="math inline">\(2\)</span>, ובהכללה המימד של <span class="math inline">\(\mathbb{R}^n\)</span> הוא <span class="math inline">\(n\)</span> (מספר הקוארדינטות). האינטואיציה רומזת שמרחבי הסדרות והפונקציות הרבה יותר מסובכים, כלומר הם ממימד אינסופי. זה חורג ממסגרת הקורס.</p>
@@ -404,28 +386,26 @@ $$
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. תת-קבוצה <span class="math inline">\(W\subseteq V\)</span> תיקרא תת-מרחב של <span class="math inline">\(V\)</span> אם <span class="math inline">\(W\)</span> היא מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> בפני עצמה, עם פעולות החיבור והכפל בסקלר מ- <span class="math inline">\(V\)</span>.</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>בהינתן ש- <span class="math inline">\(V\)</span> הוא מ"ו, רוב התכונות של הגדרה <span class="math inline">\(\ref{def:vector-space}\)</span> עוברות בירושה אל <span class="math inline">\(W\)</span> באופן אוטומטי. למעשה, עבור תת-קבוצה <span class="math inline">\(W\)</span> מספיק לבדוק שוקטור האפס שייך לה, כלומר <span class="math inline">\(0_V\in W\)</span>, ובנוסף היא מקיימת את תנאי הסגירות:</p>
+<p><span class="proof-title"><em>Remark</em>. </span>בהינתן ש- <span class="math inline">\(V\)</span> הוא מ"ו, רוב התכונות של הגדרה <a href="#def-vector-space">8.2</a> עוברות בירושה אל <span class="math inline">\(W\)</span> באופן אוטומטי. למעשה, עבור תת-קבוצה <span class="math inline">\(W\)</span> מספיק לבדוק שוקטור האפס שייך לה, כלומר <span class="math inline">\(0_V\in W\)</span>, ובנוסף היא מקיימת את תנאי הסגירות:</p>
 <p><span class="math display">\[\forall w_1,w_2\in W\ \forall \alpha\in\mathbb{F}:\ w_1+w_2\in W,\quad \alpha w_1\in W\]</span></p>
 <p>נוכיח זאת בהמשך. ראשית נראה כמה דוגמאות שמתאימות לאינטואיציה של תת-מרחב.</p>
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>לכל מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span> יש תת-מרחב <span class="math inline">\(\Set{0_V}\)</span>. זהו תת-המרחב הקטן ביותר של <span class="math inline">\(V\)</span>. הוא מקיים את תנאי הסגירות כי <span class="math inline">\(0_V+0_V=0_V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math inline">\(\alpha\cdot 0_V=0_V\)</span>.</p></li>
-<li><p>לכל <span class="math inline">\(v\in\mathbb{R}^2\)</span> כך ש- <span class="math inline">\(v\neq 0\)</span>, הישר <span class="math inline">\(L=\Set{tv|t\in\mathbb{R}}\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{R}^2\)</span>. שימו לב שהוא עובר דרך הראשית, שהיא וקטור האפס.</p></li>
-<li><p>לכל <span class="math inline">\(v_1,v_2\in\mathbb{R}^3\)</span> שאינם קו-לינאריים, המישור <span class="math inline">\(H=\Set{sv_1+tv_2|s,t\in\mathbb{R}}\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{R}^3\)</span>. גם כאן חשוב להבחין ש- <span class="math inline">\(H\)</span> עובר דרך הראשית, שהיא וקטור האפס. אם הוקטורים הם קו-לינאריים ולמשל <span class="math inline">\(v_2=\alpha v_1\)</span> עבור <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, אז למעשה מתקיים <span class="math inline">\(H=\Set{sv_1|s\in\mathbb{R}}\)</span>. זהו ישר (שעובר דרך הראשית), אך עדיין תת-מרחב.</p></li>
-</ol>
+<p>א. לכל מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span> יש תת-מרחב <span class="math inline">\(\Set{0_V}\)</span>. זהו תת-המרחב הקטן ביותר של <span class="math inline">\(V\)</span>. הוא מקיים את תנאי הסגירות כי <span class="math inline">\(0_V+0_V=0_V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math inline">\(\alpha\cdot 0_V=0_V\)</span>.</p>
+<p>ב. לכל <span class="math inline">\(v\in\mathbb{R}^2\)</span> כך ש- <span class="math inline">\(v\neq 0\)</span>, הישר <span class="math inline">\(L=\Set{tv|t\in\mathbb{R}}\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{R}^2\)</span>. שימו לב שהוא עובר דרך הראשית, שהיא וקטור האפס.</p>
+<p>ג. לכל <span class="math inline">\(v_1,v_2\in\mathbb{R}^3\)</span> שאינם קו-לינאריים, המישור <span class="math inline">\(H=\Set{sv_1+tv_2|s,t\in\mathbb{R}}\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{R}^3\)</span>. גם כאן חשוב להבחין ש- <span class="math inline">\(H\)</span> עובר דרך הראשית, שהיא וקטור האפס. אם הוקטורים הם קו-לינאריים ולמשל <span class="math inline">\(v_2=\alpha v_1\)</span> עבור <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, אז למעשה מתקיים <span class="math inline">\(H=\Set{sv_1|s\in\mathbb{R}}\)</span>. זהו ישר (שעובר דרך הראשית), אך עדיין תת-מרחב.</p>
 </div>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. תהי <span class="math inline">\(W\subseteq V\)</span>. התנאים הבאים שקולים:</em></p>
+<div id="prp-subspace" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.2</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. תהי <span class="math inline">\(W\subseteq V\)</span>. התנאים הבאים שקולים:</em></p>
 <ul>
 <li><p><em><span class="math inline">\(W\)</span> תת-מרחב של <span class="math inline">\(V\)</span>.</em></p></li>
 <li><p><em><span class="math inline">\(0_V\in W\)</span> וגם לכל <span class="math inline">\(w_1,w_2\in W\)</span> ולכל <span class="math inline">\(\alpha\in \mathbb{F}\)</span> מתקיים <span class="math inline">\(w_1+w_2\in W\)</span> וגם <span class="math inline">\(\alpha w_1\in W\)</span>.</em></p></li>
 </ul>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון: אם <span class="math inline">\(W\)</span> תת-מרחב של <span class="math inline">\(V\)</span>, אז הוא מקיים את כל התכונות של הגדרה <span class="math inline">\(\ref{def:vector-space}\)</span> למרחב וקטורי. לא רק שיש וקטור אפס ב- <span class="math inline">\(W\)</span>, מדובר על <span class="math inline">\(0_V\)</span> עצמו כי לכל <span class="math inline">\(w\in W\)</span> מתקיים <span class="math inline">\(0_V=0\cdot w\in W\)</span> לפי טענה <span class="math inline">\(\ref{prop:vector-properties}\)</span>.</p>
-<p>בכיוון השני: נתון שאקסיומת הסגירות מתקיימת עבור <span class="math inline">\(W\)</span>, וגם האקסיומה של קיום וקטור האפס. כמעט כל שאר האקסיומות מתקיימות באופן אוטומטי לכל תת-קבוצה של <span class="math inline">\(V\)</span>, אבל צריך לוודא קיום איבר נגדי לכל <span class="math inline">\(w\in W\)</span>. זה נובע מסגירות לכפל בסקלר ומטענה <span class="math inline">\(\ref{prop:vector-properties}\)</span> כי מתקיים <span class="math inline">\(-w=(-1)w\in W\)</span>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון: אם <span class="math inline">\(W\)</span> תת-מרחב של <span class="math inline">\(V\)</span>, אז הוא מקיים את כל התכונות של הגדרה <a href="#def-vector-space">8.2</a> למרחב וקטורי. לא רק שיש וקטור אפס ב- <span class="math inline">\(W\)</span>, מדובר על <span class="math inline">\(0_V\)</span> עצמו כי לכל <span class="math inline">\(w\in W\)</span> מתקיים <span class="math inline">\(0_V=0\cdot w\in W\)</span> לפי טענה <a href="#prp-vector-properties">8.6</a>.</p>
+<p>בכיוון השני: נתון שאקסיומת הסגירות מתקיימת עבור <span class="math inline">\(W\)</span>, וגם האקסיומה של קיום וקטור האפס. כמעט כל שאר האקסיומות מתקיימות באופן אוטומטי לכל תת-קבוצה של <span class="math inline">\(V\)</span>, אבל צריך לוודא קיום איבר נגדי לכל <span class="math inline">\(w\in W\)</span>. זה נובע מסגירות לכפל בסקלר ומטענה <a href="#prp-vector-properties">8.6</a> כי מתקיים <span class="math inline">\(-w=(-1)w\in W\)</span>.&nbsp;◻</p>
 </div>
 <div class="example">
 <p><span class="math inline">\(W=\Set{(x,y,z)\in\mathbb{R}^3|x+y+z=0}\)</span> היא תת-מרחב של <span class="math inline">\(\mathbb{R}^4\)</span>. נבדוק זאת:</p>
@@ -456,7 +436,7 @@ $$
 </div>
 </div>
 </div>
-<p>תת-מרחב זו תת-קבוצה של מ"ו שיש לה "התנהגות טובה" כפי שראינו. בפרק <span class="math inline">\(\ref{ch:systems}\)</span> ראינו התנהגות דומה בהקשר של פתרונות של ממ"ל הומוגנית. מרוב חשיבותה ושכיחותה של קבוצת פתרונות של ממ"ל הומוגנית, נקדיש לה סימון משלה.</p>
+<p>תת-מרחב זו תת-קבוצה של מ"ו שיש לה "התנהגות טובה" כפי שראינו. בפרק <a href="chapter_2.html" class="quarto-xref"><span>5</span></a> ראינו התנהגות דומה בהקשר של פתרונות של ממ"ל הומוגנית. מרוב חשיבותה ושכיחותה של קבוצת פתרונות של ממ"ל הומוגנית, נקדיש לה סימון משלה.</p>
 <div class="definition">
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. קבוצת הפתרונות לממ"ל ההומוגנית <span class="math inline">\(Ax=\underline{0}\)</span> נקראת מרחב הפתרונות של <span class="math inline">\(A\)</span> ומסומנת ע"י <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span>.</p>
 </div>
@@ -465,7 +445,7 @@ $$
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>ראשית, וקטור האפס <span class="math inline">\(\underline{0}\in\mathbb{F}^n\)</span> מקיים <span class="math inline">\(\underline{0}\in \mathop{\mathrm{N}}(A)\)</span> כי <span class="math inline">\(A\underline{0}=\underline{0}\)</span>.</p>
-<p>יהיו <span class="math inline">\(w_1,w_2\in \mathop{\mathrm{N}}(A)\)</span>. אז לפי ההגדרה מתקיים <span class="math inline">\(Aw_1=\underline{0}=Aw_2\)</span>, ולכן <span class="math display">\[.A(w_1+w_2)=Aw_1+Aw_2=\underline{0}+\underline{0}=\underline{0} \implies w_1+w_2\in \mathop{\mathrm{N}}(A)\]</span> בנוסף, לכל <span class="math inline">\(\alpha\in \mathbb{F}\)</span> מתקיים <span class="math display">\[.A(\alpha w_1)=\alpha Aw_1=\alpha\cdot \underline{0}=\underline{0} \implies \alpha w_1\in \mathop{\mathrm{N}}(A)\]</span> אם כן, הראינו כי <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{F}^n\)</span> לפי טענה <span class="math inline">\(\ref{prop:subspace}\)</span>.&nbsp;◻</p>
+<p>יהיו <span class="math inline">\(w_1,w_2\in \mathop{\mathrm{N}}(A)\)</span>. אז לפי ההגדרה מתקיים <span class="math inline">\(Aw_1=\underline{0}=Aw_2\)</span>, ולכן <span class="math display">\[.A(w_1+w_2)=Aw_1+Aw_2=\underline{0}+\underline{0}=\underline{0} \implies w_1+w_2\in \mathop{\mathrm{N}}(A)\]</span> בנוסף, לכל <span class="math inline">\(\alpha\in \mathbb{F}\)</span> מתקיים <span class="math display">\[.A(\alpha w_1)=\alpha Aw_1=\alpha\cdot \underline{0}=\underline{0} \implies \alpha w_1\in \mathop{\mathrm{N}}(A)\]</span> אם כן, הראינו כי <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span> הוא תת-מרחב של <span class="math inline">\(\mathbb{F}^n\)</span> לפי טענה <a href="#prp-subspace">8.14</a>.&nbsp;◻</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>עבור <span class="math inline">\(b\neq \underline{0}\)</span> קבוצת הפתרונות של הממ"ל <span class="math inline">\(Ax=b\)</span> בהכרח אינה תת-מרחב של <span class="math inline">\(\mathbb{F}^n\)</span>. אין בה את וקטור האפס כי <span class="math inline">\(A\underline{0}=\underline{0}\neq b\)</span>. יותר מכך, היא לא סגורה לחיבור וגם לא לכפל בסקלר. אם <span class="math inline">\(w_1,w_2\)</span> שייכים לקבוצת הפתרונות, אז <span class="math display">\[.A(w_1+w_2)=Aw_1+Aw_2=b+b=2b\neq b\]</span> לכן לממ"ל הומוגנית יש חשיבות בהקשר של מרחב וקטוריים, להבדיל מממ"ל לא הומוגנית.</p>
@@ -492,14 +472,12 @@ $$
 <p>מה לגבי מטריצות? הבנו שאפשר להתייחס לקבוצה <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> כמרחב וקטורי (זה מעט מבלבל בהתחלה), אז אילו תת-מרחבים יש לה? הדוגמאות החשובות הן עבור מטריצות ריבועיות (<span class="math inline">\(m=n\)</span>), ולמעשה כבר ראינו אותן.</p>
 <div class="example">
 <p>נסמן <span class="math inline">\(V=\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</p>
-<ol type="1">
-<li><p>נסמן ב- <span class="math inline">\(W_1\)</span> את קבוצת המטריצות המשולשיות עליונות. אז <span class="math inline">\(W_1\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-<li><p>נסמן ב- <span class="math inline">\(W_2\)</span> את קבוצת המטריצות המשולשיות תחתונות. אז <span class="math inline">\(W_2\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-<li><p>נסמן ב- <span class="math inline">\(W_3\)</span> את קבוצת המטריצות האלכסוניות. אז <span class="math inline">\(W_3\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-<li><p>נסמן ב- <span class="math inline">\(W_4\)</span> את קבוצת המטריצות הסימטריות. אז <span class="math inline">\(W_4\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-<li><p>נסמן ב- <span class="math inline">\(W_5\)</span> את קבוצת המטריצות האנטי-סימטריות. אז <span class="math inline">\(W_5\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-<li><p><span class="math inline">\(W_6=\Set{\mathbf{0}_{n\times n}}\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p></li>
-</ol>
+<p>א. נסמן ב- <span class="math inline">\(W_1\)</span> את קבוצת המטריצות המשולשיות עליונות. אז <span class="math inline">\(W_1\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
+<p>ב. נסמן ב- <span class="math inline">\(W_2\)</span> את קבוצת המטריצות המשולשיות תחתונות. אז <span class="math inline">\(W_2\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
+<p>ג. נסמן ב- <span class="math inline">\(W_3\)</span> את קבוצת המטריצות האלכסוניות. אז <span class="math inline">\(W_3\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
+<p>ד. נסמן ב- <span class="math inline">\(W_4\)</span> את קבוצת המטריצות הסימטריות. אז <span class="math inline">\(W_4\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
+<p>ה. נסמן ב- <span class="math inline">\(W_5\)</span> את קבוצת המטריצות האנטי-סימטריות. אז <span class="math inline">\(W_5\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
+<p>ו. <span class="math inline">\(W_6=\Set{\mathbf{0}_{n\times n}}\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</p>
 </div>
 <div class="exercise">
 <p>בדקו שכל הדוגמאות הן אכן תת-מרחבים של <span class="math inline">\(V=\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</p>
@@ -524,7 +502,7 @@ $$
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>האינטואיציה המומלצת לתת-מרחב היא כזו: אם התנאים שמגדירים את <span class="math inline">\(W\)</span> הם למעשה ממ"ל הומוגנית, אז <span class="math inline">\(W\)</span> אמורה להיות תת-מרחב. למשל, עבור <span class="math inline">\(W_1\)</span> ההגדרה מתייחסת לכל ערכי המטריצה מתחת לאלכסון הראשי. הם אמורים להתאפס, ולכן בעצם יש פה ממ"ל הומוגנית.</p>
 <p>עבור <span class="math inline">\(W_4\)</span> התנאים למטריצה סימטרית הם אוסף משוואות מהצורה <span class="math inline">\(a_{ij}=a_{ji}\)</span>, אז גם כאן מסתתרת ממ"ל הומוגנית. וכן הלאה.</p>
-<p>אבל בפועל, הבדיקה המלאה לצורך הפתרון היא לפי טענה <span class="math inline">\(\ref{prop:subspace}\)</span>.</p>
+<p>אבל בפועל, הבדיקה המלאה לצורך הפתרון היא לפי טענה <a href="#prp-subspace">8.14</a>.</p>
 </div>
 <div class="example">
 <p>נראה כי <span class="math inline">\(W=\Set{A\in\mathbb{M}_{2\times 2}(\mathbb{R})|\det(A)=0}\)</span>, כלומר קבוצת כל המטריצות מסדר <span class="math inline">\(2\times 2\)</span> שאינן הפיכות, אינה תת-מרחב של <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span>. אמנם מתקיים <span class="math inline">\(\mathbf{0}_{2\times 2}\in W\)</span>, אבל אין סגירות לחיבור. נמצא דוגמה נגדית: עבור <span class="math display">\[A=\begin{pmatrix}
@@ -565,7 +543,7 @@ B=\begin{pmatrix}
 </section>
 <section id="פרישה" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="פרישה"><span class="header-section-number">8.3</span> פרישה</h2>
-<p>נניח כי <span class="math inline">\(W\)</span> היא תת-מרחב של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. בהינתן <span class="math inline">\(w_1,w_2\in W\)</span> נובע מטענה <span class="math inline">\(\ref{prop:subspace}\)</span> שמתקיים <span class="math inline">\(\alpha w_1, \beta w_2\in W\)</span> לכל <span class="math inline">\(\alpha,\beta\in \mathbb{F}\)</span>, ולכן נובע כי <span class="math inline">\(\alpha w_1+\beta w_2\in W\)</span>. כך שני הוקטורים פורשים אינסוף וקטורים ב- <span class="math inline">\(W\)</span> (לא בהכרח את כולם), והוקטורים האלה נקראים צירופים לינאריים של <span class="math inline">\(w_1,w_2\)</span>.</p>
+<p>נניח כי <span class="math inline">\(W\)</span> היא תת-מרחב של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. בהינתן <span class="math inline">\(w_1,w_2\in W\)</span> נובע מטענה <a href="#prp-subspace">8.14</a> שמתקיים <span class="math inline">\(\alpha w_1, \beta w_2\in W\)</span> לכל <span class="math inline">\(\alpha,\beta\in \mathbb{F}\)</span>, ולכן נובע כי <span class="math inline">\(\alpha w_1+\beta w_2\in W\)</span>. כך שני הוקטורים פורשים אינסוף וקטורים ב- <span class="math inline">\(W\)</span> (לא בהכרח את כולם), והוקטורים האלה נקראים צירופים לינאריים של <span class="math inline">\(w_1,w_2\)</span>.</p>
 <div class="example">
 <p>כל וקטור <span class="math inline">\((a,b)\in\mathbb{R}^2\)</span> הוא צירוף לינארי של הוקטורים <span class="math inline">\((1,0),(0,1)\)</span> כי מתקיים <span class="math display">\[.(a,b)=a(1,0)+b(0,1)\]</span></p>
 </div>
@@ -621,11 +599,11 @@ B=\begin{pmatrix}
 <div id="fig:Span3D" class="figure">
 <p><embed src="simulations/Span3D.html?embed=1" width="720" height="720"></p>
 </div>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(v_1,v_2,...,v_k\in V\)</span>. אז <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span> המקיים <span class="math inline">\(v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>.</em></p>
+<div id="prp-span-subspace" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.3</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(v_1,v_2,...,v_k\in V\)</span>. אז <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span> המקיים <span class="math inline">\(v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>נבדוק את התנאים של טענה <span class="math inline">\(\ref{prop:subspace}\)</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נבדוק את התנאים של טענה <a href="#prp-subspace">8.14</a>.</p>
 <ul>
 <li><p>קיום וקטור האפס: מתקיים <span class="math display">\[.0_V=0\cdot v_1+0\cdot v_2+...+0\cdot v_k\in\mathop{\mathrm{Span}}(v_1,...,v_k)\]</span></p></li>
 <li><p>סגירות לחיבור: יהיו <span class="math inline">\(.w_1,w_2\in\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span></p>
@@ -648,53 +626,49 @@ w_1+w_2&amp;=(\alpha_1v_1+...+\alpha_kv_k)+(\beta_1v_1+...+\beta_kv_k)\\
 \end{cases}\]</span> לממ"ל יש פתרון יחיד: <span class="math inline">\(\alpha=\beta=\gamma=2\)</span>. ואכן, מתקיים <span class="math display">\[.(4,2,0,2)=2(1,0,1,0)+2(1,0,-1,0)+2(0,1,0,1)\]</span></p>
 </div>
 <p>הטענה הבאה מראה שניתן לאפיין את <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span> כתת-המרחב הקטן ביותר שמכיל את <span class="math inline">\(\Set{v_1,...,v_k}\)</span>. הכוונה ב"קטן ביותר" היא שכל תת-מרחב אחר שמכיל את <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בהכרח מכיל את <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>.</p>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(W\)</span> תת-מרחב של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. אז לכל <span class="math inline">\(v_1,...,v_k\in V\)</span> מתקיים <span class="math display">\[.v_1,...,v_k\in W \iff \mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W\]</span></em></p>
+<div id="prp-vector-span" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.4</strong></span> <em> יהי <span class="math inline">\(W\)</span> תת-מרחב של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. אז לכל <span class="math inline">\(v_1,...,v_k\in V\)</span> מתקיים <span class="math display">\[.v_1,...,v_k\in W \iff \mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W\]</span></em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>הכיוון <span class="math inline">\(\implies\)</span>: נניח כי <span class="math inline">\(v_1,...,v_k\in W\)</span>. אז לכל <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\forall 1\leq j\leq n\quad \alpha_jv_j\in W\]</span> מסגירות לכפל בסקלר. לכן, נובע מסגירות לחיבור כי <span class="math display">\[.\alpha_1v_1+...+\alpha_kv_k\in W\]</span> הראינו שכל צירוף לינארי של <span class="math inline">\(v_1,...,v_k\)</span> שייך ל- <span class="math inline">\(W\)</span>, כלומר <span class="math display">\[.\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W\]</span></p>
-<p>הכיוון <span class="math inline">\(\impliedby\)</span>: נניח כי <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W\)</span>. לפי טענה <span class="math inline">\(\ref{prop:span-subspace}\)</span> מתקיים <span class="math display">\[,v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)\]</span> ולכן <span class="math display">\[.v_1,...,v_k\in W\]</span>&nbsp;◻</p>
+<p>הכיוון <span class="math inline">\(\impliedby\)</span>: נניח כי <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq W\)</span>. לפי טענה <a href="#prp-span-subspace">8.33</a> מתקיים <span class="math display">\[,v_1,...,v_k\in \mathop{\mathrm{Span}}(v_1,...,v_k)\]</span> ולכן <span class="math display">\[.v_1,...,v_k\in W\]</span>&nbsp;◻</p>
 </div>
 <div class="definition">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. נאמר ש- <span class="math inline">\(V\)</span> נוצר סופית אם קיימים <span class="math inline">\(v_1,...,v_k\in V\)</span> כך ש- <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>. במקרה זה גם נאמר שהקבוצה <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span>. ניתן גם לומר (באופן פחות פורמלי) שהוקטורים <span class="math inline">\(v_1,...,v_k\)</span> פורשים את <span class="math inline">\(V\)</span>.</p>
 </div>
-<div class="example">
-<p> &nbsp;</p>
-<ol type="1">
-<li><p>ב- <span class="math inline">\(\mathbb{F}^n\)</span> קבוצת וקטורי היחידה היא קבוצה פורשת. מתקיים <span class="math display">\[\mathop{\mathrm{Span}}(e_1,...,e_n)=\mathbb{F}^n\]</span> כי לכל <span class="math inline">\(v=(\alpha_1,...,\alpha_n)\in\mathbb{F}^n\)</span> מתקיים <span class="math display">\[.v=\alpha_1e_1+...+\alpha_ne_n\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> נגדיר <span class="math display">\[.A_1=\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{pmatrix},\quad A_2=\begin{pmatrix}
-0 &amp; 1 \\
-0 &amp; 0
-\end{pmatrix},\quad A_3=\begin{pmatrix}
-0 &amp; 0 \\
-1 &amp; 0
-\end{pmatrix},\quad A_4=\begin{pmatrix}
-0 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}\]</span> הקבוצה <span class="math inline">\(\Set{A_1,A_2,A_3,A_4}\)</span> פורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> כי לכל <span class="math inline">\(a,b,c,d\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.\begin{pmatrix}
-a &amp; b\\
-c &amp; d
-\end{pmatrix}=aA_1+bA_2+cA_3+dA_4\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> נסמן לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> ב- <span class="math inline">\(E_{ij}\)</span> את המטריצה שכולה אפסים פרט ל- <span class="math inline">\(1\)</span> בשורה ה- <span class="math inline">\(i\)</span> ובעמודה ה- <span class="math inline">\(j\)</span>, כלומר <span class="math display">\[.E_{ij}=\begin{pmatrix}
-0 &amp;\cdots &amp;0 &amp;\cdots &amp;0 \\
-\vdots &amp; \vdots &amp;\vdots &amp;\vdots &amp;\vdots \\
-0 &amp;\cdots &amp;1 &amp;\cdots &amp;0 \\
-\vdots &amp; \vdots &amp;\vdots &amp;\vdots &amp;\vdots \\
-0 &amp;\cdots &amp;0 &amp;\cdots &amp;0
-\end{pmatrix}\]</span> אז <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m, 1\leq j\leq n}\)</span> פורשת את <span class="math inline">\(M_{m\times n}(\mathbb{F})\)</span> כי לכל <span class="math inline">\(A\in M_{m\times n}(\mathbb{F})\)</span> מתקיים <span class="math display">\[\begin{aligned}
-A&amp;=\sum_{1\leq i\leq m}\sum_{1 \leq j \leq n}(A)_{ij}E_{ij}=(A)_{11}E_{11}+....+(A)_{1n}E_{1n}\\
-&amp;+...+(A)_{m1}E_{m1}+....+(A)_{mn}E_{mn}
-\end{aligned}\]</span></p></li>
-</ol>
+<div id="exm-standard-bases" class="example theorem">
+<p><span class="theorem-title"><strong>Example 8.1</strong></span> &nbsp;</p>
+<p>א. ב- <span class="math inline">\(\mathbb{F}^n\)</span> קבוצת וקטורי היחידה היא קבוצה פורשת. מתקיים <span class="math display">\[\mathop{\mathrm{Span}}(e_1,...,e_n)=\mathbb{F}^n\]</span> כי לכל <span class="math inline">\(v=(\alpha_1,...,\alpha_n)\in\mathbb{F}^n\)</span> מתקיים <span class="math display">\[.v=\alpha_1e_1+...+\alpha_ne_n\]</span></p>
+<p>ב. ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> נגדיר <span class="math display">\[.A_1=\begin{pmatrix}
+    1 &amp; 0 \\
+    0 &amp; 0
+    \end{pmatrix},\quad A_2=\begin{pmatrix}
+    0 &amp; 1 \\
+    0 &amp; 0
+    \end{pmatrix},\quad A_3=\begin{pmatrix}
+    0 &amp; 0 \\
+    1 &amp; 0
+    \end{pmatrix},\quad A_4=\begin{pmatrix}
+    0 &amp; 0 \\
+    0 &amp; 1
+    \end{pmatrix}\]</span> הקבוצה <span class="math inline">\(\Set{A_1,A_2,A_3,A_4}\)</span> פורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> כי לכל <span class="math inline">\(a,b,c,d\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.\begin{pmatrix}
+    a &amp; b\\
+    c &amp; d
+    \end{pmatrix}=aA_1+bA_2+cA_3+dA_4\]</span></p>
+<p>ג. ב- <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> נסמן לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> ב- <span class="math inline">\(E_{ij}\)</span> את המטריצה שכולה אפסים פרט ל- <span class="math inline">\(1\)</span> בשורה ה- <span class="math inline">\(i\)</span> ובעמודה ה- <span class="math inline">\(j\)</span>, כלומר <span class="math display">\[.E_{ij}=\begin{pmatrix}
+    0 &amp;\cdots &amp;0 &amp;\cdots &amp;0 \\
+    \vdots &amp; \vdots &amp;\vdots &amp;\vdots &amp;\vdots \\
+    0 &amp;\cdots &amp;1 &amp;\cdots &amp;0 \\
+    \vdots &amp; \vdots &amp;\vdots &amp;\vdots &amp;\vdots \\
+    0 &amp;\cdots &amp;0 &amp;\cdots &amp;0
+    \end{pmatrix}\]</span> אז <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m, 1\leq j\leq n}\)</span> פורשת את <span class="math inline">\(M_{m\times n}(\mathbb{F})\)</span> כי לכל <span class="math inline">\(A\in M_{m\times n}(\mathbb{F})\)</span> מתקיים <span class="math display">\[\begin{aligned}
+    A&amp;=\sum_{1\leq i\leq m}\sum_{1 \leq j \leq n}(A)_{ij}E_{ij}=(A)_{11}E_{11}+....+(A)_{1n}E_{1n}\\
+    &amp;+...+(A)_{m1}E_{m1}+....+(A)_{mn}E_{mn}
+    \end{aligned}\]</span></p>
 </div>
 <div class="exercise">
-<ol type="1">
-<li><p>מצאו קבוצה פורשת עבור תת-המרחב של המטריצות הסימטריות.</p></li>
-<li><p>מצאו קבוצה פורשת עבור תת-המרחב של המטריצות האנטי-סימטריות.</p></li>
-</ol>
+<p>א. מצאו קבוצה פורשת עבור תת-המרחב של המטריצות הסימטריות.</p>
+<p>ב. מצאו קבוצה פורשת עבור תת-המרחב של המטריצות האנטי-סימטריות.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -709,70 +683,66 @@ A&amp;=\sum_{1\leq i\leq m}\sum_{1 \leq j \leq n}(A)_{ij}E_{ij}=(A)_{11}E_{11}+.
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>כל מטריצה סימטרית היא מהצורה <span class="math display">\[.\begin{pmatrix}
-a &amp; b\\
-b &amp; d
-\end{pmatrix}=a\begin{pmatrix}
-1 &amp; 0\\
-0 &amp; 0
-\end{pmatrix}+b\begin{pmatrix}
-0 &amp; 1\\
-1 &amp; 0
-\end{pmatrix}+d\begin{pmatrix}
-0 &amp; 0\\
-0 &amp; 1
-\end{pmatrix}\]</span> אז קיבלנו קבוצה פורשת: <span class="math display">\[\Set{\begin{pmatrix}
-1 &amp; 0\\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 1\\
-1 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0\\
-0 &amp; 1
-\end{pmatrix}}\]</span></p></li>
-<li><p>כל מטריצה אנטי-סימטרית היא מהצורה <span class="math display">\[.\begin{pmatrix}
-0 &amp; b\\
--b &amp; 0
-\end{pmatrix}=b\begin{pmatrix}
-0 &amp; 1\\
--1 &amp; 0
-\end{pmatrix}\]</span> אז קיבלנו קבוצה פורשת: <span class="math display">\[\Set{\begin{pmatrix}
-0 &amp; 1\\
--1 &amp; 0
-\end{pmatrix}}\]</span></p></li>
-</ol>
+<p>א. כל מטריצה סימטרית היא מהצורה <span class="math display">\[.\begin{pmatrix}
+    a &amp; b\\
+    b &amp; d
+    \end{pmatrix}=a\begin{pmatrix}
+    1 &amp; 0\\
+    0 &amp; 0
+    \end{pmatrix}+b\begin{pmatrix}
+    0 &amp; 1\\
+    1 &amp; 0
+    \end{pmatrix}+d\begin{pmatrix}
+    0 &amp; 0\\
+    0 &amp; 1
+    \end{pmatrix}\]</span> אז קיבלנו קבוצה פורשת: <span class="math display">\[\Set{\begin{pmatrix}
+    1 &amp; 0\\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 1\\
+    1 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0\\
+    0 &amp; 1
+    \end{pmatrix}}\]</span></p>
+<p>ב. כל מטריצה אנטי-סימטרית היא מהצורה <span class="math display">\[.\begin{pmatrix}
+    0 &amp; b\\
+    -b &amp; 0
+    \end{pmatrix}=b\begin{pmatrix}
+    0 &amp; 1\\
+    -1 &amp; 0
+    \end{pmatrix}\]</span> אז קיבלנו קבוצה פורשת: <span class="math display">\[\Set{\begin{pmatrix}
+    0 &amp; 1\\
+    -1 &amp; 0
+    \end{pmatrix}}\]</span></p>
 </div>
 </div>
 </div>
 <p>ההגדרה הבאה מתייחסת לתת-מרחבים שקשורים למטריצה נתונה.</p>
-<div class="definition">
-<p> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> עם שורות <span class="math display">\[R_1^A,...,R_m^A\in\mathbb{F}^n\]</span> ועמודות <span class="math display">\[.C_1^A,...,C_n^A\in\mathbb{F}^m\]</span> נגדיר את מרחב השורות <span class="math display">\[,\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Span}}(R_1^A,...,R_m^A)\subseteq\mathbb{F}^n\]</span> ואת מרחב העמודות <span class="math display">\[.\mathop{\mathrm{Col}}(A)=\mathop{\mathrm{Span}}(C_1^A,...,C_n^A)\subseteq\mathbb{F}^m\]</span></p>
+<div id="def-row-col" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 8.2</strong></span> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> עם שורות <span class="math display">\[R_1^A,...,R_m^A\in\mathbb{F}^n\]</span> ועמודות <span class="math display">\[.C_1^A,...,C_n^A\in\mathbb{F}^m\]</span> נגדיר את מרחב השורות <span class="math display">\[,\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Span}}(R_1^A,...,R_m^A)\subseteq\mathbb{F}^n\]</span> ואת מרחב העמודות <span class="math display">\[.\mathop{\mathrm{Col}}(A)=\mathop{\mathrm{Span}}(C_1^A,...,C_n^A)\subseteq\mathbb{F}^m\]</span></p>
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>עבור <span class="math display">\[A=\begin{pmatrix}
-1 &amp; 2 &amp;3 \\
--1 &amp;0 &amp;1
-\end{pmatrix}\]</span> מתקיים <span class="math display">\[\begin{aligned}
-,\mathop{\mathrm{Row}}(A)&amp;=\mathop{\mathrm{Span}}((1,2,3),(-1,0,1)) \\
-.\mathop{\mathrm{Col}}(A)&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1 \\ -1\end{pmatrix},\begin{pmatrix}2 \\ 0\end{pmatrix},\begin{pmatrix}3 \\ 1\end{pmatrix}\right)
-\end{aligned}\]</span></p></li>
-<li><p><span class="math display">\[B=\begin{pmatrix}
-i &amp; 0  \\
-2 &amp;1+i \\
-3 &amp; -i
-\end{pmatrix}\]</span> מתקיים <span class="math display">\[\begin{aligned}
-,\mathop{\mathrm{Row}}(B)&amp;=\mathop{\mathrm{Span}}((i,0),(2,1+i),(3,-i)) \\
-.\mathop{\mathrm{Col}}(B)&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}i \\ 2 \\ 3\end{pmatrix},\begin{pmatrix}0 \\ 1+i \\-i\end{pmatrix}\right)
-\end{aligned}\]</span></p></li>
-</ol>
+<p>א. עבור <span class="math display">\[A=\begin{pmatrix}
+    1 &amp; 2 &amp;3 \\
+    -1 &amp;0 &amp;1
+    \end{pmatrix}\]</span> מתקיים <span class="math display">\[\begin{aligned}
+    ,\mathop{\mathrm{Row}}(A)&amp;=\mathop{\mathrm{Span}}((1,2,3),(-1,0,1)) \\
+    .\mathop{\mathrm{Col}}(A)&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1 \\ -1\end{pmatrix},\begin{pmatrix}2 \\ 0\end{pmatrix},\begin{pmatrix}3 \\ 1\end{pmatrix}\right)
+    \end{aligned}\]</span></p>
+<p>ב. <span class="math display">\[B=\begin{pmatrix}
+    i &amp; 0  \\
+    2 &amp;1+i \\
+    3 &amp; -i
+    \end{pmatrix}\]</span> מתקיים <span class="math display">\[\begin{aligned}
+    ,\mathop{\mathrm{Row}}(B)&amp;=\mathop{\mathrm{Span}}((i,0),(2,1+i),(3,-i)) \\
+    .\mathop{\mathrm{Col}}(B)&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}i \\ 2 \\ 3\end{pmatrix},\begin{pmatrix}0 \\ 1+i \\-i\end{pmatrix}\right)
+    \end{aligned}\]</span></p>
 </div>
 <p>הטענה הבאה מראה את הקשר בין מרחב עמודות לממ"ל.</p>
-<div class="proposition">
-<p><em> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז לכל וקטור עמודה <span class="math inline">\(w\in\mathbb{F}^m\)</span> מתקיים <span class="math inline">\(w\in\mathop{\mathrm{Col}}(A)\)</span> אם ורק אם קיים פתרון לממ"ל <span class="math inline">\(Ax=w\)</span>.</em></p>
+<div id="prp-column-space" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.5</strong></span> <em> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז לכל וקטור עמודה <span class="math inline">\(w\in\mathbb{F}^m\)</span> מתקיים <span class="math inline">\(w\in\mathop{\mathrm{Col}}(A)\)</span> אם ורק אם קיים פתרון לממ"ל <span class="math inline">\(Ax=w\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נכתוב את <span class="math inline">\(A\)</span> בהתאם לוקטורי העמודות שלה:</p>
@@ -828,7 +798,7 @@ w_2=
 1\\
 0
 \end{pmatrix}\]</span></p>
-<p>לפי טענה <span class="math inline">\(\ref{prop:column-space}\)</span> צריך לפתור שתי ממ"ליות: <span class="math inline">\(Ax=w_1\)</span> מחד ו- <span class="math inline">\(Ax=w_2\)</span> מאידך. כדי לחסוך עבודה, ניתן לפתור את שתיהן במקביל ע"י מטריצה מורחבת <span class="math inline">\((A|w_1|w_2)\)</span> ודירוג לפי <span class="math inline">\(A\)</span>:</p>
+<p>לפי טענה <a href="#prp-column-space">8.41</a> צריך לפתור שתי ממ"ליות: <span class="math inline">\(Ax=w_1\)</span> מחד ו- <span class="math inline">\(Ax=w_2\)</span> מאידך. כדי לחסוך עבודה, ניתן לפתור את שתיהן במקביל ע"י מטריצה מורחבת <span class="math inline">\((A|w_1|w_2)\)</span> ודירוג לפי <span class="math inline">\(A\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
 &amp;\left(
 \begin{array}{ccc|c|c}
@@ -1047,50 +1017,48 @@ t
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> הקבוצה <span class="math inline">\(\Set{(1,2,3),(3,6,9)}\)</span> היא ת"ל כי הוקטורים קו-לינאריים. באופן שקול (לפי ההגדרה החדשה), קיים צ"ל לא טריוויאלי שלהם שמתאפס, למשל: <span class="math display">\[3\cdot(1,2,3)+(-1)\cdot(3,6,9)=(0,0,0)\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> נסתכל על הקבוצה <span class="math inline">\(\Set{(1,1,0),(0,1,1),(1,0,1),(1,1,1)}\)</span> נראה כי היא ת"ל: נניח שקיימים <span class="math inline">\(\alpha_1,\alpha_2,\alpha_3,\alpha_4\in\mathbb{R}\)</span> כך ש- <span class="math display">\[\begin{aligned}
-\alpha_1(1,1,0)+\alpha_2(0,1,1)+\alpha_3(1,0,1)+\alpha_4(1,1,1)&amp;=(0,0,0,0) \\\iff \begin{pmatrix}
-    1 &amp; 0 &amp; 1 &amp; 1\\
-    1 &amp; 1 &amp; 0 &amp; 1 \\
-    0 &amp; 1 &amp; 1 &amp; 1
-    \end{pmatrix}\begin{pmatrix}
-    \alpha_1 \\
-    \alpha_2 \\
-    \alpha_3 \\
-    \alpha_4
-    \end{pmatrix}&amp;=\begin{pmatrix}
-    0 \\
-    0 \\
-    0 \\
-    0
-\end{pmatrix}
-\end{aligned}\]</span> נרצה לדעת אם כל הסקלרים בהכרח מתאפסים, או שמא יש פתרון לא טריוויאלי. לשם כך, נדרג את המטריצה: <span class="math display">\[\begin{aligned}
-&amp;\begin{pmatrix}
-    1 &amp; 0 &amp; 1 &amp; 1\\
-    1 &amp; 1 &amp; 0 &amp; 1 \\
-    0 &amp; 1 &amp; 1 &amp; 1
-    \end{pmatrix}\xrightarrow{R_2-R_1\to R_2}\begin{pmatrix}
-    1 &amp; 0 &amp; 1 &amp; 1\\
-    0 &amp; 1 &amp; -1 &amp; 0 \\
-    0 &amp; 1 &amp; 1 &amp; 1
+<p>א. ב- <span class="math inline">\(\mathbb{R}^3\)</span> הקבוצה <span class="math inline">\(\Set{(1,2,3),(3,6,9)}\)</span> היא ת"ל כי הוקטורים קו-לינאריים. באופן שקול (לפי ההגדרה החדשה), קיים צ"ל לא טריוויאלי שלהם שמתאפס, למשל: <span class="math display">\[3\cdot(1,2,3)+(-1)\cdot(3,6,9)=(0,0,0)\]</span></p>
+<p>ב. ב- <span class="math inline">\(\mathbb{R}^3\)</span> נסתכל על הקבוצה <span class="math inline">\(\Set{(1,1,0),(0,1,1),(1,0,1),(1,1,1)}\)</span> נראה כי היא ת"ל: נניח שקיימים <span class="math inline">\(\alpha_1,\alpha_2,\alpha_3,\alpha_4\in\mathbb{R}\)</span> כך ש- <span class="math display">\[\begin{aligned}
+    \alpha_1(1,1,0)+\alpha_2(0,1,1)+\alpha_3(1,0,1)+\alpha_4(1,1,1)&amp;=(0,0,0,0) \\\iff \begin{pmatrix}
+        1 &amp; 0 &amp; 1 &amp; 1\\
+        1 &amp; 1 &amp; 0 &amp; 1 \\
+        0 &amp; 1 &amp; 1 &amp; 1
+        \end{pmatrix}\begin{pmatrix}
+        \alpha_1 \\
+        \alpha_2 \\
+        \alpha_3 \\
+        \alpha_4
+        \end{pmatrix}&amp;=\begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0
     \end{pmatrix}
-    \xrightarrow{R_3-R_2\to R_2}\begin{pmatrix}
-    1 &amp; 0 &amp; 1 &amp; 1\\
-    0 &amp; 1 &amp; -1 &amp; 0 \\
-    0 &amp; 0 &amp; 2 &amp; 1
-    \end{pmatrix}\\
-&amp;\xrightarrow{\frac{1}{2}R_3\to R_3}\begin{pmatrix}
-    1 &amp; 0 &amp; 1 &amp; 1\\
-    0 &amp; 1 &amp; -1 &amp; 0 \\
-    0 &amp; 0 &amp; 1 &amp; \frac{1}{2}
-    \end{pmatrix}\xrightarrow{\substack{R_1\to R_1-R_3\\ R_2\to R_2+R_3}}\begin{pmatrix}
-    1 &amp; 0 &amp; 0 &amp; \frac{1}{2}\\
-    0 &amp; 1 &amp; 0 &amp; \frac{1}{2} \\
-    0 &amp; 0 &amp; 1 &amp; \frac{1}{2}
-    \end{pmatrix}
-    \end{aligned}\]</span> אין צורך בקבוצת כל הפתרונות כדי לזהות תלות לינארית. כבר רואים שהפתרון אינו יחיד, ואם למשל נציב <span class="math inline">\(\alpha_4=-2\)</span> נקבל משוואה המתארת תלות לינארית: <span class="math display">\[\alpha_1=\alpha_2=\alpha_3=1 \implies (1,1,0)+(0,1,1)+(1,0,1)-2(1,1,1)=(0,0,0)\]</span> לעומת זאת, הדירוג לעיל מראה שתת-הקבוצה <span class="math inline">\(\Set{(1,1,0),(0,1,1),(1,0,1)}\)</span> היא בת"ל. הסיבה לכך היא שאם מתעלמים מהוקטור הרביעי בקבוצה המקורית, אז לפי הדירוג מתקבלת מטריצת היחידה <span class="math inline">\(I_3\)</span>. לכן: <span class="math display">\[\alpha_1(1,1,0)+\alpha_2(0,1,1)+\alpha_3(1,0,1)=(0,0,0) \iff \alpha_1=\alpha_2=\alpha_3=0\]</span></p></li>
-</ol>
+    \end{aligned}\]</span> נרצה לדעת אם כל הסקלרים בהכרח מתאפסים, או שמא יש פתרון לא טריוויאלי. לשם כך, נדרג את המטריצה: <span class="math display">\[\begin{aligned}
+    &amp;\begin{pmatrix}
+        1 &amp; 0 &amp; 1 &amp; 1\\
+        1 &amp; 1 &amp; 0 &amp; 1 \\
+        0 &amp; 1 &amp; 1 &amp; 1
+        \end{pmatrix}\xrightarrow{R_2-R_1\to R_2}\begin{pmatrix}
+        1 &amp; 0 &amp; 1 &amp; 1\\
+        0 &amp; 1 &amp; -1 &amp; 0 \\
+        0 &amp; 1 &amp; 1 &amp; 1
+        \end{pmatrix}
+        \xrightarrow{R_3-R_2\to R_2}\begin{pmatrix}
+        1 &amp; 0 &amp; 1 &amp; 1\\
+        0 &amp; 1 &amp; -1 &amp; 0 \\
+        0 &amp; 0 &amp; 2 &amp; 1
+        \end{pmatrix}\\
+    &amp;\xrightarrow{\frac{1}{2}R_3\to R_3}\begin{pmatrix}
+        1 &amp; 0 &amp; 1 &amp; 1\\
+        0 &amp; 1 &amp; -1 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; \frac{1}{2}
+        \end{pmatrix}\xrightarrow{\substack{R_1\to R_1-R_3\\ R_2\to R_2+R_3}}\begin{pmatrix}
+        1 &amp; 0 &amp; 0 &amp; \frac{1}{2}\\
+        0 &amp; 1 &amp; 0 &amp; \frac{1}{2} \\
+        0 &amp; 0 &amp; 1 &amp; \frac{1}{2}
+        \end{pmatrix}
+        \end{aligned}\]</span> אין צורך בקבוצת כל הפתרונות כדי לזהות תלות לינארית. כבר רואים שהפתרון אינו יחיד, ואם למשל נציב <span class="math inline">\(\alpha_4=-2\)</span> נקבל משוואה המתארת תלות לינארית: <span class="math display">\[\alpha_1=\alpha_2=\alpha_3=1 \implies (1,1,0)+(0,1,1)+(1,0,1)-2(1,1,1)=(0,0,0)\]</span> לעומת זאת, הדירוג לעיל מראה שתת-הקבוצה <span class="math inline">\(\Set{(1,1,0),(0,1,1),(1,0,1)}\)</span> היא בת"ל. הסיבה לכך היא שאם מתעלמים מהוקטור הרביעי בקבוצה המקורית, אז לפי הדירוג מתקבלת מטריצת היחידה <span class="math inline">\(I_3\)</span>. לכן: <span class="math display">\[\alpha_1(1,1,0)+\alpha_2(0,1,1)+\alpha_3(1,0,1)=(0,0,0) \iff \alpha_1=\alpha_2=\alpha_3=0\]</span></p>
 </div>
 <figure id="fig:LinearIndependence" class="figure">
 <img src="images/LinearIndependence.png" style="width:40.0%" class="figure-img">
@@ -1120,8 +1088,8 @@ t
 </div>
 </div>
 </div>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ויהיו <span class="math inline">\(v_1,...,v_k\in V\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל אם ורק אם קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math display">\[.v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\]</span></em></p>
+<div id="prp-linear-dependence" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.6</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ויהיו <span class="math inline">\(v_1,...,v_k\in V\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל אם ורק אם קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math display">\[.v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\]</span></em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>בניסוח יותר פשוט, הטענה אומרת שאם <span class="math inline">\(v_1,...,v_k\)</span> ת"ל, אז אחד מהם הוא צ"ל של היתר.</p>
@@ -1135,34 +1103,32 @@ t
 \end{aligned}\]</span>&nbsp;◻</p>
 </div>
 <div class="corollary">
-<p><strong>מסקנה 1.51</strong>. <em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(v_1,...,v_k,v_{k+1},...,v_l\in V\)</span>.</em></p>
-<ol type="1">
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל, אז <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> ת"ל.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> בת"ל, אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל.</em></p></li>
-</ol>
+<p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(v_1,...,v_k,v_{k+1},...,v_l\in V\)</span>.</em></p>
+<p>א. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל, אז <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> ת"ל.</em></p>
+<p>ב. <em>אם <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> בת"ל, אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>שני הסעיפים שקולים לוגית, כי "בלתי תלויים לינארית" זו השלילה של "תלויים לינארית". נוכיח את הסעיף הראשון: נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל. אז לפי טענה <span class="math inline">\(\ref{prop:linear-dependence}\)</span> קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. ושוב לפי הטענה, זה גם מראה כי <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> ת"ל.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>שני הסעיפים שקולים לוגית, כי "בלתי תלויים לינארית" זו השלילה של "תלויים לינארית". נוכיח את הסעיף הראשון: נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל. אז לפי טענה <a href="#prp-linear-dependence">8.49</a> קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. ושוב לפי הטענה, זה גם מראה כי <span class="math inline">\(\Set{v_1,...,v_k,v_{k+1},...,v_l}\)</span> ת"ל.&nbsp;◻</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>במילה פשוטות: המשמעות של תלות לינארית היא שלפחות אחד הוקטורים נפרש ע"י הוקטורים האחרים. אם נגדיל קבוצת וקטורים ת"ל, היא תישאר ת"ל. אם נקטין קבוצת וקטורים בת"ל, היא תישאר בת"ל.</p>
 </div>
 <div class="corollary">
-<p><strong>מסקנה 1.53</strong>. <em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(\Set{v_1,...,v_k}\in V\)</span> בת"ל ו- <span class="math inline">\(w\in V\)</span> כך שמתקיים <span class="math inline">\(w\notin\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k,w}\)</span> בת"ל.</em></p>
+<p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(\Set{v_1,...,v_k}\in V\)</span> בת"ל ו- <span class="math inline">\(w\in V\)</span> כך שמתקיים <span class="math inline">\(w\notin\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k,w}\)</span> בת"ל.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>נניח בשלילה כי <span class="math inline">\(\Set{v_1,...,v_k,w}\)</span> ת"ל. אז לפי טענה <span class="math inline">\(\ref{prop:linear-dependence}\)</span>, אחד הוקטורים נפרש ע"י הוקטורים הקודמים לו. נתון כי <span class="math inline">\(w\notin\mathop{\mathrm{Span}}(v_1,...v_k)\)</span>, ולכן קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל וזו סתירה להנחה.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נניח בשלילה כי <span class="math inline">\(\Set{v_1,...,v_k,w}\)</span> ת"ל. אז לפי טענה <a href="#prp-linear-dependence">8.49</a>, אחד הוקטורים נפרש ע"י הוקטורים הקודמים לו. נתון כי <span class="math inline">\(w\notin\mathop{\mathrm{Span}}(v_1,...v_k)\)</span>, ולכן קיים <span class="math inline">\(1\leq i\leq k\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. אז <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל וזו סתירה להנחה.&nbsp;◻</p>
 </div>
 <p>המסקנה הבאה נקראת "למת הדילול" והיא תשמש אותנו בהמשך הפרק. היא מסבירה איך ניתן לחלץ מקבוצה הפורשת מ"ו תת-קבוצה שהיא בת"ל וגם פורשת. הרעיון הוא "לדלל" את כל הוקטורים העודפים/מיותרים שנפרשים ע"י הוקטורים האחרים.</p>
-<div class="corollary">
-<p><strong>מסקנה 1.54</strong>. <em> אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> קבוצה הפורשת מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>, אז תת-הקבוצה <span class="math display">\[\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}\]</span> היא בת"ל ופורשת את <span class="math inline">\(V\)</span>.</em></p>
+<div id="cor-basis-extraction" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.1</strong></span> <em> אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> קבוצה הפורשת מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>, אז תת-הקבוצה <span class="math display">\[\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}\]</span> היא בת"ל ופורשת את <span class="math inline">\(V\)</span>.</em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>המסקנה תקפה גם לגבי קבוצה הפורשת תת-מרחב <span class="math inline">\(W\)</span>, שהוא מ"ו בפני עצמו.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>בלי הגבלת הכלליות, קיים <span class="math inline">\(1\leq l\leq k\)</span> כך ש- <span class="math display">\[\Set{v_1,...,v_l}=\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}\]</span> (הנחנו שהוקטורים התלויים בקודמיהם מופיעים בסוף הרשימה, וניתן לדאוג לכך ע"י שינוי האינדקסים שלהם). אז לפי טענה <span class="math inline">\(\ref{prop:linear-dependence}\)</span>, זו קבוצה בת"ל כי אחרת קיים <span class="math inline">\(1\leq i\leq l\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span> וזו סתירה להגדרה של תת-הקבוצה.</p>
-<p>כדי להראות כי <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_l)\)</span>, די לבדוק שמתקיים <span class="math inline">\(v_{l+1},...,v_k\in\mathop{\mathrm{Span}}(v_1,...,v_l)\)</span> כי אז ינבע לפי טענה <span class="math inline">\(\ref{prop:vector-span}\)</span> <span class="math display">\[V=\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq\mathop{\mathrm{Span}}(v_1,...,v_l)\subseteq V\]</span> ומכאן השוויון. נשים לב שלפי ההגדרה לכל <span class="math inline">\(l+1\leq i\leq k\)</span> מתקיים <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. ולכן <span class="math display">\[\begin{aligned}
+<p><span class="proof-title"><em>Proof</em>. </span>בלי הגבלת הכלליות, קיים <span class="math inline">\(1\leq l\leq k\)</span> כך ש- <span class="math display">\[\Set{v_1,...,v_l}=\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}\]</span> (הנחנו שהוקטורים התלויים בקודמיהם מופיעים בסוף הרשימה, וניתן לדאוג לכך ע"י שינוי האינדקסים שלהם). אז לפי טענה <a href="#prp-linear-dependence">8.49</a>, זו קבוצה בת"ל כי אחרת קיים <span class="math inline">\(1\leq i\leq l\)</span> כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span> וזו סתירה להגדרה של תת-הקבוצה.</p>
+<p>כדי להראות כי <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_l)\)</span>, די לבדוק שמתקיים <span class="math inline">\(v_{l+1},...,v_k\in\mathop{\mathrm{Span}}(v_1,...,v_l)\)</span> כי אז ינבע לפי טענה <a href="#prp-vector-span">8.35</a> <span class="math display">\[V=\mathop{\mathrm{Span}}(v_1,...,v_k)\subseteq\mathop{\mathrm{Span}}(v_1,...,v_l)\subseteq V\]</span> ומכאן השוויון. נשים לב שלפי ההגדרה לכל <span class="math inline">\(l+1\leq i\leq k\)</span> מתקיים <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>. ולכן <span class="math display">\[\begin{aligned}
 &amp;v_{l+1}\in\mathop{\mathrm{Span}}(v_1,...,v_l) \implies v_{l+2}\in\mathop{\mathrm{Span}}(v_1,...,v_l,v_{l+1})=\mathop{\mathrm{Span}}(v_1,...,v_l) \\
 &amp;\implies \cdots \implies v_k\in\mathop{\mathrm{Span}}(v_1,...,v_{k-1})=\mathop{\mathrm{Span}}(v_1,...,v_l)
 \end{aligned}\]</span>&nbsp;◻</p>
@@ -1213,7 +1179,7 @@ t
 (1,2,1,2)&amp;=1\cdot(1,1,0,1)+1\cdot(0,1,1,1) \\
 (2,1,-1,1)&amp;=2\cdot(1,1,0,1)+(-1)\cdot(0,1,1,1)
 \end{aligned}\]</span></p>
-<p>קבוצת שתי העמודות השמאליות (שמתאימות לאיברים מובילים בסוף הדירוג) היא בת"ל. נסמן <span class="math inline">\(S_2=\Set{(1,1,0,1),(0,1,1,1)}\)</span> והרי שלפי מסקנה <span class="math inline">\(\ref{cor:basis-extraction}\)</span> נובע כי <span class="math inline">\(S_2\)</span> פורשת את <span class="math inline">\(W\)</span>.</p>
+<p>קבוצת שתי העמודות השמאליות (שמתאימות לאיברים מובילים בסוף הדירוג) היא בת"ל. נסמן <span class="math inline">\(S_2=\Set{(1,1,0,1),(0,1,1,1)}\)</span> והרי שלפי מסקנה <a href="#cor-basis-extraction">8.54</a> נובע כי <span class="math inline">\(S_2\)</span> פורשת את <span class="math inline">\(W\)</span>.</p>
 </div>
 </div>
 </div>
@@ -1228,26 +1194,24 @@ t
 <p><span class="proof-title"><em>Remark</em>. </span>נראה בהמשך שאם קיים ל- <span class="math inline">\(V\)</span> בסיס אחד, אז למעשה קיימים לו אינסוף בסיסים ולכולם אותו הגודל (<span class="math inline">\(n\)</span> בסימון של ההגדרה). גודל זה נקרא המימד של <span class="math inline">\(V\)</span>, ונגדיר אותו באופן מסודר בהמשך.</p>
 </div>
 <div class="example">
-<p>נחזור לדוגמה <span class="math inline">\(\ref{ex:standard-bases}\)</span> ונראה שהקבוצות הפורשות הן גם בת"ל, ולכן הן בסיסים.</p>
-<ol type="1">
-<li><p>ראינו כי הקבוצה <span class="math inline">\(\Set{e_1,...,e_n}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>. נראה כי היא גם בת"ל: נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> כך ש- <span class="math inline">\(\alpha_1e_1+...+\alpha_ne_n=0\)</span>. נשים לב כי <span class="math display">\[.\alpha_1e_1+...+\alpha_ne_n=(\alpha_1,...,\alpha_n)=(0,...,0) \implies \alpha_1=...=\alpha_n=0\]</span> ולכן <span class="math inline">\(\Set{e_1,...,e_n}\)</span> היא גם בת"ל, כלומר היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>. היא נקראת הבסיס הסטנדרטי שלו, ונשים לב שגודלה הוא <span class="math inline">\(n\)</span>.</p></li>
-<li><p>ראינו שהקבוצה <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m,1\leq j\leq n}\)</span> פורשת את <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נראה שהיא גם בת"ל: נניח שקיימים <span class="math inline">\(\alpha_{11},...,\alpha_{1n},...,\alpha_{m1},...,\alpha_{mn}\in\mathbb{F}\)</span> כך ש- <span class="math display">\[\alpha_{11}E_{11}+...+\alpha_{mn}E_{mn}=\mathbf{0}_{m\times n}\]</span> לפי ההגדרה של <span class="math inline">\(E_{ij}\)</span> נובע כי <span class="math display">\[.\begin{pmatrix}
-\alpha_{11} &amp; \cdots &amp;\alpha_{1n} \\
-\vdots &amp; \ddots &amp;\vdots \\
-\alpha_{m1} &amp; \cdots &amp;\alpha_{mn}
-\end{pmatrix}=\begin{pmatrix}
-0 &amp; \cdots &amp; 0 \\
-\vdots &amp;\ddots &amp;\vdots \\
-0 &amp;\cdots &amp; 0
-\end{pmatrix}\]</span> אז כל הסקלרים בהכרח מתאפסים כנדרש. לכן <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m,1\leq j\leq n}\)</span> היא למעשה בסיס ל- <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> והיא נקראת הבסיס הסטנדרטי שלו. גודלה הוא <span class="math inline">\(mn\)</span>.</p></li>
-</ol>
+<p>נחזור לדוגמה <a href="#exm-standard-bases">8.37</a> ונראה שהקבוצות הפורשות הן גם בת"ל, ולכן הן בסיסים.</p>
+<p>א. ראינו כי הקבוצה <span class="math inline">\(\Set{e_1,...,e_n}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>. נראה כי היא גם בת"ל: נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> כך ש- <span class="math inline">\(\alpha_1e_1+...+\alpha_ne_n=0\)</span>. נשים לב כי <span class="math display">\[.\alpha_1e_1+...+\alpha_ne_n=(\alpha_1,...,\alpha_n)=(0,...,0) \implies \alpha_1=...=\alpha_n=0\]</span> ולכן <span class="math inline">\(\Set{e_1,...,e_n}\)</span> היא גם בת"ל, כלומר היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>. היא נקראת הבסיס הסטנדרטי שלו, ונשים לב שגודלה הוא <span class="math inline">\(n\)</span>.</p>
+<p>ב. ראינו שהקבוצה <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m,1\leq j\leq n}\)</span> פורשת את <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נראה שהיא גם בת"ל: נניח שקיימים <span class="math inline">\(\alpha_{11},...,\alpha_{1n},...,\alpha_{m1},...,\alpha_{mn}\in\mathbb{F}\)</span> כך ש- <span class="math display">\[\alpha_{11}E_{11}+...+\alpha_{mn}E_{mn}=\mathbf{0}_{m\times n}\]</span> לפי ההגדרה של <span class="math inline">\(E_{ij}\)</span> נובע כי <span class="math display">\[.\begin{pmatrix}
+    \alpha_{11} &amp; \cdots &amp;\alpha_{1n} \\
+    \vdots &amp; \ddots &amp;\vdots \\
+    \alpha_{m1} &amp; \cdots &amp;\alpha_{mn}
+    \end{pmatrix}=\begin{pmatrix}
+    0 &amp; \cdots &amp; 0 \\
+    \vdots &amp;\ddots &amp;\vdots \\
+    0 &amp;\cdots &amp; 0
+    \end{pmatrix}\]</span> אז כל הסקלרים בהכרח מתאפסים כנדרש. לכן <span class="math inline">\(\Set{E_{ij}|1\leq i\leq m,1\leq j\leq n}\)</span> היא למעשה בסיס ל- <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> והיא נקראת הבסיס הסטנדרטי שלו. גודלה הוא <span class="math inline">\(mn\)</span>.</p>
 </div>
 <p>נרצה גם לתת משמעות לבסיס למרחב וקטורי "נקודתי" שיש בו רק את וקטור האפס.</p>
 <div class="definition">
 <p>יהי <span class="math inline">\(V=\Set{0_V}\)</span>. עבור קבוצת וקטורים ריקה <span class="math inline">\(\emptyset=\Set{ }\)</span> נגדיר <span class="math display">\[.\mathop{\mathrm{Span}}(\emptyset)=\Set{0_V}\]</span></p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>הרעיון הוא שאם אין אף וקטור בקבוצה, אז ברירת המחדל של הצירוף הלינארי הריק היא <span class="math inline">\(0_V\)</span> כי אין מה לסכום. שימו לב שהקבוצה הריקה היא בת"ל כי בהעדר וקטורים לא ניתן למצוא סקלרים (שאינם כולם <span class="math inline">\(0\)</span> ובכלל) כך שהצירוף הלינארי יהיה שווה ל- <span class="math inline">\(0_V\)</span>. אז במובן הזה (שהוא די חסר תוכן) הקבוצה הריקה <span class="math inline">\(\empty\)</span> היא בסיס ל- <span class="math inline">\(\Set{0_V}\)</span> וגודלה הוא <span class="math inline">\(0\)</span>.</p>
+<p><span class="proof-title"><em>Remark</em>. </span>הרעיון הוא שאם אין אף וקטור בקבוצה, אז ברירת המחדל של הצירוף הלינארי הריק היא <span class="math inline">\(0_V\)</span> כי אין מה לסכום. שימו לב שהקבוצה הריקה היא בת"ל כי בהעדר וקטורים לא ניתן למצוא סקלרים (שאינם כולם <span class="math inline">\(0\)</span> ובכלל) כך שהצירוף הלינארי יהיה שווה ל- <span class="math inline">\(0_V\)</span>. אז במובן הזה (שהוא די חסר תוכן) הקבוצה הריקה <span class="math inline">\(\emptyset\)</span> היא בסיס ל- <span class="math inline">\(\Set{0_V}\)</span> וגודלה הוא <span class="math inline">\(0\)</span>.</p>
 <p>שימו לב ש- <span class="math inline">\(\Set{0_V}\)</span> אינה בסיס לעצמה כי היא ת"ל.</p>
 </div>
 <div class="proposition">
@@ -1259,10 +1223,10 @@ t
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון, נניח כי <span class="math inline">\(\Set{v_1,...,v_n}\)</span> היא בסיס ל- <span class="math inline">\(V\)</span>. אז בפרט <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_n)\)</span>, ולכן <span class="math inline">\(V\)</span> נוצר סופית.</p>
-<p>בכיוון השני, נניח כי <span class="math inline">\(V\)</span> נוצר סופית ולכן קיימת <span class="math inline">\(\Set{v_1,...,v_k}\)</span> כך ש- <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>. לפי מסקנה <span class="math inline">\(\ref{cor:basis-extraction}\)</span> (למת הדילול) קיימת תת-קבוצה בת"ל של <span class="math inline">\(\Set{v_1,...,v_k}\)</span> הפורשת את <span class="math inline">\(V\)</span>, כלומר היא בסיס.&nbsp;◻</p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(V\)</span> נוצר סופית ולכן קיימת <span class="math inline">\(\Set{v_1,...,v_k}\)</span> כך ש- <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>. לפי מסקנה <a href="#cor-basis-extraction">8.54</a> (למת הדילול) קיימת תת-קבוצה בת"ל של <span class="math inline">\(\Set{v_1,...,v_k}\)</span> הפורשת את <span class="math inline">\(V\)</span>, כלומר היא בסיס.&nbsp;◻</p>
 </div>
-<div class="proposition">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. יהיו <span class="math inline">\(v_1,...,v_n\in V\)</span>. אז התנאים הבאים שקולים:</em></p>
+<div id="prp-unique-scalars" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.7</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. יהיו <span class="math inline">\(v_1,...,v_n\in V\)</span>. אז התנאים הבאים שקולים:</em></p>
 <ul>
 <li><p><em><span class="math inline">\(\Set{v_1,...,v_n}\)</span> היא בסיס ל- <span class="math inline">\(V\)</span>.</em></p></li>
 <li><p><em>לכל <span class="math inline">\(v\in V\)</span> קיימים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> יחידים כך ש- <span class="math inline">\(\alpha_1v_1+...+\alpha_nv_n=v\)</span>.</em></p></li>
@@ -1280,7 +1244,7 @@ t
 <p>המשפט לעיל הוא המפתח להצגת וקטורים בדרכים שונות - בהתאם לבסיסים שונים. בהינתן בסיס <span class="math inline">\(B\)</span>, לכל וקטור <span class="math inline">\(v\in V\)</span> מתאימים סקלרים <span class="math inline">\(\alpha_1,...,\alpha_n\)</span> (בסדר הזה) שמאפיינים אותו. אפשר לחשוב על ההצגה הזו כקידוד מידע, ונחזור לרעיון הזה כשנגיע לתת-הפרק על קוארדינטות.</p>
 <section id="אפיון-של-בסיס-לפי-מטריצה" class="level3" data-number="8.5.1">
 <h3 data-number="8.5.1" class="anchored" data-anchor-id="אפיון-של-בסיס-לפי-מטריצה"><span class="header-section-number">8.5.1</span> אפיון של בסיס לפי מטריצה</h3>
-<p>כעת נתמקד ב- <span class="math inline">\(V=\mathbb{F}^n\)</span> כדי להבין את הקשר בין המושג של בסיס לבין החומר של הפרקים הקודמים (הפיכות של מטריצה). נניח כי <span class="math inline">\(v_1,...,v_k\)</span> וקטורי עמודה ב- <span class="math inline">\(\mathbb{F}^n\)</span>. ראינו בטענה <span class="math inline">\(\ref{prop:column-space}\)</span> שלכל <span class="math inline">\(w\in\mathbb{F}^n\)</span> מתקיים <span class="math inline">\(w\in\mathop{\mathrm{Span}}(v_1,....,v_k)\)</span> אם ורק אם קיים פתרון לממ"ל <span class="math inline">\(Ax=w\)</span>, כאשר <span class="math display">\[.A=\begin{pmatrix}
+<p>כעת נתמקד ב- <span class="math inline">\(V=\mathbb{F}^n\)</span> כדי להבין את הקשר בין המושג של בסיס לבין החומר של הפרקים הקודמים (הפיכות של מטריצה). נניח כי <span class="math inline">\(v_1,...,v_k\)</span> וקטורי עמודה ב- <span class="math inline">\(\mathbb{F}^n\)</span>. ראינו בטענה <a href="#prp-column-space">8.41</a> שלכל <span class="math inline">\(w\in\mathbb{F}^n\)</span> מתקיים <span class="math inline">\(w\in\mathop{\mathrm{Span}}(v_1,....,v_k)\)</span> אם ורק אם קיים פתרון לממ"ל <span class="math inline">\(Ax=w\)</span>, כאשר <span class="math display">\[.A=\begin{pmatrix}
 | &amp; | &amp; &amp; | \\
 v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
 | &amp; | &amp; &amp; |
@@ -1290,8 +1254,8 @@ v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
 \alpha_k
 \end{pmatrix}\]</span></p>
 <p>עבור <span class="math inline">\(w=0\)</span> ניתן לראות את הקשר לתלות לינארית. מכאן הטענה הבאה:</p>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(v_1,...,v_k\in\mathbb{F}^n\)</span>. אז הוקטורים הנ"ל הם בת"ל אם ורק אם קיים פתרון יחיד לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> כאשר <span class="math display">\[,A=\begin{pmatrix}
+<div id="prp-nullity" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.8</strong></span> <em> יהיו <span class="math inline">\(v_1,...,v_k\in\mathbb{F}^n\)</span>. אז הוקטורים הנ"ל הם בת"ל אם ורק אם קיים פתרון יחיד לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> כאשר <span class="math display">\[,A=\begin{pmatrix}
 | &amp; | &amp; &amp; | \\
 v_1 &amp; v_2 &amp; \cdots &amp; v_k \\
 | &amp; | &amp; &amp; |
@@ -1302,13 +1266,11 @@ v_1 &amp; v_2 &amp; \cdots &amp; v_k \\
 <p><span class="math display">\[.\alpha_1v_1+...+\alpha_kv_k=0 \iff Ax=\underline{0}\]</span></p>
 <p>אם הפתרון לממ"ל יחיד, אז בהכרח <span class="math inline">\(\alpha_1=...=\alpha_k=0\)</span> ולכן <span class="math inline">\(v_1,...,v_k\)</span> בת"ל. לעומת זאת, אם הפתרון לממ"ל אינו יחיד זה בדיוק אומר שלא כל הסקלרים הם <span class="math inline">\(0\)</span>, ולכן הוקטורים ת"ל.&nbsp;◻</p>
 </div>
-<div class="corollary">
-<p><strong>מסקנה 1.66</strong>. <em> יהיו <span class="math inline">\(v_1,...,v_k\in\mathbb{F}^n\)</span>.</em></p>
-<ol type="1">
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל, אז <span class="math inline">\(k\leq n\)</span>.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, אז <span class="math inline">\(k\geq n\)</span>.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>, אז <span class="math inline">\(k=n\)</span>.</em></p></li>
-</ol>
+<div id="cor-size-dim" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.2</strong></span> <em> יהיו <span class="math inline">\(v_1,...,v_k\in\mathbb{F}^n\)</span>.</em></p>
+<p>א. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל, אז <span class="math inline">\(k\leq n\)</span>.</em></p>
+<p>ב. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, אז <span class="math inline">\(k\geq n\)</span>.</em></p>
+<p>ג. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>, אז <span class="math inline">\(k=n\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נסתכל על <span class="math display">\[.A=\begin{pmatrix}
@@ -1316,62 +1278,56 @@ v_1 &amp; v_2 &amp; \cdots &amp; v_k \\
 v_1 &amp; v_2 &amp; \cdots &amp; v_k \\
 | &amp; | &amp; &amp; |
 \end{pmatrix}\in\mathbb{M}_{n\times k}(\mathbb{F})\]</span></p>
-<ol type="1">
-<li><p>לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> קיים פתרון יחיד אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=k\)</span> (כי אחרת יש משתנה חופשי). באופן כללי, הדרגה לא עולה על מספר השורות ולכן <span class="math inline">\(k\leq n\)</span>.</p></li>
-<li><p>לממ"ל <span class="math inline">\(Ax=b\)</span> קיים פתרון לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span> (כי אחרת תתקבל שורת סתירה עבור <span class="math inline">\(b\)</span> מסוים). לכן, במקרה של קבוצה פורשת נובע כי <span class="math inline">\(k\geq n\)</span> כי הדרגה לא עולה על מספר העמודות.</p></li>
-<li><p>זהו שילוב של שני המקרים הקודמים, ולכן <span class="math inline">\(k=n\)</span>.</p></li>
-</ol>
+<p>א. לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> קיים פתרון יחיד אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=k\)</span> (כי אחרת יש משתנה חופשי). באופן כללי, הדרגה לא עולה על מספר השורות ולכן <span class="math inline">\(k\leq n\)</span>.</p>
+<p>ב. לממ"ל <span class="math inline">\(Ax=b\)</span> קיים פתרון לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span> (כי אחרת תתקבל שורת סתירה עבור <span class="math inline">\(b\)</span> מסוים). לכן, במקרה של קבוצה פורשת נובע כי <span class="math inline">\(k\geq n\)</span> כי הדרגה לא עולה על מספר העמודות.</p>
+<p>ג. זהו שילוב של שני המקרים הקודמים, ולכן <span class="math inline">\(k=n\)</span>.</p>
 <p>&nbsp;◻</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>אם כן, הוכחנו כי כל בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span> הוא קבוצה בגודל <span class="math inline">\(n\)</span>.</p>
 </div>
-<p>המקרה <span class="math inline">\(k=n\)</span> הוא המקרה של מטריצה ריבועית, ומכאן הקשר למטריצה הפיכה. נרחיב את משפט <span class="math inline">\(\ref{thm:invertible}\)</span>, שמדבר על תנאים שקולים להפיכות מטריצה, ע"י הוספת עוד תנאים שקולים:</p>
-<div class="theorem">
-<p><em> לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p></li>
-<li><p><em>לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> יש פתרון יחיד, כלומר <span class="math inline">\(\mathop{\mathrm{N}}(A)=\Set{0}\)</span>.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה משמאל.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה מימין.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה.</em></p></li>
-<li><p><em><span class="math inline">\(\det(A)\neq 0\)</span></em></p></li>
-<li><p><em>קבוצת העמודות של <span class="math inline">\(A\)</span> היא בת"ל.</em></p></li>
-<li><p><em>קבוצת העמודות של <span class="math inline">\(A\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, כלומר <span class="math inline">\(\mathop{\mathrm{Col}}(A)=\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em>קבוצת העמודות של <span class="math inline">\(A\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em>קבוצת השורות של <span class="math inline">\(A\)</span> היא בת"ל.</em></p></li>
-<li><p><em>קבוצת השורות של <span class="math inline">\(A\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, כלומר <span class="math inline">\(\mathop{\mathrm{Row}}(A)=\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em>קבוצת השורות של <span class="math inline">\(A\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-</ol>
+<p>המקרה <span class="math inline">\(k=n\)</span> הוא המקרה של מטריצה ריבועית, ומכאן הקשר למטריצה הפיכה. נרחיב את משפט <a href="#thm-invertible">6.75</a>, שמדבר על תנאים שקולים להפיכות מטריצה, ע"י הוספת עוד תנאים שקולים:</p>
+<div id="thm-invertible2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.1</strong></span> <em> לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
+<p>א. <em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p>
+<p>ג. <em>לממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> יש פתרון יחיד, כלומר <span class="math inline">\(\mathop{\mathrm{N}}(A)=\Set{0}\)</span>.</em></p>
+<p>ד. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ה. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ו. <em><span class="math inline">\(A\)</span> הפיכה משמאל.</em></p>
+<p>ז. <em><span class="math inline">\(A\)</span> הפיכה מימין.</em></p>
+<p>ח. <em><span class="math inline">\(A\)</span> הפיכה.</em></p>
+<p>ט. <em><span class="math inline">\(\det(A)\neq 0\)</span></em></p>
+<p>י. <em>קבוצת העמודות של <span class="math inline">\(A\)</span> היא בת"ל.</em></p>
+<p>כ. <em>קבוצת העמודות של <span class="math inline">\(A\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, כלומר <span class="math inline">\(\mathop{\mathrm{Col}}(A)=\mathbb{F}^n\)</span>.</em></p>
+<p>ל. <em>קבוצת העמודות של <span class="math inline">\(A\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
+<p>מ. <em>קבוצת השורות של <span class="math inline">\(A\)</span> היא בת"ל.</em></p>
+<p>נ. <em>קבוצת השורות של <span class="math inline">\(A\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, כלומר <span class="math inline">\(\mathop{\mathrm{Row}}(A)=\mathbb{F}^n\)</span>.</em></p>
+<p>ס. <em>קבוצת השורות של <span class="math inline">\(A\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>תשעת הסעיפים הראשונים שקולים לפי <span class="math inline">\(\ref{thm:invertible}\)</span> ו- <span class="math inline">\(\ref{thm:det-invertible}\)</span>. לפי <span class="math inline">\(\ref{prop:column-space}\)</span> ו- <span class="math inline">\(\ref{prop:nullity}\)</span> מתקיים <span class="math display">\[(\text{י}) \iff (\text{ג})\iff(\text{ה})\iff(\text{יא})\]</span> מכאן שגם <span class="math inline">\((\text{יב})\)</span> שקול לכל התנאים הקודמים, כי הוא שילוב של <span class="math inline">\((\text{י})\)</span> ו- <span class="math inline">\((\text{יא})\)</span>.</p>
-<p>בשביל שלושת הסעיפים האחרונים נסתכל על <span class="math inline">\(A^t\)</span>. <span class="math inline">\((\text{טו})-(\text{יג})\)</span> שקולים להפיכות של <span class="math inline">\(A^t\)</span>, ולפי תרגיל <span class="math inline">\(\ref{exer:inverse-product}\)</span>, <span class="math inline">\(A^t\)</span> הפיכה אם ורק אם <span class="math inline">\(A\)</span> הפיכה. לכן, <span class="math inline">\((\text{טו})-(\text{יג})\)</span> שקולים לכל שאר הסעיפים.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>תשעת הסעיפים הראשונים שקולים לפי <a href="#thm-invertible">6.75</a> ו- <a href="#thm-det-invertible">7.15</a>. לפי <a href="#prp-column-space">8.41</a> ו- <a href="#prp-nullity">8.65</a> מתקיים <span class="math display">\[(\text{י}) \iff (\text{ג})\iff(\text{ה})\iff(\text{יא})\]</span> מכאן שגם <span class="math inline">\((\text{יב})\)</span> שקול לכל התנאים הקודמים, כי הוא שילוב של <span class="math inline">\((\text{י})\)</span> ו- <span class="math inline">\((\text{יא})\)</span>.</p>
+<p>בשביל שלושת הסעיפים האחרונים נסתכל על <span class="math inline">\(A^t\)</span>. <span class="math inline">\((\text{טו})-(\text{יג})\)</span> שקולים להפיכות של <span class="math inline">\(A^t\)</span>, ולפי תרגיל <a href="#exr-inverse-product">6.81</a>, <span class="math inline">\(A^t\)</span> הפיכה אם ורק אם <span class="math inline">\(A\)</span> הפיכה. לכן, <span class="math inline">\((\text{טו})-(\text{יג})\)</span> שקולים לכל שאר הסעיפים.&nbsp;◻</p>
 </div>
 <p>המשפט לעיל מראה את הקשר בין כל המושגים העיקריים שלמדנו: קבוצת הפתרונות של ממ"ל, הפיכות מטריצה, דטרמיננטה ותכונות של קבוצת וקטורים במרחב וקטורי. נרצה להתמקד רק בחלק האחרון, ולכן ננסח משפט שניסוחו לא מתייחס למטריצה:</p>
-<div class="theorem">
-<p><em> תהי <span class="math inline">\(B\subseteq\mathbb{F}^n\)</span>. אז כל שניים מהתנאים הבאים גורר את התנאי השלישי:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(B\)</span> בת"ל.</em></p></li>
-<li><p><em><span class="math inline">\(B\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em>ב- <span class="math inline">\(B\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים.</em></p></li>
-</ol>
+<div id="thm-3-for-2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.2</strong></span> <em> תהי <span class="math inline">\(B\subseteq\mathbb{F}^n\)</span>. אז כל שניים מהתנאים הבאים גורר את התנאי השלישי:</em></p>
+<p>א. <em><span class="math inline">\(B\)</span> בת"ל.</em></p>
+<p>ב. <em><span class="math inline">\(B\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
+<p>ג. <em>ב- <span class="math inline">\(B\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים.</em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>נקרא למשפט זה "שלישי חינם". הרעיון של המשפט הוא שאם "משלמים" עבור שני תנאים (כלומר בודקים שהם מתקיימים), השלישי יתקבל "בחינם". המסקנה הסופית (מכל שני תנאים) היא שהקבוצה <span class="math inline">\(B\)</span> היא בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>יש שלושה כיוונים להוכיח (אחד לכל זוג).</p>
-<p><span class="math inline">\(:\text{(ג)}\impliedby \text{(ב)}+\text{(א)}\)</span> הוכחנו זאת במסקנה <span class="math inline">\(\ref{cor:size-dim}\)</span>.</p>
+<p><span class="math inline">\(:\text{(ג)}\impliedby \text{(ב)}+\text{(א)}\)</span> הוכחנו זאת במסקנה <a href="#cor-size-dim">8.66</a>.</p>
 <p>בשביל שני הכיוונים האחרים, נניח תחילה את <span class="math inline">\(\text{(ג)}\)</span> ונסמן <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span>. נסתכל על המטריצה <span class="math display">\[.A=\begin{pmatrix}
 | &amp; | &amp; &amp; | \\
 v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
 | &amp; | &amp; &amp; |
 \end{pmatrix}\]</span></p>
-<p>סעיפים <span class="math inline">\((\text{י})\)</span>,<span class="math inline">\((\text{יא})\)</span> במשפט <span class="math inline">\(\ref{thm:invertible2}\)</span> הם שקולים, ולכן מתקיים: <span class="math display">\[\begin{aligned}
+<p>סעיפים <span class="math inline">\((\text{י})\)</span>,<span class="math inline">\((\text{יא})\)</span> במשפט <a href="#thm-invertible2">8.68</a> הם שקולים, ולכן מתקיים: <span class="math display">\[\begin{aligned}
 \text{(ב)}\impliedby\text{(ג)}+\text{(א)} \\
 \text{(א)}\impliedby\text{(ג)}+\text{(ב)}
 \end{aligned}\]</span>&nbsp;◻</p>
@@ -1510,41 +1466,39 @@ A=&amp;\begin{pmatrix}
 0&amp;1&amp;0&amp;-1\\
 0&amp;0&amp;1&amp;1\\
 0&amp;0&amp;0&amp;1
-\end{pmatrix}\]</span> זו מטריצה הפיכה (הדרגה מלאה), ולפי משפט <span class="math inline">\(\ref{thm:invertible2}\)</span> נובע כי קבוצת שורותיה היא בסיס ל- <span class="math inline">\(\mathbb{R}^4\)</span>. באותה מידה, זה גם מוצדק להחליף את שתי השורות הראשונות בוקטורים <span class="math inline">\(v_1,v_2\)</span> המקוריים (את השלישית לא שינינו) ולקבל בסיס <span class="math inline">\(\Set{v_1,v_2,v_3,e_4}\)</span> ל- <span class="math inline">\(\mathbb{R}^4\)</span>.</p>
-<p>אז למה המסקנה מוצדקת לפי הדירוג החדש (עם שורות) ולא הקודם (עם עמודות)? כי דירוג לא משפיע על מרחב השורות (הגדרה <span class="math inline">\(\ref{def:row-col}\)</span>), בניגוד למרחב העמודות. בטענה הבאה נוכיח זאת בדיוק.</p>
+\end{pmatrix}\]</span> זו מטריצה הפיכה (הדרגה מלאה), ולפי משפט <a href="#thm-invertible2">8.68</a> נובע כי קבוצת שורותיה היא בסיס ל- <span class="math inline">\(\mathbb{R}^4\)</span>. באותה מידה, זה גם מוצדק להחליף את שתי השורות הראשונות בוקטורים <span class="math inline">\(v_1,v_2\)</span> המקוריים (את השלישית לא שינינו) ולקבל בסיס <span class="math inline">\(\Set{v_1,v_2,v_3,e_4}\)</span> ל- <span class="math inline">\(\mathbb{R}^4\)</span>.</p>
+<p>אז למה המסקנה מוצדקת לפי הדירוג החדש (עם שורות) ולא הקודם (עם עמודות)? כי דירוג לא משפיע על מרחב השורות (הגדרה <a href="#def-row-col">8.39</a>), בניגוד למרחב העמודות. בטענה הבאה נוכיח זאת בדיוק.</p>
 </div>
-<div class="proposition">
-<p><em> לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ולכל פש"א <span class="math inline">\(S\)</span>, מתקיים <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)\)</span>.</em></p>
+<div id="prp-row-space-invariance" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.9</strong></span> <em> לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ולכל פש"א <span class="math inline">\(S\)</span>, מתקיים <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> עם שורות <span class="math inline">\(R_1,...,R_m\in\mathbb{F}^n\)</span>, ותהי <span class="math inline">\(S\)</span> פש"א. אם מדובר בהחלפה בין שורות, ברור כי <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))=\mathop{\mathrm{Row}}(A)\)</span> שהרי אין חשיבות לסדר הוקטורים הפורשים (לפי חוק החילוף). בכל מקרה אחר, <span class="math inline">\(S\)</span> משפיעה רק על שורה אחת <span class="math inline">\(R_i\)</span>.</p>
-<p>נוכיח כי <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))\subseteq \mathop{\mathrm{Row}}(A)\)</span>: לפי טענה <span class="math inline">\(\ref{prop:vector-span}\)</span>, מספיק לבדוק שהשורה החדשה <span class="math inline">\(R'_i\)</span> במקום <span class="math inline">\(R_i\)</span> מקיימת <span class="math inline">\(R'_i\in\mathop{\mathrm{Span}}(R_1,...,R_m)\)</span>. נשארו שני מקרים:</p>
+<p>נוכיח כי <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))\subseteq \mathop{\mathrm{Row}}(A)\)</span>: לפי טענה <a href="#prp-vector-span">8.35</a>, מספיק לבדוק שהשורה החדשה <span class="math inline">\(R'_i\)</span> במקום <span class="math inline">\(R_i\)</span> מקיימת <span class="math inline">\(R'_i\in\mathop{\mathrm{Span}}(R_1,...,R_m)\)</span>. נשארו שני מקרים:</p>
 <ul>
 <li><p><span class="math inline">\(S=(\alpha R_i\to R_i)\)</span>: במקרה זה מתקיים <span class="math display">\[.R'_i=\alpha R_i\in\mathop{\mathrm{Span}}(R_i)\subseteq\mathop{\mathrm{Span}}(R_1,...,R_m)\]</span></p></li>
 <li><p><span class="math inline">\(S=(R_i+\alpha R_j\to R_i)\)</span>: במקרה זה מתקיים <span class="math display">\[.R'_i=R_i+\alpha R_j\in\mathop{\mathrm{Span}}(R_i,R_j)\subseteq\mathop{\mathrm{Span}}(R_1,...,R_m)\]</span></p></li>
 </ul>
-<p>נוכיח באופן דומה כי <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))\supseteq \mathop{\mathrm{Row}}(A)\)</span>: לפי טענה <span class="math inline">\(\ref{prop:vector-span}\)</span>, מספיק לבדוק שהשורה המקורית <span class="math inline">\(R_i\)</span> מקיימת <span class="math inline">\(R_i\in\mathop{\mathrm{Span}}(R_1,...,R'_i,...,R_m)\)</span>. נבדוק את שני המקרים:</p>
+<p>נוכיח באופן דומה כי <span class="math inline">\(\mathop{\mathrm{Row}}(S(A))\supseteq \mathop{\mathrm{Row}}(A)\)</span>: לפי טענה <a href="#prp-vector-span">8.35</a>, מספיק לבדוק שהשורה המקורית <span class="math inline">\(R_i\)</span> מקיימת <span class="math inline">\(R_i\in\mathop{\mathrm{Span}}(R_1,...,R'_i,...,R_m)\)</span>. נבדוק את שני המקרים:</p>
 <ul>
 <li><p><span class="math inline">\(S=(\alpha R_i\to R_i)\)</span>: במקרה זה מתקיים <span class="math display">\[.R_i=\frac{1}{\alpha} R'_i\in\mathop{\mathrm{Span}}(R'_i)\subseteq\mathop{\mathrm{Span}}(R_1,...,R'_i,...,R_m)\]</span></p></li>
 <li><p><span class="math inline">\(S=(R_i+\alpha R_j\to R_i)\)</span>: במקרה זה מתקיים <span class="math display">\[.R_i=R'_i-\alpha R_j\in\mathop{\mathrm{Span}}(R'_i,R_j)\subseteq\mathop{\mathrm{Span}}(R_1,...,R'_i,...,R_m)\]</span></p></li>
 </ul>
 <p>&nbsp;◻</p>
 </div>
-<div class="corollary">
-<p><strong>מסקנה 1.73</strong>. <em> יהיו <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> שקולות שורה. אז <span class="math inline">\(\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(B)\)</span>.</em></p>
+<div id="cor-row-equivalence" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.3</strong></span> <em> יהיו <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> שקולות שורה. אז <span class="math inline">\(\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(B)\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי הנתון קיימות פש"אות <span class="math inline">\(S_1,...,S_k\)</span> כך ש- <span class="math inline">\(B=S_k(...(S_1(A))\)</span>, או באופן שקול קיימות מטריצות אלמנטריות <span class="math inline">\(E_1,...,E_k\in\mathbb{M}_{m\times m}\)</span> כך ש- <span class="math inline">\(B=E_k\cdots E_1A\)</span>. אז לפי טענה <span class="math inline">\(\ref{prop:row-space-invariance}\)</span> נובע כי <span class="math display">\[.\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(E_1A)=....=\mathop{\mathrm{Row}}(E_k\cdots E_1A)=\mathop{\mathrm{Row}}(B)\]</span>&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי הנתון קיימות פש"אות <span class="math inline">\(S_1,...,S_k\)</span> כך ש- <span class="math inline">\(B=S_k(...(S_1(A))\)</span>, או באופן שקול קיימות מטריצות אלמנטריות <span class="math inline">\(E_1,...,E_k\in\mathbb{M}_{m\times m}\)</span> כך ש- <span class="math inline">\(B=E_k\cdots E_1A\)</span>. אז לפי טענה <a href="#prp-row-space-invariance">8.72</a> נובע כי <span class="math display">\[.\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(E_1A)=....=\mathop{\mathrm{Row}}(E_k\cdots E_1A)=\mathop{\mathrm{Row}}(B)\]</span>&nbsp;◻</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>המשמעות של המסקנה האחרונה היא שהפרישה של קבוצת וקטורים לא תשתנה אם נבצע עליהם פש"אות.</p>
 </div>
 <div class="exercise">
 <p>יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מטריצות ריבועיות. הוכיחו כי:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\mathop{\mathrm{Row}}(BA)\subseteq\mathop{\mathrm{Row}}(A)\)</span>.</p></li>
-<li><p>אם <span class="math inline">\(B\)</span> הפיכה, אז מתקיים <span class="math inline">\(\mathop{\mathrm{Row}}(BA)=\mathop{\mathrm{Row}}(A)\)</span>.</p></li>
-</ol>
+<p>א. <span class="math inline">\(\mathop{\mathrm{Row}}(BA)\subseteq\mathop{\mathrm{Row}}(A)\)</span>.</p>
+<p>ב. אם <span class="math inline">\(B\)</span> הפיכה, אז מתקיים <span class="math inline">\(\mathop{\mathrm{Row}}(BA)=\mathop{\mathrm{Row}}(A)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -1559,15 +1513,13 @@ A=&amp;\begin{pmatrix}
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>נראה כי כל שורה של <span class="math inline">\(BA\)</span> היא צירוף לינארי של שורות <span class="math inline">\(A\)</span>, ולכן ינבע מטענה <span class="math inline">\(\ref{prop:vector-span}\)</span> כי <span class="math inline">\(\mathop{\mathrm{Row}}(BA)\subseteq \mathop{\mathrm{Row}}(A)\)</span>. נסמן את שורות <span class="math inline">\(A\)</span> ב- <span class="math inline">\(R_1,...,R_n\)</span>, ובנוסף נסמן <span class="math display">\[.B=\begin{pmatrix}
-b_{11} &amp;\cdots &amp;b_{1n} \\
-\vdots &amp;\vdots &amp;\vdots \\
-b_{n1} &amp;\cdots &amp;b_{nn}
-\end{pmatrix}\]</span></p>
-<p>אז לפי הגדרת הכפל, לכל <span class="math inline">\(1\leq i\leq n\)</span> השורה ה- <span class="math inline">\(i\)</span> של <span class="math inline">\(BA\)</span> היא בדיוק הוקטור שנתון ע"י הצירוף הלינארי הבא: <span class="math display">\[\sum_{j=1}^n b_{ij}R_j\in\mathop{\mathrm{Span}}(R_1,...,R_n)=\mathop{\mathrm{Row}}(A)\]</span></p></li>
-<li><p>כאשר <span class="math inline">\(B\)</span> הפיכה, <span class="math inline">\(B\)</span> היא מכפלת מטריצות אלמנטריות ובפרט <span class="math inline">\(BA\)</span> שקולת שורה ל- <span class="math inline">\(A\)</span>. אז לפי מסקנה <span class="math inline">\(\ref{cor:row-equivalence}\)</span> נובע כי <span class="math inline">\(\mathop{\mathrm{Row}}(BA)=\mathop{\mathrm{Row}}(A)\)</span>.</p></li>
-</ol>
+<p>א. נראה כי כל שורה של <span class="math inline">\(BA\)</span> היא צירוף לינארי של שורות <span class="math inline">\(A\)</span>, ולכן ינבע מטענה <a href="#prp-vector-span">8.35</a> כי <span class="math inline">\(\mathop{\mathrm{Row}}(BA)\subseteq \mathop{\mathrm{Row}}(A)\)</span>. נסמן את שורות <span class="math inline">\(A\)</span> ב- <span class="math inline">\(R_1,...,R_n\)</span>, ובנוסף נסמן <span class="math display">\[.B=\begin{pmatrix}
+    b_{11} &amp;\cdots &amp;b_{1n} \\
+    \vdots &amp;\vdots &amp;\vdots \\
+    b_{n1} &amp;\cdots &amp;b_{nn}
+    \end{pmatrix}\]</span></p>
+<p>אז לפי הגדרת הכפל, לכל <span class="math inline">\(1\leq i\leq n\)</span> השורה ה- <span class="math inline">\(i\)</span> של <span class="math inline">\(BA\)</span> היא בדיוק הוקטור שנתון ע"י הצירוף הלינארי הבא: <span class="math display">\[\sum_{j=1}^n b_{ij}R_j\in\mathop{\mathrm{Span}}(R_1,...,R_n)=\mathop{\mathrm{Row}}(A)\]</span></p>
+<p>ב. כאשר <span class="math inline">\(B\)</span> הפיכה, <span class="math inline">\(B\)</span> היא מכפלת מטריצות אלמנטריות ובפרט <span class="math inline">\(BA\)</span> שקולת שורה ל- <span class="math inline">\(A\)</span>. אז לפי מסקנה <a href="#cor-row-equivalence">8.73</a> נובע כי <span class="math inline">\(\mathop{\mathrm{Row}}(BA)=\mathop{\mathrm{Row}}(A)\)</span>.</p>
 </div>
 </div>
 </div>
@@ -1586,7 +1538,7 @@ b_{n1} &amp;\cdots &amp;b_{nn}
 <div class="example">
 <p>נגדיר <span class="math inline">\(B_1=\Set{(1,0),(0,1)}\)</span> וגם <span class="math inline">\(B_2=\Set{(0,1),(1,0)}\)</span>. אין הבדל ביניהם כבסיסים, אבל <span class="math inline">\(B_1\neq B_2\)</span> כבסיסים סדורים. אז יש חשיבות להקשר.</p>
 </div>
-<p>ניזכר בטענה <span class="math inline">\(\ref{prop:unique-scalars}\)</span>, בה ראינו כי לכל בסיס <span class="math inline">\(B\)</span> ל- <span class="math inline">\(\mathbb{F}^n\)</span> ולכל <span class="math inline">\(v\in\mathbb{F}^n\)</span> יש דרך יחידה לכתוב את <span class="math inline">\(v\)</span> כצירוף לינארי של איברי <span class="math inline">\(B\)</span>. לאור טענה זו, ההגדרה הבאה מתבקשת:</p>
+<p>ניזכר בטענה <a href="#prp-unique-scalars">8.63</a>, בה ראינו כי לכל בסיס <span class="math inline">\(B\)</span> ל- <span class="math inline">\(\mathbb{F}^n\)</span> ולכל <span class="math inline">\(v\in\mathbb{F}^n\)</span> יש דרך יחידה לכתוב את <span class="math inline">\(v\)</span> כצירוף לינארי של איברי <span class="math inline">\(B\)</span>. לאור טענה זו, ההגדרה הבאה מתבקשת:</p>
 <div class="definition">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהי <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>. לכל <span class="math inline">\(v\in V\)</span> קיימים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> יחידים כך ש- <span class="math inline">\(v=\alpha_1v_1+...+\alpha_nv_n\)</span>. אז עבור <span class="math inline">\(v\)</span> נגדיר את וקטור הקוארדינטות שלו ביחס ל- <span class="math inline">\(B\)</span> ע"י <span class="math display">\[.[v]_B=\begin{pmatrix}
 \alpha_1 \\
@@ -1596,138 +1548,136 @@ b_{n1} &amp;\cdots &amp;b_{nn}
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> נסתכל על הבסיסים הסדורים <span class="math display">\[.E=\Set{\begin{pmatrix}
-1 \\
-0 \\
-0
-\end{pmatrix},\begin{pmatrix}
-0 \\
-1 \\
-0
-\end{pmatrix},\begin{pmatrix}
-0 \\
-0 \\
-1
-\end{pmatrix}},B=\Set{\begin{pmatrix}
-0 \\
-0 \\
-1
-\end{pmatrix},\begin{pmatrix}
-1 \\
-0 \\
-0
-\end{pmatrix},\begin{pmatrix}
-0 \\
-1 \\
-0
-\end{pmatrix}}\]</span></p>
+<p>א. ב- <span class="math inline">\(\mathbb{R}^3\)</span> נסתכל על הבסיסים הסדורים <span class="math display">\[.E=\Set{\begin{pmatrix}
+    1 \\
+    0 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}},B=\Set{\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix},\begin{pmatrix}
+    1 \\
+    0 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    1 \\
+    0
+    \end{pmatrix}}\]</span></p>
 <p><span class="math inline">\(E\)</span> הוא הבסיס הסטנדרטי. הקוארדינטות ביחס אליו הן הקוארדינטות הרגילות: לכל <span class="math inline">\(\begin{pmatrix}a\\b\\c\end{pmatrix}\in\mathbb{R}^3\)</span> מתקיים <span class="math display">\[\left[\begin{pmatrix}
-a \\
-b \\
-c
-\end{pmatrix}\right]_E=\begin{pmatrix}
-a \\
-b \\
-c
-\end{pmatrix}\]</span> לעומת זאת, הסדר ב- <span class="math inline">\(B\)</span> שונה. הפעם מתקיים <span class="math display">\[\left[\begin{pmatrix}
-a \\
-b \\
-c
-\end{pmatrix}\right]_B=\begin{pmatrix}
-c \\
-a \\
-b
-\end{pmatrix}\]</span> כי <span class="math display">\[.\begin{pmatrix}
-a \\
-b \\
-c
-\end{pmatrix}=c\begin{pmatrix}
-0 \\
-0 \\
-1
-\end{pmatrix}+a\begin{pmatrix}
-1 \\
-0 \\
-0
-\end{pmatrix}+b\begin{pmatrix}
-0 \\
-1 \\
-0
-\end{pmatrix}\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> נסתכל על הבסיס הסטנדרטי <span class="math display">\[E=\Set{\begin{pmatrix}
+    a \\
+    b \\
+    c
+    \end{pmatrix}\right]_E=\begin{pmatrix}
+    a \\
+    b \\
+    c
+    \end{pmatrix}\]</span> לעומת זאת, הסדר ב- <span class="math inline">\(B\)</span> שונה. הפעם מתקיים <span class="math display">\[\left[\begin{pmatrix}
+    a \\
+    b \\
+    c
+    \end{pmatrix}\right]_B=\begin{pmatrix}
+    c \\
+    a \\
+    b
+    \end{pmatrix}\]</span> כי <span class="math display">\[.\begin{pmatrix}
+    a \\
+    b \\
+    c
+    \end{pmatrix}=c\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}+a\begin{pmatrix}
+    1 \\
+    0 \\
+    0
+    \end{pmatrix}+b\begin{pmatrix}
+    0 \\
+    1 \\
+    0
+    \end{pmatrix}\]</span></p>
+<p>ב. ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> נסתכל על הבסיס הסטנדרטי <span class="math display">\[E=\Set{\begin{pmatrix}
+        1 &amp; 0 \\
+        0 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 1 \\
+        0 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 0 \\
+        1 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 0 \\
+        0 &amp; 1
+        \end{pmatrix}}\]</span> ועל הבסיס הסדור <span class="math display">\[.B=\Set{\begin{pmatrix}
+        1 &amp; 0 \\
+        0 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 0 \\
+        1 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 1 \\
+        0 &amp; 0
+        \end{pmatrix},\begin{pmatrix}
+        0 &amp; 0 \\
+        0 &amp; 1
+        \end{pmatrix}}\]</span> אז לכל <span class="math inline">\(\begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix}\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> מתקיים <span class="math display">\[\left[\begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix}\right]_E=\begin{pmatrix}
+    a \\
+    b \\
+    c \\
+    d
+    \end{pmatrix}\]</span> וגם <span class="math display">\[.\left[\begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix}\right]_B=\begin{pmatrix}
+    a \\
+    c \\
+    b \\
+    d
+    \end{pmatrix}\]</span> השוויון השני נובע מהשוויון הבא: <span class="math display">\[.\begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix}=a\begin{pmatrix}
     1 &amp; 0 \\
     0 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
-    0 &amp; 1 \\
-    0 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
+    \end{pmatrix}+c\begin{pmatrix}
     0 &amp; 0 \\
     1 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
-    0 &amp; 0 \\
-    0 &amp; 1
-    \end{pmatrix}}\]</span> ועל הבסיס הסדור <span class="math display">\[.B=\Set{\begin{pmatrix}
-    1 &amp; 0 \\
-    0 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
-    0 &amp; 0 \\
-    1 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
+    \end{pmatrix}+b\begin{pmatrix}
     0 &amp; 1 \\
     0 &amp; 0
-    \end{pmatrix},\begin{pmatrix}
+    \end{pmatrix}+d\begin{pmatrix}
     0 &amp; 0 \\
     0 &amp; 1
-    \end{pmatrix}}\]</span> אז לכל <span class="math inline">\(\begin{pmatrix}
-a &amp; b \\
-c &amp; d
-\end{pmatrix}\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> מתקיים <span class="math display">\[\left[\begin{pmatrix}
-a &amp; b \\
-c &amp; d
-\end{pmatrix}\right]_E=\begin{pmatrix}
-a \\
-b \\
-c \\
-d
-\end{pmatrix}\]</span> וגם <span class="math display">\[.\left[\begin{pmatrix}
-a &amp; b \\
-c &amp; d
-\end{pmatrix}\right]_B=\begin{pmatrix}
-a \\
-c \\
-b \\
-d
-\end{pmatrix}\]</span> השוויון השני נובע מהשוויון הבא: <span class="math display">\[.\begin{pmatrix}
-a &amp; b \\
-c &amp; d
-\end{pmatrix}=a\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{pmatrix}+c\begin{pmatrix}
-0 &amp; 0 \\
-1 &amp; 0
-\end{pmatrix}+b\begin{pmatrix}
-0 &amp; 1 \\
-0 &amp; 0
-\end{pmatrix}+d\begin{pmatrix}
-0 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{F}^n\)</span> הבסיס הסטנדרטי הוא <span class="math display">\[.E=\Set{e_1,...,e_n}\]</span> לכל <span class="math display">\[\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}\in\mathbb{F}^n\]</span> מתקיים <span class="math display">\[.\left[\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}\right]_E=\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}\]</span></p></li>
-</ol>
+    \end{pmatrix}\]</span></p>
+<p>ג. ב- <span class="math inline">\(\mathbb{F}^n\)</span> הבסיס הסטנדרטי הוא <span class="math display">\[.E=\Set{e_1,...,e_n}\]</span> לכל <span class="math display">\[\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\in\mathbb{F}^n\]</span> מתקיים <span class="math display">\[.\left[\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\right]_E=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\]</span></p>
 </div>
 <div class="exercise">
 <p>ב- <span class="math inline">\(\mathbb{R}^2\)</span> נסתכל על הבסיס הסדור <span class="math display">\[B=\Set{\begin{pmatrix}
@@ -1787,7 +1737,7 @@ a_n
 \end{pmatrix}=\begin{pmatrix}
 1 \\
 1
-\end{pmatrix}\]</span> ניתן לפתור את הממ"ל ע"י דירוג, אבל נוח להשתמש בנוסחה מטענה <span class="math inline">\(\ref{prop:det-order-2}\)</span> לחישוב מטריצה הופכית. כך נקבל <span class="math display">\[.\begin{pmatrix}
+\end{pmatrix}\]</span> ניתן לפתור את הממ"ל ע"י דירוג, אבל נוח להשתמש בנוסחה מטענה <a href="#prp-det-order-2">7.10</a> לחישוב מטריצה הופכית. כך נקבל <span class="math display">\[.\begin{pmatrix}
 1 &amp; 2 \\
 2 &amp; -1
 \end{pmatrix}^{-1}=-\frac{1}{5}\begin{pmatrix}
@@ -1837,18 +1787,16 @@ a_n
 </div>
 </div>
 <p>לוקטור קוארדינטות יש תכונות בסיסיות אך חשובות:</p>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ו- <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>. אז לכל <span class="math inline">\(v,w\in V\)</span> ו- <span class="math inline">\(\alpha\in F\)</span>. מתקיים:</em></p>
-<ol type="1">
-<li><p><em><span class="math display">\[[v+w]_B=[v]_B+[w]_B\]</span></em></p></li>
-<li><p><em><span class="math display">\[[\alpha v]_B=\alpha [v]_B\]</span></em></p></li>
-<li><p><em><span class="math display">\[[v]_B=[w]_B \iff v=w\]</span></em></p></li>
-<li><p><em><span class="math display">\[[0_V]_B=\begin{pmatrix}
-0 \\
-\vdots \\
-0
-\end{pmatrix}\]</span></em></p></li>
-</ol>
+<div id="prp-coordinates-linear" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 8.10</strong></span> <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ו- <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>. אז לכל <span class="math inline">\(v,w\in V\)</span> ו- <span class="math inline">\(\alpha\in F\)</span>. מתקיים:</em></p>
+<p>א. <em><span class="math display">\[[v+w]_B=[v]_B+[w]_B\]</span></em></p>
+<p>ב. <em><span class="math display">\[[\alpha v]_B=\alpha [v]_B\]</span></em></p>
+<p>ג. <em><span class="math display">\[[v]_B=[w]_B \iff v=w\]</span></em></p>
+<p>ד. <em><span class="math display">\[[0_V]_B=\begin{pmatrix}
+    0 \\
+    \vdots \\
+    0
+    \end{pmatrix}\]</span></em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>יהיו <span class="math inline">\(v,w\in V\)</span>. קיימים <span class="math inline">\(a_1,...,a_n,b_1,...,b_n\in\mathbb{F}\)</span> כך ש- <span class="math display">\[.v=a_1v_1+...+a_nv_n,\quad w=b_1v_1+...+b_nv_n\]</span> כלומר מתקיים <span class="math display">\[.[v]_B=\begin{pmatrix}
@@ -1860,43 +1808,41 @@ b_1 \\
 \vdots \\
 b_n
 \end{pmatrix}\]</span></p>
-<ol type="1">
-<li><p>מתקיים <span class="math display">\[.v+w=(a_1+b_1)v_1+...+(a_n+b_n)v_n\]</span> אז נובע כי <span class="math display">\[.[v+w]_B=\begin{pmatrix}
-a_1+b_1 \\
-\vdots \\
-a_n+b_n
-\end{pmatrix}=\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}+\begin{pmatrix}
-b_1 \\
-\vdots \\
-b_n
-\end{pmatrix}=[v]_B+[w]_B\]</span></p></li>
-<li><p>מתקיים <span class="math display">\[,\alpha v=\alpha(a_1v_1+....+a_2v_2)=\alpha a_1v_1+...+\alpha a_2v_2\]</span> ולכן <span class="math display">\[.[\alpha v]_B=\begin{pmatrix}
-\alpha a_1 \\
-\vdots \\
-\alpha a_n
-\end{pmatrix}=\alpha\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}=\alpha[v]_B\]</span></p></li>
-<li><p>אם <span class="math inline">\(v=w\)</span>, אז מתקיים <span class="math inline">\([v]_B=[w]_B\)</span> לפי ההגדרה של וקטור קוארדינטות (הסקלרים נקבעים ביחידות). להיפך, אם <span class="math inline">\([v]_B=[w]_B\)</span> נובע כי <span class="math display">\[.v=a_1v_1+...+a_nv_n=b_1v_1+...+b_nv_n=w\]</span></p></li>
-<li><p>מתקיים <span class="math display">\[.0_V=0\cdot v_1+...+0\cdot v_n \implies [0_V]_B=\begin{pmatrix}
-0 \\
-\vdots \\
-0
-\end{pmatrix}\]</span></p></li>
-</ol>
+<p>א. מתקיים <span class="math display">\[.v+w=(a_1+b_1)v_1+...+(a_n+b_n)v_n\]</span> אז נובע כי <span class="math display">\[.[v+w]_B=\begin{pmatrix}
+    a_1+b_1 \\
+    \vdots \\
+    a_n+b_n
+    \end{pmatrix}=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}+\begin{pmatrix}
+    b_1 \\
+    \vdots \\
+    b_n
+    \end{pmatrix}=[v]_B+[w]_B\]</span></p>
+<p>ב. מתקיים <span class="math display">\[,\alpha v=\alpha(a_1v_1+....+a_2v_2)=\alpha a_1v_1+...+\alpha a_2v_2\]</span> ולכן <span class="math display">\[.[\alpha v]_B=\begin{pmatrix}
+    \alpha a_1 \\
+    \vdots \\
+    \alpha a_n
+    \end{pmatrix}=\alpha\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}=\alpha[v]_B\]</span></p>
+<p>ג. אם <span class="math inline">\(v=w\)</span>, אז מתקיים <span class="math inline">\([v]_B=[w]_B\)</span> לפי ההגדרה של וקטור קוארדינטות (הסקלרים נקבעים ביחידות). להיפך, אם <span class="math inline">\([v]_B=[w]_B\)</span> נובע כי <span class="math display">\[.v=a_1v_1+...+a_nv_n=b_1v_1+...+b_nv_n=w\]</span></p>
+<p>ד. מתקיים <span class="math display">\[.0_V=0\cdot v_1+...+0\cdot v_n \implies [0_V]_B=\begin{pmatrix}
+    0 \\
+    \vdots \\
+    0
+    \end{pmatrix}\]</span></p>
 <p>&nbsp;◻</p>
 </div>
-<div class="corollary">
-<p><strong>מסקנה 1.83</strong>. <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(u,w_1,...,w_k\in V\)</span>. אז מתקיים <span class="math display">\[.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)\]</span></em></p>
+<div id="cor-span-coordinates" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.4</strong></span> <strong>מסקנה 1.83</strong>. <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(u,w_1,...,w_k\in V\)</span>. אז מתקיים <span class="math display">\[.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <span class="math inline">\(\ref{prop:coordinates-linear}\)</span>, כל <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-coordinates-linear">8.82</a>, כל <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
 u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 &amp;\iff [u]_B=\alpha_1[w_1]_B+...+\alpha_k[w_k]_B
 \end{aligned}\]</span> אז מתקיים <span class="math display">\[.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)\]</span>&nbsp;◻</p>
@@ -1904,29 +1850,24 @@ u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>שימו לב שההוכחה לעיל גם מראה שהסקלרים שמופיעים בצירוף הלינארי של <span class="math inline">\(u\)</span> הם בדיוק הסקלרים שמופיעים בצירוף הלינארי המתאים של <span class="math inline">\([u]_B\)</span>. זה אומר שניתן לעבוד עם וקטורי קוארדינטות כדי להבין איך ניתן להציג וקטור כצירוף לינארי של וקטורים נתונים.</p>
 </div>
-<div class="theorem">
-<p><em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{b_1,...,b_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(v_1,...,v_k\in V\)</span>.</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל ב- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> בסיס ל- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p></li>
-</ol>
+<div id="thm-test-by-coordinates" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.3</strong></span> <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{b_1,...,b_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(v_1,...,v_k\in V\)</span>.</em></p>
+<p>א. <em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל ב- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
+<p>ג. <em><span class="math inline">\(\Set{v_1,...,v_k}\)</span> בסיס ל- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בסיס ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span></p>
-<ol type="1">
-<li><p>לפי טענה <span class="math inline">\(\ref{prop:coordinates-linear}\)</span>, לכל <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
-\alpha_1v_1+...+\alpha_kv_k=0_V &amp;\iff [\alpha_1v_1+...+\alpha_kv_k]_B=[0_V]_B \\
-&amp; \iff \alpha_1[v_1]_B+...+\alpha_k[v_k]_B=\begin{pmatrix}
-0 \\
-\vdots \\
-0
-\end{pmatrix}
-\end{aligned}\]</span> לכן, <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל ב- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>.</p></li>
-<li><p>לפי <span class="math inline">\(\ref{cor:span-coordinates}\)</span>, לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.v\in\mathop{\mathrm{Span}}(v_1,...,v_k) \iff [v]_B\in\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)\]</span></p>
-<p>כל וקטור ב- <span class="math inline">\(\mathbb{F}^n\)</span> הוא מהצורה <span class="math inline">\([v]_B\)</span>, ולכן נובע כי <span class="math display">\[.V=\mathop{\mathrm{Span}}(v_1,...,v_k) \iff \mathbb{F}^n=\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)\]</span></p></li>
-<li><p>סעיף זה נובע ישירות משילוב שני הסעיפים הקודמים.</p></li>
-</ol>
+<p><span class="proof-title"><em>Proof</em>. </span>א. לפי טענה <a href="#prp-coordinates-linear">8.82</a>, לכל <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+    \alpha_1v_1+...+\alpha_kv_k=0_V &amp;\iff [\alpha_1v_1+...+\alpha_kv_k]_B=[0_V]_B \\
+    &amp; \iff \alpha_1[v_1]_B+...+\alpha_k[v_k]_B=\begin{pmatrix}
+    0 \\
+    \vdots \\
+    0
+    \end{pmatrix}
+    \end{aligned}\]</span> לכן, <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל ב- <span class="math inline">\(V\)</span> אם ורק אם <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
+<p>ב. לפי <a href="#cor-span-coordinates">8.83</a>, לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.v\in\mathop{\mathrm{Span}}(v_1,...,v_k) \iff [v]_B\in\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)\]</span></p>
+<pre><code>כל וקטור ב- $\mathbb{F}^n$ הוא מהצורה $[v]_B$, ולכן נובע כי $$.V=\mathop{\mathrm{Span}}(v_1,...,v_k) \iff \mathbb{F}^n=\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)$$</code></pre>
+<p>ג. סעיף זה נובע ישירות משילוב שני הסעיפים הקודמים.</p>
 <p>&nbsp;◻</p>
 </div>
 <div class="example">
@@ -1942,7 +1883,7 @@ u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 \end{pmatrix},\begin{pmatrix}
 0 &amp; 0 \\
 1 &amp; 1
-\end{pmatrix}}\]</span> נבדוק אם היא בסיס ל- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> לפי משפט <span class="math inline">\(\ref{thm:test-by-coordinates}\)</span>. לשם כך נצטרך להשתמש בבסיס ידוע, הלא הוא הבסיס הסטנדרטי <span class="math display">\[.E=\Set{\begin{pmatrix}
+\end{pmatrix}}\]</span> נבדוק אם היא בסיס ל- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> לפי משפט <a href="#thm-test-by-coordinates">8.85</a>. לשם כך נצטרך להשתמש בבסיס ידוע, הלא הוא הבסיס הסטנדרטי <span class="math display">\[.E=\Set{\begin{pmatrix}
 1 &amp; 0 \\
 0 &amp; 0
 \end{pmatrix},\begin{pmatrix}
@@ -2011,27 +1952,23 @@ u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 1 &amp; 0 &amp; 0 &amp; 1
 \end{pmatrix}\\
 &amp;=0
-\end{aligned}\]</span> לפי משפט <span class="math inline">\(\ref{thm:invertible2}\)</span>, וקטורי הקוארדינטות (עמודות המטריצה) לא מהווים בסיס ל- <span class="math inline">\(\mathbb{R}^4\)</span>. לפי משפט <span class="math inline">\(\ref{thm:test-by-coordinates}\)</span>, נובע כי הקבוצה המקורית של המטריצות לא מהווה בסיס ל- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span>. יותר מכך, קבוצה זו אינה בת"ל וגם אינה פורשת.</p>
+\end{aligned}\]</span> לפי משפט <a href="#thm-invertible2">8.68</a>, וקטורי הקוארדינטות (עמודות המטריצה) לא מהווים בסיס ל- <span class="math inline">\(\mathbb{R}^4\)</span>. לפי משפט <a href="#thm-test-by-coordinates">8.85</a>, נובע כי הקבוצה המקורית של המטריצות לא מהווה בסיס ל- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span>. יותר מכך, קבוצה זו אינה בת"ל וגם אינה פורשת.</p>
 </div>
 </section>
 <section id="מימדים" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="מימדים"><span class="header-section-number">8.7</span> מימדים</h2>
-<p>המסקנה הבאה היא הכללה של מסקנה <span class="math inline">\(\ref{cor:size-dim}\)</span> למרחבים וקטוריים כלליים:</p>
-<div class="corollary">
-<p><strong>מסקנה 1.87</strong>. <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{b_1,...,b_n}\)</span> בסיס ל- <span class="math inline">\(V\)</span> ו- <span class="math inline">\(v_1,...,v_k\in V\)</span>.</em></p>
-<ol type="1">
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל, אז <span class="math inline">\(k\leq n\)</span>.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span>, אז <span class="math inline">\(k\geq n\)</span>.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> היא בסיס ל- <span class="math inline">\(V\)</span>, אז <span class="math inline">\(k=n\)</span>.</em></p></li>
-</ol>
+<p>המסקנה הבאה היא הכללה של מסקנה <a href="#cor-size-dim">8.66</a> למרחבים וקטוריים כלליים:</p>
+<div id="cor-size-dim2" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.5</strong></span> <strong>מסקנה 1.87</strong>. <em> יהיו <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{b_1,...,b_n}\)</span> בסיס ל- <span class="math inline">\(V\)</span> ו- <span class="math inline">\(v_1,...,v_k\in V\)</span>.</em></p>
+<p>א. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל, אז <span class="math inline">\(k\leq n\)</span>.</em></p>
+<p>ב. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span>, אז <span class="math inline">\(k\geq n\)</span>.</em></p>
+<p>ג. <em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> היא בסיס ל- <span class="math inline">\(V\)</span>, אז <span class="math inline">\(k=n\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>נסתכל על וקטורי הקוארדינטות ביחס ל- <span class="math inline">\(B\)</span> ונשתמש במשפט <span class="math inline">\(\ref{thm:test-by-coordinates}\)</span> ומסקנה <span class="math inline">\(\ref{cor:size-dim}\)</span>.</p>
-<ol type="1">
-<li><p>נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל. אז <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>, ולכן <span class="math inline">\(k\leq n\)</span>.</p></li>
-<li><p>נניח <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span>. אז <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, ולכן <span class="math inline">\(k\geq n\)</span>.</p></li>
-<li><p>נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בסיס ל- <span class="math inline">\(V\)</span>. אז משני הסעיפים הקודמים נובע כי <span class="math inline">\(k\leq n\)</span> וגם <span class="math inline">\(k\geq n\)</span>, ולכן <span class="math inline">\(k=n\)</span>.</p></li>
-</ol>
+<p><span class="proof-title"><em>Proof</em>. </span>נסתכל על וקטורי הקוארדינטות ביחס ל- <span class="math inline">\(B\)</span> ונשתמש במשפט <a href="#thm-test-by-coordinates">8.85</a> ומסקנה <a href="#cor-size-dim">8.66</a>.</p>
+<p>א. נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל. אז <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> בת"ל ב- <span class="math inline">\(\mathbb{F}^n\)</span>, ולכן <span class="math inline">\(k\leq n\)</span>.</p>
+<p>ב. נניח <span class="math inline">\(\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(V\)</span>. אז <span class="math inline">\(\Set{[v_1]_B,...,[v_k]_B}\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>, ולכן <span class="math inline">\(k\geq n\)</span>.</p>
+<p>ג. נניח כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בסיס ל- <span class="math inline">\(V\)</span>. אז משני הסעיפים הקודמים נובע כי <span class="math inline">\(k\leq n\)</span> וגם <span class="math inline">\(k\geq n\)</span>, ולכן <span class="math inline">\(k=n\)</span>.</p>
 <p>&nbsp;◻</p>
 </div>
 <div class="corollary">
@@ -2043,14 +1980,12 @@ u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 </div>
 <p>מימד של מ"ו מגיע לנו במתנה אם ידוע לנו בסיס כלשהו שלו, כי צריך רק לספור את מספר וקטורי הבסיס.</p>
 <div class="example">
-<p>לפי דוגמה <span class="math inline">\(\ref{ex:standard-bases}\)</span>, לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span> מתקיים <span class="math inline">\(\dim(\mathbb{F}^n)=n\)</span> וגם <span class="math inline">\(\dim(\mathbb{M}_{m\times n}(\mathbb{F}))=mn\)</span>.</p>
+<p>לפי דוגמה <a href="#exm-standard-bases">8.37</a>, לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span> מתקיים <span class="math inline">\(\dim(\mathbb{F}^n)=n\)</span> וגם <span class="math inline">\(\dim(\mathbb{M}_{m\times n}(\mathbb{F}))=mn\)</span>.</p>
 </div>
 <div class="exercise">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>האם קיימת <span class="math inline">\(\Set{A_1,A_2,A_3,A_3,A_4,A_5}\subseteq\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> שהיא בת"ל?</p></li>
-<li><p>האם קיימת <span class="math inline">\(\Set{B_1,B_2,B_3}\subseteq\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> שפורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span>?</p></li>
-</ol>
+<p>א. האם קיימת <span class="math inline">\(\Set{A_1,A_2,A_3,A_3,A_4,A_5}\subseteq\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> שהיא בת"ל?</p>
+<p>ב. האם קיימת <span class="math inline">\(\Set{B_1,B_2,B_3}\subseteq\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> שפורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -2065,10 +2000,8 @@ u=\alpha_1w_1+...+\alpha_kw_k &amp;\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>נשים לב שמתקיים <span class="math inline">\(\dim(\mathbb{M}_{2\times 2}(\mathbb{R}))=4\)</span>.</p>
-<ol type="1">
-<li><p>התשובה היא לא. לפי מסקנה <span class="math inline">\(\ref{cor:size-dim2}\)</span>, הגודל המקסימלי של קבוצה בת"ל ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> הוא <span class="math inline">\(4\)</span>.</p></li>
-<li><p>התשובה היא לא. לפי מסקנה <span class="math inline">\(\ref{cor:size-dim2}\)</span>, הגודל המינימלי של קבוצה שפורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> הוא <span class="math inline">\(4\)</span>.</p></li>
-</ol>
+<p>א. התשובה היא לא. לפי מסקנה <a href="#cor-size-dim2">8.87</a>, הגודל המקסימלי של קבוצה בת"ל ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> הוא <span class="math inline">\(4\)</span>.</p>
+<p>ב. התשובה היא לא. לפי מסקנה <a href="#cor-size-dim2">8.87</a>, הגודל המינימלי של קבוצה שפורשת את <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> הוא <span class="math inline">\(4\)</span>.</p>
 </div>
 </div>
 </div>
@@ -2133,23 +2066,19 @@ i &amp; 1
 </div>
 </div>
 </div>
-<p>כעת נוכיח הכללה של משפט <span class="math inline">\(\ref{thm:3-for-2}\)</span> ("שלישי חינם") למרחבים וקטוריים כלליים:</p>
-<div class="theorem">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> כך ש- <span class="math inline">\(\dim(V)=n\)</span>, ותהי <span class="math inline">\(S\subseteq V\)</span>. אז כל שניים מהתנאים הבאים גוררים את התנאי השלישי:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(S\)</span> בת"ל.</em></p></li>
-<li><p><em><span class="math inline">\(S\)</span> פורשת את <span class="math inline">\(V\)</span>.</em></p></li>
-<li><p><em>ב- <span class="math inline">\(S\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים.</em></p></li>
-</ol>
+<p>כעת נוכיח הכללה של משפט <a href="#thm-3-for-2">8.69</a> ("שלישי חינם") למרחבים וקטוריים כלליים:</p>
+<div id="thm-3-for-2-V" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.4</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> כך ש- <span class="math inline">\(\dim(V)=n\)</span>, ותהי <span class="math inline">\(S\subseteq V\)</span>. אז כל שניים מהתנאים הבאים גוררים את התנאי השלישי:</em></p>
+<p>א. <em><span class="math inline">\(S\)</span> בת"ל.</em></p>
+<p>ב. <em><span class="math inline">\(S\)</span> פורשת את <span class="math inline">\(V\)</span>.</em></p>
+<p>ג. <em>ב- <span class="math inline">\(S\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>מהנתון <span class="math inline">\(\dim(V)=n\)</span> נובע שקיים בסיס <span class="math inline">\(B\)</span> ל- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n\)</span>. נסמן <span class="math inline">\(S=\Set{v_1,...,v_k}\)</span> ונסתכל על הקבוצה <span class="math inline">\(S_B=\Set{[v_1]_B,...,[v_k]_B}\subseteq\mathbb{F}^n\)</span>. אז לפי משפט <span class="math inline">\(\ref{thm:3-for-2}\)</span>, כל שניים מהתנאים הבאים גורר את התנאי השלישי:</p>
-<ol type="1">
-<li><p><span class="math inline">\(S_B\)</span> בת"ל.</p></li>
-<li><p><span class="math inline">\(S_B\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</p></li>
-<li><p>ב- <span class="math inline">\(S_B\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים (כלומר <span class="math inline">\(k=n\)</span>).</p></li>
-</ol>
-<p>לבסוף, לפי משפט <span class="math inline">\(\ref{thm:test-by-coordinates}\)</span>, כל תנאי לעיל שקול לתנאי המתאים לגבי <span class="math inline">\(S\)</span>. לכן, כל שניים מהתנאים לגבי <span class="math inline">\(S\)</span> גורר את התנאי השלישי.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>מהנתון <span class="math inline">\(\dim(V)=n\)</span> נובע שקיים בסיס <span class="math inline">\(B\)</span> ל- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n\)</span>. נסמן <span class="math inline">\(S=\Set{v_1,...,v_k}\)</span> ונסתכל על הקבוצה <span class="math inline">\(S_B=\Set{[v_1]_B,...,[v_k]_B}\subseteq\mathbb{F}^n\)</span>. אז לפי משפט <a href="#thm-3-for-2">8.69</a>, כל שניים מהתנאים הבאים גורר את התנאי השלישי:</p>
+<p>א. <span class="math inline">\(S_B\)</span> בת"ל.</p>
+<p>ב. <span class="math inline">\(S_B\)</span> פורשת את <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
+<p>ג. ב- <span class="math inline">\(S_B\)</span> יש בדיוק <span class="math inline">\(n\)</span> וקטורים (כלומר <span class="math inline">\(k=n\)</span>).</p>
+<p>לבסוף, לפי משפט <a href="#thm-test-by-coordinates">8.85</a>, כל תנאי לעיל שקול לתנאי המתאים לגבי <span class="math inline">\(S\)</span>. לכן, כל שניים מהתנאים לגבי <span class="math inline">\(S\)</span> גורר את התנאי השלישי.&nbsp;◻</p>
 </div>
 <div class="exercise">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> בעל בסיס <span class="math inline">\(B=\Set{v_1,v_2,v_3}\)</span>. הוכיחו כי גם <span class="math display">\[B'=\Set{v_1,v_1+v_2,v_1+v_2+v_3}\]</span> היא בסיס ל- <span class="math inline">\(V\)</span>.</p>
@@ -2177,19 +2106,15 @@ v_3&amp;=(v_1+v_2+v_3)-(v_1+v_2)\in\mathop{\mathrm{Span}}(B')
 </div>
 </div>
 <p>כעת נעסוק בשאלה טבעית: מה אפשר לומר על מימד של תת-מרחב?</p>
-<div class="corollary">
-<p><strong>מסקנה 1.95</strong>. <em> יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהי <span class="math inline">\(W\)</span> תת-מרחב. אז מתקיים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(W\)</span> נוצר סופית ומתקיים <span class="math inline">\(\dim(W)\leq \dim(V)\)</span>.</em></p></li>
-<li><p><em>אם <span class="math inline">\(\dim(W)=\dim(V)\)</span>, אז <span class="math inline">\(W=V\)</span>.</em></p></li>
-</ol>
+<div id="cor-subspace-dim" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 8.6</strong></span> <strong>מסקנה 1.95</strong>. <em> יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהי <span class="math inline">\(W\)</span> תת-מרחב. אז מתקיים:</em></p>
+<p>א. <em><span class="math inline">\(W\)</span> נוצר סופית ומתקיים <span class="math inline">\(\dim(W)\leq \dim(V)\)</span>.</em></p>
+<p>ב. <em>אם <span class="math inline">\(\dim(W)=\dim(V)\)</span>, אז <span class="math inline">\(W=V\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(\dim(V)=n\)</span>.</p>
-<ol type="1">
-<li><p>אם <span class="math inline">\(W=\Set{0_V}\)</span>, אז הוא נוצר סופית ומתקיים <span class="math inline">\(\dim(W)=0\leq\dim(V)\)</span>. אחרת, קיים <span class="math inline">\(0_V\neq w_1\in W\)</span> כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1)\subseteq W\)</span>. אם מתקיים שוויון, אז <span class="math inline">\(\dim(W)=1\)</span> וסיימנו. לחילופין, נוסיף <span class="math inline">\(w_2\in W\)</span> כך ש- <span class="math inline">\(w_2\notin\mathop{\mathrm{Span}}(W_1)\)</span>, ונקבל <span class="math inline">\(\Set{w_1,w_2}\)</span> בת"ל כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,w_2)\subseteq W\)</span>. אם עדיין אין שוויון, נמשיך באופן דומה ע"י הוספת וקטור בכל שלב עד שנקבל <span class="math inline">\(B=\Set{w_1,...,w_k}\)</span> בת"ל כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,...,w_k)=W\)</span>. התהליך חייב להסתיים עם שוויון עבור <span class="math inline">\(k\leq n\)</span> וקטורים, כי לא קיימת קבוצה בת"ל ב- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n+1\)</span> לפי מסקנה <span class="math inline">\(\ref{cor:size-dim2}\)</span>. אז <span class="math inline">\(W\)</span> נוצר סופית כי <span class="math inline">\(B\)</span> היא בסיס שלו, ומתקיים <span class="math display">\[.\dim(W)=k\leq n=\dim(V)\]</span></p></li>
-<li><p>נניח כי <span class="math inline">\(k=n\)</span>. אז <span class="math inline">\(B\)</span> זו קבוצה בת"ל ב- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n\)</span>, ולכן לפי משפט <span class="math inline">\(\ref{thm:3-for-2-V}\)</span> היא גם בסיס ל- <span class="math inline">\(V\)</span>. אז בפרט, מתקיים <span class="math inline">\(W=\mathop{\mathrm{Span}}(w_1,...,w_n)=V\)</span>.</p></li>
-</ol>
+<p>א. אם <span class="math inline">\(W=\Set{0_V}\)</span>, אז הוא נוצר סופית ומתקיים <span class="math inline">\(\dim(W)=0\leq\dim(V)\)</span>. אחרת, קיים <span class="math inline">\(0_V\neq w_1\in W\)</span> כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1)\subseteq W\)</span>. אם מתקיים שוויון, אז <span class="math inline">\(\dim(W)=1\)</span> וסיימנו. לחילופין, נוסיף <span class="math inline">\(w_2\in W\)</span> כך ש- <span class="math inline">\(w_2\notin\mathop{\mathrm{Span}}(W_1)\)</span>, ונקבל <span class="math inline">\(\Set{w_1,w_2}\)</span> בת"ל כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,w_2)\subseteq W\)</span>. אם עדיין אין שוויון, נמשיך באופן דומה ע"י הוספת וקטור בכל שלב עד שנקבל <span class="math inline">\(B=\Set{w_1,...,w_k}\)</span> בת"ל כך ש- <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,...,w_k)=W\)</span>. התהליך חייב להסתיים עם שוויון עבור <span class="math inline">\(k\leq n\)</span> וקטורים, כי לא קיימת קבוצה בת"ל ב- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n+1\)</span> לפי מסקנה <a href="#cor-size-dim2">8.87</a>. אז <span class="math inline">\(W\)</span> נוצר סופית כי <span class="math inline">\(B\)</span> היא בסיס שלו, ומתקיים <span class="math display">\[.\dim(W)=k\leq n=\dim(V)\]</span></p>
+<p>ב. נניח כי <span class="math inline">\(k=n\)</span>. אז <span class="math inline">\(B\)</span> זו קבוצה בת"ל ב- <span class="math inline">\(V\)</span> בגודל <span class="math inline">\(n\)</span>, ולכן לפי משפט <a href="#thm-3-for-2-V">8.93</a> היא גם בסיס ל- <span class="math inline">\(V\)</span>. אז בפרט, מתקיים <span class="math inline">\(W=\mathop{\mathrm{Span}}(w_1,...,w_n)=V\)</span>.</p>
 <p>&nbsp;◻</p>
 </div>
 <div class="example">
@@ -2198,7 +2123,7 @@ v_3&amp;=(v_1+v_2+v_3)-(v_1+v_2)\in\mathop{\mathrm{Span}}(B')
 W_1&amp;=\mathop{\mathrm{Span}}(v_1+v_2+v_3+v_4,v_1-v_2-v_3+v_4,v_1+v_4) \\
 W_2&amp;=\mathop{\mathrm{Span}}(v_1+v_4,v_2+v_3)
 \end{aligned}\]</span></p>
-<p>נראה כי <span class="math inline">\(W_1=W_2\)</span>. בשביל הכיוון <span class="math inline">\(W_1\supseteq W_2\)</span> נראה כי <span class="math display">\[,v_2+v_3\in\mathop{\mathrm{Span}}(v_1+v_2+v_3+v_4,v_1-v_2-v_3+v_4,v_1+v_4)\]</span> וזה יספיק שהרי <span class="math inline">\(v_1+v_4\)</span> מופיע בשתי הקבוצות. במקום "לנחש" את הסקלרים שיראו זאת (לפעמים זה אפשרי עם בדיקה), הרעיון הוא להשתמש בוקטורי קוארדינטות לפי <span class="math inline">\(B\)</span> ומסקנה <span class="math inline">\(\ref{cor:span-coordinates}\)</span>. כלומר, נראה שמתקיים התנאי השקול לגבי וקטורי הקוארדינטות: <span class="math display">\[[v_2+v_3]_B\in\mathop{\mathrm{Span}}([v_1+v_2+v_3+v_4]_B,[v_1-v_2-v_3+v_4]_B,[v_1+v_4]_B)\]</span> מתקיים</p>
+<p>נראה כי <span class="math inline">\(W_1=W_2\)</span>. בשביל הכיוון <span class="math inline">\(W_1\supseteq W_2\)</span> נראה כי <span class="math display">\[,v_2+v_3\in\mathop{\mathrm{Span}}(v_1+v_2+v_3+v_4,v_1-v_2-v_3+v_4,v_1+v_4)\]</span> וזה יספיק שהרי <span class="math inline">\(v_1+v_4\)</span> מופיע בשתי הקבוצות. במקום "לנחש" את הסקלרים שיראו זאת (לפעמים זה אפשרי עם בדיקה), הרעיון הוא להשתמש בוקטורי קוארדינטות לפי <span class="math inline">\(B\)</span> ומסקנה <a href="#cor-span-coordinates">8.83</a>. כלומר, נראה שמתקיים התנאי השקול לגבי וקטורי הקוארדינטות: <span class="math display">\[[v_2+v_3]_B\in\mathop{\mathrm{Span}}([v_1+v_2+v_3+v_4]_B,[v_1-v_2-v_3+v_4]_B,[v_1+v_4]_B)\]</span> מתקיים</p>
 <p><span class="math display">\[\begin{aligned}
 [v_1+v_2+v_3+v_4]_B&amp;=(1,1,1,1) \\
 [v_1-v_2-v_3+v_4]_B&amp;=(1,-1,-1,1) \\
@@ -2225,7 +2150,7 @@ W_2&amp;=\mathop{\mathrm{Span}}(v_1+v_4,v_2+v_3)
 0 &amp; 0 &amp; 0 &amp; 0
 \end{array}\right)
 \end{aligned}\]</span></p>
-<p>אין צורך בדירוג קנוני כי כבר ניתן לקבוע שקיים פתרון (לא יחיד), ולכן נובע כי <span class="math inline">\(W_1\supseteq W_2\)</span>. בשביל הכיוון <span class="math inline">\(W_1\subseteq W_2\)</span> לכאורה צריך לעשות דירוג נוסף, כאשר העמודות שמתאימות ל- <span class="math inline">\(v_1+v_4,v_2+v_3\)</span> יהיו בצד שמאל. אבל יש קיצור דרך: נראה כי <span class="math inline">\(\dim(W_1)=\dim(W_2)\)</span> ואז ינבע כי <span class="math inline">\(W_1=W_2\)</span> לפי מסקנה <span class="math inline">\(\ref{cor:subspace-dim}\)</span>. ובכן, הדירוג הקודם כבר מראה זאת כי בלי העמודה הימנית, קיבלנו דירוג עבור הוקטורים בהגדרת <span class="math inline">\(W_1\)</span>. העמודה השלישית היא צ"ל של שתי העמודות הראשונות, שמהוות קבוצה בת"ל. לכן, הקבוצה הבאה היא בסיס ל- <span class="math inline">\(W_1\)</span>: <span class="math display">\[\Set{v_1+v_2+v_3+v_4,v_1-v_2-v_3+v_4}\]</span> אז <span class="math inline">\(\dim(W_1)=2\)</span>. באופן דומה, אם נתמקד רק בשתי העמודות הימניות, הדירוג מראה כי <span class="math inline">\(\Set{v_1+v_4,v_2+v_3}\)</span> היא בסיס ל- <span class="math inline">\(W_2\)</span>. לכן מתקיים <span class="math inline">\(\dim(W_2)=2=\dim(W_1)\)</span>, ומכאן <span class="math inline">\(W_2=W_1\)</span>.</p>
+<p>אין צורך בדירוג קנוני כי כבר ניתן לקבוע שקיים פתרון (לא יחיד), ולכן נובע כי <span class="math inline">\(W_1\supseteq W_2\)</span>. בשביל הכיוון <span class="math inline">\(W_1\subseteq W_2\)</span> לכאורה צריך לעשות דירוג נוסף, כאשר העמודות שמתאימות ל- <span class="math inline">\(v_1+v_4,v_2+v_3\)</span> יהיו בצד שמאל. אבל יש קיצור דרך: נראה כי <span class="math inline">\(\dim(W_1)=\dim(W_2)\)</span> ואז ינבע כי <span class="math inline">\(W_1=W_2\)</span> לפי מסקנה <a href="#cor-subspace-dim">8.95</a>. ובכן, הדירוג הקודם כבר מראה זאת כי בלי העמודה הימנית, קיבלנו דירוג עבור הוקטורים בהגדרת <span class="math inline">\(W_1\)</span>. העמודה השלישית היא צ"ל של שתי העמודות הראשונות, שמהוות קבוצה בת"ל. לכן, הקבוצה הבאה היא בסיס ל- <span class="math inline">\(W_1\)</span>: <span class="math display">\[\Set{v_1+v_2+v_3+v_4,v_1-v_2-v_3+v_4}\]</span> אז <span class="math inline">\(\dim(W_1)=2\)</span>. באופן דומה, אם נתמקד רק בשתי העמודות הימניות, הדירוג מראה כי <span class="math inline">\(\Set{v_1+v_4,v_2+v_3}\)</span> היא בסיס ל- <span class="math inline">\(W_2\)</span>. לכן מתקיים <span class="math inline">\(\dim(W_2)=2=\dim(W_1)\)</span>, ומכאן <span class="math inline">\(W_2=W_1\)</span>.</p>
 </div>
 <section id="משפט-הדרגה" class="level3" data-number="8.7.1">
 <h3 data-number="8.7.1" class="anchored" data-anchor-id="משפט-הדרגה"><span class="header-section-number">8.7.1</span> משפט הדרגה</h3>
@@ -2308,8 +2233,8 @@ x_2+\frac{1}{3}x_3+2x_4=0
 \end{aligned}\]</span></p>
 <p>אז <span class="math inline">\(\Set{(\frac{2}{3},-\frac{1}{3},1,0),(1,-2,0,1)}\)</span> פורשת את <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span>. קל לבדוק שהיא בת"ל כי שני הוקטורים אינם קו-לינאריים, אבל יש דרך אחרת לראות זאת. אם נניח שקיימים <span class="math inline">\(\alpha_1,\alpha_2\in\mathbb{R}\)</span> כך ש- <span class="math display">\[,\alpha_1(\frac{2}{3},-\frac{1}{3},1,0)+\alpha_2(1,-2,0,1)=(0,0,0,0)\]</span> אז לפי שתי הקוארדינטות האחרונות נקבל <span class="math inline">\(\alpha_1=\alpha_2=0\)</span>. לכן, קבוצה זו היא בסיס ומתקיים <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))=2\)</span>.</p>
 </div>
-<div class="exercise">
-<p> יהיו <span class="math inline">\(\Set{v_1,...,v_k}\subseteq\mathbb{F}^n\)</span> ו- <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. הוכיחו כי <span class="math inline">\(\Set{Av_1,...,Av_k}\)</span> בת"ל אם ורק אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל.</p>
+<div id="exr-column-dim" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> יהיו <span class="math inline">\(\Set{v_1,...,v_k}\subseteq\mathbb{F}^n\)</span> ו- <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. הוכיחו כי <span class="math inline">\(\Set{Av_1,...,Av_k}\)</span> בת"ל אם ורק אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
@@ -2328,22 +2253,18 @@ x_2+\frac{1}{3}x_3+2x_4=0
 </div>
 </div>
 </div>
-<div class="theorem">
-<p><em> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז מתקיים:</em></p>
-<ol type="1">
-<li><p><em><span class="math display">\[\dim(\mathop{\mathrm{Row}}(A))=\dim(\mathop{\mathrm{Col}}(A))=\mathop{\mathrm{rank}}(A)\]</span></em></p></li>
-<li><p><em><span class="math display">\[\dim(\mathop{\mathrm{N}}(A))+\mathop{\mathrm{rank}}(A)=n\]</span></em></p></li>
-</ol>
+<div id="thm-rank-nullity" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.5</strong></span> <em> תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז מתקיים:</em></p>
+<p>א. <em><span class="math display">\[\dim(\mathop{\mathrm{Row}}(A))=\dim(\mathop{\mathrm{Col}}(A))=\mathop{\mathrm{rank}}(A)\]</span></em></p>
+<p>ב. <em><span class="math display">\[\dim(\mathop{\mathrm{N}}(A))+\mathop{\mathrm{rank}}(A)=n\]</span></em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>הסעיף השני של המשפט נקרא "משפט הדרגה". שימו לב ש- <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))\)</span> קטן ככל ש- <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span> גדלה. כבר ראינו שמתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span> אם ורק אם <span class="math inline">\(\mathop{\mathrm{N}}(A)=\Set{0}\)</span>, וזה שקול לתנאי <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))=0\)</span>. במקרה זה הסכום הוא אכן <span class="math inline">\(n\)</span>, והמשפט מכליל זאת למקרים אחרים. רעיון ההוכחה הוא פשוט: הדרגה שווה למספר המשתנים התלויים, ומימד מרחב הפתרונות שווה למספר המשתנים החופשיים (והסכום הכולל הוא <span class="math inline">\(n\)</span>). צריך רק להצדיק את הקביעות האלו.</p>
 </div>
 <div class="exercise">
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. הוכיחו כי:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\mathop{\mathrm{rank}}(A^t)=\mathop{\mathrm{rank}}(A)\)</span></p></li>
-<li><p><span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))\geq n-m\)</span></p></li>
-</ol>
+<p>א. <span class="math inline">\(\mathop{\mathrm{rank}}(A^t)=\mathop{\mathrm{rank}}(A)\)</span></p>
+<p>ב. <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))\geq n-m\)</span></p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
@@ -2357,11 +2278,9 @@ x_2+\frac{1}{3}x_3+2x_4=0
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>לפי סעיף א’ של משפט <span class="math inline">\(\ref{thm:rank-nullity}\)</span>, מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A^t)=\dim(\mathop{\mathrm{Col}}(A^t))=\dim(\mathop{\mathrm{Row}}(A))=\mathop{\mathrm{rank}}(A)\]</span></p></li>
-<li><p>לפי משפט הדרגה ואי-השוויון <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq m\)</span>, מתקיים</p>
-<p><span class="math display">\[.\dim(\mathop{\mathrm{N}}(A))=n-\mathop{\mathrm{rank}}(A)\geq n-m\]</span></p></li>
-</ol>
+<p>א. לפי סעיף א’ של משפט <a href="#thm-rank-nullity">8.99</a>, מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A^t)=\dim(\mathop{\mathrm{Col}}(A^t))=\dim(\mathop{\mathrm{Row}}(A))=\mathop{\mathrm{rank}}(A)\]</span></p>
+<p>ב. לפי משפט הדרגה ואי-השוויון <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq m\)</span>, מתקיים</p>
+<p><span class="math display">\[.\dim(\mathop{\mathrm{N}}(A))=n-\mathop{\mathrm{rank}}(A)\geq n-m\]</span></p>
 </div>
 </div>
 </div>
@@ -2377,10 +2296,8 @@ x_2+\frac{1}{3}x_3+2x_4=0
 -1 \\
 0
 \end{pmatrix}\right)\]</span></p>
-<ol type="1">
-<li><p>נניח שקיימת מטריצה <span class="math inline">\(A\)</span> כך ש- <span class="math inline">\(\mathop{\mathrm{N}}(A)=W\)</span>. מהו מספר העמודות שלה? כמה שורות יש לה לכל הפחות? כמה שורות יש לה לכל היותר?</p></li>
-<li><p>מצאו מטריצה <span class="math inline">\(A\)</span> כנ"ל.</p></li>
-</ol>
+<p>א. נניח שקיימת מטריצה <span class="math inline">\(A\)</span> כך ש- <span class="math inline">\(\mathop{\mathrm{N}}(A)=W\)</span>. מהו מספר העמודות שלה? כמה שורות יש לה לכל הפחות? כמה שורות יש לה לכל היותר?</p>
+<p>ב. מצאו מטריצה <span class="math inline">\(A\)</span> כנ"ל.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
@@ -2394,169 +2311,167 @@ x_2+\frac{1}{3}x_3+2x_4=0
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>מספר העמודות של <span class="math inline">\(A\)</span> הוא בהכרח <span class="math inline">\(4\)</span>, כי מספר העמודות שווה למספר המשתנים של הממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> ונתון שקבוצת הפתרונות היא תת-מרחב של <span class="math inline">\(\mathbb{R}^4\)</span>. הקבוצה <span class="math inline">\(\Set{\begin{pmatrix}
-1 \\
-2 \\
-3 \\
-4
-\end{pmatrix},\begin{pmatrix}
-1 \\
-0 \\
--1 \\
-0
-\end{pmatrix}}\)</span> היא בת"ל כי שני הוקטורים אינם קו-לינאריים. לכן, קבוצה זו היא בסיס ל- <span class="math inline">\(W\)</span> ומתקיים <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))=\dim(W)=2\)</span>. לפי משפט הדרגה נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{N}}(A))+\mathop{\mathrm{rank}}(A)=4 \implies \mathop{\mathrm{rank}}(A)=2\]</span> אז מספר השורות המינימלי הוא <span class="math inline">\(2\)</span>, אבל אין שום חסם עליון כי אפשר לחזור על אחת משתי השורות (או שתיהן) מספר שרירותי של פעמים. אפשר גם לקחת צירופים לינאריים שונים של שתי השורות ולקבל מספר שרירותי של שורות שונות, ועדיין הדרגה תישאר <span class="math inline">\(2\)</span>.</p></li>
-<li><p>יש שתי דרכי פתרון.</p>
+<p>א. מספר העמודות של <span class="math inline">\(A\)</span> הוא בהכרח <span class="math inline">\(4\)</span>, כי מספר העמודות שווה למספר המשתנים של הממ"ל <span class="math inline">\(Ax=\underline{0}\)</span> ונתון שקבוצת הפתרונות היא תת-מרחב של <span class="math inline">\(\mathbb{R}^4\)</span>. הקבוצה <span class="math inline">\(\Set{\begin{pmatrix}
+    1 \\
+    2 \\
+    3 \\
+    4
+    \end{pmatrix},\begin{pmatrix}
+    1 \\
+    0 \\
+    -1 \\
+    0
+    \end{pmatrix}}\)</span> היא בת"ל כי שני הוקטורים אינם קו-לינאריים. לכן, קבוצה זו היא בסיס ל- <span class="math inline">\(W\)</span> ומתקיים <span class="math inline">\(\dim(\mathop{\mathrm{N}}(A))=\dim(W)=2\)</span>. לפי משפט הדרגה נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{N}}(A))+\mathop{\mathrm{rank}}(A)=4 \implies \mathop{\mathrm{rank}}(A)=2\]</span> אז מספר השורות המינימלי הוא <span class="math inline">\(2\)</span>, אבל אין שום חסם עליון כי אפשר לחזור על אחת משתי השורות (או שתיהן) מספר שרירותי של פעמים. אפשר גם לקחת צירופים לינאריים שונים של שתי השורות ולקבל מספר שרירותי של שורות שונות, ועדיין הדרגה תישאר <span class="math inline">\(2\)</span>.</p>
+<p>ב. יש שתי דרכי פתרון.</p>
 <p><u>דרך א’</u>: נשים לב כי <span class="math display">\[.\begin{pmatrix}
-x \\
-y \\
-z \\
-w
-\end{pmatrix}\in W \iff \left(\begin{array}{cc|c}
-1 &amp; 1 &amp; x \\
-2 &amp; 0 &amp; y \\
-3 &amp; -1  &amp; z \\
-4 &amp; 0 &amp; w
-\end{array}\right) \quad \text{קיים פתרון לממ"ל}\]</span> או במילים: הוקטור שייך ל- <span class="math inline">\(W\)</span> אם ורק אם קיים פתרון לממ"ל שמתארת את תנאי הפרישה. נדרג את מטריצת המקדמים המורחבת ונמצא תנאים על <span class="math inline">\(x,y,z,w\)</span> לכך שלא תופיע אף שורת סתירה בסוף הדירוג. תנאים אלה יהוו ממ"ל חדשה, שתוביל למטריצה <span class="math inline">\(A\)</span>.</p>
+    x \\
+    y \\
+    z \\
+    w
+    \end{pmatrix}\in W \iff \left(\begin{array}{cc|c}
+    1 &amp; 1 &amp; x \\
+    2 &amp; 0 &amp; y \\
+    3 &amp; -1  &amp; z \\
+    4 &amp; 0 &amp; w
+    \end{array}\right) \quad \text{קיים פתרון לממ"ל}\]</span> או במילים: הוקטור שייך ל- <span class="math inline">\(W\)</span> אם ורק אם קיים פתרון לממ"ל שמתארת את תנאי הפרישה. נדרג את מטריצת המקדמים המורחבת ונמצא תנאים על <span class="math inline">\(x,y,z,w\)</span> לכך שלא תופיע אף שורת סתירה בסוף הדירוג. תנאים אלה יהוו ממ"ל חדשה, שתוביל למטריצה <span class="math inline">\(A\)</span>.</p>
 <p><span class="math display">\[\begin{aligned}
-&amp;\left(
-\begin{array}{cc|c}
-1 &amp; 1 &amp; x \\
-2 &amp; 0 &amp; y \\
-3 &amp; -1 &amp; z \\
-4 &amp; 0 &amp; w
-\end{array}
-\right)
-\xrightarrow{
-\substack{
-R_2-2R_1\to R_2\\
-R_3-3R_1\to R_3\\
-R_4-4R_1\to R_4
-}
-}
-\left(
-\begin{array}{cc|c}
-1 &amp; 1 &amp; x \\
-0 &amp; -2 &amp; y-2x \\
-0 &amp; -4 &amp; z-3x \\
-0 &amp; -4 &amp; w-4x
-\end{array}
-\right)\\
-\xrightarrow{
--\frac12 R_2\to R_2
-}
-&amp;\left(
-\begin{array}{cc|c}
-1 &amp; 1 &amp; x \\
-0 &amp; 1 &amp; \frac{2x-y}{2} \\
-0 &amp; -4 &amp; z-3x \\
-0 &amp; -4 &amp; w-4x
-\end{array}
-\right)\xrightarrow{
-\substack{
-R_3+4R_2\to R_3\\
-R_4+4R_2\to R_4
-}
-}
-\left(
-\begin{array}{cc|c}
-1 &amp; 1 &amp; x \\
-0 &amp; 1 &amp; \frac{2x-y}{2} \\
-0 &amp; 0 &amp; x-2y+z \\
-0 &amp; 0 &amp; w-2y
-\end{array}
-\right)
-\end{aligned}\]</span></p>
+    &amp;\left(
+    \begin{array}{cc|c}
+    1 &amp; 1 &amp; x \\
+    2 &amp; 0 &amp; y \\
+    3 &amp; -1 &amp; z \\
+    4 &amp; 0 &amp; w
+    \end{array}
+    \right)
+    \xrightarrow{
+    \substack{
+    R_2-2R_1\to R_2\\
+    R_3-3R_1\to R_3\\
+    R_4-4R_1\to R_4
+    }
+    }
+    \left(
+    \begin{array}{cc|c}
+    1 &amp; 1 &amp; x \\
+    0 &amp; -2 &amp; y-2x \\
+    0 &amp; -4 &amp; z-3x \\
+    0 &amp; -4 &amp; w-4x
+    \end{array}
+    \right)\\
+    \xrightarrow{
+    -\frac12 R_2\to R_2
+    }
+    &amp;\left(
+    \begin{array}{cc|c}
+    1 &amp; 1 &amp; x \\
+    0 &amp; 1 &amp; \frac{2x-y}{2} \\
+    0 &amp; -4 &amp; z-3x \\
+    0 &amp; -4 &amp; w-4x
+    \end{array}
+    \right)\xrightarrow{
+    \substack{
+    R_3+4R_2\to R_3\\
+    R_4+4R_2\to R_4
+    }
+    }
+    \left(
+    \begin{array}{cc|c}
+    1 &amp; 1 &amp; x \\
+    0 &amp; 1 &amp; \frac{2x-y}{2} \\
+    0 &amp; 0 &amp; x-2y+z \\
+    0 &amp; 0 &amp; w-2y
+    \end{array}
+    \right)
+    \end{aligned}\]</span></p>
 <p>לכן:</p>
 <p><span class="math display">\[\begin{pmatrix}
-x \\
-y \\
-z \\
-w
-\end{pmatrix}\in W \iff
-\begin{cases}
-\begin{aligned}
-x-2y+z&amp;=0 \\
--2y+w&amp;=0
-\end{aligned}
-\end{cases}\]</span></p>
+    x \\
+    y \\
+    z \\
+    w
+    \end{pmatrix}\in W \iff
+    \begin{cases}
+    \begin{aligned}
+    x-2y+z&amp;=0 \\
+    -2y+w&amp;=0
+    \end{aligned}
+    \end{cases}\]</span></p>
 <p>אין תשובה יחידה ל- <span class="math inline">\(A\)</span>, כי ניתן לבצע פש"אות על הממ"ל. אבל בלי להסתבך עם כל האפשרויות, ניקח את הממ"ל שקיבלנו ונכתוב את מטריצת המקדמים המצומצמת:</p>
 <p><span class="math display">\[A=\begin{pmatrix}
-1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; -2 &amp; 0 &amp; 1
-\end{pmatrix}\]</span></p>
+    1 &amp; -2 &amp; 1 &amp; 0 \\
+    0 &amp; -2 &amp; 0 &amp; 1
+    \end{pmatrix}\]</span></p>
 <p>לפי הדירוג הקודם, אכן מתקיים <span class="math inline">\(\mathop{\mathrm{N}}(A)=W\)</span>. זו התשובה הנוחה ביותר, אבל הנה שתי דוגמאות לבחירה של <span class="math inline">\(A\)</span> עם שורות עודפות:</p>
 <p><span class="math display">\[\begin{pmatrix}
-1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; -2 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0
-\end{pmatrix}, \quad \begin{pmatrix}
-1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; -2 &amp; 0 &amp; 1 \\
-1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; -2 &amp; 0 &amp; 1
-\end{pmatrix}\]</span></p>
+    1 &amp; -2 &amp; 1 &amp; 0 \\
+    0 &amp; -2 &amp; 0 &amp; 1 \\
+    0 &amp; 0 &amp; 0 &amp; 0
+    \end{pmatrix}, \quad \begin{pmatrix}
+    1 &amp; -2 &amp; 1 &amp; 0 \\
+    0 &amp; -2 &amp; 0 &amp; 1 \\
+    1 &amp; -2 &amp; 1 &amp; 0 \\
+    0 &amp; -2 &amp; 0 &amp; 1
+    \end{pmatrix}\]</span></p>
 <p><u>דרך ב’</u>: נחזור אל <span class="math inline">\(\Set{\begin{pmatrix}
-1 \\
-2 \\
-3 \\
-4
-\end{pmatrix},\begin{pmatrix}
-1 \\
-0 \\
--1 \\
-0
-\end{pmatrix}}\)</span> והפעם נסתכל על המטריצה שאלה הן שורותיה:</p>
+    1 \\
+    2 \\
+    3 \\
+    4
+    \end{pmatrix},\begin{pmatrix}
+    1 \\
+    0 \\
+    -1 \\
+    0
+    \end{pmatrix}}\)</span> והפעם נסתכל על המטריצה שאלה הן שורותיה:</p>
 <p><span class="math display">\[\begin{pmatrix}
-1 &amp; 2 &amp; 3 &amp; 4 \\
-1 &amp; 0 &amp;-1 &amp; 0
-\end{pmatrix}\]</span></p>
+    1 &amp; 2 &amp; 3 &amp; 4 \\
+    1 &amp; 0 &amp;-1 &amp; 0
+    \end{pmatrix}\]</span></p>
 <p>לאחר דירוג נקבל את הצורה המדורגת קנונית הבאה:</p>
 <p><span class="math display">\[\begin{pmatrix}
-1 &amp; 0 &amp; -1 &amp; 0 \\
-0 &amp; 1 &amp; 2 &amp; 2
-\end{pmatrix}\]</span></p>
+    1 &amp; 0 &amp; -1 &amp; 0 \\
+    0 &amp; 1 &amp; 2 &amp; 2
+    \end{pmatrix}\]</span></p>
 <p>הדירוג לא השפיע על מרחב השורות, ולכן אם נחזור לכתיבה של עמודות נקבל אפיון של <span class="math inline">\(W\)</span> לפי ממ"ל:</p>
 <p><span class="math display">\[\begin{aligned}
-W&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
-1 \\
-2 \\
-3 \\
-4
-\end{pmatrix},\begin{pmatrix}
-1 \\
-0 \\
--1 \\
-0
-\end{pmatrix}\right)=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
-1 \\
-0 \\
--1 \\
-0
-\end{pmatrix},\begin{pmatrix}
-0 \\
-1 \\
-2 \\
-2
-\end{pmatrix}\right) \\
-&amp;=\Set{\begin{pmatrix}
-s \\
-t \\
--s+2t \\
-2t
-\end{pmatrix}|s,t\in\mathbb{R}}=\Set{\begin{pmatrix}
-x \\
-y \\
-z \\
-w
-\end{pmatrix}\in\mathbb{R}^4|\begin{aligned}z&amp;=-x+2y\\w&amp;=2y\end{aligned}}
-\end{aligned}\]</span></p>
+    W&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+    1 \\
+    2 \\
+    3 \\
+    4
+    \end{pmatrix},\begin{pmatrix}
+    1 \\
+    0 \\
+    -1 \\
+    0
+    \end{pmatrix}\right)=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+    1 \\
+    0 \\
+    -1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    1 \\
+    2 \\
+    2
+    \end{pmatrix}\right) \\
+    &amp;=\Set{\begin{pmatrix}
+    s \\
+    t \\
+    -s+2t \\
+    2t
+    \end{pmatrix}|s,t\in\mathbb{R}}=\Set{\begin{pmatrix}
+    x \\
+    y \\
+    z \\
+    w
+    \end{pmatrix}\in\mathbb{R}^4|\begin{aligned}z&amp;=-x+2y\\w&amp;=2y\end{aligned}}
+    \end{aligned}\]</span></p>
 <p>לכן, לאחר העברת אגפים שוב נובע כי <span class="math inline">\(W=N(A)\)</span> עבור</p>
 <p><span class="math display">\[.A=\begin{pmatrix}
-1 &amp; -2 &amp; 1 &amp; 0 \\
-0 &amp; -2 &amp; 0 &amp; 1
-\end{pmatrix}\]</span></p></li>
-</ol>
+    1 &amp; -2 &amp; 1 &amp; 0 \\
+    0 &amp; -2 &amp; 0 &amp; 1
+    \end{pmatrix}\]</span></p>
 </div>
 </div>
 </div>
