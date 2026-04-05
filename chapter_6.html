@@ -296,86 +296,84 @@ $$
 
 <section id="פעולות-החיתוך-והסכום" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="פעולות-החיתוך-והסכום"><span class="header-section-number">9.1</span> פעולות החיתוך והסכום</h2>
-<p>בהינתן מ"ו וקטורי <span class="math inline">\(V\)</span>, ראינו את ההגדרה של תת-מרחב <span class="math inline">\(W\subseteq V\)</span> וגם את הקשר בין המימדים במסקנה <span class="math inline">\(\ref{cor:subspace-dim}\)</span>. בפרק זה נרצה להבין מהן הפעולות שאפשר לבצע על שני תת-מרחבים (או יותר), כאשר המטרה היא לקבל תת-מרחבים נוספים.</p>
-<p>קודם כל ניזכר בהגדרה של פעולת החיתוך מפרק <span class="math inline">\(\ref{ch:sets}\)</span>, אבל הפעם נתאים אותה לתת-מרחבים במקום קבוצות כלליות.</p>
+<p>בהינתן מ"ו וקטורי <span class="math inline">\(V\)</span>, ראינו את ההגדרה של תת-מרחב <span class="math inline">\(W\subseteq V\)</span> וגם את הקשר בין המימדים במסקנה <a href="#cor-subspace-dim">8.95</a>. בפרק זה נרצה להבין מהן הפעולות שאפשר לבצע על שני תת-מרחבים (או יותר), כאשר המטרה היא לקבל תת-מרחבים נוספים.</p>
+<p>קודם כל ניזכר בהגדרה של פעולת החיתוך מפרק <a href="chapter_0.html" class="quarto-xref"><span>2</span></a>, אבל הפעם נתאים אותה לתת-מרחבים במקום קבוצות כלליות.</p>
 <div class="definition">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז החיתוך <span class="math inline">\(W_1\cap W_2\)</span> הוא קבוצת כל הוקטורים השייכים גם ל- <span class="math inline">\(W_1\)</span> וגם ל- <span class="math inline">\(W_2\)</span>, כלומר <span class="math display">\[.W_1\cap W_2=\Set{v\in V|v\in W_1,v\in W_2}\]</span></p>
 </div>
 <div class="example">
-<p>&nbsp;למעשה, כבר דיברנו על חיתוך של תת-מרחבים בהקשר של פרק <span class="math inline">\(\ref{ch:geometry}\)</span> ופרק <span class="math inline">\(\ref{ch:systems}\)</span>.</p>
-<ol type="1">
-<li><p>נסתכל על ישרים ב- <span class="math inline">\(\mathbb{R}^2\)</span> שעוברים דרך הראשית ונתונים ע"י <span class="math display">\[.L_1=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y=0},L_2=\Set{(x,y)\in\mathbb{R}^2|a_2x+b_2y=0}\]</span> אם הם אינם מתלכדים, מתקיים <span class="math inline">\(L_1\cap L_2=\Set{(0,0)}\)</span>. אם הם מתלכדים (כלומר וקטורי הנורמל הם קו-לינאריים), אז <span class="math inline">\(L_1\cap L_2=L_1=L_2\)</span>.</p></li>
-<li><p>נסתכל על מישורים ב- <span class="math inline">\(\mathbb{R}^3\)</span> שעוברים דרך הראשית ונתונים ע"י: <span class="math display">\[\begin{aligned}
-H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_1x+b_1y+c_1z=0} \\
-H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_2x+b_2y+c_2z=0}
-\end{aligned}\]</span> מתקיים <span class="math display">\[.H_1\cap H_2=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y+c_1z=0,a_2x+b_2y+c_2z=0}\]</span> אם הישרים אינם מתלכדים, אז הנורמלים <span class="math inline">\((a_1,b_1,c_1),(a_2,b_2,c_2)\)</span> מהווים קבוצה בת"ל והדרגה של מטריצת המקדמים של הממ"ל היא <span class="math inline">\(2\)</span>. לפי משפט הדרגה, המימד של קבוצת הפתרונות הוא <span class="math inline">\(3-2=1\)</span>. לכן, החיתוך של שני מישורים כנ"ל הוא אכן ישר. אבל אם המישורים מתלכדים, החיתוך ביניהם הוא המישור <span class="math inline">\(H_1=H_2\)</span>.</p></li>
-<li><p>נכליל את הדוגמאות הקודמות: עבור <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>, נסתכל על <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span> - מרחב הפתרונות של הממ"ל <span class="math inline">\(Ax=0\)</span>. נסתכל גם על <span class="math inline">\(\mathop{\mathrm{N}}(B)\)</span> עבור <span class="math inline">\(B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span>. אז <span class="math inline">\(\mathop{\mathrm{N}}(A)\cap \mathop{\mathrm{N}}(B)=\mathop{\mathrm{N}}\begin{pmatrix}
-A \\
-B
-\end{pmatrix}\)</span>, כאשר <span class="math inline">\(\begin{pmatrix}
-A \\
-B
-\end{pmatrix}\in\mathbb{M}_{(m+k)\times n}(\mathbb{F})\)</span> היא המטריצה שמתקבלת ע"י כתיבת שורות <span class="math inline">\(A\)</span> למעלה ושורות <span class="math inline">\(B\)</span> למטה. הסיבה לשוויון היא החישוב הבא:</p>
+<p>&nbsp;למעשה, כבר דיברנו על חיתוך של תת-מרחבים בהקשר של פרק <a href="chapter_1.html" class="quarto-xref"><span>4</span></a> ופרק[-@#sec-systems].</p>
+<p>א. נסתכל על ישרים ב- <span class="math inline">\(\mathbb{R}^2\)</span> שעוברים דרך הראשית ונתונים ע"י <span class="math display">\[.L_1=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y=0},L_2=\Set{(x,y)\in\mathbb{R}^2|a_2x+b_2y=0}\]</span> אם הם אינם מתלכדים, מתקיים <span class="math inline">\(L_1\cap L_2=\Set{(0,0)}\)</span>. אם הם מתלכדים (כלומר וקטורי הנורמל הם קו-לינאריים), אז <span class="math inline">\(L_1\cap L_2=L_1=L_2\)</span>.</p>
+<p>ב. נסתכל על מישורים ב- <span class="math inline">\(\mathbb{R}^3\)</span> שעוברים דרך הראשית ונתונים ע"י: <span class="math display">\[\begin{aligned}
+    H_1&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_1x+b_1y+c_1z=0} \\
+    H_2&amp;=\Set{(x,y,z)\in\mathbb{R}^3|a_2x+b_2y+c_2z=0}
+    \end{aligned}\]</span> מתקיים <span class="math display">\[.H_1\cap H_2=\Set{(x,y)\in\mathbb{R}^2|a_1x+b_1y+c_1z=0,a_2x+b_2y+c_2z=0}\]</span> אם הישרים אינם מתלכדים, אז הנורמלים <span class="math inline">\((a_1,b_1,c_1),(a_2,b_2,c_2)\)</span> מהווים קבוצה בת"ל והדרגה של מטריצת המקדמים של הממ"ל היא <span class="math inline">\(2\)</span>. לפי משפט הדרגה, המימד של קבוצת הפתרונות הוא <span class="math inline">\(3-2=1\)</span>. לכן, החיתוך של שני מישורים כנ"ל הוא אכן ישר. אבל אם המישורים מתלכדים, החיתוך ביניהם הוא המישור <span class="math inline">\(H_1=H_2\)</span>.</p>
+<p>ג. נכליל את הדוגמאות הקודמות: עבור <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>, נסתכל על <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span> - מרחב הפתרונות של הממ"ל <span class="math inline">\(Ax=0\)</span>. נסתכל גם על <span class="math inline">\(\mathop{\mathrm{N}}(B)\)</span> עבור <span class="math inline">\(B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span>. אז <span class="math inline">\(\mathop{\mathrm{N}}(A)\cap \mathop{\mathrm{N}}(B)=\mathop{\mathrm{N}}\begin{pmatrix}
+    A \\
+    B
+    \end{pmatrix}\)</span>, כאשר <span class="math inline">\(\begin{pmatrix}
+    A \\
+    B
+    \end{pmatrix}\in\mathbb{M}_{(m+k)\times n}(\mathbb{F})\)</span> היא המטריצה שמתקבלת ע"י כתיבת שורות <span class="math inline">\(A\)</span> למעלה ושורות <span class="math inline">\(B\)</span> למטה. הסיבה לשוויון היא החישוב הבא:</p>
 <p><span class="math display">\[\begin{aligned}
-v\in \mathop{\mathrm{N}}\begin{pmatrix}
-A \\
-B
-\end{pmatrix} &amp;\iff \begin{pmatrix}
-A \\
-B
-\end{pmatrix}v=\begin{pmatrix}
-0\\
-\vdots\\
-0
-\end{pmatrix} \iff \begin{pmatrix}
-Av \\
-Bv
-\end{pmatrix}=\begin{pmatrix}
-0\\
-\vdots\\
-0
-\end{pmatrix} \\
-&amp;\iff v\in\mathop{\mathrm{N}}(A)\cap\mathop{\mathrm{N}}(B)
-\end{aligned}\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נסתכל על תת-המרחב <span class="math inline">\(W_1\)</span> של כל המטריצות המשולשיות עליונות, ותת-המרחב <span class="math inline">\(W_2\)</span> של כל המטריצות המשולשיות תחתונות. אז <span class="math inline">\(W_1\cap W_2\)</span> הוא תת-המרחב של כל המטריצות האלכסוניות.</p>
+    v\in \mathop{\mathrm{N}}\begin{pmatrix}
+    A \\
+    B
+    \end{pmatrix} &amp;\iff \begin{pmatrix}
+    A \\
+    B
+    \end{pmatrix}v=\begin{pmatrix}
+    0\\
+    \vdots\\
+    0
+    \end{pmatrix} \iff \begin{pmatrix}
+    Av \\
+    Bv
+    \end{pmatrix}=\begin{pmatrix}
+    0\\
+    \vdots\\
+    0
+    \end{pmatrix} \\
+    &amp;\iff v\in\mathop{\mathrm{N}}(A)\cap\mathop{\mathrm{N}}(B)
+    \end{aligned}\]</span></p>
+<p>ד. ב- <span class="math inline">\(\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נסתכל על תת-המרחב <span class="math inline">\(W_1\)</span> של כל המטריצות המשולשיות עליונות, ותת-המרחב <span class="math inline">\(W_2\)</span> של כל המטריצות המשולשיות תחתונות. אז <span class="math inline">\(W_1\cap W_2\)</span> הוא תת-המרחב של כל המטריצות האלכסוניות.</p>
 <p>עבור <span class="math inline">\(n=2\)</span> ניתן למצוא את הבסיסים הבאים:</p>
 <p><span class="math inline">\(B_1=\Set{\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 1 \\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\)</span>, ולכן <span class="math inline">\(\dim(W_1)=3\)</span>.</p>
+    1 &amp; 0 \\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 1 \\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0 \\
+    0 &amp; 1
+    \end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\)</span>, ולכן <span class="math inline">\(\dim(W_1)=3\)</span>.</p>
 <p><span class="math inline">\(B_2=\Set{\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0 \\
-1 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_2\)</span>, ולכן <span class="math inline">\(\dim(W_2)=3\)</span>.</p>
+    1 &amp; 0 \\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0 \\
+    1 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0 \\
+    0 &amp; 1
+    \end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_2\)</span>, ולכן <span class="math inline">\(\dim(W_2)=3\)</span>.</p>
 <p>ו- <span class="math inline">\(B=\Set{\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>, ולכן <span class="math inline">\(\dim(W_1\cap W_2)=2\)</span>.</p>
+    1 &amp; 0 \\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0 \\
+    0 &amp; 1
+    \end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>, ולכן <span class="math inline">\(\dim(W_1\cap W_2)=2\)</span>.</p>
 <p>עבור <span class="math inline">\(n\in\mathbb{N}\)</span> כללי, במטריצה מסדר <span class="math inline">\(n\times n\)</span> יש <span class="math inline">\(n\)</span> איברים על האלכסון הראשי. לכן, מתקיים <span class="math inline">\(\dim(W_1\cap W_2)=n\)</span> כמספר המטריצות בבסיס הבא: <span class="math display">\[\Set{\begin{pmatrix}
-1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \ddots &amp; \vdots \\
-0 &amp; \cdots &amp; 0
-\end{pmatrix},...,\begin{pmatrix}
-0 &amp; \cdots &amp; 0 \\
-\vdots &amp; \ddots &amp; \vdots \\
-0 &amp; \cdots &amp; 1
-\end{pmatrix}}\]</span></p></li>
-</ol>
+    1 &amp; \cdots &amp; 0 \\
+    \vdots &amp; \ddots &amp; \vdots \\
+    0 &amp; \cdots &amp; 0
+    \end{pmatrix},...,\begin{pmatrix}
+    0 &amp; \cdots &amp; 0 \\
+    \vdots &amp; \ddots &amp; \vdots \\
+    0 &amp; \cdots &amp; 1
+    \end{pmatrix}}\]</span></p>
 </div>
 <div class="exercise">
 <p>בסעיף ד’ של הדוגמה האחרונה, מהם <span class="math inline">\(\dim(W_1),\dim(W_2)\)</span> עבור <span class="math inline">\(n\in\mathbb{N}\)</span> כללי?</p>
@@ -401,7 +399,7 @@ Bv
 <p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז <span class="math inline">\(W_1\cap W_2\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <span class="math inline">\(\ref{prop:subspace}\)</span>, צריך להראות כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-subspace">8.14</a>, צריך להראות כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
 <ul>
 <li><p>מתקיים <span class="math inline">\(0_V\in W_1\)</span> וגם <span class="math inline">\(0_V\in W_2\)</span>. לכן, לפי הגדרת החיתוך נובע כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span>.</p></li>
 <li><p>סגירות לחיבור: יהיו <span class="math inline">\(v_1,v_2\in W_1\cap W_2\)</span>. בפרט, <span class="math inline">\(v_1,v_2\in W_1\)</span> ולכן <span class="math inline">\(v_1+v_2\in W_1\)</span> כי <span class="math inline">\(W_1\)</span> סגור לחיבור. באופן דומה, מתקיים <span class="math inline">\(v_1+v_2\in W_2\)</span> ולכן <span class="math inline">\(v_1+v_2\in W_1\cap W_2\)</span>.</p></li>
@@ -428,7 +426,7 @@ Bv
 A \\
 B
 \end{pmatrix}\]</span></p>
-<p>דרך זו ארוכה כי מדובר בפתרון של שלוש ממ"ליות. בדרך הבאה נצטרך לפתור ממ"ל אחת בלבד: מאחר שהמטרה היא למצוא איבר כללי בחיתוך, נרצה לדעת אילו וקטורים הם גם ב- <span class="math inline">\(W_1\)</span> וגם ב- <span class="math inline">\(W_2\)</span>. כלומר, אילו צירופים לינאריים של <span class="math inline">\(\begin{pmatrix}1\\1\\0\\1\end{pmatrix},\begin{pmatrix}2\\1\\1\\0\end{pmatrix}\)</span> הם גם צירופים לינאריים של <span class="math inline">\(\begin{pmatrix}0\\1\\-1\\0\end{pmatrix},\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\)</span>? לשם כך, נחפש <span class="math inline">\(a,b,c,d\in\mathbb{R}\)</span> כך ש- <span class="math display">\[\begin{pmatrix}1\\1\\0\\1\end{pmatrix}+b\begin{pmatrix}2\\1\\1\\0\end{pmatrix}=c\begin{pmatrix}0\\1\\-1\\0\end{pmatrix}+d\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\]</span></p>
+<p>דרך זו ארוכה כי מדובר בפתרון של שלוש ממ"ליות. בדרך הבאה נצטרך לפתור ממ"ל אחת בלבד: מאחר שהמטרה היא למצוא איבר כללי בחיתוך, נרצה לדעת אילו וקטורים הם גם ב- <span class="math inline">\(W_1\)</span> וגם ב- <span class="math inline">\(W_2\)</span>. כלומר, אילו צירופים לינאריים של <span class="math inline">\(\begin{pmatrix}1\\1\\0\\1\end{pmatrix},\begin{pmatrix}2\\1\\1\\0\end{pmatrix}\)</span> הם גם צירופים לינאריים של <span class="math inline">\(\begin{pmatrix}0\\1\\-1\\0\end{pmatrix},\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\)</span>? לשם כך, נחפש <span class="math inline">\(a,b,c,d\in\mathbb{R}\)</span> כך ש- <span id="eq-intersection"><span class="math display">\[\begin{pmatrix}1\\1\\0\\1\end{pmatrix}+b\begin{pmatrix}2\\1\\1\\0\end{pmatrix}=c\begin{pmatrix}0\\1\\-1\\0\end{pmatrix}+d\begin{pmatrix}1\\0\\1\\1\end{pmatrix} \tag{9.1}\]</span></span></p>
 <p>העברת אגפים מובילה לממ"ל הומוגנית המיוצגת ע"י המטריצה הבאה:</p>
 <p><span class="math display">\[\begin{pmatrix}
 1 &amp; 2 &amp; 0 &amp; -1 \\
@@ -442,7 +440,7 @@ B
 0 &amp; 1 &amp; 0 &amp; 0 \\
 0 &amp; 0 &amp; 1 &amp; -1 \\
 0 &amp; 0 &amp; 0 &amp; 0
-\end{pmatrix}\]</span> ולכן, הקשר בין הסקלרים הוא בהכרח: <span class="math display">\[.a=2d,b=0,c=d\]</span> נציב זאת באגף שמאל של משוואה <span class="math inline">\(\ref{eqn:intersection}\)</span>. (אפשר גם באגף ימין) ונקבל <span class="math display">\[.W_1\cap W_2=\Set{2d\begin{pmatrix}1\\1\\0\\1\end{pmatrix}|d\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(
+\end{pmatrix}\]</span> ולכן, הקשר בין הסקלרים הוא בהכרח: <span class="math display">\[.a=2d,b=0,c=d\]</span> נציב זאת באגף שמאל של משוואה <a href="#eq-intersection" class="quarto-xref"><span>9.1</span></a>. (אפשר גם באגף ימין) ונקבל <span class="math display">\[.W_1\cap W_2=\Set{2d\begin{pmatrix}1\\1\\0\\1\end{pmatrix}|d\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(
 \begin{pmatrix}1\\1\\0\\1\end{pmatrix}
 \right)\]</span></p>
 </div>
@@ -495,7 +493,7 @@ B
 <p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span>, המקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span> וגם <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <span class="math inline">\(\ref{prop:subspace}\)</span>, כדי להוכיח כי <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב, יש להראות כי <span class="math inline">\(0_V\in W_1+W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-subspace">8.14</a>, כדי להוכיח כי <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב, יש להראות כי <span class="math inline">\(0_V\in W_1+W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
 <ul>
 <li><p>מתקיים <span class="math inline">\(0_V\in W_1\)</span> וגם <span class="math inline">\(0_V\in W_2\)</span>. לכן, נובע כי <span class="math display">\[.0_V=0_V+0_V\in W_1+W_2\]</span></p></li>
 <li><p>סגירות לחיבור: יהיו <span class="math inline">\(u_1,u_2\in W_1+W_2\)</span>. לכן, קיימים <span class="math inline">\(v_1,v_2\in W_1,w_1,w_2\in W_2\)</span> עבורם <span class="math display">\[.u_1=v_1+w_1,u_2=v_2+w_2\]</span> <span class="math inline">\(W_1\)</span> ו- <span class="math inline">\(W_2\)</span> סגורים לחיבור, ולכן מתקיים <span class="math inline">\(v_1+v_2\in W_1, w_1+w_2\in W_2\)</span>. מכאן נובע כי <span class="math display">\[.u_1+u_2=(v_1+w_1)+(v_2+w_2)=(v_1+v_2)+(w_1+w_2)\in W_1+W_2\]</span></p></li>
@@ -508,45 +506,49 @@ w&amp;=0_V+w\in W_1+W_2
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>נסמן ב- <span class="math inline">\(\mathbb{R}^2\)</span> את <span class="math inline">\(W_1=\mathop{\mathrm{Span}}((1,2))\)</span> ו- <span class="math inline">\(W_2=\mathop{\mathrm{Span}}((2,1))\)</span>. אז מתקיים <span class="math display">\[.W_1+W_2=\Set{s(1,2)+t(2,1)|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}((1,2),(2,1))=\mathbb{R}^2\]</span> השוויון האחרון נובע מכך שהוקטורים הם בת"ל (לא קו-לינאריים). השוויון לפניו נכון מהגדרת הפרישה.</p></li>
-<li><p>נסמן ב-<span class="math inline">\(\mathbb{R}^3\)</span> את תת-המרחבים הבאים: <span class="math display">\[
-\begin{aligned}
-W_1 &amp;= \operatorname{Span}((1,0,0),(1,1,1)) \\
-W_2 &amp;= \operatorname{Span}((0,1,0),(1,1,1))
-\end{aligned}
-\]</span> לא קשה לבדוק כי <span class="math inline">\(W_1\neq W_2\)</span>, ולכן באופן אינטואיטיבי <span class="math inline">\(W_1+W_2\)</span> אמור להיות ממימד גבוה יותר מ-<span class="math inline">\(W_1\)</span> וגם מ-<span class="math inline">\(W_2\)</span> (במקרה זה הם שווי-מימד).</p>
+<p>א. נסמן ב- <span class="math inline">\(\mathbb{R}^2\)</span> את <span class="math inline">\(W_1=\mathop{\mathrm{Span}}((1,2))\)</span> ו- <span class="math inline">\(W_2=\mathop{\mathrm{Span}}((2,1))\)</span>. אז מתקיים <span class="math display">\[.W_1+W_2=\Set{s(1,2)+t(2,1)|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}((1,2),(2,1))=\mathbb{R}^2\]</span> השוויון האחרון נובע מכך שהוקטורים הם בת"ל (לא קו-לינאריים). השוויון לפניו נכון מהגדרת הפרישה.</p>
+<p>השתמשנו בהצבה <span class="math inline">\(p=r+t\)</span>. נלמד בהמשך דרך כללית יותר למצוא בסיסים לחיתוך וסכום של תת-מרחבים. השוויון האחרון נכון לפי משפט <a href="#thm-invertible2">8.68</a>, למשל כי</p>
+<p><span class="math display">\[\det\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1
+\end{pmatrix}=1\neq 0\]</span></p>
+<p>ב. נסמן ב-<span class="math inline">\(\mathbb{R}^3\)</span> את תת-המרחבים הבאים: <span class="math display">\[
+    \begin{aligned}
+    W_1 &amp;= \operatorname{Span}((1,0,0),(1,1,1)) \\
+    W_2 &amp;= \operatorname{Span}((0,1,0),(1,1,1))
+    \end{aligned}
+    \]</span> לא קשה לבדוק כי <span class="math inline">\(W_1\neq W_2\)</span>, ולכן באופן אינטואיטיבי <span class="math inline">\(W_1+W_2\)</span> אמור להיות ממימד גבוה יותר מ-<span class="math inline">\(W_1\)</span> וגם מ-<span class="math inline">\(W_2\)</span> (במקרה זה הם שווי-מימד).</p>
 <p>אז אמור להתקיים: <span class="math display">\[
-\dim(W_1+W_2)=3
-\]</span> כי אין אפשרות למימד גבוה מזה ב-<span class="math inline">\(\mathbb{R}^3\)</span>. בהמשך נראה טיעון פורמלי מסוג זה, המסתמך על שיקולי מימד, אבל בינתיים נראה כי <span class="math display">\[
-W_1+W_2=\mathbb{R}^3
-\]</span> לפי הגדרת הסכום. נשים לב כי <span class="math inline">\((1,1,1)\in W_1\cap W_2\)</span> ונשתמש בעובדה זו כדי להציג את הסכום בצורה פשוטה יותר, במקום לחזור על <span class="math inline">\((1,1,1)\)</span>.</p></li>
-<li><p>נסמן ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> את <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(I_2), W_2=\Set{\begin{pmatrix}
-0 &amp; a \\
-b &amp; 0
-\end{pmatrix}|a,b\in\mathbb{R}
-}\]</span></p>
+    \dim(W_1+W_2)=3
+    \]</span> כי אין אפשרות למימד גבוה מזה ב-<span class="math inline">\(\mathbb{R}^3\)</span>. בהמשך נראה טיעון פורמלי מסוג זה, המסתמך על שיקולי מימד, אבל בינתיים נראה כי <span class="math display">\[
+    W_1+W_2=\mathbb{R}^3
+    \]</span> לפי הגדרת הסכום. נשים לב כי <span class="math inline">\((1,1,1)\in W_1\cap W_2\)</span> ונשתמש בעובדה זו כדי להציג את הסכום בצורה פשוטה יותר, במקום לחזור על <span class="math inline">\((1,1,1)\)</span>.</p>
+<p>ג. נסמן ב- <span class="math inline">\(\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> את <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(I_2), W_2=\Set{\begin{pmatrix}
+    0 &amp; a \\
+    b &amp; 0
+    \end{pmatrix}|a,b\in\mathbb{R}
+    }\]</span></p>
 <p>ניקח את הסכום ונקבל: <span class="math display">\[\begin{aligned}
-W_1+W_2&amp;=\Set{\begin{pmatrix}
-t &amp; 0 \\
-0 &amp; t
-\end{pmatrix}+\begin{pmatrix}
-0 &amp; a \\
-b &amp; 0
-\end{pmatrix}|t,a,b\in\mathbb{R}
-}=\Set{\begin{pmatrix}
-t &amp; a \\
-b &amp; t
-\end{pmatrix}|t,a,b\in\mathbb{R}} \\
-&amp;=\mathop{\mathrm{Span}}\left(I_2,\begin{pmatrix}
-0 &amp; 1 \\
-0 &amp; 0
-\end{pmatrix},\begin{pmatrix}
-0 &amp; 0 \\
-1 &amp; 0
-\end{pmatrix}\right)
-\end{aligned}\]</span></p></li>
-</ol>
+    W_1+W_2&amp;=\Set{\begin{pmatrix}
+    t &amp; 0 \\
+    0 &amp; t
+    \end{pmatrix}+\begin{pmatrix}
+    0 &amp; a \\
+    b &amp; 0
+    \end{pmatrix}|t,a,b\in\mathbb{R}
+    }=\Set{\begin{pmatrix}
+    t &amp; a \\
+    b &amp; t
+    \end{pmatrix}|t,a,b\in\mathbb{R}} \\
+    &amp;=\mathop{\mathrm{Span}}\left(I_2,\begin{pmatrix}
+    0 &amp; 1 \\
+    0 &amp; 0
+    \end{pmatrix},\begin{pmatrix}
+    0 &amp; 0 \\
+    1 &amp; 0
+    \end{pmatrix}\right)
+    \end{aligned}\]</span></p>
 </div>
 <p>התרגיל הבא חשוב כי הוא מראה איך למצוא סכום של שני תת-מרחבים שנתונים ע"י <span class="math inline">\(\mathop{\mathrm{Span}}\)</span>, כמו ברוב המקרים שנעסוק בהם.</p>
 <div class="exercise">
@@ -606,7 +608,7 @@ b &amp; t
 \end{aligned}\]</span> ובאופן דומה: <span class="math display">\[\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה ישירה משילוב של מסקנה <span class="math inline">\(\ref{cor:subspace-dim}\)</span> וההכלות הבאות:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה ישירה משילוב של מסקנה <a href="#cor-subspace-dim">8.95</a> וההכלות הבאות:</p>
 <p><span class="math display">\[\begin{aligned}
 &amp;W_1\cap W_2\subseteq W_1\subseteq W_1+W_2\subseteq V \\
 &amp;W_1\cap W_2\subseteq W_2\subseteq W_1+W_2\subseteq V
@@ -627,13 +629,13 @@ b &amp; t
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>נניח כי <span class="math inline">\(\dim(W_1+W_2)=\dim(W_2)\)</span>. מאחר שמתקיים <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>, שוויון מימדים גורר <span class="math inline">\(W_2=W_1+W_2\)</span> לפי מסקנה <span class="math inline">\(\ref{cor:subspace-dim}\)</span>. אבל גם מתקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span>, ולכן <span class="math inline">\(W_1\subseteq W_2\)</span>.</p>
+<p>נניח כי <span class="math inline">\(\dim(W_1+W_2)=\dim(W_2)\)</span>. מאחר שמתקיים <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>, שוויון מימדים גורר <span class="math inline">\(W_2=W_1+W_2\)</span> לפי מסקנה <a href="#cor-subspace-dim">8.95</a>. אבל גם מתקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span>, ולכן <span class="math inline">\(W_1\subseteq W_2\)</span>.</p>
 </div>
 </div>
 </div>
 <p>הנוסחה במשפט הבא נקראת נוסחת המימדים, והיא מבטאת קשר יותר מדויק בין המימדים של שני תת-מרחבים, חיתוכם וסכומם.</p>
-<div class="theorem">
-<p><em> יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז מתקיים <span class="math display">\[.\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)\]</span></em></p>
+<div id="thm-dim-formula" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 9.1</strong></span> <em> יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז מתקיים <span class="math display">\[.\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)\]</span></em></p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>זו הנוסחה האנלוגית לנוסחה שמבטאת את הקשר בין הגדלים של שתי קבוצות סופיות <span class="math inline">\(A,B\)</span>, חיתוכן ואיחודן. אם <span class="math inline">\(|X|\)</span> מייצג את הגודל של קבוצה <span class="math inline">\(X\)</span>, אז מתקיים <span class="math display">\[.|A\cup B|=|A|+|B|-|A\cap B|\]</span> במשפט מדובר על מימד במקום גודל, ועל סכום במקום איחוד. אבל נבין דרך ההוכחה את האנלוגיה.</p>
@@ -642,63 +644,59 @@ b &amp; t
 <p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(k=\dim(W_1), l=\dim(W_2), m=\dim(W_1\cap W_2)\)</span>.</p>
 <p>קיים בסיס <span class="math inline">\(B_0=\Set{w_1,...,w_m}\)</span> ל- <span class="math inline">\(W_1\cap W_2\)</span>. זהו תת-מרחב לא רק של <span class="math inline">\(V\)</span>, אלא גם של <span class="math inline">\(W_1\)</span>. לכן, ניתן להשלים את <span class="math inline">\(B_0\)</span> לבסיס של <span class="math inline">\(W_1\)</span> ע"י הוספת <span class="math inline">\(k-m\)</span> וקטורים. כך נקבל את <span class="math inline">\(B_1=\Set{w_1,...,w_m,w_{m+1},...,w_k}\)</span>. באופן דומה, <span class="math inline">\(W_1\cap W_2\)</span> הוא גם תת-מרחב של <span class="math inline">\(W_2\)</span>, ולכן ניתן להשלים את <span class="math inline">\(B_0\)</span> לבסיס של <span class="math inline">\(W_2\)</span> ע"י הוספת <span class="math inline">\(l-m\)</span> וקטורים. כך נקבל את הבסיס <span class="math inline">\(B_2=\Set{w_1,...,w_m,u_1,...,u_{l-m}}\)</span>.</p>
 <p>נסמן <span class="math inline">\(B=B_1\cup B_2=\Set{w_1,...,w_k,u_1,...,u_{l-m}}\)</span>. זו קבוצה הפורשת את <span class="math inline">\(W_1+W_2\)</span> כי מתקיים <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(B_1),W_2=\mathop{\mathrm{Span}}(B_2) \implies W_1+W_2=\mathop{\mathrm{Span}}(B_1\cup B_2)=\mathop{\mathrm{Span}}(B)\]</span> יותר מכך, נראה כי <span class="math inline">\(B\)</span> היא בת"ל ולכן היא בסיס ל- <span class="math inline">\(W_1+W_2\)</span>.</p>
-<p>נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_{l-m}\in\mathbb{F}\)</span> כך שמתקיים <span class="math display">\[\label{eqn:adjoining}
-.\alpha_1 w_1+...+\alpha_k w_k+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0\]</span></p>
+<p>נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_{l-m}\in\mathbb{F}\)</span> כך שמתקיים <span id="eq-adjoining"><span class="math display">\[
+.\alpha_1 w_1+...+\alpha_k w_k+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0 \tag{9.2}\]</span></span></p>
 <p>נחסיר משני האגפים את <span class="math inline">\(\beta_1 u_1+...+\beta_{l-m} u_{l-m}\)</span>, ונקבל <span class="math display">\[.\alpha_1 w_1+...+\alpha_k w_k=-\beta_1 u_1+...-\beta_{l-m} u_{l-m}\]</span> נשים לב כי אגף שמאל שייך ל- <span class="math inline">\(W_1\)</span>, ואילו אגף ימין שייך ל- <span class="math inline">\(W_2\)</span>. לכן, שניהם שייכים ל- <span class="math inline">\(W_1\cap W_2\)</span>. בפרט, שניהם שווים לצירוף לינארי של איברי הבסיס <span class="math inline">\(B_0\)</span>. אז קיימים <span class="math inline">\(\gamma_1,...,\gamma_m\in\mathbb{F}\)</span> כך שמתקיים <span class="math display">\[\alpha_1 w_1+...+\alpha_m w_m+\alpha_{m+1} w_{m+1}+...+\alpha_k w_k=\gamma_1w_1+...+\gamma w_m\]</span></p>
-<p>הקבוצה <span class="math inline">\(B_1=\Set{w_1,...,w_m,w_{k+1},...,w_m}\)</span> היא בסיס, ולכן הסקלרים נקבעים ביחידות לפי טענה <span class="math inline">\(\ref{prop:unique-scalars}\)</span>. מכאן <span class="math display">\[.\alpha_i=\begin{cases}
+<p>הקבוצה <span class="math inline">\(B_1=\Set{w_1,...,w_m,w_{k+1},...,w_m}\)</span> היא בסיס, ולכן הסקלרים נקבעים ביחידות לפי טענה <a href="#prp-unique-scalars">8.63</a>. מכאן <span class="math display">\[.\alpha_i=\begin{cases}
 \gamma_i,\quad &amp;1\leq i\leq m \\
 0, \quad &amp;m+1\leq i\leq k
 \end{cases}\]</span></p>
-<p>לכל <span class="math inline">\(m+1\leq i\leq k\)</span> נציב <span class="math inline">\(\alpha_i=0\)</span> במשוואה <span class="math inline">\(\ref{eqn:adjoining}\)</span>, ונקבל <span class="math display">\[.\alpha_1 w_1+...+\alpha_m w_m+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0\]</span> אגף שמאל הוא צירוף לינארי של איברי הבסיס <span class="math inline">\(B_2\)</span> (נפטרנו מהוקטורים שלא מופיעים בו), ולכן בהכרח כל הסקלרים מתאפסים. אז <span class="math inline">\(B\)</span> בת"ל ולכן מדובר בבסיס ל- <span class="math inline">\(W_1+W_2\)</span>. לבסוף, נשים לב כי <span class="math display">\[.\dim(W_1+W_2)=k+l-m=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)\]</span>&nbsp;◻</p>
+<p>לכל <span class="math inline">\(m+1\leq i\leq k\)</span> נציב <span class="math inline">\(\alpha_i=0\)</span> במשוואה <a href="#eq-adjoining" class="quarto-xref"><span>9.2</span></a>, ונקבל <span class="math display">\[.\alpha_1 w_1+...+\alpha_m w_m+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0\]</span> אגף שמאל הוא צירוף לינארי של איברי הבסיס <span class="math inline">\(B_2\)</span> (נפטרנו מהוקטורים שלא מופיעים בו), ולכן בהכרח כל הסקלרים מתאפסים. אז <span class="math inline">\(B\)</span> בת"ל ולכן מדובר בבסיס ל- <span class="math inline">\(W_1+W_2\)</span>. לבסוף, נשים לב כי <span class="math display">\[.\dim(W_1+W_2)=k+l-m=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)\]</span>&nbsp;◻</p>
 </div>
 <div class="example">
 <p>&nbsp;</p>
-<ol type="1">
-<li><p>ב- <span class="math inline">\(\mathbb{R}^2\)</span>, לכל שני ישרים מהצורה <span class="math inline">\(L_1=\mathop{\mathrm{Span}}(v_1),L_2=\mathop{\mathrm{Span}}(v_2)\)</span> כך ש- <span class="math inline">\(L_1\neq L_2\)</span> מתקיים: <span class="math display">\[\begin{aligned}
-\dim(L_1)&amp;=\dim(L_2)=1 \\
-\dim(L_1\cap L_2)&amp;=\dim(\Set{0})=0
-\end{aligned}\]</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">\[,\dim(L_1+L_2)=2=1+1-0=2\]</span> ולכן <span class="math inline">\(L_1+L_2=\mathbb{R}^2\)</span> כי זהו תת-המרחב היחיד של <span class="math inline">\(\mathbb{R}^2\)</span> ממימד <span class="math inline">\(2\)</span>.</p>
+<p>א. ב- <span class="math inline">\(\mathbb{R}^2\)</span>, לכל שני ישרים מהצורה <span class="math inline">\(L_1=\mathop{\mathrm{Span}}(v_1),L_2=\mathop{\mathrm{Span}}(v_2)\)</span> כך ש- <span class="math inline">\(L_1\neq L_2\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+    \dim(L_1)&amp;=\dim(L_2)=1 \\
+    \dim(L_1\cap L_2)&amp;=\dim(\Set{0})=0
+    \end{aligned}\]</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">\[,\dim(L_1+L_2)=2=1+1-0=2\]</span> ולכן <span class="math inline">\(L_1+L_2=\mathbb{R}^2\)</span> כי זהו תת-המרחב היחיד של <span class="math inline">\(\mathbb{R}^2\)</span> ממימד <span class="math inline">\(2\)</span>.</p>
 <p>לעומת זאת, אם <span class="math inline">\(L_1=L_2\)</span> נקבל: <span class="math display">\[\begin{aligned}
-\dim(L_1+L_2)&amp;=\dim(L_1)=1\\
-\dim(L_1\cap L_2)&amp;=\dim(L_1)=1
-\end{aligned}\]</span></p>
-<p>ועדיין הנוסחה מתקיימת: <span class="math display">\[\dim(L_1+L_2)=1=1+1-1=\dim(L_1)+\dim(L_2)-\dim(L_1\cap L_2)\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span>, כל שני מישורים מהצורה <span class="math inline">\(H_1=\mathop{\mathrm{Span}}(v_1,v_2),H_2=\mathop{\mathrm{Span}}(v_3,v_4)\)</span> כך ש- <span class="math inline">\(H_1\neq H_2\)</span> נחתכים לאורך ישר <span class="math inline">\(L\)</span> כלשהו. אז מתקיים: <span class="math display">\[\begin{aligned}
-\dim(H_1)&amp;=\dim(H_2)=2 \\
-\dim(H_1\cap H_2)&amp;=\dim(L)=1
-\end{aligned}\]</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">\[,\dim(H_1+H_2)=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)=2+2-1=3\]</span> ולכן <span class="math inline">\(H_1+H_2=\mathbb{R}^3\)</span>.</p>
+    \dim(L_1+L_2)&amp;=\dim(L_1)=1\\
+    \dim(L_1\cap L_2)&amp;=\dim(L_1)=1
+    \end{aligned}\]</span></p>
+<p>ועדיין הנוסחה מתקיימת: <span class="math display">\[\dim(L_1+L_2)=1=1+1-1=\dim(L_1)+\dim(L_2)-\dim(L_1\cap L_2)\]</span></p>
+<p>ב. ב- <span class="math inline">\(\mathbb{R}^3\)</span>, כל שני מישורים מהצורה <span class="math inline">\(H_1=\mathop{\mathrm{Span}}(v_1,v_2),H_2=\mathop{\mathrm{Span}}(v_3,v_4)\)</span> כך ש- <span class="math inline">\(H_1\neq H_2\)</span> נחתכים לאורך ישר <span class="math inline">\(L\)</span> כלשהו. אז מתקיים: <span class="math display">\[\begin{aligned}
+    \dim(H_1)&amp;=\dim(H_2)=2 \\
+    \dim(H_1\cap H_2)&amp;=\dim(L)=1
+    \end{aligned}\]</span> נציב את המספרים בנוסחת המימדים ונקבל <span class="math display">\[,\dim(H_1+H_2)=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)=2+2-1=3\]</span> ולכן <span class="math inline">\(H_1+H_2=\mathbb{R}^3\)</span>.</p>
 <p>אם <span class="math inline">\(H_1=H_2\)</span> נקבל <span class="math display">\[\begin{aligned}
-\dim(H_1+H_2)&amp;=\dim(H_1)=2\\
-\dim(H_1\cap H_2)&amp;=\dim(H_1)=2
-\end{aligned}\]</span></p>
-<p>שוב הנוסחה מתקיימת: <span class="math display">\[\dim(H_1+H_2)=2=2+2-2=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{F}^n\)</span>, נסתכל על שני על-מישורים שונים <span class="math inline">\(H_1,H_2\)</span>. הכוונה היא לתת-מרחבים ממימד <span class="math inline">\(n-1\)</span>. מהו מימד הסכום? מימד החיתוך? יותר קל לענות על השאלה הראשונה, כי מתקיים <span class="math display">\[.H_1\subseteq H_1+H_2\subseteq \mathbb{F}^n \implies n-1=\dim(H_1)\leq\dim(H_1+H_2)\leq n\]</span></p>
+    \dim(H_1+H_2)&amp;=\dim(H_1)=2\\
+    \dim(H_1\cap H_2)&amp;=\dim(H_1)=2
+    \end{aligned}\]</span></p>
+<p>שוב הנוסחה מתקיימת: <span class="math display">\[\dim(H_1+H_2)=2=2+2-2=\dim(H_1)+\dim(H_2)-\dim(H_1\cap H_2)\]</span></p>
+<p>ג. ב- <span class="math inline">\(\mathbb{F}^n\)</span>, נסתכל על שני על-מישורים שונים <span class="math inline">\(H_1,H_2\)</span>. הכוונה היא לתת-מרחבים ממימד <span class="math inline">\(n-1\)</span>. מהו מימד הסכום? מימד החיתוך? יותר קל לענות על השאלה הראשונה, כי מתקיים <span class="math display">\[.H_1\subseteq H_1+H_2\subseteq \mathbb{F}^n \implies n-1=\dim(H_1)\leq\dim(H_1+H_2)\leq n\]</span></p>
 <p>לא ייתכן כי <span class="math inline">\(\dim(H_1)=\dim(H_1+H_2)\)</span>, שהרי זה גורר <span class="math inline">\(H_1=H_1+H_2\)</span> ומכאן <span class="math inline">\(H_2\subseteq H_1\)</span>. זו סתירה כי <span class="math inline">\(\dim(H_2)=\dim(H_1)\)</span>, אך <span class="math inline">\(H_2\neq H_1\)</span>. לכן, מתקיים <span class="math inline">\(\dim(H_1+H_2)\neq n-1\)</span>, ואז בהכרח נובע כי <span class="math display">\[.\dim(H_1+H_2)=n=\dim(\mathbb{F}^n) \implies H_1+H_2=\mathbb{F}^n\]</span></p>
 <p>נציב את המימדים הידועים בנוסחת המימדים ונקבל</p>
-<p><span class="math display">\[.n=n-1+n-1-\dim(H_1\cap H_2) \implies \dim(H_1\cap H_2)=n-2\]</span></p></li>
-<li><p>ב- <span class="math inline">\(\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נסמן את תת-המרחבים של מטריצות סימטריות ואנטי-סימטריות: <span class="math display">\[\begin{aligned}
-W_1&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=A} \\
-W_2&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=-A}
-\end{aligned}\]</span></p>
-<p>לפי טענה <span class="math inline">\(\ref{prop:sym-antisym}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
-W_1\cap W_2&amp;=\Set{\mathbf{0}_{n\times n}} \implies \dim(W_1\cap W_2)=0 \\
-W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
-\end{aligned}\]</span></p>
+<p><span class="math display">\[.n=n-1+n-1-\dim(H_1\cap H_2) \implies \dim(H_1\cap H_2)=n-2\]</span></p>
+<p>ד. ב- <span class="math inline">\(\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נסמן את תת-המרחבים של מטריצות סימטריות ואנטי-סימטריות: <span class="math display">\[\begin{aligned}
+    W_1&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=A} \\
+    W_2&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=-A}
+    \end{aligned}\]</span></p>
+<p>לפי טענה <a href="#prp-sym-antisym">6.46</a> מתקיים: <span class="math display">\[\begin{aligned}
+    W_1\cap W_2&amp;=\Set{\mathbf{0}_{n\times n}} \implies \dim(W_1\cap W_2)=0 \\
+    W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
+    \end{aligned}\]</span></p>
 <p>כיצד זה מתיישב עם נוסחת המימדים? נציין מראש שכדאי לנסות לחשוב לבד על המקרה <span class="math inline">\(n=3\)</span> כדי להבין יותר טוב את הפרטים הטכניים של המקרה הכללי, שדורש סימונים חדשים.</p>
 <p>נמצא בסיס ל- <span class="math inline">\(W_1\)</span>:</p>
 <p><span class="math display">\[B_1=\Set{D(i)|1\leq i\leq n}\cup\Set{S(i,j)|1\leq i&lt;j\leq n}\]</span> כאשר <span class="math inline">\(D(i)\)</span> היא המטריצה שכל איבריה <span class="math inline">\(0\)</span> חוץ מ- <span class="math inline">\(1\)</span> במשבצת ה- <span class="math inline">\((i,i)\)</span>, ו- <span class="math inline">\(S(i,j)\)</span> היא המטריצה שכל איבריה <span class="math inline">\(0\)</span> חוץ מ- <span class="math inline">\(1\)</span> במשבצות ה- <span class="math inline">\((i,j)\)</span> וה- <span class="math inline">\((j,i)\)</span>. קל לראות ש- <span class="math inline">\(B_1\)</span> היא קבוצה בת"ל, כי אין חיתוך בין המשבצות בהן המטריצות לא מתאפסות (לכל מטריצה יש את המשבצות שלה, או רק אחת). גם קל לראות שהיא פורשת את <span class="math inline">\(W_1\)</span>: לכל <span class="math inline">\(A\in W_1\)</span> מתקיים</p>
 <p><span class="math display">\[A=(A)_{11}D(1)+...+(A)_{nn}D(n)+(A)_{12}S(1,2)+...+(A)_{n-1,n}S(n-1,n)\]</span></p>
 <p>אז מהו <span class="math inline">\(\dim(W_1)\)</span>? יש <span class="math inline">\(n\)</span> מטריצות מהצורה <span class="math inline">\(D(i)\)</span>. כדי למנות את המטריצות מהצורה <span class="math inline">\(S(i,j)\)</span>, נשים לב שלכל <span class="math inline">\(2\leq j\leq n\)</span> יש <span class="math inline">\(j-1\)</span> מספרים טבעיים הקטנים ממנו (עבור <span class="math inline">\(j=1\)</span> אין מספר טבעי כזה). נשתמש בנוסחה לסכום סדרה חשבונית ונקבל <span class="math display">\[,\sum_{j=2}^n(j-1)=1+...+(n-1)=\frac{n(n-1)}{2}\]</span> ובסך הכל <span class="math display">\[.\dim(W_1)=n+\frac{n(n-1)}{2}=\frac{n(n+1)}{2}\]</span></p>
 <p>נמצא בסיס ל- <span class="math inline">\(W_2\)</span>:</p>
-<p><span class="math display">\[B_2=\Set{T(i,j)|1\leq i&lt;j\leq n}\]</span> כאשר <span class="math inline">\(T(i,j)\)</span> היא המטריצה שכל איבריה <span class="math inline">\(0\)</span> חוץ מ- <span class="math inline">\(1\)</span> במשבצת ה- <span class="math inline">\((i,j)\)</span>, ו- <span class="math inline">\((-1)\)</span> במשבצת ה- <span class="math inline">\((j,i)\)</span>. בדומה לבדיקה עבור <span class="math inline">\(B_1\)</span>, ניתן לבדוק כי <span class="math inline">\(B_2\)</span> היא אכן בת"ל ופורשת את <span class="math inline">\(W_2\)</span>. מתקיים <span class="math display">\[,\dim(W_2)=1+...+(n-1)=\frac{n(n-1)}{2}\]</span> וכצפוי (לפי נוסחת המימדים) <span class="math display">\[.n^2=\frac{n(n+1)}{2}+\frac{n(n-1)}{2}-0\]</span></p></li>
-</ol>
+<p><span class="math display">\[B_2=\Set{T(i,j)|1\leq i&lt;j\leq n}\]</span> כאשר <span class="math inline">\(T(i,j)\)</span> היא המטריצה שכל איבריה <span class="math inline">\(0\)</span> חוץ מ- <span class="math inline">\(1\)</span> במשבצת ה- <span class="math inline">\((i,j)\)</span>, ו- <span class="math inline">\((-1)\)</span> במשבצת ה- <span class="math inline">\((j,i)\)</span>. בדומה לבדיקה עבור <span class="math inline">\(B_1\)</span>, ניתן לבדוק כי <span class="math inline">\(B_2\)</span> היא אכן בת"ל ופורשת את <span class="math inline">\(W_2\)</span>. מתקיים <span class="math display">\[,\dim(W_2)=1+...+(n-1)=\frac{n(n-1)}{2}\]</span> וכצפוי (לפי נוסחת המימדים) <span class="math display">\[.n^2=\frac{n(n+1)}{2}+\frac{n(n-1)}{2}-0\]</span></p>
 </div>
 <div class="exercise">
 <p>יהיו <span class="math inline">\(W_1,W_2\)</span> תת-מרחבים של <span class="math inline">\(\mathbb{C}^4\)</span>.</p>
-<ol type="1">
-<li><p>נניח כי <span class="math inline">\(\dim(W_1)=\dim(W_2)=2\)</span>. הוכיחו כי <span class="math inline">\(W_1+W_2=\mathbb{C}^4\)</span> אם ורק אם <span class="math inline">\(W_1\cap W_2=\Set{0}\)</span>.</p></li>
-<li><p>נניח כי <span class="math inline">\(\dim(W_1)=3,\dim(W_2)=2\)</span>. מהן האפשרויות ל- <span class="math inline">\(\dim(W_1\cap W_2)\)</span>? מצאו דוגמה ל- <span class="math inline">\(W_1,W_2\)</span> עבור כל אפשרות.</p></li>
-</ol>
+<p>א. נניח כי <span class="math inline">\(\dim(W_1)=\dim(W_2)=2\)</span>. הוכיחו כי <span class="math inline">\(W_1+W_2=\mathbb{C}^4\)</span> אם ורק אם <span class="math inline">\(W_1\cap W_2=\Set{0}\)</span>.</p>
+<p>ב. נניח כי <span class="math inline">\(\dim(W_1)=3,\dim(W_2)=2\)</span>. מהן האפשרויות ל- <span class="math inline">\(\dim(W_1\cap W_2)\)</span>? מצאו דוגמה ל- <span class="math inline">\(W_1,W_2\)</span> עבור כל אפשרות.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -712,18 +710,16 @@ W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>לפי מסקנה <span class="math inline">\(\ref{cor:subspace-dim}\)</span>, מתקיים <span class="math display">\[,W_1+W_2=\mathbb{C}^4 \iff \dim(W_1+W_2)=4\]</span> ולפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=4 \iff 2+2-\dim(W_1\cap W_2)=4 \iff \dim(W_1\cap W_2)=0\]</span></p>
-<p>לכן, מתקיים <span class="math display">\[.W_1+W_2=\mathbb{C}^4 \iff W_1\cap W_2=\Set{0}\]</span></p></li>
-<li><p>מתקיים <span class="math display">\[,3=\dim(W_1)\leq \dim(W_1+W_2)\leq 4\]</span> ולפי נוסחת המימדים (לאחר העברת אגפים) נובע כי <span class="math display">\[.1=5-4\leq \dim(W_1\cap W_2)=3+2-\dim(W_1+W_2)\leq 5-3=2\]</span> האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=1\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=(e_3,e_4) \implies W_1\cap W_2=\mathop{\mathrm{Span}}(e_3)\]</span> באופן דומה, האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=2\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=\mathop{\mathrm{Span}}(e_2,e_3) \implies W_1\cap W_2=W_2\]</span> כדוגמה לאפשרות האחרונה, ניתן לבחור כל <span class="math inline">\(W_1\)</span> ממימד <span class="math inline">\(3\)</span> וכל <span class="math inline">\(W_2\subseteq W_1\)</span> ממימד <span class="math inline">\(2\)</span>.</p></li>
-</ol>
+<p>א. לפי מסקנה <a href="#cor-subspace-dim">8.95</a>, מתקיים <span class="math display">\[,W_1+W_2=\mathbb{C}^4 \iff \dim(W_1+W_2)=4\]</span> ולפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=4 \iff 2+2-\dim(W_1\cap W_2)=4 \iff \dim(W_1\cap W_2)=0\]</span></p>
+<pre><code>לכן, מתקיים $$.W_1+W_2=\mathbb{C}^4 \iff W_1\cap W_2=\Set{0}$$</code></pre>
+<p>ב. מתקיים <span class="math display">\[,3=\dim(W_1)\leq \dim(W_1+W_2)\leq 4\]</span> ולפי נוסחת המימדים (לאחר העברת אגפים) נובע כי <span class="math display">\[.1=5-4\leq \dim(W_1\cap W_2)=3+2-\dim(W_1+W_2)\leq 5-3=2\]</span> האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=1\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=(e_3,e_4) \implies W_1\cap W_2=\mathop{\mathrm{Span}}(e_3)\]</span> באופן דומה, האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=2\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=\mathop{\mathrm{Span}}(e_2,e_3) \implies W_1\cap W_2=W_2\]</span> כדוגמה לאפשרות האחרונה, ניתן לבחור כל <span class="math inline">\(W_1\)</span> ממימד <span class="math inline">\(3\)</span> וכל <span class="math inline">\(W_2\subseteq W_1\)</span> ממימד <span class="math inline">\(2\)</span>.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="מציאת-בסיסים" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="מציאת-בסיסים"><span class="header-section-number">9.3</span> מציאת בסיסים</h2>
-<p>יהיו <span class="math inline">\(W_1,W_2\)</span> תת-מרחבים של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. הדבר החשוב ביותר שיש לדעת על תת-מרחב הוא בסיס. נניח שמצאנו בסיס <span class="math inline">\(B_1=\Set{w_1,...,w_m}\)</span> ל- <span class="math inline">\(W_1\)</span> ובסיס <span class="math inline">\(B_2=\Set{u_1,...,u_k}\)</span> ל- <span class="math inline">\(W_2\)</span>. אז איך נמצא בסיסים ל- <span class="math inline">\(W_1\cap W_2,W_1+W_2\)</span>? מתקיים <span class="math display">\[,W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_m,u_1,...,u_k)\]</span> ולכן כבר יש לנו קבוצה פורשת - אך היא לא בהכרח בת"ל. למעשה, היא בת"ל אם ורק אם <span class="math inline">\(W_1\cap W_2= \Set{0_V}\)</span>. אכן, לפי משפט <span class="math inline">\(\ref{thm:3-for-2-V}\)</span> ("שלישי חינם") קבוצה פורשת היא בת"ל אם ורק אם גודלה שווה למימד תת-המרחב, ולפי נוסחת המימדים מתקיים:</p>
+<p>יהיו <span class="math inline">\(W_1,W_2\)</span> תת-מרחבים של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. הדבר החשוב ביותר שיש לדעת על תת-מרחב הוא בסיס. נניח שמצאנו בסיס <span class="math inline">\(B_1=\Set{w_1,...,w_m}\)</span> ל- <span class="math inline">\(W_1\)</span> ובסיס <span class="math inline">\(B_2=\Set{u_1,...,u_k}\)</span> ל- <span class="math inline">\(W_2\)</span>. אז איך נמצא בסיסים ל- <span class="math inline">\(W_1\cap W_2,W_1+W_2\)</span>? מתקיים <span class="math display">\[,W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_m,u_1,...,u_k)\]</span> ולכן כבר יש לנו קבוצה פורשת - אך היא לא בהכרח בת"ל. למעשה, היא בת"ל אם ורק אם <span class="math inline">\(W_1\cap W_2= \Set{0_V}\)</span>. אכן, לפי משפט <a href="#thm-3-for-2-V">8.93</a> ("שלישי חינם") קבוצה פורשת היא בת"ל אם ורק אם גודלה שווה למימד תת-המרחב, ולפי נוסחת המימדים מתקיים:</p>
 <p><span class="math display">\[\begin{aligned}
 \dim(W_1+W_2)=\dim(W_1)+\dim(W_2) &amp;\iff \dim(W_1\cap W_2)=0 \\
 &amp;\iff W_1\cap W_2= \Set{0_V}
@@ -734,9 +730,9 @@ W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
 w_1  &amp; \cdots &amp; w_m  &amp; u_1  &amp; \cdots &amp; u_k \\
 \mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
 \end{pmatrix}\]</span></p>
-<p>בתת-פרק <span class="math inline">\(\ref{sub:extraction}\)</span> ראינו שניתן למצוא בסיס למרחב העמודות ע"י דירוג קנוני, לפיו העמודות בהן יש איברים מובילים מתאימות לעמודות המקוריות שמהוות יחד בסיס למרחב העמודות (אין לקחת את העמודות החדשות, כי הדירוג משנה את מרחב העמודות). במקרה זה, מרחב העמודות הוא <span class="math inline">\(W_1+W_2\)</span>.</p>
-<p>מה לגבי בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>? נשאלת השאלה: אילו צירופים לינאריים של <span class="math inline">\(w_1,...,w_m\)</span> הם גם צירופים לינאריים של <span class="math inline">\(u_1,...,u_k\)</span>? באופן שקול, צריך למצוא <span class="math inline">\(\alpha_1,...,\alpha_m,\gamma_1,...,\gamma_k\in\mathbb{F}\)</span> כך ש- <span class="math display">\[\label{eqn:intersection2}
-.\alpha_1 w_1+...+\alpha_m w_m=\gamma_1 u_1+...+\gamma_k u_k\]</span> לאחר העברת אגפים מקבלים ממ"ל הומוגנית שמיוצגת ע"י המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
+<p>בתת-פרק <a href="chapter_5.html#sub-extraction">8.5.2</a> ראינו שניתן למצוא בסיס למרחב העמודות ע"י דירוג קנוני, לפיו העמודות בהן יש איברים מובילים מתאימות לעמודות המקוריות שמהוות יחד בסיס למרחב העמודות (אין לקחת את העמודות החדשות, כי הדירוג משנה את מרחב העמודות). במקרה זה, מרחב העמודות הוא <span class="math inline">\(W_1+W_2\)</span>.</p>
+<p>מה לגבי בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>? נשאלת השאלה: אילו צירופים לינאריים של <span class="math inline">\(w_1,...,w_m\)</span> הם גם צירופים לינאריים של <span class="math inline">\(u_1,...,u_k\)</span>? באופן שקול, צריך למצוא <span class="math inline">\(\alpha_1,...,\alpha_m,\gamma_1,...,\gamma_k\in\mathbb{F}\)</span> כך ש- <span id="eq-intersection2"><span class="math display">\[
+.\alpha_1 w_1+...+\alpha_m w_m=\gamma_1 u_1+...+\gamma_k u_k \tag{9.3}\]</span></span> לאחר העברת אגפים מקבלים ממ"ל הומוגנית שמיוצגת ע"י המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
 \mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid \\
 w_1  &amp; \cdots &amp; w_m  &amp; -u_1  &amp; \cdots &amp; -u_k \\
 \mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
@@ -891,7 +887,7 @@ s+t-t+t-s-t=0 \\
 s+t+t+t+s+t=0
 \end{cases} \implies s=-2t\]</span> נחזור להצגה של <span class="math inline">\(W_2\)</span> ונציב <span class="math inline">\(s=-2t\)</span>:</p>
 <p><span class="math display">\[W_2\Set{\begin{pmatrix}-t\\-t\\t\\t\end{pmatrix}|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}\right)\]</span></p>
-<p>קיבלנו שהקבוצה <span class="math inline">\(\Set{\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>, ולכן <span class="math inline">\(\dim(W_1\cap W_2)=1\)</span>. בנוסף, <span class="math inline">\(\dim(W_2)=2\)</span> כי הקבוצה הפורשת אותו היא בת"ל (הוקטורים אינם קו-לינאריים) ולכן בסיס. באופן דומה, <span class="math inline">\(\dim(W_1)=4-\mathop{\mathrm{rank}}(A)=4-2=2\)</span> לפי משפט <span class="math inline">\(\ref{thm:rank-nullity}\)</span> (משפט הדרגה). לכן, לפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=2+2-1=3\]</span> כדי למצוא בסיס ל- <span class="math inline">\(W_1+W_2\)</span> מספיק להוסיף לקבוצה הפורשת את <span class="math inline">\(W_2\)</span> כל וקטור ב- <span class="math inline">\(W_1\)</span> שאינו בחיתוך, כי זה בדיוק אומר שהוא לא נפרש ע"י וקטורי הבסיס של <span class="math inline">\(W_2\)</span>. כך נקבל קבוצה בת"ל ב- <span class="math inline">\(W_1+W_2\)</span> שגודלה שווה למימדו, ולכן היא בהכרח בסיס.</p>
+<p>קיבלנו שהקבוצה <span class="math inline">\(\Set{\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}}\)</span> היא בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>, ולכן <span class="math inline">\(\dim(W_1\cap W_2)=1\)</span>. בנוסף, <span class="math inline">\(\dim(W_2)=2\)</span> כי הקבוצה הפורשת אותו היא בת"ל (הוקטורים אינם קו-לינאריים) ולכן בסיס. באופן דומה, <span class="math inline">\(\dim(W_1)=4-\mathop{\mathrm{rank}}(A)=4-2=2\)</span> לפי משפט <a href="#thm-rank-nullity">8.99</a> (משפט הדרגה). לכן, לפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=2+2-1=3\]</span> כדי למצוא בסיס ל- <span class="math inline">\(W_1+W_2\)</span> מספיק להוסיף לקבוצה הפורשת את <span class="math inline">\(W_2\)</span> כל וקטור ב- <span class="math inline">\(W_1\)</span> שאינו בחיתוך, כי זה בדיוק אומר שהוא לא נפרש ע"י וקטורי הבסיס של <span class="math inline">\(W_2\)</span>. כך נקבל קבוצה בת"ל ב- <span class="math inline">\(W_1+W_2\)</span> שגודלה שווה למימדו, ולכן היא בהכרח בסיס.</p>
 <p>מספיק למצוא וקטור אחד ב- <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span> שאינו כפל בסקלר של <span class="math inline">\(\begin{pmatrix}-1 \\ -1 \\ 1 \\ 1\end{pmatrix}\)</span>. דוגמה לוקטור כזה היא <span class="math inline">\(\begin{pmatrix}1 \\ 0 \\ -1 \\ 0\end{pmatrix}\)</span>, שאפשר למצוא ע"י הצבת <span class="math inline">\(x_2=x_4=0\)</span> במשוואות או ע"י דירוג <span class="math inline">\(A\)</span>. למען הסר ספק, צורתה המדורגת קנונית של <span class="math inline">\(A\)</span> היא <span class="math display">\[.\begin{pmatrix}
 1 &amp; 0 &amp; 1 &amp; 0 \\
 0 &amp; 1 &amp; 0 &amp; 1
