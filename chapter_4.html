@@ -281,7 +281,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="ch:determinant" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></span></h1>
+<h1 class="title"><span id="sec-determinant" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></span></h1>
 </div>
 
 
@@ -304,8 +304,8 @@ $$
 <p>נציין שהסימון לדטרמיננטה של מטריצה <span class="math inline">\(A\)</span> הוא <span class="math inline">\(\det(A)\)</span> ללא קשר לסדר המטריצה. הנוסחה עצמה תלויה בסדר.</p>
 <section id="הגדרת-הדטרמיננטה-והקשר-לדירוג" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="הגדרת-הדטרמיננטה-והקשר-לדירוג"><span class="header-section-number">7.1</span> הגדרת הדטרמיננטה והקשר לדירוג</h2>
-<div class="definition">
-<p> עבור <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נגדיר את <span class="math inline">\(\det(A)\)</span> ע"י התכונות הבאות:</p>
+<div id="def-det" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 7.1</strong></span> עבור <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נגדיר את <span class="math inline">\(\det(A)\)</span> ע"י התכונות הבאות:</p>
 <ol type="1">
 <li><p><span class="math inline">\(.\det(I_n)=1\)</span></p></li>
 <li><p>אם <span class="math inline">\(A\xrightarrow{\alpha R_i\to R_i}A'\)</span> עבור <span class="math inline">\(1\leq i \leq n\)</span>, אז <span class="math inline">\(\det(A')=\alpha \det(A)\)</span>.</p></li>
@@ -339,21 +339,21 @@ $$
 &amp;\overset{R_1+3R_2\to R_1}{=}19\cdot\det(I_2)=19\cdot1=19
 \end{aligned}\]</span></p>
 </div>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. אז מתקיים <span class="math display">\[.\det(\alpha A)=\alpha^n\det(A)\]</span></em></p>
+<div id="prp-det-scalar" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.1</strong></span> יהיו <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. אז מתקיים <span class="math display">\[.\det(\alpha A)=\alpha^n\det(A)\]</span></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>המשמעות של הכפל <span class="math inline">\(\alpha A\)</span> היא שכל שורה מוכפלת באותו סקלר <span class="math inline">\(\alpha\)</span>. לכן, עבור כל שורה ניתן להוציא את <span class="math inline">\(\alpha\)</span> מחוץ לדטרמיננטה. לאחר שנעשה זאת לכל השורות נקבל גורם <span class="math inline">\(\alpha^n\)</span> מחוץ לדטרמיננטה, ואת המטריצה המקורית <span class="math inline">\(A\)</span> בתוכה. לכן <span class="math display">\[.\det(\alpha A)=\alpha^n\det(A)\]</span>&nbsp;◻</p>
 </div>
-<div class="proposition">
-<p><em> אם למטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> יש שורת אפסים, אז <span class="math inline">\(\det(A)=0\)</span>.</em></p>
+<div id="prp-zero-row" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.2</strong></span> אם למטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> יש שורת אפסים, אז <span class="math inline">\(\det(A)=0\)</span>.*</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נניח שיש רק אפסים בשורה <span class="math inline">\(R_i\)</span> של <span class="math inline">\(A\)</span>. אז גם לאחר הכפלת שורה זו בכל סקלר <span class="math inline">\(c\neq 0\)</span>, המטריצה תישאר ללא שינוי. ניקח <span class="math inline">\(c=\frac{1}{2}\)</span> ונקבל</p>
 <p><span class="math display">\[.\det(A)=2\det(A) \implies \det(A)=0\]</span>&nbsp;◻</p>
 </div>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(D,U\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</em></p>
+<div id="prp-diagonal-det" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.3</strong></span> <em>יהיו <span class="math inline">\(D,U\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</em></p>
 <ol type="1">
 <li><p><em>אם <span class="math inline">\(D\)</span> אלכסונית מהצורה</em></p>
 <p><em><span class="math display">\[,D=\begin{pmatrix}
@@ -378,7 +378,7 @@ d_1 &amp;* &amp; \cdots &amp; * \\
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
-<li><p>אם לפחות אחד מאיברי האלכסון הראשי הוא <span class="math inline">\(0\)</span>, אז יש שורת אפסים ולפי טענה <span class="math inline">\(\ref{prop:zero-row}\)</span> נובע כי <span class="math display">\[.\det(A)=0=a_1a_2\cdots a_n\]</span></p>
+<li><p>אם לפחות אחד מאיברי האלכסון הראשי הוא <span class="math inline">\(0\)</span>, אז יש שורת אפסים ולפי טענה <a href="#prp-zero-row">7.6</a> נובע כי <span class="math display">\[.\det(A)=0=a_1a_2\cdots a_n\]</span></p>
 <p>אז נניח כי כל איברים האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>. בשביל הדירוג הקנוני צריך לבצע פש"אות מהצורה <span class="math inline">\(\frac{1}{d_i}R_i\to R_i\)</span> לכל <span class="math inline">\(1\leq i\leq n\)</span>. כך נקבל</p>
 <p><span class="math display">\[.1=\det(I_n)=\frac{1}{d_1}\cdot\frac{1}{d_2}\cdots\frac{1}{d_n}\det(A) \implies \det(A)=d_1d_2\cdots d_n\]</span></p></li>
 <li><p>נראה שניתן להגיע מ- <span class="math inline">\(U\)</span> למטריצה האלכסונית <span class="math inline">\(D\)</span> מהסעיף הקודם ע"י פש"אות שלא משנות את הדטרמיננטה. נתון שלכל <span class="math inline">\(2\leq i\leq n\)</span> מתקיים <span class="math inline">\(d_i\neq 0\)</span>, ולכן זהו איבר מוביל וניתן להשתמש בו כדי לאפס את האיברים מעליו ע"י פש"אות מהסוג של החסרת כפל בסקלר של <span class="math inline">\(R_i\)</span> משורה מעליה. כל פש"א כזו לא משנה את ערך הדטרמיננטה, ולכן לאחר ביצוע כל הפש"אות האלו נקבל</p>
@@ -406,7 +406,7 @@ d_1 &amp;* &amp; \cdots &amp; * \\
 0 &amp; -3 &amp; -6\\
 0 &amp; 0 &amp; 1
 \end{pmatrix}\]</span></p>
-<p>קיבלנו מטריצה משולשית עליונה. אז מטענה <span class="math inline">\(\ref{prop:diagonal-det}\)</span> נובע כי <span class="math display">\[.\det(A)=1(-3)1=-3\]</span></p>
+<p>קיבלנו מטריצה משולשית עליונה. אז מטענה <a href="#prp-diagonal-det">7.7</a> נובע כי <span class="math display">\[.\det(A)=1(-3)1=-3\]</span></p>
 </div>
 </section>
 <section id="תכונות-נוספות-של-הדטרמיננטה" class="level2" data-number="7.2">
@@ -414,8 +414,8 @@ d_1 &amp;* &amp; \cdots &amp; * \\
 <section id="מטריצות-מסדר-2-על-2." class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="מטריצות-מסדר-2-על-2."><span class="header-section-number">7.2.1</span> מטריצות מסדר 2 על 2.</h3>
 <p>כעת נתמקד במקרה הפרטי של <span class="math inline">\(n=2\)</span>, שהוא יותר קל לניתוח וחישוב. כאן כדאי לזכור את נוסחת הדטרמיננטה שנקבל.</p>
-<div class="proposition">
-<p><em> עבור <span class="math inline">\(n=2\)</span> הפונקציה <span class="math inline">\(\det:\mathbb{M}_{2\times 2}(\mathbb{F})\to\mathbb{F}\)</span> מהגדרה <span class="math inline">\(\ref{def:det}\)</span> מקיימת:</em></p>
+<div id="prp-det-order-2" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.4</strong></span> <em> עבור <span class="math inline">\(n=2\)</span> הפונקציה <span class="math inline">\(\det:\mathbb{M}_{2\times 2}(\mathbb{F})\to\mathbb{F}\)</span> מהגדרה <a href="#def-det">7.1</a> מקיימת:</em></p>
 <ol type="1">
 <li><p><em>לכל <span class="math display">\[A=\begin{pmatrix}
 a &amp; b \\
@@ -436,14 +436,14 @@ c &amp; d
 \end{pmatrix}\overset{R_2-\frac{c}{a}R_1 \to R_1}{=} \det\!\begin{pmatrix}
 a &amp; b \\
 0 &amp; d-\frac{bc}{a}
-\end{pmatrix}\]</span> קיבלנו מטריצה משולשית עליונה, ולכן לפי טענה <span class="math inline">\(\ref{prop:diagonal-det}\)</span> נובע כי <span class="math display">\[.\det(A)=a(d-\frac{bc}{a})=ad-bc\]</span></p>
+\end{pmatrix}\]</span> קיבלנו מטריצה משולשית עליונה, ולכן לפי טענה <a href="#prp-diagonal-det">7.7</a> נובע כי <span class="math display">\[.\det(A)=a(d-\frac{bc}{a})=ad-bc\]</span></p>
 <p>אם <span class="math inline">\(a=0\)</span> אך <span class="math inline">\(c\neq 0\)</span>, אז נוכל לבצע החלפה בין השורות ולהשתמש בנוסחה שהוכחנו למקרה הקודם:</p>
 <p><span class="math display">\[\det(A)=-\det\!\begin{pmatrix}
 c &amp; d \\
 a &amp; b
 \end{pmatrix}
 =-(bc-ad)=ad-bc\]</span></p>
-<p>אם <span class="math inline">\(a=c=0\)</span>, אז יש שני מקרים: או שיש שורת אפסים, או שבלי הגבלת הכלליות <span class="math inline">\(d\neq 0\)</span> ואפשר לאפס את האיבר מעליו ע"י הפעולה <span class="math inline">\(R_1-\frac{b}{d}R_2\to R_1\)</span>. אז בכל מקרה מתקבלת שורת אפסים ולפי טענה <span class="math inline">\(\ref{prop:zero-row}\)</span>, נובע כי</p>
+<p>אם <span class="math inline">\(a=c=0\)</span>, אז יש שני מקרים: או שיש שורת אפסים, או שבלי הגבלת הכלליות <span class="math inline">\(d\neq 0\)</span> ואפשר לאפס את האיבר מעליו ע"י הפעולה <span class="math inline">\(R_1-\frac{b}{d}R_2\to R_1\)</span>. אז בכל מקרה מתקבלת שורת אפסים ולפי טענה <a href="#prp-zero-row">7.6</a>, נובע כי</p>
 <p><span class="math display">\[.\det(A)=\det\!\begin{pmatrix}
     0 &amp; b \\
     0 &amp; d
@@ -512,8 +512,8 @@ S&amp;=\sqrt{\|v_1\|^2\|v_2\|^2-(v_1\cdot v_2)^2}=\sqrt{(a^2+b^2)(c^2+d^2)-(ac+b
 </div>
 </div>
 </div>
-<div class="example">
-<p>&nbsp;</p>
+<div id="exm-area-volume" class="example theorem">
+<p><span class="theorem-title"><strong>Example 7.1</strong></span> &nbsp;</p>
 <ol type="1">
 <li><p>יהיו <span class="math inline">\(a,c,d\in\mathbb{R}\)</span>. עבור <span class="math inline">\(v_1=(a,0),v_2=(c,d)\)</span>, אורך בסיס המקבילית הוא <span class="math inline">\(|a|\)</span> ואורך הגובה הוא <span class="math inline">\(|d|\)</span>. לכן שטח המקבילית הוא <span class="math inline">\(|ad|\)</span>, ואכן מתקיים <span class="math display">\[.\Bigl|\det\!\begin{pmatrix}
 a &amp; 0 \\
@@ -541,7 +541,7 @@ b_1 &amp; 0 &amp; 0 \\
 0 &amp; 0 &amp; b_3
 \end{pmatrix}\]</span></li>
 </ol>
-<p>נפח התיבה שצלעותיה מתאימות לשלושת הוקטורים <span class="math inline">\(v_1,v_2,v_3\)</span> הוא <span class="math inline">\(|b_1b_2b_3|\)</span>, וזה בדיוק <span class="math inline">\(|\det(B)|\)</span> לפי טענה <span class="math inline">\(\ref{prop:diagonal-det}\)</span>.</p>
+<p>נפח התיבה שצלעותיה מתאימות לשלושת הוקטורים <span class="math inline">\(v_1,v_2,v_3\)</span> הוא <span class="math inline">\(|b_1b_2b_3|\)</span>, וזה בדיוק <span class="math inline">\(|\det(B)|\)</span> לפי טענה <a href="#prp-diagonal-det">7.7</a>.</p>
 <p>כאשר <span class="math inline">\(b_1,b_2,b_3&gt;0\)</span> הדטרמיננטה חיובית, והמשמעות הגיאומטרית היא כלל יד ימין: הוקטורים <span class="math inline">\(v_1,v_2\)</span> יוצרים "יד ימין" - כלומר אם מציבים את האצבע המורה לאורך <span class="math inline">\(v_1\)</span> ואת האמה לאורך <span class="math inline">\(v_2\)</span>, אז האגודל יפנה פחות או יותר לכיוון <span class="math inline">\(v_3\)</span> (הזווית ביניהם תהיה חדה).</p>
 <figure id="fig:Thumb" class="figure">
 <p><img src="images/Thumb.png" style="width:20.0%" class="figure-img"></p>
@@ -562,11 +562,11 @@ b_1 &amp; 0 &amp; 0 \\
 </section>
 <section id="מטריצות-ריבועיות-כלליות" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="מטריצות-ריבועיות-כלליות"><span class="header-section-number">7.2.2</span> מטריצות ריבועיות כלליות</h3>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(E,A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(E\)</span> מטריצה אלמנטרית המתאימה לפש"א <span class="math inline">\(S\)</span>, כלומר <span class="math inline">\(E=S(I_n)\)</span>. אז מתקיים <span class="math display">\[.\det(EA)=\det(E)\det(A)\]</span></em></p>
+<div id="prp-elementary-det" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.5</strong></span> <em> יהיו <span class="math inline">\(E,A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(E\)</span> מטריצה אלמנטרית המתאימה לפש"א <span class="math inline">\(S\)</span>, כלומר <span class="math inline">\(E=S(I_n)\)</span>. אז מתקיים <span class="math display">\[.\det(EA)=\det(E)\det(A)\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <span class="math inline">\(\ref{prop:elementary}\)</span> מתקיים <span class="math inline">\(EA=S(A)\)</span>. לכן <span class="math display">\[.\det(EA)=\det(S(A))=\begin{cases}
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-elementary">טענה 6.66</a> מתקיים <span class="math inline">\(EA=S(A)\)</span>. לכן <span class="math display">\[.\det(EA)=\det(S(A))=\begin{cases}
 \alpha\det(A), &amp; S=(\alpha R_i\to R_i) \\
 \det(A), &amp; S=(R_i+\alpha R_j\to R_i) \\
 -\det(A), &amp; S=(R_i\leftrightarrow R_j)
@@ -581,13 +581,13 @@ b_1 &amp; 0 &amp; 0 \\
 <p><span class="math display">\[.\det(EA)=\det(E)\det(A)\]</span>&nbsp;◻</p>
 </div>
 <p>יש לנו כבר מספיק כלים כדי להוכיח את אחד השימושים העיקריים של הדטרמיננטה, שהוא תנאי שקול להפיכות עבור מטריצות ריבועיות מסדר כללי.</p>
-<div class="theorem">
-<p><em> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(F)\)</span>. אז <span class="math inline">\(A\)</span> הפיכה אם ורק אם <span class="math inline">\(\det(A)\neq 0\)</span>.</em></p>
+<div id="thm-det-invertible" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 7.1</strong></span> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(F)\)</span>. אז <span class="math inline">\(A\)</span> הפיכה אם ורק אם <span class="math inline">\(\det(A)\neq 0\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון, נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי מסקנה <span class="math inline">\(\ref{cor:elementary-product}\)</span> היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">\[A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k\]</span> כאשר <span class="math inline">\(\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k\)</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- <span class="math inline">\(\ref{prop:elementary-det}\)</span> נובע כי <span class="math display">\[.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0\]</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">\(0\)</span> כי היא שווה ל- <span class="math inline">\(\pm 1\)</span> או <span class="math inline">\(\alpha\neq 0\)</span>.</p>
-<p>בכיוון השני, נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. אז לפי משפט <span class="math inline">\(\ref{thm:invertible}\)</span>, היא אינה שקולת שורה ל- <span class="math inline">\(I_n\)</span> אלא למטריצה מדורגת קנונית <span class="math inline">\(A'\)</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">\[A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'\]</span> כאשר <span class="math inline">\(E_1,E_2,...,E_k\)</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">\[.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0\]</span></p>
-<p>הסיבה לשוויון ל- <span class="math inline">\(0\)</span> היא העובדה שמתקיים <span class="math inline">\(\det(A')=0\)</span> לפי טענה <span class="math inline">\(\ref{prop:zero-row}\)</span>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון, נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי מסקנה <a href="#cor-elementary-product">מסקנה 6.84</a> היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">\[A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k\]</span> כאשר <span class="math inline">\(\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k\)</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- <a href="#prp-elementary-det">7.14</a> נובע כי <span class="math display">\[.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0\]</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">\(0\)</span> כי היא שווה ל- <span class="math inline">\(\pm 1\)</span> או <span class="math inline">\(\alpha\neq 0\)</span>.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. אז לפי משפט <a href="#thm-invertible">משפט 6.75</a>, היא אינה שקולת שורה ל- <span class="math inline">\(I_n\)</span> אלא למטריצה מדורגת קנונית <span class="math inline">\(A'\)</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">\[A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'\]</span> כאשר <span class="math inline">\(E_1,E_2,...,E_k\)</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">\[.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0\]</span></p>
+<p>הסיבה לשוויון ל- <span class="math inline">\(0\)</span> היא העובדה שמתקיים <span class="math inline">\(\det(A')=0\)</span> לפי טענה <a href="#prp-zero-row">7.6</a>.&nbsp;◻</p>
 </div>
 <div class="exercise">
 <p>לאילו ערכי <span class="math inline">\(t\in\mathbb{C}\)</span> המטריצה <span class="math display">\[A=\begin{pmatrix}
@@ -607,7 +607,7 @@ t &amp; 1 \\
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>נחשב את הדטרמיננטה לפי הנוסחה בטענה <span class="math inline">\(\ref{prop:det-order-2}\)</span> ונקבל <span class="math inline">\(.\det(A)=t^2+1\)</span> אז לפי משפט <span class="math inline">\(\ref{thm:det-invertible}\)</span> נובע כי <span class="math inline">\(A\)</span> הפיכה אם ורק אם <span class="math display">\[.t^2+1\neq 0 \iff t^2\neq-1 \iff t\neq\pm i\]</span> בנוסף, לכל <span class="math inline">\(t\neq\pm i\)</span> מתקיים <span class="math display">\[.A^{-1}=\frac{1}{t^2+1}\begin{pmatrix}
+<p>נחשב את הדטרמיננטה לפי הנוסחה בטענה <a href="#prp-det-order-2">7.10</a> ונקבל <span class="math inline">\(.\det(A)=t^2+1\)</span> אז לפי משפט <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math inline">\(A\)</span> הפיכה אם ורק אם <span class="math display">\[.t^2+1\neq 0 \iff t^2\neq-1 \iff t\neq\pm i\]</span> בנוסף, לכל <span class="math inline">\(t\neq\pm i\)</span> מתקיים <span class="math display">\[.A^{-1}=\frac{1}{t^2+1}\begin{pmatrix}
 t &amp; -1 \\
 1 &amp; t
 \end{pmatrix}\]</span></p>
@@ -615,29 +615,29 @@ t &amp; -1 \\
 </div>
 </div>
 <p>כעת נוכיח תכונה חשובה שנקראת כפליות הדטרמיננטה:</p>
-<div class="proposition">
-<p><em> יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.\det(AB)=\det(A)\det(B)\]</span></em></p>
+<div id="prp-det-product" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.6</strong></span> <em> יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.\det(AB)=\det(A)\det(B)\]</span></em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נחלק למקרים:</p>
 <ol type="1">
-<li><p><span class="math inline">\(AB\)</span> אינה הפיכה: לפי תרגיל <span class="math inline">\(\ref{exer:inverse-product}\)</span> לפחות אחת מ- <span class="math inline">\(A\)</span> ו- <span class="math inline">\(B\)</span> אינה הפיכה. אז לפי משפט <span class="math inline">\(\ref{thm:det-invertible}\)</span> נובע כי <span class="math display">\[,\det(AB)=0=\det(A)\det(B)\]</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">\(0\)</span>.</p></li>
+<li><p><span class="math inline">\(AB\)</span> אינה הפיכה: לפי תרגיל <a href="#exr-inverse-product">תרגיל 6.81</a> לפחות אחת מ- <span class="math inline">\(A\)</span> ו- <span class="math inline">\(B\)</span> אינה הפיכה. אז לפי משפט <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[,\det(AB)=0=\det(A)\det(B)\]</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">\(0\)</span>.</p></li>
 <li><p><span class="math inline">\(AB\)</span> הפיכה: תחילה נראה שגם <span class="math inline">\(A\)</span> וגם <span class="math inline">\(B\)</span> הפיכות. נסמן <span class="math inline">\(C=(AB)^{-1}\)</span>. אז מתקיים <span class="math display">\[,A(BC)=(AB)C=I_n\]</span> ולכן <span class="math inline">\(A\)</span> הפיכה מימין ובכלל. באופן דומה: <span class="math display">\[,(CA)B=C(AB)=I_n\]</span> ולכן <span class="math inline">\(B\)</span> הפיכה משמאל ובכלל.</p>
-<p>אז לפי טענה <span class="math inline">\(\ref{cor:elementary-product}\)</span> גם <span class="math inline">\(A\)</span> וגם <span class="math inline">\(B\)</span> הן מכפלות של מטריצות אלמנטריות, כלומר קיימות מטריצות אלמנטריות <span class="math inline">\(E_1,E_2,...,E_k,E_{k+1},...,E_l\)</span> כך ש- <span class="math display">\[.A=E_l\cdots E_{k+1}\quad,\quad B=E_k\cdots E_1\]</span> לכן <span class="math display">\[,AB=E_l\cdots E_{k+1}E_k\cdots E_1\]</span> ולפי שימוש חוזר בטענה <span class="math inline">\(\ref{prop:elementary-det}\)</span> נובע כי <span class="math display">\[\begin{aligned}
+<p>אז לפי טענה <a href="#cor-elementary-product">מסקנה 6.84</a> גם <span class="math inline">\(A\)</span> וגם <span class="math inline">\(B\)</span> הן מכפלות של מטריצות אלמנטריות, כלומר קיימות מטריצות אלמנטריות <span class="math inline">\(E_1,E_2,...,E_k,E_{k+1},...,E_l\)</span> כך ש- <span class="math display">\[.A=E_l\cdots E_{k+1}\quad,\quad B=E_k\cdots E_1\]</span> לכן <span class="math display">\[,AB=E_l\cdots E_{k+1}E_k\cdots E_1\]</span> ולפי שימוש חוזר בטענה <a href="#prp-elementary-det">7.14</a> נובע כי <span class="math display">\[\begin{aligned}
 \det(AB)&amp;=\det(E_l)\cdots \det(E_{k+1})\det(E_k)\cdots \det(E_1)\\
 &amp;=\det(E_l\cdots E_{k+1})\det(E_k\cdots E_1)=\det(A)\det(B)
 \end{aligned}\]</span></p></li>
 </ol>
 <p>&nbsp;◻</p>
 </div>
-<div class="corollary">
-<p><em> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. אז מתקיים <span class="math display">\[.\det(A^{-1})=\frac{1}{\det(A)}\]</span></em></p>
+<div id="cor-det-inverse" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 7.1</strong></span> <em> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. אז מתקיים <span class="math display">\[.\det(A^{-1})=\frac{1}{\det(A)}\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי <span class="math inline">\(\ref{prop:det-product}\)</span> מתקיים <span class="math display">\[.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1\]</span> נחלק ב- <span class="math inline">\(\det(A)\)</span> ונקבל <span class="math display">\[.\det(A^{-1})=\frac{1}{\det(A)}\]</span>&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי <a href="#prp-det-product">7.17</a> מתקיים <span class="math display">\[.\det(A)\det(A^{-1})=\det(AA^{-1})=\det(I_n)=1\]</span> נחלק ב- <span class="math inline">\(\det(A)\)</span> ונקבל <span class="math display">\[.\det(A^{-1})=\frac{1}{\det(A)}\]</span>&nbsp;◻</p>
 </div>
-<div class="exercise">
-<p>יהיו <span class="math inline">\(A,P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(P\)</span> הפיכה. הראו כי <span class="math display">\[.\det(PAP^{-1})=\det(A)\]</span></p>
+<div id="exr-similar-det" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 7.1</strong></span> יהיו <span class="math inline">\(A,P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(P\)</span> הפיכה. הראו כי <span class="math display">\[.\det(PAP^{-1})=\det(A)\]</span></p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="פתרון">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -651,21 +651,21 @@ t &amp; -1 \\
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>לפי טענה <span class="math inline">\(\ref{prop:det-product}\)</span> ומסקנה <span class="math inline">\(\ref{cor:det-inverse}\)</span> מתקיים <span class="math display">\[.\det(PAP^{-1})=\det(P)\det(A)\det(P^{-1})=\det(P)\det(A)\cdot\frac{1}{\det(P)}=\det(A)\]</span> השתמשנו בחוק החילוף לסקלרים שמתקיים ב- <span class="math inline">\(\mathbb{F}\)</span> גם אם <span class="math inline">\(A,P\)</span> אינן מתחלפות.</p>
+<p>לפי טענה <a href="#prp-det-product">7.17</a> ומסקנה <a href="#cor-det-inverse">7.18</a> מתקיים <span class="math display">\[.\det(PAP^{-1})=\det(P)\det(A)\det(P^{-1})=\det(P)\det(A)\cdot\frac{1}{\det(P)}=\det(A)\]</span> השתמשנו בחוק החילוף לסקלרים שמתקיים ב- <span class="math inline">\(\mathbb{F}\)</span> גם אם <span class="math inline">\(A,P\)</span> אינן מתחלפות.</p>
 </div>
 </div>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>המטריצה <span class="math inline">\(PAP^{-1}\)</span> נקראת דומה ל- <span class="math inline">\(A\)</span>. נבין את החשיבות של דמיון מטריצות בהמשך הקורס, אבל כבר ראינו שלמטריצות דומות יש דטרמיננטות שוות.</p>
 </div>
-<div class="proposition">
-<p><em> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.\det(A^t)=\det(A)\]</span></em></p>
+<div id="prp-det-transpose" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.7</strong></span> <em> תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.\det(A^t)=\det(A)\]</span></em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>שוב נפצל למקרים לפי הפיכות <span class="math inline">\(A\)</span>.</p>
 <ol type="1">
-<li><p>נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. לא ייתכן כי <span class="math inline">\(A^t\)</span> הפיכה, כי אז לפי <span class="math inline">\(\ref{exer:inverse-product}\)</span> גם <span class="math inline">\(A=(A^t)^t\)</span> הפיכה וזו סתירה. לכן, לפי <span class="math inline">\(\ref{thm:det-invertible}\)</span> נובע כי <span class="math display">\[.\det(A^t)=0=\det(A)\]</span></p></li>
-<li><p>נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי <span class="math inline">\(\ref{cor:elementary-product}\)</span> היא מכפלה של מטריצות אלמנטריות <span class="math inline">\(E_1,\cdots,E_k\)</span>. לכן <span class="math display">\[A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t\]</span> ואז לפי טענה <span class="math inline">\(\ref{prop:det-product}\)</span> נובע כי <span class="math display">\[.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)\]</span></p>
+<li><p>נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. לא ייתכן כי <span class="math inline">\(A^t\)</span> הפיכה, כי אז לפי <a href="#exr-inverse-product">תרגיל 6.81</a> גם <span class="math inline">\(A=(A^t)^t\)</span> הפיכה וזו סתירה. לכן, לפי <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[.\det(A^t)=0=\det(A)\]</span></p></li>
+<li><p>נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי <a href="#cor-elementary-product">מסקנה 6.84</a> היא מכפלה של מטריצות אלמנטריות <span class="math inline">\(E_1,\cdots,E_k\)</span>. לכן <span class="math display">\[A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t\]</span> ואז לפי טענה <a href="#prp-det-product">7.17</a> נובע כי <span class="math display">\[.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)\]</span></p>
 <p>לאור חוק החילוף ב- <span class="math inline">\(\mathbb{F}\)</span>, מה שנשאר לסיום ההוכחה זה להראות כי <span class="math inline">\(\det(E^t)=\det(E)\)</span> לכל <span class="math inline">\(E\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> אלמנטרית.</p>
 <ul>
 <li><p>אם <span class="math inline">\(E\)</span> מתאימה לפש"א <span class="math inline">\(S=(R_i\leftrightarrow R_j)\)</span>, אז <span class="math inline">\(E^t=E\)</span> והדטרמיננטות גם שוות (לערך <span class="math inline">\(-1\)</span>).</p></li>
@@ -675,7 +675,7 @@ t &amp; -1 \\
 </ol>
 <p>&nbsp;◻</p>
 </div>
-<p>נחזור לחלק השני של טענה <span class="math inline">\(\ref{prop:diagonal-det}\)</span> והפעם לא נניח שאיברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>.</p>
+<p>נחזור לחלק השני של טענה <a href="#prp-diagonal-det">7.7</a> והפעם לא נניח שאיברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>.</p>
 <div class="corollary">
 <p><em>תהי <span class="math inline">\(U,L\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</em></p>
 <ol type="1">
@@ -702,8 +702,8 @@ d_1 &amp;0 &amp; \cdots &amp; 0 \\
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
-<li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>. לכן, נניח שקיים <span class="math inline">\(1\leq i\leq n\)</span> כך ש- <span class="math inline">\(d_i=0\)</span>, אז <span class="math inline">\(U\)</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">\(n\)</span>. אז לפי משפט <span class="math inline">\(\ref{thm:invertible}\)</span> היא אינה הפיכה, ולפי משפט <span class="math inline">\(\ref{thm:det-invertible}\)</span> בהכרח מתקיים <span class="math display">\[.\det(U)=0=d_1d_2\cdots d_n\]</span></p></li>
-<li><p>נסתכל על <span class="math inline">\(L^t\)</span>, שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של <span class="math inline">\(L\)</span>. אז לפי הסעיף הקודם וטענה <span class="math inline">\(\ref{prop:det-transpose}\)</span> מתקיים</p>
+<li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>. לכן, נניח שקיים <span class="math inline">\(1\leq i\leq n\)</span> כך ש- <span class="math inline">\(d_i=0\)</span>, אז <span class="math inline">\(U\)</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">\(n\)</span>. אז לפי משפט <a href="#thm-invertible">משפט 6.75</a> היא אינה הפיכה, ולפי משפט <a href="#thm-det-invertible">7.15</a> בהכרח מתקיים <span class="math display">\[.\det(U)=0=d_1d_2\cdots d_n\]</span></p></li>
+<li><p>נסתכל על <span class="math inline">\(L^t\)</span>, שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של <span class="math inline">\(L\)</span>. אז לפי הסעיף הקודם וטענה <a href="#prp-det-transpose">7.21</a> מתקיים</p>
 <p><span class="math display">\[.\det(L)=\det(L^t)=d_1d_2\cdots d_n\]</span></p></li>
 </ol>
 <p>&nbsp;◻</p>
@@ -729,8 +729,8 @@ d_1 &amp;0 &amp; \cdots &amp; 0 \\
 <div class="callout-body-container callout-body">
 <p>&nbsp;</p>
 <ol type="1">
-<li><p>נניח בשלילה כי <span class="math inline">\(A^2=-I_n\)</span> ונפעיל דטרמיננטה. אז לפי טענה <span class="math inline">\(\ref{prop:det-scalar}\)</span> מתקיים <span class="math display">\[\det(A^2)=\det(-I_n)=(-1)^n\det(I_n)=-1\]</span> כי <span class="math inline">\(n\)</span> אי-זוגי. נשתמש בכפליות הדטרמיננטה (טענה <span class="math inline">\(\ref{prop:det-product}\)</span>) ונקבל <span class="math display">\[,(\det(A))^2=\det(A^2)=-1\]</span> אך זו סתירה כי <span class="math inline">\(\det(A)\in\mathbb{R}\)</span>, שכן כל ערכי <span class="math inline">\(A\)</span> ממשיים.</p></li>
-<li><p>נתון כי <span class="math inline">\(A^t=-A\)</span> ולכן הפעם נקבל <span class="math display">\[.\det(A^t)=\det(-A)=(-1)^n\det(A)=-\det(A)\]</span> מצד שני, לפי טענה <span class="math inline">\(\ref{prop:det-transpose}\)</span> מתקיים <span class="math display">\[.\det(A)=\det(A^t) \implies \det(A)=-\det(A) \implies \det(A)=0\]</span> לכן, <span class="math inline">\(A\)</span> אינה הפיכה לפי משפט <span class="math inline">\(\ref{thm:det-invertible}\)</span>.</p></li>
+<li><p>נניח בשלילה כי <span class="math inline">\(A^2=-I_n\)</span> ונפעיל דטרמיננטה. אז לפי טענה <a href="#prp-det-scalar">7.5</a> מתקיים <span class="math display">\[\det(A^2)=\det(-I_n)=(-1)^n\det(I_n)=-1\]</span> כי <span class="math inline">\(n\)</span> אי-זוגי. נשתמש בכפליות הדטרמיננטה (טענה <a href="#prp-det-product">7.17</a>) ונקבל <span class="math display">\[,(\det(A))^2=\det(A^2)=-1\]</span> אך זו סתירה כי <span class="math inline">\(\det(A)\in\mathbb{R}\)</span>, שכן כל ערכי <span class="math inline">\(A\)</span> ממשיים.</p></li>
+<li><p>נתון כי <span class="math inline">\(A^t=-A\)</span> ולכן הפעם נקבל <span class="math display">\[.\det(A^t)=\det(-A)=(-1)^n\det(A)=-\det(A)\]</span> מצד שני, לפי טענה <a href="#prp-det-transpose">7.21</a> מתקיים <span class="math display">\[.\det(A)=\det(A^t) \implies \det(A)=-\det(A) \implies \det(A)=0\]</span> לכן, <span class="math inline">\(A\)</span> אינה הפיכה לפי משפט <a href="#thm-det-invertible">7.15</a>.</p></li>
 </ol>
 </div>
 </div>
@@ -764,8 +764,8 @@ d_1 &amp;0 &amp; \cdots &amp; 0 \\
 0 &amp; 3 &amp; 0
 \end{pmatrix}\]</span></p>
 </div>
-<div class="proposition">
-<p><em> תהי <span class="math display">\[.A=\begin{pmatrix}a_{11} &amp; \cdots &amp; a_{1n}\\
+<div id="prp-laplace" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 7.8</strong></span> <em> תהי <span class="math display">\[.A=\begin{pmatrix}a_{11} &amp; \cdots &amp; a_{1n}\\
 \vdots &amp; \ddots &amp; \vdots\\
 a_{n1} &amp; \cdots &amp; a_{nn}
 \end{pmatrix}\]</span> אז מתקיים:</em></p>
@@ -783,7 +783,7 @@ a_{n1} &amp; \cdots &amp; a_{nn}
 <ol type="1">
 <li><p>נוכיח את נוסחה זו בהמשך הקורס. לעת עתה נציין שהביטוי <span class="math inline">\((-1)^{i+j}\)</span> קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות.</p></li>
 <li><p>נניח שהנוסחה לפיתוח לפי שורה נכונה, לכל שורה.</p>
-<p>יהי <span class="math inline">\(1\leq j\leq n\)</span>. לפי טענה <span class="math inline">\(\ref{prop:det-transpose}\)</span> מתקיים <span class="math inline">\(\det(A)=\det(A^t)\)</span>. נפתח את אגף ימין לפי השורה ה- <span class="math inline">\(j\)</span> (בהתאם לעמודה ה- <span class="math inline">\(j\)</span> של המטריצה המקורית) ונשתמש באינדקס סכימה <span class="math inline">\(i\)</span>: <span class="math display">\[\begin{aligned}
+<p>יהי <span class="math inline">\(1\leq j\leq n\)</span>. לפי טענה <a href="#prp-det-transpose">7.21</a> מתקיים <span class="math inline">\(\det(A)=\det(A^t)\)</span>. נפתח את אגף ימין לפי השורה ה- <span class="math inline">\(j\)</span> (בהתאם לעמודה ה- <span class="math inline">\(j\)</span> של המטריצה המקורית) ונשתמש באינדקס סכימה <span class="math inline">\(i\)</span>: <span class="math display">\[\begin{aligned}
 .\det(A)&amp;=\det(A^t)=\sum_{i=1}^n(-1)^{j+i}(A^t)_{ji}\det(M_{j,i}(A^t))\\
 &amp;=\sum_{i=1}^n(-1)^{i+j}a_{ij}\det((M_{i,j}(A))^t) =\sum_{i=1}^n(-1)^{i+j}a_{ij}\det(M_{i,j}(A))
 \end{aligned}\]</span></p>
@@ -797,7 +797,7 @@ a_{n1} &amp; \cdots &amp; a_{nn}
 <li><p>נראה שעבור מטריצה <span class="math display">\[A=\begin{pmatrix}
 a &amp; b \\
 c &amp; d
-\end{pmatrix}\]</span> פיתוח לפי כל שורה/עמודה משחזר את הנוסחה הידועה מטענה <span class="math inline">\(\ref{prop:det-order-2}\)</span>.</p>
+\end{pmatrix}\]</span> פיתוח לפי כל שורה/עמודה משחזר את הנוסחה הידועה מטענה <a href="#prp-det-order-2">7.10</a>.</p>
 <p>לפי השורה הראשונה נקבל:</p>
 <p><span class="math display">\[\begin{aligned}
 \det(A)&amp;=(-1)^{1+1}a\cdot \det(M_{1,1}(A))+(-1)^{1+2}b\cdot \det(M_{1,2}(A))\\
@@ -904,7 +904,7 @@ i &amp; 1+i \\
 &amp;=45-38=7
 \end{aligned}\]</span></p>
 </div>
-<p>החישוב הבא מתאים לנפח של מקבילון שבסיסו מונח על מישור <span class="math inline">\(xy\)</span>. זהו מקרה יותר כללי מהתיבה שראינו בדוגמה <span class="math inline">\(\ref{ex:area-volume}\)</span>.</p>
+<p>החישוב הבא מתאים לנפח של מקבילון שבסיסו מונח על מישור <span class="math inline">\(xy\)</span>. זהו מקרה יותר כללי מהתיבה שראינו בדוגמה <a href="#exm-area-volume">7.13</a>.</p>
 <div class="example">
 <p>נסתכל על הוקטורים הבאים ב- <span class="math inline">\(\mathbb{R}^3\)</span>: <span class="math display">\[.v_1=(a,b,0),v_2=(c,d,0),v_3=(0,0,h)\]</span></p>
 <figure id="fig:Piped" class="figure">
@@ -946,7 +946,7 @@ a &amp; 2a &amp; 3 \\
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>לפי משפט <span class="math inline">\(\ref{thm:det-invertible}\)</span> קיים לממ"ל פתרון יחיד (הטריוויאלי) אם ורק אם <span class="math inline">\(\det(A)\neq 0\)</span>. נעשה חישוב, כאשר תחילה נוציא את הסקלר <span class="math inline">\(a\)</span> מהשורה השנייה אל מחוץ לדטרמיננטה:</p>
+<p>לפי משפט <a href="#thm-det-invertible">7.15</a> קיים לממ"ל פתרון יחיד (הטריוויאלי) אם ורק אם <span class="math inline">\(\det(A)\neq 0\)</span>. נעשה חישוב, כאשר תחילה נוציא את הסקלר <span class="math inline">\(a\)</span> מהשורה השנייה אל מחוץ לדטרמיננטה:</p>
 <p><span class="math display">\[\begin{aligned}
 \det(A)&amp;=\det\!\begin{pmatrix}
 a &amp; 2a &amp; 3 \\
@@ -968,7 +968,7 @@ a &amp; 2a &amp; 3 \\
 -1 &amp; 0 &amp; 1
 \end{pmatrix}
 \end{aligned}\]</span></p>
-<p>עכשיו נוח, אך לא חובה, לשחלף את המטריצה בהתאם לטענה <span class="math inline">\(\ref{prop:det-transpose}\)</span> ואז לבצע עוד פש"א:</p>
+<p>עכשיו נוח, אך לא חובה, לשחלף את המטריצה בהתאם לטענה <a href="#prp-det-transpose">7.21</a> ואז לבצע עוד פש"א:</p>
 <p><span class="math display">\[\det(A)=a(a-3)\det\!\begin{pmatrix}
 a &amp; 2 &amp; -1 \\
 2a &amp; 1 &amp; 0 \\
