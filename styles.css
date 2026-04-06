@@ -219,12 +219,16 @@ img.sidebar-logo {
   margin: 0.5rem auto 0.8rem;
 }
 
+.sidebar-menu-container {
+  padding-bottom: 80px !important;
+}
+
 /* ===== פסי קצה ===== */
 body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 4px;
+  height: 8px;
   background: #FF9E3A;
   z-index: 9999;
 }
@@ -233,7 +237,7 @@ body::after {
   content: '';
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  height: 3px;
+  height: 8px;
   background: #dee2e6;
   z-index: 9999;
 }
@@ -326,4 +330,10 @@ hr.home-rule {
   color: #fff;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
+}
+
+.typo-report-btn,
+a[href*="typo-report"],
+#typo-report-btn {
+  background: #fff !important;
 }
