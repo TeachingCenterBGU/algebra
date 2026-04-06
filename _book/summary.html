@@ -531,6 +531,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 <script src="tracking.js"></script>
+<style>
+#typo-report-btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  z-index: 9999;
+  background: transparent;
+  color: #888;
+  border: none;
+  border-top: 0.5px solid #ddd;
+  border-radius: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  box-sizing: border-box;
+}
+#typo-report-btn:hover {
+  background: rgba(0,0,0,0.04);
+  color: #444;
+}
+#typo-report-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  #typo-report-btn { display: none; }
+}
+</style>
+
+<script>
+(function() {
+  var FORM_URL      = "https://docs.google.com/forms/d/e/1FAIpQLSdhMnxeLkwra9GljMRwBhw7b2N5lmtfgSEa5oZ__reVX4gycg/viewform";
+  var PAGE_ENTRY    = "entry.1917305355";
+  var SECTION_ENTRY = "entry.1642881501";
+
+  function getCurrentSection() {
+    var headings = document.querySelectorAll('main h1, main h2, main h3');
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    headings.forEach(function(h) {
+      if (h.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        current = h;
+      }
+    });
+    if (!current) return '';
+    var num = current.getAttribute('data-number') || '';
+    var text = current.textContent.replace(/^\s*[\d.IVX]+\s*/, '').trim();
+    return num ? num + ' ' + text : text;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.createElement('a');
+    btn.id = 'typo-report-btn';
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+    btn.title = 'דיווח על שגיאת כתיב';
+
+    btn.innerHTML =
+      '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8c0 1.16.3 2.25.82 3.2L1.5 14.5l3.3-.82A6.5 6.5 0 1 0 8 1.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<path d="M8 5.5v3M8 10.5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+      '</svg>' +
+      'דיווח על שגיאת כתיב/הקלדה';
+
+    function updateLink() {
+      var pageUrl = window.location.href;
+      var section = getCurrentSection();
+      btn.href = FORM_URL +
+        "?usp=pp_url" +
+        "&" + PAGE_ENTRY    + "=" + encodeURIComponent(pageUrl) +
+        "&" + SECTION_ENTRY + "=" + encodeURIComponent(section);
+    }
+
+    updateLink();
+    window.addEventListener('scroll', updateLink);
+    window.addEventListener('popstate', updateLink);
+    window.addEventListener('hashchange', updateLink);
+
+    document.body.appendChild(btn);
+  });
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

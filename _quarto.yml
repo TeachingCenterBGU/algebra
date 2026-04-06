@@ -62,6 +62,7 @@ format:
       - auto-env-titles.html
       - chapter-numbering.html
       - tracking.html
+      - report-typo.html   # ← זה
     include-in-header: _includes/head.html
       
     filters:

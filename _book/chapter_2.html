@@ -785,8 +785,8 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 <p>כבר נתקלנו בדוגמאות בהן הממ"ל יחסית פשוטה לפתרון, במובן שקל לזהות את המשתנים החופשיים, להציב בהם ערכים שרירותיים ולקבל את הערכים המתאימים של המשתנים התלויים ע"י קצת אלגברה (פעולות חשבון ואולי הצבות). איך מטריצת המקדמים (מצומצמת או מורחבת) נראית במקרים כאלה? לשם כך נועדה ההגדרה הבאה.</p>
 <div class="definition">
 <p>מטריצה נקראת <u>מדורגת</u> אם:</p>
-<p><strong>1.</strong> אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.</p>
-<p><strong>2.</strong> בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו <span class="math inline">\(0\)</span> נקרא <u>האיבר המוביל</u> של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.</p>
+<p>א. אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.</p>
+<p>ב. בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו <span class="math inline">\(0\)</span> נקרא <u>האיבר המוביל</u> של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.</p>
 </div>
 <div class="example">
 <p><strong>א.</strong><br>
@@ -832,9 +832,9 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 <p>מטריצות מדורגות הן יחסית נוחות, אך יש מטריצות מדורגות מסוג יותר מסוים שהוא עוד יותר נוח בפתרון ממ"ל.</p>
 <div class="definition">
 <p>מטריצה נקראת <u>מדורגת קנונית</u> אם:</p>
-<p><strong>1.</strong> היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.</p>
-<p><strong>2.</strong> האיבר המוביל בכל שורה (אם הוא קיים) הוא <span class="math inline">\(1\)</span>. אפשר גם לקרוא לו אחד מוביל.</p>
-<p><strong>3.</strong> בכל עמודה של אחד מוביל, כל שאר האיברים הם <span class="math inline">\(0\)</span> (מתחת וגם מעל לאחד המוביל).</p>
+<p>א. היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.</p>
+<p>ב. האיבר המוביל בכל שורה (אם הוא קיים) הוא <span class="math inline">\(1\)</span>. אפשר גם לקרוא לו אחד מוביל.</p>
+<p>ג. בכל עמודה של אחד מוביל, כל שאר האיברים הם <span class="math inline">\(0\)</span> (מתחת וגם מעל לאחד המוביל).</p>
 </div>
 <div class="example">
 <p><strong>א.</strong><br>
@@ -882,8 +882,8 @@ x &amp;{}+{}&amp; 2y &amp;{}+{}&amp; 2z &amp;{}+{}&amp; 3w &amp;=  8
 <p>האיברים המובילים מופיעים בעמודות <span class="math inline">\(k_1,k_2,....,k_{r}\)</span>. <span class="math inline">\(r\)</span> הוא גם מספר השורות שאינן כולן אפסים (בכל שורה כזו יש איבר מוביל אחד).</p>
 <div class="definition">
 <p>נניח שקיבלנו צורה מדורגת קנונית של מטריצת מקדמים מצומצמת <span class="math inline">\(A\)</span> של ממ"ל <span class="math inline">\(Ax=b\)</span>.</p>
-<p><strong>1.</strong> כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.</p>
-<p><strong>2.</strong> למספר המשתנים התלויים נקרא הדרגה של הממ"ל/מטריצה. נסמן <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span>.</p>
+<p>א. כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.</p>
+<p>ב. למספר המשתנים התלויים נקרא הדרגה של הממ"ל/מטריצה. נסמן <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>נראה בקרוב (שיטת הדירוג של גאוס) שניתן לבצע על כל מטריצה סדרת פעולות (שנקראת דירוג) בין שורותיה, כך שבסוף מתקבלת מטריצה מדורגת קנונית. מטריצה זו היא יחידה (כלומר לא תלויה בדרך הדירוג שניתנת לבחירה) וניתן להשתמש בה כדי לקבוע את קבוצת הפתרונות של הממ"ל המקורית. הדרגה, שהיא כאמור מספר המשתנים התלויים, שווה למספר השורות בצורה המדורגת קנונית שאינן שורת אפסים. זהו גם מספר האיברים המובילים.</p>
@@ -917,9 +917,9 @@ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
 a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{pmatrix}\]</span> מטריצה מסדר <span class="math inline">\(m\times n\)</span> מעל <span class="math inline">\(\mathbb F\)</span>. נסמן ב-<span class="math inline">\(R_1,R_2,...,R_m\)</span> את שורות המטריצה <span class="math inline">\(A\)</span>, כלומר <span class="math inline">\(R_{i}=(a_{i1},a_{i2},...,a_{in})\)</span> לכל <span class="math inline">\(1\leq i\leq m\)</span>. להלן שלושה סוגי פעולות על שורות <span class="math inline">\(A\)</span> הנקראות <u>פעולות שורה אלמנטריות:</u></p>
-<p><strong>1.</strong> כפל השורה <span class="math inline">\(R_{i}\)</span> בסקלר <span class="math inline">\(c\in F\)</span> שאינו <span class="math inline">\(0\)</span>. נסמן פעולה זו כך: <span class="math inline">\(cR_{i}\rightarrow R_{i}\)</span>.</p>
-<p><strong>2.</strong> הוספה לשורה <span class="math inline">\(R_{i}\)</span> את הכפולה של השורה <span class="math inline">\(R_{j}\)</span> בסקלר <span class="math inline">\(c\in \mathbb F\)</span> כאשר <span class="math inline">\(i\neq j\)</span>. נסמן <span class="math inline">\(R_{i}+cR_{j}\rightarrow R_{i}\)</span>. השורה <span class="math inline">\(R_{j}\)</span> נשארת ללא שינוי.</p>
-<p><strong>3.</strong> החלפת השורות <span class="math inline">\(R_{i}\)</span> ו-<span class="math inline">\(R_{j}\)</span> עבור <span class="math inline">\(i\neq j\)</span>. נסמן <span class="math inline">\(R_{i}\leftrightarrow R_{j}\)</span>.</p>
+<p>א. כפל השורה <span class="math inline">\(R_{i}\)</span> בסקלר <span class="math inline">\(c\in F\)</span> שאינו <span class="math inline">\(0\)</span>. נסמן פעולה זו כך: <span class="math inline">\(cR_{i}\rightarrow R_{i}\)</span>.</p>
+<p>ב. הוספה לשורה <span class="math inline">\(R_{i}\)</span> את הכפולה של השורה <span class="math inline">\(R_{j}\)</span> בסקלר <span class="math inline">\(c\in \mathbb F\)</span> כאשר <span class="math inline">\(i\neq j\)</span>. נסמן <span class="math inline">\(R_{i}+cR_{j}\rightarrow R_{i}\)</span>. השורה <span class="math inline">\(R_{j}\)</span> נשארת ללא שינוי.</p>
+<p>ג. החלפת השורות <span class="math inline">\(R_{i}\)</span> ו-<span class="math inline">\(R_{j}\)</span> עבור <span class="math inline">\(i\neq j\)</span>. נסמן <span class="math inline">\(R_{i}\leftrightarrow R_{j}\)</span>.</p>
 </div>
 <div class="example">
 <p>נדגים כל סוג פעולה על המטריצה <span class="math display">\[
@@ -929,7 +929,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 7 &amp; 8 &amp; 9
 \end{pmatrix}
 \]</span></p>
-<p><strong>1.</strong> נכפיל את השורה הראשונה ב-<span class="math inline">\(2\)</span>: <span class="math display">\[
+<p>א. נכפיל את השורה הראשונה ב-<span class="math inline">\(2\)</span>: <span class="math display">\[
 \begin{pmatrix}
 1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
@@ -942,7 +942,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 7 &amp; 8 &amp; 9
 \end{pmatrix}
 \]</span> את הפעולה משמאל לימין ציינו מעל לחץ, ומתחתיו את הפעולה ההפוכה מימין לשמאל - כפל השורה הראשונה ב-<span class="math inline">\(\frac{1}{2}\)</span>.</p>
-<p><strong>2.</strong> נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">\(-3\)</span>: <span class="math display">\[
+<p>ב. נוסיף לשורה השלישית כפולה של השורה הראשונה בסקלר <span class="math inline">\(-3\)</span>: <span class="math display">\[
 \begin{pmatrix}
 1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
@@ -955,7 +955,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 4 &amp; 2 &amp; 0
 \end{pmatrix}
 \]</span> שימו לב שהשורה הראשונה לא משתנה; חישבנו לשורה השלישית: <span class="math inline">\((7,8,9)-3(1,2,3)=(4,2,0)\)</span>.</p>
-<p><strong>3.</strong> נחליף בין השורה השנייה לשורה השלישית: <span class="math display">\[
+<p>ג. נחליף בין השורה השנייה לשורה השלישית: <span class="math display">\[
 \begin{pmatrix}
 1 &amp; 2 &amp; 3\\
 4 &amp; 5 &amp; 6\\
@@ -1226,25 +1226,25 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 <p>ניתן לאפיין את הקריטריונים לעיל באמצעות הדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span> של מטריצת המקדמים המצומצמת, והדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A|b)\)</span> של מטריצת המקדמים המורחבת. דירוג קנוני של <span class="math inline">\(A\)</span> מתאים לדירוג קנוני של <span class="math inline">\((A|b)\)</span>, כאשר ההבדל היחיד הוא העמודה הימנית (צריך לבצע עליה את כל פעולות השורה שבחרנו עבור <span class="math inline">\(A\)</span>).</p>
 <p>ראשית נוכיח כמה תכונות של דרגה.</p>
 <div id="prp-rank-ineq" class="proposition theorem">
-<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> <strong>1.</strong> לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.*</p>
-<p><strong>2.</strong> מתקיים <span class="math inline">\(0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\)</span> כאשר <span class="math inline">\(\min\{m,n\}\)</span> הוא המספר הקטן מבין <span class="math inline">\(m,n\)</span>.*</p>
+<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> א. לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.*</p>
+<p>ב. מתקיים <span class="math inline">\(0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\)</span> כאשר <span class="math inline">\(\min\{m,n\}\)</span> הוא המספר הקטן מבין <span class="math inline">\(m,n\)</span>.*</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>&nbsp; <strong>1.</strong> נניח כי הצורה המדורגת קנונית של <span class="math inline">\((A|b)\)</span> היא <span class="math inline">\((A'|b')\)</span>. אז בפרט, <span class="math inline">\(A'\)</span> היא הצורה המדורגת קנונית של <span class="math inline">\(A\)</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp; א. נניח כי הצורה המדורגת קנונית של <span class="math inline">\((A|b)\)</span> היא <span class="math inline">\((A'|b')\)</span>. אז בפרט, <span class="math inline">\(A'\)</span> היא הצורה המדורגת קנונית של <span class="math inline">\(A\)</span>.</p>
 <p>בהכרח מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span> כי מספר האיברים המובילים ב- <span class="math inline">\((A'|b')\)</span> הוא לפחות מספר האיברים המובילים ב- <span class="math inline">\(A'\)</span>. או שהדרגות שוות, או שהדרגה של מטריצת המקדמים המורחבת גדולה יותר (ב-<span class="math inline">\(1\)</span>) כתוצאה משורת סתירה שמוסיפה איבר מוביל.</p>
-<p><strong>2.</strong> הדרגה היא מספר טבעי (היא <span class="math inline">\(0\)</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">\(0\)</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">\(A\)</span>, מספר זה הוא לכל היותר <span class="math inline">\(m\)</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">\(m\)</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">\(n\)</span>, ובסך הכל מתקיים <span class="math display">\[.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\]</span></p>
+<p>ב. הדרגה היא מספר טבעי (היא <span class="math inline">\(0\)</span> אם ורק אם כל איברי המטריצה הם <span class="math inline">\(0\)</span>). מאחר שזהו מספר האיברים המובילים בצורה המדורגת קנונית של <span class="math inline">\(A\)</span>, מספר זה הוא לכל היותר <span class="math inline">\(m\)</span> כי כל איבר מוביל מתאים לשורה אחת בלבד (ייתכן שיש גם שורות אפסים ואז הדרגה קטנה מ- <span class="math inline">\(m\)</span>). באופן דומה, כל איבר מוביל לעמודה אחת בלבד (ושוב ייתכן שיש עמודות נוספות). אז הדרגה היא לכל היותר <span class="math inline">\(n\)</span>, ובסך הכל מתקיים <span class="math display">\[.0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\]</span></p>
 </div>
 <div id="prp-rank-number" class="proposition theorem">
 <p><span class="theorem-title"><strong>Proposition 5.2</strong></span> לכל מטריצה <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb R^n\)</span>, מספר הפתרונות לממ”ל <span class="math inline">\(Ax=b\)</span> נקבע באופן הבא:*</p>
-<p><strong>1.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)\)</span>, אז אין לממ"ל פתרון.</p>
-<p><strong>2.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n\)</span>, אז לממ"ל יש אינסוף פתרונות.</p>
-<p><strong>3.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n\)</span>, אז לממ"ל יש פתרון יחיד.</p>
+<p>א. אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;\mathop{\mathrm{rank}}(A|b)\)</span>, אז אין לממ"ל פתרון.</p>
+<p>ב. אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)&lt;n\)</span>, אז לממ"ל יש אינסוף פתרונות.</p>
+<p>ג. אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n\)</span>, אז לממ"ל יש פתרון יחיד.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>בכל מקרה נתרגם את הנתון על הדרגות לשפה של שורת סתירה ומשתנים חופשיים.</p>
-<p><strong>1.</strong> במקרה זה יש שורת סתירה ולכן אין פתרון.</p>
-<p><strong>2.</strong> כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p>
-<p><strong>3.</strong> כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p>
+<p>א. במקרה זה יש שורת סתירה ולכן אין פתרון.</p>
+<p>ב. כאן אין שורת סתירה ויש לפחות משתנה חופשי אחד, כי מספר המשתנים התלויים קטן ממספר המשתנים הכולל. אז יש אינסוף פתרונות.</p>
+<p>ג. כאן אין שורת סתירה ואין משתנה חופשי, אז יש פתרון יחיד.</p>
 </div>
 <div id="exm-1-parameter" class="example theorem">
 <p><span class="theorem-title"><strong>Example 5.2</strong></span> נסתכל על ממ”ל שבה חלק מהמקדמים תלויים בפרמטר <span class="math inline">\(a\)</span>, כלומר קבוע (לא משתנה) שערכו אינו ידוע מראש. אפשר לחשוב על ממ"ל עם פרמטר כמשפחה של ממ"ליות - לכל הצבה של ערך הפרמטר נקבל ממ"ל מסוימת במשפחה.</p>
@@ -1353,15 +1353,15 @@ a &amp; 1 &amp; 1 &amp; 1 \\
 </div>
 <p>בניגוד לממ"ל כללית, לממ"ל הומוגנית תמיד קיים לפחות פתרון אחד. הטענה הבאה מראה זאת ומאפיינת את שני המקרים (פתרון יחיד ואינסוף פתרונות).</p>
 <div class="proposition">
-<p><strong>1.</strong> לכל ממ"ל הומוגנית <span class="math inline">\(Ax=0\)</span> קיים פתרון טריוויאלי שהוא וקטור האפס <span class="math inline">\(x=0\)</span>, כלומר הפתרון בו כל המשתנים מתאפסים.</p>
-<p><strong>2.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span>, אז הפתרון יחיד.</p>
-<p><strong>3.</strong> אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;n\)</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">\(m&lt;n\)</span>.</p>
+<p>א. לכל ממ"ל הומוגנית <span class="math inline">\(Ax=0\)</span> קיים פתרון טריוויאלי שהוא וקטור האפס <span class="math inline">\(x=0\)</span>, כלומר הפתרון בו כל המשתנים מתאפסים.</p>
+<p>ב. אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span>, אז הפתרון יחיד.</p>
+<p>ג. אם <span class="math inline">\(\mathop{\mathrm{rank}}(A)&lt;n\)</span>, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים <span class="math inline">\(m&lt;n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><strong>1.</strong> נציב <span class="math inline">\(x_1=x_2=...=x_n=0\)</span> בממ”ל ונקבל <span class="math display">\[a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0\]</span></p>
+<p><span class="proof-title"><em>Proof</em>. </span>א. נציב <span class="math inline">\(x_1=x_2=...=x_n=0\)</span> בממ”ל ונקבל <span class="math display">\[a_{i1}\cdot0+a_{i2}\cdot0+...+a_{in}\cdot 0=0\]</span></p>
 <p>כנדרש לכל <span class="math inline">\(1\leq i\leq n\)</span>.</p>
-<p><strong>2.</strong> אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש פתרון יחיד.</p>
-<p><strong>3.</strong> הפעם מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש אינסוף פתרונות.</p>
+<p>ב. אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש פתרון יחיד.</p>
+<p>ג. הפעם מתקיים <span class="math display">\[.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)&lt;n.\]</span> לכן, לפי <a href="#prp-rank-number">טענה 5.40</a> יש אינסוף פתרונות.</p>
 <p>בהינתן <span class="math inline">\(m&lt;n\)</span>, נובע מ<a href="#prp-rank-ineq">טענה 5.39</a> כי <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq m&lt;n\)</span>. לכן בהכרח יש אינסוף פתרונות במקרה זה.</p>
 </div>
 <div class="exercise">
@@ -1679,6 +1679,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 <script src="tracking.js"></script>
+<style>
+#typo-report-btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  z-index: 9999;
+  background: transparent;
+  color: #888;
+  border: none;
+  border-top: 0.5px solid #ddd;
+  border-radius: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  box-sizing: border-box;
+}
+#typo-report-btn:hover {
+  background: rgba(0,0,0,0.04);
+  color: #444;
+}
+#typo-report-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  #typo-report-btn { display: none; }
+}
+</style>
+
+<script>
+(function() {
+  var FORM_URL      = "https://docs.google.com/forms/d/e/1FAIpQLSdhMnxeLkwra9GljMRwBhw7b2N5lmtfgSEa5oZ__reVX4gycg/viewform";
+  var PAGE_ENTRY    = "entry.1917305355";
+  var SECTION_ENTRY = "entry.1642881501";
+
+  function getCurrentSection() {
+    var headings = document.querySelectorAll('main h1, main h2, main h3');
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    headings.forEach(function(h) {
+      if (h.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        current = h;
+      }
+    });
+    if (!current) return '';
+    var num = current.getAttribute('data-number') || '';
+    var text = current.textContent.replace(/^\s*[\d.IVX]+\s*/, '').trim();
+    return num ? num + ' ' + text : text;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.createElement('a');
+    btn.id = 'typo-report-btn';
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+    btn.title = 'דיווח על שגיאת כתיב';
+
+    btn.innerHTML =
+      '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8c0 1.16.3 2.25.82 3.2L1.5 14.5l3.3-.82A6.5 6.5 0 1 0 8 1.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<path d="M8 5.5v3M8 10.5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+      '</svg>' +
+      'דיווח על שגיאת כתיב/הקלדה';
+
+    function updateLink() {
+      var pageUrl = window.location.href;
+      var section = getCurrentSection();
+      btn.href = FORM_URL +
+        "?usp=pp_url" +
+        "&" + PAGE_ENTRY    + "=" + encodeURIComponent(pageUrl) +
+        "&" + SECTION_ENTRY + "=" + encodeURIComponent(section);
+    }
+
+    updateLink();
+    window.addEventListener('scroll', updateLink);
+    window.addEventListener('popstate', updateLink);
+    window.addEventListener('hashchange', updateLink);
+
+    document.body.appendChild(btn);
+  });
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
