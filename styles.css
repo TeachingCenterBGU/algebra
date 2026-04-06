@@ -20,10 +20,10 @@
 .remark .theorem-title {
   display: block;
   background-color: var(--env-color, #999);
-  color: black; /* כותרת בשחור */
+  color: black;
   font-weight: bold;
-  font-size: 0.9rem; /* פונט טיפה קטן יותר */
-  padding: 0.35rem 0.6rem; /* פס פחות עבה */
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
   margin: 0;
 }
 
@@ -42,9 +42,6 @@
 }
 
 /* ===== משוואות - LTR ===== */
-/* --- תיקון מתמטיקה עדין: שומר על נראות כללית ומתקן עברית בלבד --- */
-
-/* מחזיר את המתמטיקה למרכז/ימין בלי לשבור שורות בתוך הטקסט */
 .math.inline {
   display: inline;
   direction: ltr !important;
@@ -54,26 +51,20 @@
   display: block;
   margin: 1em 0;
   direction: ltr !important;
-  text-align: center; /* משאיר את המשוואות הגדולות במרכז */
+  text-align: center;
 }
 
-/* 1. יישור כללי של המכולה המתמטית */
-/* --- מצב יציב: משוואות ממורכזות ומתמטיקה תקנית (LTR) --- */
-
-/* מרכוז משוואות גדולות ($$) */
 mjx-container[display="true"] {
   text-align: center !important;
   display: block;
   margin: 1.5em 0 !important;
-  direction: ltr !important; /* מבטיח שהסוגריים והסימנים לא יתהפכו */
+  direction: ltr !important;
 }
 
-/* הגדרה גלובלית לכל רכיבי המתמטיקה - חזרה לברירת המחדל של המנוע */
 mjx-container {
   direction: ltr !important;
 }
 
-/* פותר את עיוות האותיות האנגליות (Re/Im) */
 mjx-mtext, mjx-utext {
   direction: ltr !important;
   display: inline !important;
@@ -82,26 +73,25 @@ mjx-mtext, mjx-utext {
   padding: 0 !important;
 }
 
-/* תיקון הפופ-אפים של הרפרנסים (שלא יסתירו את הלינק) */
+/* תיקון פופ-אפים של רפרנסים */
 .quarto-xref-popup {
   margin-top: 15px !important;
   z-index: 1060 !important;
 }
 
+
 /* ===== צבעים פסטליים לכל סביבה ===== */
-.proof     { --env-color: rgba(60, 179, 113, 0.35); }        /* שחור עוד יותר בהיר */
-.definition { --env-color: rgba(255, 99, 71, 0.4); }     /* אדום פסטלי */
-.example   { --env-color: rgba(138, 43, 226, 0.3); }    /* סגול פסטלי */
-.exercise  { --env-color: rgba(30, 144, 255, 0.35); }   /* כחול פסטלי */
-.remark { --env-color: rgba(150, 150, 150, 0.15); }
-.theorem, .lemma, .proposition, .corollary { --env-color: rgba(255, 165, 0, 0.35); } /* שחור פסטלי */
+.proof      { --env-color: rgba(60, 179, 113, 0.35); }
+.definition { --env-color: rgba(255, 99, 71, 0.4); }
+.example    { --env-color: rgba(138, 43, 226, 0.3); }
+.exercise   { --env-color: rgba(30, 144, 255, 0.35); }
+.remark     { --env-color: rgba(150, 150, 150, 0.15); }
+.theorem, .lemma, .proposition, .corollary { --env-color: rgba(255, 165, 0, 0.35); }
 
-
-
-/* למרכז תמונות וכיתובים ב‑HTML של Quarto */
+/* ===== תמונות ===== */
 figure.quarto-figure,
 .figure {
-  text-align: center !important;   /* עוקף את right מה‑RTL */
+  text-align: center !important;
 }
 
 figure.quarto-figure figcaption,
@@ -109,143 +99,7 @@ figure.quarto-figure figcaption,
   text-align: center !important;
   margin: 0.5rem auto;
 }
-/* רשימות בתוך סביבות: סידור מספור, מניעת גלישה ויישור שורות */
-.definition ol, .definition ul,
-.example   ol, .example   ul,
-.exercise  ol, .exercise  ul,
-.theorem   ol, .theorem   ul,
-.lemma     ol, .lemma     ul,
-.proposition ol, .proposition ul,
-.corollary ol, .corollary ul,
-.remark    ol, .remark    ul,
-.proof     ol, .proof     ul {
-  list-style-position: outside !important;
-  padding-right: 2.5rem !important;  /* ה-!important מונע מהריווח של התיבה לדרוס אותנו */
-  padding-left: 0 !important;
-  margin: 0.4rem 0 !important;
-  direction: rtl !important;
-  text-align: right !important;
-}
 
-/* מניעת ירידת שורה של הפסקה הראשונה (מחבר את הטקסט למספר) */
-.definition li > p:first-child,
-.example li > p:first-child,
-.exercise li > p:first-child,
-.theorem li > p:first-child,
-.lemma li > p:first-child,
-.proposition li > p:first-child,
-.corollary li > p:first-child,
-.remark li > p:first-child,
-.proof li > p:first-child {
-  display: inline;
-}
-
-/* מסדר את הכיווניות של המספר עצמו (1. במקום .1) */
-.definition li, .example li, .exercise li, .theorem li, 
-.lemma li, .proposition li, .corollary li, .remark li, .proof li {
-  direction: rtl;
-}
-/* --- Home hero --- */
-.home-hero{ text-align:center; margin:2.2rem 0 1.4rem; }
-.home-hero__logo{ width:140px; display:block; margin:0 auto 1rem; }
-.home-hero__title{ font-size:2.2rem; margin:0 0 .35rem; }
-.home-hero__tagline{ font-size:1.1rem; opacity:.8; margin:0; }
-
-/* --- Download button in sidebar --- */
-#download-box{ margin:1rem 0; }
-#download-box .btn{
-  background:#FF9E3A; border-color:#FF9E3A; color:#fff;
-  display:block; text-align:center; font-weight:600;
-}
-.sidebar #download-box{ margin-top:1rem; }
-
-/* סמל ההורדה באותה שורה של הכותרת */
-.sidebar .sidebar-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.sidebar .sidebar-tools-main {
-  display: contents;
-}
-
-/* קצת ריווח בין הלוגו לכותרת */
-.sidebar-logo {
-  display: block;
-  margin: 0 auto 0.5rem;
-}
-/* לוגו ב-sidebar — קטן */
-img.sidebar-logo {
-  width: 120px !important;
-  height: 120px !important;
-  display: block;
-  margin: 0 auto 0.5rem;
-}
-
-.sidebar-logo-link {
-  display: block;
-  text-align: center;
-}
-
-/* --- Home hero v2 --- */
-.home-hero{ text-align:center; margin:2.5rem 0 1.5rem; }
-.home-hero__logo{ width:180px; display:block; margin:0 auto 1.1rem; }
-.home-hero__title{ font-size:2.6rem; line-height:1.15; margin:0; }
-.home-hero__subtitle{ font-size:1.1rem; opacity:.8; margin:.35rem 0 1.3rem; }
-.home-hero__tagline{
-  font-weight:700; font-size:1.15rem; margin:.2rem auto 1.2rem;
-  max-width:42ch;
-}
-.home-hero__divider{
-  width:min(720px,92%); margin:1.2rem auto 0; border:none; height:1px;
-  background:linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
-}
-
-/* --- Acknowledgements card --- */
-.home-ack{
-  background:#eef6ff; border:2px solid #9ec5fe; border-radius:18px;
-  padding:1.1rem 1.2rem; margin:1.3rem auto 0; max-width:780px;
-  box-shadow:0 6px 18px rgba(30,58,138,.10);
-  text-align:center; font-weight:600;
-}
-.home-ack h4, .home-ack h3, .home-ack h2{ margin:.1rem 0 .6rem; }
-.home-ack p{ margin:.25rem 0; }
-
-/* --- Download button in sidebar --- */
-#download-box{ margin:1rem 0; }
-#download-box .btn{
-  background:#FF9E3A; border-color:#FF9E3A; color:#fff;
-  display:block; text-align:center; font-weight:700;
-}
-.sidebar #download-box{ margin-top:1rem; }
-
-/* --- Solution as callout: match look&feel of other env boxes --- */
-.callout.solution {
-  --env-color: rgba(72, 209, 204, 0.35);      /* תכלת-ירקרק פסטלי */
-  border: 1px solid var(--env-color);
-  border-radius: 0;
-  box-shadow: none;
-  margin: 1.25rem 0;
-}
-.callout.solution .callout-header {
-  background: var(--env-color);
-  color: black;           /* כותרת בשחור כמו בשאר הסביבות */
-  font-weight: 700;
-}
-.callout.solution .callout-icon-container { display: none; } /* בלי האייקון של callout */
-.callout.solution .callout-body { padding: 0.6rem; }
-
-/* מרכזים את תמונת ה-figure עצמה */
-figure.quarto-figure img,
-.figure img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* תיקון סופי למרכז תמונות ו-caption גם במסמך RTL */
 .quarto-figure,
 .figure {
   display: block;
@@ -269,76 +123,126 @@ figure.quarto-figure figcaption {
   margin: 0.5rem auto;
 }
 
-/* הוספת ריבוע סיום הוכחה (QED) מיושר לשמאל */
-.proof > :last-child::after {
-    content: " \25A0";   /* קוד התו של ריבוע מלא */
-    float: left;         /* דוחף אותו לקצה השמאלי של השורה */
-    margin-left: 0.2rem;
-    color: #555;         /* אפור כהה כדי שלא יהיה צעקני מדי */
+/* ===== רשימות בתוך סביבות ===== */
+.definition ol, .definition ul,
+.example   ol, .example   ul,
+.exercise  ol, .exercise  ul,
+.theorem   ol, .theorem   ul,
+.lemma     ol, .lemma     ul,
+.proposition ol, .proposition ul,
+.corollary ol, .corollary ul,
+.remark    ol, .remark    ul,
+.proof     ol, .proof     ul {
+  list-style-position: outside !important;
+  padding-right: 2.5rem !important;
+  padding-left: 0 !important;
+  margin: 0.4rem 0 !important;
+  direction: rtl !important;
+  text-align: right !important;
 }
 
-/* הופך רשימות של אותיות אנגליות למספור עברי תקני */
+.definition li > p:first-child,
+.example li > p:first-child,
+.exercise li > p:first-child,
+.theorem li > p:first-child,
+.lemma li > p:first-child,
+.proposition li > p:first-child,
+.corollary li > p:first-child,
+.remark li > p:first-child,
+.proof li > p:first-child {
+  display: inline;
+}
+
+.definition li, .example li, .exercise li, .theorem li,
+.lemma li, .proposition li, .corollary li, .remark li, .proof li {
+  direction: rtl;
+}
+
+/* ===== Solution callout ===== */
+.callout.solution {
+  --env-color: rgba(72, 209, 204, 0.35);
+  border: 1px solid var(--env-color);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 1.25rem 0;
+}
+.callout.solution .callout-header {
+  background: var(--env-color);
+  color: black;
+  font-weight: 700;
+}
+.callout.solution .callout-icon-container { display: none; }
+.callout.solution .callout-body { padding: 0.6rem; }
+
+/* ===== QED ===== */
+.proof > :last-child::after {
+  content: " \25A0";
+  float: left;
+  margin-left: 0.2rem;
+  color: #555;
+}
+
+/* ===== רשימות עבריות ===== */
 ol[type="a"] {
   list-style-type: hebrew;
 }
 
-/* =====================================================
-   HOME PAGE — להוסיף בסוף styles.css
-   ===================================================== */
-
-/* מסתיר כותרת "מידע כללי", AUTHOR, וTOC רק בדף הבית */
-.is-homepage #title-block-header { display: none !important; }
-.is-homepage nav[role="doc-toc"] { display: none !important; }
-.is-homepage #TOC              { display: none !important; }
-
-/* ── Header: לוגו + כותבים ── */
-.home-header {
-  text-align: center;
-  margin: 0.5rem 0 1.2rem;
+/* ===== טבלאות===== */
+table th, table td {
+  text-align: right !important;
 }
 
-.home-header__logo {
-  width: 200px  !important;
-  display: block;
-  margin: 0 auto 1rem;
-}
-
-.home-header__authors {
-  font-size: 1rem;
-  color: #6c757d;
-  margin: 0;
-}
-
-/* ── קו מפריד ── */
-hr.home-rule {
-  border: none;
-  border-top: 1px solid #dee2e6;
-  margin: 1.5rem 0;
-}
-
-/* ── תודות ── */
-.home-ack {
-  font-size: 0.85rem;
-  color: #6c757d;
-  text-align: right;
-}
-
-.home-ack strong {
-  display: block;
-  margin-bottom: 0.35rem;
-  color: #555;
-  font-size: 0.88rem;
+table th strong,
+table th span {
+  font-family: inherit !important;
   font-weight: 600;
 }
 
-.home-ack p {
-  margin: 0.15rem 0;
+/* ===== Sidebar ===== */
+img.sidebar-logo {
+  width: 80px !important;
+  height: 80px !important;
+  display: block;
+  margin: 0 auto 0.5rem;
 }
+
+.sidebar-logo-link {
+  display: block;
+  text-align: center;
+}
+
+.sidebar-title,
+.sidebar-title a {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  margin: 0.5rem auto 0.8rem;
+}
+
+/* ===== פסי קצה ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #FF9E3A;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: #dee2e6;
+  z-index: 9999;
+}
+
 /* =====================================================
-   HOME PAGE — להוסיף בסוף styles.css
+   HOME PAGE
    ===================================================== */
 
-/* מסתיר כותרת h1, title block, וTOC בדף הבית */
+/* מסתיר h1, title block, וTOC רק בדף הבית */
 .is-homepage h1,
 .is-homepage #title-block-header,
 .is-homepage nav[role="doc-toc"],
@@ -346,14 +250,14 @@ hr.home-rule {
   display: none !important;
 }
 
-/* ── Header: לוגו + שם + כותבים ── */
+/* לוגו */
 .home-header {
   text-align: center;
   margin: 0.5rem 0 1.5rem;
 }
 
 .home-header__logo {
-  width: 140px;
+  width: 140px !important;
   display: block;
   margin: 0 auto 1.2rem;
 }
@@ -372,18 +276,29 @@ hr.home-rule {
   margin: 0;
 }
 
-/* ── קו מפריד ── */
+/* קו מפריד */
 hr.home-rule {
   border: none;
   border-top: 1px solid #dee2e6;
   margin: 1.5rem 0;
 }
 
-/* ── תודות ── */
+/* טקסט ממורכז בדף הבית */
+.is-homepage p {
+  text-align: center;
+}
+
+/* תודות */
 .home-ack {
+  background: #eef6ff;
+  border: 2px solid #9ec5fe;
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem;
+  margin: 1.3rem auto 0;
+  max-width: 780px;
+  text-align: center;
   font-size: 0.95rem;
   color: #6c757d;
-  text-align: right;
 }
 
 .home-ack strong {
@@ -396,32 +311,19 @@ hr.home-rule {
 
 .home-ack p {
   margin: 0.2rem 0;
+  text-align: right !important;
 }
 
-.is-homepage p {
+/* כפתור הורדה */
+.home-download {
+  margin-top: 1.5rem;
   text-align: center;
 }
 
-/* פס כתום למעלה */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
+.home-download__btn {
   background: #FF9E3A;
-  z-index: 9999;
-}
-
-/* פס אפור למטה */
-body::after {
-  content: '';
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: #dee2e6;
-  z-index: 9999;
+  border-color: #FF9E3A;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
 }
