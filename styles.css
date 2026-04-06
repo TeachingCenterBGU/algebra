@@ -159,19 +159,34 @@ figure.quarto-figure figcaption,
 }
 .sidebar #download-box{ margin-top:1rem; }
 
-/* ממרכזת את כותרת הספר שב-sidebar */
-.sidebar-title, 
-.sidebar-title a {
-  display: block;
-  text-align: center;
-  font-weight: 700;
-  margin: 0.5rem auto 0.8rem;
+/* סמל ההורדה באותה שורה של הכותרת */
+.sidebar .sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sidebar .sidebar-tools-main {
+  display: contents;
 }
 
 /* קצת ריווח בין הלוגו לכותרת */
 .sidebar-logo {
   display: block;
   margin: 0 auto 0.5rem;
+}
+/* לוגו ב-sidebar — קטן */
+img.sidebar-logo {
+  width: 120px !important;
+  height: 120px !important;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+.sidebar-logo-link {
+  display: block;
+  text-align: center;
 }
 
 /* --- Home hero v2 --- */
@@ -265,4 +280,148 @@ figure.quarto-figure figcaption {
 /* הופך רשימות של אותיות אנגליות למספור עברי תקני */
 ol[type="a"] {
   list-style-type: hebrew;
+}
+
+/* =====================================================
+   HOME PAGE — להוסיף בסוף styles.css
+   ===================================================== */
+
+/* מסתיר כותרת "מידע כללי", AUTHOR, וTOC רק בדף הבית */
+.is-homepage #title-block-header { display: none !important; }
+.is-homepage nav[role="doc-toc"] { display: none !important; }
+.is-homepage #TOC              { display: none !important; }
+
+/* ── Header: לוגו + כותבים ── */
+.home-header {
+  text-align: center;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.home-header__logo {
+  width: 200px  !important;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.home-header__authors {
+  font-size: 1rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* ── קו מפריד ── */
+hr.home-rule {
+  border: none;
+  border-top: 1px solid #dee2e6;
+  margin: 1.5rem 0;
+}
+
+/* ── תודות ── */
+.home-ack {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-align: right;
+}
+
+.home-ack strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #555;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.home-ack p {
+  margin: 0.15rem 0;
+}
+/* =====================================================
+   HOME PAGE — להוסיף בסוף styles.css
+   ===================================================== */
+
+/* מסתיר כותרת h1, title block, וTOC בדף הבית */
+.is-homepage h1,
+.is-homepage #title-block-header,
+.is-homepage nav[role="doc-toc"],
+.is-homepage #TOC {
+  display: none !important;
+}
+
+/* ── Header: לוגו + שם + כותבים ── */
+.home-header {
+  text-align: center;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.home-header__logo {
+  width: 140px;
+  display: block;
+  margin: 0 auto 1.2rem;
+}
+
+.home-header__title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+  color: inherit;
+}
+
+.home-header__authors {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* ── קו מפריד ── */
+hr.home-rule {
+  border: none;
+  border-top: 1px solid #dee2e6;
+  margin: 1.5rem 0;
+}
+
+/* ── תודות ── */
+.home-ack {
+  font-size: 0.95rem;
+  color: #6c757d;
+  text-align: right;
+}
+
+.home-ack strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #555;
+  font-size: 0.97rem;
+  font-weight: 600;
+}
+
+.home-ack p {
+  margin: 0.2rem 0;
+}
+
+.is-homepage p {
+  text-align: center;
+}
+
+/* פס כתום למעלה */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #FF9E3A;
+  z-index: 9999;
+}
+
+/* פס אפור למטה */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #dee2e6;
+  z-index: 9999;
 }

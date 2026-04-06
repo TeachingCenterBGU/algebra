@@ -1688,7 +1688,7 @@ b_n
 :::
 
 ::: {.corollary #cor-span-coordinates}
-**מסקנה 1.83**. *`\label{cor:span-coordinates}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$, $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$, ו- $u,w_1,...,w_k\in V$. אז מתקיים $$.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)$$*
+ *`\label{cor:span-coordinates}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$, $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$, ו- $u,w_1,...,w_k\in V$. אז מתקיים $$.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)$$*
 :::
 
 ::: proof
@@ -1827,7 +1827,7 @@ $$\begin{aligned}
 המסקנה הבאה היא הכללה של מסקנה [8.66](#cor-size-dim) למרחבים וקטוריים כלליים:
 
 ::: {.corollary #cor-size-dim2}
-**מסקנה 1.87**. *`\label{cor:size-dim2}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$, $B=\Set{b_1,...,b_n}$ בסיס ל- $V$ ו- $v_1,...,v_k\in V$.*
+ *`\label{cor:size-dim2}`{=latex} יהיו $V$ מ\"ו מעל $\mathbb{F}$, $B=\Set{b_1,...,b_n}$ בסיס ל- $V$ ו- $v_1,...,v_k\in V$.*
 
 א. *אם $\Set{v_1,...,v_k}$ בת\"ל, אז $k\leq n$.*
 
@@ -1849,7 +1849,7 @@ $$\begin{aligned}
 :::
 
 ::: corollary
-**מסקנה 1.88**. *יהי $V$ מ\"ו נוצר סופית, כלומר קיים לו בסיס. אז כל שני בסיסים ל- $V$ הם שווי גודל.*
+ *יהי $V$ מ\"ו נוצר סופית, כלומר קיים לו בסיס. אז כל שני בסיסים ל- $V$ הם שווי גודל.*
 :::
 
 לאור המסקנה, נוכל להגדיר מימד באופן כללי:
@@ -1974,7 +1974,7 @@ v_3&=(v_1+v_2+v_3)-(v_1+v_2)\in\mathop{\mathrm{Span}}(B')
 כעת נעסוק בשאלה טבעית: מה אפשר לומר על מימד של תת-מרחב?
 
 ::: {.corollary #cor-subspace-dim}
-**מסקנה 1.95**. *`\label{cor:subspace-dim}`{=latex} יהי $V$ מ\"ו נוצר סופית מעל $\mathbb{F}$, ויהי $W$ תת-מרחב. אז מתקיים:*
+ *`\label{cor:subspace-dim}`{=latex} יהי $V$ מ\"ו נוצר סופית מעל $\mathbb{F}$, ויהי $W$ תת-מרחב. אז מתקיים:*
 
 א. *$W$ נוצר סופית ומתקיים $\dim(W)\leq \dim(V)$.*
 

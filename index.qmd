@@ -1,23 +1,22 @@
 # מידע כללי {.unnumbered}
 
-:::{.home-hero}
-<img src="logo.png" alt="לוגו" class="home-hero__logo" />
-<h1 class="home-hero__title">אלגברה לינארית להנדסה</h1>
-<p class="home-hero__subtitle">ד"ר יונתן שלח, ד"ר נדב מאיר</p>
-<p class="home-hero__tagline">ספר קורס </p>
-<p class="home-hero__tagline">מיועד לסטודנטים ולסטודנטיות בפקולטה להנדסה</p>
-<p class="home-hero__tagline">היחידה להוראת קורסי יסוד</p>
-<p class="home-hero__tagline">אוניברסיטת בן גוריון בנגב</p>
-<hr class="home-hero__divider" />
+:::{.home-header}
+<img src="logo.png" alt="לוגו אוניברסיטת בן גוריון" class="home-header__logo" />
+<p class="home-header__title">אלגברה לינארית להנדסה</p>
+<p class="home-header__authors">ד"ר יונתן שלח &nbsp;·&nbsp; ד"ר נדב מאיר</p>
 :::
 
-<div class="home-ack">
-  <h4>תודות</h4>
-  <p>ד"ר מוטקה פורת</p>
-  <p>היחידה להוראת קורסי יסוד, אוניברסיטת בן גוריון בנגב</p>
-  <p>ד"ר ענבל צרפתי-ברעד</p>
-  <p>היחידה לקידום איכות ההוראה והלמידה, אוניברסיטת בן גוריון בנגב</p>
-</div>
+<hr class="home-rule" />
+
+ספר קורס המיועד לסטודנטים ולסטודנטיות בפקולטה להנדסה באוניברסיטת בן גוריון בנגב.
+
+<hr class="home-rule" />
+
+:::{.home-ack}
+<strong>תודות</strong>
+<p>ד"ר מוטקה פורת &nbsp;·&nbsp; היחידה להוראת קורסי יסוד, אוניברסיטת בן גוריון בנגב</p>
+<p>ד"ר ענבל צרפתי-ברעד &nbsp;·&nbsp; היחידה לקידום איכות ההוראה והלמידה, אוניברסיטת בן גוריון בנגב</p>
+:::
 
 <div id="download-box">
   <a class="btn" target="_blank" href="downloads/book.pdf">להורדת הספר ב PDF</a>
@@ -25,6 +24,7 @@
 
 <script>
   window.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("is-homepage");
     const sidebar = document.querySelector(".sidebar");
     const downloadBox = document.querySelector("#download-box");
     if (sidebar && downloadBox) sidebar.appendChild(downloadBox);
