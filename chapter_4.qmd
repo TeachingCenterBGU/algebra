@@ -64,7 +64,7 @@
 :::
 
 ::: {.proposition #prp-zero-row}
-אם למטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ יש שורת אפסים, אז $\det(A)=0$.*
+אם למטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ יש שורת אפסים, אז $\det(A)=0$.
 :::
 
 ::: proof
