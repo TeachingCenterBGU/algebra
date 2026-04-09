@@ -296,7 +296,7 @@ $$
 
 <section id="פעולות-החיתוך-והסכום" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="פעולות-החיתוך-והסכום"><span class="header-section-number">9.1</span> פעולות החיתוך והסכום</h2>
-<p>בהינתן מ"ו וקטורי <span class="math inline">\(V\)</span>, ראינו את ההגדרה של תת-מרחב <span class="math inline">\(W\subseteq V\)</span> וגם את הקשר בין המימדים במסקנה <a href="#cor-subspace-dim">8.95</a>. בפרק זה נרצה להבין מהן הפעולות שאפשר לבצע על שני תת-מרחבים (או יותר), כאשר המטרה היא לקבל תת-מרחבים נוספים.</p>
+<p>בהינתן מ"ו וקטורי <span class="math inline">\(V\)</span>, ראינו את ההגדרה של תת-מרחב <span class="math inline">\(W\subseteq V\)</span> וגם את הקשר בין המימדים במסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a>. בפרק זה נרצה להבין מהן הפעולות שאפשר לבצע על שני תת-מרחבים (או יותר), כאשר המטרה היא לקבל תת-מרחבים נוספים.</p>
 <p>קודם כל ניזכר בהגדרה של פעולת החיתוך מפרק <a href="chapter_0.html" class="quarto-xref"><span>2</span></a>, אבל הפעם נתאים אותה לתת-מרחבים במקום קבוצות כלליות.</p>
 <div class="definition">
 <p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז החיתוך <span class="math inline">\(W_1\cap W_2\)</span> הוא קבוצת כל הוקטורים השייכים גם ל- <span class="math inline">\(W_1\)</span> וגם ל- <span class="math inline">\(W_2\)</span>, כלומר <span class="math display">\[.W_1\cap W_2=\Set{v\in V|v\in W_1,v\in W_2}\]</span></p>
@@ -399,7 +399,7 @@ $$
 <p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז <span class="math inline">\(W_1\cap W_2\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-subspace">8.14</a>, צריך להראות כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="./chapter_5.html#prp-subspace">8.14</a>, צריך להראות כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
 <ul>
 <li><p>מתקיים <span class="math inline">\(0_V\in W_1\)</span> וגם <span class="math inline">\(0_V\in W_2\)</span>. לכן, לפי הגדרת החיתוך נובע כי <span class="math inline">\(0_V\in W_1\cap W_2\)</span>.</p></li>
 <li><p>סגירות לחיבור: יהיו <span class="math inline">\(v_1,v_2\in W_1\cap W_2\)</span>. בפרט, <span class="math inline">\(v_1,v_2\in W_1\)</span> ולכן <span class="math inline">\(v_1+v_2\in W_1\)</span> כי <span class="math inline">\(W_1\)</span> סגור לחיבור. באופן דומה, מתקיים <span class="math inline">\(v_1+v_2\in W_2\)</span> ולכן <span class="math inline">\(v_1+v_2\in W_1\cap W_2\)</span>.</p></li>
@@ -493,7 +493,7 @@ B
 <p><em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(W_1,W_2\subseteq V\)</span> תת-מרחבים. אז <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב של <span class="math inline">\(V\)</span>, המקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span> וגם <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-subspace">8.14</a>, כדי להוכיח כי <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב, יש להראות כי <span class="math inline">\(0_V\in W_1+W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="./chapter_5.html#prp-subspace">8.14</a>, כדי להוכיח כי <span class="math inline">\(W_1+W_2\)</span> הוא תת-מרחב, יש להראות כי <span class="math inline">\(0_V\in W_1+W_2\)</span> ובנוסף שיש סגירות לחיבור וכפל בסקלר.</p>
 <ul>
 <li><p>מתקיים <span class="math inline">\(0_V\in W_1\)</span> וגם <span class="math inline">\(0_V\in W_2\)</span>. לכן, נובע כי <span class="math display">\[.0_V=0_V+0_V\in W_1+W_2\]</span></p></li>
 <li><p>סגירות לחיבור: יהיו <span class="math inline">\(u_1,u_2\in W_1+W_2\)</span>. לכן, קיימים <span class="math inline">\(v_1,v_2\in W_1,w_1,w_2\in W_2\)</span> עבורם <span class="math display">\[.u_1=v_1+w_1,u_2=v_2+w_2\]</span> <span class="math inline">\(W_1\)</span> ו- <span class="math inline">\(W_2\)</span> סגורים לחיבור, ולכן מתקיים <span class="math inline">\(v_1+v_2\in W_1, w_1+w_2\in W_2\)</span>. מכאן נובע כי <span class="math display">\[.u_1+u_2=(v_1+w_1)+(v_2+w_2)=(v_1+v_2)+(w_1+w_2)\in W_1+W_2\]</span></p></li>
@@ -507,7 +507,7 @@ w&amp;=0_V+w\in W_1+W_2
 <div class="example">
 <p>&nbsp;</p>
 <p>א. נסמן ב- <span class="math inline">\(\mathbb{R}^2\)</span> את <span class="math inline">\(W_1=\mathop{\mathrm{Span}}((1,2))\)</span> ו- <span class="math inline">\(W_2=\mathop{\mathrm{Span}}((2,1))\)</span>. אז מתקיים <span class="math display">\[.W_1+W_2=\Set{s(1,2)+t(2,1)|s,t\in\mathbb{R}}=\mathop{\mathrm{Span}}((1,2),(2,1))=\mathbb{R}^2\]</span> השוויון האחרון נובע מכך שהוקטורים הם בת"ל (לא קו-לינאריים). השוויון לפניו נכון מהגדרת הפרישה.</p>
-<p>השתמשנו בהצבה <span class="math inline">\(p=r+t\)</span>. נלמד בהמשך דרך כללית יותר למצוא בסיסים לחיתוך וסכום של תת-מרחבים. השוויון האחרון נכון לפי משפט <a href="#thm-invertible2">8.68</a>, למשל כי</p>
+<p>השתמשנו בהצבה <span class="math inline">\(p=r+t\)</span>. נלמד בהמשך דרך כללית יותר למצוא בסיסים לחיתוך וסכום של תת-מרחבים. השוויון האחרון נכון לפי משפט <a href="./chapter_5.html#thm-invertible2">8.68</a>, למשל כי</p>
 <p><span class="math display">\[\det\begin{pmatrix}
 1 &amp; 0 &amp; 0 \\
 0 &amp; 1 &amp; 0 \\
@@ -608,7 +608,7 @@ w&amp;=0_V+w\in W_1+W_2
 \end{aligned}\]</span> ובאופן דומה: <span class="math display">\[\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה ישירה משילוב של מסקנה <a href="#cor-subspace-dim">8.95</a> וההכלות הבאות:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה ישירה משילוב של מסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a> וההכלות הבאות:</p>
 <p><span class="math display">\[\begin{aligned}
 &amp;W_1\cap W_2\subseteq W_1\subseteq W_1+W_2\subseteq V \\
 &amp;W_1\cap W_2\subseteq W_2\subseteq W_1+W_2\subseteq V
@@ -629,7 +629,7 @@ w&amp;=0_V+w\in W_1+W_2
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>נניח כי <span class="math inline">\(\dim(W_1+W_2)=\dim(W_2)\)</span>. מאחר שמתקיים <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>, שוויון מימדים גורר <span class="math inline">\(W_2=W_1+W_2\)</span> לפי מסקנה <a href="#cor-subspace-dim">8.95</a>. אבל גם מתקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span>, ולכן <span class="math inline">\(W_1\subseteq W_2\)</span>.</p>
+<p>נניח כי <span class="math inline">\(\dim(W_1+W_2)=\dim(W_2)\)</span>. מאחר שמתקיים <span class="math inline">\(W_2\subseteq W_1+W_2\)</span>, שוויון מימדים גורר <span class="math inline">\(W_2=W_1+W_2\)</span> לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a>. אבל גם מתקיים <span class="math inline">\(W_1\subseteq W_1+W_2\)</span>, ולכן <span class="math inline">\(W_1\subseteq W_2\)</span>.</p>
 </div>
 </div>
 </div>
@@ -647,7 +647,7 @@ w&amp;=0_V+w\in W_1+W_2
 <p>נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_{l-m}\in\mathbb{F}\)</span> כך שמתקיים <span id="eq-adjoining"><span class="math display">\[
 .\alpha_1 w_1+...+\alpha_k w_k+\beta_1 u_1+...+\beta_{l-m} u_{l-m}=0 \tag{9.2}\]</span></span></p>
 <p>נחסיר משני האגפים את <span class="math inline">\(\beta_1 u_1+...+\beta_{l-m} u_{l-m}\)</span>, ונקבל <span class="math display">\[.\alpha_1 w_1+...+\alpha_k w_k=-\beta_1 u_1+...-\beta_{l-m} u_{l-m}\]</span> נשים לב כי אגף שמאל שייך ל- <span class="math inline">\(W_1\)</span>, ואילו אגף ימין שייך ל- <span class="math inline">\(W_2\)</span>. לכן, שניהם שייכים ל- <span class="math inline">\(W_1\cap W_2\)</span>. בפרט, שניהם שווים לצירוף לינארי של איברי הבסיס <span class="math inline">\(B_0\)</span>. אז קיימים <span class="math inline">\(\gamma_1,...,\gamma_m\in\mathbb{F}\)</span> כך שמתקיים <span class="math display">\[\alpha_1 w_1+...+\alpha_m w_m+\alpha_{m+1} w_{m+1}+...+\alpha_k w_k=\gamma_1w_1+...+\gamma w_m\]</span></p>
-<p>הקבוצה <span class="math inline">\(B_1=\Set{w_1,...,w_m,w_{k+1},...,w_m}\)</span> היא בסיס, ולכן הסקלרים נקבעים ביחידות לפי טענה <a href="#prp-unique-scalars">8.63</a>. מכאן <span class="math display">\[.\alpha_i=\begin{cases}
+<p>הקבוצה <span class="math inline">\(B_1=\Set{w_1,...,w_m,w_{k+1},...,w_m}\)</span> היא בסיס, ולכן הסקלרים נקבעים ביחידות לפי טענה <a href="./chapter_5.html#prp-unique-scalars">8.63</a>. מכאן <span class="math display">\[.\alpha_i=\begin{cases}
 \gamma_i,\quad &amp;1\leq i\leq m \\
 0, \quad &amp;m+1\leq i\leq k
 \end{cases}\]</span></p>
@@ -681,7 +681,7 @@ w&amp;=0_V+w\in W_1+W_2
     W_1&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=A} \\
     W_2&amp;=\Set{A\in \mathbb{M}_{n\times n}(\mathbb{F})|A^t=-A}
     \end{aligned}\]</span></p>
-<p>לפי טענה <a href="#prp-sym-antisym">6.46</a> מתקיים: <span class="math display">\[\begin{aligned}
+<p>לפי טענה <a href="./chapter_3.html#prp-sym-antisym">6.46</a> מתקיים: <span class="math display">\[\begin{aligned}
     W_1\cap W_2&amp;=\Set{\mathbf{0}_{n\times n}} \implies \dim(W_1\cap W_2)=0 \\
     W_1+W_2&amp;=\mathbb{M}_{n\times n}(\mathbb{F}) \implies \dim(W_1+W_2)=n^2
     \end{aligned}\]</span></p>
@@ -710,7 +710,7 @@ w&amp;=0_V+w\in W_1+W_2
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>א. לפי מסקנה <a href="#cor-subspace-dim">8.95</a>, מתקיים <span class="math display">\[,W_1+W_2=\mathbb{C}^4 \iff \dim(W_1+W_2)=4\]</span> ולפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=4 \iff 2+2-\dim(W_1\cap W_2)=4 \iff \dim(W_1\cap W_2)=0\]</span></p>
+<p>א. לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a>, מתקיים <span class="math display">\[,W_1+W_2=\mathbb{C}^4 \iff \dim(W_1+W_2)=4\]</span> ולפי נוסחת המימדים נובע כי <span class="math display">\[.\dim(W_1+W_2)=4 \iff 2+2-\dim(W_1\cap W_2)=4 \iff \dim(W_1\cap W_2)=0\]</span></p>
 <pre><code>לכן, מתקיים $$.W_1+W_2=\mathbb{C}^4 \iff W_1\cap W_2=\Set{0}$$</code></pre>
 <p>ב. מתקיים <span class="math display">\[,3=\dim(W_1)\leq \dim(W_1+W_2)\leq 4\]</span> ולפי נוסחת המימדים (לאחר העברת אגפים) נובע כי <span class="math display">\[.1=5-4\leq \dim(W_1\cap W_2)=3+2-\dim(W_1+W_2)\leq 5-3=2\]</span> האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=1\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=(e_3,e_4) \implies W_1\cap W_2=\mathop{\mathrm{Span}}(e_3)\]</span> באופן דומה, האפשרות ל- <span class="math inline">\(\dim(W_1\cap W_2)=2\)</span> מתקבלת (למשל) עבור <span class="math display">\[.W_1=\mathop{\mathrm{Span}}(e_1,e_2,e_3),W_2=\mathop{\mathrm{Span}}(e_2,e_3) \implies W_1\cap W_2=W_2\]</span> כדוגמה לאפשרות האחרונה, ניתן לבחור כל <span class="math inline">\(W_1\)</span> ממימד <span class="math inline">\(3\)</span> וכל <span class="math inline">\(W_2\subseteq W_1\)</span> ממימד <span class="math inline">\(2\)</span>.</p>
 </div>
@@ -719,7 +719,7 @@ w&amp;=0_V+w\in W_1+W_2
 </section>
 <section id="מציאת-בסיסים" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="מציאת-בסיסים"><span class="header-section-number">9.3</span> מציאת בסיסים</h2>
-<p>יהיו <span class="math inline">\(W_1,W_2\)</span> תת-מרחבים של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. הדבר החשוב ביותר שיש לדעת על תת-מרחב הוא בסיס. נניח שמצאנו בסיס <span class="math inline">\(B_1=\Set{w_1,...,w_m}\)</span> ל- <span class="math inline">\(W_1\)</span> ובסיס <span class="math inline">\(B_2=\Set{u_1,...,u_k}\)</span> ל- <span class="math inline">\(W_2\)</span>. אז איך נמצא בסיסים ל- <span class="math inline">\(W_1\cap W_2,W_1+W_2\)</span>? מתקיים <span class="math display">\[,W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_m,u_1,...,u_k)\]</span> ולכן כבר יש לנו קבוצה פורשת - אך היא לא בהכרח בת"ל. למעשה, היא בת"ל אם ורק אם <span class="math inline">\(W_1\cap W_2= \Set{0_V}\)</span>. אכן, לפי משפט <a href="#thm-3-for-2-V">8.93</a> ("שלישי חינם") קבוצה פורשת היא בת"ל אם ורק אם גודלה שווה למימד תת-המרחב, ולפי נוסחת המימדים מתקיים:</p>
+<p>יהיו <span class="math inline">\(W_1,W_2\)</span> תת-מרחבים של מ"ו <span class="math inline">\(V\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span>. הדבר החשוב ביותר שיש לדעת על תת-מרחב הוא בסיס. נניח שמצאנו בסיס <span class="math inline">\(B_1=\Set{w_1,...,w_m}\)</span> ל- <span class="math inline">\(W_1\)</span> ובסיס <span class="math inline">\(B_2=\Set{u_1,...,u_k}\)</span> ל- <span class="math inline">\(W_2\)</span>. אז איך נמצא בסיסים ל- <span class="math inline">\(W_1\cap W_2,W_1+W_2\)</span>? מתקיים <span class="math display">\[,W_1+W_2=\mathop{\mathrm{Span}}(w_1,...,w_m,u_1,...,u_k)\]</span> ולכן כבר יש לנו קבוצה פורשת - אך היא לא בהכרח בת"ל. למעשה, היא בת"ל אם ורק אם <span class="math inline">\(W_1\cap W_2= \Set{0_V}\)</span>. אכן, לפי משפט <a href="./chapter_5.html#thm-3-for-2-V">8.93</a> ("שלישי חינם") קבוצה פורשת היא בת"ל אם ורק אם גודלה שווה למימד תת-המרחב, ולפי נוסחת המימדים מתקיים:</p>
 <p><span class="math display">\[\begin{aligned}
 \dim(W_1+W_2)=\dim(W_1)+\dim(W_2) &amp;\iff \dim(W_1\cap W_2)=0 \\
 &amp;\iff W_1\cap W_2= \Set{0_V}
@@ -730,7 +730,7 @@ w&amp;=0_V+w\in W_1+W_2
 w_1  &amp; \cdots &amp; w_m  &amp; u_1  &amp; \cdots &amp; u_k \\
 \mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid
 \end{pmatrix}\]</span></p>
-<p>בתת-פרק <a href="chapter_5.html#sub-extraction">8.5.2</a> ראינו שניתן למצוא בסיס למרחב העמודות ע"י דירוג קנוני, לפיו העמודות בהן יש איברים מובילים מתאימות לעמודות המקוריות שמהוות יחד בסיס למרחב העמודות (אין לקחת את העמודות החדשות, כי הדירוג משנה את מרחב העמודות). במקרה זה, מרחב העמודות הוא <span class="math inline">\(W_1+W_2\)</span>.</p>
+<p>בתת-פרק <a href="./chapter_5.html#sub-extraction">8.5.2</a> ראינו שניתן למצוא בסיס למרחב העמודות ע"י דירוג קנוני, לפיו העמודות בהן יש איברים מובילים מתאימות לעמודות המקוריות שמהוות יחד בסיס למרחב העמודות (אין לקחת את העמודות החדשות, כי הדירוג משנה את מרחב העמודות). במקרה זה, מרחב העמודות הוא <span class="math inline">\(W_1+W_2\)</span>.</p>
 <p>מה לגבי בסיס ל- <span class="math inline">\(W_1\cap W_2\)</span>? נשאלת השאלה: אילו צירופים לינאריים של <span class="math inline">\(w_1,...,w_m\)</span> הם גם צירופים לינאריים של <span class="math inline">\(u_1,...,u_k\)</span>? באופן שקול, צריך למצוא <span class="math inline">\(\alpha_1,...,\alpha_m,\gamma_1,...,\gamma_k\in\mathbb{F}\)</span> כך ש- <span id="eq-intersection2"><span class="math display">\[
 .\alpha_1 w_1+...+\alpha_m w_m=\gamma_1 u_1+...+\gamma_k u_k \tag{9.3}\]</span></span> לאחר העברת אגפים מקבלים ממ"ל הומוגנית שמיוצגת ע"י המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
 \mid &amp;        &amp; \mid &amp; \mid &amp;        &amp; \mid \\
