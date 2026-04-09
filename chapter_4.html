@@ -566,7 +566,7 @@ b_1 &amp; 0 &amp; 0 \\
 <p><span class="theorem-title"><strong>Proposition 7.5</strong></span> <em> יהיו <span class="math inline">\(E,A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(E\)</span> מטריצה אלמנטרית המתאימה לפש"א <span class="math inline">\(S\)</span>, כלומר <span class="math inline">\(E=S(I_n)\)</span>. אז מתקיים <span class="math display">\[.\det(EA)=\det(E)\det(A)\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-elementary">טענה 6.66</a> מתקיים <span class="math inline">\(EA=S(A)\)</span>. לכן <span class="math display">\[.\det(EA)=\det(S(A))=\begin{cases}
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="./chapter_3.html#prp-elementary">טענה 6.66</a> מתקיים <span class="math inline">\(EA=S(A)\)</span>. לכן <span class="math display">\[.\det(EA)=\det(S(A))=\begin{cases}
 \alpha\det(A), &amp; S=(\alpha R_i\to R_i) \\
 \det(A), &amp; S=(R_i+\alpha R_j\to R_i) \\
 -\det(A), &amp; S=(R_i\leftrightarrow R_j)
@@ -586,7 +586,7 @@ b_1 &amp; 0 &amp; 0 \\
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>בכיוון הראשון, נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי מסקנה <a href="#cor-elementary-product">מסקנה 6.84</a> היא מכפלה של מטריצות אלמנטריות. לכן מתקיים <span class="math display">\[A=\tilde{E}_1\tilde{E}_2\cdots \tilde{E}_k\]</span> כאשר <span class="math inline">\(\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k\)</span> הן מטריצות אלמנטריות (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני). אז לפי שימוש חוזר ב- <a href="#prp-elementary-det">7.14</a> נובע כי <span class="math display">\[.\det(A)=\det(\tilde{E}_1)\det(\tilde{E}_2)\cdots\det(\tilde{E}_k)\neq 0\]</span> נדגיש שהדטרמיננטה של כל מטריצה אלמנטרית שונה מ- <span class="math inline">\(0\)</span> כי היא שווה ל- <span class="math inline">\(\pm 1\)</span> או <span class="math inline">\(\alpha\neq 0\)</span>.</p>
-<p>בכיוון השני, נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. אז לפי משפט <a href="#thm-invertible">משפט 6.75</a>, היא אינה שקולת שורה ל- <span class="math inline">\(I_n\)</span> אלא למטריצה מדורגת קנונית <span class="math inline">\(A'\)</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">\[A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'\]</span> כאשר <span class="math inline">\(E_1,E_2,...,E_k\)</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">\[.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0\]</span></p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. אז לפי משפט <a href="./chapter_3.html#thm-invertible">משפט 6.75</a>, היא אינה שקולת שורה ל- <span class="math inline">\(I_n\)</span> אלא למטריצה מדורגת קנונית <span class="math inline">\(A'\)</span> עם שורת אפסים (לפחות אחת). אז הפעם מתקיים <span class="math display">\[A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}A'\]</span> כאשר <span class="math inline">\(E_1,E_2,...,E_k\)</span> הן המטריצות האלמנטריות שמתאימות לפש"אות בדירוג הקנוני. לכן <span class="math display">\[.\det(A)=\det(E_1^{-1})\det(E_2^{-1})\cdots\det(E_k^{-1})\det(A')=0\]</span></p>
 <p>הסיבה לשוויון ל- <span class="math inline">\(0\)</span> היא העובדה שמתקיים <span class="math inline">\(\det(A')=0\)</span> לפי טענה <a href="#prp-zero-row">7.6</a>.&nbsp;◻</p>
 </div>
 <div class="exercise">
@@ -621,7 +621,7 @@ t &amp; -1 \\
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>נחלק למקרים:</p>
 <ol type="1">
-<li><p><span class="math inline">\(AB\)</span> אינה הפיכה: לפי תרגיל <a href="#exr-inverse-product">תרגיל 6.81</a> לפחות אחת מ- <span class="math inline">\(A\)</span> ו- <span class="math inline">\(B\)</span> אינה הפיכה. אז לפי משפט <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[,\det(AB)=0=\det(A)\det(B)\]</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">\(0\)</span>.</p></li>
+<li><p><span class="math inline">\(AB\)</span> אינה הפיכה: לפי תרגיל <a href="./chapter_3.html#exr-inverse-product">תרגיל 6.81</a> לפחות אחת מ- <span class="math inline">\(A\)</span> ו- <span class="math inline">\(B\)</span> אינה הפיכה. אז לפי משפט <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[,\det(AB)=0=\det(A)\det(B)\]</span> וזאת משום שלפחות אחת מהדטרמיננטות באגף ימין שווה ל- <span class="math inline">\(0\)</span>.</p></li>
 <li><p><span class="math inline">\(AB\)</span> הפיכה: תחילה נראה שגם <span class="math inline">\(A\)</span> וגם <span class="math inline">\(B\)</span> הפיכות. נסמן <span class="math inline">\(C=(AB)^{-1}\)</span>. אז מתקיים <span class="math display">\[,A(BC)=(AB)C=I_n\]</span> ולכן <span class="math inline">\(A\)</span> הפיכה מימין ובכלל. באופן דומה: <span class="math display">\[,(CA)B=C(AB)=I_n\]</span> ולכן <span class="math inline">\(B\)</span> הפיכה משמאל ובכלל.</p>
 <p>אז לפי טענה <a href="#cor-elementary-product">מסקנה 6.84</a> גם <span class="math inline">\(A\)</span> וגם <span class="math inline">\(B\)</span> הן מכפלות של מטריצות אלמנטריות, כלומר קיימות מטריצות אלמנטריות <span class="math inline">\(E_1,E_2,...,E_k,E_{k+1},...,E_l\)</span> כך ש- <span class="math display">\[.A=E_l\cdots E_{k+1}\quad,\quad B=E_k\cdots E_1\]</span> לכן <span class="math display">\[,AB=E_l\cdots E_{k+1}E_k\cdots E_1\]</span> ולפי שימוש חוזר בטענה <a href="#prp-elementary-det">7.14</a> נובע כי <span class="math display">\[\begin{aligned}
 \det(AB)&amp;=\det(E_l)\cdots \det(E_{k+1})\det(E_k)\cdots \det(E_1)\\
@@ -664,7 +664,7 @@ t &amp; -1 \\
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>שוב נפצל למקרים לפי הפיכות <span class="math inline">\(A\)</span>.</p>
 <ol type="1">
-<li><p>נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. לא ייתכן כי <span class="math inline">\(A^t\)</span> הפיכה, כי אז לפי <a href="#exr-inverse-product">תרגיל 6.81</a> גם <span class="math inline">\(A=(A^t)^t\)</span> הפיכה וזו סתירה. לכן, לפי <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[.\det(A^t)=0=\det(A)\]</span></p></li>
+<li><p>נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. לא ייתכן כי <span class="math inline">\(A^t\)</span> הפיכה, כי אז לפי <a href="./chapter_3.html#exr-inverse-product">תרגיל 6.81</a> גם <span class="math inline">\(A=(A^t)^t\)</span> הפיכה וזו סתירה. לכן, לפי <a href="#thm-det-invertible">7.15</a> נובע כי <span class="math display">\[.\det(A^t)=0=\det(A)\]</span></p></li>
 <li><p>נניח כי <span class="math inline">\(A\)</span> הפיכה. אז לפי <a href="#cor-elementary-product">מסקנה 6.84</a> היא מכפלה של מטריצות אלמנטריות <span class="math inline">\(E_1,\cdots,E_k\)</span>. לכן <span class="math display">\[A=E_k\cdots E_1 \implies A^t=(E_k\cdots E_1)^t=E_1^t\cdots E_k^t\]</span> ואז לפי טענה <a href="#prp-det-product">7.17</a> נובע כי <span class="math display">\[.\det(A)=\det(E_k)\cdots\det(E_1)\quad,\quad \det(A^t)=\det(E_1^t)\cdots\det(E_k^t)\]</span></p>
 <p>לאור חוק החילוף ב- <span class="math inline">\(\mathbb{F}\)</span>, מה שנשאר לסיום ההוכחה זה להראות כי <span class="math inline">\(\det(E^t)=\det(E)\)</span> לכל <span class="math inline">\(E\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> אלמנטרית.</p>
 <ul>
@@ -702,7 +702,7 @@ d_1 &amp;0 &amp; \cdots &amp; 0 \\
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
-<li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>. לכן, נניח שקיים <span class="math inline">\(1\leq i\leq n\)</span> כך ש- <span class="math inline">\(d_i=0\)</span>, אז <span class="math inline">\(U\)</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">\(n\)</span>. אז לפי משפט <a href="#thm-invertible">משפט 6.75</a> היא אינה הפיכה, ולפי משפט <a href="#thm-det-invertible">7.15</a> בהכרח מתקיים <span class="math display">\[.\det(U)=0=d_1d_2\cdots d_n\]</span></p></li>
+<li><p>ראינו כבר שהטענה נכונה כאשר כל איברי האלכסון הראשי שונים מ- <span class="math inline">\(0\)</span>. לכן, נניח שקיים <span class="math inline">\(1\leq i\leq n\)</span> כך ש- <span class="math inline">\(d_i=0\)</span>, אז <span class="math inline">\(U\)</span> מדורגת ודרגתה (מספר האיברים המובילים) קטנה מ- <span class="math inline">\(n\)</span>. אז לפי משפט <a href="./chapter_3.html#thm-invertible">משפט 6.75</a> היא אינה הפיכה, ולפי משפט <a href="#thm-det-invertible">7.15</a> בהכרח מתקיים <span class="math display">\[.\det(U)=0=d_1d_2\cdots d_n\]</span></p></li>
 <li><p>נסתכל על <span class="math inline">\(L^t\)</span>, שהיא מטריצה משולשית עליונה עם בדיוק אותם האיברים על האלכסון הראשי כמו של <span class="math inline">\(L\)</span>. אז לפי הסעיף הקודם וטענה <a href="#prp-det-transpose">7.21</a> מתקיים</p>
 <p><span class="math display">\[.\det(L)=\det(L^t)=d_1d_2\cdots d_n\]</span></p></li>
 </ol>
