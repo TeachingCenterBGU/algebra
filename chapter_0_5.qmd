@@ -207,7 +207,7 @@ $$(\cos\theta+i\sin\theta)^{n}=\cos(n\theta)+i\sin(n\theta)$$.
 
 שימו לב שהניסוח השקול הוא $(e^{i\theta})^{n}=e^{in\theta}$, שעלול להיראות מובן מאליו לפי חוקי חזקות. אבל חוקי החזקות הידועים הם למעריכים ממשיים, וגם לא הצדקנו את הסימון. אם נשים את ההוכחה בצד, המשפט מראה מדוע הסימון נוח. לא נראה את ההוכחה (שדורשת כלי שנקרא אינדוקציה), אך נציין את הקשר לטענה הבאה שמבוססת על זהויות טריגונומטריות של סכום זוויות:
 
-::: {.proposition #prp-angle-addition label="משפט 2.14"}
+::: {.proposition #prp-angle-addition}
 לכל $\alpha,\beta\in\mathbb{R}$ מתקיים
 $$e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}$$.
 :::
@@ -289,7 +289,7 @@ $$
 
 ## נוסחת השורשים
 
-::: {.proposition #prp-roots label="משפט 2.18"}
+::: {.proposition #prp-roots}
 יהי $w\in\mathbb{C}$ מספר נתון השונה מ-$0$, ונניח כי $w=re^{i\theta}$ בהצגה פולרית. אז למשוואה $z^{n}=w$ יש בדיוק $n$ שורשים (פתרונות) מרוכבים בנעלם $z$ הנתונים ע"י
 $$
 z_{k}=\sqrt[n]{r}e^{i\frac{\theta+2\pi k}{n}}.
@@ -328,7 +328,7 @@ $$
 $$
 e^{i\pi}=\cos(\pi)+i\sin(\pi)=-1
 $$
-לכן, נובע מ [טענה 2.18](#prp-roots) ו-[טענה 2.14](#prp-angle-addition) כי
+לכן, נובע מטענה [](#prp-roots)וטענה [](#prp-angle-addition) כי
 $$
 z_1=\sqrt{r}e^{i\frac{\theta+2\pi}{2}}=\sqrt{r}e^{i\frac{\theta}{2}}\cdot e^{i\pi}=-\sqrt{r}e^{i\frac{\theta}{2}}=-z_0.
 $$

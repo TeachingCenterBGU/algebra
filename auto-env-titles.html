@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- מספור משותף (רץ) לכל הסביבות לפי סדר הופעתן ---
   const boxEnvs = ['definition','example','exercise','remark','theorem','lemma','proposition','corollary','proof'];
   let sharedCounter = 0; // מונה אחד משותף לכולם
+  const envMap = {}; // מיפוי id → "טענה 2.7" לצורך רפרנסים אוטומטיים
 
   // תופס את כל הסביבות יחד כדי לשמור על סדר ההופעה במסמך
   const allBoxSelector = boxEnvs.map(env => `div.${env}`).join(', ');
@@ -91,7 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
       title.className = 'theorem-title custom-title';
       if (meta.numbered) {
         sharedCounter += 1; // מקדם את המונה המשותף
-        title.textContent = `${meta.label} ${chap}.${sharedCounter}`;
+        const fullLabel = `${meta.label} ${chap}.${sharedCounter}`;
+        title.textContent = fullLabel;
+        // שמירה במפה לרפרנסים אוטומטיים
+        if (div.id) envMap[div.id] = `${chap}.${sharedCounter}`;
       } else {
         title.textContent = meta.label;
       }
@@ -103,6 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     div.classList.add('envbox');
   });
 
+  // --- רפרנסים אוטומטיים: עדכון לינקים שמצביעים לסביבות ממוספרות ---
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const targetId = link.getAttribute('href').slice(1);
+    if (envMap[targetId] && !link.textContent.trim()) {
+      link.textContent = envMap[targetId];
+    }
+  });
+console.log('envMap:', envMap);
   // --- צביעת פתרון כ-callout לפי המפה ---
   document.querySelectorAll('div.callout.solution').forEach(div => {
     div.style.setProperty('--env-color', envs.solution.color);
