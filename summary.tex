@@ -1,0 +1,1393 @@
+
+\documentclass[a4paper, 11pt]{article}
+
+% ── Fonts ──
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+
+% ── Math ──
+\usepackage{amsmath, amssymb, amsfonts}
+
+% ── Math macros (matching the book) ──
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+
+% ── Page layout ──
+\usepackage[margin=2cm]{geometry}
+
+% ── Colors for environment boxes ──
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+\definecolor{defcolor}{RGB}{220, 53, 69}
+\definecolor{thmcolor}{RGB}{230, 126, 34}
+
+% ── RTL support (must be loaded LAST) ──
+\usepackage{bidi}
+
+\newtcolorbox{envbox}[2][]{%
+  enhanced, breakable,
+  colback=#1!3,
+  colframe=#1!60,
+  coltitle=black,
+  fonttitle=\bfseries,
+  title={#2},
+  boxrule=0.6pt,
+  arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  attach boxed title to top right={yshift=-2mm, xshift=-4mm},
+  boxed title style={
+    arc=2pt, boxrule=0.4pt,
+    colback=#1!20,
+    colframe=#1!60,
+  },
+  before skip=10pt,
+  after skip=10pt,
+}
+
+% ── Section style ──
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+\setcounter{secnumdepth}{0}
+
+% ── Hebrew TOC title ──
+\renewcommand{\contentsname}{תוכן עניינים}
+
+% ── No paragraph indent, add spacing ──
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% ── Title Page ──
+\vspace*{2cm}
+\begin{center}
+{\Huge\bfseries סיכום הגדרות ומשפטים}\\[14pt]
+{\Large אלגברה לינארית להנדסה}\\[10pt]
+{\normalsize ד״ר יונתן שלח \quad·\quad ד״ר נדב מאיר}
+\end{center}
+\vspace{1.5cm}
+
+\tableofcontents
+\newpage
+
+\section{פרק 0: קבוצות ומספרים}
+
+\begin{envbox}[defcolor]{הגדרה 0.2}
+קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא חשיבות לסדר הופעתם.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 0.5}
+עבור $z=x+yi$ מרוכב עם $x,y\in\R$ נגדיר את החלק הממשי $\text{Re}(z)=x$ ואת החלק המדומה $\text{Im}(z)=y$. בנוסף, נגדיר את המספר הצמוד $\overline{z}=x-yi$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 0.8}
+נאמר ש-$A$ מוכלת ב-$B$ ונסמן $A\subseteq B$ אם כל איבר של $A$ הוא גם איבר של $B$.
+
+באופן קצת יותר מתמטי: $A\subseteq B$ אם לכל $a\in A$ מתקיים $a\in B$. 
+
+אם ההיפך הוא הנכון, כלומר קיים $a\in A$ עבורו $a\notin B$, אז נסמן $A\nsubseteq B$ ונאמר ש-$A$ לא מוכלת ב-$B$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 0.11}
+נאמר ששתי קבוצות $A,B$ הן שוות ונסמן $A=B$ אם יש בהן בדיוק אותם האיברים, כלומר מתקיים $x\in A$ אם ורק אם $x\in B$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 0.12}
+כדי להוכיח כי $A=B$, הדרך המקובלת היא להוכיח כי $A\subseteq B$ וגם $B\subseteq A$. דרך הוכחה זו נקראת הכלה דו-צדדית.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 0.14}
+$\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C$ וכל הקבוצות שונות זו מזו.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 0.15}
+בהינתן שתי קבוצות $A,B$ נגדיר את הקבוצות הבאות:
+
+a. החיתוך $A\cap B$ הוא קבוצת כל האיברים השייכים גם ל-$A$ וגם ל-$B$.
+b. האיחוד $A\cup B$ הוא קבוצת כל האיברים השייכים לפחות לאחת משתי הקבוצות $A,B$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 0.19}
+לכל שתי קבוצות $A,B$ מתקיים
+
+\[
+A\cap B\subseteq A\subseteq A\cup B.
+\]
+\end{envbox}
+
+\newpage
+
+\section{פרק 1: תכונות ושימושים של המספרים המרוכבים}
+
+\begin{envbox}[thmcolor]{טענה 1.4}
+לכל $z_{1},z_{2},z_{3}\in\mathbb{C}$ מתקיים:
+
+a. חוקי החילוף לחיבור וכפל: $z_{1}+z_{2}=z_{2}+z_{1}$ וגם $z_{1}z_{2}=z_{2}z_{1}$.
+b. חוקי הקיבוץ לחיבור וכפל: $(z_{1}+z_{2})+z_{3}=z_{1}+(z_{2}+z_{3})$ וגם $(z_{1}z_{2})z_{3}=z_{1}(z_{2}z_{3})$.
+c. חוק הפילוג: $(z_{1}+z_{2})z_{3}=z_{1}z_{3}+z_{2}z_{3}$
+d. $0$ נייטרלי ביחס לחיבור: $z+0=z$ לכל $z\in\mathbb{C}$.
+e. $1$ נייטרלי ביחס לכפל: $z\cdot1=z$ לכל $z\in\mathbb{C}$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 1.6}
+לכל $z_{1},z_{2}\in\mathbb{C}$ מתקיים:
+
+a. $\overline{z_{1}+z_{2}}=\overline{z_{1}}+\overline{z_{2}}$
+b. $\overline{z_{1}z_{2}}=\overline{z_{1}}\cdot\overline{z_{2}}$
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 1.7}
+לכל $z\in\mathbb{C}$ מתקיים:
+
+a. $z+\overline{z}=2\text{Re}(z)$
+b. $z-\overline{z}=2i\text{Im}(z)$
+c. $z\overline{z}\in\mathbb{R}$
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 1.12}
+נגדיר
+
+\[
+e^{i\theta}=\cos\theta+i\sin\theta.
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{משפט 1.13}
+לכל $\theta\in\mathbb{R},\,n\in\mathbb{Z}$ מתקיים
+
+\[
+(\cos\theta+i\sin\theta)^{n}=\cos(n\theta)+i\sin(n\theta)
+\]
+.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 1.14}
+לכל $\alpha,\beta\in\mathbb{R}$ מתקיים
+
+\[
+e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}
+\]
+.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 1.18}
+יהי $w\in\mathbb{C}$ מספר נתון השונה מ-$0$, ונניח כי $w=re^{i\theta}$ בהצגה פולרית. אז למשוואה $z^{n}=w$ יש בדיוק $n$ שורשים (פתרונות) מרוכבים בנעלם $z$ הנתונים ע״י
+
+\[
+z_{k}=\sqrt[n]{r}e^{i\frac{\theta+2\pi k}{n}}.
+\]
+
+עבור $k\in\Set{0,1,...,n-1}$.
+\end{envbox}
+
+\newpage
+
+\section{פרק 2: גיאומטריה במישור ובמרחב}
+
+\begin{envbox}[defcolor]{הגדרה 2.1}
+המישור $\mathbb{R}^2$ הוא קבוצת כל הנקודות בעלות שתי קוארדינטות ממשיות, כלומר 
+\[
+.\mathbb{R}^2=\Set{(x,y)|x,y\in\mathbb{R}}.
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.3}
+וקטור $\vec{v}=(x,y)$ במישור הוא זוג סדור של מספרים ממשיים, כלומר איבר של $\mathbb{R}^2$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.12}
+$\|c\cdot(a,b)\| = |c|\cdot\|(a,b)\|$ לכל וקטור $(a,b)\in\mathbb{R}^2$ ולכל סקלר $c\in\mathbb{R}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.18}
+עבור וקטורים $(a_1,a_2),(b_1,b_2)\in\mathbb{R}^2$ נגדיר  
+$(a_1,a_2)\cdot(b_1,b_2)=a_1b_1+a_2b_2$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.20}
+יהיו $\vec{v_1}=(x_1,y_1),\,\vec{v_2}=(x_2,y_2),\,\vec{v_3}=(x_3,y_3)\in\mathbb{R}^2$ וקטורים. אז מתקיים:
+
+1. $\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}$  
+2. $(\vec{v_1}+\vec{v_3})\cdot\vec{v_2}=\vec{v_1}\cdot\vec{v_2}+\vec{v_3}\cdot\vec{v_2}$  
+3. $\vec{v_1}\cdot\vec{v_1}=\|\vec{v_1}\|^2$  
+4. $\vec{v_1}\cdot(c\vec{v_2})=c(\vec{v_1}\cdot\vec{v_2})$ לכל סקלר $c\in\mathbb{R}$  
+5. $\|\vec{v_1}\|=0\iff\vec{v_1}=(0,0)$  
+6. $\|\frac{\vec{v_1}}{\|\vec{v_1}\|}\|=1$ אם $\vec{v_1}\neq(0,0)$
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.21}
+יהיו $\vec{v},\vec{w}$ שני וקטורים ב-$\mathbb{R}^2$ השונים מ-$(0,0)$, ותהי $\alpha$ הזווית הקטנה ביניהם. אז מתקיים:
+
+\[
+\cos\alpha = \frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}.
+\]
+ {\#eq-cosine-scalar}
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 2.22}
+וקטורים $\vec{v},\vec{w}$ השונים מ-$(0,0)$ הם מאונכים/ניצבים אם ורק אם $\vec{v}\cdot\vec{w}=0$. במקרה זה נסמן $\vec{v}\perp\vec{w}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.26}
+וקטור המאונך לכל וקטור שמתאים לשתי נקודות על ישר (התחלה וסיום) נקרא נורמל לישר.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.32}
+שני וקטורים $\vec{v},\vec{w}\in\mathbb{R}^2$ נקראים קו-לינאריים אם קיים $c\in\mathbb{R}$ כך ש-$\vec{v}=c\vec{w}$ או $\vec{w}=c\vec{v}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.42}
+המרחב $\mathbb{R}^3$ הוא קבוצת כל הנקודות בעלות שלוש קוארדינטות ממשיות, כלומר 
+\[
+.\mathbb{R}^3=\Set{(x,y,z)|x,y,z\in\mathbb{R}}.
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.45}
+וקטור $\vec{v}=(x,y,z)$ במרחב הוא שלשה סדורה של מספרים ממשיים, כלומר איבר ב- $.\mathbb{R}^3$
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.53}
+$\|c\cdot(x,y,z)\|=|c|\cdot\|(x,y,z)\|.$ לכל וקטור $(x,y,z)\in\mathbb{R}^3$ ולכל סקלר $c\in\mathbb{R}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 2.55}
+עבור וקטורים $(a_1,a_2,a_3),(b_1,b_2.b_3)\in\mathbb{R}^3$ נגדיר 
+\[
+.(a_1,a_2,a_3)\cdot(b_1,b_2,b_3)=a_1b_1+a_2b_2+a_3b_3.
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.57}
+יהיו $\vec{v_1}=(x_1,y_1\text{,}z_{!}),\,\vec{v_2}=(x_2,y_2,z_2),\,\vec{v_3}=(x_3,y_3,z_3)\in\mathbb{R}^3$ וקטורים. אז מתקיים:
+
+א. $\vec{v_1}\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}$.
+
+ב. $(\vec{v_1}+\vec{v_3})\cdot\vec{v_2}=\vec{v_2}\cdot\vec{v_1}$.
+
+ג. $\vec{v_1}\cdot\vec{v_1}=\|\vec{v_1}\|^2$.
+
+ד. $\vec{v_1}\cdot(c\vec{v_2})=c(\vec{v_1}\cdot\vec{v_2})$.
+
+ה. ${\|\vec{v_1}\|}=0\iff\vec{v_1}=(0,0)$.
+
+ו. $\|\frac{\vec{v_1}}{\|\vec{v_1}\|}\|=1$ אם $\vec{v_1}\neq(0,0)$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 2.58}
+יהיו $\vec{v},\vec{w}$ שני וקטורים ב-$\mathbb{R}^3$ השונים מ-$(0,0,0)$, ותהי $\alpha$ הזווית הקטנה ביניהם. אז מתקיים 
+\[
+.\cos\alpha=\frac{\vec{v}\cdot\vec{w}}{\|\vec{v}\|\cdot\|\vec{w}\|}.
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 2.60}
+נניח כי $\vec{v},\vec{w}$ שני וקטורים ב-$\mathbb{R}^3$ השונים מ-$(0,0,0)$. אז הם מאונכים זה לזה אם ורק אם $\vec{v}\cdot\vec{w}=0$.
+\end{envbox}
+
+\newpage
+
+\section{פרק 3: מערכות משוואות לינאריות}
+
+\begin{envbox}[defcolor]{הגדרה 3.1}
+משוואה לינארית במשתנים $x_1,x_{2,}...,x_n$ היא משוואה מהצורה 
+
+\[
+a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_n x_n = b
+\]
+ {\#eq-linear-eq}
+
+כאשר $a_1,...,a_n$ הם סקלרים נתונים שנקראים מקדמים, ו-$b$ הוא סקלר נתון שנקרא קבוע או איבר חופשי. אם כל הסקלרים והמשתנים ממשיים, נאמר שזו משוואה לינארית מעל $\mathbb R$. אם לפחות סקלר אחד הוא מרוכב ו/או המשתנים מרוכבים, נאמר שזו משוואה לינארית מעל $\mathbb C$. אם נרצה להכליל בלי לציין שמדובר ב-$\mathbb R$ או $\mathbb C$, נכתוב $\mathbb F$ ונזכור שקבוצה זו היא או $\mathbb R$ או $\mathbb C$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.3}
+סדרת סקלרים $(c_1,c_2,...,c_n)$ נקראת $n$-יה, או וקטור באורך $n$. נגדיר את מרחב ה-$n$-יות מעל $\mathbb R$: 
+\[
+\mathbb R^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb R}.
+\]
+ וגם את מרחב ה-$n$-יות מעל $\mathbb C$: 
+\[
+\mathbb C^{n}=\Set{(c_1,c_2,....,c_n)|c_1,c_2,....,c_n\in\mathbb C}.
+\]
+
+לעיתים נכתוב $\mathbb F^n$ במקום לפרט אם הכוונה היא ל-$\mathbb R^n$ או ל-$\mathbb C^n$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.4}
+פתרון של משוואה לינארית הינו $n$-יה $(c_1,c_2,...,c_n)\in\mathbb F^{n}$ כך שבהצבת 
+\[
+x_1=c_1,x_2=c_2,...,x_n=c_n.
+\]
+
+המשוואה מתקיימת.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.9}
+מערכת משוואות לינאריות (ממ״ל) במשתנים $x_1,x_{2,}...,x_n$ היא אוסף של מספר כלשהו ($m$) של משוואות לינאריות מהצורה
+
+\[
+\begin{cases}
+\begin{alignedat}{7}
+a_{11}x_1 &{}+{}& a_{12}x_2 &{}+{}& a_{13}x_3 &{}+{}& \dots + a_{1n}x_n &= b_1 \\[4pt]
+a_{21}x_1 &{}+{}& a_{22}x_2 &{}+{}& a_{23}x_3 &{}+{}& \dots + a_{2n}x_n &= b_2 \\[4pt]
+a_{31}x_1 &{}+{}& a_{32}x_2 &{}+{}& a_{33}x_3 &{}+{}& \dots + a_{3n}x_n &= b_3 \\[4pt]
+\vdots& & & & \vdots & & & \;\;\vdots \\[4pt]
+a_{m1}x_1 &{}+{}& a_{m2}x_2 &{}+{}& a_{m3}x_3 &{}+{}& \dots + a_{mn}x_n &= b_m
+\end{alignedat}
+\end{cases}
+\]
+ {\#eq-linear-eqs}
+
+אם כל המקדמים והקבועים הם מספרים ממשיים, נאמר שהממ״ל מעל $\mathbb R$. אחרת, נאמר שהממ״ל מעל $\mathbb C$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.10}
+פתרון של ממ״ל הינו סדרת סקלרים $(c_1,c_2,...,c_n)$ כך שבהצבת 
+\[
+x_1=c_1,x_2=c_2,...,x_n=c_n
+\]
+ כל המשוואות בממ״ל מתקיימות.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.14}
+מטריצה מסדר $m\times n$ מעל $\mathbb F$ היא טבלה בת $m$ שורות ו-$n$ עמודות כך שבכל משבצת מופיע סקלר ב-$\mathbb F$. בהקשר של הממ״ל 
+\[
+,\begin{cases}
+\begin{alignedat}{7}
+a_{11}x_1 &{}+{}& a_{12}x_2 &{}+{}& a_{13}x_3 &{}+{}& \dots + a_{1n}x_n &= b_1 \\[4pt]
+a_{21}x_1 &{}+{}& a_{22}x_2 &{}+{}& a_{23}x_3 &{}+{}& \dots + a_{2n}x_n &= b_2 \\[4pt]
+a_{31}x_1 &{}+{}& a_{32}x_2 &{}+{}& a_{33}x_3 &{}+{}& \dots + a_{3n}x_n &= b_3 \\[4pt]
+\vdots& & & & \vdots & & & \;\;\vdots \\[4pt]
+a_{m1}x_1 &{}+{}& a_{m2}x_2 &{}+{}& a_{m3}x_3 &{}+{}& \dots + a_{mn}x_n &= b_m
+\end{alignedat}
+\end{cases}
+\]
+ נגדיר את מטריצת המקדמים (שנקראת גם מטריצת מקדמים מצומצמת):
+
+\[
+A=\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+
+נגדיר גם את מטריצת המקדמים המורחבת מסדר $m\times(n+1)$ שכוללת עמודה בצד ימין (אחרי קו מפריד) בשביל הקבועים:
+
+\[
+\left( \begin{array}{cccc|c}
+    a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+    a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+\end{array} \right)
+\]
+
+נגדיר בנוסף את וקטור המשתנים $x=\begin{pmatrix}x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix}$ וגם את וקטור הקבועים $b=\begin{pmatrix}b_1\\
+b_2\\
+\vdots\\
+b_m
+\end{pmatrix}$. 
+דרך מקוצרת לכתיבת הממ״ל  היא המשוואה הוקטורית $Ax=b$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.18}
+מטריצה נקראת מדורגת אם:  
+
+א. אם במטריצה יש שורות אפסים, אז הן מופיעות מתחת לכל שאר השורות.  
+
+ב. בכל שורה שאינה שורת אפסים, האיבר הראשון (משמאל) שאינו $0$ נקרא האיבר המוביל של שורה זו, והוא מופיע משמאל לאיבר המוביל של השורה מתחתיו (אם קיימת כזו). בפרט, מתחת לכל איבר מוביל יש אפסים בלבד.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.20}
+מטריצה נקראת מדורגת קנונית אם:
+
+א. היא מדורגת, כלומר מקיימת את שני תנאי ההגדרה הקודמת.  
+
+ב. האיבר המוביל בכל שורה (אם הוא קיים) הוא $1$. אפשר גם לקרוא לו אחד מוביל.  
+
+ג. בכל עמודה של אחד מוביל, כל שאר האיברים הם $0$ (מתחת וגם מעל לאחד המוביל).
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.22}
+נניח שקיבלנו צורה מדורגת קנונית של מטריצת מקדמים מצומצמת $A$ של ממ״ל $Ax=b$.  
+
+א. כל משתנה שמתאים לעמודה בה מופיע איבר מוביל נקרא משתנה תלוי. שאר המשתנים נקראים חופשיים.    
+
+ב. למספר המשתנים התלויים נקרא הדרגה של הממ״ל/מטריצה. נסמן $\mathop{\mathrm{rank}}(A)$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.25}
+תהי
+
+\[
+A=\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+ מטריצה מסדר $m\times n$ מעל $\mathbb F$. נסמן ב-$R_1,R_2,...,R_m$ את שורות המטריצה $A$, כלומר $R_{i}=(a_{i1},a_{i2},...,a_{in})$ לכל $1\leq i\leq m$. להלן שלושה סוגי פעולות על שורות $A$ הנקראות פעולות שורה אלמנטריות:
+
+א. כפל השורה $R_{i}$ בסקלר $c\in F$ שאינו $0$. נסמן פעולה זו כך: $cR_{i}\rightarrow R_{i}$.  
+
+ב. הוספה לשורה $R_{i}$ את הכפולה של השורה $R_{j}$ בסקלר $c\in \mathbb F$ כאשר $i\neq j$. נסמן $R_{i}+cR_{j}\rightarrow R_{i}$. השורה $R_{j}$ נשארת ללא שינוי.  
+
+ג. החלפת השורות $R_{i}$ ו-$R_{j}$ עבור $i\neq j$. נסמן $R_{i}\leftrightarrow R_{j}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.28}
+מטריצות $A,A'$ נקראות שקולות שורה אם ניתן להגיע מ- $A$ ל- $A'$ ע״י סדרה סופית של פעולות שורה אלמנטריות.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 3.30}
+. נסתכל על הממ״ל $Ax=b$ עם מטריצת מקדמים מורחבת $(A|b)$, וגם על הממ״ל $A'x=b'$ עם מטריצת מקדמים מורחבת $(A'|b')$. אם $(A|b),(A'|b')$ הן מטריצות שקולות שורה, אז קבוצת הפתרונות של הממ״ל $Ax=b$ שווה לקבוצת הפתרונות של הממ״ל $A'x=b'$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 3.32}
+כאשר וקטור הקבועים של הממ״ל $Ax=b$ הוא $b=\begin{pmatrix}0\\
+0\\
+\vdots\\
+0
+\end{pmatrix}$, הממ״ל נקראת הומוגנית וניתן לכתוב $Ax=0$. הכוונה באגף ימין היא לוקטור האפס באורך $m$ (מספר השורות של $A$).
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 3.39}
+א. לכל $A$ מסדר $m\times n$ ולכל $b\in\mathbb F^n$ מתקיים $\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)$.
+
+ב. מתקיים $0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}$ כאשר $\min\{m,n\}$ הוא המספר הקטן מבין $m,n$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 3.40}
+לכל מטריצה $A$ מסדר $m\times n$ ולכל $b\in\mathbb R^n$, מספר הפתרונות לממ״ל $Ax=b$ נקבע באופן הבא:
+
+א. אם $\mathop{\mathrm{rank}}(A)<\mathop{\mathrm{rank}}(A|b)$, אז אין לממ״ל פתרון.
+
+ב. אם $\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)<n$, אז לממ״ל יש אינסוף פתרונות.
+
+ג. אם $\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A|b)=n$, אז לממ״ל יש פתרון יחיד.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 3.43}
+א. לכל ממ״ל הומוגנית $Ax=0$ קיים פתרון טריוויאלי שהוא וקטור האפס $x=0$, כלומר הפתרון בו כל המשתנים מתאפסים.
+
+ב. אם $\mathop{\mathrm{rank}}(A)=n$, אז הפתרון יחיד.
+
+ג. אם $\mathop{\mathrm{rank}}(A)<n$, אז יש אינסוף פתרונות. זה בהכרח המקרה אם מתקיים $m<n$.
+\end{envbox}
+
+\newpage
+
+\section{פרק 4: מטריצות}
+
+\begin{envbox}[defcolor]{הגדרה 4.2}
+נגדיר את קבוצת כל המטריצות מסדר $m\times n$ מעל $\mathbb{F}$ (כאשר $\mathbb{F}=\mathbb{R}$ או $\mathbb{F}=\mathbb{C}$ ) ע״י
+
+\[
+.\mathbb{M}_{m\times n}(\mathbb{F})=\Set{\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}|\forall 1\leq i\leq m \quad \forall 1\leq j\leq n \quad a_{ij}\in \mathbb{F}}.
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.6}
+עבור וקטורים $v=(a_1,...,a_n)\in\mathbb{F}^n,w=(b_1,...,b_n)\in\mathbb{F}^n$ וסקלר $c\in\mathbb{F}$ נגדיר את הפעולות הבאות:
+
+1.  פעולת החיבור: 
+\[
+v+w=(a_1+b_1,...,a_n+b_n)
+\]
+
+2.  פעולת כפל בסקלר: 
+\[
+c \cdot v=(c\cdot a_1,\dots,c\cdot a_n)
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.7}
+עבור $A,B\in\mathbb{M}_{m\times n}(\mathbb{F})$ וסקלר $c\in\mathbb{F}$ נגדיר את הפעולות הבאות:
+
+1.  פעולת החיבור: 
+\[
+\begin{aligned}
+    A+B&=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
+    a_{21} & \cdots & a_{2n}\\
+    \vdots  & \ddots & \vdots\\
+    a_{m1}  & \cdots & a_{mn}
+    \end{pmatrix}+\begin{pmatrix}b_{11} & \cdots & b_{1n}\\
+    b_{21} & \cdots & b_{2n}\\
+    \vdots & \ddots & \vdots\\
+    b_{m1} & \cdots & b_{mn}
+    \end{pmatrix}\\
+    &=\begin{pmatrix}a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\ a_{21}+b_{21} & \cdots & a_{2n}+b_{2n}\\
+    \vdots & \ddots & \vdots\\
+    a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
+    \end{pmatrix}
+    \end{aligned}
+\]
+
+2.  פעולת כפל בסקלר: 
+\[
+c A=\begin{pmatrix}ca_{11} & ca_{12} & \cdots & ca_{1n}\\
+    ca_{21} & ca_{22} & \cdots & ca_{2n}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    ca_{m1} & ca_{m2} & \cdots & ca_{mn}
+    \end{pmatrix}
+\]
+
+    בפרט, נגדיר $-A=(-1)\cdot A$ ובהתאמה $B-A=B+(-1)\cdot A$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.9}
+יש דרך מקוצרת לכתיבת חיבור. במקום לכתוב את החיבור בכל רכיב, נסתכל על האיבר הכללי של כל מטריצה. נסמן את האיבר בשורה ה- $i$ ובעמודה ה- $j$ ע״י $(P)_{ij}$ לכל $P\in\mathbb{M}_{m\times n}(\mathbb{F})$. אז למעשה הגדרנו לכל $1\leq i \leq m$ ולכל $1\leq j\leq n$: 
+\[
+(A+B)_{ij}=(A)_{ij}+(B)_{ij}
+\]
+
+\[
+(c A)_{ij}=c(A)_{ij}
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.13}
+לכל $m,n\in\mathbb{N}$ נגדיר את מטריצת האפס מסדר $m\times n$ כמטריצה שכל איבריה הם $0$: 
+\[
+.\mathbf{0}_{m\times n}=\begin{pmatrix}0 &0 &\cdots &0 \\
+0 &0 &\cdots &0 \\
+\vdots & \vdots &\ddots &\vdots\\
+0 &0 &\cdots &0
+\end{pmatrix}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.14}
+יהיו $A,B,C\in\mathbb{M}_{m\times n}(\mathbb{F})$ ו- $\alpha,\beta\in\mathbb{F}$. אז מתקיימים הכללים הבאים:
+
+1.  חוק החילוף (קומוטטיביות): 
+\[
+A+B=B+A
+\]
+
+2.  חוק הקיבוץ (אסוציאטיביות): 
+\[
+(A+B)+C=A+(B+C)
+\]
+
+3.  חוק הקיבוץ לכפל בסקלר: 
+\[
+(\alpha\beta)A=\alpha(\beta A)
+\]
+
+4.  חוק הפילוג (דיסטריביוטיביות): 
+\[
+\alpha(A+B)=\alpha A+\alpha B
+\]
+
+5.  ניטרליות היחידה: 
+\[
+1\cdot A=A
+\]
+
+6.  
+\[
+0\cdot A=\mathbf{0}_{m\times n}
+\]
+
+7.  ניטרליות מטריצת האפס: 
+\[
+A+\mathbf{0}_{m\times n}=A
+\]
+
+8.  
+\[
+A-A=0
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.16}
+בהינתן $a_1,a_2,...,a_n\in\mathbb{F}$ נסמן את סכומם בעזרת כתיבה עם $\Sigma$ ואינדקס $l$.
+
+\[
+.\sum_{l=1}^n a_l=a_1+a_2+a_3+\cdots+a_n.
+\]
+
+האינדקס $l$ רץ על פני הקבוצה $\Set{1,2,3,\cdots,n}$ וכל הצבה תורמת איבר לסכום.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.18}
+בהינתן $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ ו- 
+\[
+,x=\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{pmatrix}\in\mathbb{F}^n
+\]
+ נגדיר את המכפלה 
+\[
+Ax=\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots \\
+y_m
+\end{pmatrix}\in\mathbb{F}^m
+\]
+ עם קוארדינטות הנתונות ע״י 
+\[
+y_i=\sum_{j=1}^n (A)_{ij}x_j.
+\]
+ לכל $1\leq i\leq m$. נסמן $y_i=(Ax)_i$ עבור הקוארדינטות.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.23}
+יהיו $A,B\in\mathbb{M}_{m\times n}(\mathbb{F})$, $v,w\in\mathbb{F}^n$ ו- $\alpha\in\mathbb{F}$.
+
+1.  
+\[
+A(v+w)=Av+Aw
+\]
+
+2.  
+\[
+(A+B)v=Av+Bv
+\]
+
+3.  
+\[
+A(\alpha v)=\alpha(Av)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.24}
+תהי $Ax=0$ ממ״ל הומוגנית.
+
+1.  קבוצת הפתרונות סגורה לחיבור, כלומר לכל שני פתרונות $v,w\in\mathbb{F}^n$ גם $v+w$ הוא פתרון.
+
+2.  קבוצת הפתרונות סגורה לכפל בסקלר, כלומר לכל פתרון $v\in\mathbb{F}^n$ ולכל $\alpha\in\mathbb{F}$ גם $\alpha v$ הוא פתרון.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.25}
+תהי $Ax=b$ ממ״ל לא הומוגנית. נניח שקיים לה פתרון (לא בהכרח יחיד) $v_0\in\mathbb{F}^n$. אז מתקיים הקשר הבא בין קבוצת הפתרונות של הממ״ל הלא הומוגנית לקבוצת הפתרונות של הממ״ל ההומוגנית $Ax=0$:
+
+\[
+.\Set{x\in\mathbb{F}^n|Ax=b}=\Set{v_0+y|y\in\mathbb{F}^n,Ay=0}.
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.27}
+בהינתן $A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})$ נגדיר את מטריצת הכפל $AB$ ע״י 
+\[
+(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}.
+\]
+ לכל $1\leq i\leq m, 1\leq j\leq n$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.32}
+יהיו $A\in\mathbb{M}_{m\times k}(\mathbb{F}), B\in\mathbb{M}_{k\times n}(\mathbb{F})$. נניח שהעמודות של $B$ הם הוקטורים $v_1,v_2,...,v_n\in\mathbb{F}^k$. אז מתקיים
+
+\[
+AB=A\begin{pmatrix}
+| & | & & | \\
+v_1 & v_2 & \cdots & v_n \\
+| & | & & |
+\end{pmatrix}=\begin{pmatrix}
+| & | & & | \\
+Av_1 & Av_2 & \cdots & Av_n \\
+| & | & & |
+\end{pmatrix}
+\]
+
+כלומר התוצאה של כפל ב- $A$ משמאל הוא שכל וקטור עמודה מוכפל ב- $A$ לחוד.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.33}
+יהיו $A_1,A_2\in\mathbb{M}_{m\times n}(\mathbb{F})$, $B_1,B_2\in\mathbb{M}_{n\times p}(\mathbb{F})$, $C\in\mathbb{M}_{p\times q}(\mathbb{F})$ ו- $\alpha\in\mathbb{F}$. אז מתקיים
+
+1.  
+\[
+(A_1+A_2)B_1=A_1B_1+A_2B_1
+\]
+
+2.  
+\[
+A_1(B_1+B_2)=A_1B_1+A_1B_2
+\]
+
+3.  
+\[
+A_1(B_1C)=(A_1B_1)C
+\]
+
+4.  
+\[
+(\alpha A_1)B_1=\alpha(A_1B_1)=A_1(\alpha B_1)
+\]
+
+5.  
+\[
+\mathbf{0}_{m\times n} B_1=\mathbf{0}_{m\times p}=A_1\mathbf{0}_{n\times p}
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.34}
+מטריצת היחידה מסדר $n\times n$ (אפשר גם לומר מסדר $n$) מוגדרת להיות 
+\[
+.I_n=I_{n\times n}=.
+\begin{pmatrix}
+1 &0 &\cdots &0\\
+0 &1 &\cdots &0\\
+\vdots &\vdots &\ddots &\vdots\\
+0 &0 &\cdots &1
+\end{pmatrix}
+\]
+
+זוהי המטריצה שבה כל איבר על האלכסון הראשי הוא $1$, וכל שאר האיברים הם $0$. או באופן מתמטי:
+
+\[
+\begin{aligned}
+\forall 1\leq i\leq n \quad (I_n)_{ii}=1 \\
+\forall 1\leq i,j\leq n  \quad i\neq j \implies &(I_n)_{ij}=0
+\end{aligned}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.36}
+לכל $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ מתקיים $AI_n=A=I_m A$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.38}
+תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$. נגדיר את המטריצה המשוחלפת $A^t\in\mathbb{M}_{n\times m}(\mathbb{F})$ ע״י 
+\[
+(A^t)_{ij}=A_{ji}
+\]
+ לכל $1\leq i\leq n,1\leq j\leq m$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.41}
+לכל $A,B\in\mathbb{M}_{m\times n}(\mathbb{F}), C\in\mathbb{M}_{n\times k}(\mathbb{F})$ ולכל $\alpha\in\mathbb{F}$ מתקיים:
+
+1.  
+\[
+(A^t)^t=A
+\]
+
+2.  
+\[
+(A+B)^t=A^t+B^t
+\]
+
+3.  
+\[
+(\alpha A)^t=\alpha A^t
+\]
+
+4.  
+\[
+(AC)^t=C^tA^t
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.45}
+מטריצה $A$ נקראת ריבועית אם מספר השורות שלה שווה למספר העמודות, כלומר אם קיים $n\in\mathbb{N}$ עבורו $A\in\mathbb{M}_{n\times n}(\mathbb{F})$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.48}
+תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$. אז נגדיר
+
+\[
+A^0=I_n, \quad A^1=A, \quad A^2=A\cdot A, \quad A^3=A\cdot A\cdot A
+\]
+
+ולכל $k\in\mathbb{N}$
+
+\[
+.A^k = \underbrace{A \cdot A \cdot \ldots \cdot A}_{\text{פעמים} \ k}
+\]
+
+עבור פולינום 
+\[
+p(x)=a_mx^m+a_{m-1}x^{m-1}+...+a_1x+a_0
+\]
+ נגדיר את ההצבה של $A$ בו ע״י 
+\[
+.p(A)=a_mA^m+a_{m-1}A^{m-1}+...+a_1A+a_0I_n.
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.51}
+1.  $A$ נקראת סימטרית אם מתקיים $A^t=A$, או באופן שקול: 
+\[
+\forall 1\leq i,j\leq n \quad (A)_{ji}=(A)_{ij}
+\]
+
+2.  נקראת אנטי-סימטרית אם מתקיים $A^t=-A$, או באופן שקול: 
+\[
+\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.53}
+תהי $P\in\mathbb{M}_{n\times n}(\mathbb{F})$ מטריצה ריבועית.
+
+1.  אם $P$ אנטי-סימטרית, אז כל איבריה על האלכסון הראשי שווים ל- $0$.
+
+2.  אם $P$ סימטרית וגם אנטי-סימטרית, אז $P=0$.
+
+3.  לכל $B\in\mathbb{M}_{n\times n}(\mathbb{F})$ קיימות $S\in\mathbb{M}_{n\times n}(\mathbb{F})$ סימטרית ו- $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ אנטי-סימטרית כך שמתקיים $B=S+A$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.57}
+מטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ נקראת:
+
+1.  אלכסונית אם לכל $i\neq j$ מתקיים $(A)_{ij}=0$, כלומר כל האיברים מחוץ לאלכסון הראשי שווים ל- $0$.
+
+2.  משולשית עליונה אם לכל $i>j$ מתקיים $(A)_{ij}=0$, כלומר כל האיברים מתחת לאלכסון הראשי שווים ל- $0$.
+
+3.  משולשית תחתונה אם לכל $i<j$ מתקיים $(A)_{ij}=0$, כלומר כל האיברים מעל לאלכסון הראשי שווים ל- $0$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.60}
+יהיו $A,B\in\mathbb{M}_{n\times n}(\mathbb{F})$.
+
+1.  אם $A,B$ משולשיות עליונות, אז $AB$ גם משולשית עליונה.
+
+2.  אם $A,B$ משולשיות תחתונות, אז $AB$ גם משולשית תחתונה.
+
+3.  אם $A,B$ אלכסוניות, אז $AB$ גם אלכסונית.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.62}
+מטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ נקראת סקלרית אם קיים $\alpha\in\mathbb{F}$ כך ש- $A=\alpha I_n$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.64}
+מטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ נקראת אלמנטרית אם היא מתקבלת ממטריצת היחידה $I_n$ ע״י פש״א אחת.
+
+עבור פש״א $S$, נסמן ב- $S(I_n)$ את המטריצה האלמנטרית המתאימה שמתקבלת מ- $I_n$ ע״י $S$. באופן כללי, לכל מטריצה $A$ נסמן ב- $S(A)$ את המטריצה שמתקבלת מ- $A$ ע״י $S$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.66}
+יהיו $A\in\mathbb{M}_{m\times n}(\mathbb{F})$ ו- $S$ פש״א. אז מתקיים $S(I_m)A=S(A)$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 4.68}
+יהיו $A,A'\in\mathbb{M}_{m\times n}(\mathbb{F})$ שקולות שורה. אז קיימת $B\in\mathbb{M}_{m\times m}(\mathbb{F})$ כך ש- $A'=BA$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.70}
+נגדיר את וקטורי היחידה $e_1,e_2,\cdots,e_n\in\mathbb{F}^n$ ע״י 
+\[
+e_i=\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+0 \\
+1 \\
+0\\
+\vdots \\
+0
+\end{pmatrix}
+\]
+ כאשר כל הקוארדינטות הן $0$ חוץ מהקוארדינטה ה- $i$ השווה ל- $1$. נציין שאלה וקטורי העמודה של $I_n$, וגם וקטורי השורה עד כדי שחלוף (ההבדל בין שורה לעמודה).
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.72}
+אם $A'\in\mathbb{M}_{n\times n}(\mathbb{F})$ מדורגת קנונית, אז התנאים הבאים שקולים:
+
+1.  $A'=I_n$
+
+2.  $\mathop{\mathrm{rank}}(A')=n$
+
+3.  לממ״ל $A'x=0$ יש פתרון יחיד.
+
+4.  לכל $b'\in\mathbb{F}^n$ יש פתרון יחיד לממ״ל $A'x=b'$.
+
+5.  לכל $b'\in\mathbb{F}^n$ יש פתרון לממ״ל $A'x=b'$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.73}
+לכל $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ התנאים הבאים שקולים:
+
+1.  $A$ שקולת שורה ל- $I_n$.
+
+2.  $\mathop{\mathrm{rank}}(A)=n$
+
+3.  לממ״ל $Ax=0$ יש פתרון יחיד.
+
+4.  לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ״ל $Ax=b$.
+
+5.  לכל $b\in\mathbb{F}^n$ יש פתרון לממ״ל $Ax=b$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.74}
+מטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ נקראת הפיכה משמאל אם קיימת $B\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $BA=I_n$. $A$ נקראת הפיכה מימין אם קיימת $C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $AC=I_n$. אם שני התנאים מתקיימים, $A$ נקראת הפיכה.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{משפט 4.75}
+לכל $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ התנאים הבאים שקולים:
+
+1.  $A$ שקולת שורה ל- $I_n$.
+
+2.  $\mathop{\mathrm{rank}}(A)=n$
+
+3.  לממ״ל $Ax=0$ יש פתרון יחיד.
+
+4.  לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ״ל $Ax=b$.
+
+5.  לכל $b\in\mathbb{F}^n$ יש פתרון לממ״ל $Ax=b$.
+
+6.  $A$ הפיכה משמאל.
+
+7.  $A$ הפיכה מימין.
+
+8.  $A$ הפיכה.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 4.76}
+יהיו $A,B,C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $BA=I_n=AC$. אז $B=C$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 4.77}
+יהיו $A,B\in\mathbb{M}_{n\times n}(\mathbb{F})$. אז מתקיים 
+\[
+.AB=I_n \iff BA=I_n
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 4.78}
+יהיו $A,B_1,B_2\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $B_1A=B_2A=I_n$. אז $B_1=B_2$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 4.79}
+תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. נסמן ב- $A^{-1}$ את המטריצה שמקיימת 
+\[
+.AA^{-1}=A^{-1}A=I_n
+\]
+ נקרא לה המטריצה ההופכית ל- $A$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 4.84}
+1.  תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. אז מתקיים 
+\[
+.A^{-1}=E_kE_{k-1}\cdots E_1.
+\]
+ כאשר $E_1,E_2,...,E_k$ הן המטריצות האלמנטריות המתאימות לפש״אות $S_1,S_2,...,S_k$ בדירוג הקנוני של $A$.
+
+2.  $A$ היא מכפלה של מטריצות אלמנטריות: 
+\[
+.A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}.
+\]
+\end{envbox}
+
+\newpage
+
+\section{פרק 5: דטרמיננטה}
+
+\begin{envbox}[defcolor]{הגדרה 5.1}
+עבור $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ נגדיר את $\det(A)$ ע״י התכונות הבאות:
+
+1.  $.\det(I_n)=1$
+
+2.  אם $A\xrightarrow{\alpha R_i\to R_i}A'$ עבור $1\leq i \leq n$, אז $\det(A')=\alpha \det(A)$.
+
+3.  אם $A\xrightarrow{R_i+\alpha R_j\to R_i}A'$ עבור $i\neq j$, אז $\det(A')=\det(A)$.
+
+4.  אם $A\xrightarrow{R_i\leftrightarrow R_j}A'$ עבור $i\neq j$, אז $\det(A')=-\det(A)$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.5}
+יהיו $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ ו- $\alpha\in\mathbb{F}$. אז מתקיים 
+\[
+.\det(\alpha A)=\alpha^n\det(A)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.6}
+אם למטריצה $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ יש שורת אפסים, אז $\det(A)=0$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.7}
+יהיו $D,U\in\mathbb{M}_{n\times n}(\mathbb{F})$.
+
+1.  אם $D$ אלכסונית מהצורה
+
+    
+\[
+,D=\begin{pmatrix}
+    d_1 &0 & \cdots & 0 \\
+    0 & d_2 & \cdots & 0 \\
+    \vdots & \vdots & \ddots & 0 \\
+    0 & 0 & \cdots & d_n
+    \end{pmatrix}
+\]
+
+    אז מתקיים
+
+    
+\[
+.\det(D)=d_1d_2\cdots d_n
+\]
+
+2.  אם $U$ משולשית עליונה מהצורה
+
+    
+\[
+U=\begin{pmatrix}
+    d_1 &* & \cdots & * \\
+    0 & d_2 & \cdots & * \\
+    \vdots & \vdots & \ddots & * \\
+    0 & 0 & \cdots & d_n
+    \end{pmatrix}
+\]
+
+    כאשר הכוכביות מציינות איברים כלשהם ובנוסף $d_i\neq 0$ לכל $1\leq i\leq n$, אז מתקיים
+
+    
+\[
+.\det(U)=d_1d_2\cdots d_n
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.10}
+`\label{prop:det-order-2}`{=latex} עבור $n=2$ הפונקציה $\det:\mathbb{M}_{2\times 2}(\mathbb{F})\to\mathbb{F}$ מהגדרה [7.1](\#def-det) מקיימת:
+
+1.  לכל 
+\[
+A=\begin{pmatrix}
+    a & b \\
+    c & d
+    \end{pmatrix}
+\]
+ מתקיים 
+\[
+.\det(A)=ad-bc
+\]
+
+2.  $A$ הפיכה אם ורק אם $\det(A)\neq 0$. במקרה זה מתקיים 
+\[
+.A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}
+    d & -b \\
+    -c & a
+    \end{pmatrix}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.14}
+`\label{prop:elementary-det}`{=latex} יהיו $E,A\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $E$ מטריצה אלמנטרית המתאימה לפש״א $S$, כלומר $E=S(I_n)$. אז מתקיים 
+\[
+.\det(EA)=\det(E)\det(A)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{משפט 5.15}
+תהי $A\in\mathbb{M}_{n\times n}(F)$. אז $A$ הפיכה אם ורק אם $\det(A)\neq 0$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.17}
+`\label{prop:det-product}`{=latex} יהיו $A,B\in\mathbb{M}_{n\times n}(\mathbb{F})$. אז מתקיים 
+\[
+.\det(AB)=\det(A)\det(B)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 5.18}
+`\label{cor:det-inverse}`{=latex} תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. אז מתקיים 
+\[
+.\det(A^{-1})=\frac{1}{\det(A)}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.21}
+`\label{prop:det-transpose}`{=latex} תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$. אז מתקיים 
+\[
+.\det(A^t)=\det(A)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 5.22}
+תהי $U,L\in\mathbb{M}_{n\times n}(\mathbb{F})$.
+
+1.  אם $U$ משולשית עליונה מהצורה
+
+    
+\[
+U=\begin{pmatrix}
+    d_1 &* & \cdots & * \\
+    0 & d_2 & \cdots & * \\
+    \vdots & \vdots & \ddots & * \\
+    0 & 0 & \cdots & d_n
+    \end{pmatrix}
+\]
+
+    כאשר הכוכביות מציינות איברים כלשהם, אז מתקיים
+
+    
+\[
+.\det(U)=d_1d_2\cdots d_n
+\]
+
+2.  אם $L$ משולשית תחתונה מהצורה
+
+    
+\[
+L=\begin{pmatrix}
+    d_1 &0 & \cdots & 0 \\
+    * & d_2 & \cdots & 0 \\
+    \vdots & \vdots & \ddots & 0 \\
+    * & * & \cdots & d_n
+    \end{pmatrix}
+\]
+
+    כאשר הכוכביות מציינות איברים כלשהם, אז מתקיים
+
+    
+\[
+.\det(L)=d_1d_2\cdots d_n
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 5.24}
+תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$. נגדיר את המינור $M_{i,j}(A)$ להיות המטריצה שמתקבלת מ- $A$ ע״י מחיקת השורה ה- $i$ והעמודה ה- $j$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 5.27}
+`\label{prop:laplace}`{=latex} תהי 
+\[
+.A=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}
+\]
+ אז מתקיים:
+
+1.  לכל $1\leq i \leq n$, ניתן לפתח את הדטרמיננטה לפי השורה ה- $i$: 
+\[
+\det(A)=\sum_{j=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+\]
+
+2.  לכל $1\leq j \leq n$, ניתן לפתח את הדטרמיננטה לפי העמודה ה- $j$: 
+\[
+\det(A)=\sum_{i=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+\]
+\end{envbox}
+
+\newpage
+
+\section{פרק 6: מרחבים וקטוריים}
+
+\begin{envbox}[defcolor]{הגדרה 6.9}
+יהי $V$ מ״ו מעל $\mathbb{F}$. תת-קבוצה $W\subseteq V$ תיקרא תת-מרחב של $V$ אם $W$ היא מ״ו מעל $\mathbb{F}$ בפני עצמה, עם פעולות החיבור והכפל בסקלר מ- $V$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.14}
+תהי $A\in\mathbb{M}_{m\times n}(\mathbb{F})$. קבוצת הפתרונות לממ״ל ההומוגנית $Ax=\underline{0}$ נקראת מרחב הפתרונות של $A$ ומסומנת ע״י $\mathop{\mathrm{N}}(A)$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 6.15}
+$\mathop{\mathrm{N}}(A)$ הוא תת-מרחב של $\mathbb{F}^n$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.25}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $v_1,...,v_k\in V$. צירוף לינארי (צ״ל) של $v_1,...,v_k$ הוא וקטור מהצורה 
+\[
+v=\alpha_1v_1+...+\alpha_kv_k
+\]
+ כאשר $\alpha_1,...,\alpha_k\in\mathbb{F}$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.28}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $v_1,v_2,...,v_k\in V$. אז נגדיר את קבוצת כל הצירופים הלינאריים של וקטורים אלה: 
+\[
+\mathop{\mathrm{Span}}(v_1,...,v_k)=\Set{\alpha_1v_1+...+\alpha_kv_k|\alpha_1,...,\alpha_k\in\mathbb{F}}
+\]
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.31}
+יהי $V$ מ״ו מעל $\mathbb{F}$. נאמר ש- $V$ נוצר סופית אם קיימים $v_1,...,v_k\in V$ כך ש- $V=\mathop{\mathrm{Span}}(v_1,...,v_k)$. במקרה זה גם נאמר שהקבוצה $\Set{v_1,...,v_k}$ פורשת את $V$. ניתן גם לומר (באופן פחות פורמלי) שהוקטורים $v_1,...,v_k$ פורשים את $V$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.36}
+יהי $V$ מ״ו מעל $\mathbb{F}$. קבוצת וקטורים $\Set{v_1,...,v_k}\subseteq V$ נקראת:
+
+-   תלויה לינארית (ת״ל) אם קיימים $\alpha_1,...,\alpha_k\in\mathbb{F}$ שאינם כולם שווים ל- $0$ כך ש- 
+\[
+.\alpha_1v_1+...+\alpha_kv_k=0_V
+\]
+
+    במקרה זה גם נאמר שהצירוף הלינארי באגף שמאל הוא לא טריוויאלי.
+
+-   בלתי תלויה לינארית (בת״ל) אם לכל $\alpha_1,...,\alpha_k\in\mathbb{F}$ עבורם מתקיים 
+\[
+,\alpha_1v_1+...+\alpha_kv_k=0_V
+\]
+ בהכרח מתקיים $\alpha_1=...=\alpha_k=0$. צירוף לינארי זה נקרא טריוויאלי.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.42}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $v_1,...,v_k,v_{k+1},...,v_l\in V$.
+
+א. אם $\Set{v_1,...,v_k}$ ת״ל, אז $\Set{v_1,...,v_k,v_{k+1},...,v_l}$ ת״ל.
+
+ב. אם $\Set{v_1,...,v_k,v_{k+1},...,v_l}$ בת״ל, אז $\Set{v_1,...,v_k}$ בת״ל.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.44}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $\Set{v_1,...,v_k}\in V$ בת״ל ו- $w\in V$ כך שמתקיים $w\notin\mathop{\mathrm{Span}}(v_1,...,v_k)$. אז $\Set{v_1,...,v_k,w}$ בת״ל.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.45}
+`\label{cor:basis-extraction}`{=latex} אם $\Set{v_1,...,v_k}$ קבוצה הפורשת מ״ו $V$ מעל $\mathbb{F}$, אז תת-הקבוצה 
+\[
+\Set{v_i|1\leq i\leq k, v_i\notin\mathop{\mathrm{Span}}(v_1,...,v_{i-1})}
+\]
+ היא בת״ל ופורשת את $V$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.48}
+יהי $V$ מ״ו מעל $\mathbb{F}$. תת-קבוצה $B=\Set{v_1,...,v_n}\subseteq V$ נקראת בסיס ל- $V$ אם היא בת״ל וגם פורשת את $V$, כלומר $v_1,...,v_n$ בת״ל ובנוסף $\mathop{\mathrm{Span}}(B)=V$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.51}
+יהי $V=\Set{0_V}$. עבור קבוצת וקטורים ריקה $\emptyset=\Set{ }$ נגדיר 
+\[
+.\mathop{\mathrm{Span}}(\emptyset)=\Set{0_V}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 6.53}
+יהי $V$ מ״ו מעל $\mathbb{F}$. אז התנאים הבאים שקולים:
+
+-   ל- $V$ קיים בסיס.
+
+-   $V$ נוצר סופית, כלומר קיימת תת-קבוצה סופית הפורשת אותו.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.55}
+`\label{cor:size-dim}`{=latex} יהיו $v_1,...,v_k\in\mathbb{F}^n$.
+
+א. אם $\Set{v_1,...,v_k}$ בת״ל, אז $k\leq n$.
+
+ב. אם $\Set{v_1,...,v_k}$ פורשת את $\mathbb{F}^n$, אז $k\geq n$.
+
+ג. אם $\Set{v_1,...,v_k}$ היא בסיס ל- $\mathbb{F}^n$, אז $k=n$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.59}
+`\label{cor:row-equivalence}`{=latex} יהיו $A,B\in\mathbb{M}_{m\times n}(\mathbb{F})$ שקולות שורה. אז $\mathop{\mathrm{Row}}(A)=\mathop{\mathrm{Row}}(B)$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.62}
+בסיס סדור $B=\Set{v_1,...,v_n}$ למ״ו $V$ הוא בסיס יחד עם סדר על איבריו (כלומר יש חשיבות לסדר כתיבתם).
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.65}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהי $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$. לכל $v\in V$ קיימים $\alpha_1,...,\alpha_n\in\mathbb{F}$ יחידים כך ש- $v=\alpha_1v_1+...+\alpha_nv_n$. אז עבור $v$ נגדיר את וקטור הקוארדינטות שלו ביחס ל- $B$ ע״י 
+\[
+.[v]_B=\begin{pmatrix}
+\alpha_1 \\
+\vdots \\
+\alpha_n
+\end{pmatrix}\in\mathbb{F}^n
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.68}
+`\label{cor:span-coordinates}`{=latex} יהיו $V$ מ״ו מעל $\mathbb{F}$, $B=\Set{v_1,...,v_n}$ בסיס סדור ל- $V$, ו- $u,w_1,...,w_k\in V$. אז מתקיים 
+\[
+.u\in\mathop{\mathrm{Span}}(w_1,...,w_k) \iff [u]_B\in\mathop{\mathrm{Span}}([w_1]_B,...,[w_k]_B)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.71}
+`\label{cor:size-dim2}`{=latex} יהיו $V$ מ״ו מעל $\mathbb{F}$, $B=\Set{b_1,...,b_n}$ בסיס ל- $V$ ו- $v_1,...,v_k\in V$.
+
+א. אם $\Set{v_1,...,v_k}$ בת״ל, אז $k\leq n$.
+
+ב. אם $\Set{v_1,...,v_k}$ פורשת את $V$, אז $k\geq n$.
+
+ג. אם $\Set{v_1,...,v_k}$ היא בסיס ל- $V$, אז $k=n$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.72}
+יהי $V$ מ״ו נוצר סופית, כלומר קיים לו בסיס. אז כל שני בסיסים ל- $V$ הם שווי גודל.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 6.73}
+גודל בסיס כלשהו של מ״ו $V$ נקרא המימד של $V$. סימונו הוא $\dim(V)$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 6.78}
+`\label{cor:subspace-dim}`{=latex} יהי $V$ מ״ו נוצר סופית מעל $\mathbb{F}$, ויהי $W$ תת-מרחב. אז מתקיים:
+
+א. $W$ נוצר סופית ומתקיים $\dim(W)\leq \dim(V)$.
+
+ב. אם $\dim(W)=\dim(V)$, אז $W=V$.
+\end{envbox}
+
+\newpage
+
+\section{פרק 7: תת-מרחבים}
+
+\begin{envbox}[defcolor]{הגדרה 7.1}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $W_1,W_2\subseteq V$ תת-מרחבים. אז החיתוך $W_1\cap W_2$ הוא קבוצת כל הוקטורים השייכים גם ל- $W_1$ וגם ל- $W_2$, כלומר 
+\[
+.W_1\cap W_2=\Set{v\in V|v\in W_1,v\in W_2}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 7.4}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $W_1,W_2\subseteq V$ תת-מרחבים. אז $W_1\cap W_2$ הוא תת-מרחב של $V$.
+\end{envbox}
+
+\begin{envbox}[defcolor]{הגדרה 7.8}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $W_1,W_2\subseteq V$ תת-מרחבים. אז הסכום $W_1+W_2$ מוגדר ע״י 
+\[
+.W_1+W_2=\Set{w_1+w_2|w_1\in W_1,w_2\in W_2}
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{טענה 7.9}
+יהי $V$ מ״ו מעל $\mathbb{F}$, ויהיו $W_1,W_2\subseteq V$ תת-מרחבים. אז $W_1+W_2$ הוא תת-מרחב של $V$, המקיים $W_1\subseteq W_1+W_2$ וגם $W_2\subseteq W_1+W_2$.
+\end{envbox}
+
+\begin{envbox}[thmcolor]{מסקנה 7.14}
+יהיו $V$ מ״ו מעל $\mathbb{F}$ ו- $W_1,W_2\subseteq V$. אז מתקיים: 
+\[
+\begin{aligned}
+\dim(W_1\cap W_2)\leq \dim(W_1)\leq\dim(W_1+W_2)\leq\dim(V)
+\end{aligned}
+\]
+ ובאופן דומה: 
+\[
+\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)
+\]
+\end{envbox}
+
+\begin{envbox}[thmcolor]{משפט 7.16}
+`\label{thm:dim-formula}`{=latex} יהי $V$ מ״ו נוצר סופית מעל $\mathbb{F}$, ויהיו $W_1,W_2\subseteq V$ תת-מרחבים. אז מתקיים 
+\[
+.\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)
+\]
+\end{envbox}
+
+\newpage
+
+
+\end{document}

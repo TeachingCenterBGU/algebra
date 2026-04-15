@@ -1,0 +1,8 @@
+\contentsline {section}{פרק 0: קבוצות ומספרים}{2}{}%
+\contentsline {section}{פרק 1: תכונות ושימושים של המספרים המרוכבים}{3}{}%
+\contentsline {section}{פרק 2: גיאומטריה במישור ובמרחב}{4}{}%
+\contentsline {section}{פרק 3: מערכות משוואות לינאריות}{6}{}%
+\contentsline {section}{פרק 4: מטריצות}{9}{}%
+\contentsline {section}{פרק 5: דטרמיננטה}{16}{}%
+\contentsline {section}{פרק 6: מרחבים וקטוריים}{19}{}%
+\contentsline {section}{פרק 7: תת-מרחבים}{22}{}%

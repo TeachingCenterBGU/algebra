@@ -1,0 +1,49 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.4.15)  15 APR 2026 11:14
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**^^@
+(C:\Users\inbaltsa\AppData\Local\Programs\MiKTeX\tex/latex/tools\.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+File ignored)
+*
+(Please type a command or say `\end')
+*\קמג
+! Undefined control sequence.
+<*> \קמג
+        
+? \end
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? s
+OK, entering \scrollmode...
+
+*\end
+
+*x
+
+! LaTeX Error: \begin{document} ended by \end{x}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> x
+     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+\end  ...end#1\endcsname \@checkend {#1}\endgroup 
+                                                  \UseHook {env/#1/after}\if...
+<*> x
+     
+Things are pretty mixed up, but I think the worst is over.
+
+
+*
