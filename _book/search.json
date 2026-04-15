@@ -430,16 +430,6 @@
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "10  TBD",
-    "section": "",
-    "text": "$$\n\n\\newcommand{\\R}{\\mathbb{R}}\n\n\\newcommand{\\N}{\\mathbb{N}}\n\n\\newcommand{\\Z}{\\mathbb{Z}}\n\n\\newcommand{\\Q}{\\mathbb{Q}}\n\n\\newcommand{\\C}{\\mathbb{C}}\n\n\\newcommand{\\F}{\\mathbb{F}}\n\n\\newcommand{\\M}{\\mathbb{M}}\n\n\\newcommand{\\0}{\\mathbf{0}}\n\n\\newcommand{\\Set}[1]{\\left\\{#1\\right\\}}\n\n$$\n\n\n\n\n\n\nהמשך יבוא…",
-    "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>TBD</span>"
-    ]
-  },
-  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "ביבליוגרפיה",

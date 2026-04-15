@@ -286,6 +286,16 @@ def qmd_content_to_latex(content_lines):
     # Remove Quarto div attributes that leaked through
     text = re.sub(r'\{#[\w-]+\s*(?:\.[\w-]+)?\s*\}', '', text)
     
+    # Convert Latin list markers (a. b. c. ...) to Hebrew letters (א. ב. ג. ...)
+    hebrew_letters = 'אבגדהוזחטיכלמנסעפצקרשת'
+    def latin_to_hebrew_marker(m):
+        letter = m.group(1).lower()
+        idx = ord(letter) - ord('a')
+        if 0 <= idx < len(hebrew_letters):
+            return hebrew_letters[idx] + '.'
+        return m.group(0)
+    text = re.sub(r'^([a-zA-Z])\.', latin_to_hebrew_marker, text, flags=re.MULTILINE)
+
     # Clean up multiple blank lines
     text = re.sub(r'\n{3,}', '\n\n', text)
     
@@ -365,6 +375,7 @@ LATEX_PREAMBLE = r"""
 \setlength{\parskip}{6pt}
 
 \begin{document}
+\setRTL
 
 % ── Title Page ──
 \vspace*{2cm}
