@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תהליך גרם-שמידט</title>
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; }
+  canvas { display: block; }
+  #info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    color: black;
+  }
+  #controls {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 280px;
+  }
+  .vector-input { margin-bottom: 10px; }
+  .input-group { display: flex; justify-content: space-around; gap: 5px; direction: ltr; }
+  input[type="number"] { width: 50px; }
+  button { width: 100%; padding: 8px; margin-top: 10px; }
+  #results-panel { margin-top: 10px; direction: ltr; }
+  #results-panel div { font-family: monospace; font-size: 1.1em; }
+  sub {
+    font-size: 0.8em;
+  }
+</style>
+</head>
+<body>
+
+  <div id="info">
+    <h1>תהליך גרם-שמידט</h1>
+    <p>הזינו שלושה וקטורים בצד ימין</p>
+  </div>
+
+  <div id="controls">
+    <div class="vector-input">
+      <label style="color: #00008b; font-weight: bold;">v<sub>1</sub>:</label>
+      <div class="input-group">
+        <input type="number" id="v1x" value="3">
+        <input type="number" id="v1y" value="1">
+        <input type="number" id="v1z" value="0">
+      </div>
+    </div>
+    <div class="vector-input">
+      <label style="color: #006400; font-weight: bold;">v<sub>2</sub>:</label>
+      <div class="input-group">
+        <input type="number" id="v2x" value="1">
+        <input type="number" id="v2y" value="2">
+        <input type="number" id="v2z" value="0">
+      </div>
+    </div>
+    <div class="vector-input">
+      <label style="color: #8b0000; font-weight: bold;">v<sub>3</sub>:</label>
+      <div class="input-group">
+        <input type="number" id="v3x" value="1">
+        <input type="number" id="v3y" value="1">
+        <input type="number" id="v3z" value="2">
+      </div>
+    </div>
+    <button id="run-button">הפעלת תהליך גרם-שמידט</button>
+    <div id="results-panel">
+      <!-- שינוי 3: הסרת הנקודתיים -->
+      <h4>וקטורי הפלט</h4>
+      <div id="w1-result" style="color: #0000ff;">w<sub>1</sub> = (...)</div>
+      <div id="w2-result" style="color: #00ff00;">w<sub>2</sub> = (...)</div>
+      <div id="w3-result" style="color: #ff0000;">w<sub>3</sub> = (...)</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const runButton = document.getElementById('run-button');
+  const inputs = {};
+  ['v1x', 'v1y', 'v1z', 'v2x', 'v2y', 'v2z', 'v3x', 'v3y', 'v3z'].forEach(id => {
+      inputs[id] = document.getElementById(id);
+  });
+  const resultsDisplays = {
+      w1: document.getElementById('w1-result'),
+      w2: document.getElementById('w2-result'),
+      w3: document.getElementById('w3-result'),
+  }
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(5, 5, 5);
+  controls.update();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+  
+  const axisLength = 5;
+  const origin = new THREE.Vector3(0,0,0);
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), origin, axisLength, 0x000000));
+  
+  function createAxisLabel(text, position) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = 'Bold 60px Arial';
+      context.fillStyle = 'rgba(0,0,0,1.0)';
+      context.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(2, 1, 1.0);
+      sprite.position.copy(position);
+      return sprite;
+  }
+  // שינוי 1: קירוב התוויות
+  const labelOffset = 0.2;
+  scene.add(createAxisLabel('x', new THREE.Vector3(axisLength + labelOffset, 0, 0)));
+  scene.add(createAxisLabel('y', new THREE.Vector3(0, axisLength + labelOffset, 0)));
+  scene.add(createAxisLabel('z', new THREE.Vector3(0, 0, axisLength + labelOffset)));
+  
+  let currentObjects = [];
+  
+  function gramSchmidt() {
+    currentObjects.forEach(obj => scene.remove(obj));
+    currentObjects = [];
+
+    const v1 = new THREE.Vector3(parseFloat(inputs.v1x.value), parseFloat(inputs.v1y.value), parseFloat(inputs.v1z.value));
+    const v2 = new THREE.Vector3(parseFloat(inputs.v2x.value), parseFloat(inputs.v2y.value), parseFloat(inputs.v2z.value));
+    const v3 = new THREE.Vector3(parseFloat(inputs.v3x.value), parseFloat(inputs.v3y.value), parseFloat(inputs.v3z.value));
+
+    addArrow(v1, 0x00008b);
+    addArrow(v2, 0x006400);
+    addArrow(v3, 0x8b0000);
+
+    const planeNormal = new THREE.Vector3().crossVectors(v1, v2);
+    if (planeNormal.length() > 0.01) {
+        const planeGeom = new THREE.PlaneGeometry(10, 10);
+        const planeMat = new THREE.MeshBasicMaterial({color: 0xcccccc, opacity: 0.4, transparent: true, side: THREE.DoubleSide});
+        const planeMesh = new THREE.Mesh(planeGeom, planeMat);
+        planeMesh.lookAt(planeNormal.normalize());
+        scene.add(planeMesh);
+        currentObjects.push(planeMesh);
+    }
+    
+    const w1 = v1.clone();
+    
+    const proj_w1_v2 = w1.lengthSq() > 0 ? w1.clone().multiplyScalar(v2.dot(w1) / w1.lengthSq()) : new THREE.Vector3(0,0,0);
+    const w2 = new THREE.Vector3().subVectors(v2, proj_w1_v2);
+
+    const proj_w1_v3 = w1.lengthSq() > 0 ? w1.clone().multiplyScalar(v3.dot(w1) / w1.lengthSq()) : new THREE.Vector3(0,0,0);
+    const proj_w2_v3 = w2.lengthSq() > 0 ? w2.clone().multiplyScalar(v3.dot(w2) / w2.lengthSq()) : new THREE.Vector3(0,0,0);
+    const w3 = new THREE.Vector3().subVectors(v3, proj_w1_v3).sub(proj_w2_v3);
+    
+    addArrow(w1, 0x0000ff);
+    addArrow(w2, 0x00ff00);
+    addArrow(w3, 0xff0000);
+
+    resultsDisplays.w1.innerHTML = `w<sub>1</sub> = (${w1.x.toFixed(2)}, ${w1.y.toFixed(2)}, ${w1.z.toFixed(2)})`;
+    resultsDisplays.w2.innerHTML = `w<sub>2</sub> = (${w2.x.toFixed(2)}, ${w2.y.toFixed(2)}, ${w2.z.toFixed(2)})`;
+    resultsDisplays.w3.innerHTML = `w<sub>3</sub> = (${w3.x.toFixed(2)}, ${w3.y.toFixed(2)}, ${w3.z.toFixed(2)})`;
+  }
+
+  function addArrow(vector, color) {
+      if(vector.length() < 0.01) return;
+      const arrow = new THREE.ArrowHelper(vector.clone().normalize(), new THREE.Vector3(0,0,0), vector.length(), color);
+      scene.add(arrow);
+      currentObjects.push(arrow);
+  }
+
+  runButton.addEventListener('click', gramSchmidt);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  
+  // שינוי 2: הסרת הקריאה לפונקציה בטעינה
+  animate();
+  // gramSchmidt(); 
+</script>
+</body>
+</html>
