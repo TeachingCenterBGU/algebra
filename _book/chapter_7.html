@@ -906,7 +906,7 @@ T(v_1)=T(v_2) &amp;\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
 \mathop{\mathrm{N}}(A)=\Set{\underline{0}} &amp;\iff \mathop{\mathrm{Ker}}(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע} \\
 \mathop{\mathrm{Col}}(A)=\mathbb{F}^m &amp;\iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על}
 \end{aligned}\]</span></p></li>
-<li><p>עבור <span class="math inline">\(n=m\)</span> ידוע כי (לפי משפט <a href="./chapter_3.html#thm-invertible2">??</a>) <span class="math display">\[,\mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \text{$A$ הפיכה}\]</span> ולכן במקרה זה מתקיים <span class="math display">\[.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}\]</span></p></li>
+<li><p>עבור <span class="math inline">\(n=m\)</span> ידוע כי (לפי משפט <a href="./chapter_3.html#thm-invertible">6.75</a>) <span class="math display">\[,\mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \text{$A$ הפיכה}\]</span> ולכן במקרה זה מתקיים <span class="math display">\[.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}\]</span></p></li>
 </ol>
 <p>&nbsp;◻</p>
 </div>
@@ -1504,12 +1504,12 @@ Ae_n\\[-0.4ex]
 <p>&nbsp;◻</p>
 </div>
 <div class="example">
-<p>יהיו <span class="math inline">\(T,S:\mathbb{R}^2\to\mathbb{R}^2\)</span> ה"ל המקיימות את הנתונים הבאים: <span class="math display">\[\begin{alignedat}{2}
+<p>יהיו <span class="math inline">\(T,S:\mathbb{R}^2\to\mathbb{R}^2\)</span> ה”ל המקיימות את הנתונים הבאים: <span class="math display">\[\begin{alignedat}{2}
 T\begin{pmatrix}1\\1\end{pmatrix}  &amp;= \begin{pmatrix}2\\3\end{pmatrix},\quad &amp;
 T\begin{pmatrix}1\\-1\end{pmatrix} &amp;= \begin{pmatrix}3\\-1\end{pmatrix} \\
 S\begin{pmatrix}3\\1\end{pmatrix}  &amp;= \begin{pmatrix}2\\2\end{pmatrix},\quad &amp;
 S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
-\end{alignedat}\]</span> ניתן למצוא נוסחאות ל- <span class="math inline">\(S,T\)</span> ולחשב את <span class="math inline">\(S\circ T\)</span>, אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן: <span class="math display">\[B=\Set{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}, \quad D=\Set{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}}\]</span> בחרנו את <span class="math inline">\(B,C\)</span> בהתאם לוקטורי הקלט של הנתונים, ואילו <span class="math inline">\(D\)</span> הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות <span class="math inline">\([S]_D^C,[T]_C^B\)</span>. תחילה: <span class="math display">\[[T]_C^B=\begin{pmatrix}
+\end{alignedat}\]</span>ניתן למצוא נוסחאות ל- <span class="math inline">\(S,T\)</span> ולחשב את <span class="math inline">\(S\circ T\)</span>, אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן:<span class="math display">\[B=\left\{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}\right\},\quad C=\left\{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}\right\}, \quad D=\left\{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}\right\}\]</span>בחרנו את <span class="math inline">\(B,C\)</span> בהתאם לוקטורי הקלט של הנתונים, ואילו <span class="math inline">\(D\)</span> הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות <span class="math inline">\([S]_D^C,[T]_C^B\)</span>. תחילה:<span class="math display">\[[T]_C^B=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
 \left[T\begin{pmatrix}1\\1\end{pmatrix}\right]_C\\[-0.4ex]
@@ -1533,19 +1533,23 @@ S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
 \left[\begin{pmatrix}3\\-1\end{pmatrix}\right]_C\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}\]</span> נחשב את וקטורי הקוארדינטות ע"י דירוג המטריצה המורחבת: <span class="math display">\[\begin{pmatrix}
-3 &amp; 1 &amp; \vline &amp; 2 &amp; \vline &amp; 3 \\
-1 &amp; 3 &amp; \vline &amp; 3 &amp; \vline &amp; -1
-\end{pmatrix}\]</span></p>
-<p>לאחר דירוג קנוני נקבל את המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
-1 &amp; 0 &amp; \vline &amp; \frac{3}{8} &amp; \vline &amp; \frac{5}{4} \\
-0 &amp; 1 &amp; \vline &amp; \frac{7}{8} &amp; \vline &amp; -\frac{3}{4}
-\end{pmatrix}\]</span></p>
+\end{pmatrix}\]</span> נחשב את וקטורי הקוארדינטות ע”י דירוג המטריצה המורחבת: <span class="math display">\[\left(
+\begin{array}{cc|c|c}
+3 &amp; 1 &amp; 2 &amp; 3 \\
+1 &amp; 3 &amp; 3 &amp; -1
+\end{array}
+\right)\]</span></p>
+<p>לאחר דירוג קנוני נקבל את המטריצה הבאה: <span class="math display">\[\left(
+\begin{array}{cc|c|c}
+1 &amp; 0 &amp; \frac{3}{8} &amp; \frac{5}{4} \\
+0 &amp; 1 &amp; \frac{7}{8} &amp; -\frac{3}{4}
+\end{array}
+\right)\]</span></p>
 <p>ולכן: <span class="math display">\[[T]_C^B=\begin{pmatrix}
 \frac{3}{8} &amp; \frac{5}{4} \\
 \frac{7}{8} &amp; -\frac{3}{4}
 \end{pmatrix}\]</span></p>
-<p>נעבור למטריצה המייצגת הבאה ונקבל <span class="math display">\[.[S]_D^C=\begin{pmatrix}
+<p>נעבור למטריצה המייצגת הבאה ונקבל <span class="math display">\[[S]_D^C=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
 \left[S\begin{pmatrix}3\\1\end{pmatrix}\right]_C\\[-0.4ex]
@@ -1569,18 +1573,23 @@ S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
 \left[\begin{pmatrix}0\\4\end{pmatrix}\right]_D\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}\]</span> שוב נחשב את וקטורי הקוארדינטות ע"י דירוג מטריצה מורחבת: <span class="math display">\[\begin{pmatrix}
-2 &amp; 1 &amp; \vline &amp; 2 &amp; \vline &amp; 0 \\
--1 &amp; 2 &amp; \vline &amp; 2 &amp; \vline &amp; 4
-\end{pmatrix}\]</span></p>
+\end{pmatrix}\]</span> שוב נחשב את וקטורי הקוארדינטות ע”י דירוג מטריצה מורחבת: <span class="math display">\[\left(
+\begin{array}{cc|c|c}
+2 &amp; 1 &amp; 2 &amp; 0 \\
+-1 &amp; 2 &amp; 2 &amp; 4
+\end{array}
+\right)\]</span></p>
 </div>
-<p>צורתה המדורגת קנונית היא: <span class="math display">\[\begin{pmatrix}
-1 &amp; 0 &amp; \vline &amp; \frac{2}{5} &amp; \vline &amp; -\frac{4}{5} \\
-0 &amp; 1 &amp; \vline &amp; \frac{6}{5} &amp; \vline &amp; \frac{8}{5}
-\end{pmatrix}\]</span> מכאן: <span class="math display">\[[S]_D^C=\begin{pmatrix}
+<p>צורתה המדורגת קנונית היא: <span class="math display">\[\left(
+\begin{array}{cc|c|c}
+1 &amp; 0 &amp; \frac{2}{5} &amp; -\frac{4}{5} \\
+0 &amp; 1 &amp; \frac{6}{5} &amp; \frac{8}{5}
+\end{array}
+\right)\]</span></p>
+<p>מכאן: <span class="math display">\[[S]_D^C=\begin{pmatrix}
 \frac{2}{5} &amp; -\frac{4}{5} \\
 \frac{6}{5} &amp; \frac{8}{5}
-\end{pmatrix}\]</span> לבסוף, לפי טענה <a href="#prp-rep-matrix">10.57</a> נובע כי <span class="math display">\[.[S\circ T]_D^B=[S]_D^C[T]_C^B=\begin{pmatrix}
+\end{pmatrix}\]</span> לבסוף, לפי טענה <a href="#prp-rep-matrix">10.57</a> נובע כי: <span class="math display">\[[S\circ T]_D^B=[S]_D^C[T]_C^B=\begin{pmatrix}
 \frac{2}{5} &amp; -\frac{4}{5} \\
 \frac{6}{5} &amp; \frac{8}{5}
 \end{pmatrix}\begin{pmatrix}
@@ -1822,7 +1831,8 @@ S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
 2 &amp; 3 &amp; 2 \\
 3 &amp; 7 &amp; 1
 \end{pmatrix}
-\end{aligned}\]</span></p>
+\end{aligned}\]</span></p></li>
+</ol>
 <p>מה לגבי <span class="math inline">\([I]_B^E\)</span>? זהו חישוב יותר ארוך שדורש דירוג.</p>
 <p><span class="math display">\[[I]_B^E=\begin{pmatrix}
 \begin{array}{c}
@@ -1842,20 +1852,26 @@ S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
 \left[\begin{pmatrix}0\\0\\1\end{pmatrix}\right]_B\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}\]</span> לצורך חישוב וקטורי הקוארדינטות, נדרג את המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
-1 &amp; 1 &amp; 0 &amp; \vline &amp; 1 &amp; \vline &amp; 0 &amp; \vline &amp; 0 \\
-2 &amp; 3 &amp; 2 &amp; \vline &amp; 0 &amp; \vline &amp; 1 &amp; \vline &amp; 0 \\
-3 &amp; 7 &amp; 1 &amp; \vline &amp; 0 &amp; \vline &amp; 0 &amp; \vline &amp; 1
-\end{pmatrix}\]</span> נשים לב שזו בדיוק הדרך לחשב את המטריצה ההופכית של המטריצה שעמודותיה הן וקטורי <span class="math inline">\(B\)</span> (זה לא מקרי). לאחר דירוג קנוני נקבל: <span class="math display">\[\begin{pmatrix}
-1 &amp; 0 &amp; 0 &amp; \vline &amp; \frac{11}{7} &amp; \vline &amp; \frac{1}{7} &amp; \vline &amp; -\frac{2}{7} \\
-0 &amp; 1 &amp; 0 &amp; \vline &amp; -\frac{4}{7} &amp; \vline &amp; -\frac{1}{7} &amp; \vline &amp; \frac{2}{7} \\
-0 &amp; 0 &amp; 1 &amp; \vline &amp; -\frac{5}{7} &amp; \vline &amp; \frac{4}{7} &amp; \vline &amp; -\frac{1}{7}
-\end{pmatrix}\]</span> ולכן: <span class="math display">\[[I]_B^E=\begin{pmatrix}
+\end{pmatrix}\]</span></p>
+<p>לצורך חישוב וקטורי הקוארדינטות, נדרג את המטריצה הבאה: <span class="math display">\[\left(
+\begin{array}{ccc|c|c|c}
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+2 &amp; 3 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\
+3 &amp; 7 &amp; 1 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right)\]</span></p>
+<p>נשים לב שזו בדיוק הדרך לחשב את המטריצה ההופכית של המטריצה שעמודותיה הן וקטורי <span class="math inline">\(B\)</span> (זה לא מקרי). לאחר דירוג קנוני נקבל: <span class="math display">\[\left(
+\begin{array}{ccc|c|c|c}
+1 &amp; 0 &amp; 0 &amp; \frac{11}{7} &amp; \frac{1}{7} &amp; -\frac{2}{7} \\
+0 &amp; 1 &amp; 0 &amp; -\frac{4}{7} &amp; -\frac{1}{7} &amp; \frac{2}{7} \\
+0 &amp; 0 &amp; 1 &amp; -\frac{5}{7} &amp; \frac{4}{7} &amp; -\frac{1}{7}
+\end{array}
+\right)\]</span></p>
+<p>ולכן: <span class="math display">\[[I]_B^E=\begin{pmatrix}
 \frac{11}{7} &amp; \frac{1}{7} &amp; -\frac{2}{7} \\
 -\frac{4}{7} &amp; -\frac{1}{7} &amp; \frac{2}{7} \\
 -\frac{5}{7} &amp; \frac{4}{7} &amp; -\frac{1}{7}
-\end{pmatrix}\]</span></p></li>
-</ol>
+\end{pmatrix}\]</span></p>
 </div>
 <p>הדוגמה האחרונה היא הקדמה לטענה הבאה:</p>
 <div id="prp-rep-inverse" class="proposition theorem">
@@ -1885,12 +1901,12 @@ S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
 <p><span class="proof-title"><em>Proof</em>. </span>נשתמש בטענה <a href="#prp-rep-transition">10.64</a> עם <span class="math inline">\(C_1=B_1,C_2=B_2\)</span> ונקבל <span class="math display">\[.[T]_{B_2}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}[I]_{B_1}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}([I]_{B_2}^{B_1})^{-1}\]</span> השוויון האחרון נובע מטענה <a href="#prp-rep-inverse">10.62</a>.&nbsp;◻</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>בתרגיל <a href="./chapter_4.html#exr-similar-det">??</a> כבר עמדנו על אחד הקשרים בין מטריצה ריבועית <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> למטריצה <span class="math inline">\(PAP^{-1}\)</span> כאשר <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. ראינו כי <span class="math display">\[.\det(PAP^{-1})=\det(A)\]</span> בפרק הבא נגדיר באופן מסודר את המושג של דמיון מטריצות. <span class="math inline">\(PAP^{-1}\)</span> נקראת דומה ל- <span class="math inline">\(A\)</span> לפי הגדרה זו. במסקנה <a href="#cor-rep-similar">10.65</a> מדובר על <span class="math display">\[.A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}\]</span> פירוש הדבר שהמטריצות המייצגות <span class="math inline">\([T]_{B_1}^{B_1},[T]_{B_2}^{B_2}\)</span> (כל אחת היא מבסיס אחד לעצמו) של ה"ל <span class="math inline">\(T:V\to V\)</span>, הן מה שייקרא "דומות זו לזו". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.</p>
+<p><span class="proof-title"><em>Remark</em>. </span>בתרגיל <a href="./chapter_4.html#exr-similar-det">7.19</a> כבר עמדנו על אחד הקשרים בין מטריצה ריבועית <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> למטריצה <span class="math inline">\(PAP^{-1}\)</span> כאשר <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. ראינו כי <span class="math display">\[.\det(PAP^{-1})=\det(A)\]</span> בפרק הבא נגדיר באופן מסודר את המושג של דמיון מטריצות. <span class="math inline">\(PAP^{-1}\)</span> נקראת דומה ל- <span class="math inline">\(A\)</span> לפי הגדרה זו. במסקנה <a href="#cor-rep-similar">10.65</a> מדובר על <span class="math display">\[.A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}\]</span> פירוש הדבר שהמטריצות המייצגות <span class="math inline">\([T]_{B_1}^{B_1},[T]_{B_2}^{B_2}\)</span> (כל אחת היא מבסיס אחד לעצמו) של ה"ל <span class="math inline">\(T:V\to V\)</span>, הן מה שייקרא "דומות זו לזו". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.</p>
 </div>
 </section>
 <section id="שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת" class="level3" data-number="10.5.2">
 <h3 data-number="10.5.2" class="anchored" data-anchor-id="שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת"><span class="header-section-number">10.5.2</span> שחזור העתקה לינארית מתוך מטריצה מייצגת</h3>
-<p>יהיו <span class="math display">\[B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}\]</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. נניח שעבור <span class="math inline">\(T:V\to W\)</span> ידועה המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span>. איך נמצא נוסחה מפורשת ל- <span class="math inline">\(T\)</span>? העמודות של מטריצה זו הן בדיוק הוקטורים <span class="math display">\[.[T(v_1)]_C,...,[T(v_n)]_C\]</span> לכל <span class="math inline">\(1\leq j\leq n\)</span>, אם <span class="math display">\[,[T(v_j)]_C=\begin{pmatrix}a_{1j}\\ \vdots \\ a_{mj}\end{pmatrix}\]</span> אז לפי ההגדרה של וקטור קוארדינטות בהכרח מתקיים <span class="math display">\[.T(v_j)=a_{1j}w_1+...+a_{mj}w_m\]</span> בעזרת הנתונים האלה אפשר למצוא נוסחה מפורשת ל- <span class="math inline">\(T\)</span> לפי האלגוריתם של מציאת העתקה לינארית לפי בסיס (תת-פרק <a href="#sec-map-by-basis">10.??</a>). אבל יש דרך אחרת שקשורה למטריצות מעבר. היא דומה אך עשויה להיות יותר נוחה ומסודרת, ויותר הגיוני להשתמש בה כאשר מלכתחילה הנתון קשור למטריצה מייצגת.</p>
+<p>יהיו <span class="math display">\[B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}\]</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. נניח שעבור <span class="math inline">\(T:V\to W\)</span> ידועה המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span>. איך נמצא נוסחה מפורשת ל- <span class="math inline">\(T\)</span>? העמודות של מטריצה זו הן בדיוק הוקטורים <span class="math display">\[.[T(v_1)]_C,...,[T(v_n)]_C\]</span> לכל <span class="math inline">\(1\leq j\leq n\)</span>, אם <span class="math display">\[,[T(v_j)]_C=\begin{pmatrix}a_{1j}\\ \vdots \\ a_{mj}\end{pmatrix}\]</span> אז לפי ההגדרה של וקטור קוארדינטות בהכרח מתקיים <span class="math display">\[.T(v_j)=a_{1j}w_1+...+a_{mj}w_m\]</span> בעזרת הנתונים האלה אפשר למצוא נוסחה מפורשת ל- <span class="math inline">\(T\)</span> לפי האלגוריתם של מציאת העתקה לינארית לפי בסיס (תת-פרק <a href="#sec-map-by-basis">10.2</a>). אבל יש דרך אחרת שקשורה למטריצות מעבר. היא דומה אך עשויה להיות יותר נוחה ומסודרת, ויותר הגיוני להשתמש בה כאשר מלכתחילה הנתון קשור למטריצה מייצגת.</p>
 <p>הרעיון: לחשב את את <span class="math inline">\([T]_{E'}^E\)</span> כאשר <span class="math inline">\(E\)</span> הבסיס הסטנדרטי ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(E'\)</span> הבסיס הסטנדרטי ל- <span class="math inline">\(W\)</span>. ניתן לעשות זאת לפי טענה <a href="#prp-rep-transition">10.64</a> באופן הבא: <span class="math display">\[[T]_{E'}^E=[I]_{E'}^C[T]_C^B[I]_B^E=[I]_{E'}^C[T]_C^B([I]_E^B)^{-1}\]</span> נזכיר כי <span class="math inline">\([T]_C^B\)</span> נתונה, ואילו המטריצות <span class="math display">\[[I]_{E'}^C, [I]_E^B\]</span> מתקבלות באופן מיידי. לכן עיקר העבודה הוא החישוב של <span class="math inline">\(,([I]_E^B)^{-1}\)</span> ולבסוף חישוב המכפלה של שלוש מטריצות. ברגע שנקבל את <span class="math inline">\([T]_{E'}^E\)</span>, המעבר לנוסחה מפורשת יהיה מיידי כי הבסיסים סטנדרטיים. למעשה, אם נסמן <span class="math inline">\(A=[T]_{E'}^E\)</span> הרי שמתקיים <span class="math inline">\(T=T_A\)</span> כי <span class="math display">\[.T(v)=[T(v)]_{E'}=[T]_{E'}^E[v]_E=Av\]</span></p>
 <div class="exercise">
 <p>יהיו <span class="math display">\[B=\Set{\begin{pmatrix}1\\2\end{pmatrix},\begin{pmatrix}3\\1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}1\\-2\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}\]</span> בסיסים סדורים ל- <span class="math inline">\(\mathbb{R}^2\)</span>. מצאו ה"ל <span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}^2\)</span> המקיימת <span class="math display">\[.[T]_C^B=\begin{pmatrix}
@@ -2099,8 +2115,8 @@ x+y
 <p><span class="theorem-title"><strong>Proposition 10.16</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל, ויהיו <span class="math inline">\(B,C\)</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. אז <span class="math inline">\(T\)</span> היא איזומורפיזם אם ורק אם <span class="math inline">\([T]_C^B\)</span> הפיכה, ובמקרה זה מתקיים <span class="math display">\[.[T^{-1}]_B^C=([T]_C^B)^{-1}\]</span></em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>בכיוון אחד, נניח כי <span class="math inline">\(T\)</span> היא איזומורפיזם. לכן, היא הפיכה לפי טענה <a href="#prp-iso-invertible">10.75</a>. פירוש הדבר שקיימת <span class="math inline">\(T^{-1}\)</span> כך ש- <span class="math display">\[.T\circ T^{-1}=\mathop{\mathrm{Id}}_W\]</span> נסמן <span class="math inline">\(n=\dim(V)=\dim(W)\)</span>. לפי טענה <a href="#prp-rep-transition">10.64</a> נובע כי <span class="math display">\[.[T]_C^B[T^{-1}]_B^C=[T\circ T^{-1}]_C^C=[\mathop{\mathrm{Id}}_W]_C^C=I_{n}\]</span> המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span> היא מטריצה ריבועית מסדר <span class="math inline">\(n\times n\)</span>, ולכן היא הפיכה לפי החישוב לעיל וטענה <a href="./chapter_3.html#prp-invertible">??</a>. בנוסף, קיבלנו כי <span class="math display">\[.([T]_C^B)^{-1}=[T^{-1}]_B^C\]</span></p>
-<p>בכיוון השני, נניח כי <span class="math inline">\(T\)</span> אינה איזומורפיזם ונראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה. ניתן להניח כי <span class="math inline">\(\dim(V)=\dim(W)\)</span>, שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה. אם כן, ההנחה ש- <span class="math inline">\(T\)</span> אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט "שלישי חינם"). אז קיים <span class="math inline">\(0_V\neq v\in \mathop{\mathrm{Ker}}(T)\)</span>, ולכן נובע מטענה <a href="#prp-ker-image-rep">10.68</a> כי <span class="math display">\[.\underline{0}\neq[v]_B\in \mathop{\mathrm{N}}([T]_C^B)\]</span> זה מראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה לפי משפט <a href="./chapter_3.html#thm-invertible">??</a>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון אחד, נניח כי <span class="math inline">\(T\)</span> היא איזומורפיזם. לכן, היא הפיכה לפי טענה <a href="#prp-iso-invertible">10.75</a>. פירוש הדבר שקיימת <span class="math inline">\(T^{-1}\)</span> כך ש- <span class="math display">\[.T\circ T^{-1}=\mathop{\mathrm{Id}}_W\]</span> נסמן <span class="math inline">\(n=\dim(V)=\dim(W)\)</span>. לפי טענה <a href="#prp-rep-transition">10.64</a> נובע כי <span class="math display">\[.[T]_C^B[T^{-1}]_B^C=[T\circ T^{-1}]_C^C=[\mathop{\mathrm{Id}}_W]_C^C=I_{n}\]</span> המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span> היא מטריצה ריבועית מסדר <span class="math inline">\(n\times n\)</span>, ולכן היא הפיכה לפי החישוב לעיל וטענה <a href="./chapter_3.html#prp-invertible">6.73</a>. בנוסף, קיבלנו כי <span class="math display">\[.([T]_C^B)^{-1}=[T^{-1}]_B^C\]</span></p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(T\)</span> אינה איזומורפיזם ונראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה. ניתן להניח כי <span class="math inline">\(\dim(V)=\dim(W)\)</span>, שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה. אם כן, ההנחה ש- <span class="math inline">\(T\)</span> אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט "שלישי חינם"). אז קיים <span class="math inline">\(0_V\neq v\in \mathop{\mathrm{Ker}}(T)\)</span>, ולכן נובע מטענה <a href="#prp-ker-image-rep">10.68</a> כי <span class="math display">\[.\underline{0}\neq[v]_B\in \mathop{\mathrm{N}}([T]_C^B)\]</span> זה מראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה לפי משפט <a href="./chapter_3.html#thm-invertible">6.75</a>.&nbsp;◻</p>
 </div>
 <div class="exercise">
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. הוכיחו כי <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^n\)</span> היא איזומורפיזם אם ורק אם <span class="math inline">\(A\)</span> הפיכה. מצאו נוסחה ל- <span class="math inline">\(T_A^{-1}\)</span>.</p>

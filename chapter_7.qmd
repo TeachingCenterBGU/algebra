@@ -1098,12 +1098,12 @@ $(\text{א})\impliedby(\text{ג})+(\text{ב})$: לפי ההנחות מתקיים
  ◻
 :::
 ::: example
-יהיו $T,S:\mathbb{R}^2\to\mathbb{R}^2$ ה\"ל המקיימות את הנתונים הבאים: $$\begin{alignedat}{2}
+יהיו $T,S:\mathbb{R}^2\to\mathbb{R}^2$ ה"ל המקיימות את הנתונים הבאים: $$\begin{alignedat}{2}
 T\begin{pmatrix}1\\1\end{pmatrix}  &= \begin{pmatrix}2\\3\end{pmatrix},\quad &
 T\begin{pmatrix}1\\-1\end{pmatrix} &= \begin{pmatrix}3\\-1\end{pmatrix} \\
 S\begin{pmatrix}3\\1\end{pmatrix}  &= \begin{pmatrix}2\\2\end{pmatrix},\quad &
 S\begin{pmatrix}1\\3\end{pmatrix} &= \begin{pmatrix}0\\4\end{pmatrix}
-\end{alignedat}$$ ניתן למצוא נוסחאות ל- $S,T$ ולחשב את $S\circ T$, אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן: $$B=\Set{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}, \quad D=\Set{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}}$$ בחרנו את $B,C$ בהתאם לוקטורי הקלט של הנתונים, ואילו $D$ הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות $[S]_D^C,[T]_C^B$. תחילה: $$[T]_C^B=\begin{pmatrix}
+\end{alignedat}$$ניתן למצוא נוסחאות ל- $S,T$ ולחשב את $S\circ T$, אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן:$$B=\left\{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}\right\},\quad C=\left\{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}\right\}, \quad D=\left\{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}\right\}$$בחרנו את $B,C$ בהתאם לוקטורי הקלט של הנתונים, ואילו $D$ הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות $[S]_D^C,[T]_C^B$. תחילה:$$[T]_C^B=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
 \left[T\begin{pmatrix}1\\1\end{pmatrix}\right]_C\\[-0.4ex]
@@ -1127,22 +1127,28 @@ S\begin{pmatrix}1\\3\end{pmatrix} &= \begin{pmatrix}0\\4\end{pmatrix}
 \left[\begin{pmatrix}3\\-1\end{pmatrix}\right]_C\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}$$ נחשב את וקטורי הקוארדינטות ע\"י דירוג המטריצה המורחבת: $$\begin{pmatrix}
-3 & 1 & \vline & 2 & \vline & 3 \\
-1 & 3 & \vline & 3 & \vline & -1
-\end{pmatrix}$$
+\end{pmatrix}$$ נחשב את וקטורי הקוארדינטות ע"י דירוג המטריצה המורחבת: 
+$$\left(
+\begin{array}{cc|c|c}
+3 & 1 & 2 & 3 \\
+1 & 3 & 3 & -1
+\end{array}
+\right)$$
 
-לאחר דירוג קנוני נקבל את המטריצה הבאה: $$\begin{pmatrix}
-1 & 0 & \vline & \frac{3}{8} & \vline & \frac{5}{4} \\
-0 & 1 & \vline & \frac{7}{8} & \vline & -\frac{3}{4}
-\end{pmatrix}$$
+לאחר דירוג קנוני נקבל את המטריצה הבאה: 
+$$\left(
+\begin{array}{cc|c|c}
+1 & 0 & \frac{3}{8} & \frac{5}{4} \\
+0 & 1 & \frac{7}{8} & -\frac{3}{4}
+\end{array}
+\right)$$
 
 ולכן: $$[T]_C^B=\begin{pmatrix}
 \frac{3}{8} & \frac{5}{4} \\
 \frac{7}{8} & -\frac{3}{4}
 \end{pmatrix}$$
 
-נעבור למטריצה המייצגת הבאה ונקבל $$.[S]_D^C=\begin{pmatrix}
+נעבור למטריצה המייצגת הבאה ונקבל $$[S]_D^C=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
 \left[S\begin{pmatrix}3\\1\end{pmatrix}\right]_C\\[-0.4ex]
@@ -1166,18 +1172,28 @@ S\begin{pmatrix}1\\3\end{pmatrix} &= \begin{pmatrix}0\\4\end{pmatrix}
 \left[\begin{pmatrix}0\\4\end{pmatrix}\right]_D\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}$$ שוב נחשב את וקטורי הקוארדינטות ע\"י דירוג מטריצה מורחבת: $$\begin{pmatrix}
-2 & 1 & \vline & 2 & \vline & 0 \\
--1 & 2 & \vline & 2 & \vline & 4
-\end{pmatrix}$$
+\end{pmatrix}$$ שוב נחשב את וקטורי הקוארדינטות ע"י דירוג מטריצה מורחבת: 
+$$\left(
+\begin{array}{cc|c|c}
+2 & 1 & 2 & 0 \\
+-1 & 2 & 2 & 4
+\end{array}
+\right)$$
 :::
-צורתה המדורגת קנונית היא: $$\begin{pmatrix}
-1 & 0 & \vline & \frac{2}{5} & \vline & -\frac{4}{5} \\
-0 & 1 & \vline & \frac{6}{5} & \vline & \frac{8}{5}
-\end{pmatrix}$$ מכאן: $$[S]_D^C=\begin{pmatrix}
+
+צורתה המדורגת קנונית היא: 
+$$\left(
+\begin{array}{cc|c|c}
+1 & 0 & \frac{2}{5} & -\frac{4}{5} \\
+0 & 1 & \frac{6}{5} & \frac{8}{5}
+\end{array}
+\right)$$
+
+מכאן: $$[S]_D^C=\begin{pmatrix}
 \frac{2}{5} & -\frac{4}{5} \\
 \frac{6}{5} & \frac{8}{5}
-\end{pmatrix}$$ לבסוף, לפי טענה [10.57](#prp-rep-matrix) נובע כי $$.[S\circ T]_D^B=[S]_D^C[T]_C^B=\begin{pmatrix}
+\end{pmatrix}$$ לבסוף, לפי טענה [10.57](#prp-rep-matrix) נובע כי: 
+$$[S\circ T]_D^B=[S]_D^C[T]_C^B=\begin{pmatrix}
 \frac{2}{5} & -\frac{4}{5} \\
 \frac{6}{5} & \frac{8}{5}
 \end{pmatrix}\begin{pmatrix}
@@ -1411,39 +1427,52 @@ S\begin{pmatrix}1\\3\end{pmatrix} &= \begin{pmatrix}0\\4\end{pmatrix}
     \end{pmatrix}
     \end{aligned}$$
 
-    מה לגבי $[I]_B^E$? זהו חישוב יותר ארוך שדורש דירוג.
+ מה לגבי $[I]_B^E$? זהו חישוב יותר ארוך שדורש דירוג.
 
-    $$[I]_B^E=\begin{pmatrix}
-    \begin{array}{c}
-    |\\[-0.4ex]
-    \left[\begin{pmatrix}1\\0\\0\end{pmatrix}\right]_B\\[-0.4ex]
-    |
-    \end{array}
-    &
-    \begin{array}{c}
-    |\\[-0.4ex]
-    \left[\begin{pmatrix}0\\1\\0\end{pmatrix}\right]_B\\[-0.4ex]
-    |
-    \end{array}
-    &
-    \begin{array}{c}
-    |\\[-0.4ex]
-    \left[\begin{pmatrix}0\\0\\1\end{pmatrix}\right]_B\\[-0.4ex]
-    |
-    \end{array}
-    \end{pmatrix}$$ לצורך חישוב וקטורי הקוארדינטות, נדרג את המטריצה הבאה: $$\begin{pmatrix}
-    1 & 1 & 0 & \vline & 1 & \vline & 0 & \vline & 0 \\
-    2 & 3 & 2 & \vline & 0 & \vline & 1 & \vline & 0 \\
-    3 & 7 & 1 & \vline & 0 & \vline & 0 & \vline & 1
-    \end{pmatrix}$$ נשים לב שזו בדיוק הדרך לחשב את המטריצה ההופכית של המטריצה שעמודותיה הן וקטורי $B$ (זה לא מקרי). לאחר דירוג קנוני נקבל: $$\begin{pmatrix}
-    1 & 0 & 0 & \vline & \frac{11}{7} & \vline & \frac{1}{7} & \vline & -\frac{2}{7} \\
-    0 & 1 & 0 & \vline & -\frac{4}{7} & \vline & -\frac{1}{7} & \vline & \frac{2}{7} \\
-    0 & 0 & 1 & \vline & -\frac{5}{7} & \vline & \frac{4}{7} & \vline & -\frac{1}{7}
-    \end{pmatrix}$$ ולכן: $$[I]_B^E=\begin{pmatrix}
-    \frac{11}{7} & \frac{1}{7} & -\frac{2}{7} \\
-    -\frac{4}{7} & -\frac{1}{7} & \frac{2}{7} \\
-    -\frac{5}{7} & \frac{4}{7} & -\frac{1}{7}
-    \end{pmatrix}$$
+$$[I]_B^E=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}1\\0\\0\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\1\\0\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\0\\1\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}$$
+
+לצורך חישוב וקטורי הקוארדינטות, נדרג את המטריצה הבאה: 
+$$\left(
+\begin{array}{ccc|c|c|c}
+1 & 1 & 0 & 1 & 0 & 0 \\
+2 & 3 & 2 & 0 & 1 & 0 \\
+3 & 7 & 1 & 0 & 0 & 1
+\end{array}
+\right)$$
+
+נשים לב שזו בדיוק הדרך לחשב את המטריצה ההופכית של המטריצה שעמודותיה הן וקטורי $B$ (זה לא מקרי). לאחר דירוג קנוני נקבל: 
+$$\left(
+\begin{array}{ccc|c|c|c}
+1 & 0 & 0 & \frac{11}{7} & \frac{1}{7} & -\frac{2}{7} \\
+0 & 1 & 0 & -\frac{4}{7} & -\frac{1}{7} & \frac{2}{7} \\
+0 & 0 & 1 & -\frac{5}{7} & \frac{4}{7} & -\frac{1}{7}
+\end{array}
+\right)$$
+
+ולכן: 
+$$[I]_B^E=\begin{pmatrix}
+\frac{11}{7} & \frac{1}{7} & -\frac{2}{7} \\
+-\frac{4}{7} & -\frac{1}{7} & \frac{2}{7} \\
+-\frac{5}{7} & \frac{4}{7} & -\frac{1}{7}
+\end{pmatrix}$$
 :::
 הדוגמה האחרונה היא הקדמה לטענה הבאה:
 
@@ -1476,11 +1505,11 @@ S\begin{pmatrix}1\\3\end{pmatrix} &= \begin{pmatrix}0\\4\end{pmatrix}
 נשתמש בטענה [10.64](#prp-rep-transition) עם $C_1=B_1,C_2=B_2$ ונקבל $$.[T]_{B_2}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}[I]_{B_1}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}([I]_{B_2}^{B_1})^{-1}$$ השוויון האחרון נובע מטענה [10.62](#prp-rep-inverse). ◻
 :::
 ::: remark
-בתרגיל [??](chapter_4.qmd#exr-similar-det) כבר עמדנו על אחד הקשרים בין מטריצה ריבועית $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ למטריצה $PAP^{-1}$ כאשר $P\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. ראינו כי $$.\det(PAP^{-1})=\det(A)$$ בפרק הבא נגדיר באופן מסודר את המושג של דמיון מטריצות. $PAP^{-1}$ נקראת דומה ל- $A$ לפי הגדרה זו. במסקנה [10.65](#cor-rep-similar) מדובר על $$.A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}$$ פירוש הדבר שהמטריצות המייצגות $[T]_{B_1}^{B_1},[T]_{B_2}^{B_2}$ (כל אחת היא מבסיס אחד לעצמו) של ה\"ל $T:V\to V$, הן מה שייקרא \"דומות זו לזו\". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.
+בתרגיל [7.19](chapter_4.qmd#exr-similar-det) כבר עמדנו על אחד הקשרים בין מטריצה ריבועית $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ למטריצה $PAP^{-1}$ כאשר $P\in\mathbb{M}_{n\times n}(\mathbb{F})$ הפיכה. ראינו כי $$.\det(PAP^{-1})=\det(A)$$ בפרק הבא נגדיר באופן מסודר את המושג של דמיון מטריצות. $PAP^{-1}$ נקראת דומה ל- $A$ לפי הגדרה זו. במסקנה [10.65](#cor-rep-similar) מדובר על $$.A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}$$ פירוש הדבר שהמטריצות המייצגות $[T]_{B_1}^{B_1},[T]_{B_2}^{B_2}$ (כל אחת היא מבסיס אחד לעצמו) של ה\"ל $T:V\to V$, הן מה שייקרא \"דומות זו לזו\". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.
 :::
 ### שחזור העתקה לינארית מתוך מטריצה מייצגת
 
-יהיו $$B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}$$ בסיסים סדורים ל- $V,W$ בהתאמה. נניח שעבור $T:V\to W$ ידועה המטריצה המייצגת $[T]_C^B$. איך נמצא נוסחה מפורשת ל- $T$? העמודות של מטריצה זו הן בדיוק הוקטורים $$.[T(v_1)]_C,...,[T(v_n)]_C$$ לכל $1\leq j\leq n$, אם $$,[T(v_j)]_C=\begin{pmatrix}a_{1j}\\ \vdots \\ a_{mj}\end{pmatrix}$$ אז לפי ההגדרה של וקטור קוארדינטות בהכרח מתקיים $$.T(v_j)=a_{1j}w_1+...+a_{mj}w_m$$ בעזרת הנתונים האלה אפשר למצוא נוסחה מפורשת ל- $T$ לפי האלגוריתם של מציאת העתקה לינארית לפי בסיס (תת-פרק [10.??](#sec-map-by-basis)). אבל יש דרך אחרת שקשורה למטריצות מעבר. היא דומה אך עשויה להיות יותר נוחה ומסודרת, ויותר הגיוני להשתמש בה כאשר מלכתחילה הנתון קשור למטריצה מייצגת.
+יהיו $$B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}$$ בסיסים סדורים ל- $V,W$ בהתאמה. נניח שעבור $T:V\to W$ ידועה המטריצה המייצגת $[T]_C^B$. איך נמצא נוסחה מפורשת ל- $T$? העמודות של מטריצה זו הן בדיוק הוקטורים $$.[T(v_1)]_C,...,[T(v_n)]_C$$ לכל $1\leq j\leq n$, אם $$,[T(v_j)]_C=\begin{pmatrix}a_{1j}\\ \vdots \\ a_{mj}\end{pmatrix}$$ אז לפי ההגדרה של וקטור קוארדינטות בהכרח מתקיים $$.T(v_j)=a_{1j}w_1+...+a_{mj}w_m$$ בעזרת הנתונים האלה אפשר למצוא נוסחה מפורשת ל- $T$ לפי האלגוריתם של מציאת העתקה לינארית לפי בסיס (תת-פרק [10.2](#sec-map-by-basis)). אבל יש דרך אחרת שקשורה למטריצות מעבר. היא דומה אך עשויה להיות יותר נוחה ומסודרת, ויותר הגיוני להשתמש בה כאשר מלכתחילה הנתון קשור למטריצה מייצגת.
 
 הרעיון: לחשב את את $[T]_{E'}^E$ כאשר $E$ הבסיס הסטנדרטי ל- $V$, ו- $E'$ הבסיס הסטנדרטי ל- $W$. ניתן לעשות זאת לפי טענה [10.64](#prp-rep-transition) באופן הבא: $$[T]_{E'}^E=[I]_{E'}^C[T]_C^B[I]_B^E=[I]_{E'}^C[T]_C^B([I]_E^B)^{-1}$$ נזכיר כי $[T]_C^B$ נתונה, ואילו המטריצות $$[I]_{E'}^C, [I]_E^B$$ מתקבלות באופן מיידי. לכן עיקר העבודה הוא החישוב של $,([I]_E^B)^{-1}$ ולבסוף חישוב המכפלה של שלוש מטריצות. ברגע שנקבל את $[T]_{E'}^E$, המעבר לנוסחה מפורשת יהיה מיידי כי הבסיסים סטנדרטיים. למעשה, אם נסמן $A=[T]_{E'}^E$ הרי שמתקיים $T=T_A$ כי $$.T(v)=[T(v)]_{E'}=[T]_{E'}^E[v]_E=Av$$
 
@@ -1661,9 +1690,9 @@ x+y
 *תהי $T:V\to W$ ה\"ל, ויהיו $B,C$ בסיסים סדורים ל- $V,W$ בהתאמה. אז $T$ היא איזומורפיזם אם ורק אם $[T]_C^B$ הפיכה, ובמקרה זה מתקיים $$.[T^{-1}]_B^C=([T]_C^B)^{-1}$$*
 :::
 ::: proof
-בכיוון אחד, נניח כי $T$ היא איזומורפיזם. לכן, היא הפיכה לפי טענה [10.75](#prp-iso-invertible). פירוש הדבר שקיימת $T^{-1}$ כך ש- $$.T\circ T^{-1}=\mathop{\mathrm{Id}}_W$$ נסמן $n=\dim(V)=\dim(W)$. לפי טענה [10.64](#prp-rep-transition) נובע כי $$.[T]_C^B[T^{-1}]_B^C=[T\circ T^{-1}]_C^C=[\mathop{\mathrm{Id}}_W]_C^C=I_{n}$$ המטריצה המייצגת $[T]_C^B$ היא מטריצה ריבועית מסדר $n\times n$, ולכן היא הפיכה לפי החישוב לעיל וטענה [??](chapter_3.qmd#prp-invertible). בנוסף, קיבלנו כי $$.([T]_C^B)^{-1}=[T^{-1}]_B^C$$
+בכיוון אחד, נניח כי $T$ היא איזומורפיזם. לכן, היא הפיכה לפי טענה [10.75](#prp-iso-invertible). פירוש הדבר שקיימת $T^{-1}$ כך ש- $$.T\circ T^{-1}=\mathop{\mathrm{Id}}_W$$ נסמן $n=\dim(V)=\dim(W)$. לפי טענה [10.64](#prp-rep-transition) נובע כי $$.[T]_C^B[T^{-1}]_B^C=[T\circ T^{-1}]_C^C=[\mathop{\mathrm{Id}}_W]_C^C=I_{n}$$ המטריצה המייצגת $[T]_C^B$ היא מטריצה ריבועית מסדר $n\times n$, ולכן היא הפיכה לפי החישוב לעיל וטענה [6.73](chapter_3.qmd#prp-invertible). בנוסף, קיבלנו כי $$.([T]_C^B)^{-1}=[T^{-1}]_B^C$$
 
-בכיוון השני, נניח כי $T$ אינה איזומורפיזם ונראה כי $[T]_C^B$ אינה הפיכה. ניתן להניח כי $\dim(V)=\dim(W)$, שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה. אם כן, ההנחה ש- $T$ אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט \"שלישי חינם\"). אז קיים $0_V\neq v\in \mathop{\mathrm{Ker}}(T)$, ולכן נובע מטענה [10.68](#prp-ker-image-rep) כי $$.\underline{0}\neq[v]_B\in \mathop{\mathrm{N}}([T]_C^B)$$ זה מראה כי $[T]_C^B$ אינה הפיכה לפי משפט [??](chapter_3.qmd#thm-invertible). ◻
+בכיוון השני, נניח כי $T$ אינה איזומורפיזם ונראה כי $[T]_C^B$ אינה הפיכה. ניתן להניח כי $\dim(V)=\dim(W)$, שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה. אם כן, ההנחה ש- $T$ אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט \"שלישי חינם\"). אז קיים $0_V\neq v\in \mathop{\mathrm{Ker}}(T)$, ולכן נובע מטענה [10.68](#prp-ker-image-rep) כי $$.\underline{0}\neq[v]_B\in \mathop{\mathrm{N}}([T]_C^B)$$ זה מראה כי $[T]_C^B$ אינה הפיכה לפי משפט [6.75](chapter_3.qmd#thm-invertible). ◻
 :::
 ::: exercise
 תהי $A\in\mathbb{M}_{n\times n}(\mathbb{F})$. הוכיחו כי $T_A:\mathbb{F}^n\to\mathbb{F}^n$ היא איזומורפיזם אם ורק אם $A$ הפיכה. מצאו נוסחה ל- $T_A^{-1}$.
