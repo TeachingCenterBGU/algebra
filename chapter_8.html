@@ -392,7 +392,7 @@ $A$}\]</span></em></p></li>
 v\in V_{\lambda} &amp;\iff Av=\lambda v \iff \lambda v-Av=\underline{0} \\
 &amp;\iff (\lambda I_n-A)v=\underline{0} \iff v\in\mathop{\mathrm{N}}(\lambda I_n-A)
 \end{aligned}\]</span> קיבלנו כי <span class="math inline">\(V_{\lambda}=\mathop{\mathrm{N}}(\lambda I_n-A)\)</span>. בפרט, זהו תת-מרחב של <span class="math inline">\(\mathbb{F}^n\)</span>.</p></li>
-<li><p>לפי ההגדרה, <span class="math inline">\(\lambda\)</span> הוא ע"ע של <span class="math inline">\(A\)</span> אם ורק אם קיים <span class="math inline">\(v\neq\underline{0}\)</span> כך ש- <span class="math inline">\(Av=\lambda v\)</span>. התנאי האחרון בדיוק שקול לתנאי <span class="math inline">\(V_{\lambda}\neq\Set{\underline{0}}\)</span>. לפי הסעיף הקודם ומשפט <a href="./chapter_3.html#thm-invertible2">??</a> עבור המטריצה <span class="math inline">\(\lambda I_n-A\)</span>, מתקיים: <span class="math display">\[\begin{aligned}
+<li><p>לפי ההגדרה, <span class="math inline">\(\lambda\)</span> הוא ע"ע של <span class="math inline">\(A\)</span> אם ורק אם קיים <span class="math inline">\(v\neq\underline{0}\)</span> כך ש- <span class="math inline">\(Av=\lambda v\)</span>. התנאי האחרון בדיוק שקול לתנאי <span class="math inline">\(V_{\lambda}\neq\Set{\underline{0}}\)</span>. לפי הסעיף הקודם ומשפט <a href="./chapter_3.html#thm-invertible">6.75</a> עבור המטריצה <span class="math inline">\(\lambda I_n-A\)</span>, מתקיים: <span class="math display">\[\begin{aligned}
 V_{\lambda}\neq\Set{\underline{0}} &amp;\iff \mathop{\mathrm{N}}(\lambda I_n-A)\neq {\underline{0}} \iff \text{אינה הפיכה} \, \lambda I_n-A \\
 &amp;\iff \det(\lambda I_n-A)=0
 \end{aligned}\]</span></p></li>
@@ -427,7 +427,7 @@ V_{\lambda}\neq\Set{\underline{0}} &amp;\iff \mathop{\mathrm{N}}(\lambda I_n-A)\
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. הוכיחו כי <span class="math inline">\(0\)</span> הוא ע"ע של <span class="math inline">\(A\)</span> אם ורק אם <span class="math inline">\(A\)</span> אינה הפיכה.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>לפי משפט <a href="./chapter_3.html#thm-invertible2">??</a> מתקיים: <span class="math display">\[\text{$A$ אינה הפיכה} \iff \exists\thinspace v\neq\underline{0}\,:\,Av=\underline{0}=0\cdot v\iff \text{$0$
+<p><span class="proof-title"><em>Proof</em>. </span>לפי משפט <a href="./chapter_3.html#thm-invertible2">6.75</a> מתקיים: <span class="math display">\[\text{$A$ אינה הפיכה} \iff \exists\thinspace v\neq\underline{0}\,:\,Av=\underline{0}=0\cdot v\iff \text{$0$
 הוא ע"ע של
 $A$}\]</span>&nbsp;◻</p>
 </div>
@@ -653,7 +653,7 @@ V_5&amp;=\mathop{\mathrm{N}}(5I_3-A)=\mathop{\mathrm{N}}\begin{pmatrix}
 <p>לפי הנתון, קיימת <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה כך ש- <span class="math display">\[.A=PBP^{-1}\]</span></p>
 <ol type="1">
 <li><p>יהי <span class="math inline">\(\lambda\in\mathbb{F}\)</span>. מתקיים <span class="math display">\[.P(\lambda I_n-B)P^{-1}=\lambda PP^{-1}-PBP^{-1}=\lambda I_n-A\]</span> לכן, שתי המטריצות דומות.</p></li>
-<li><p>זו מסקנה מהסעיף הקודם ותרגיל <a href="./chapter_4.html#exr-similar-det">??</a>. דטרמיננטות של מטריצות דומות הן שוות, ולכן <span class="math display">\[.p_A(x)=\det(xI_n-A)=\det(xI_n-B)=p_B(x)\]</span></p></li>
+<li><p>זו מסקנה מהסעיף הקודם ותרגיל <a href="./chapter_4.html#exr-similar-det">7.19</a>. דטרמיננטות של מטריצות דומות הן שוות, ולכן <span class="math display">\[.p_A(x)=\det(xI_n-A)=\det(xI_n-B)=p_B(x)\]</span></p></li>
 <li><p>לפי הסעיף הקודם וטענה <a href="#prp-eigen-det">11.4</a>, נובע כי <span class="math display">\[.\text{$\lambda$
 הוא ע"ע של
 $A$} \iff p_A(\lambda)=0 \iff p_B(\lambda)=0 \iff \text{$\lambda$
@@ -752,7 +752,7 @@ v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
 <p><span class="theorem-title"><strong>Proposition 11.3</strong></span> <em>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. נניח כי <span class="math inline">\(v_1,...,v_k\)</span> מתאימים לע"ע שונים <span class="math inline">\(\lambda_1,...,\lambda_k\in\mathbb{F}\)</span>. אז בהכרח <span class="math inline">\(\Set{v_1,...,v_k}\)</span> בת"ל.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>נניח בשלילה כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל. לפי טענה <a href="./chapter_5.html#prp-linear-dependence">??</a> קיים <span class="math inline">\(2\leq i\leq k\)</span> מינימלי כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>, כלומר קיימים <span class="math inline">\(\alpha_1,...,\alpha_{i-1}\in\mathbb{F}\)</span> עבורם מתקיים</p>
+<p><span class="proof-title"><em>Proof</em>. </span>נניח בשלילה כי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> ת"ל. לפי טענה <a href="./chapter_5.html#prp-linear-dependence">8.49</a> קיים <span class="math inline">\(2\leq i\leq k\)</span> מינימלי כך ש- <span class="math inline">\(v_i\in\mathop{\mathrm{Span}}(v_1,...,v_{i-1})\)</span>, כלומר קיימים <span class="math inline">\(\alpha_1,...,\alpha_{i-1}\in\mathbb{F}\)</span> עבורם מתקיים</p>
 <p><span id="eq-eigenvalues-1"><span class="math display">\[
 .v_i=\alpha_1 v_1+...+\alpha_{i-1}v_{i-1}
 \tag{11.1}\]</span></span></p>
