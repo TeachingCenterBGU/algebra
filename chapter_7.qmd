@@ -517,7 +517,7 @@ T(v_1)=T(v_2) &\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
     \mathop{\mathrm{Col}}(A)=\mathbb{F}^m &\iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על} 
     \end{aligned}$$
 
-2.  עבור $n=m$ ידוע כי (לפי משפט [??](chapter_3.qmd#thm-invertible2)) $$,\mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \text{$A$ הפיכה}$$ ולכן במקרה זה מתקיים $$.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}$$
+2.  עבור $n=m$ ידוע כי (לפי משפט [6.75](chapter_3.qmd#thm-invertible)) $$,\mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \text{$A$ הפיכה}$$ ולכן במקרה זה מתקיים $$.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}$$
 
  ◻
 :::
