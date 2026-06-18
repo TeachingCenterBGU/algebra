@@ -39,9 +39,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -147,6 +147,7 @@ $19$
 \end{example}
 
 \begin{definition}
+\adddeftolist{מרחב המטריצות $\M_{m\times n}(\F)$}
 נגדיר את קבוצת כל המטריצות מסדר 
 $m\times n$
 מעל
@@ -239,6 +240,7 @@ $\R,\C$
 $\F^n$.
 
 \begin{definition}
+\adddeftolist{חיבור וקטורי וכפל בסקלר במרחב $\F^n$}
 עבור וקטורים
 $ה=(a_1,...,a_n)\in\F^n,w=(b_1,...,b_n)\in\F^n$
 וסקלר
@@ -263,6 +265,7 @@ $$
 \end{definition}
 
 \begin{definition}
+\adddeftolist{חיבור מטריצות וכפל בסקלר}
 עבור
 $A,B\in\M_{m\times n}(\F)$
 וסקלר
@@ -479,6 +482,7 @@ $$
 \end{example}
 
 \begin{definition}
+\adddeftolist{מטריצת האפס $0_{m\times n}$}
 לכל 
 $m,n\in\N$
 נגדיר את מטריצת האפס מסדר
@@ -495,6 +499,7 @@ $$
 \end{definition}
 
 \begin{proposition}
+\addpropositiontolist{תכונות של פעולות על מטריצות}
 יהיו 
 $A,B,C\in\M_{m\times n}(\F)$
 ו-
@@ -537,7 +542,7 @@ $$A+\0_{m\times n}=A$$
 
 
 \item 
-$$A-A=0$$
+$$A-A=0_{m\times n}$$
 
 
 \end{enumerate}
@@ -573,7 +578,7 @@ $1\leq i\leq m, 1\leq j\leq n$,
 ולכן
 $$,A+\0_{m\times n}=A$$
 
-ההוכחות של שאר הסעיפים דומות, כאשר הרעיון הכללי הוא שימוש ב-
+ההוכחות של שאר הסעיפים דומות, כאשר הרעיון הכללי הוא שימוש בהערה
 \ref{remark:entry-formula}
 והתכונות המתאימות של חיבור/כפל ב-
 $\F$.
@@ -643,6 +648,7 @@ $\Sigma$
 לסכימה (שאולי כבר מוכר).
 
 \begin{definition}
+\adddeftolist{סכימה עם $\Sigma$}
 בהינתן
 $a_1,a_2,...,a_n\in\F$
 נסמן את סכומם בעזרת כתיבה עם
@@ -660,6 +666,8 @@ $l$
 $\Set{1,2,3,\cdots,n}$
 וכל הצבה תורמת איבר לסכום.
 
+\end{definition}
+
 \begin{example}
 במקרה
 $a_l=l$
@@ -670,6 +678,7 @@ $$
 \end{example}
 
 \begin{definition}
+\adddeftolist{כפל מטריצה בוקטור עמודה}
 בהינתן
 $A\in\M_{m\times n}(\F)$
 ו-
@@ -873,6 +882,7 @@ $$
 \end{solution}
 
 \begin{proposition}\label{prop:matrix-vector}
+\addpropositiontolist{תכונות של כפל מטריצה בוקטור עמודה}
 יהיו
 $A,B\in\M_{m\times n}(\F)$,
 $v,w\in\F^n$
@@ -995,8 +1005,9 @@ $Av$):
 \end{figure}
 
 \begin{proposition}
+\addpropositiontolist{תכונות של קבוצת פתרונות לממ"ל הומוגנית}
 תהי
-$Ax=0$
+$Ax=\underline{0}$
 ממ"ל הומוגנית.
 \begin{enumerate}[label=\alph*.]
 \item
@@ -1030,7 +1041,7 @@ $v,w\in\F^n$
 \ref{prop:matrix-vector}
 מתקיים
 $$
-.A(v+w)=Av+Aw=0+0=0
+.A(v+w)=Av+Aw=\underline{0}+\underline{0}=\underline{0}
 $$
 כלומר
 $v+w$
@@ -1057,15 +1068,16 @@ $\alpha v$
 \end{proof}
 
 \begin{proposition}
+\addpropositiontolist{הקשר בין קבוצות הפתרונות של ממ"ל לא הומוגנית והומוגנית}
 תהי
 $Ax=b$
 ממ"ל לא הומוגנית. נניח שקיים לה פתרון (לא בהכרח יחיד)
 $v_0\in\F^n$.
 אז מתקיים הקשר הבא בין קבוצת הפתרונות של הממ"ל הלא הומוגנית לקבוצת הפתרונות של הממ"ל ההומוגנית
-$Ax=0$:
+$Ax=\underline{0}$:
 
 $$
-.\Set{x\in\F^n|Ax=b}=\Set{v_0+y|y\in\F^n,Ay=0}
+.\Set{x\in\F^n|Ax=b}=\Set{v_0+y|y\in\F^n,Ay=\underline{0}}
 $$
 \end{proposition}
 
@@ -1112,7 +1124,7 @@ $\supseteq$:
 יהי 
 $y\in\F^n$
 כך ש-
-$Ay=0$.
+$Ay=\underline{0}$.
 אז מתקיים
 $$
 ,A(v_0+y)=Av_0+Ay=b+0=b
@@ -1134,22 +1146,21 @@ $y=x-v_0$.
 הוא פתרון של הממ"ל ההומוגנית:
 
 $$
-.Ay=A(x-v_0)=Ax-Av_0=b-b=0
+.Ay=A(x-v_0)=Ax-Av_0=b-b=\underline{0}
 $$
 
 לכן
 
 $$
-.x=v_0+y\in\Set{x_0+y|y\in\F^n,Ay=0}
+.x=v_0+y\in\Set{x_0+y|y\in\F^n,Ay=\underline{0}}
 $$
 
 \end{proof}
 
 \subsection{כפל מטריצות}
 
-\end{definition}
-
 \begin{definition}
+\adddeftolist{כפל מטריצות}
 בהינתן
 $A\in\M_{m\times k}(\F),B\in\M_{k\times n}(\F)$
 נגדיר את מטריצת הכפל
@@ -1457,6 +1468,7 @@ $$
 \end{solution}
 
 \begin{proposition}\label{prop:product-column}
+\addpropositiontolist{כפל מטריצות ככפל המטריצה השמאלית בוקטורי העמודה של המטריצה הימנית}
 יהיו
 $A\in\M_{m\times k}(\F), B\in\M_{k\times n}(\F)$.
 נניח שהעמודות של
@@ -1512,6 +1524,7 @@ $Av_j$.
 \end{proof}
 
 \begin{proposition}\label{prop:matrix-multiplication}
+\addpropositiontolist{תכונות של כפל מטריצות}
 יהיו
 $A_1,A_2\in\M_{m\times n}(\F)$,
 $B_1,B_2\in\M_{n\times p}(\F)$,
@@ -1608,6 +1621,7 @@ $$
 \end{proof}
 
 \begin{definition}
+\adddeftolist{מטריצת היחידה $I_n$}
 מטריצת היחידה מסדר 
 $n\times n$
 (אפשר גם לומר מסדר $n$)
@@ -1675,6 +1689,7 @@ $1$
 במובן של ניטרליות ביחס לכפל. ליתר דיוק:
 
 \begin{proposition}
+\addpropositiontolist{תכונות של מטריצת היחידה}
 לכל 
 $A\in\M_{m\times n}(\F)$
 מתקיים
@@ -1731,6 +1746,7 @@ $n\times n$.
 ניתן לעשות המרה בין שורות לעמודות. פעולה זו נקראת שחלוף.
 
 \begin{definition}
+\adddeftolist{שחלוף}
 תהי
 $A\in\M_{m\times n}(\F)$. 
 נגדיר את המטריצה המשוחלפת
@@ -1807,6 +1823,7 @@ $$
 
 
 \begin{proposition}\label{prop:transpose}
+\addpropositiontolist{תכונות של שחלוף}
 לכל 
 $A,B\in\M_{m\times n}(\F), C\in\M_{n\times k}(\F)$
 ולכל
@@ -2102,6 +2119,7 @@ $$
 מטריצות ריבועיות הן סוג נפוץ של מטריצות שניתקל בהן לאורך הקורס. כשמן כן הן - מטריצות שנראות כמו ריבוע עם מספרים בתוכו. הרבה מטריצות בקורס יהיו ריבועיות.
 
 \begin{definition}
+\adddeftolist{מטריצה ריבועית}
 מטריצה 
 $A$
 נקראת ריבועית אם מספר השורות שלה שווה למספר העמודות, כלומר אם קיים 
@@ -2156,7 +2174,8 @@ $\M_{n\times n}(F)$
 סגורה לחיבור, חיסור וכפל.
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{def:matrix-polynomial}
+\adddeftolist{חזקות ופולינום של מטריצה}
 תהי 
 $A\in\M_{n\times n}(\F)$.
 אז נגדיר 
@@ -2243,7 +2262,7 @@ $2$
 יש אינסוף שורשים. בקורס שלנו אסור להוציא שורש של מטריצה כי זו לא פעולה שנגדיר (לפעמים יש אינסוף שורשים, לפעמים יש מספר סופי כלשהו של שורשים, ולפעמים אין שורש).
 
 באופן דומה, מתקיים
-$B^2=0$
+$B^2=\0_{2\times 2}$
 עבור
 $$
 .B=\begin{pmatrix}
@@ -2256,23 +2275,23 @@ $\0_{2\times 2}$
 שורש שאינו עצמה, זה גם מראה שכלל הצמצום למטריצות לא מתקיים באופן כללי.
 
 $$
-B\cdot B=B\cdot 0 \nRightarrow B=0
+B\cdot B=B\cdot \0_{n\times n} \nRightarrow B=\0_{n\times n}
 $$
 
 לא ניתן "לחלק" במטריצה, אלא אם כן היא מסוג מסוים שעוד לא הגדרנו (מטריצה הפיכה). זה לא המקרה פה.
 
 \end{remark}
 
-\subsection{מטריצות סימטריות ואנטי-סימטריות}
+\subsection{מטריצות סימטריות ומטריצות אנטי-סימטריות}
 
 כאן הכוונה לסימטריה בין שורות לעמודות. לכן יש קשר לפעולת השחלוף.
 
 \begin{definition}
-\begin{enumerate}[label=\alph*.]
+\adddeftolist{מטריצה סימטרית ומטריצה אנטי-סימטרית}
 תהי 
 $A\in\M_{n\times n}(\F)$
 מטריצה ריבועית.
-
+\begin{enumerate}[label=\alph*.]
 \item
 $A$
 נקראת סימטרית אם מתקיים
@@ -2284,6 +2303,7 @@ $$
 
 
 \item 
+$A$
 נקראת אנטי-סימטרית אם מתקיים
 $A^t=-A$,
 או באופן שקול:
@@ -2328,6 +2348,7 @@ $$
 \end{example}
 
 \begin{proposition}\label{prop:sym-antisym}
+\addpropositiontolist{תכונות של מטריצות אנטי-סימטריות ומטריצות סימטריות}
 תהי
 $P\in\M_{n\times n}(\F)$
 מטריצה ריבועית.
@@ -2343,7 +2364,7 @@ $0$.
 אם
 $P$
 סימטרית וגם אנטי-סימטרית, אז
-$P=0$.
+$P=\0_{n\times n}$.
 
 
 \item 
@@ -2382,11 +2403,11 @@ $
 לכן
 
 $$
-P=-P \implies P+P=-P+P \implies 2P=0 \implies P=0
+P=-P \implies P+P=-P+P \implies 2P=\0_{n\times n} \implies P=\0_{n\times n}
 $$
 
 למעשה, השתמשנו באלגברה רגילה כדי לקבל 
-$P=0$
+$P=\0_{n\times n}$
 כמו עבור משוואה במשתנה סקלרי. מותר לחלק בסקלר
 $2$,
 שזה כמו להכפיל בסקלר
@@ -2596,6 +2617,7 @@ $$
 \subsection{מטריצות אלכסוניות ומטריצות משולשיות}
 
 \begin{definition}
+\adddeftolist{מטריצה אלכסונית ומטריצה משולשית עליונה/תחתונה}
 מטריצה 
 $A\in\M_{n\times n}(\F)$
 נקראת:
@@ -2726,6 +2748,7 @@ $A^t$
 \end{remark}
 
 \begin{proposition}
+\addpropositiontolist{סגירות לכפל של מטריצות משולשיות ומטריצות אלכסוניות}
 יהיו
 $A,B\in\M_{n\times n}(\F)$.
 \begin{enumerate}[label=\alph*.]
@@ -2888,6 +2911,7 @@ $k$
 \end{remark}
 
 \begin{definition}
+\adddeftolist{מטריצה סקלרית}
 מטריצה 
 $A\in\M_{n\times n}(\F)$
 נקראת סקלרית אם קיים
@@ -2928,6 +2952,7 @@ $$
 כאן יש קשר הדוק לפעולות שורה אלמנטריות. נשתמש בראשי התיבות פש"א עבור "פעולת שורה אלמנטרית".
 
 \begin{definition}
+\adddeftolist{מטריצה אלמנטרית}
 מטריצה
 $A\in\M_{n\times n}(\F)$
 נקראת אלמנטרית אם היא מתקבלת ממטריצת היחידה
@@ -3053,6 +3078,7 @@ $I_n$,
 \end{example}
 
 \begin{proposition}\label{prop:elementary}
+\addpropositiontolist{פש"א ככפל משמאל במטריצה אלמנטרית}
 יהיו
 $A\in\M_{m\times n}(\F)$
 ו-
@@ -3255,6 +3281,7 @@ $S(A)$.
 \end{proof}
 
 \begin{corollary}\label{cor:left}
+\addcorollarytolist{הקשר בין מטריצות שקולות שורה במונחים של כפל}
 יהיו
 $A,A'\in\M_{m\times n}(\F)$
 שקולות שורה. אז קיימת 
@@ -3493,6 +3520,7 @@ $$
 לפני שנמשיך, יש סימון נוח לוקטורים שיהיו שימושיים בקורס:
 
 \begin{definition}
+\adddeftolist{וקטורי היחידה}
 נגדיר את וקטורי היחידה
 $e_1,e_2,\cdots,e_n\in\F^n$
 ע"י
@@ -3557,22 +3585,23 @@ $a_i\cdot 1=a_i$
 לפני שנגדיר מטריצות הפיכות, נוכיח טענה שמראה את חשיבותה של מטריצת היחידה בהקשר של קיום ויחידות הפתרון לממ"ל כאשר מספר המשתנים שווה למספר המשוואות.
 
 \begin{proposition}\label{prop:RREF}
+\addpropositiontolist{הקשר בין דירוג קנוני, דרגה ויחידות הפתרון לממ"ל}
 אם
 $A'\in\M_{n\times n}(\F)$
 מדורגת קנונית, אז התנאים הבאים שקולים:
 
 \begin{enumerate}[label=(\alph*)]
 \item 
-$A'=I_n$
+$$A'=I_n$$
 
 
 \item 
-$\rank(A')=n$
+$$\rank(A')=n$$
 
 
 \item 
 לממ"ל
-$A'x=0$
+$A'x=\underline{0}$
 יש פתרון יחיד.
 
 
@@ -3683,7 +3712,7 @@ $\rank(A)=n$
 
 \item 
 לממ"ל
-$Ax=0$
+$Ax=\underline{0}$
 יש פתרון יחיד.
 
 
@@ -3735,6 +3764,7 @@ $\text{(א)}$.
 משפט זה מראה שיש משהו מיוחד לגבי מטריצות ריבועיות שהן שקולות שורה למטריצת יחידה. נראה שיש דרך חלופית להגדיר אותן, שקשורה לכפל מטריצות. בהתחלה ההגדרה תיראה שונה, ובסוף נוכיח שזו הגדרה שקולה.
 
 \begin{definition}
+\adddeftolist{מטריצה הפיכה}
 מטריצה 
 $A\in\M_{n\times n}(\F)$
 נקראת הפיכה משמאל אם קיימת
@@ -3770,7 +3800,7 @@ $\rank(A)=n$
 
 \item 
 לממ"ל
-$Ax=0$
+$Ax=\underline{0}$
 יש פתרון יחיד.
 
 
@@ -3835,12 +3865,12 @@ $B\in\M_{n\times n}(\F)$
 כך ש-
 $BA=I_n$.
 אז כדי לפתור את הממ"ל
-$Ax=0$
+$Ax=\underline{0}$
 נכפיל את שני האגפים ב-
 $B$
 משמאל:
 $$
-B(Ax)=B\cdot0 \implies I_n x=0 \implies x=0
+B(Ax)=B\cdot\underline{0} \implies I_n x=\underline{0} \implies x=\underline{0}
 $$
 לכן יש פתרון יחיד.
 
@@ -3855,7 +3885,7 @@ $AC=I_n$.
 $C$
 ע"י
 $v_1,v_2,...,v_n\in\F^n$,
-ואז לפי
+ואז לפי טענה
 \ref{prop:product-column}
 מתקיים
 $$
@@ -3946,6 +3976,7 @@ $B,C$
 שיכולות להיות שונות, אבל ראינו כי הפיכות משמאל שקולה להפיכות מימין. אז אמור להיות קשר בין המטריצות, ואכן:
 
 \begin{proposition}\label{prop:inverses}
+\addpropositiontolist{הפיכות מימין והפיכות משמאל}
 יהיו 
 $A,B,C\in\M_{n\times n}(\F)$ 
 כך ש-
@@ -4009,6 +4040,7 @@ $A$?
 לפני שנתאר את החישוב, נוכיח את היחידות:
 
 \begin{corollary}
+\addpropositiontolist{יחידות של מטריצה הופכית}
 יהיו
 $A,B_1,B_2\in\M_{n\times n}(\F)$
 כך ש-
@@ -4032,6 +4064,7 @@ $B_1=C=B_2$
 \end{proof}
 
 \begin{definition}
+\adddeftolist{מטריצה הופכית}
 תהי
 $A\in\M_{n\times n}(\F)$
 הפיכה. נסמן ב-
@@ -4195,6 +4228,7 @@ $A$.
 נחדד את נקודה זו כמסקנה נוספת:
 
 \begin{corollary}\label{cor:elementary-product}\
+\addcorollarytolist{הקשר בין מטריצות הפיכות למטריצות אלמנטריות}
 \begin{enumerate}[label=\alph*.]
 \item
 תהי 
@@ -4209,6 +4243,7 @@ $E_1,E_2,...,E_k$
 $S_1,S_2,...,S_k$
 בדירוג הקנוני של 
 $A$.
+
 
 \item 
 $A$
@@ -4560,5 +4595,1002 @@ $$
 
 \end{enumerate}
 \end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 6.1.}
+
+נגדיר את קבוצת כל המטריצות מסדר 
+$m\times n$
+מעל
+$\F$
+(כאשר
+$\F=\R$
+או
+$\F=\C$
+)
+ע"י 
+
+$$
+.\M_{m\times n}(\F)=\Set{\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}|\forall 1\leq i\leq m \quad \forall 1\leq j\leq n \quad a_{ij}\in \F}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.2.}
+
+עבור וקטורים
+$ה=(a_1,...,a_n)\in\F^n,w=(b_1,...,b_n)\in\F^n$
+וסקלר
+$c\in\F$
+נגדיר את הפעולות הבאות:
+\begin{enumerate}[label=\alph*.]
+\item 
+פעולת החיבור:
+$$
+v+w=(a_1+b_1,...,a_n+b_n)
+$$
+
+
+\item
+פעולת כפל בסקלר:
+$$
+c \cdot v=(c\cdot a_1,\dots,c\cdot a_n)
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.3.}
+
+עבור
+$A,B\in\M_{m\times n}(\F)$
+וסקלר
+$c\in\F$
+נגדיר את הפעולות הבאות:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+פעולת החיבור:
+$$
+\begin{aligned}
+A+B&=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
+a_{21} & \cdots & a_{2n}\\
+\vdots  & \ddots & \vdots\\
+a_{m1}  & \cdots & a_{mn}
+\end{pmatrix}+\begin{pmatrix}b_{11} & \cdots & b_{1n}\\
+b_{21} & \cdots & b_{2n}\\
+\vdots & \ddots & \vdots\\
+b_{m1} & \cdots & b_{mn}
+\end{pmatrix}\\
+&=\begin{pmatrix}a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\ a_{21}+b_{21} & \cdots & a_{2n}+b_{2n}\\
+\vdots & \ddots & \vdots\\
+a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
+\end{pmatrix}
+\end{aligned}
+$$
+
+
+\item
+פעולת כפל בסקלר:
+$$
+c A=\begin{pmatrix}ca_{11} & ca_{12} & \cdots & ca_{1n}\\
+ca_{21} & ca_{22} & \cdots & ca_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+ca_{m1} & ca_{m2} & \cdots & ca_{mn}
+\end{pmatrix}
+$$
+
+בפרט, נגדיר
+$-A=(-1)\cdot A$ 
+ובהתאמה 
+$B-A=B+(-1)\cdot A$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.4.}
+
+יש דרך מקוצרת לכתיבת חיבור. במקום לכתוב את החיבור בכל רכיב, נסתכל על האיבר הכללי של כל מטריצה. נסמן את האיבר בשורה ה-
+$i$
+ובעמודה ה-
+$j$
+ע"י
+$(P)_{ij}$
+לכל
+$P\in\M_{m\times n}(\F)$. 
+אז למעשה הגדרנו
+לכל
+$1\leq i \leq m$
+ולכל
+$1\leq j\leq n$:
+$$(A+B)_{ij}=(A)_{ij}+(B)_{ij}$$
+
+$$(c A)_{ij}=c(A)_{ij}$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.5.}
+
+לכל 
+$m,n\in\N$
+נגדיר את מטריצת האפס מסדר
+$m\times n$
+כמטריצה שכל איבריה הם
+$0$:
+$$
+.\0_{m\times n}=\begin{pmatrix}0 &0 &\cdots &0 \\
+0 &0 &\cdots &0 \\
+\vdots & \vdots &\ddots &\vdots\\
+0 &0 &\cdots &0
+\end{pmatrix}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.6.}
+
+יהיו 
+$A,B,C\in\M_{m\times n}(\F)$
+ו-
+$\alpha,\beta\in\F$.
+אז מתקיימים הכללים הבאים:
+
+\begin{enumerate}[label=\alph*.]
+\item
+חוק החילוף (קומוטטיביות): 
+$$A+B=B+A$$
+
+
+\item 
+חוק הקיבוץ (אסוציאטיביות):
+$$(A+B)+C=A+(B+C)$$
+
+
+\item 
+חוק הקיבוץ לכפל בסקלר:
+$$(\alpha\beta)A=\alpha(\beta A)$$
+
+
+\item 
+חוק הפילוג (דיסטריביוטיביות):
+$$\alpha(A+B)=\alpha A+\alpha B$$
+
+
+\item
+ניטרליות היחידה:
+$$1\cdot A=A$$
+
+
+\item
+$$0\cdot A=\0_{m\times n}$$
+
+
+\item 
+ניטרליות מטריצת האפס:
+$$A+\0_{m\times n}=A$$
+
+
+\item 
+$$A-A=0_{m\times n}$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.7.}
+
+בהינתן
+$a_1,a_2,...,a_n\in\F$
+נסמן את סכומם בעזרת כתיבה עם
+$\Sigma$
+ואינדקס
+$l$.
+
+$$
+.\sum_{l=1}^n a_l=a_1+a_2+a_3+\cdots+a_n
+$$
+
+האינדקס
+$l$
+רץ על פני הקבוצה
+$\Set{1,2,3,\cdots,n}$
+וכל הצבה תורמת איבר לסכום.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.8.}
+
+בהינתן
+$A\in\M_{m\times n}(\F)$
+ו-
+$$
+,x=\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{pmatrix}\in\F^n
+$$
+נגדיר את המכפלה
+$$
+Ax=\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots \\
+y_m
+\end{pmatrix}\in\F^m
+$$
+עם קוארדינטות הנתונות ע"י
+$$
+y_i=\sum_{j=1}^n (A)_{ij}x_j
+$$
+לכל
+$1\leq i\leq m$.
+נסמן
+$y_i=(Ax)_i$ 
+עבור הקוארדינטות.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.9.}
+
+יהיו
+$A,B\in\M_{m\times n}(\F)$,
+$v,w\in\F^n$
+ו-
+$\alpha\in\F$.
+\begin{enumerate}[label=\alph*.]
+\item
+$$
+A(v+w)=Av+Aw
+$$
+
+
+\item 
+$$
+(A+B)v=Av+Bv
+$$
+
+
+\item 
+$$
+A(\alpha v)=\alpha(Av)
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.10.}
+
+תהי
+$Ax=\underline{0}$
+ממ"ל הומוגנית.
+\begin{enumerate}[label=\alph*.]
+\item
+קבוצת הפתרונות סגורה לחיבור, כלומר לכל שני פתרונות
+$v,w\in\F^n$
+גם
+$v+w$
+הוא פתרון.
+
+
+\item
+קבוצת הפתרונות סגורה לכפל בסקלר, כלומר לכל פתרון
+$v\in\F^n$
+ולכל
+$\alpha\in\F$
+גם
+$\alpha v$
+הוא פתרון.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.11.}
+
+תהי
+$Ax=b$
+ממ"ל לא הומוגנית. נניח שקיים לה פתרון (לא בהכרח יחיד)
+$v_0\in\F^n$.
+אז מתקיים הקשר הבא בין קבוצת הפתרונות של הממ"ל הלא הומוגנית לקבוצת הפתרונות של הממ"ל ההומוגנית
+$Ax=\underline{0}$:
+
+$$
+.\Set{x\in\F^n|Ax=b}=\Set{v_0+y|y\in\F^n,Ay=\underline{0}}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.12.}
+
+בהינתן
+$A\in\M_{m\times k}(\F),B\in\M_{k\times n}(\F)$
+נגדיר את מטריצת הכפל
+$AB$
+ע"י
+$$
+(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}
+$$
+לכל
+$1\leq i\leq m, 1\leq j\leq n$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.13.}
+
+יהיו
+$A\in\M_{m\times k}(\F), B\in\M_{k\times n}(\F)$.
+נניח שהעמודות של
+$B$
+הם הוקטורים
+$v_1,v_2,...,v_n\in\F^k$.
+אז מתקיים
+
+$$
+AB=A\begin{pmatrix}
+| & | & & | \\
+v_1 & v_2 & \cdots & v_n \\
+| & | & & |
+\end{pmatrix}=\begin{pmatrix}
+| & | & & | \\
+Av_1 & Av_2 & \cdots & Av_n \\
+| & | & & |
+\end{pmatrix}
+$$
+
+כלומר התוצאה של כפל ב-
+$A$
+משמאל הוא שכל וקטור עמודה 
+מוכפל ב-
+$A$
+לחוד.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.14.}
+
+יהיו
+$A_1,A_2\in\M_{m\times n}(\F)$,
+$B_1,B_2\in\M_{n\times p}(\F)$,
+$C\in\M_{p\times q}(\F)$
+ו-
+$\alpha\in\F$.
+אז מתקיים
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+(A_1+A_2)B_1=A_1B_1+A_2B_1
+$$
+
+
+\item 
+$$
+A_1(B_1+B_2)=A_1B_1+A_1B_2
+$$
+
+
+\item 
+$$
+A_1(B_1C)=(A_1B_1)C
+$$
+
+
+\item 
+$$
+(\alpha A_1)B_1=\alpha(A_1B_1)=A_1(\alpha B_1)
+$$
+
+
+\item 
+$$
+\0_{m\times n} B_1=\0_{m\times p}=A_1\0_{n\times p}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.15.}
+
+מטריצת היחידה מסדר 
+$n\times n$
+(אפשר גם לומר מסדר $n$)
+מוגדרת להיות
+$$
+.I_n=I_{n\times n}=
+\begin{pmatrix}
+1 &0 &\cdots &0\\
+0 &1 &\cdots &0\\
+\vdots &\vdots &\ddots &\vdots\\
+0 &0 &\cdots &1
+\end{pmatrix}
+$$
+
+זוהי המטריצה שבה כל איבר על האלכסון הראשי הוא
+$1$,
+וכל שאר האיברים הם
+$0$. 
+או באופן מתמטי:
+
+$$
+\begin{aligned}
+\forall 1\leq i\leq n \quad (I_n)_{ii}=1 \\
+\forall 1\leq i,j\leq n  \quad i\neq j \implies &(I_n)_{ij}=0
+\end{aligned}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.16.}
+
+לכל 
+$A\in\M_{m\times n}(\F)$
+מתקיים
+$AI_n=A=I_m A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.17.}
+
+תהי
+$A\in\M_{m\times n}(\F)$. 
+נגדיר את המטריצה המשוחלפת
+$A^t\in\M_{n\times m}(\F)$
+ע"י
+$$
+(A^t)_{ij}=A_{ji}
+$$
+לכל
+$1\leq i\leq n,1\leq j\leq m$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.18.}
+
+לכל 
+$A,B\in\M_{m\times n}(\F), C\in\M_{n\times k}(\F)$
+ולכל
+$\alpha\in\F$
+מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+(A^t)^t=A
+$$
+
+
+\item 
+$$
+(A+B)^t=A^t+B^t
+$$
+
+\item 
+$$
+(\alpha A)^t=\alpha A^t
+$$
+
+
+\item 
+$$
+(AC)^t=C^tA^t
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.19.}
+
+מטריצה 
+$A$
+נקראת ריבועית אם מספר השורות שלה שווה למספר העמודות, כלומר אם קיים 
+$n\in\N$
+עבורו
+$A\in\M_{n\times n}(\F)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.20.}
+
+תהי 
+$A\in\M_{n\times n}(\F)$.
+אז נגדיר 
+
+$$
+A^0=I_n, \quad A^1=A, \quad A^2=A\cdot A, \quad A^3=A\cdot A\cdot A
+$$
+
+ולכל
+$k\in\N$
+
+$$
+.A^k = \underbrace{A \cdot A \cdot \ldots \cdot A}_{\text{פעמים} \ k}
+$$
+
+עבור פולינום
+$$
+p(x)=a_mx^m+a_{m-1}x^{m-1}+...+a_1x+a_0
+$$
+נגדיר את ההצבה של
+$A$
+בו ע"י
+$$
+.p(A)=a_mA^m+a_{m-1}A^{m-1}+...+a_1A+a_0I_n
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.21.}
+
+תהי 
+$A\in\M_{n\times n}(\F)$
+מטריצה ריבועית.
+
+\begin{enumerate}[label=\alph*.]
+\item
+$A$
+נקראת סימטרית אם מתקיים
+$A^t=A$,
+או באופן שקול:
+$$
+\forall 1\leq i,j\leq n \quad (A)_{ji}=(A)_{ij}
+$$
+
+
+\item 
+$A$
+נקראת אנטי-סימטרית אם מתקיים
+$A^t=-A$,
+או באופן שקול:
+$$
+\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}
+$$
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.22.}
+
+תהי
+$P\in\M_{n\times n}(\F)$
+מטריצה ריבועית.
+\begin{enumerate}[label=\alph*.]
+\item
+אם
+$P$
+אנטי-סימטרית, אז כל איבריה על האלכסון הראשי שווים ל-
+$0$.
+
+
+\item 
+אם
+$P$
+סימטרית וגם אנטי-סימטרית, אז
+$P=\0_{n\times n}$.
+
+
+\item 
+לכל
+$B\in\M_{n\times n}(\F)$
+קיימות
+$S\in\M_{n\times n}(\F)$
+סימטרית ו-
+$A\in\M_{n\times n}(\F)$
+אנטי-סימטרית כך שמתקיים
+$B=S+A$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.23.}
+
+מטריצה 
+$A\in\M_{n\times n}(\F)$
+נקראת:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+אלכסונית אם לכל
+$i\neq j$
+מתקיים
+$(A)_{ij}=0$,
+כלומר כל האיברים מחוץ לאלכסון הראשי שווים ל-
+$0$.
+
+
+\item
+משולשית עליונה אם לכל
+$i>j$
+מתקיים
+$(A)_{ij}=0$,
+כלומר כל האיברים מתחת לאלכסון הראשי שווים ל-
+$0$.
+
+
+\item
+משולשית תחתונה אם לכל
+$i<j$
+מתקיים
+$(A)_{ij}=0$,
+כלומר כל האיברים מעל לאלכסון הראשי שווים ל-
+$0$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.24.}
+
+יהיו
+$A,B\in\M_{n\times n}(\F)$.
+\begin{enumerate}[label=\alph*.]
+\item
+אם
+$A,B$
+משולשיות עליונות, אז
+$AB$
+גם משולשית עליונה.
+
+
+\item
+אם
+$A,B$
+משולשיות תחתונות, אז
+$AB$
+גם משולשית תחתונה.
+
+
+\item
+אם
+$A,B$
+אלכסוניות, אז
+$AB$
+גם אלכסונית.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.25.}
+
+מטריצה 
+$A\in\M_{n\times n}(\F)$
+נקראת סקלרית אם קיים
+$\alpha\in\F$
+כך ש-
+$A=\alpha I_n$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.26.}
+
+מטריצה
+$A\in\M_{n\times n}(\F)$
+נקראת אלמנטרית אם היא מתקבלת ממטריצת היחידה
+$I_n$
+ע"י פש"א אחת.
+
+עבור פש"א 
+$S$,
+נסמן ב-
+$S(I_n)$
+את המטריצה האלמנטרית המתאימה שמתקבלת מ-
+$I_n$
+ע"י 
+$S$.
+באופן כללי, לכל מטריצה
+$A$
+נסמן ב-
+$S(A)$
+את המטריצה שמתקבלת מ-
+$A$
+ע"י
+$S$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.27.}
+
+יהיו
+$A\in\M_{m\times n}(\F)$
+ו-
+$S$
+פש"א. אז מתקיים
+$S(I_m)A=S(A)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 6.28.}
+
+יהיו
+$A,A'\in\M_{m\times n}(\F)$
+שקולות שורה. אז קיימת 
+$B\in\M_{m\times m}(\F)$
+כך ש-
+$A'=BA$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.29.}
+
+נגדיר את וקטורי היחידה
+$e_1,e_2,\cdots,e_n\in\F^n$
+ע"י
+$$
+e_i=\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+0 \\
+1 \\
+0\\
+\vdots \\
+0
+\end{pmatrix}
+$$
+כאשר כל הקוארדינטות הן
+$0$
+חוץ מהקוארדינטה ה-
+$i$
+השווה ל-
+$1$.
+נציין שאלה וקטורי העמודה של 
+$I_n$,
+וגם וקטורי השורה עד כדי שחלוף (ההבדל בין שורה לעמודה).
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.30.}
+
+אם
+$A'\in\M_{n\times n}(\F)$
+מדורגת קנונית, אז התנאים הבאים שקולים:
+
+\begin{enumerate}[label=(\alph*)]
+\item 
+$$A'=I_n$$
+
+
+\item 
+$$\rank(A')=n$$
+
+
+\item 
+לממ"ל
+$A'x=\underline{0}$
+יש פתרון יחיד.
+
+
+\item 
+לכל
+$b'\in\F^n$
+יש פתרון יחיד לממ"ל
+$A'x=b'$.
+
+
+\item 
+לכל
+$b'\in\F^n$
+יש פתרון לממ"ל
+$A'x=b'$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.31.}
+
+לכל
+$A\in\M_{n\times n}(\F)$
+התנאים הבאים שקולים:
+\begin{enumerate}[label=(\alph*)]
+\item 
+$A$
+שקולת שורה ל-
+$I_n$.
+
+
+\item 
+$\rank(A)=n$
+
+
+\item 
+לממ"ל
+$Ax=\underline{0}$
+יש פתרון יחיד.
+
+
+\item 
+לכל
+$b\in\F^n$
+יש פתרון יחיד לממ"ל
+$Ax=b$.
+
+
+\item 
+לכל
+$b\in\F^n$
+יש פתרון לממ"ל
+$Ax=b$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.32.}
+
+מטריצה 
+$A\in\M_{n\times n}(\F)$
+נקראת הפיכה משמאל אם קיימת
+$B\in\M_{n\times n}(\F)$
+כך ש-
+$BA=I_n$.
+$A$
+נקראת הפיכה מימין אם קיימת
+$C\in\M_{n\times n}(\F)$
+כך ש-
+$AC=I_n$.
+אם שני התנאים מתקיימים, 
+$A$
+נקראת הפיכה.
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 6.33.}
+
+לכל
+$A\in\M_{n\times n}(\F)$
+התנאים הבאים שקולים:
+\begin{enumerate}[label=(\alph*)]
+\item 
+$A$
+שקולת שורה ל-
+$I_n$.
+
+
+\item 
+$\rank(A)=n$
+
+
+\item 
+לממ"ל
+$Ax=\underline{0}$
+יש פתרון יחיד.
+
+
+\item 
+לכל
+$b\in\F^n$
+יש פתרון יחיד לממ"ל
+$Ax=b$.
+
+
+\item 
+לכל
+$b\in\F^n$
+יש פתרון לממ"ל
+$Ax=b$.
+
+
+\item 
+$A$
+הפיכה משמאל.
+
+\item 
+$A$
+הפיכה מימין.
+
+\item 
+$A$
+הפיכה.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 6.34.}
+
+יהיו 
+$A,B,C\in\M_{n\times n}(\F)$ 
+כך ש-
+$BA=I_n=AC$.
+אז
+$B=C$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 6.35.}
+
+יהיו 
+$A,B\in\M_{n\times n}(\F)$.
+אז מתקיים
+$$
+.AB=I_n \iff BA=I_n
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 6.36.}
+
+יהיו
+$A,B_1,B_2\in\M_{n\times n}(\F)$
+כך ש-
+$B_1A=B_2A=I_n$.
+אז 
+$B_1=B_2$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 6.37.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+הפיכה. נסמן ב-
+$A^{-1}$
+את המטריצה שמקיימת
+$$
+.AA^{-1}=A^{-1}A=I_n
+$$
+נקרא לה המטריצה ההופכית ל-
+$A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 6.38.}
+
+\label{cor:elementary-product}\
+\begin{enumerate}[label=\alph*.]
+\item
+תהי 
+$A\in\M_{n\times n}(\F)$
+הפיכה. אז מתקיים
+$$
+.A^{-1}=E_kE_{k-1}\cdots E_1
+$$
+כאשר
+$E_1,E_2,...,E_k$
+הן המטריצות האלמנטריות המתאימות לפש"אות
+$S_1,S_2,...,S_k$
+בדירוג הקנוני של 
+$A$.
+
+
+\item 
+$A$
+היא מכפלה של מטריצות אלמנטריות:
+$$
+.A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
 
 \end{document}

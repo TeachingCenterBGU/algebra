@@ -42,9 +42,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -91,6 +91,7 @@ $W\subseteq V$
 אבל הפעם נתאים אותה לתת-מרחבים במקום קבוצות כלליות.
 
 \begin{definition}
+\adddeftolist{חיתוך של תת-מרחבים}
 יהי 
 $V$
 מ"ו מעל
@@ -319,6 +320,7 @@ $$
 בכל הדוגמאות לעיל, חיתוך של תת-מרחבים הוא תת-מרחב. נוכיח זאת באופן כללי. 
 
 \begin{proposition}
+\addpropositiontolist{סכום תת-מרחבים הוא תת-מרחב}
 יהי 
 $V$
 מ"ו מעל
@@ -569,6 +571,7 @@ $w_1+w_2$
 יהיה בתת-המרחב החדש. זה מוביל להגדרה הבאה:
 
 \begin{definition}\
+\adddeftolist{סכום של תת-מרחבים}
 יהי 
 $V$
 מ"ו מעל
@@ -599,6 +602,7 @@ $W_2$.
 \end{figure}
 
 \begin{proposition}
+\addpropositiontolist{סכום של שני תת-מרחבים מכיל כל אחד מהם}
 יהי 
 $V$
 מ"ו מעל
@@ -905,6 +909,7 @@ $$
 נרצה להבין את הקשר בין המימדים של שני תת-מרחבים, חיתוכם וסכומם. קשר אחד כבר קל להסיק:
 
 \begin{corollary}
+\addcorollarytolist{אי-שוויון בין המימדים של חיתוך, סכום ותת-המרחבים המקוריים}
 יהיו
 $V$
 מ"ו מעל
@@ -962,6 +967,7 @@ $W_1\subseteq W_2$.
 הנוסחה במשפט הבא נקראת נוסחת המימדים, והיא מבטאת קשר יותר מדויק בין המימדים של שני תת-מרחבים, חיתוכם וסכומם.
 
 \begin{theorem}\label{thm:dim-formula}
+\addtheoremtolist{נוסחת המימדים}
 יהי 
 $V$
 מ"ו נוצר סופית מעל
@@ -1816,5 +1822,118 @@ $$
 $$
 
 \end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 9.1.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$W_1,W_2\subseteq V$
+תת-מרחבים. אז החיתוך
+$W_1\cap W_2$
+הוא קבוצת כל הוקטורים השייכים גם ל-
+$W_1$
+וגם ל-
+$W_2$,
+כלומר
+$$
+.W_1\cap W_2=\Set{v\in V|v\in W_1,v\in W_2}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 9.2.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$W_1,W_2\subseteq V$
+תת-מרחבים. אז 
+$W_1\cap W_2$
+הוא תת-מרחב של
+$V$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 9.3.}
+
+\
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$W_1,W_2\subseteq V$
+תת-מרחבים. אז הסכום
+$W_1+W_2$
+מוגדר ע"י
+$$
+.W_1+W_2=\Set{w_1+w_2|w_1\in W_1,w_2\in W_2}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 9.4.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$W_1,W_2\subseteq V$
+תת-מרחבים. אז 
+$W_1+W_2$
+הוא תת-מרחב של
+$V$,
+המקיים
+$W_1\subseteq W_1+W_2$
+וגם
+$W_2\subseteq W_1+W_2$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 9.5.}
+
+יהיו
+$V$
+מ"ו מעל
+$\F$
+ו-
+$W_1,W_2\subseteq V$
+תת-מרחבים.
+אז מתקיים:
+$$
+\begin{aligned}
+\dim(W_1\cap W_2)\leq \dim(W_1)\leq\dim(W_1+W_2)\leq\dim(V)
+\end{aligned}
+$$
+ובאופן דומה:
+$$
+\dim(W_1\cap W_2)\leq \dim(W_2)\leq\dim(W_1+W_2)\leq\dim(V)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 9.6.}
+
+יהי 
+$V$
+מ"ו נוצר סופית מעל
+$\F$,
+ויהיו
+$W_1,W_2\subseteq V$
+תת-מרחבים. אז מתקיים
+$$
+.\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2)
+$$
+\bigskip
+\bigskip
 
 \end{document}

@@ -38,9 +38,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -124,6 +124,7 @@ $\frac{z_1}{z_2}=\frac{(1+2i)(3+4i)}{(3-4i)(3+4i)}=\frac{-5+10i}{25}=\frac{-1+2i
 \end{remark}
 
 \begin{proposition}
+\addpropositiontolist{תכונות של פעולות על מספרים מרוכבים}
 לכל $z_{1},z_{2},z_{3}\in\C$ מתקיים:
 \begin{enumerate}[label=\alph*.]
 
@@ -183,7 +184,11 @@ $z_1+z_2=z_2+z_1$
 
 הטענה הבאה קשורות להגדרה של מספר צמוד.
 
-\begin{proposition} לכל $z_{1},z_{2}\in\C$ מתקיים:
+\begin{proposition}
+\addpropositiontolist{תכונות של הצמדה של מספר מרוכב}
+לכל
+$z_{1},z_{2}\in\C$
+מתקיים:
 \begin{enumerate}[label=\alph*.]
 \item $\overline{z_{1}+z_{2}}=\overline{z_{1}}+\overline{z_{2}}$
 \item $\overline{z_{1}z_{2}}=\overline{z_{1}}\cdot\overline{z_{2}}$
@@ -203,7 +208,11 @@ $$
 \end{enumerate}
 \end{proof}
 
-\begin{proposition} לכל $z\in\C$ מתקיים:
+\begin{proposition}
+\addpropositiontolist{הקשר בין הצמדה לחלק הממשי ולחלק המדומה}
+לכל
+$z\in\C$
+מתקיים:
 \begin{enumerate}[label=\alph*.]
 \item $z+\overline{z}=2\text{{Re}}(z)$
 \item $z-\overline{z}=2i\text{{Im}}(z)$
@@ -350,28 +359,32 @@ $$.\theta=\arctan\frac{2}{-2}+\pi=-\frac{\pi}{4}+\pi=\frac{3\pi}{4}$$
 
 \begin{definition}
 נגדיר
-$.e^{i\theta}=\cos\theta+i\sin\theta$
+$e^{i\theta}=\cos\theta+i\sin\theta$.
 \end{definition}
 
 מבחינתנו זה רק סימון נוח, אבל זו בעצם נוסחה שנקראת נוסחת אוילר. יש
-לה משמעות יותר עמוקה שדורשת הסבר לגבי הפונקציה $f(z)=e^{z}$ של
-משתנה מרוכב. זה כבר חורג מאוד מאלגברה לינארית וגולש לתחום שנקרא אנליזה
+לה משמעות יותר עמוקה שדורשת הסבר לגבי הפונקציה
+$f(z)=e^{z}$
+של משתנה מרוכב. זה כבר חורג מאוד מאלגברה לינארית וגולש לתחום שנקרא אנליזה
 מרוכבת, שבבסיסה היא הגרסה המרוכבת של חשבון דיפרנציאלי ואינטגרלי.
 
 \begin{theorem}\label{thm:De-Moivre}
+\addtheoremtolist{משפט דה-מואבר}
 לכל
 $\theta\in\R,\,n\in\Z$
 מתקיים
 $(\cos\theta+i\sin\theta)^{n}=\cos(n\theta)+i\sin(n\theta)$.
 \end{theorem}
 
-שימו לב שהניסוח השקול הוא $(e^{i\theta})^{n}=e^{in\theta}$, שעלול
-להיראות מובן מאליו לפי חוקי חזקות. אבל חוקי החזקות הידועים הם למעריכים
+שימו לב שהניסוח השקול הוא
+$(e^{i\theta})^{n}=e^{in\theta}$,
+שעלול להיראות מובן מאליו לפי חוקי חזקות. אבל חוקי החזקות הידועים הם למעריכים
 ממשיים, וגם לא הצדקנו את הסימון. אם נשים את ההוכחה בצד, המשפט מראה
 מדוע הסימון נוח. לא נראה את ההוכחה (שדורשת כלי שנקרא אינדוקציה), אך
 נציין את הקשר לטענה הבאה שמבוססת על זהויות טריגונומטריות של סכום זוויות:
 
 \begin{proposition}\label{prop:angle-addition}
+\addpropositiontolist{כפל מספרים מרוכבים כחיבור זוויות}
 לכל
 $\alpha,\beta\in\R$
 מתקיים
@@ -470,12 +483,13 @@ $$
 
 \section{נוסחת השורשים}
 \begin{proposition}\label{prop:Roots}
+\addpropositiontolist{נוסחת השורשים של המשוואה $z^n=w$}
 יהי
 $w\in\C$
 מספר נתון השונה מ-$0$, ונניח כי
 $w=re^{i\theta}$
 בהצגה פולרית. אז למשוואה
-$z^{n}=w$
+$z^n=w$
 יש בדיוק 
 $n$
 שורשים (פתרונות) מרוכבים בנעלם 
@@ -547,7 +561,7 @@ $$
 e^{i\pi}=\cos(\pi)+i\sin(\pi)=-1
 $$
 
-לכן, נובע מ-
+לכן, נובע מטענות
 \ref{prop:Roots}
 ו-
 \ref{prop:angle-addition}
@@ -597,5 +611,104 @@ $2\pi$
 סמוכים, למשל $z_{0},z_{1}$, נקבל $\frac{\pi}{2}$. זה בעצם
 אומר שאפשר לעבור משורש אחד לשורש הבא ע"י כפל במספר $e^{i\frac{\pi}{2}}=i$.
 \end{example}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{טענה 3.1.}
+
+לכל $z_{1},z_{2},z_{3}\in\C$ מתקיים:
+\begin{enumerate}[label=\alph*.]
+
+\item חוקי החילוף לחיבור וכפל: $z_{1}+z_{2}=z_{2}+z_{1}$ וגם $z_{1}z_{2}=z_{2}z_{1}$.
+
+\item חוקי הקיבוץ לחיבור וכפל: $(z_{1}+z_{2})+z_{3}=z_{1}+(z_{2}+z_{3})$
+וגם $(z_{1}z_{2})z_{3}=z_{1}(z_{2}z_{3})$.
+
+\item חוק הפילוג: $(z_{1}+z_{2})z_{3}=z_{1}z_{3}+z_{2}z_{3}$
+
+\item $0$ נייטרלי ביחס לחיבור: $z+0=z$ לכל $z\in\C$.
+
+\item $1$ נייטרלי ביחס לכפל: $z\cdot1=z$ לכל $z\in\C$.
+\end{enumerate}
+
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 3.2.}
+
+לכל
+$z_{1},z_{2}\in\C$
+מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item $\overline{z_{1}+z_{2}}=\overline{z_{1}}+\overline{z_{2}}$
+\item $\overline{z_{1}z_{2}}=\overline{z_{1}}\cdot\overline{z_{2}}$
+\end{enumerate}
+
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 3.3.}
+
+לכל
+$z\in\C$
+מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item $z+\overline{z}=2\text{{Re}}(z)$
+\item $z-\overline{z}=2i\text{{Im}}(z)$
+\item $z\overline{z}\in\R$ 
+\end{enumerate}
+
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 3.4.}
+
+נגדיר
+$e^{i\theta}=\cos\theta+i\sin\theta$.
+
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 3.5.}
+
+לכל
+$\theta\in\R,\,n\in\Z$
+מתקיים
+$(\cos\theta+i\sin\theta)^{n}=\cos(n\theta)+i\sin(n\theta)$.
+
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 3.6.}
+
+לכל
+$\alpha,\beta\in\R$
+מתקיים
+$e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}$.
+
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 3.7.}
+
+יהי
+$w\in\C$
+מספר נתון השונה מ-$0$, ונניח כי
+$w=re^{i\theta}$
+בהצגה פולרית. אז למשוואה
+$z^n=w$
+יש בדיוק 
+$n$
+שורשים (פתרונות) מרוכבים בנעלם 
+$z$
+הנתונים ע"י
+$$
+.z_{k}=\sqrt[n]{r}e^{i\frac{\theta+2\pi k}{n}}
+$$
+עבור $k\in\Set{0,1,...,n-1}$.
+
+\bigskip
+\bigskip
 
 \end{document}

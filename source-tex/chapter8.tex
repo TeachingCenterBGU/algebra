@@ -46,9 +46,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -78,7 +78,6 @@
 \begin{document}
 \maketitle
 
-\tableofcontents
 \chapter{מרחבים וקטוריים}\label{ch:vectorspaces}
 
 \section{הגדרת מרחבים וקטוריים}
@@ -109,6 +108,7 @@ $\M_{m\times n}(\C)$.
 \end{example}
 
 \begin{definition}\label{def:vector-space}
+\adddeftolist{מרחב וקטורי (מ"ו)}
 מרחב וקטורי (מ"ו)
 $V$
 מעל
@@ -280,6 +280,7 @@ $\C$.
 ניתן להוכיח תכונות נוספות של מרחבים וקטוריים בעזרת האקסיומות:
 
 \begin{proposition}\label{prop:vector-properties}
+\addpropositiontolist{תכונות של מרחבים וקטוריים}
 יהי
 $V$
 מ"ו מעל
@@ -512,6 +513,7 @@ $n$
 נרצה לעסוק בתת-קבוצות של מרחבים וקטוריים, שגם הן יעמדו בתנאי הסף של להיות מרחבים וקטוריים בפני עצמן.
 
 \begin{definition}
+\adddeftolist{תת-מרחב}
 יהי 
 $V$
 מ"ו מעל
@@ -603,6 +605,7 @@ $H=\Set{sv_1|s\in\R}$.
 \end{example}
 
 \begin{proposition}\label{prop:subspace}
+\addpropositiontolist{קריטריונים לתת-מרחב}
 יהי
 $V$
 מ"ו מעל
@@ -742,6 +745,7 @@ $$
 ראינו התנהגות דומה בהקשר של פתרונות של ממ"ל הומוגנית. מרוב חשיבותה ושכיחותה של קבוצת פתרונות של ממ"ל הומוגנית, נקדיש לה סימון משלה.
 
 \begin{definition}
+\adddeftolist{מרחב הפתרונות $\Null(A)$}
 תהי
 $A\in\M_{m\times n}(\F)$.
 קבוצת הפתרונות לממ"ל ההומוגנית
@@ -752,7 +756,8 @@ $A$
 $\Null(A)$.
 \end{definition}
 
-\begin{proposition}\
+\begin{proposition}
+\addpropositiontolist{מרחב העמודות של מטריצה הוא תת-מרחב}
 $\Null(A)$
 הוא תת-מרחב של
 $\F^n$.
@@ -1059,6 +1064,7 @@ $$
 
 באופן כללי, נרצה להגדיר צירוף לינארי של מספר וקטורים (אולי יותר גדול משניים):
 \begin{definition}
+\adddeftolist{צירוף לינארי (צ"ל)}
 יהי 
 $V$
 מ"ו מעל
@@ -1104,6 +1110,7 @@ $$
 הרעיון של לקחת את כל הצירופים הלינאריים של קבוצה נתונה של וקטורים, נקרא פרישה. אפשר להשתמש בפרישה כדי להגדיר תת-מרחב חדש.
 
 \begin{definition}
+\adddeftolist{$\Span$}
 יהי 
 $V$
 מ"ו מעל
@@ -1142,6 +1149,7 @@ $\exists$
 \end{figure}
 
 \begin{proposition}\label{prop:span-subspace}
+\addpropositiontolist{$\Span$ הוא תת-מרחב}
 יהי
 $V$
 מ"ו מעל
@@ -1259,6 +1267,7 @@ $\Set{v_1,...,v_k}$
 $\Span(v_1,...,v_k)$.
 
 \begin{proposition}\label{prop:vector-span}
+\addpropositiontolist{$\Span$ הוא תת-המרחב המינימלי המכיל את קבוצת הוקטורים המתאימה}
 יהי
 $W$
 תת-מרחב של מ"ו
@@ -1316,6 +1325,7 @@ $$
 \end{proof}
 
 \begin{definition}
+\adddeftolist{מ"ו נוצר סופית וקבוצה פורשת}
 יהי 
 $V$
 מ"ו מעל
@@ -1504,6 +1514,7 @@ $$
 ההגדרה הבאה מתייחסת לתת-מרחבים שקשורים למטריצה נתונה.
 
 \begin{definition}\label{def:row-col}
+\adddeftolist{מרחב השורות $\Row(A)$ ומרחב העמודות $\Col(A)$}
 תהי 
 $A\in\M_{m\times n}(\F)$
 עם שורות
@@ -1562,6 +1573,7 @@ $$
 הטענה הבאה מראה את הקשר בין מרחב עמודות לממ"ל.
 
 \begin{proposition}\label{prop:column-space}
+\addpropositiontolist{אפיון של מרחב העמודות לפי הממ"ל המתאימה}
 תהי
 $A\in\M_{m\times n}(\F)$.
 אז לכל וקטור עמודה 
@@ -1908,6 +1920,7 @@ $$
 הכרנו את ההגדרה של שני וקטורים קו-לינאריים, שהיא למעשה מקרה פרטי של הגדרה כללית יותר שנקראת תלות לינארית.
 
 \begin{definition}
+\adddeftolist{קבוצה ת"ל וקבוצה בת"ל}
 יהי 
 $V$
 מ"ו מעל
@@ -2109,6 +2122,7 @@ $\alpha$
 \end{solution}
 
 \begin{proposition}\label{prop:linear-dependence}
+\addpropositiontolist{תלות לינארית פירושה שלפחות אחד מהוקטורים הוא צירוף לינארי של האחרים}
 יהי 
 $V$
 מ"ו מעל
@@ -2184,6 +2198,7 @@ $$
 \end{proof}
 
 \begin{corollary}
+\addcorollarytolist{תת-קבוצה של קבוצה בת"ל היא בת"ל}
 יהי
 $V$
 מ"ו מעל
@@ -2230,6 +2245,7 @@ $\Set{v_1,...,v_k,v_{k+1},...,v_l}$
 \end{remark}
 
 \begin{corollary}
+\addcorollarytolist{הוספת וקטור לקבוצה בת"ל שלא שייך ל-$\Span$ שלה}
 יהי
 $V$
 מ"ו מעל
@@ -2264,6 +2280,7 @@ $\Set{v_1,...,v_k}$
  המסקנה הבאה נקראת "למת הדילול" והיא תשמש אותנו בהמשך הפרק. היא מסבירה איך ניתן לחלץ מקבוצה הפורשת מ"ו תת-קבוצה שהיא בת"ל וגם פורשת. הרעיון הוא "לדלל" את כל הוקטורים העודפים/מיותרים שנפרשים ע"י הוקטורים האחרים.
 
 \begin{corollary}\label{cor:basis-extraction}
+\addcorollarytolist{חילוץ בסיס מתוך קבוצה פורשת}
 אם
 $\Set{v_1,...,v_k}$
 קבוצה הפורשת מ"ו
@@ -2399,6 +2416,7 @@ $W$.
 יש חשיבות לקבוצת וקטורים בת"ל שגם פורשת את המרחב הוקטורי הנתון. באמצעות קבוצה כזו ניתן לפרוש כל וקטור במרחב הוקטורי, ובנוסף אין אף וקטור עודף בקבוצה (כי אין תלות לינארית). מכאן ההגדרה הבאה:
 
 \begin{definition}
+\adddeftolist{בסיס}
 יהי
 $V$
 מ"ו מעל
@@ -2524,6 +2542,7 @@ $\Set{0_V}$
 \end{remark}
 
 \begin{proposition}
+\addpropositiontolist{קיום בסיס (סופי) למ"ו שקול להיותו נוצר סופית}
 יהי 
 $V$
 מ"ו מעל
@@ -2573,6 +2592,7 @@ $V$,
 \end{proof}
 
 \begin{proposition}\label{prop:unique-scalars}
+\addpropositiontolist{בסיס כקבוצה פורשת עבורה מתקיימת יחידות הסקלרים בכל צירוף לינארי}
 יהי
 $V$
 מ"ו מעל
@@ -2720,6 +2740,7 @@ $w=0$
 ניתן לראות את הקשר לתלות לינארית. מכאן הטענה הבאה:
 
 \begin{proposition}\label{prop:nullity}
+\addpropositiontolist{אפיון של קבוצה בת"ל לפי יחידות הפתרון של הממ"ל ההומוגנית המתאימה}
 יהיו 
 $v_1,...,v_k\in\F^n$.
 אז הוקטורים הנ"ל הם בת"ל אם ורק אם קיים פתרון יחיד לממ"ל
@@ -2756,6 +2777,7 @@ $0$,
 \end{proof}
 
 \begin{corollary}\label{cor:size-dim}
+\addcorollarytolist{גודל קבוצה בת"ל/פורשת}
 יהיו 
 $v_1,...,v_k\in\F^n$.
 \begin{enumerate}[label=\alph*.]
@@ -2845,6 +2867,7 @@ $k=n$
 שמדבר על תנאים שקולים להפיכות מטריצה, ע"י הוספת עוד תנאים שקולים:
 
 \begin{theorem}\label{thm:invertible2}
+\addtheoremtolist{התנאים השקולים להפיכות מטריצה}
 לכל
 $A\in\M_{n\times n}(\F)$
 התנאים הבאים שקולים:
@@ -2947,11 +2970,11 @@ $\F^n$.
 \end{theorem}
 
 \begin{proof}
-תשעת הסעיפים הראשונים שקולים לפי
+תשעת הסעיפים הראשונים שקולים לפי משפט
 \ref{thm:invertible}
-ו-
+ומשפט
 \ref{thm:det-invertible}. 
-לפי 
+לפי טענות 
 \ref{prop:column-space}
 ו-
 \ref{prop:nullity}
@@ -2984,6 +3007,7 @@ $(\text{טו})-(\text{יג})$
 המשפט לעיל מראה את הקשר בין כל המושגים העיקריים שלמדנו: קבוצת הפתרונות של ממ"ל, הפיכות מטריצה, דטרמיננטה ותכונות של קבוצת וקטורים במרחב וקטורי. נרצה להתמקד רק בחלק האחרון, ולכן ננסח משפט שניסוחו לא מתייחס למטריצה:
 
 \begin{theorem}\label{thm:3-for-2}
+\addtheoremtolist{משפט "שלישי חינם"}
 תהי
 $B\subseteq\F^n$.
 אז כל שניים מהתנאים הבאים גורר את התנאי השלישי:
@@ -3256,6 +3280,7 @@ $\R^4$.
 \end{example}
 
 \begin{proposition}\label{prop:row-space-invariance}
+\addpropositiontolist{מרחב השורות לא מושפע ע"י אף פש"א}
 לכל
 $A\in\M_{m\times n}(\F)$
 ולכל פש"א
@@ -3340,6 +3365,7 @@ $$
 \end{proof}
 
 \begin{corollary}\label{cor:row-equivalence}
+\addcorollarytolist{למטריצות שקולות שורה יש אותו מרחב השורות}
 יהיו
 $A,B\in\M_{m\times n}(\F)$
 שקולות שורה. אז 
@@ -3457,6 +3483,7 @@ $n\in\N$
 $V$).
 
 \begin{definition}
+\adddeftolist{בסיס סדור}
 בסיס סדור 
 $B=\Set{v_1,...,v_n}$
 למ"ו
@@ -3503,6 +3530,7 @@ $B$.
 לאור טענה זו, ההגדרה הבאה מתבקשת:
 
 \begin{definition}
+\adddeftolist{וקטור קוארדינטות}
 יהי 
 $V$
 מ"ו מעל
@@ -3869,6 +3897,7 @@ $$
 לוקטור קוארדינטות יש תכונות בסיסיות אך חשובות:
 
 \begin{proposition}\label{prop:coordinates-linear}
+\addpropositiontolist{תכונות של וקטורי קוארדינטות}
 יהיו
 $V$
 מ"ו מעל
@@ -4003,6 +4032,7 @@ $$
 \end{proof}
 
 \begin{corollary}\label{cor:span-coordinates}
+\addcorollarytolist{בדיקת פרישה לפי וקטורי הקוארדינטות}
 יהיו
 $V$
 מ"ו מעל
@@ -4045,6 +4075,7 @@ $[u]_B$.
 \end{remark}
 
 \begin{theorem}\label{thm:test-by-coordinates}
+\addtheoremtolist{קבוצת וקטורים היא בת"ל/פורשת אם ורק אם קבוצת וקטורי הקוארדינטות כזו}
 יהיו
 $V$
 מ"ו מעל
@@ -4117,7 +4148,7 @@ $\F^n$.
 
 
 \item 
-לפי
+לפי מסקנה
 \ref{cor:span-coordinates},
 לכל
 $v\in V$
@@ -4267,6 +4298,7 @@ $\M_{2\times 2}(\R)$.
 למרחבים וקטוריים כלליים:
 
 \begin{corollary}\label{cor:size-dim2}
+\addcorollarytolist{גודל קבוצה בת"ל/פורשת במ"ו כללי}
 יהיו
 $V$
 מ"ו מעל
@@ -4354,6 +4386,7 @@ $k=n$.
 \end{proof}
 
 \begin{corollary}
+\addcorollarytolist{הגודל של בסיס למ"ו נוצר סופית הוא קבוע}
 יהי 
 $V$
 מ"ו נוצר סופית, כלומר קיים לו בסיס. אז כל שני בסיסים ל-
@@ -4364,6 +4397,7 @@ $V$
 לאור המסקנה, נוכל להגדיר מימד באופן כללי:
 
 \begin{definition}
+\adddeftolist{מימד}
 גודל בסיס כלשהו של מ"ו
 $V$
 נקרא המימד של
@@ -4521,6 +4555,7 @@ $$
 ("שלישי חינם")
 למרחבים וקטוריים כלליים:
 \begin{theorem}\label{thm:3-for-2-V}
+\addtheoremtolist{משפט "שלישי חינם" למ"ו כללי}
 יהי
 $V$
 מ"ו מעל
@@ -4660,6 +4695,7 @@ $V$.
 כעת נעסוק בשאלה טבעית: מה אפשר לומר על מימד של תת-מרחב?
 
 \begin{corollary}\label{cor:subspace-dim}
+\addcorollarytolist{מימד של תת-מרחב}
 יהי
 $V$
 מ"ו נוצר סופית מעל
@@ -5041,6 +5077,7 @@ $\Set{v_1,...,v_k}$
 \end{solution}
 
 \begin{theorem}\label{thm:rank-nullity}
+\addtheoremtolist{משפט הדרגה}
 תהי
 $A\in\M_{m\times n}(\F)$. 
 אז מתקיים:
@@ -5059,7 +5096,7 @@ $$
 \end{theorem}
 
 \begin{remark}
-הסעיף השני של המשפט נקרא "משפט הדרגה". שימו לב ש-
+הסעיף השני של המשפט נקרא "משפט הדרגה" ועליו נשים דגש. שימו לב ש-
 $\dim(\Null(A))$
 קטן ככל ש-
 $\rank(A)$
@@ -5073,8 +5110,10 @@ $\dim(\Null(A))=0$.
 $n$,
 והמשפט מכליל זאת למקרים אחרים. רעיון ההוכחה הוא פשוט: הדרגה שווה למספר המשתנים התלויים, ומימד מרחב הפתרונות שווה למספר המשתנים החופשיים (והסכום הכולל הוא 
 $n$).
-צריך רק להצדיק את הקביעות האלו.
+צריך רק להצדיק את הקביעות האלו, ונדחה את ההוכחה המסודרת לפרק על העתקות לינאריות (שם תופיע הכללה של משפט הדרגה).
 \end{remark}
+
+% The following is a hidden self-contained proof, which may or may not be useful one day.
 
 \begin{teacher}
 \begin{proof}
@@ -5650,5 +5689,906 @@ $$
 
 \end{enumerate}
 \end{solution}
+
+\clearpage
+\section{סיכום}
+\noindent\textbf{הגדרה 8.1.}
+
+מרחב וקטורי (מ"ו)
+$V$
+מעל
+$\F$
+הוא קבוצה של איברים
+(שנקראים וקטורים)
+עם פעולות של חיבור וקטורי
+$+$
+וכפל בסקלר
+$\cdot$
+כך שמתקיימות האקסיומות הבאות לכל  
+$v_1,v_2,v_3,v \in V $  
+ולכל  
+$ \alpha,\beta \in \F $  
+:
+\begin{enumerate}[label=\alph*.]
+\item 
+סגירות:
+$v_1+v_2\in V$
+וגם
+$\alpha\cdot v\in V$.
+\item
+אסוציאטיביות (חוק הקיבוץ) של חיבור:  
+$ v_1 + (v_2 + v_3) = (v_1 + v_2) + v_3 $.
+\item
+קומוטטיביות (חוק החילוף) של חיבור:  
+$ v_1 + v_2 = v_2 + v_1 $.
+\item
+קיום איבר ניטרלי לחיבור (וקטור האפס): קיים איבר  
+$0_V \in V$  
+כך שלכל  
+$v \in V$  
+מתקיים  
+$v + 0_V = v$.
+\item
+קיום איבר נגדי: לכל  
+$v \in V$  
+קיים  
+$-v \in V $  
+כך ש  
+$v + (-v) = 0$.
+\item
+אסוציאטיביות של כפל בסקלר: 
+לכל  
+$v\in V $  
+מתקיים
+$\alpha\cdot(\beta v) = (\alpha\beta)\cdot v$.
+\item   
+לכל  
+$v\in V$  
+מתקיים 
+$1\cdot v = v$.
+\item 
+דיסטריביוטיביות (חוק הפילוג הראשון):
+$\alpha\cdot(v_1 + v_2) = \alpha\cdot v_1 + \alpha\cdot v_2$.
+\item 
+דיסטריביוטיביות (חוק הפילוג השני):
+לכל  
+$ v \in V $  
+מתקיים
+$(\alpha + \beta)\cdot v = \alpha\cdot v + \beta\cdot v$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.2.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$.
+אז לכל 
+$v,w_1,w_2\in V$
+מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$
+w_1+v=w_2+v \implies w_1=w_2
+$
+\item 
+$0\cdot v=0_V$
+(שימו לב להבדל בין הסקלר
+$0\in\F$
+לבין וקטור האפס 
+$0_V\in V$.)
+\item 
+$(-1)\cdot v=-v$
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.3.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$.
+תת-קבוצה
+$W\subseteq V$
+תיקרא תת-מרחב של
+$V$
+אם
+$W$
+היא מ"ו מעל
+$\F$
+בפני עצמה,
+עם פעולות החיבור והכפל בסקלר מ-
+$V$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.4.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$.
+תהי
+$W\subseteq V$.
+התנאים הבאים שקולים:
+\begin{itemize}
+\item 
+$W$
+תת-מרחב של
+$V$.
+\item 
+$0_V\in W$
+וגם לכל
+$w_1,w_2\in W$
+ולכל
+$\alpha\in \F$
+מתקיים
+$w_1+w_2\in W$
+וגם
+$\alpha w_1\in W$.
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.5.}
+
+תהי
+$A\in\M_{m\times n}(\F)$.
+קבוצת הפתרונות לממ"ל ההומוגנית
+$Ax=\underline{0}$
+נקראת מרחב הפתרונות של 
+$A$
+ומסומנת ע"י 
+$\Null(A)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.6.}
+
+\
+$\Null(A)$
+הוא תת-מרחב של
+$\F^n$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.7.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו
+$v_1,...,v_k\in V$.
+צירוף לינארי (צ"ל) של
+$v_1,...,v_k$
+הוא וקטור מהצורה
+$$
+v=\alpha_1v_1+...+\alpha_kv_k
+$$
+כאשר
+$\alpha_1,...,\alpha_k\in\F$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.8.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$v_1,v_2,...,v_k\in V$.
+אז נגדיר את קבוצת כל הצירופים הלינאריים של וקטורים אלה:
+$$
+\Span(v_1,...,v_k)=\Set{\alpha_1v_1+...+\alpha_kv_k|\alpha_1,...,\alpha_k\in\F}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.9.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$,
+ויהיו 
+$v_1,v_2,...,v_k\in V$.
+אז
+$\Span(v_1,...,v_k)$
+הוא תת-מרחב של
+$V$
+המקיים
+$v_1,...,v_k\in \Span(v_1,...,v_k)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.10.}
+
+יהי
+$W$
+תת-מרחב של מ"ו
+$V$
+מעל 
+$\F$.
+אז לכל
+$v_1,...,v_k\in V$
+מתקיים
+$$
+.v_1,...,v_k\in W \iff \Span(v_1,...,v_k)\subseteq W
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.11.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$.
+נאמר ש-
+$V$
+נוצר סופית אם קיימים
+$v_1,...,v_k\in V$
+כך ש-
+$V=\Span(v_1,...,v_k)$.
+במקרה זה גם נאמר שהקבוצה
+$\Set{v_1,...,v_k}$
+פורשת את
+$V$.
+ניתן גם לומר (באופן פחות פורמלי) שהוקטורים
+$v_1,...,v_k$
+פורשים את 
+$V$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.12.}
+
+תהי 
+$A\in\M_{m\times n}(\F)$
+עם שורות
+$$R_1^A,...,R_m^A\in\F^n$$
+ועמודות
+$$.C_1^A,...,C_n^A\in\F^m$$
+נגדיר את מרחב השורות
+$$
+,\Row(A)=\Span(R_1^A,...,R_m^A)\subseteq\F^n
+$$
+ואת מרחב העמודות
+$$
+.\Col(A)=\Span(C_1^A,...,C_n^A)\subseteq\F^m
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.13.}
+
+תהי
+$A\in\M_{m\times n}(\F)$.
+אז לכל וקטור עמודה 
+$w\in\F^m$
+מתקיים
+$w\in\Col(A)$
+אם ורק אם קיים פתרון לממ"ל
+$Ax=w$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.14.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$.
+קבוצת וקטורים
+$\Set{v_1,...,v_k}\subseteq V$
+נקראת:
+\begin{itemize}
+\item 
+תלויה לינארית (ת"ל) אם קיימים 
+$\alpha_1,...,\alpha_k\in\F$
+שאינם כולם שווים ל-
+$0$
+כך ש-
+$$
+.\alpha_1v_1+...+\alpha_kv_k=0_V
+$$
+במקרה זה גם נאמר שהצירוף הלינארי באגף שמאל הוא לא טריוויאלי.
+\item
+בלתי תלויה לינארית (בת"ל) אם לכל
+$\alpha_1,...,\alpha_k\in\F$
+עבורם מתקיים
+$$
+,\alpha_1v_1+...+\alpha_kv_k=0_V
+$$
+בהכרח מתקיים
+$\alpha_1=...=\alpha_k=0$.
+צירוף לינארי זה נקרא טריוויאלי.
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.15.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$
+ויהיו
+$v_1,...,v_k\in V$.
+אז
+$\Set{v_1,...,v_k}$
+ת"ל אם ורק אם קיים
+$1\leq i\leq k$
+כך ש-
+$$
+.v_i\in\Span(v_1,...,v_{i-1})
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.16.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$,
+ויהיו
+$v_1,...,v_k,v_{k+1},...,v_l\in V$.
+\begin{enumerate}[label=\alph*.]
+\item 
+אם 
+$\Set{v_1,...,v_k}$
+ת"ל, אז
+$\Set{v_1,...,v_k,v_{k+1},...,v_l}$
+ת"ל.
+\item 
+אם 
+$\Set{v_1,...,v_k,v_{k+1},...,v_l}$
+בת"ל, אז
+$\Set{v_1,...,v_k}$
+בת"ל.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.17.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$,
+ויהיו
+$\Set{v_1,...,v_k}\in V$
+בת"ל ו-
+$w\in V$
+כך שמתקיים
+$w\notin\Span(v_1,...,v_k)$.
+אז
+$\Set{v_1,...,v_k,w}$
+בת"ל.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.18.}
+
+אם
+$\Set{v_1,...,v_k}$
+קבוצה הפורשת מ"ו
+$V$
+מעל
+$\F$,
+אז תת-הקבוצה
+$$
+\Set{v_i|1\leq i\leq k, v_i\notin\Span(v_1,...,v_{i-1})}
+$$
+היא בת"ל ופורשת את 
+$V$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.19.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$.
+תת-קבוצה
+$B=\Set{v_1,...,v_n}\subseteq V$
+נקראת בסיס ל-
+$V$
+אם היא בת"ל וגם פורשת את 
+$V$,
+כלומר
+$v_1,...,v_n$
+בת"ל ובנוסף 
+$\Span(B)=V$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.20.}
+
+יהי
+$V=\Set{0_V}$.
+עבור קבוצת וקטורים ריקה
+$\emptyset=\Set{ }$
+נגדיר 
+$$
+.\Span(\emptyset)=\Set{0_V}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.21.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$.
+אז התנאים הבאים שקולים:
+\begin{itemize}
+\item
+ל-
+$V$
+קיים בסיס.
+\item
+$V$
+נוצר סופית, כלומר קיימת תת-קבוצה סופית הפורשת אותו.
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.22.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$. 
+יהיו 
+$v_1,...,v_n\in V$.
+אז התנאים הבאים שקולים:
+\begin{itemize}
+\item 
+$\Set{v_1,...,v_n}$
+היא בסיס ל-
+$V$.
+\item 
+לכל 
+$v\in V$
+קיימים
+$\alpha_1,...,\alpha_n\in\F$
+יחידים כך ש-
+$\alpha_1v_1+...+\alpha_nv_n=v$.
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.23.}
+
+יהיו 
+$v_1,...,v_k\in\F^n$.
+אז הוקטורים הנ"ל הם בת"ל אם ורק אם קיים פתרון יחיד לממ"ל
+$Ax=\underline{0}$
+כאשר
+$$
+,A=\begin{pmatrix}
+| & | & & | \\
+v_1 & v_2 & \cdots & v_k \\
+| & | & & |
+\end{pmatrix}
+$$
+כלומר
+$\Null(A)=\Set{0}$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.24.}
+
+יהיו 
+$v_1,...,v_k\in\F^n$.
+\begin{enumerate}[label=\alph*.]
+\item 
+אם 
+$\Set{v_1,...,v_k}$
+בת"ל, אז
+$k\leq n$.
+\item 
+אם
+$\Set{v_1,...,v_k}$
+פורשת את
+$\F^n$,
+אז
+$k\geq n$.
+\item
+אם
+$\Set{v_1,...,v_k}$
+היא בסיס ל-
+$\F^n$,
+אז
+$k=n$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 8.25.}
+
+לכל
+$A\in\M_{n\times n}(\F)$
+התנאים הבאים שקולים:
+\begin{enumerate}[label=(\alph*)]
+\item 
+$A$
+שקולת שורה ל-
+$I_n$.
+\item 
+$\rank(A)=n$
+\item 
+לממ"ל
+$Ax=\underline{0}$
+יש פתרון יחיד, כלומר
+$\Null(A)=\Set{0}$.
+\item 
+לכל
+$b\in\F^n$
+יש פתרון יחיד לממ"ל
+$Ax=b$.
+\item
+לכל
+$b\in\F^n$
+יש פתרון לממ"ל
+$Ax=b$.
+\item 
+$A$
+הפיכה משמאל.
+\item 
+$A$
+הפיכה מימין.
+\item 
+$A$
+הפיכה.
+\item 
+$\det(A)\neq 0$
+\item 
+קבוצת העמודות של 
+$A$
+היא בת"ל.
+\item 
+קבוצת העמודות של 
+$A$
+פורשת את
+$\F^n$,
+כלומר
+$\Col(A)=\F^n$.
+\item 
+קבוצת העמודות של 
+$A$
+היא בסיס ל-
+$\F^n$.
+\item 
+קבוצת השורות של 
+$A$
+היא בת"ל.
+\item 
+קבוצת השורות של 
+$A$
+פורשת את
+$\F^n$,
+כלומר
+$\Row(A)=\F^n$.
+\item 
+קבוצת השורות של 
+$A$
+היא בסיס ל-
+$\F^n$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 8.26.}
+
+תהי
+$B\subseteq\F^n$.
+אז כל שניים מהתנאים הבאים גורר את התנאי השלישי:
+\begin{enumerate}[label=(\alph*)]
+\item
+$B$
+בת"ל.
+\item
+$B$
+פורשת את
+$\F^n$.
+\item
+ב-
+$B$
+יש בדיוק
+$n$ 
+וקטורים.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.27.}
+
+לכל
+$A\in\M_{m\times n}(\F)$
+ולכל פש"א
+$S$,
+מתקיים
+$\Row(S(A))=\Row(A)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.28.}
+
+יהיו
+$A,B\in\M_{m\times n}(\F)$
+שקולות שורה. אז 
+$\Row(A)=\Row(B)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.29.}
+
+בסיס סדור 
+$B=\Set{v_1,...,v_n}$
+למ"ו
+$V$
+הוא בסיס יחד עם סדר על איבריו (כלומר יש חשיבות לסדר כתיבתם).
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.30.}
+
+יהי 
+$V$
+מ"ו מעל
+$\F$,
+ויהי
+$B=\Set{v_1,...,v_n}$
+בסיס סדור ל-
+$V$.
+לכל 
+$v\in V$
+קיימים
+$\alpha_1,...,\alpha_n\in\F$
+יחידים כך ש-
+$v=\alpha_1v_1+...+\alpha_nv_n$.
+אז עבור 
+$v$
+נגדיר את וקטור הקוארדינטות שלו ביחס
+ל-
+$B$
+ע"י
+$$
+.[v]_B=\begin{pmatrix}
+\alpha_1 \\
+\vdots \\
+\alpha_n
+\end{pmatrix}\in\F^n
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 8.31.}
+
+יהיו
+$V$
+מ"ו מעל
+$\F$
+ו-
+$B=\Set{v_1,...,v_n}$
+בסיס סדור ל-
+$V$.
+אז לכל
+$v,w\in V$
+ו-
+$\alpha\in F$.
+מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$$[v+w]_B=[v]_B+[w]_B$$
+\item 
+$$[\alpha v]_B=\alpha [v]_B$$
+\item 
+$$[v]_B=[w]_B \iff v=w$$
+\item 
+$$
+[0_V]_B=\begin{pmatrix}
+0 \\
+\vdots \\
+0
+\end{pmatrix}
+$$    
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.32.}
+
+יהיו
+$V$
+מ"ו מעל
+$\F$,
+$B=\Set{v_1,...,v_n}$
+בסיס סדור ל-
+$V$,
+ו-
+$u,w_1,...,w_k\in V$.
+אז מתקיים
+$$
+.u\in\Span(w_1,...,w_k) \iff [u]_B\in\Span([w_1]_B,...,[w_k]_B)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 8.33.}
+
+יהיו
+$V$
+מ"ו מעל
+$\F$,
+$B=\Set{b_1,...,b_n}$
+בסיס סדור ל-
+$V$,
+ו-
+$v_1,...,v_k\in V$.
+\begin{enumerate}[label=\alph*.]
+\item
+$\Set{v_1,...,v_k}$
+בת"ל ב-
+$V$
+אם ורק אם
+$\Set{[v_1]_B,...,[v_k]_B}$
+בת"ל ב-
+$\F^n$.
+\item 
+$\Set{v_1,...,v_k}$
+פורשת את
+$V$
+אם ורק אם
+$\Set{[v_1]_B,...,[v_k]_B}$
+פורשת את
+$\F^n$.
+\item 
+$\Set{v_1,...,v_k}$
+בסיס ל-
+$V$
+אם ורק אם
+$\Set{[v_1]_B,...,[v_k]_B}$
+בסיס ל-
+$\F^n$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.34.}
+
+יהיו
+$V$
+מ"ו מעל
+$\F$,
+$B=\Set{b_1,...,b_n}$
+בסיס ל-
+$V$
+ו-
+$v_1,...,v_k\in V$.
+\begin{enumerate}[label=\alph*.]
+\item 
+אם 
+$\Set{v_1,...,v_k}$
+בת"ל, אז
+$k\leq n$.
+\item 
+אם
+$\Set{v_1,...,v_k}$
+פורשת את
+$V$,
+אז
+$k\geq n$.
+\item
+אם
+$\Set{v_1,...,v_k}$
+היא בסיס ל-
+$V$,
+אז
+$k=n$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.35.}
+
+יהי 
+$V$
+מ"ו נוצר סופית, כלומר קיים לו בסיס. אז כל שני בסיסים ל-
+$V$
+הם שווי גודל.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 8.36.}
+
+גודל בסיס כלשהו של מ"ו
+$V$
+נקרא המימד של
+$V$.
+סימונו הוא
+$\dim(V)$.
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 8.37.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$
+כך ש-
+$\dim(V)=n$,
+ותהי
+$S\subseteq V$.
+אז כל שניים מהתנאים הבאים גוררים את התנאי השלישי:
+\begin{enumerate}[label=\alph*.]
+\item
+$S$
+בת"ל.
+\item
+$S$
+פורשת את
+$V$.
+\item
+ב-
+$S$
+יש בדיוק 
+$n$
+וקטורים.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 8.38.}
+
+יהי
+$V$
+מ"ו נוצר סופית מעל
+$\F$,
+ויהי
+$W$
+תת-מרחב. אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$W$
+נוצר סופית ומתקיים
+$\dim(W)\leq \dim(V)$.
+\item
+אם
+$\dim(W)=\dim(V)$,
+אז 
+$W=V$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 8.39.}
+
+תהי
+$A\in\M_{m\times n}(\F)$. 
+אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item
+$$
+\dim(\Row(A))=\dim(\Col(A))=\rank(A)
+$$
+\item
+$$
+\dim(\Null(A))+\rank(A)=n
+$$
+\end{enumerate}
+\bigskip
+\bigskip
 
 \end{document}

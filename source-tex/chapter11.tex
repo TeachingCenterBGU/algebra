@@ -42,9 +42,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -72,8 +72,6 @@
 \author{צוות הקורס}
 \date{\today}
 
-\setlength {\marginparwidth }{2cm} 
-
 \begin{document}
 \maketitle
 
@@ -89,23 +87,22 @@ $B$
 $\F^n$
 כך ש-
 $[T]_B^B$
-אלכסונית. מה היתרון של מטריצות אלכסוניות? אחד מהם קשור לחישוב חזקה עם מעריך גבוה, שעלול להיות ארוך למטריצות לא ריבועיות. לעומת זאת, נניח כי
+אלכסונית. מה היתרון של מטריצות אלכסוניות? אחד מהם קשור לחישוב חזקה עם מעריך גבוה, שעלול להיות ארוך למטריצות לא אלכסוניות. לעומת זאת, נניח כי
 $$
 .[T]_B^B=\begin{pmatrix}
 a_1 & 0 & \cdots & 0 \\
 0 & a_2 & \cdots & 0 \\
-\vdots & \vdots & \cdots & \vdots \\
+\vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & a_n
 \end{pmatrix}
 $$
 המשמעות של חזקה עם מעריך 
 $k$
-היא שמכפילים את המטריצה בעצמה
-$k-1$
-פעמים.
-מאלכסוניות נקבל שכל איבר על האלכסון הראשי מוכפל בעצמו 
-$k-1$
-פעמים
+היא מכפלה שבה המטריצה מופיעה
+$k$
+פעמים. מאלכסוניות נקבל שבחישוב החזקה כל איבר על האלכסון הראשי מופיע
+$k$
+פעמים במכפלה
 (וכל שאר האיברים נשארים 
 $0$).
 כך נקבל
@@ -117,6 +114,19 @@ a_1^k & 0 & \cdots & 0 \\
 0 & 0 & \cdots & a_n^k
 \end{pmatrix}
 $$
+נשים לב שחזקה זו היא גם
+$[T^k]_B^B$
+כאשר הכוונה בחזקה
+$T^k$
+היא הרכבה שבה
+$T$
+מופיעה 
+$k$
+פעמים:
+$$
+T^k=T\underbrace{\circ\cdots\circ}_{k-1} T
+$$
+כאמור, חישוב של חזקה של מטריצה עלול להיות מסובך, אבל כאשר המטריצה אלכסונית החישוב פשוט. כך גם ניתן לפענח את החזקה של הה"ל המתאימה בדרך פשוטה.
 
 התהליך של מציאת 
 $B$
@@ -141,6 +151,7 @@ $A$
 באופן מפורש.
 
 \begin{definition}
+\adddeftolist{ערך עצמי (ע"ע), וקטור עצמי (ו"ע) ומרחב עצמי}
 תהי
 $A\in\M_{n\times n}(\F)$.
 \begin{enumerate}[label=\alph*.]
@@ -168,20 +179,41 @@ $\lambda\in\F$
 $$
 .V_{\lambda}=\Set{v\in\F^n|Av=\lambda v}
 $$
+מדובר על קבוצת כל הו"ע המתאימים לע"ע 
+$\lambda$
+כולל וקטור האפס (שלא נחשב ו"ע).
 
 
 \end{enumerate}
 \end{definition}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Eigenvector.png}
+    \caption{כאן $v=\begin{pmatrix}1 \\ 1\end{pmatrix}$
+    הוא ו"ע המתאים לע"ע $\lambda=3$}
+    \label{fig:Height}
+\end{figure}
 
 \begin{remark}
 כל ע"ע של
 $A$
 גם נקרא ע"ע של 
 $T_A$, 
-אך נתמקד במטריצות.
+אך נתמקד במטריצות. אכן, לפי הגדרת 
+$T_A$
+מתקיים
+$T_Av=Av$.
+מכאן שלכל
+$\lambda\in\F,v\neq\underline{0}$
+מתקיים
+$$
+.T_Av=\lambda v \iff Av=\lambda v
+$$
+לכן, גם אם ההקשר הוא ה"ל ניתן לעבור למטריצה המתאימה ולעשות את החישובים עליה כדי למצוא את הע"ע ואת המרחבים העצמיים המתאימים. נוח להתמקד במטריצות מלכתחילה וכך נעשה.
 \end{remark}
 
-\begin{example}\label{example:eigenvalues}
+\begin{example}\label{ex:eigenvalues}
 עבור
 $$
 A=\begin{pmatrix}
@@ -212,9 +244,30 @@ $\lambda_1=1$,
 $\begin{pmatrix}1\\1\end{pmatrix}$
 הוא ו"ע המתאים לע"ע
 $\lambda_2=3$.
+לעומת זאת, 
+$\begin{pmatrix}1\\0\end{pmatrix}$
+אינו ו"ע כי לכל
+$\lambda\in\F$
+מתקיים
+$$
+.\begin{pmatrix}
+2 & 1 \\
+1 & 2
+\end{pmatrix}\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}2\\1\end{pmatrix}\neq \lambda\cdot\begin{pmatrix}1\\0\end{pmatrix}
+$$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Eigen.png}
+    \caption{יש בדיוק שני וקטורים עצמיים בחצי העליון של מעגל היחידה}
+    \label{fig:Height}
+\end{figure}
+
+% Insert Eigen.html here.
 \end{example}
 
 \begin{proposition}\label{prop:eigen-det}
+\addpropositiontolist{אפיון של מרחב עצמי וערך עצמי}
 תהי
 $A\in\M_{n\times n}(\F)$
 ויהי
@@ -290,12 +343,12 @@ $$
 
 \begin{example}
 נחזור לדוגמה 
-\ref{example:eigenvalues}.
+\ref{ex:eigenvalues}.
 הראינו כי
 $\lambda_1=1,\,\lambda_2=3$
 הם ע"ע של 
 $A$,
-אבל איך ניתן למצוא אותם? ראשית נחשב את הדטרמיננטה של המטריצה
+אבל איך ניתן היה למצוא אותם? ראשית נחשב את הדטרמיננטה של המטריצה
 $\lambda I_2-A$:
 
 $$
@@ -312,14 +365,16 @@ $$
 $$
 
 כצפוי, מדובר על
-$\lambda_1=1,\,\lambda_2=3$.
-איך נמצא וקטורים עצמיים? נפתור את הממ"ליות המתאימות.
+$\lambda_1=1,\,\lambda_2=3$
+בלבד. נתחיל מהע"ע
+$\lambda_1=1$:
+איך נמצא וקטורים עצמיים? נפתור את הממ"ל המתאימה:
 
 $$
 V_1=\Null(1\cdot I_2-A)=\Null\begin{pmatrix}
 -1 & -1 \\
 -1 & -1
-\end{pmatrix}=\begin{pmatrix}
+\end{pmatrix}=\Null\begin{pmatrix}
 1 & 1 \\
 0 & 0
 \end{pmatrix}=\Span\left(\begin{pmatrix}1\\-1\end{pmatrix}\right)
@@ -334,7 +389,7 @@ $$
 V_3=\Null(3\cdot I_2-A)=\Null\begin{pmatrix}
 1 & -1 \\
 -1 & 1
-\end{pmatrix}=\begin{pmatrix}
+\end{pmatrix}=\Null\begin{pmatrix}
 1 & -1 \\
 0 & 0
 \end{pmatrix}=\Span\left(\begin{pmatrix}1\\1\end{pmatrix}\right)
@@ -372,6 +427,7 @@ $$
 \end{proof}
 
 \begin{definition}
+\adddeftolist{פולינום אופייני $p_A(x)$ של מטריצה $A$}
 תהי
 $A\in\M_{n\times n}(\F)$.
 נגדיר
@@ -381,9 +437,14 @@ $A$.
 \end{definition}
 
 \begin{remark}
-זהו פולינום כי בחישוב הדטרמיננטה מופיע סכום (עם סימנים מתחלפים) של מכפלות של איברי המטריצה. לפי טענה
+זהו פולינום ממעלה
+$n$
+כי בחישוב הדטרמיננטה מופיע סכום (עם סימנים מתחלפים) של מכפלות של איברי המטריצה. יש בדיוק מכפלה אחת בפיתוח שהיא ממעלה
+$n$,
+והיא זו המתאימה לאיברי האלכסון הראשי.
+לפי טענה
 \ref{prop:eigen-det},
-שורשיו הם
+שורשי הפולינום הם
 בדיוק הע"ע של
 $A$.
 נדגיש שהם לא בהכרח ממשיים גם אם 
@@ -391,7 +452,7 @@ $\F=\R$.
 
 אין חשיבות לאות, אבל מקובל להשתמש ב-
 $x$
-עבור הפולינום וב-
+עבור המשתנה של הפולינום וב-
 $\lambda$
 עבור הע"ע.
 \end{remark}
@@ -438,7 +499,7 @@ $$
 \end{example}
 
 \begin{exercise}
-מצאו ע"ע ומרחבים עצמיים עבור
+מצאו את כל הע"ע ואת המרחבים העצמיים המתאימים עבור
 $$
 .A=\begin{pmatrix}
 4 & 0 & 3 \\
@@ -449,7 +510,7 @@ $$
 \end{exercise}
 
 \begin{solution}
-נפתח את הדטרמיננטה לפי השורה השנייה (אפשר גם לפי העמודה השנייה). זה יקל על החישוב ובמיוחד על הפירוק לגורמים של הפולינום (מה שנחוץ כדי למצוא את השורשים בהעדר נוסחה). נקבל:
+נמצא את הפולינום האופייני ע"י פיתוח הדטרמיננטה לפי השורה השנייה (אפשר גם לפי העמודה השנייה). זה יקל על החישוב ובמיוחד על הפירוק לגורמים של הפולינום (מה שנחוץ כדי למצוא את השורשים בהעדר נוסחה). נקבל:
 $$
 \begin{aligned}
 p_A(x)&=\det(xI_3-A)=\det\begin{pmatrix}
@@ -460,7 +521,7 @@ x-4 & 0 & -3 \\
 &=(x-3)\det\begin{pmatrix}
 x-4 & -3 \\
 -1 & x-2
-\end{pmatrix}=(x-3)(x-6x+5-3)\\
+\end{pmatrix}=(x-3)(x^2-6x+8-3)\\
 &=(x-1)(x-3)(x-5)
 \end{aligned}
 $$
@@ -502,6 +563,7 @@ $$
 \end{solution}
 
 \begin{definition}
+\adddeftolist{מטריצות דומות}
 מטריצות
 $A,B\in\M_{n\times n}(\F)$
 נקראות דומות אם קיימת
@@ -526,6 +588,11 @@ $B$
 דומה ל-
 $A$, 
 כפי שהיינו מצפים מהמילה "דמיון".
+
+להוכיח ששתי מטריצות נתונות הן דומות זו משימה לא טריוויאלית. איך נמצא את
+$P$?
+נגיע לכך בהמשך דרך לכסון (הקשור לו"ע וע"ע), אך בינתיים נראה דוגמה לבדיקת הדמיון בהינתן
+$P$.
 \end{remark}
 
 \begin{example}\label{ex:similar}
@@ -562,6 +629,7 @@ $$
 \end{example}
 
 \begin{definition}
+\adddeftolist{מטריצה לכסינה}
 $A\in\M_{n\times n}(\F)$
 נקראת לכסינה אם היא דומה למטריצה אלכסונית
 $D\in\M_{n\times n}(\F)$,
@@ -573,9 +641,44 @@ $$
 $$ 
 \end{definition}
 
-\begin{example}
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item 
+המטריצה
+$$
+A=\begin{pmatrix}
+1 & 0 \\
+1 & 2  
+\end{pmatrix}
+$$
+היא אלכסונית כי עבור המטריצות
+$$
+D=\begin{pmatrix}
+1 & 0 \\
+0 & 2  
+\end{pmatrix},\quad P=\begin{pmatrix}
+1 & 0 \\
+-1 & 1  
+\end{pmatrix}
+$$
+מתקיים
+$$
+.PDP^{-1}=\begin{pmatrix}
+1 & 0 \\
+-1 & 1  
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+0 & 2  
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+1 & 1  
+\end{pmatrix}=A
+$$
+
+
+\item 
 בדוגמה 
-\label{ex:similar}
+\ref{ex:similar}
 ראינו כי
 $$
 A=\begin{pmatrix}
@@ -644,15 +747,75 @@ $A$
 גם לכסינה, ומתקיים
 $A=P_1DP_1^{-1}$
 כאשר
-$P_1=PP_2$.
-זו מטריצה הפיכה כמכפלה של מטריצות הפיכות.
+$P_1=PP_2$
+(מטריצה הפיכה כמכפלה של מטריצות הפיכות).
+יתר על כן, למטריצות
+$A,B$
+יש בדיוק אותם ע"ע, והם מופיעים לאורך האלכסון הראשי של
+$D$:
+$\lambda_1=3,\lambda_2=1$.
+יחד עם זאת, המרחבים העצמיים שונים. עבור 
+$A$
+העמודות של 
+$PP_2$
+הן ו"ע, כלומר
+$\begin{pmatrix}1\\-1\end{pmatrix},\begin{pmatrix}1\\1\end{pmatrix}$
+בהתאמה ל-
+$\lambda_1=3,\lambda_2=1$.
+עבור 
+$B$
+העמודות של 
+$P_2$
+הן ו"ע, וקל לראות כי
+$$
+.\begin{pmatrix}2\\-1\end{pmatrix}\notin\Span\left(\begin{pmatrix}1\\-1\end{pmatrix}\right),\quad \begin{pmatrix}0\\1\end{pmatrix}\notin\Span\left(\begin{pmatrix}1\\1\end{pmatrix}\right)
+$$
+
+\end{enumerate}
 \end{example}
 
-בתרגיל
-\ref{exer:similar-det}
-ראינו כי למטריצות דומות יש דטרמיננטות שוות. כעת נראה שגם הפולינומים האופייניים והע"ע שלהן שווים.
+הדוגמה לעיל מעידה על תכונה כללית של יחס הדמיון בין מטריצות: טרנזיטיביות. הכוונה המדויקת תובהר בתרגיל הבא:
+
+\begin{exercise}
+יהיו 
+$A,B,C\in\M_{n\times n}(\F)$
+כך ש-
+$A$
+דומה ל-
+$B$
+ו-
+$B$
+דומה ל-
+$C$.
+אז
+$A$
+דומה ל-
+$C$.
+\end{exercise}
+
+\begin{solution}
+מהנתון נובע שקיימות
+$P,Q\in\M_{n\times n}(\F)$
+כך ש-
+$$
+.A=PBP^{-1},\quad B=QCQ^{-1}
+$$
+נציב את המשוואה הימנית באגף ימין של המשוואה השמאלית ונקבל
+$$
+.A=P(QCQ^{-1})P^{-1}=(PQ)C(PQ)^{-1}
+$$
+$PQ$
+הפיכה כמכפלה של מטריצות הפיכות, ולכן המשוואה לעיל מראה כי
+$A$
+דומה ל-
+$C$
+כנדרש.
+\end{solution}
+
+אם כן, לאור התרגיל האחרון אפשר כבר להבין ששתי מטריצות לכסינות הן דומות זו לזו אם הן דומות לאותה מטריצה אלכסונית. בכיוון השני, נוכיח שהפולינומים האופייניים והע"ע של מטריצות דומות בהכרח שווים.
 
 \begin{proposition}\label{prop:char-poly}
+\addpropositiontolist{תכונות של מטריצות דומות}
 יהיו
 $A,B\in\M_{n\times n}(\F)$
 דומות. אז מתקיים:
@@ -731,13 +894,14 @@ $A,B$
 
 \section{משפט הלכסון ויישומו}
 
-מהו הקשר בין לכסון לבין ע"ע? הם מופיעים על האלכסון הראשי של המטריצה האלכסונית 
+מהו הקשר בין לכסון לבין ערכים עצמיים? הם מופיעים על האלכסון הראשי של המטריצה האלכסונית 
 $D$.
 ומה לגבי הוקטורים העצמיים? הם העמודות של
 $P$.
 זה הרעיון של המשפט הבא, שנקרא לו משפט הלכסון.
 
 \begin{theorem}\label{thm:diag}
+\addtheoremtolist{משפט הלכסון}
 $A\in\M_{n\times n}(\F)$
 היא לכסינה אם ורק אם קיים ל-
 $\F^n$
@@ -760,18 +924,9 @@ $$
 $$
 נסתכל על 
 $T_A:\F^n\to\F^n$
-ונשתמש במסקנה
-\ref{cor:rep-similar}:
+ונשים לב כי
 $$
-A=[T_A]_E^E=[I]_E^B[T_A]_B^B([I]_E^B)^{-1}
-$$
-נסמן 
-$P=[I]_E^B,\,D=[T]_B^B$.
-קיבלנו כי
-$A=PDP^{-1}$
-ונשים לב כי:
-$$
-D=\begin{pmatrix}
+.D=\begin{pmatrix}
 \big| & \big| &        & \big| \\
 [\lambda_1 v_1]_B & [\lambda_2 v_2]_B & \cdots & [\lambda_n v_n]_B \\
 \big| & \big| &        & \big|
@@ -784,10 +939,18 @@ D=\begin{pmatrix}
 0 & 0 & \cdots & \lambda_n
 \end{pmatrix}
 $$
-זו מטריצה אלכסונית. בנוסף, מתקיים
+זו מטריצה אלכסונית. נשתמש במסקנה
+\ref{cor:rep-similar}:
+$$
+A=[T_A]_E^E=[I]_E^B[T_A]_B^B([I]_E^B)^{-1}
+$$
+נסמן 
+$P=[I]_E^B,\,D=[T]_B^B$.
+קיבלנו כי
+$A=PDP^{-1}$
+בנוסף, מתקיים
 $$
 .P=[I]_E^B=
-=
 \left(
 \begin{array}{cccc}
 \big| & \big| &        & \big| \\
@@ -800,10 +963,52 @@ $$
 $\F^n$.
 לסיכום, הוכחנו כי
 $A$
-לכסינה והע"ע שלה מופיעים לאורך האלכסון הראשי של 
-$D$.
-הוקטורים העצמיים הם עמודות 
+לכסינה, הע"ע שלה מופיעים לאורך האלכסון הראשי של 
+$D$,
+והוקטורים העצמיים הם עמודות 
 $P$.
+יש דרך נוספת לראות זאת בלי שימוש בה"ל:
+$$
+\begin{aligned}
+AP&=A\left(
+\begin{array}{cccc}
+\big| & \big| &        & \big| \\
+v_1 & v_2 & \cdots & v_n \\
+\big| & \big| &        & \big|
+\end{array}
+\right)=\left(
+\begin{array}{cccc}
+\big| & \big| &        & \big| \\
+Av_1 & Av_2 & \cdots & Av_n \\
+\big| & \big| &        & \big|
+\end{array}
+\right)\\
+&=\left(
+\begin{array}{cccc}
+\big| & \big| &        & \big| \\
+\lambda_1v_1 & \lambda_2v_2 & \cdots & \lambda_nv_n \\
+\big| & \big| &        & \big|
+\end{array}
+\right)=\left(
+\begin{array}{cccc}
+\big| & \big| &        & \big| \\
+v_1 & v_2 & \cdots & v_n \\
+\big| & \big| &        & \big|
+\end{array}
+\right)\begin{pmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{pmatrix}\\
+&=PD
+\end{aligned}
+$$
+נכפיל מימין ב-
+$P^{-1}$
+ונקבל
+$A=PDP^{-1}$,
+שוב.
 
 בכיוון השני, נניח כי 
 $A$
@@ -891,6 +1096,7 @@ $\F^n$,
 איך נמצא אותו? הרעיון הוא קודם כל למצוא בסיס לכל מרחב עצמי, ואחר כך לקחת איחוד של הבסיסים האלה. אבל מה מבטיח שנקבל בסיס בדרך זו? נוכיח את הטענה הבאה ואחר כך נקבל תשובה כמסקנה.
 
 \begin{proposition}\label{prop:distinct-eigenvalues}
+\addpropositiontolist{ו"ע המתאימים לע"ע שונים הם בת"ל}
 תהי
 $A\in\M_{n\times n}(\F)$.
 נניח כי
@@ -969,6 +1175,7 @@ $\Set{v_1,...,v_k}$
 \end{proof}
 
 \begin{definition}
+\adddeftolist{ריבוי גיאומטרי של ע"ע}
 לכל ע"ע
 $\lambda_i\in\F$
 של
@@ -980,6 +1187,7 @@ $\lambda_i$.
 \end{definition}
 
 \begin{corollary}\label{cor:eigenspace-union}
+\addcorollarytolist{איחוד של בסיסים למרחבים עצמיים שונים הוא קבוצה בת"ל}
 תהי
 $A\in\M_{n\times n}(\F)$
 עם ע"ע שונים
@@ -1004,7 +1212,7 @@ $$
 $\alpha_{11},...,\alpha_{1g_1},....,\alpha_{k1},...,\alpha_{kg_k}\in\F$
 כך ש-
 $$
-.\alpha_11 v_{11}+...+\alpha_{1g_1}v_{1g_1}+...+\alpha_{k1}v_{k1}+...+\alpha_{kg_k}v_{kg_k}=\underline{0}
+.\alpha_{11} v_{11}+...+\alpha_{1g_1}v_{1g_1}+...+\alpha_{k1}v_{k1}+...+\alpha_{kg_k}v_{kg_k}=\underline{0}
 $$
 לכל
 $1\leq i\leq k$
@@ -1021,8 +1229,7 @@ $$
 \ref{prop:distinct-eigenvalues},
 בהכרח מתקיים
 $w_1=...=w_k=\underline{0}$
-כי אחרת מדובר בסכום של וקטורים בת"ל וזו סתירה למשוואה.
-אבל לכל
+כי אחרת כל וקטור שאינו מתאפס הוא ו"ע, וכך מתקבל סכום של וקטורים בת"ל (ממרחבים עצמיים שונים) שמתאפס - סתירה. אבל לכל
 $1\leq i\leq k$
 הקבוצה
 $B_i$
@@ -1046,59 +1253,10 @@ $$
 .A=PDP^{-1}
 $$
 
-האלגוריתם מבוסס על משפט הלכסון, טענה
-\ref{prop:eigen-det}
-ומסקנה
-\ref{cor:eigenspace-union}.
-הוא מחולק לשלבים הבאים:
-
-\underline{שלב 1:}
-בודקים האם הפולינום האופייני
-$p_A(x)$
-מתפצל לגורמים לינאריים מעל
-$\F$.
-
-זה תמיד נכון אם
-$\F=\C$
-(לפי משפט שחורג מהקורס),
-אך לא בהכרח אם 
-$\F=\R$.
-במילים אחרות, ייתכן ש-
-$A$
-לכסינה מעל
-$\C$
-ולא מעל
-$\R$.
-הכוונה בפיצול לגורמים לינאריים היא פירוק לגורמים מהצורה הבאה:
-$$
-p_A(x)=(x-\lambda_1)^{a_1}\cdots (x-\lambda_k)^{a_k}
-$$
-$\lambda_1,...,\lambda_k$
-הם שורשי
-$p_A(x)$,
-כלומר
-$p_A(\lambda_i)=0$
-לכל
-$1\leq i\leq k$.
-לפי
-\ref{prop:eigen-det},
-אלה הע"ע של
-$A$.
-
-דוגמה
-\ref{ex:no-split}
-מראה שייתכן שלמטריצה ממשית יהיו ע"ע שאינם ממשיים,
-או באופן שקול: ייתכן שאין פיצול לגורמים לינאריים מעל 
-$\R$,
-ולכן היא אינה לכסינה מעל
-$\R$.
-בהמשך נראה שהמטריצה מדוגמה זו היא אכן לכסינה מעל
-$\C$
-(שלב 
-$1$
-עוד לא מבטיח לנו זאת).
+לפני שנתאר את האלגוריתם, יש צורך בהגדרת מספר נוסף הקשור לע"ע (בדומה לריבוי הגיאומטרי). כאן יש קשר לפירוק לגורמים של הפולינום האופייני:
 
 \begin{definition}
+\adddeftolist{ריבוי אלגברי של ע"ע}
 המעריך 
 $a_i$
 של
@@ -1121,11 +1279,82 @@ $\det(xI_n-A)$
 $x^n$
 ולכל שאר האיברים יש מעריכים קטנים יותר כחזקות של
 $x$. 
-מצד שני, ניתן לחשב את המעלה לפי הפיצול לגורמים לינאריים. כך נקבל:
+מצד שני, ניתן לחשב את המעלה לפי הפיצול לגורמים לינאריים. כך נקבל
 $$
-\sum_{i=1}^k a_i=n
+.\sum_{i=1}^k a_i=n
 $$
 \end{remark}
+
+\begin{example}
+עבור
+$$
+A=\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+$$
+מתקיים
+$p_A(x)=x(x-1)^2$.
+הע"ע הם
+$\lambda_1=0,\lambda_2=1$
+והריבויים האלגבריים המתאימים הם
+$a_1=1,a_2=2$
+בהתאם למעריכים שמופיעים בפיצול.
+\end{example}
+
+האלגוריתם מבוסס על משפט הלכסון, טענה
+\ref{prop:eigen-det}
+ומסקנה
+\ref{cor:eigenspace-union}.
+הוא מחולק לשלבים הבאים:
+
+\underline{שלב 1:}
+בודקים האם הפולינום האופייני
+$p_A(x)$
+מתפצל לגורמים לינאריים מעל
+$\F$.
+
+הכוונה בפיצול לגורמים לינאריים היא פירוק לגורמים מהצורה הבאה:
+$$
+p_A(x)=(x-\lambda_1)^{a_1}\cdots (x-\lambda_k)^{a_k}
+$$
+כאשר
+$\lambda_1,...,\lambda_k$
+הם שורשי
+$p_A(x)$,
+כלומר
+$p_A(\lambda_i)=0$
+לכל
+$1\leq i\leq k$.
+לפי טענה
+\ref{prop:eigen-det},
+אלה הע"ע של
+$A$.
+
+כל פולינום מתפצל לגורמים לינאריים מעל
+$\C$
+(לפי משפט שחורג מהקורס),
+אך לא בהכרח מעל 
+$\R$.
+במילים אחרות, ייתכן ש-
+$A$
+לכסינה מעל
+$\C$
+ולא מעל
+$\R$.
+דוגמה
+\ref{ex:no-split}
+מראה שייתכן שלמטריצה ממשית יהיו ע"ע שאינם ממשיים,
+או באופן שקול: ייתכן שאין פיצול לגורמים לינאריים מעל 
+$\R$,
+ולכן היא אינה לכסינה מעל
+$\R$.
+בהמשך נראה שהמטריצה מדוגמה זו היא אכן לכסינה מעל
+$\C$
+(שלב 
+$1$
+עוד לא מבטיח לנו זאת).
 
 \underline{שלב 2:}
 מחשבים את הע"ע ובודקים אם לכל ע"ע 
@@ -1196,7 +1425,7 @@ $\lambda_i$
 $P$.
 
 \begin{remark}
-הסדר של הע"ע הוא שרירותי, וגם הסדר של הו"ע הוא שרירותי (שלא לדבר על הבחירה של הבסיס לכל מרחב עצמי, שהיא גם שרירותית). לכן, בהרבה מקרים אין תשובה יחידה ל-
+סדר הופעת הע"ע על האלכסון הראשי הוא שרירותי, וגם הסדר של הו"ע הוא שרירותי (שלא לדבר על הבחירה של הבסיס לכל מרחב עצמי, שהיא גם שרירותית). לכן, בהרבה מקרים אין תשובה יחידה ל-
 $D$
 (אלא אם כן
 כל הע"ע שווים).
@@ -1408,9 +1637,12 @@ $g_1<a_1$,
 $g_i=a_i$
 לכל ע"ע
 $\lambda_i$?
-התשובה היא כן. קודם כל נוכיח טענת עזר:
+התשובה היא כן. קודם כל נוכיח טענת עזר - ההוכחה היא
+\underline{לצורך העשרה}
+לסקרנים.
 
 \begin{proposition}\label{prop:geo-alg}
+\addpropositiontolist{אי-שוויון בין ריבוי גיאומטרי לריבוי אלגברי}
 תהי
 $A\in\M_{n\times n}(\F)$
 עם ע"ע
@@ -1478,7 +1710,7 @@ x-\lambda_i & \cdots & 0 & * & \cdots & * \\
 \vdots & \ddots & \vdots & \vdots &\ddots & \vdots \\
 0 & \cdots & 0 & * & \cdots & *
 \end{pmatrix} \\
-&=\det\begin{pmatrix}
+&\underbrace{=}_{\text{שחלוף}}\det\begin{pmatrix}
 x-\lambda_i & \cdots & 0 & 0 & \cdots & 0 \\
 \vdots & \ddots & \vdots & \vdots &\ddots & \vdots \\
 0 & \cdots & x-\lambda_i & 0 & \cdots & 0 \\
@@ -1488,9 +1720,13 @@ x-\lambda_i & \cdots & 0 & 0 & \cdots & 0 \\
 \end{pmatrix}=(x-\lambda_i)^{g_i}q_i(x)
 \end{aligned}
 $$
-כאן
+משכנו החוצה את הגורם
+$x-\lambda_i$
+מכל אחת מ-
+$g_i$
+השורות הראשונות, ולכן נשארו עם הדטרמיננטה
 $$
-q_i(x)=\det\begin{pmatrix}
+.q_i(x)=\det\begin{pmatrix}
 1 & \cdots & 0 & 0 & \cdots & 0 \\
 \vdots & \ddots & \vdots & \vdots &\ddots & \vdots \\
 0 & \cdots & 1 & 0 & \cdots & 0 \\
@@ -1499,11 +1735,13 @@ q_i(x)=\det\begin{pmatrix}
 * & \cdots & * & * & \cdots & *
 \end{pmatrix}
 $$
-הוא פולינום ממעלה
+זהו פולינום ממעלה
 $m_i=n-g_i$.
 ייתכן שהוא מתחלק ב-
 $(x-\lambda_i)$
-וייתכן שלא, אבל בכל אופן המעריך של גורם זה ב-
+וייתכן שלא, אבל בכל אופן המעריך של 
+$x-\lambda_i$
+בפיצול של
 $p_A(x)$
 הוא לפחות 
 $g_i$.
@@ -1515,6 +1753,7 @@ $$
 \end{proof}
 
 \begin{corollary}\label{cor:simple-eigenvalue}
+\addcorollarytolist{המקרה של ריבוי אלגברי $1$}
 תהי
 $A\in\M_{n\times n}(\F)$
 עם ע"ע
@@ -1577,6 +1816,7 @@ $A$
 יש גרסה שנייה למשפט הלכסון שכבר ניתן להבין מתוך תיאור האלגוריתם:
 
 \begin{theorem}\label{thm:diag2}
+\addtheoremtolist{משפט הלכסון (ניסוח שני)}
 תהי
 $A\in\M_{n\times n}(\F)$.
 אז
@@ -1611,7 +1851,7 @@ $$
 כפי שכבר תיארנו בשלב 2 של אלגוריתם הלכסון, שילוב שני התנאים מספיק ללכסינות 
 $A$.
 נדגיש שוב: איחוד הבסיסים של המרחבים העצמיים הוא קבוצה בת"ל 
-(לפי טענה
+(לפי מסקנה
 \ref{cor:eigenspace-union})
 המורכבת מ-
 $$
@@ -1818,6 +2058,7 @@ $B$.
 בתחילת הפרק ציינו שאחד השימושים של לכסון הוא חישוב חזקה עם מעריך גבוה. הטענה הבאה מתארת את החישוב הכללי למטריצה לכסינה (החישוב למטריצה לא לכסינה יותר מסובך וחורג מהקורס).
 
 \begin{proposition}\label{prop:matrix-power}\
+\addpropositiontolist{חישוב חזקה של מטריצה אלכסונית/לכסינה}
 \begin{enumerate}[label=\alph*.]
 \item 
 תהי
@@ -1875,7 +2116,10 @@ $k\in\N$.
 $k$
 היא שמכפילים את המטריצה בעצמה
 $k-1$
-פעמים. בכל שלב מכפילים שתי מטריצות אלכסוניות ומקבלים מטריצה אלכסונית שאיבריה על האלכסון הראשי הם המכפלות המתאימות, כלומר חזקות של הע"ע של 
+פעמים (ובסך הכל היא מופיעה 
+$k$
+פעמים).
+בכל שלב מכפילים שתי מטריצות אלכסוניות ומקבלים מטריצה אלכסונית שאיבריה על האלכסון הראשי הם המכפלות המתאימות, כלומר חזקות של הע"ע של 
 $D$.
 
 $$
@@ -1921,7 +2165,7 @@ $$
 $$
 \begin{aligned}
 A^1&=A=PDP^{-1}=PD^1P^{-1} \\
-A^2&=A\cdot A=(PDP^{-1})(PDP^{-1})=P(D\cdot D)P^{-1}=PD^2P{-1} \\
+A^2&=A\cdot A=(PDP^{-1})(PDP^{-1})=P(D\cdot D)P^{-1}=PD^2P^{-1} \\
 &\;\vdots \\
 A^k&=A^{k-1}\cdot A=(PD^{k-1}P^{-1})(PDP^{-1})=P(D^{k-1}\cdot D)P^{-1}=PD^kP^{-1}
 \end{aligned}
@@ -1933,7 +2177,7 @@ $$
 
 \begin{example}
 שוב נחזור לדוגמה
-\ref{example:eigenvalues}.
+\ref{ex:eigenvalues}.
 הפעם נרצה לחשב את
 $A^k$
 עבור
@@ -2215,22 +2459,12 @@ $$
 \end{enumerate}
 \end{example}
 
-\begin{definition}
-תהי
-$A\in\M_{n\times n}(\F)$
-ויהי
-$$
-p(x)=a_mx^m+...+a_1x+a_0
-$$
-פולינום עם מקדמים
-$a_0,a_1,...,a_m\in\F$.
-נגדיר את 
-$p(A)\in\M_{n\times n}(\F)$
-ע"י הנוסחה הבאה:
-$$
-p(A)=a_mA^m+...+a_1A+a_0I_n
-$$
-\end{definition}
+ניזכר בהגדרה
+\label{def:matrix-polynomial}
+לפולינום של מטריצה 
+$A\in\M_{n\times n}(\F)$.
+למעשה, מדובר בצירוף לינארי של חזקות המטריצה, כאשר 
+$A^0=I_n$.
 
 \begin{example}
 עבור
@@ -2278,6 +2512,7 @@ $$
 כבר הבנו איך אפשר לחשב חזקות של מטריצה לכסינה. יש הכללה טבעית לפולינום כללי:
 
 \begin{proposition}\label{prop:matrix-poly}
+\addpropositiontolist{חישוב פולינום של מטריצה לכסינה}
 תהי
 $A\in\M_{n\times n}(\F)$
 ויהי
@@ -2332,7 +2567,7 @@ $$
 Av&=\lambda v \\
 A^2v&=A(\lambda v)=\lambda^2 v \\
 &\thinspace\vdots \\
-A^k&=A(\lambda^{k-1}v)=\lambda^k v
+A^kv&=A(\lambda^{k-1}v)=\lambda^k v
 \end{aligned}
 $$
 מכאן:
@@ -2510,7 +2745,7 @@ $$
 
 מצד שני:
 $$
-A^kv=\0_{2\times 2}v=\underline{0}
+A^kv=\0_{n\times n}v=\underline{0}
 $$
 
 מכאן נובע כי
@@ -2569,5 +2804,373 @@ $A$
 
 \end{enumerate}
 \end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 11.1.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+\begin{enumerate}[label=\alph*.]
+\item 
+$\lambda\in\F$
+נקרא ערך עצמי (ע"ע) של
+$A$
+אם קיים
+$\underline{0}\neq v\in\F^n$
+כך ש-
+$$
+.Av=\lambda v
+$$
+$v$
+כנ"ל נקרא וקטור עצמי (ו"ע) של 
+$A$
+המתאים ל-
+$\lambda$.
+
+
+\item 
+עבור ע"ע 
+$\lambda\in\F$
+המרחב העצמי שלו הוא
+$$
+.V_{\lambda}=\Set{v\in\F^n|Av=\lambda v}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.2.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+ויהי
+$\lambda\in\F$
+(לא בהכרח ע"ע).
+אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+V_{\lambda}=\Null(\lambda I_n-A)
+$$
+בפרט, 
+$V_{\lambda}$
+הוא תת-מרחב של
+$\F^n$.
+
+
+\item 
+$$
+\det(\lambda I_n-A)=0 \iff V_{\lambda}\neq\Set{\underline{0}} \iff \text{$\lambda$
+הוא ע"ע של
+$A$}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 11.3.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+נגדיר
+$p_A(x)=\det(x I_n-A)$
+ונקרא לו הפולינום האופייני של
+$A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 11.4.}
+
+מטריצות
+$A,B\in\M_{n\times n}(\F)$
+נקראות דומות אם קיימת
+$P\in\M_{n\times n}(\F)$
+הפיכה כך ש-
+$$
+.A=PBP^{-1}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 11.5.}
+
+$A\in\M_{n\times n}(\F)$
+נקראת לכסינה אם היא דומה למטריצה אלכסונית
+$D\in\M_{n\times n}(\F)$,
+כלומר קיימת 
+$P\in\M_{n\times n}(\F)$
+הפיכה כך ש-
+$$
+.A=PDP^{-1}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.6.}
+
+יהיו
+$A,B\in\M_{n\times n}(\F)$
+דומות. אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item
+לכל
+$\lambda\in\F$
+המטריצות
+$$
+\lambda I_n-A,\,\lambda I_n-B
+$$
+דומות.
+
+
+\item 
+מתקיים
+$$
+.p_A(x)=p_B(x)
+$$
+
+
+\item 
+ל-
+$A,B$
+יש אותם ע"ע.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 11.7.}
+
+$A\in\M_{n\times n}(\F)$
+היא לכסינה אם ורק אם קיים ל-
+$\F^n$
+בסיס
+$B=\Set{v_1,...,v_n}$
+המורכב מוקטורים עצמיים של 
+$A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.8.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+נניח כי
+$v_1,...,v_k$
+מתאימים לע"ע שונים
+$\lambda_1,...,\lambda_k\in\F$.
+אז בהכרח
+$\Set{v_1,...,v_k}$
+בת"ל.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 11.9.}
+
+לכל ע"ע
+$\lambda_i\in\F$
+של
+$A$,
+נסמן
+$g_i=\dim(V_{\lambda_i})$
+ונקרא לו הריבוי הגיאומטרי של הע"ע
+$\lambda_i$.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 11.10.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+עם ע"ע שונים
+$\lambda_1,...,\lambda_k\in\F$.
+לכל 
+$1\leq i\leq k$
+נניח כי
+$$
+B_i=\Set{v_{i1},...,v_{ig_i}}
+$$
+היא בסיס למרחב העצמי 
+$V_{\lambda_i}$.
+אז האיחוד
+$$
+\Set{v_{11},...,v_{1g_1},...,v_{k1},...,v_{kg_k}}
+$$
+הוא קבוצה בת"ל.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 11.11.}
+
+המעריך 
+$a_i$
+של
+$x-\lambda_i$
+בפיצול
+$$
+p_A(x)=(x-\lambda_1)^{a_1}\cdots(x-\lambda_i)^{a_i}\dots(x-\lambda_k)^{a_k}
+$$
+נקרא הריבוי האלגברי של הע"ע
+$\lambda_i$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.12.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+עם ע"ע
+$\lambda_1,...,\lambda_k\in\F$.
+לכל
+$1\leq i\leq k$
+מתקיים
+$$
+.g_i\leq a_i
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 11.13.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+עם ע"ע
+$\lambda_i\in\F$.
+אם
+$a_i=1$,
+אז 
+$g_i=1$.
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 11.14.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+אז
+$A$
+לכסינה מעל
+$\F$
+אם ורק אם מתקיימים התנאים הבאים:
+\begin{enumerate}[label=\alph*.]
+\item 
+$p_A(x)$
+מתפצל לגורמים לינאריים מעל
+$\F$, 
+כלומר קיים פיצול מהצורה
+$$
+.p_A(x)=(x-\lambda_1)^{a_1}\cdots(x-\lambda_k)^{a_k}
+$$
+
+
+\item 
+לכל
+$1\leq i\leq k$
+מתקיים
+$$
+.g_i=a_i
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.15.}
+
+\label{prop:matrix-power}\
+\begin{enumerate}[label=\alph*.]
+\item 
+תהי
+$D\in\M_{n\times n}(\F)$
+מטריצה אלכסונית מהצורה
+$$
+,D=\begin{pmatrix}
+\lambda_1 & \cdots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \cdots & \lambda_n
+\end{pmatrix}
+$$
+כאשר 
+$\lambda_1,...,\lambda_n\in\F$
+לא בהכרח שונים.
+אז לכל
+$k\in\N$
+מתקיים
+$$
+.D^k=\begin{pmatrix}
+\lambda_1^k & \cdots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \cdots & \lambda_n^k
+\end{pmatrix}
+$$
+
+
+\item 
+תהי
+$A\in\M_{n\times n}(\F)$
+מטריצה לכסינה כך שקיימות
+$P,D\in\M_{n\times n}(\F)$
+אלכסונית והפיכה עבורן
+$$
+.A=PDP^{-1}
+$$
+אז לכל
+$k\in\N$
+מתקיים
+$$
+.A^k=PD^kP^{-1}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 11.16.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+ויהי
+$p(x)$
+פולינום.
+\begin{enumerate}[label=\alph*.]
+\item 
+אם
+$v\in\F^n$
+הוא ו"ע של 
+$A$
+המתאים לע"ע
+$\lambda\in\F$,
+אז הוא גם ו"ע של
+$p(A)$
+המתאים לע"ע
+$p(\lambda)$.
+
+
+\item
+אם
+$A$
+לכסינה כך שקיימות
+$P,D\in\M_{n\times n}(\F)$
+אלכסונית והפיכה עבורן
+$A=PDP^{-1}$,
+אז גם
+$p(A)$
+לכסינה ומתקיים
+$$
+.p(A)=P\cdot p(D)\cdot P^{-1}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
 
 \end{document}

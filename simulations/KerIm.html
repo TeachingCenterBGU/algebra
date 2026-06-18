@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הגרעין והתמונה של העתקה ליניארית</title>
+<style>
+  body { margin: 0; }
+  canvas { display: block; }
+  #info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    color: black;
+    font-family: Arial, sans-serif;
+  }
+  #controls-panel {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 340px;
+  }
+  #matrix-input {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    gap: 10px;
+    direction: ltr;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  input[type="number"] { width: 40px; font-size: 1.1em; text-align: center; }
+  #results { font-size: 1.1em; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div id="info">
+    <h1>גרעין ותמונה</h1>
+    <p>שנו את ערכי המטריצה שמגדירה את הה"ל וראו איך הגרעין (באדום) והתמונה (בכחול) משתנים בהתאם</p>
+  </div>
+  
+  <div id="controls-panel">
+      <h3>מטריצה A</h3>
+      <div id="matrix-input">
+        <input type="number" id="a11" value="0"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0">
+        <input type="number" id="a21" value="0"><input type="number" id="a22" value="0"><input type="number" id="a23" value="0">
+        <input type="number" id="a31" value="0"><input type="number" id="a32" value="0"><input type="number" id="a33" value="0">
+      </div>
+      <hr>
+      <div id="results">
+        <div>dim(Im(A)) = <span id="im-dim">...</span></div>
+        <div>dim(Ker(A)) = <span id="ker-dim">...</span></div>
+      </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(5, 5, 5);
+  controls.update();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+  const axisLength = 5;
+  const axes = [
+      new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), axisLength, 0x000000),
+      new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), axisLength, 0x000000),
+      new THREE.ArrowHelper(new THREE.Vector3(0,0,1), new THREE.Vector3(0,0,0), axisLength, 0x000000)
+  ];
+  axes.forEach(axis => scene.add(axis));
+
+  let currentObjects = [];
+  const inputs = {};
+  for(let i=1; i<=3; i++) {
+      for(let j=1; j<=3; j++) {
+          const id = `a${i}${j}`;
+          inputs[id] = document.getElementById(id);
+          inputs[id].addEventListener('input', draw);
+      }
+  }
+
+  function draw() {
+    currentObjects.forEach(obj => scene.remove(obj));
+    currentObjects = [];
+    scene.background.set(0xffffff);
+    
+    const m = {};
+    for (const key in inputs) m[key] = parseFloat(inputs[key].value) || 0;
+
+    const col1 = new THREE.Vector3(m.a11, m.a21, m.a31);
+    const col2 = new THREE.Vector3(m.a12, m.a22, m.a32);
+    const col3 = new THREE.Vector3(m.a13, m.a23, m.a33);
+    const row1 = new THREE.Vector3(m.a11, m.a12, m.a13);
+    const row2 = new THREE.Vector3(m.a21, m.a22, m.a23);
+    const row3 = new THREE.Vector3(m.a31, m.a32, m.a33);
+    
+    const det = row1.dot(new THREE.Vector3().crossVectors(row2, row3));
+    
+    let isZeroMatrix = (row1.lengthSq() + row2.lengthSq() + row3.lengthSq()) < 0.001;
+
+    if (Math.abs(det) > 0.01) {
+        document.getElementById('im-dim').textContent = '3 (כל המרחב)';
+        scene.background.set(0xadd8e6);
+    } else {
+        const cross_c1c2 = new THREE.Vector3().crossVectors(col1, col2);
+        const cross_c1c3 = new THREE.Vector3().crossVectors(col1, col3);
+        const cross_c2c3 = new THREE.Vector3().crossVectors(col2, col3);
+        if (cross_c1c2.length() > 0.01 || cross_c1c3.length() > 0.01 || cross_c2c3.length() > 0.01) {
+            document.getElementById('im-dim').textContent = '2';
+            const imageNormal = cross_c1c2.length() > 0.01 ? cross_c1c2 : (cross_c1c3.length() > 0.01 ? cross_c1c3 : cross_c2c3);
+            createAndAddPlane(imageNormal, 0x0000ff);
+        } else {
+            const basisVector = [col1, col2, col3].find(v => v.length() > 0.01);
+            if (basisVector) {
+                document.getElementById('im-dim').textContent = '1';
+                createAndAddLine(basisVector, 0x0000ff);
+            } else {
+                document.getElementById('im-dim').textContent = '0';
+            }
+        }
+    }
+    
+    if (isZeroMatrix) {
+        document.getElementById('ker-dim').textContent = '3 (כל המרחב)';
+        scene.background.set(0xffcccb);
+    } else if (Math.abs(det) > 0.01) {
+        document.getElementById('ker-dim').textContent = '0';
+    } else {
+        const cross_r1r2 = new THREE.Vector3().crossVectors(row1, row2);
+        if (cross_r1r2.length() > 0.01 && Math.abs(cross_r1r2.dot(row3)) < 1e-4) {
+             document.getElementById('ker-dim').textContent = '1';
+             createAndAddLine(cross_r1r2, 0xff0000);
+        } else {
+             const nonZeroRows = [row1, row2, row3].filter(r => r.lengthSq() > 0.01);
+             if(nonZeroRows.length === 1) {
+                document.getElementById('ker-dim').textContent = '2';
+                createAndAddPlane(nonZeroRows[0], 0xff0000);
+             } else {
+                document.getElementById('ker-dim').textContent = '1';
+                // Fallback for complex linear dependency
+                const tempV = new THREE.Vector3(1,0,0);
+                let kerVec = new THREE.Vector3().crossVectors(row1, tempV);
+                if (kerVec.length() < 0.01) kerVec = new THREE.Vector3().crossVectors(row1, new THREE.Vector3(0,1,0));
+                createAndAddLine(kerVec, 0xff0000);
+             }
+        }
+    }
+  }
+  
+  function createAndAddPlane(normal, color) {
+    if (normal.lengthSq() < 0.001) return;
+    const geom = new THREE.PlaneGeometry(10, 10);
+    const mat = new THREE.MeshBasicMaterial({color: color, opacity: 0.4, transparent: true, side: THREE.DoubleSide});
+    const mesh = new THREE.Mesh(geom, mat);
+    const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1), normal.clone().normalize());
+    mesh.applyQuaternion(q);
+    scene.add(mesh);
+    currentObjects.push(mesh);
+  }
+
+  function createAndAddLine(dir, color) {
+    if (dir.lengthSq() < 0.001) return;
+    const geom = new THREE.BufferGeometry().setFromPoints([ dir.clone().multiplyScalar(-20), dir.clone().multiplyScalar(20) ]);
+    const mat = new THREE.LineBasicMaterial({color: color, linewidth: 5});
+    const line = new THREE.Line(geom, mat);
+    scene.add(line);
+    currentObjects.push(line);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  
+  draw();
+  animate();
+</script>
+</body>
+</html>

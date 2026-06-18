@@ -17,6 +17,7 @@
 \usepackage{todonotes}
 \usepackage{braket}
 \usepackage{array}
+\usepackage{tocloft}
 
 % ---- Hebrew + fonts ----
 \usepackage{fontspec}
@@ -38,9 +39,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -56,7 +57,6 @@
 \DeclareMathOperator{\rank}{rank}
 \newcommand{\M}{\mathbb{M}}
 \newcommand{\0}{\mathbf{0}}
-
 
 \title{ספר אלגברה לינארית — דגם אוברליף}
 \author{צוות הקורס}
@@ -97,6 +97,7 @@ $1$
 \end{remark}
 
 \begin{definition}
+\adddeftolist{קבוצה}
 קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא
 חשיבות לסדר הופעתם.
 \end{definition}
@@ -278,11 +279,22 @@ $\sqrt{2}$ שהם יחסית נוחים לחישובים. אבל טוב לזכו
 \end{figure}
 
 נשארה עוד קבוצה אחת, שהיא הגדולה ביותר מבין קבוצות המספרים שנעסוק
-בהן. באופן דומה להגדרת $-1$ כשורש (פתרון) של המשוואה $x+1=0$,
-אפשר להגדיר את $i$ כשורש של המשוואה $x^{2}+1=0$. זהו מספר
+בהן. באופן דומה להגדרת
+$-1$
+כשורש (פתרון) של המשוואה
+$x+1=0$,
+אפשר להגדיר את
+$i$
+כשורש של המשוואה
+$x^{2}+1=0$.
+זהו מספר
 מדומה, שהרי אין פתרון ממשי למשוואה זו (ערך המינימום של הפונקציה הוא
-$1$). המספר $i$ לא ניתן למדידה במציאות אך הוא שימושי מאוד
-במתמטיקה, פיזיקה וחלק מההנדסות. לפי ההגדרה מתקיים $i^{2}=-1$
+$1$).
+המספר
+$i$
+לא ניתן למדידה במציאות, אך הוא שימושי מאוד
+במתמטיקה, פיזיקה וחלק מההנדסות. לפי ההגדרה מתקיים
+$i^{2}=-1$
 וזה מספיק כדי להגדיר את קבוצת המספרים המרוכבים ואת פעולות החשבון המתאימות
 לה.
 
@@ -290,14 +302,30 @@ $$
 \C=\Set{a+bi|a,b\in\R}
 $$
 
-ההצגה $a+bi$ עבור $a,b\in\R$ הינה יחידה. כלומר,
-אם מתקיים $a+bi=c+di$ עבור $c,d\in\R$, אז בהכרח
+ההצגה
+$a+bi$
+עבור
+$a,b\in\R$
+הינה יחידה. כלומר,
+אם מתקיים
+$a+bi=c+di$
+עבור
+$c,d\in\R$,
+אז בהכרח
 $a=c,\,b=d$.
 
 \begin{definition}
-עבור $z=x+yi$ מרוכב עם $x,y\in\R$
-נגדיר את החלק הממשי $\text{{Re}}(z)=x$ ואת החלק המדומה $\text{{Im}}(z)=y$.
-בנוסף, נגדיר את המספר הצמוד $\overline{z}=x-yi$.
+\adddeftolist{חלק ממשי, חלק מדומה ומספר צמוד}
+עבור
+$z=x+yi\in\C$
+מרוכב עם
+$x,y\in\R$
+נגדיר את החלק הממשי
+$\text{{Re}}(z)=x$
+ואת החלק המדומה
+$\text{{Im}}(z)=y$.
+בנוסף, נגדיר את המספר הצמוד
+$\overline{z}=x-yi$.
 \end{definition}
 
 שימו לב כי בניגוד לשמו, החלק המדומה הוא מספר ממשי (זהו המקדם של $i$,
@@ -344,14 +372,35 @@ $$
 קבוצות $A,B$.
 
 \begin{definition}
-נאמר ש-$A$ מוכלת ב-$B$ ונסמן $A\subseteq B$
-אם כל איבר של $A$ הוא גם איבר של $B$.
+\adddeftolist{הכלה בין קבוצות}
+נאמר ש-
+$A$
+מוכלת ב-
+$B$
+ונסמן
+$A\subseteq B$
+אם כל איבר של
+$A$
+הוא גם איבר של
+$B$.
 
-באופן קצת יותר מתמטי: $A\subseteq B$ אם לכל $a\in A$ מתקיים
+באופן קצת יותר מתמטי:
+$A\subseteq B$
+אם לכל
+$a\in A$
+מתקיים
 $a\in B$. 
 
-אם ההיפך הוא הנכון, כלומר קיים $a\in A$ עבורו $a\notin B$,
-אז נסמן $A\nsubseteq B$ ונאמר ש-$A$ לא מוכלת ב-$B$.
+אם ההיפך הוא הנכון, כלומר קיים
+$a\in A$
+עבורו
+$a\notin B$,
+אז נסמן
+$A\nsubseteq B$
+ונאמר ש-
+$A$
+לא מוכלת ב-
+$B$.
 \end{definition}
 
 \begin{figure}[H]
@@ -392,16 +441,24 @@ $A,C$
 \end{solution}
 
 \begin{definition}
-נאמר ששתי קבוצות $A,B$ הן שוות ונסמן $A=B$
-אם יש בהן בדיוק אותם האיברים, כלומר מתקיים $x\in A$ אם ורק אם
+\adddeftolist{שוויון בין קבוצות}
+נאמר ששתי קבוצות
+$A,B$
+הן שוות ונסמן
+$A=B$
+אם יש בהן בדיוק אותם האיברים, כלומר מתקיים
+$x\in A$
+אם ורק אם
 $x\in B$.
 \end{definition}
 
-\begin{definition}
-כדי להוכיח כי $A=B$, הדרך המקובלת היא להוכיח כי
-$A\subseteq B$ וגם $B\subseteq A$. דרך הוכחה זו נקראת הכלה
-דו-צדדית.
-\end{definition}
+\begin{remark}
+כדי להוכיח כי
+$A=B$,
+הדרך המקובלת היא להוכיח כי
+$A\subseteq B$ וגם $B\subseteq A$.
+דרך הוכחה זו נקראת הכלה דו-צדדית.
+\end{remark}
 
 \begin{example}
 הגדרנו את קבוצת המספרים הזוגיים החיוביים בשתי דרכים
@@ -457,6 +514,7 @@ $x\in\R$. מתקיים $x=x+0\cdot i$ וזו הצגה
 \section{פעולות בין קבוצות}
 
 \begin{definition}
+\adddeftolist{חיתוך ואיחוד של קבוצות}
 בהינתן שתי קבוצות $A,B$ נגדיר את הקבוצות הבאות:
 
 \begin{enumerate}[label=\alph*.]
@@ -547,5 +605,107 @@ $$
 .A\cap B\subseteq B\subseteq A\cup B
 $$
 \end{remark}
+
+\clearpage
+\section{סיכום}
+\noindent\textbf{הגדרה 2.1.}
+
+קבוצה היא אוסף כלשהו של איברים (לא בהכרח מספרים) ללא
+חשיבות לסדר הופעתם.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 2.2.}
+
+עבור
+$z=x+yi\in\C$
+מרוכב עם
+$x,y\in\R$
+נגדיר את החלק הממשי
+$\text{{Re}}(z)=x$
+ואת החלק המדומה
+$\text{{Im}}(z)=y$.
+בנוסף, נגדיר את המספר הצמוד
+$\overline{z}=x-yi$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 2.3.}
+
+נאמר ש-
+$A$
+מוכלת ב-
+$B$
+ונסמן
+$A\subseteq B$
+אם כל איבר של
+$A$
+הוא גם איבר של
+$B$.
+
+באופן קצת יותר מתמטי:
+$A\subseteq B$
+אם לכל
+$a\in A$
+מתקיים
+$a\in B$. 
+
+אם ההיפך הוא הנכון, כלומר קיים
+$a\in A$
+עבורו
+$a\notin B$,
+אז נסמן
+$A\nsubseteq B$
+ונאמר ש-
+$A$
+לא מוכלת ב-
+$B$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 2.4.}
+
+נאמר ששתי קבוצות
+$A,B$
+הן שוות ונסמן
+$A=B$
+אם יש בהן בדיוק אותם האיברים, כלומר מתקיים
+$x\in A$
+אם ורק אם
+$x\in B$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 2.5.}
+
+ 
+$\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C$
+וכל הקבוצות שונות זו מזו.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 2.6.}
+
+בהינתן שתי קבוצות $A,B$ נגדיר את הקבוצות הבאות:
+
+\begin{enumerate}[label=\alph*.]
+\item החיתוך $A\cap B$ הוא קבוצת כל האיברים השייכים גם ל-$A$
+וגם ל-$B$.
+
+\item האיחוד $A\cup B$ הוא קבוצת כל האיברים השייכים לפחות לאחת משתי
+הקבוצות $A,B$.
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 2.7.}
+
+ 
+לכל שתי קבוצות $A,B$ מתקיים
+$$
+.A\cap B\subseteq A\subseteq A\cup B
+$$
+\bigskip
+\bigskip
 
 \end{document}

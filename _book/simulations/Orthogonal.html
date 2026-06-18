@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יצירת בסיס אורתוגונלי</title>
+<style>
+  body { margin: 0; }
+  canvas { display: block; }
+  #controls {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    right: auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 250px;
+  }
+  .input-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    direction: ltr;
+  }
+  input[type="number"] { width: 60px; }
+  button { width: 100%; padding: 8px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+  <div id="controls">
+    <h3>וקטור התחלתי (כחול)</h3>
+    <div class="input-group">
+      <input type="number" id="vx" value="2">
+      <input type="number" id="vy" value="3">
+      <input type="number" id="vz" value="1">
+    </div>
+    <button id="create-button">צורו קבוצה אורתוגונלית</button>
+    <button id="normalize-button" style="display: none;">נרמלו לקבוצה אורתונורמלית</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const createButton = document.getElementById('create-button');
+  const normalizeButton = document.getElementById('normalize-button');
+  const inputs = { x: document.getElementById('vx'), y: document.getElementById('vy'), z: document.getElementById('vz') };
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  camera.up.set(0, 0, 1);
+  camera.position.set(5, 5, 5);
+  controls.update();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+  directionalLight.position.set(5, 10, 7.5);
+  scene.add(directionalLight);
+
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.rotation.x = Math.PI / 2;
+  scene.add(gridHelper);
+  
+  const axisLength = 5;
+  const origin = new THREE.Vector3(0,0,0);
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), origin, axisLength, 0x000000));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), origin, axisLength, 0x000000));
+  
+  // --- הוספת תוויות לצירים ---
+  function createAxisLabel(text, position) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = 'Bold 60px Arial';
+      context.fillStyle = 'rgba(0,0,0,1.0)';
+      context.fillText(text, 0, 60);
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(2, 1, 1.0);
+      sprite.position.copy(position);
+      return sprite;
+  }
+  const labelOffset = 0.3;
+  scene.add(createAxisLabel('x', new THREE.Vector3(axisLength + labelOffset, 0, 0)));
+  scene.add(createAxisLabel('y', new THREE.Vector3(0, axisLength + labelOffset, 0)));
+  scene.add(createAxisLabel('z', new THREE.Vector3(0, 0, axisLength + labelOffset)));
+  // -------------------------
+  
+  let currentObjects = [];
+  let basisVectors = [];
+
+  function draw() {
+    currentObjects.forEach(obj => scene.remove(obj));
+    currentObjects = [];
+    
+    if(basisVectors.length < 3) return;
+
+    const [v1, v2, v3] = basisVectors;
+    
+    const arrow1 = new THREE.ArrowHelper(v1.clone().normalize(), origin, v1.length(), 0x0000ff);
+    const arrow2 = new THREE.ArrowHelper(v2.clone().normalize(), origin, v2.length(), 0x00ff00);
+    const arrow3 = new THREE.ArrowHelper(v3.clone().normalize(), origin, v3.length(), 0xff0000);
+    
+    scene.add(arrow1, arrow2, arrow3);
+    currentObjects.push(arrow1, arrow2, arrow3);
+  }
+
+  createButton.addEventListener('click', () => {
+      const v1 = new THREE.Vector3(
+          parseFloat(inputs.x.value),
+          parseFloat(inputs.y.value),
+          parseFloat(inputs.z.value)
+      );
+
+      if (v1.length() < 0.01) {
+          alert("וקטור האפס אינו יכול להיות חלק מקבוצה אורתוגונלית (שאינה טריוויאלית).");
+          return;
+      }
+      
+      let v2;
+      if (v1.clone().cross(new THREE.Vector3(0,0,1)).length() > 0.01) {
+          v2 = new THREE.Vector3().crossVectors(v1, new THREE.Vector3(0,0,1)).normalize().multiplyScalar(v1.length());
+      } else {
+          v2 = new THREE.Vector3().crossVectors(v1, new THREE.Vector3(0,1,0)).normalize().multiplyScalar(v1.length());
+      }
+
+      const v3 = new THREE.Vector3().crossVectors(v1, v2).normalize().multiplyScalar(v1.length());
+
+      basisVectors = [v1, v2, v3];
+      normalizeButton.style.display = 'block';
+      draw();
+  });
+
+  normalizeButton.addEventListener('click', () => {
+      if (basisVectors.length < 3) return;
+      basisVectors.forEach(v => v.normalize());
+      draw();
+      normalizeButton.style.display = 'none';
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+</script>
+</body>
+</html>

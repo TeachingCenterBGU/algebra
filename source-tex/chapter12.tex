@@ -1,0 +1,3265 @@
+% ==============================
+% Dummy Overleaf Project (HE) — Linear Algebra Book
+% Exact environments: definition, example, exercise, remark,
+% theorem, lemma, propositionosition, corollary, proof, solution, hint
+% Numbering by chapter; solution/hint unnumbered.
+% ==============================
+\documentclass[12pt]{report} 
+
+% ---- Math & friends ----
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}  
+\allowdisplaybreaks
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{todonotes}
+\usepackage{braket}
+\usepackage{array}
+
+% ---- Hebrew + fonts ----
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+% Overleaf has Frank Ruehl CLM in TeX Live
+\newfontfamily\hebrewfont[Script=Hebrew]{Frank Ruehl CLM}
+\newfontfamily\hebrewfontsf[Script=Hebrew]{Frank Ruehl CLM}
+\newfontfamily\hebrewfonttt[Script=Hebrew]{Frank Ruehl CLM}
+
+% For bullets
+\renewcommand{\labelitemi}{$\bullet$}   % first-level bullet
+\renewcommand{\labelitemii}{$\circ$}    % second-level bullet (optional)
+
+% ---- Theorem-like environments (by chapter) ----
+\theoremstyle{plain}
+\newtheorem{theorem}{משפט}[chapter]
+\newtheorem{lemma}[theorem]{למה}
+\newtheorem{proposition}[theorem]{טענה}
+\newtheorem{corollary}[theorem]{מסקנה}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{הגדרה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
+
+% Unnumbered for website folding
+\newtheorem*{solution}{פתרון}
+\newtheorem*{hint}{רמז}
+
+% ---- Macros (optional) ----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\0}{\mathbf{0}}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Row}{Row}
+\DeclareMathOperator{\Col}{Col}
+\DeclareMathOperator{\Null}{N}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Id}{Id}
+
+\title{ספר אלגברה לינארית — דגם אוברליף}
+\author{צוות הקורס}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\chapter{מכפלה סקלרית ולכסון אורתוגונלי}\label{ch:scalar}
+
+בפרק 
+\ref{ch:geometry}
+הגדרנו את המכפלה הסקלרית ב-
+$\R^2$
+ו-
+$\R^3$,
+וראינו את הקשר שלה לגדלים של וקטורים והזוויות ביניהם. בפרק זה נכליל את ההגדרה של מכפלה סקלרית ל-
+$\R^n$
+לכל
+$n\in\N$,
+וע"י כך נקבל הבנה בסיסית לגבי גיאומטריה במימדים גבוהים (בשביל האינטואיציה מספיק להבין את
+$\R^3$).
+בנוסף, נראה את הקשר לנושאים אחרים שנלמדו בקורס - עם דגש על לכסון. נוכיח משפט לפיו כל מטריצה סימטרית היא לכסינה באופן מיוחד, שנקרא לכסון אורתוגונלי (הוקטורים העצמיים המעורבים בלכסון מאונכים זה לזה).
+
+\subsection{מכפלה סקלרית}
+
+\begin{definition}
+\adddeftolist{מכפלה סקלרית ב-$\R^n$}
+יהיו 
+$v,w\in\R^n$
+הנתונים ע"י
+$$
+.v=\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix},\quad w=\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}
+$$
+נגדיר את המכפלה הסקלרית שלהם ע"י
+$$
+.v\cdot w=\sum_{i=1}^n a_ib_i
+$$
+\end{definition}
+
+\begin{remark}
+המכפלה הסקלרית נקראת גם "מכפלה פנימית סטנדרטית", ולפי השם הזה ניתן להבין שיש מכפלות פנימיות נוספות (ב-
+$\R^n$
+ומרחבים וקטוריים אחרים)
+בעלות תכונות דומות. לא נעסוק בהן בקורס, אך נציין שיש אנלוגיה מוחלטת בין המכפלות הפנימיות השונות וההבדל הוא בעיקר חישובי.
+\end{remark}
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item
+ב-
+$\R^2$
+מתקיים
+$$
+.\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+4
+\end{pmatrix}=1\cdot 3+2\cdot 4=11
+$$
+
+
+\item
+ב-
+$\R^3$
+מתקיים
+$$
+.\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+-1 \\
+2
+\end{pmatrix}=1\cdot 1+2\cdot(-1)+3\cdot 2=5
+$$
+
+
+\item
+ב-
+$\R^4$
+מתקיים
+$$
+.\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+-2 \\
+3 \\
+-4
+\end{pmatrix}=1\cdot 1+2\cdot(-2)+3\cdot 3+4\cdot(-4)=-10
+$$
+
+
+\item 
+המכפלה הסקלרית
+$$
+\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\cdot \begin{pmatrix}
+0 \\
+2 \\
+4
+\end{pmatrix}
+$$
+אינה מוגדרת כי הוקטורים אינם שווי אורך (הם לא שייכים לאותו המרחב).
+
+
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+כאשר מזהים את שני הוקטורים כוקטורי עמודה, כלומר מטריצות מסדר 
+$n\times 1$,
+מתקיים הקשר הבא בין מכפלה סקלרית לכפל מטריצות:
+$$
+.v\cdot w=v^tw=(a_1,\cdots,a_n)\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}
+$$
+\end{remark}
+
+בעזרת מכפלה סקלרית אפשר להגדיר גודל של וקטור ב-
+$\R^n$,
+בהתאם לנוסחה של משפט פיתגורס שמתקיימת במישור ובמרחב.
+
+\begin{definition}
+\adddeftolist{גודל וקטור ב-$\R^n$}
+יהי
+$v=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\in\R^n$.
+נגדיר את גודלו ע"י 
+$$
+.\|v\|=\sqrt{v\cdot v}=\sqrt{\sum_{i=1}^n a_i^2}
+$$
+\end{definition}
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item
+ב-
+$\R^2$
+מתקיים
+$$
+.\left\|\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}\right\|=\sqrt{1^2+2^2}=\sqrt{5}
+$$
+
+
+\item
+ב-
+$\R^3$
+מתקיים
+$$
+.\left\|\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\right\|=\sqrt{1^2+2^2+3^2}=\sqrt{14}
+$$
+
+
+\item
+ב-
+$\R^4$
+מתקיים
+$$
+.\left\|\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\right\|=\sqrt{1^2+2^2+3^2+4^2}=\sqrt{30}
+$$
+
+
+\end{enumerate}
+\end{example}
+
+\begin{exercise}
+חשבו את הגדלים של הוקטורים
+$$
+v=\begin{pmatrix}
+1 \\
+3 \\
+5 \\
+7
+\end{pmatrix},\quad w=\begin{pmatrix}
+2 \\
+4 \\
+6 \\
+8
+\end{pmatrix}
+$$
+ואת המכפלה הסקלרית 
+$v\cdot w$.
+\end{exercise}
+
+\begin{solution}
+נחשב:
+$$
+\begin{aligned}
+\|v\|&=\sqrt{1^2+3^2+5^2+7^2}=\sqrt{84} \\
+\|w\|&=\sqrt{2^2+4^2+6^2+8^2}=2\sqrt{1^2+2^2+3^2+4^2}=2\sqrt{30} \\
+v\cdot w&=1\cdot 2+3\cdot 4+5\cdot 6+7\cdot 8=100
+\end{aligned}
+$$
+
+\end{solution}
+
+נוכיח הכללה ל-
+$\R^n$
+של התכונות של המכפלה הסקלרית שהופיעו בטענה
+\ref{prop:dot-product-properties}.
+
+\begin{proposition}\label{prop:dot-properties-general}
+\addpropositiontolist{תכונות של מכפלה סקלרית ב-$\R^n$}
+יהיו
+$v_1,v_2,v_3\in\R^n$
+ו-
+$\alpha\in\R$.
+אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+v_1\cdot v_2=v_2\cdot v_1
+$$
+
+
+\item 
+$$
+(v_1+v_3)\cdot v_2=v_1\cdot v_2+v_3\cdot v_2
+$$
+
+
+\item 
+$$
+v_1\cdot v_1=\|v_1\|^2
+$$
+
+
+\item 
+$$
+(\alpha v_1)\cdot v_2=\alpha(v_1\cdot v_2)
+$$
+
+
+\item 
+$$
+\|\alpha v_1\|=|\alpha|\|v_1\|
+$$
+
+
+\item 
+$$
+\|v_1\|=0\iff v_1=\underline{0}
+$$
+
+
+\item
+אם 
+$v_1\neq\underline{0}$,
+אז
+$$
+.\left\|\frac{v_1}{\|v_1\|}\right\|=1
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+נסמן
+$$
+.v_1=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n 
+    \end{pmatrix},v_2=\begin{pmatrix}
+    b_1 \\
+    \vdots \\
+    b_n 
+    \end{pmatrix}, v_3=\begin{pmatrix}
+    c_1 \\
+    \vdots \\
+    c_n 
+    \end{pmatrix}
+$$
+
+\begin{enumerate}[label=\alph*.]
+\item 
+לפי חוק החילוף לכפל ב-
+$\R$,
+מתקיים
+$$
+.v_1\cdot v_2=\sum_{i=1}^n a_i b_i=\sum_{i=1}^n b_i a_i=v_2\cdot v_1
+$$
+
+
+\item 
+לפי חוק הפילוג וחוק החילוף (לחיבור) מתקיים
+$$
+.(v_1+v_3)\cdot v_2=\sum_{i=1}^n (a_i+c_i)b_i=\sum_{i=1}^n a_ib_i+\sum_{i=1}^n c_ib_i=v_1\cdot v_2+v_3\cdot v_2
+$$
+
+
+\item 
+ישירות מההגדרה של גודל.
+
+
+\item
+לפי חוק הפילוג, לכל
+$\alpha\in\R$
+מתקיים
+$$
+.(\alpha v_1)\cdot v_2=\sum_{i=1}^n (\alpha a_i)\cdot b_i=\alpha\sum_{i=1}^n a_ib_i=\alpha (v_1\cdot v_2)
+$$
+
+
+\item 
+$$
+\begin{aligned}
+\|\alpha v_1\|&=\sqrt{(\alpha v_1)\cdot(\alpha v_1)}=\sqrt{\alpha^2(v_1\cdot v_1)}=\sqrt{\alpha^2\|v_1\|^2}\\
+&=|\alpha|\|v_1\|
+\end{aligned}
+$$
+
+\item
+מתקיים
+$$
+.\|v_1\|=0 \iff \sum_{i=1}^n a_i^2=0 \iff \forall 1\leq i\leq n\thinspace:\thinspace a_i=0 \iff v_1=\underline{0}
+$$
+הסיבה לשקילות האמצעית היא שהביטוי 
+$\sum_{i=1}^n a_i^2=0$
+הוא סכום של מחוברים אי-שליליים, ולכן הוא מתאפס רק באשר כל מחובר מתאפס.
+
+\item 
+נניח כי
+$\|v_1\|\neq 0$.
+מסעיף ה' עבור
+$\alpha=\frac{1}{\|v_1\|}$
+נובע כי
+$$
+.\left\|\frac{v_1}{\|v_1\|}\right\|=\|\alpha v_1\|=|\alpha|\|v_1\|=\frac{1}{\|v_1\|}\cdot \|v_1\|=1
+$$
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+סעיף ז' מתאר תהליך שנקרא "נרמול" שבו משנים את גודל הוקטור 
+$v$
+ל-
+$1$
+בלי לשנות את כיוונו. עושים זאת ע"י כפל בסקלר 
+$\frac{1}{\|v\|}$.
+\end{remark}
+
+\begin{corollary}\label{cor:bilinear}
+\addcorollarytolist{בי-לינאריות של מכפלה סקלרית}
+לכל
+$v_1,...,v_m,w_1,...,w_k\in\R^n$
+ולכל
+$\alpha_1,...,\alpha_m,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_mv_m)\cdot(\beta_1w_1+...+\beta_kw_k)=\sum_{i=1}^m\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot w_j)
+$$
+\end{corollary}
+
+\begin{remark}
+תכונה זו נקראת בי-לינאריות. ראינו בסעיפים ב' ו-ד' של טענה
+\ref{prop:dot-properties-general}
+את מה שנקרא לינאריות לפי הארגומנט הראשון (השמאלי) של המכפלה הסקלרית. בי-לינאריות פירושה שמתקיימת גם לינאריות לפי הארגומנט השני (הימני), והמסקנה מראה את השילוב של שני סוגי הלינאריות. מכאן אפשר לחשוב על תכונה זו כלינאריות כפולה ("בי"), והיא מתאימה לתכונות המוכרות של חיבור וכפל.
+\end{remark}
+
+\begin{proof}
+נסמן
+$$
+.v=\alpha_1v_1+...+\alpha_mv_m, \quad w=\beta_1w_1+...+\beta_kw_k
+$$
+נשתמש בסעיפים ב' ו-ד' של טענה
+\ref{prop:dot-properties-general}
+מספר חוזר של פעמים (בהתאם למספר המחוברים), תחילה ביחס לארגומנט הראשון ואחר כך נעבור לשני בעזרת סעיף א'. כך נקבל
+
+$$
+\begin{aligned}
+v\cdot w&=(\alpha_1v_1+...+\alpha_mv_m)\cdot w=\alpha_1(v_1\cdot w)+...+\alpha_m(v_m\cdot w) \\
+&=\alpha_1(w\cdot v_1)+...+\alpha_m(w\cdot v_m)=\sum_{i=1}^m\alpha_i (w\cdot v_i)=\sum_{i=1}^m\alpha_i\left(\sum_{j=1}^k\beta_jw_j\right)\cdot v_i \\
+&=\sum_{i=1}^m\alpha_i\left(\sum_{j=1}^k\beta_jw_j\cdot v_i\right)=\sum_{i=1}^m\sum_{j=1}^k \alpha_i\beta_j(w_j\cdot v_i)=\sum_{i=1}^m\sum_{j=1}^k \alpha_i\beta_j(v_i\cdot w_j)
+\end{aligned}
+$$
+\end{proof}
+
+\begin{example}
+ב-
+$\R^3$
+מתקיים
+$$
+\begin{aligned}
+&\left(2\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}+3\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\right)\cdot\left(4\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix}-3\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}\right) \\
+&=(2\cdot 4)\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix}+(2\cdot(-3))\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}+(3\cdot 4)\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix} \\
+&+(3\cdot(-3))\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}=8(1+3)-6(3+10)+12(2-1)-9\cdot 6=-88
+\end{aligned}
+$$
+ניתן להגיע לתוצאה זו גם באופן ישיר (ע"י חישוב כל וקטור לפני פתיחת הסוגריים). נראה בהמשך את השימוש של בי-לינאריות.
+\end{example}
+
+\subsection{וקטורים אורתוגונליים}
+
+ראינו ב-
+$\R^2$
+וגם ב-
+$\R^3$
+ששני וקטורים
+$v,w\neq\underline{0}$
+מאונכים זה לזה אם ורק אם
+$v\cdot w=0$.
+נשתמש בעובדה כזו לצורך ההגדרה של וקטורים אורתוגונליים (מילה נרדפת ל"מאונכים" בהקשר אלגברי) ב-
+$\R^n$,
+שהיא פחות אינטואיטיבית עבור 
+$n\geq 4$.
+יתר על כן, נכליל את ההגדרה לקבוצה סופית של וקטורים - לא בהכרח זוג.
+
+\begin{definition}\
+\adddeftolist{וקטורים אורתוגונליים}
+\begin{enumerate}[label=\alph*.]
+\item 
+נאמר ש-
+$\underline{0}\neq v,w\in\R^n$
+הם אורתוגונליים אם
+$v\cdot w=0$.
+נסמן זאת ע"י
+$v\perp w$.
+
+
+\item 
+קבוצה
+$\underline{0}\notin \Set{v_1,...,v_k}\subseteq\R^n$
+נקראת אורתוגונלית אם לכל 
+$i\neq j$
+מתקיים
+$$
+.v_i\cdot v_j=0
+$$
+
+
+\item 
+קבוצה
+$\Set{v_1,...,v_k}\subseteq\R^n$
+נקראת אורתונורמלית אם היא אורתוגונלית ובנוסף לכל 
+$1\leq i\leq k$
+מתקיים
+$$
+.\|v_i\|=1
+$$
+
+
+\end{enumerate}
+\end{definition}
+
+\begin{remark}\
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל
+$v,w\in\R^n$
+מתקיים
+$v\cdot w=w\cdot v$,
+ולכן
+$$
+.v\perp w\iff w\perp v
+$$
+
+
+\item
+כל קבוצה אורתונורמלית היא אורתוגונלית, אך לא להיפך. אם
+$\|v_i\|=1$,
+אז בהכרח
+$v_i\neq 0$
+(שזה תנאי הנדרש לאורתוגונליות)
+לפי טענה
+\ref{prop:dot-properties-general}.
+
+
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Orthogonal.png}
+    \caption{וקטורי הצירים מהווים קבוצה אורתוגונלית, וגם הוקטורים הצבועים מהווים קבוצה אורתוגונלית נפרדת}
+    \label{fig:Orthogonal}
+\end{figure}
+
+% Insert Orthogonal.html here.
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item 
+הקבוצה
+$$
+A=\Set{\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}}\subseteq\R^3
+$$
+היא אורתוגונלית, אך לא אורתונורמלית. נראה זאת ע"י חישוב מכפלה סקלרית לכל זוג וקטורים:
+$$
+\begin{aligned}
+\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}&=-2+2+0=0 \\
+    \begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}&=0+0+0=0 \\
+    \begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}&=0+0+0=0
+\end{aligned}
+$$
+כל הוקטורים שונים מוקטור האפס, אך הוקטורים 
+$\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}$
+    אינם בגודל 
+    $1$.
+\item 
+ניקח את הקבוצה מהסעיף הקודם ו"ננרמל" כל וקטור בה. הכוונה היא שנחליף כל וקטור
+$v\in A$
+בגרסה ה"מנורמלת"
+$\frac{v}{\|v\|}$
+בגודל 
+$1$.
+שני הוקטורים הראשונים הם בגודל
+$\sqrt{5}$
+והשלישי הוא כבר בגודל
+$1$.
+לאחר נרמול נקבל
+$$
+.B=\Set{\begin{pmatrix}
+    \frac{2}{\sqrt{5}} \\
+    \frac{1}{\sqrt{5}} \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -\frac{1}{\sqrt{5}} \\
+    \frac{2}{\sqrt{5}} \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}}\subseteq\R^3
+$$
+
+זו קבוצה אורתונורמלית. לפי סעיף ז' של טענה
+\ref{prop:dot-properties-general},
+הגודל של כל וקטור הוא 
+$1$
+כתוצאה מהנרמול. ניתן לבדוק שכל המכפלות הסקלריות הן עדיין
+$0$,
+ונעשה זאת באופן כללי בטענה הבאה.
+
+
+\end{enumerate}
+\end{example}
+
+\begin{proposition}
+\addpropositiontolist{נרמול של קבוצה אורתוגונלית יוצר קבוצה אורתונורמלית}
+תהי
+$\Set{v_1,...,v_k}\subseteq\R^n$
+קבוצה אורתוגונלית. אז הקבוצה המנורמלת
+$$
+\left\{\frac{v_1}{\|v_1\|},...,\frac{v_k}{\|v_k\|}\right\}
+$$
+היא אורתונורמלית.
+\end{proposition}
+
+\begin{proof}
+לפי סעיף ז' של טענה
+\ref{prop:dot-properties-general},
+לכל
+$1\leq i\leq k$
+מתקיים
+$$
+\left\|\frac{v_i}{\|v_i\|}\right\|=1
+$$
+כנדרש. נראה כי המכפלה הסקלרית של כל זוג וקטורים מנורמלים מתאפסת: לכל 
+$i\neq j$
+מתקיים
+$v_i\cdot v_j=0$
+לפי הנתון, ולכן
+$$
+.\frac{v_i}{\|v_i\|}\cdot\frac{v_j}{\|v_j\|}=\frac{1}{\|v_i\|\|v_j\|}(v_i\cdot v_j)=0
+$$
+
+\end{proof}
+
+מה היתרון של קבוצה אורתונורמלית? המכפלה הסקלרית של צירופים לינאריים של איברי הקבוצה היא נוחה לחישוב. הטענה הבאה מראה את החישוב לקבוצה אורתוגונלית באופן כללי, ולקבוצה אורתונורמלית כמקרה פרטי (פשוט יותר).
+
+\begin{proposition}\label{prop:ortho-dot}\
+\addpropositiontolist{מכפלה סקלרית בין צירופים לינאריים של קבוצה אורתוגונלית}
+\begin{enumerate}[label=\alph*.]
+\item
+תהי
+$\Set{v_1,...,v_k}$
+קבוצה אורתוגונלית. לכל
+$\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\|v_i\|^2
+$$
+
+
+\item
+אם
+$\Set{v_1,...,v_k}$
+קבוצה אורתונורמלית, אז לכל
+$\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+יהיו
+$\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\R$.
+
+\begin{enumerate}[label=\alph*.]
+\item 
+נשתמש בבי-לינאריות (מסקנה
+\ref{cor:bilinear})
+ונקבל
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot v_j)
+$$
+
+לכל
+$1\leq i\leq k$
+מתקיים
+$$
+,\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot v_j)=0+...+0+\alpha_i\beta_i(v_i\cdot v_i)+0+...+0=\alpha_i\beta_i\|v_i\|^2
+$$
+כי רק מחובר אחד (עבור
+$j=i$)
+בסכום לא מתאפס. נציב זאת במשוואה הקודמת ונקבל
+$$
+(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\|v_i\|^2
+$$
+כנדרש.
+
+
+\item 
+זהו מקרה פרטי של הסעיף הקודם. כאן
+$\|v_i\|=1$
+לכל
+$1\leq i\leq n$,
+ולאחר הצבה נקבל
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i
+$$
+
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+למעשה, מדובר פה בהכללה של משפט פיתגורס. ב-
+$\R^2$
+עבור קבוצה אורתוגונלית
+$\Set{v_1,v_2}$
+נקבל
+$$
+,\|v_1+v_2\|^2=\|v_1\|^2+\|v_2\|^2
+$$
+כאשר אגף שמאל מתאר את הריבוע של אורך היתר במשולש ישר-זווית שניצביו מתאימים לוקטורים
+$v_1,v_2$.
+באופן דומה, ב-
+$\R^n$
+עבור קבוצה אורתוגונלית
+$\Set{w_1,...,w_n}$
+נקבל
+$$
+.\|w_1+...+w_n\|^2=\|w_1\|^2+...+\|w_n\|^2
+$$
+אפשר לצייר את זה ב-
+$\R^3$
+ולנסות לדמיין את ההכללה עבור
+$n\geq 4$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/GeneralPythagoras.png}
+    \caption{המקרה התלת-מימדי נשען על המקרה הדו-מימדי}
+    \label{fig:GeneralPythagoras}
+\end{figure}
+
+\end{remark}
+
+הטענה הבאה מראה את הקשר בין אורתוגונליות (מושג גיאומטרי) לבין אי-תלות לינארית (מושג אלגברי):
+
+\begin{proposition}\label{prop:ortho-independent}
+\addpropositiontolist{קבוצה אורתוגונלית היא בת"ל}
+כל קבוצה אורתוגונלית
+$\Set{v_1,...,v_k}\subseteq \R^n$
+היא בת"ל.
+\end{proposition}
+
+\begin{proof}
+נניח שקיימים
+$\alpha_1,...,\alpha_k\in\R$
+כך ש-
+$$
+.\alpha_1v_1+...+\alpha_kv_k=\underline{0}
+$$
+לכל
+$1\leq i\leq k$
+נכפיל (באופן סקלרי) את שני אגפי המשוואה ב-
+$v_i$
+ונקבל
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot v_i=0
+$$
+לפי טענה 
+\ref{prop:ortho-dot}
+נובע כי
+$$
+,\alpha_i\|v_i\|^2=0
+$$
+ומכאן לכל
+$1\leq i\leq k$ 
+מתקיים
+
+$$
+\alpha_i=0
+$$
+שהרי
+$\|v_i\|\neq 0$
+כי
+$v_i\neq 0$
+לפי הנתון. לכן, הקבוצה
+$\Set{v_1,...,v_k}$
+היא בת"ל.
+
+\end{proof}
+
+\begin{exercise}
+תהי
+$A=\Set{v_1,v_2,v_3}\subseteq\R^n$
+קבוצה אורתונורמלית.
+\begin{enumerate}[label=\alph*.]
+\item
+מצאו
+$r,s,t\in\R$
+כך ש-
+$$
+B=\Set{rv_1+v_2+v_3,v_1+sv_2+v_3,v_1+v_2+tv_3}\subseteq\R^n
+$$
+תהיה קבוצה אורתוגונלית.
+
+
+\item 
+עבור 
+$r,s,t$
+מהסעיף הקודם, נרמלו את וקטורי הקבוצה
+$B$
+כדי לקבל קבוצה אורתונורמלית.
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}\
+\begin{enumerate}[label=\alph*.]
+\item
+נדרוש שהמכפלה הסקלרית תתאפס לכל זוג וקטורים ב-
+$B$.
+לפי טענה
+\ref{prop:ortho-dot}
+מתקיים:
+$$
+\begin{cases}
+(rv_1+v_2+v_3)\cdot(v_1+sv_2+v_3)&=r\|v_1\|^2+s\|v_1\|^2+\|v_3\|^2=r+s+1 \\
+(v_1+sv_2+v_3)\cdot(v_1+v_2+tv_3)&=1+s+t \\
+(rv_1+v_2+v_3)\cdot(v_1+v_2+tv_3)&=r+1+t\\
+\end{cases}
+$$
+לכן, יש לפתור את הממ"ל הבאה:
+$$
+\begin{cases}
+r+s=-1 \\
+s+t=-1 \\
+r+t=-1 
+\end{cases}
+$$
+
+יש לה פתרון יחיד:
+$$
+r=s=t=-\frac{1}{2}
+$$
+
+יש לבדוק שוקטור האפס לא מופיע בקבוצה
+$B$
+המתאימה לסקלרים שמצאנו. נראה זאת ע"י חישוב הגדלים בסעיף הבא.
+
+
+\item 
+נציב
+$r=s=t=-\frac{1}{2}$
+ונשתמש בסעיף ב' של טענה
+\ref{prop:ortho-dot}:
+
+$$
+\begin{aligned}
+\left\|-\frac{1}{2}v_1+v_2+v_3\right\|^2&=\frac{1}{4}+1+1=\frac{9}{4} \\
+\left\|v_1-\frac{1}{2}v_2+v_3\right\|^2&=1+\frac{1}{4}+1=\frac{9}{4} \\
+\left\|v_1+v_2-\frac{1}{2}v_3\right\|^2&=1+1+\frac{1}{4}=\frac{9}{4}
+\end{aligned}
+$$
+
+לכן, הגודל המשותף של כל וקטורי 
+$B$
+הוא
+$\sqrt{\frac{9}{4}}=\frac{3}{2}$.
+נכפיל כל וקטור בסקלר ההופכי 
+$\frac{2}{3}$
+ונקבל את הקבוצה האורתונורמלית הבאה:
+$$
+C=\Set{-\frac{1}{3}v_1+\frac{2}{3}v_2+\frac{2}{3}v_3,\frac{2}{3}v_1-\frac{1}{3}v_2+\frac{2}{3}v_3,\frac{2}{3}v_1+\frac{2}{3}v_2-\frac{1}{3}v_3}
+$$
+
+
+\end{enumerate}
+\end{solution}
+
+\begin{corollary}\label{cor:orthogonal-basis}
+\addcorollarytolist{קבוצה אורתוגונלית בגודל מימד המרחב היא בסיס}
+תהי
+$\Set{v_1,...,v_n}\subseteq\R^n$
+אורתוגונלית. אז היא בסיס ל-
+$\R^n$.
+\end{corollary}
+
+\begin{proof}
+לפי טענה
+\ref{prop:ortho-independent}
+הקבוצה
+$\Set{v_1,...,v_n}$
+היא בת"ל. לפי משפט "שלישי חינם" נובע כי היא בסיס ל-
+$\R^n$.
+\end{proof}
+
+\begin{definition}
+\adddeftolist{בסיס אורתוגונלי ובסיס אורתונורמלי}
+קבוצה אורתוגונלית 
+$\Set{v_1,...,v_n}\subseteq\R^n$
+נקראת בסיס אורתוגונלי ל-
+$\R^n$.
+אם היא אורתונורמלית, היא נקראת בסיס אורתונורמלי ל-
+$\R^n$.
+\end{definition}
+
+\begin{example}\label{ex:rotation-matrix}\
+\begin{enumerate}[label=\alph*.]
+\item 
+הבסיס הסטנדרטי
+$\Set{e_1,...,e_n}\subseteq \R^n$
+הוא בסיס אורתוגונלי כי לכל
+$i\neq j$
+מתקיים
+$$
+,e_i\cdot e_j=0+...+0=0
+$$
+שהרי בכל מחובר לפחות אחד משני גורמי המכפלה הוא 
+$0$.
+יתר על כן, בסיס זה הוא אורתונורמלי כי לכל
+$1\leq i\leq n$
+מתקיים
+$$
+.\|e_i\|=\sqrt{e_i\cdot e_i}=\sqrt{0+...+0+1+0+...+0}=1
+$$
+
+
+\item 
+לכל
+$\theta\in\R$
+הקבוצה
+$$
+\Set{\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix},\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}}
+$$
+היא בסיס אורתונורמלי ל-
+$\R^2$.
+אכן, לכל
+$\theta\in\R$
+מתקיים:
+$$
+\begin{aligned}
+\left\|\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix}\right\|&=\sqrt{\cos^2\theta+\sin^2\theta}=1 \\
+\left\|\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}\right\|&=\sqrt{\sin^2\theta+\cos^2\theta}=1 \\
+\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix}\cdot\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}&=-\cos\theta\sin\theta+\sin\theta\cos\theta=0
+\end{aligned}
+$$
+
+למשל, עבור 
+$\theta=\frac{\pi}{4}$
+נקבל את הבסיס האורתונורמלי הבא
+$$
+.\Set{\begin{pmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix},\begin{pmatrix}
+-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}}
+$$
+
+\end{enumerate}
+\end{example}
+
+\begin{exercise}
+מהו הגודל המקסימלי של קבוצה אורתוגונלית ב-
+$\R^n$?
+\end{exercise}
+
+\begin{solution}
+באופן כללי, תהי
+$\Set{v_1,...,v_k}\subseteq\R^n$
+קבוצה אורתוגונלית בגודל
+$k$.
+לפי טענה
+\ref{prop:ortho-independent}
+זו קבוצה בת"ל, ולכן בכרח
+$k\leq n$
+לפי מסקנה
+\ref{cor:size-dim}.
+מכאן נובע שהגודל המקסימלי הוא לכל היותר 
+$n$,
+ולמעשה יש שוויון כי הבסיס הסטנדרטי הוא קבוצה אורתונורמלית (בפרט אורתוגונלית) בגודל
+$n$,
+\end{solution}
+
+לבסיס אורתוגונלי יש יתרון חישובי כאשר רוצים לבטא וקטור כללי כצירוף לינארי של איברי הבסיס. במקרה זה, אין צורך לפתור ממ"ל כי יש נוסחה לצירוף הלינארי במונחים של מכפלה סקלרית.
+
+\begin{proposition}\label{prop:ortho-basis}
+\addpropositiontolist{הנוסחה לצירוף לינארי עבור בסיס אורתוגונלי}
+יהי 
+$B=\Set{v_1,...,v_n}$
+בסיס אורתוגונלי ל-
+$\R^n$.
+אז לכל
+$v\in\R^n$
+מתקיים
+$$
+.v=\sum_{i=1}^n\frac{v\cdot v_i}{v_i\cdot v_i}v_i
+$$
+\end{proposition}
+
+\begin{proof}
+יהי
+$v\in\R^n$.
+$B$
+היא בסיס, ולכן קיימים 
+$\alpha_1,...,\alpha_n\in\R$
+כך ש-
+$$
+.v=\alpha_1 v_1+...+\alpha_n v_n
+$$
+לכל
+$1\leq i\leq n$
+נכפיל את שני אגפי המשוואה (באופן סקלרי) ב-
+$v_i$,
+ונקבל
+$$
+.v\cdot v_i=0+...+0+\alpha_iv_i\cdot v_i+0+...+0=\alpha_i(v_i\cdot v_i)
+$$
+מכאן נובע כי לכל
+$1\leq i\leq n$
+מתקיים
+$$
+,\alpha_i=\frac{v\cdot v_i}{v_i\cdot v_i}
+$$
+ולאחר הצבה במשוואה המקורית נקבל
+$$
+v=\sum_{i=1}^n\frac{v\cdot v_i}{v_i\cdot v_i}v_i
+$$
+כנדרש.
+\end{proof}
+
+\begin{corollary}\label{cor:orthonormal}
+\addcorollarytolist{הנוסחה לצירוף לינארי עבור בסיס אורתונורמלי}
+יהי 
+$B=\Set{v_1,...,v_n}$
+בסיס אורתונורמלי ל-
+$\R^n$.
+אז לכל
+$v\in\R^n$
+מתקיים
+$$
+.v=\sum_{i=1}^n(v\cdot v_i)v_i
+$$
+\end{corollary}
+
+\begin{proof}
+זו מסקנה מיידית מטענה
+\ref{prop:ortho-basis}
+ע"י הצבת
+$v_i\cdot v_i=\|v_i\|^2=1$
+במכנה.
+\end{proof}
+
+\begin{exercise}\label{exer:orthogonal-by-basis}
+יהי
+$W\subseteq\R^n$
+תת-מרחב בעל בסיס 
+$\Set{w_1,...,w_m}$.
+אז לכל
+$v\in\R^n$
+מתקיים:
+$$
+\forall w\in W\thinspace :\thinspace v\perp w \iff \forall 1\leq i\leq m \thinspace :\thinspace v\perp w_m
+$$
+
+או במילים: 
+$v$
+מאונך לכל וקטור ב-
+$W$
+אם ורק אם הוא מאונך לכל וקטורי הבסיס.
+\end{exercise}
+
+\begin{solution}
+הכיוון
+$\implies$
+מובן מאליו.
+
+בכיוון השני, נניח כי
+$v$
+מאונך לכל וקטורי הבסיס. לכל 
+$w\in W$
+קיימים
+$\alpha_1,...,\alpha_m\in\R$
+כך ש-
+$$
+.w=\sum_{i=1}^m\alpha_i w_i
+$$
+לכן:
+$$
+,v\cdot w=\sum_{i=1}^m\alpha_i (v\cdot w_i)=\sum_{i=1}^m \alpha_i\cdot 0=0
+$$
+כנדרש.
+
+\end{solution}
+
+\subsection{תהליך גרם-שמידט}
+
+ראינו כי ל-
+$\R^n$
+יש בסיס אורתונורמלי מיוחד, שהוא הבסיס הסטנדרטי. לא קשה להשתכנע שיש אינסוף בסיסים אורתונורמליים אחרים. אבל מה לגבי תת-מרחב של
+$W\subseteq\R^n$? 
+יש אלגוריתם (שנקרא תהליך גרם-שמידט) שיאפשר לנו להמיר כל בסיס ל-
+$W$
+לבסיס אורתוגונלי שלו. ע"י נרמול אפשר גם לקבל בסיס אורתונורמלי.
+
+\begin{proposition}
+\addpropositiontolist{תהליך גרם-שמידט}
+יהי
+$B=\Set{v_1,...,v_m}$
+בסיס לתת-מרחב
+$W\subseteq \R^n$.
+נגדיר:
+$$ 
+\begin{aligned} w_1&=v_1 \\ 
+w_2&=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1 \\ 
+w_3&=v_3-\frac{v_3\cdot v_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2\\ 
+&\thinspace \vdots \\ 
+w_m&=v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i 
+\end{aligned}
+$$
+אז הקבוצה
+$\Set{w_1,...,w_m}$
+היא בסיס אורתוגונלי ל-
+$W$,
+והקבוצה המנורמלת
+$\{\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}\}$
+היא בסיס אורתונורמלי ל-
+$W$.
+יתר על כן, מתקיים:
+$$ 
+\begin{aligned} 
+\Span(v_1)&=\Span(w_1)=\Span(\frac{w_1}{\|w_1\|}) \\ \Span(v_1,v_2)&=\Span(w_1,w_2)=\Span(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|}) \\ &\thinspace\vdots \\ \Span(v_1,...,v_m)&=\Span(w_1,...,w_m)=\Span(\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}) \end{aligned} 
+$$ 
+\end{proposition}
+
+\begin{example}
+לפני ההוכחה נתאר את הגיאומטריה של שני מקרים חשובים.
+
+\begin{enumerate}[label=\alph*.]
+\item
+עבור 
+$m=2$
+נבחר
+$w_1=v_1$
+ונראה כי הוקטור 
+$w_2$
+המאונך ל-
+$v_1$,
+מתאים לנוסחה של תהליך גרם-שמידט.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/2Gram.png}
+    \caption{הוקטור השני שמתקבל מאונך לקודמו}
+    \label{fig:2Gram}
+\end{figure}
+
+הניצב בכיוון של 
+$v_1=w_1$
+הוא בגודל
+$\|v_2\|\cos(\alpha)$,
+כאשר
+$\cos(\alpha)=\frac{v_2\cdot w_1}{\|v_2\|\|w_1\|}$
+ולצורך פשטות נניח כי 
+$\alpha$
+היא זווית חדה. כדי לקבל את הוקטור המתאים יש להכפיל את 
+$w_1$
+בסקלר
+$\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}$
+(בדקו זאת).
+לפי חיבור וקטורי נובע כי
+$$
+,\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}w_1+w_2=v_2
+$$
+ומכאן
+$$
+w_2=v_2-\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}w_1=v_2-\frac{\|v_2\|\|w_1\|\cos(\alpha)}{\|w_1\|^2}w_1=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1
+$$
+בהתאם לתהליך גרם-שמידט.
+
+
+\item
+המקרה של
+$m=3$
+דומה. לצורך הדוגמה נניח כי מדובר בוקטורים
+$$
+v_1=\begin{pmatrix}a\\0\\0\end{pmatrix},v_2=\begin{pmatrix}0\\b\\0\end{pmatrix},v_3=\begin{pmatrix}c\\d\\e\end{pmatrix}\in\R^3
+$$
+כאשר
+$abe\neq 0$
+(כלומר
+$a,b,e\neq 0$).
+שני הוקטורים הראשונים כבר מאונכים, ולכן נקבל:
+$$
+\begin{aligned}
+w_1=\begin{pmatrix}a\\0\\0\end{pmatrix},\quad w_2&=\begin{pmatrix}0\\b\\0\end{pmatrix}
+\end{aligned}
+$$
+
+נפעל לפי תהליך גרם-שמידט ונבדוק שהתוצאה נכונה:
+$$
+w_3=v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2=\begin{pmatrix}c\\d\\e\end{pmatrix}-\frac{ac}{a^2}\begin{pmatrix}a\\0\\0\end{pmatrix}-\frac{bd}{b^2}\begin{pmatrix}0\\b\\0\end{pmatrix}=\begin{pmatrix}0\\0\\e\end{pmatrix}
+$$
+אכן מתקיים
+$w_1\cdot w_3=0=w_2\cdot w_3$.
+
+
+\end{enumerate}
+\end{example}
+
+מדוגמה זו נעבור להסתכלות גיאומטרית על תהליך גרם-שמידט עבור שלושה וקטורים כלליים: כדי לקבל את
+$w_3$
+צריך להחסיר מ-
+$v_3$
+את היטלו על המישור
+$\Span(w_1,w_2)=\Span(v_1,v_2)$,
+כך שהתוצאה תהיה וקטור המאונך למישור זה (וקטור נורמל במונחים של פרק
+\ref{ch:geometry}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/3Gram.png}
+    \caption{הוקטור השלישי שמתקבל הוא נורמל למישור הנפרש ע"י שני קודמיו}
+    \label{fig:3Gram}
+\end{figure}
+
+% Insert Gram-Schmidt.html here.
+
+אנחנו מוכנים להוכיח את הטענה הכללית:
+
+\begin{proof}
+תחילה נראה כי
+$\Set{w_1,...,w_m}$
+היא קבוצה אורתוגונלית. כל הוקטורים בקבוצה זו שונים מ-
+$\underline{0}$
+לפי הנוסחאות שמגדירות אותם והעובדה שהקבוצה המקורית
+$\Set{v_1,...,v_m}$
+היא בת"ל. נחשב את
+$w_j\cdot w_k$
+לכל
+$1\leq j<k\leq m$, 
+ונעשה זאת לפי הסדר כאשר נגדיל את 
+$k$
+בהדרגה (מ-
+$2$
+עד
+$m$)
+ונעבור על כל האפשרויות עבור
+$j<k$.
+עבור
+$k=2$
+יש רק בדיקה אחת למקרה
+$j=1$:
+$$
+\begin{aligned}
+w_1\cdot w_2&=w_1\cdot(v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1)=w_1\cdot v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}(w_1\cdot w_1) \\
+&=w_1\cdot v_2-v_2\cdot w_1=0 
+\end{aligned}
+$$
+
+עבור
+$k=3$
+יש שתי בדיקות שנובעות מהחישוב הקודם:
+$$
+\begin{aligned}
+w_1\cdot w_3&=w_1\cdot(v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2)=w_1\cdot v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}(w_1\cdot w_1) \\
+&-\frac{v_3\cdot w_2}{w_2\cdot w_2}(w_1\cdot w_2)=w_1\cdot v_3-v_3\cdot w_1-0=0 \\
+w_2\cdot w_3&=w_2\cdot(v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2)=w_2\cdot v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}(w_2\cdot w_1) \\
+&-\frac{v_3\cdot w_2}{w_2\cdot w_2}(w_2\cdot w_2)=w_2\cdot v_3-0-v_3\cdot w_2=0
+\end{aligned}
+$$
+
+נמשיך כך כאשר בכל פעם שמגדילים את
+$k$,
+הבדיקות החדשות נשענות על החישובים הקודמים. כאשר נגיע ל-
+$k=m$
+החישובים עד לשלב זה יראו כי
+$w_j\cdot w_i=0$
+לכל
+$1\leq i,j\leq m-1$
+כך ש-
+$i\neq j$,
+ולכן לכל
+$j<m$
+נקבל:
+$$
+\begin{aligned}
+w_j\cdot w_m&=w_j\cdot(v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i)=w_j\cdot v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}(w_j\cdot w_i) \\
+&=w_j\cdot v_m-0-...-0-\frac{v_m\cdot w_j}{w_j\cdot w_j}(w_j\cdot w_j)-0-...-0 \\
+&=w_j\cdot v_m-v_m\cdot w_j=0
+\end{aligned}
+$$
+
+סיימנו את הוכחת האורתוגונליות ומכאן נובע כי
+$\Set{w_1,...,w_m}$
+בת"ל. כדי להראות כי היא בסיס (אורתוגונלי) ל-
+$W$,
+נראה כי
+$\Span(w_1,...,w_k)=W$.
+נעשה זאת בהדרגה.
+
+לפי ההגדרה מתקיים
+$w_1=v_1$,
+ולכן ברור כי
+$$
+.\Span(v_1)=\Span(w_1)=\Span(\frac{w_1}{\|w_1\|})
+$$
+מתקיים
+$$
+,w_2=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1\in\Span(v_2,w_1)=\Span(v_1,v_2)
+$$
+ולכן
+$$
+.\Span(w_1,w_2)\subseteq\Span(v_1,v_2)
+$$
+הקבוצות
+$\Set{w_1,w_2},\Set{v_1,v_2}$
+הן בת"ל, ולכן ההכלה לעיל היא שוויון לפי משפט "שלישי חינם". הנרמול (כפל בסקלר) לא משפיע על ה-
+$\Span$,
+ולכן 
+$$
+.\Span(v_1,v_2)=\Span(w_1,w_2)=\Span(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|})
+$$
+נמשיך כך באופן דומה, ונקבל:
+$$
+\begin{aligned}
+\Span(v_1,v_2,v_3)&=\Span(w_1,w_2,w_3)=\Span(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|},\frac{w_3}{\|w_3\|}) \\
+&\thinspace\vdots\ \\
+\Span(v_1,...,v_{m-1})&=\Span(w_1,...,w_{m-1})=\Span(\frac{w_1}{\|w_1\|},...,\frac{w_{m-1}}{\|w_{m-1}\|})
+\end{aligned}
+$$
+מהשוויון האחרון נובע כי
+$$
+,w_m=v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i\in\Span(v_m,w_1,...,w_{m-1})=\Span(v_1,...,v_m)
+$$
+ולכן
+$$
+.\Span(w_1,...,w_m)\subseteq\Span(v_1,...,v_m)
+$$
+הקבוצות
+$\Set{w_1,...,w_m},\Set{v_1,...,v_m}$
+הן בת"ל, ולכן ההכלה לעיל היא שוב שוויון. כאמור, לנרמול אין השפעה על ה-
+$\Span$
+ומכאן נקבל
+$$
+.W=\Span(v_1,...,v_m)=\Span(w_1,...,w_m)=\Span(\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|})
+$$
+\end{proof}
+
+\begin{exercise}
+יהיו
+$$
+.v_1=\begin{pmatrix}1\\1\\1\end{pmatrix},v_2=\begin{pmatrix}2\\0\\4\end{pmatrix},v_3=\begin{pmatrix}0\\3\\5\end{pmatrix}\in\R^3
+$$
+
+\begin{enumerate}[label=\alph*.]
+\item
+מצאו בסיס אורתונורמלי ל-
+$\Span(v_1,v_2)$.
+
+
+\item 
+השתמשו בתהליך גרם-שמידט על
+$\Set{v_1,v_2,v_3}$
+כדי לקבל בסיס אורתונורמלי ל-
+$\R^3$.
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+בכל סעיף נשתמש בתהליך גרם-שמידט על הקבוצה הרלוונטית כדי לקבל בסיס אורתוגונלי. לבסוף ננרמל אותו.
+
+\begin{enumerate}[label=\alph*.]
+\item 
+ראשית נגדיר
+$w_1=v_1$.
+לפי תהליך גרם-שמידט נקבל
+$$
+.w_2=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1=\begin{pmatrix}2\\0\\4\end{pmatrix}-\frac{6}{3}\begin{pmatrix}1\\1\\1\end{pmatrix}=\begin{pmatrix}0\\-2\\2\end{pmatrix}
+$$
+
+ננרמל:
+$$
+\begin{aligned}
+\frac{w_1}{\|w_1\|}&=\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix}\\
+\frac{w_2}{\|w_2\|}&=\begin{pmatrix}0\\-\frac{2}{\sqrt{8}}\\\frac{2}{\sqrt{8}}\end{pmatrix}=\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix}
+\end{aligned}
+$$
+
+הקבוצה 
+$\Set{\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix},\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix}}$
+היא בסיס אורתונורמלי ל-
+$\Span(v_1,v_2)$.
+
+
+\item 
+מדובר בהמשך של הסעיף הקודם. מצאנו את
+$w_1,w_2$
+ונותר למצוא את 
+$w_3$.
+הפעם נקבל
+
+$$
+w_3=v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2=\begin{pmatrix}0\\3\\5\end{pmatrix}-\frac{8}{3}\begin{pmatrix}1\\1\\1\end{pmatrix}-\frac{4}{8}\begin{pmatrix}0\\-2\\2\end{pmatrix}=\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}
+$$
+
+ננרמל:
+$$
+\frac{w_3}{\|w_3\|}=\frac{3}{\sqrt{96}}\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}=\frac{3}{4\sqrt{6}}\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}=\begin{pmatrix}-\frac{2}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\end{pmatrix}
+$$
+
+לפי מסקנה
+\ref{cor:orthogonal-basis},
+הקבוצה 
+$\Set{\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix},\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix},\begin{pmatrix}-\frac{2}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\end{pmatrix}}$
+היא בסיס אורתונורמלי ל-
+$\R^3$.
+
+
+\end{enumerate}
+\end{solution}
+
+\subsection{מטריצות אורתוגונליות}
+
+ישנן מטריצות הפיכות מיוחדות שיופיעו בלכסון האורתוגונלי, ובזכותן הוא יהיה יותר נוח לחישובים מאשר לכסון רגיל. קוראים להן מטריצות אורתוגונליות.
+
+\begin{definition}
+\adddeftolist{מטריצה אורתוגונלית}
+תהי
+$P\in\M_{n\times n}(\R)$
+הפיכה. אם
+$P^{-1}=P^t$,
+נאמר ש-
+$P$
+היא מטריצה אורתוגונלית.
+\end{definition}
+
+\begin{example}\
+\begin{enumerate}[label=\alph*.]
+\item
+בדוגמה
+\ref{ex:rotation}
+(סעיף ג')
+הזכרנו מטריצות סיבוב והבנו את המשמעות הגיאומטרית שלהן. כעת ניתן לומר יותר מכך: לכל
+$\theta\in\R$
+מטריצת הסיבוב
+$$
+P=\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}
+$$
+היא אורתוגונלית. אכן, מתקיים
+$$
+P^t=\begin{pmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{pmatrix}
+$$
+וניתן לבדוק כי
+$P^t=P^{-1}$
+או ע"י חישוב 
+$P^{-1}$
+או ע"י חישוב המכפלה הבאה:
+$$
+P^tP=\begin{pmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{pmatrix}\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}=\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}=I_2
+$$
+החישוב האחרון גם מגלה לנו שוב את מה שראינו בדוגמה
+\ref{ex:rotation-matrix}: 
+הקבוצה
+$$
+\Set{\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix},\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}}
+$$
+היא בסיס אורתונורמלי ל-
+$\R^2$.
+כל איבר במטריצה 
+$P^tP$
+מתאים למכפלה סקלרית של וקטורי עמודות של
+$P$.
+כאשר מדובר במכפלה של וקטור עמודה בעצמו, מקבלים
+$1$
+בהתאם לגודלו.
+אחרת מקבלים 
+$0$
+כי הוקטורים אורתוגונליים.
+
+באופן דומה, החישוב
+$$
+PP^t=\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}\begin{pmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{pmatrix}=\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}=I_2
+$$
+מראה כי וקטורי השורות של
+$P$
+מהווים בסיס אורתונורמלי ל-
+$\R^2$.
+
+
+\item 
+המטריצה
+$$
+P=\begin{pmatrix}
+\frac{1}{\sqrt{3}} & 0 & -\frac{2}{\sqrt{6}} \\
+\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} \\
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}}\
+\end{pmatrix}
+$$
+היא אורתוגונלית. אכן, מתקיים
+$$
+.P^t=\begin{pmatrix}
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+-\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}\
+\end{pmatrix}
+$$
+וניתן לבדוק כי
+$$
+.P^tP=I_3
+$$
+זה שקול לכך שעמודות 
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^3$.
+באופן דומה, השוויון
+$PP^t=I_3$
+מבטא את העובדה ששורות
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^3$.
+
+
+\end{enumerate}
+\end{example}
+
+מכאן נעבור לטענה הכללית שתראה שניתן להגדיר מטריצה אורתוגונלית במספר דרכים שקולות:
+
+\begin{proposition}\label{prop:ortho-matrix}
+\addpropositiontolist{התנאים השקולים לאורתוגונליות של מטריצה}
+תהי 
+$P\in\M_{n\times n}(\R)$.
+התנאים הבאים שקולים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$P^t=P^{-1}$
+
+
+\item 
+$P^tP=I_n$
+
+
+\item 
+$PP^t=I_n$
+
+
+\item 
+עמודות
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^n$.
+
+
+\item 
+שורות
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^n$.
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+שלושת התנאים הראשונים שקולים לפי משפט
+\ref{thm:invertible}. 
+
+נראה כי
+$\text{(ד)}$
+שקול ל-
+$\text{(ב)}$. 
+נסמן
+$$
+.P=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v_1\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+v_2\\[-0.4ex]
+|
+\end{array}
+&
+\cdots
+&
+\begin{array}{c}
+|\\[-0.4ex]
+v_n\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}
+$$
+מתקיים
+$$
+,P^t =
+\begin{pmatrix}
+\begin{array}{ccc}
+- & v_1^t & -
+\end{array} \\[0.6ex]
+\begin{array}{ccc}
+- & v_2^t & -
+\end{array} \\
+\vdots \\
+\begin{array}{ccc}
+- & v_n^t & -
+\end{array}
+\end{pmatrix}
+$$
+ולכן
+$$
+.P^tP=\begin{pmatrix}
+\begin{array}{ccc}
+- & v_1^t & -
+\end{array} \\[0.6ex]
+\begin{array}{ccc}
+- & v_2^t & -
+\end{array} \\
+\vdots \\
+\begin{array}{ccc}
+- & v_n^t & -
+\end{array}
+\end{pmatrix}\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v_1\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+v_2\\[-0.4ex]
+|
+\end{array}
+&
+\cdots
+&
+\begin{array}{c}
+|\\[-0.4ex]
+v_n\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}
+$$
+נשים לב כי לכל
+$1\leq i,j\leq n$
+מתקיים
+$$
+.(P^tP)_{ij}=v_i^tv_j=v_i\cdot v_j
+$$
+לכן:
+$$
+\begin{aligned}
+\text{היא קבוצה אורתונורמלית} \Set{v_1,...,v_n} &\iff \forall 1\leq i,j\leq n \thinspace :\thinspace v_i\cdot v_j=\begin{cases} 
+1, & i=j \\
+0, & i\neq j
+\end{cases} \\
+&\iff P^tP=I_n
+\end{aligned}
+$$
+מכאן מקבלים כי
+$\text{(ב)}$
+שקול ל-
+$\text{(ד)}$
+לפי מסקנה
+\ref{cor:orthogonal-basis}.
+
+כדי להוכיח את השקילות בין
+$\text{(ג)}$
+ל-
+$\text{(ה)}$
+נסתכל על המטריצה
+$P^t$
+שעמודותיה הן שורות 
+$P$
+עד כדי שחלוף. לפי השקילות בין
+$\text{(ב)}$
+ל-
+$\text{(ד)}$,
+נובע כי
+$\text{(ה)}$
+שקול ל-
+$$
+,(P^t)^tP^t=I_n
+$$
+שהוא שכתוב קל של
+$\text{(ג)}$.
+\end{proof}
+
+\begin{exercise}\label{exer:orthogonal-det}\
+\begin{enumerate}[label=\alph*.]
+\item
+תהי
+$P\in\M_{n\times n}(\R)$
+מטריצה אורתוגונלית. הוכיחו כי
+$\det(P)=\pm 1$.
+
+\item 
+מצאו דוגמה למטריצה אורתוגונלית
+$P\in\M_{2\times 2}(\R)$
+כך ש-
+$\det(P)=-1$.
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}\
+\begin{enumerate}[label=\alph*.]
+\item
+נתון כי
+$P^t=P^{-1}$.
+לפי תכונות הדטרמיננטה נקבל
+$$
+.\det(P)=\det(P^t)=\det(P^{-1})=\frac{1}{\det(P)}
+$$
+לכן
+$(\det(P))^2=1$,
+ובהכרח
+$\det(P)=\pm 1$.
+
+
+\item 
+דרך פשוטה לקבל מטריצה כנ"ל היא להחליף בין השורות של
+$I_2$,
+מה שישנה את סימן הדטרמיננטה אך לא את העובדה שהעמודות/שורות מהוות בסיס אורתונורמלי ל-
+$\R^2$.
+כך נקבל את המטריצה
+$$
+.P=\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+$$
+אכן מתקיים
+$\det(P)=-1$
+וגם
+$$
+.P^t=P=P^{-1}
+$$
+
+
+\end{enumerate}
+\end{solution}
+
+למטריצה אורתוגונלית יש תכונה גיאומטרית: היא שומרת על המכפלה הסקלרית של כל זוג וקטורים (ולכן על הזווית ביניהם), ועל הגודל של כל וקטור. על כך בטענה הבאה:
+
+\begin{proposition}
+\addpropositiontolist{כפל במטריצה אורתוגונלית שומר על מכפלה סקלרית וגודל}
+תהי
+$P\in\M_{n\times n}(\R)$
+מטריצה אורתוגונלית, ויהיו
+$v,w\in\R^n$. 
+אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item
+$$
+(Pv)\cdot (Pw)=v\cdot w
+$$
+
+
+\item 
+$$
+\|Pv\|=\|v|\|
+$$
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+לפי טענה 
+\ref{prop:ortho-matrix}
+מתקיים
+$P^tP=I_n$.
+
+\begin{enumerate}[label=\alph*.]
+\item
+מתקיים
+$$
+\begin{aligned}
+.(Pv)\cdot (Pw)=(Pv)^t(Pw)=(v^tP^t)(Pw)=v^t(P^tP)w=v^tw=v\cdot w
+\end{aligned}
+$$
+
+\item
+נשתמש בסעיף הקודם עבור
+$w=v$
+ונקבל
+$$
+\begin{aligned}
+.\|Pv\|^2=(Pv)\cdot (Pv)=v\cdot v=\|v\|^2
+\end{aligned}
+$$
+נוציא שורש ונקבל
+$\|Pv\|=\|v|\|$
+כנדרש.
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+לצורך העשרה גיאומטרית, נזכיר שבפרק 
+\ref{ch:determinant}
+ציינו את העובדה שלכל מטריצה
+$$
+,A=\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_1 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_2 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_3 & \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}\in\M_{3\times 3}(\R)
+$$
+$|\det(A)|$
+שווה לנפח המקבילון שנוצר ע"י 
+$v_1,v_2,v_3$.
+הוכחנו זאת עבור מקרה פרטי, וכעת יש לנו כלים להוכיח זאת באופן כללי. נשתמש בתהליך גרם-שמידט כדי לעבור מהקבוצה 
+$\Set{v_1,v_2,v_3}$
+לקבוצה 
+$\Set{w_1,w_2,w_3}$,
+כאשר 
+$w_1=v_1$
+מתאים לצלע אחת של המקבילית שהיא בסיס המקבילון, 
+$w_2$
+הוא הוקטור המתאים לגובה המקבילית ו-
+$w_3$
+הוא הוקטור המתאים לגובה המקבילון.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Height.png}
+    \caption{גובה המקבילון הוא הוקטור השלישי שמתקבל בתהליך גרם-שמידט}
+    \label{fig:Height}
+\end{figure}
+
+נסמן
+$$
+.\alpha=\frac{v_2\cdot w_1}{w_1\cdot w_1},\quad \beta=\frac{v_3\cdot w_1}{w_1\cdot w_1},\quad \gamma=\frac{v_3\cdot w_2}{w_2\cdot w_2}
+$$
+לפי הנוסחאות של תהליך גרם-שמידט מתקיים:
+$$
+\begin{aligned}
+w_1&=v_1 \\
+w_2&=v_2-\alpha w_1 \\
+w_3&=v_3-\beta w_1-\gamma w_2
+\end{aligned}
+$$
+
+לפי תכונות הדטרמיננטה ביחס לפעולות שורה (שמופיעות בהגדרתה) נובע כי
+$$
+\begin{aligned}
+\det(A)
+&= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_1 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_2 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_3 & \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+\quad \text{\scriptsize $R_2\to R_2-\alpha R_1$} \\
+&= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & w_1 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & w_2 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & v_3 & \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+\quad \text{\scriptsize $R_3\to R_3-\beta R_1-\gamma R_2$} \\
+&= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & w_1 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & w_2 & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & w_3 & \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix} \quad
+\text{\scriptsize
+$\begin{aligned}
+R_1 &\to \frac{1}{\|w_1\|} R_1 \\
+R_2 &\to \frac{1}{\|w_2\|} R_2 \\
+R_3 &\to \frac{1}{\|w_3\|} R_3
+\end{aligned}$} \\
+&= \|w_1\|\|w_2\|\|w_3\|
+\det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & \frac{w_1}{\|w_1\|} & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & \frac{w_2}{\|w_2\|} & \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} & \frac{w_3}{\|w_3\|} & \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+= \pm \|w_1\|\|w_2\|\|w_3\|
+\end{aligned}
+$$
+השתמשנו בעובדה שהמטריצה בשורה האחרונה היא אורתוגונלית כי שורותיה מהוות בסיס אורתונורמלי ל-
+$\R^3$,
+ולכן הדטרמיננטה שלה היא
+$\pm 1$
+לפי תרגיל
+\ref{exer:orthogonal-det}.
+מכאן נובע כי
+$$
+,|\det(A)|=\|w_1\|\|w_2\|\|w_3\|
+$$
+והמכפלה באגף ימין מתארת את נפח המקבילון כידוע מגיאומטריה של המרחב.
+
+\end{remark}
+
+\subsection{לכסון אורתוגונלי}
+
+לאחר שהבנו את ההגדרה והתכונות של מטריצה אורתוגונלית, אנחנו מוכנים להגדיר לכסון אורתוגונלי.
+
+\begin{definition}
+\adddeftolist{מטריצה לכסינה אורתוגונלית}
+$A\in\M_{n\times n}(\R)$
+נקראת לכסינה אורתוגונלית אם קיימות
+$P,D\in\M_{n\times n}(\R)$
+כך ש-
+$P$
+אורתוגונלית,
+$D$
+אלכסונית ומתקיים
+$$
+.A=PDP^t
+$$
+\end{definition}
+
+הטענה הבאה מראה שהדיון על לכסון אורתוגונלי רלוונטי רק למטריצות סימטריות:
+
+\begin{proposition}
+\addpropositiontolist{מטריצה לכסינה אורתוגונלית היא סימטרית}
+כל מטריצה לכסינה אורתוגונלית היא בהכרח סימטרית.
+\end{proposition}
+
+\begin{proof}
+תהי
+$A\in\M_{n\times n}(\R)$
+לכסינה אורתוגונלית. אז קיימות
+$P,D\in\M_{n\times n}(\R)$
+כך ש-
+$P$
+אורתוגונלית,
+$D$
+אלכסונית ומתקיים
+$A=PDP^t$.
+נשים לב כי
+$D$
+סימטרית ולכן
+$$
+.A^t=(PDP^t)^t=(P^t)^tD^tP^t=PDP^t=A
+$$
+כלומר 
+$A$
+סימטרית.
+\end{proof}
+
+\begin{proposition}\label{prop:orthog-diag}
+\addpropositiontolist{הקשר בין לכסון אורתוגונלי לבין בסיס אורתנורמלי של ו"ע}
+$A\in\M_{n\times n}(\R)$
+היא לכסינה אורתוגונלית אם ורק אם קיים ל-
+$\R^n$
+בסיס אורתונורמלי המורכב מוקטורים עצמיים של 
+$A$.
+\end{proposition}
+
+\begin{proof}
+ההוכחה כמעט זהה לזו של משפט
+\ref{thm:diag}.
+החידוש הוא שהמטריצה 
+$P$
+היא אורתוגונלית אם ורק אם עמודותיה, שהן וקטורים עצמיים של
+$A$,
+מהוות בסיס אורתונורמלי ל-
+$\R^n$.
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/OrthoEigen.png}
+    \caption{ למטריצה הסימטרית בדוגמה זו יש בסיס אורתוגונלי של ו"ע שמתאימים לע"ע שונים, וזה מסביר איך הכדור נמתח בכיוונים שונים ע"י כפל במטריצה (הצורה שמתקבלת נקראת אליפסואיד)}
+    \label{fig:OrthoEigen}
+\end{figure}
+
+% Insert OrthoEigen.html here.
+
+לפני שנתאר את תהליך הלכסון האורתוגונלי, חשוב לדעת את העובדות שמופיעות בטענה הבאה:
+
+\begin{proposition}\label{prop:symmetric-eigen}
+\addpropositiontolist{תכונות של ו"ע וע"ע של מטריצה סימטרית}
+תהי
+$A\in\M_{n\times n}(\R)$
+סימטרית. אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל
+$v,w\in\R^n$
+מתקיים
+$$
+.(Av)\cdot w=v\cdot (Aw)
+$$
+
+
+\item 
+כל ע"ע של
+$A$
+הוא ממשי.
+
+
+\item 
+כל שני ו"ע של 
+$A$
+המתאימים לע"ע שונים, הם אורתוגונליים.
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}\
+\begin{enumerate}[label=\alph*.]
+\item 
+יהיו
+$v,w\in\R^n$.
+מתקיים
+$$
+.(Av)\cdot w=(Av)^t w=(v^t A^t)w=v^t(Aw)=v\cdot (Aw)
+$$
+
+
+\item 
+יהי 
+$\lambda\in\C$
+ע"ע של 
+$A$.
+אז קיים ו"ע
+$$
+v=\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix}\in\C^n
+$$
+כך ש-
+$Av=\lambda v$. 
+לאחר שחלוף נקבל
+$$
+.v^tA=\lambda v^t
+$$
+נכפיל מימין בוקטור
+$$
+\overline{v}=\begin{pmatrix}\overline{a_1}\\\vdots\\\overline{a_n}\end{pmatrix}\in\C^n
+$$
+ונקבל
+$$
+.v^tA\overline{v}=\lambda v^t\overline{v}
+$$
+מצד שני, אם נחזור למשוואה
+$Av=\lambda v$
+וניקח צמוד של כל אגף, נקבל
+$$
+.A\overline{v}=\overline{\lambda}\overline{v}
+$$
+ע"י הצבה במשוואה הקודמת נקבל
+$$
+,\overline{\lambda}v^t\overline{v}=\lambda v^t\overline{v}
+$$
+ומכאן נובע כי
+$\overline{\lambda}=\lambda$
+שהרי
+$$
+v^t\overline{v}=|a_1|^2+...+|a_n|^2>0
+$$
+כי
+$v\neq\underline{0}$.
+לכן, מתקיים
+$\lambda\in\R$
+כנדרש.
+
+
+\item 
+יהיו
+$v_1,v_2\in\R^n$
+ו"ע המתאימים לע"ע 
+$\lambda_1\neq\lambda_2$.
+אז לפי סעיף א' מתקיים
+$$
+,(\lambda_1 v_1)\cdot v_2=(Av_1)\cdot v_2=v_1\cdot (Av_2)=v_1\cdot(\lambda_2 v_2)
+$$
+ולכן
+$$
+.(\lambda_1-\lambda_2)(v_1\cdot v_2)=0
+$$
+מכאן
+$v_1\cdot v_2=0$
+כי
+$\lambda_1-\lambda_2\neq 0$.
+כלומר 
+$v_1,v_2$
+אורתוגונליים.
+
+
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+למטריצה
+$A\in\M_{n\times n}(\R)$
+כללית מובטח לפחות ו"ע אחד ב-
+$\C^n$,
+אך לא בהכרח ב-
+$\R^n$. 
+אם 
+$A$
+סימטרית, הרי שלפי הטענה האחרונה בהכרח יש לה ו"ע השייך ל-
+$\R^n$.
+למעשה, בהכרח יש בסיס (אורתונורמלי) ל-
+$\R^n$
+המורכב מו"ע של
+$A$
+- לפי משפט שנוכיח בסוף הפרק.
+\end{remark}
+
+\subsubsection{אלגוריתם הלכסון האורתוגונלי}
+
+בהינתן מטריצה סימטרית
+$A\in\M_{n\times n}(\R)$,
+איך נלכסן אותה באופן אורתוגונלי? נחזור לאלגוריתם הלכסון הכללי ונעדכן אותו למקרה הפרטי:
+
+\underline{שלב 1:}
+מחשבים את הפולינום האופייני
+$p_A(x)$.
+לפי טענה
+\ref{prop:symmetric-eigen},
+כל שורשיו בהכרח ממשיים ולכן הוא מתפצל מעל
+$\R$.
+אין צורך לעסוק ב-
+$\C$
+(עבור מטריצה סימטרית).
+
+\underline{שלב 2:}
+בודקים אם לכל ע"ע 
+$\lambda_i$
+מתקיים
+$g_i=a_i$.
+זה בהכרח נכון לפי המשפט שנוכיח בהמשך, אבל בכל מקרה יש למצוא בסיס אורתונורמלי ל-
+$V_{\lambda_i}$.
+עושים זאת ע"י מציאת בסיס רגיל ושימוש בתהליך גרם-שמידט כדי להמיר אותו לבסיס אותונורמלי (אם
+$g_i>1$).
+
+נקבל בסיס ל-
+$V_{\lambda_i}$
+שמורכב מ-
+$g_i$
+וקטורים עצמיים אורתונורמליים:
+$$
+B_i=\Set{v_{i1},...,v_{ig_i}}
+$$
+ניקח איחוד שלהם ונקבל בסיס אורתונורמלי 
+לכל
+$\R^n$:
+$$
+B=B_1\cup \cdots \cup B_k=\Set{v_{11},...,v_{1g_1},...,v_{k1},...,v_{kg_k}}
+$$
+יש אורתוגונליות בין כל זוג וקטורים לפי הבנייה (עבור ו"ע המתאימים לאותו ע"ע) והסעיף השני של טענה
+\ref{prop:symmetric-eigen}
+(עבור ו"ע המתאימים לע"ע שונים).
+
+\underline{שלב 3:}
+הלכסון האורתוגונלי 
+$A=PDP^t$
+מתקבל עבור המטריצות הבאות:
+$$
+\begin{aligned}
+P&=\begin{pmatrix}
+\big| & \big|        & \big| \\
+v_{11} & \cdots & v_{kg_k} \\
+\big| & \big|         & \big|
+\end{pmatrix}\\
+D&=\begin{pmatrix}
+\lambda_1 & \cdots & 0 \\
+\vdots & \ddots & \vdots \\
+0  & \cdots & \lambda_k
+\end{pmatrix}
+\end{aligned}
+$$
+
+\begin{exercise}
+\begin{enumerate}[label=\alph*.]
+\item
+מצאו לכסון אורתוגונלי עבור
+$$
+.A=\begin{pmatrix}
+2 & 1 & 1 \\
+1 & 2 & 1 \\
+1 & 1 & 2
+\end{pmatrix}
+$$
+
+
+\item 
+חשבו את
+$A^{2026}$.
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}[label=\alph*.]\
+\item
+נחשב פולינום אופייני:
+$$
+\begin{aligned}
+p_A(x)&=\det(xI_3-A)=\det\begin{pmatrix}
+x-2 & -1 & -1 \\
+-1 & x-2 & -1 \\
+-1 & -1 & x-2
+\end{pmatrix} \\
+&\overset{R_3\to R_3-R_2}=\det\begin{pmatrix}
+x-2 & -1 & -1 \\
+-1 & x-2 & -1 \\
+0 & 1-x & x-1
+\end{pmatrix} \\
+&\overset{\text{פיתוח לפי $R_3$}}=-(1-x)(2-x-1)+(x-1)\left((x-2)^2-1\right)^2 \\
+&=(x-1)(1-x+x^2-4x+3)=(x-1)(x^2-5x+4)\\
+&=(x-1)^2(x-4)
+\end{aligned}
+$$
+
+הריבוי האלגברי של
+$\lambda_1=1$
+הוא 
+$2$.
+תחילה נמצא בסיס רגיל ל-
+$V_1$:
+
+$$
+\begin{aligned}
+V_1&=\Null(I_3-A)=\Null\begin{pmatrix}
+-1 & -1 & -1 \\
+-1 & -1 & -1 \\
+-1 & -1 & -1
+\end{pmatrix}=\Null\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix} \\
+&=\Span\left(\begin{pmatrix}-1\\1\\0\end{pmatrix},\begin{pmatrix}-1\\0\\1\end{pmatrix}\right)
+\end{aligned}
+$$
+
+נסמן 
+$$
+.v_1=\begin{pmatrix}-1\\1\\0\end{pmatrix},\quad v_2=\begin{pmatrix}-1\\0\\1\end{pmatrix}
+$$
+
+כדי לקבל בסיס אורתוגונלי ל-
+$V_1$,
+נפעיל את תהליך גרם-שמידט ונקבל:
+$$
+\begin{aligned}
+w_1&=v_1=\begin{pmatrix}-1\\1\\0\end{pmatrix} \\
+w_2&=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1=\begin{pmatrix}-1\\0\\1\end{pmatrix}-\frac{1}{2}\begin{pmatrix}-1\\1\\0\end{pmatrix}=\begin{pmatrix}-\frac{1}{2}\\-\frac{1}{2}\\1\end{pmatrix}
+\end{aligned}
+$$
+
+ננרמל אותם בסוף. עבור 
+$\lambda_2=4$
+הריבוי האלגברי הוא 
+$1$,
+ולכן זהו גם הריבוי הגיאומטרי ואין צורך בתהליך גרם-שמידט. מתקיים:
+
+$$
+\begin{aligned}
+V_4&=\Null(4I_3-A)=\Null\begin{pmatrix}
+2 & -1 & -1 \\
+-1 & 2 & -1 \\
+-1 & -1 & 2
+\end{pmatrix}=\Null\begin{pmatrix}
+1 & -\frac{1}{2} & -\frac{1}{2} \\
+0 & 1 & -1 \\
+0 & 0 & 0
+\end{pmatrix} \\
+&=\Span\left(\begin{pmatrix}1\\1\\1\end{pmatrix}\right)
+\end{aligned}
+$$
+
+ננרמל את 
+$w_1,w_2$
+ו-
+$\begin{pmatrix}1\\1\\1\end{pmatrix}$
+ונקבל את הבסיס האורתונורמלי הבא:
+
+$$
+B=\Set{\begin{pmatrix}-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\\0\end{pmatrix},\begin{pmatrix}-\frac{1}{\sqrt{6}}\\-\frac{1}{\sqrt{6}}\\\sqrt{\frac{2}{3}}\end{pmatrix},\begin{pmatrix}\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\end{pmatrix}}
+$$
+
+לסיכום: 
+$A$
+אכן לכסינה אורתוגונלית ומתקיים
+$A=PDP^t$
+כאשר
+$$
+.P=\begin{pmatrix} 
+-\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} &  \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}} \\
+0 & \sqrt{\frac{2}{3}} & \frac{1}{\sqrt{3}}\\
+\end{pmatrix}, \quad D=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 4
+\end{pmatrix}
+$$
+
+
+\item 
+נזכור כי
+$P^{-1}=P^t$
+ואין צורך בדירוג כדי לחשב מטריצה הופכית. לפי הסעיף הקודם וטענה
+\ref{prop:matrix-power}
+(שתקפה גם לגבי לכסון אורתוגונלי)
+ניתן לחשב את החזקה באופן הבא:
+
+$$
+\begin{aligned}
+A^{2026}&=PD^{2026}P^t=\begin{pmatrix} 
+-\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} &  \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}} \\
+0 & \sqrt{\frac{2}{3}} & \frac{1}{\sqrt{3}}\\
+\end{pmatrix}\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 4^{2026}
+\end{pmatrix}\begin{pmatrix} 
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0\\
+-\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \sqrt{\frac{2}{3}} \\
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\
+\end{pmatrix} \\
+&=\begin{pmatrix}
+\frac{4^{2026}+2}{3} & \frac{4^{2026}-1}{3} & \frac{4^{2026}-1}{3}\\
+\frac{4^{2026}-1}{3} & \frac{4^{2026}+2}{3} & \frac{4^{2026}-1}{3}\\
+\frac{4^{2026}-1}{3} & \frac{4^{2026}-1}{3} & \frac{4^{2026}+2}{3}
+\end{pmatrix}
+\end{aligned}
+$$
+
+
+\end{enumerate}
+\end{solution}
+
+\subsubsection{משפט הלכסון האורתוגונלי}
+
+לסיום הפרק, נוכיח את משפט הלכסון האורתוגונלי למטריצות סימטריות תוך שילוב מספר נושאים מהקורס. המשפט חשוב להבנת הפרק, אבל ההוכחה היא לסקרנים 
+\underline{לצורך העשרה}.
+
+\begin{theorem}\label{thm:symmetric-diag}
+\addtheoremtolist{משפט הלכסון האורתוגונלי}
+כל 
+$A\in\M_{n\times n}(\R)$
+סימטרית היא לכסינה אורתוגונלית.
+\end{theorem}
+
+\begin{proof}
+נניח בשלילה שקיימת
+$A\in\M_{n\times n}(\R)$
+סימטרית שאינה לכסינה אורתוגונלית בעלת ע"ע
+$\lambda_1,...,\lambda_m$.
+המשמעות של אי-לכסינות (אורתוגונלית ולמעשה בכלל) היא שסכום הריבויים הגיאומטריים של הע"ע
+קטן מ-
+$n$.
+נמצא בסיס אורתונורמלי לכל מרחב עצמי וניקח איחוד של הבסיסים, ונקבל את הקבוצה האורתונורמלית הבאה:
+$$
+B_0=\Set{w_1,...,w_m}
+$$
+כאן כל
+$w_i$
+מתאים לע"ע
+$\lambda_i$,
+ותיתכן חזרה על אותו ע"ע.
+$m$
+הוא סכום הריבויים הגיאומטריים, ולפי ההנחה בשלילה מתקיים
+$m<n$.
+נשלים את
+$B_0$
+לבסיס אורתונורמלי 
+$B$
+לכל
+$\R^n$
+(תחילה נוסיף וקטורי יחידה מתאימים כדי לקבל בסיס רגיל, ואחר כך נבצע תהליך גרם-שמידט):
+
+$$
+B=\Set{w_1,...,w_m,u_1,...,u_{n-m}}
+$$
+
+נרצה לקבל סתירה ע"י מציאת ו"ע 
+$u_0\in\Span(u_1,...,u_{n-m})$
+של
+$A$.
+זו סתירה כי לפי הבנייה כל ו"ע של 
+$A$
+שייך לאחד מהמרחבים העצמיים שנפרש ע"י אחד או יותר מהוקטורים
+$w_1,...,w_m$,
+אבל מתקיים
+$\Span(w_1,...,w_m)\cap\Span(u_1,...,u_{n-m})=\Set{\underline{0}}$
+כי 
+$B$
+בת"ל.
+נסמן
+$U=\Span(u_1,...,u_{n-m})$.
+כדי למצוא ו"ע כנ"ל נגדיר ה"ל 
+$S_A:U\to U$
+ע"י
+$$
+.S_A(u)=Au
+$$
+נציין שההבדל בין 
+$S_A$
+ל-
+$T_A:\R^n\to \R^n$
+הוא תחום ההגדרה בלבד - צמצמנו אותו ל-
+$U$.
+צריך לבדוק שהטווח הוא אכן
+$U$,
+כלומר
+$\Image(S_A)\subseteq U$.
+יהי
+$u\in U$.
+לכל
+$1\leq i\leq m$
+ולכל
+$1\leq j\leq n-m$
+מתקיים
+$w_i\perp u_j$.
+לכן, לפי טענה
+\ref{prop:symmetric-eigen}
+מתקיים
+$w_i\perp u$
+לכל 
+$1\leq i\leq m$.
+לפי תרגיל
+\ref{exer:orthogonal-by-basis},
+נובע כי
+$$
+.(Au)\cdot w_i=u\cdot (Aw_i)=u\cdot (\lambda_iw_i)=\lambda_i(u\cdot w_i)=0
+$$
+לפי מסקנה
+\ref{cor:orthonormal},
+נובע כי
+$$
+.Au=\sum_{i=1}^m\left((Au)\cdot w_i\right)w_i+\sum_{j=1}^{n-m}\left((Au)\cdot u_j\right)u_j=\sum_{j=1}^{n-m}\left((Au)\cdot u_j\right)u_j\in U
+$$
+קיבלנו שאכן ניתן לקבוע את הטווח של
+$S_A$
+להיות 
+$U$. 
+נסמן
+$B_U=\Set{u_1,...,u_{n-m}}$
+ונראה כי המטריצה המייצגת 
+$[S_A]_{B_U}$
+היא סימטרית. 
+לכל
+$1\leq j\leq n-m$
+מתקיים
+$$
+,S_A(u_j)=Au_j=\sum_{i=1}^{n-m}\left((Au_j)\cdot u_i\right)u_i
+$$
+ולכן (לפי הגדרת מטריצה מייצגת) לכל 
+$1\leq i,j\leq n-m$
+נקבל
+$$
+.([S_A]_{B_V})_{ij}=(Au_j)\cdot u_i=u_j\cdot (Au_i)=(Au_i)\cdot u_j=([S_A]_{B_V})_{ji}
+$$
+אם כן,
+$[S_A]_{B_U}$
+סימטרית וככזו יש לה ו"ע
+$\begin{pmatrix}a_1\\\vdots\\a_{n-m}\end{pmatrix}\in\R^{n-m}$
+המתאים לע"ע
+$\lambda_0\in\R$.
+מהקוארדינטות של וקטור זה נקבל ו"ע
+$$
+u_0=\sum_{i=1}^{n-m}a_iu_i\in U
+$$
+עבור 
+$S_A$,
+כי מתקיים
+$$
+.[S_A(u_0)]_{B_U}=[S_A]_{B_U}[u_0]_B=[S_A]_{B_U}\begin{pmatrix}a_1\\\vdots\\a_{n-m}\end{pmatrix}=\lambda_0[u_0]_{B_U}=[\lambda_0u_0]_{B_U}
+$$
+זה אומר ש-
+$u_0$
+הוא ו"ע של
+$A$
+עצמה, כי מתקיים
+$$
+.Au_0=S_A(u_0)=\lambda_0 u_0
+$$
+זו בדיוק הסתירה ששאפנו לקבל.
+
+\end{proof}
+
+\begin{exercise}
+תהי
+$A\in\M_{2\times 2}(\R)$
+מטריצה סימטרית ואורתוגונלית.
+\begin{enumerate}[label=\alph*.]
+\item 
+מהם הע"ע האפשריים של
+$A$?
+הראו כי אם יש ע"ע יחיד, אז בהכרח
+$A=\pm I_2$.
+
+
+\item
+הוכיחו כי אם
+$A\neq\pm I_2$,
+אז בהכרח קיים
+$\theta\in\R$
+כך ש-
+$$
+.A=\begin{pmatrix}
+\cos\theta & \sin\theta \\
+\sin\theta & -\cos\theta
+\end{pmatrix}
+$$
+רמז: השתמשו בלכסון אורתוגונלי לסעיף א', אך בחישוב ישיר לסעיף ב'.
+
+
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}\
+\begin{enumerate}[label=\alph*.]
+\item
+נשים לב כי
+$A^t=A=A^{-1}$,
+ולכן
+$A^2=I_2$.
+מכאן (לפי טענה
+\ref{prop:matrix-poly})
+שלכל ע"ע
+$\lambda\in\R$
+מתקיים
+$\lambda^2=1$,
+כלומר הע"ע האפשריים הם 
+$\pm 1$.
+
+כעת נניח של-
+$A$
+יש ע"ע יחיד
+$\pm 1$
+(לא שניהם),
+ולכן המטריצה האלכסונית המתאימה היא
+$\pm I_2$.
+לפי משפט
+\ref{thm:symmetric-diag},
+קיימת
+$P\in\M_{2\times 2}(\F)$
+אורתוגונלית כך ש-
+$$
+,A=P(\pm I_2)P^t=\pm PP^t=\pm I_2
+$$
+כנדרש.
+
+
+\item
+נניח כי
+$A\neq\pm I_2$
+ונסמן
+$$
+.A=\begin{pmatrix}
+a & b \\
+b & c
+\end{pmatrix}
+$$
+מאורתוגונליות נובע כי
+$AA^t=I_2$,
+ובאופן שקול:
+$$
+\begin{cases}
+a^2+b^2&=1 \\
+b^2+c^2&=1 \\
+b(a+c)&=0
+\end{cases}
+$$
+
+לפי המשוואה האחרונה, יש שני מקרים:
+\begin{itemize}
+\item 
+$b=0$
+ולכן 
+$a=\pm 1$
+וגם
+$c=\pm 1$
+לפי שאר המשוואות (הסימנים בלתי תלויים).
+הנחנו כי
+$A\neq\pm I_2$,
+ולכן
+$$
+.A=\pm\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+אפשרות זו מתאימה לנוסחה הכללית עבור הזוויות
+$\theta_1=0,\thinspace\theta_2=\pi$.
+
+
+\item
+$c=-a$
+ו-
+$a^2+b^2=1$.
+נשתמש בקוארדינטות פולריות עבור
+$(a,b)$
+ונקבל
+$\theta\in\R$
+כך ש-
+$$
+.a=\cos\theta,\thinspace b=\sin\theta
+$$
+מכאן
+$$
+,A=\begin{pmatrix}
+\cos\theta & \sin\theta \\
+\sin\theta & -\cos\theta
+\end{pmatrix}
+$$
+כנדרש.
+\end{itemize}
+
+
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 12.1.}
+
+יהיו 
+$v,w\in\R^n$
+הנתונים ע"י
+$$
+.v=\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix},\quad w=\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}
+$$
+נגדיר את המכפלה הסקלרית שלהם ע"י
+$$
+.v\cdot w=\sum_{i=1}^n a_ib_i
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 12.2.}
+
+יהי
+$v=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    v_n
+    \end{pmatrix}\in\R^n$.
+נגדיר את גודלו ע"י 
+$$
+.\|v\|=\sqrt{v\cdot v}=\sqrt{\sum_{i=1}^n a_i^2}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.3.}
+
+יהיו
+$v_1,v_2,v_3\in\R^n$
+ו-
+$\alpha\in\R$.
+אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+v_1\cdot v_2=v_2\cdot v_1
+$$
+
+
+\item 
+$$
+(v_1+v_3)\cdot v_2=v_1\cdot v_2+v_3\cdot v_2
+$$
+
+
+\item 
+$$
+v_1\cdot v_1=\|v_1\|^2
+$$
+
+
+\item 
+$$
+(\alpha v_1)\cdot v_2=\alpha(v_1\cdot v_2)
+$$
+
+
+\item 
+$$
+\|\alpha v_1\|=|\alpha|\|v_1\|
+$$
+
+
+\item 
+$$
+\|v_1\|=0\iff v_1=\underline{0}
+$$
+
+
+\item
+אם 
+$v_1\neq\underline{0}$,
+אז
+$$
+.\left\|\frac{v_1}{\|v_1\|}\right\|=1
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 12.4.}
+
+לכל
+$v_1,...,v_m,w_1,...,w_k\in\R^n$
+ולכל
+$\alpha_1,...,\alpha_m,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_mv_m)\cdot(\beta_1w_1+...+\beta_kw_k)=\sum_{i=1}^m\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot w_j)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 12.5.}
+
+\
+\begin{enumerate}[label=\alph*.]
+\item 
+נאמר ש-
+$\underline{0}\neq v,w\in\R^n$
+הם אורתוגונליים אם
+$v\cdot w=0$.
+נסמן זאת ע"י 
+$v\perp w$.
+
+
+\item 
+קבוצה
+$\underline{0}\notin \Set{v_1,...,v_k}\subseteq\R^n$
+נקראת אורתוגונלית אם לכל 
+$i\neq j$
+מתקיים
+$$
+.v_i\cdot v_j=0
+$$
+
+
+\item 
+קבוצה
+$\Set{v_1,...,v_k}\subseteq\R^n$
+נקראת אורתונורמלית אם היא אורתוגונלית ובנוסף לכל 
+$1\leq i\leq k$
+מתקיים
+$$
+.\|v_i\|=1
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.6.}
+
+תהי
+$\Set{v_1,...,v_k}\subseteq\R^n$
+קבוצה אורתוגונלית. אז הקבוצה המנורמלת
+$$
+\left\{\frac{v_1}{\|v_1\|},...,\frac{v_k}{\|v_k\|}\right\}
+$$
+היא אורתונורמלית.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.7.}
+
+\begin{enumerate}[label=\alph*.]
+\item
+תהי
+$\Set{v_1,...,v_k}$
+קבוצה אורתוגונלית. לכל
+$\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\|v_i\|^2
+$$
+
+
+\item
+אם
+$\Set{v_1,...,v_k}$
+קבוצה אורתונורמלית, אז לכל
+$\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\R$
+מתקיים
+$$
+.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.8.}
+
+כל קבוצה אורתוגונלית
+$\Set{v_1,...,v_k}\subseteq \R^n$
+היא בת"ל.
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 12.9.}
+
+תהי
+$\Set{v_1,...,v_n}\subseteq\R^n$
+אורתוגונלית. אז היא בסיס ל-
+$\R^n$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 12.10.}
+
+קבוצה אורתוגונלית 
+$\Set{v_1,...,v_n}\subseteq\R^n$
+נקראת בסיס אורתוגונלי ל-
+$\R^n$.
+אם היא אורתונורמלית, היא נקראת בסיס אורתונורמלי ל-
+$\R^n$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.11.}
+
+יהי 
+$B={v_1,...,v_n}$
+בסיס אורתוגונלי ל-
+$\R^n$.
+אז לכל
+$v\in\R^n$
+מתקיים
+$$
+.v=\sum_{i=1}^n\frac{v\cdot v_i}{v_i\cdot v_i}v_i
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 12.12.}
+
+יהי 
+$B={v_1,...,v_n}$
+בסיס אורתונורמלי ל-
+$\R^n$.
+אז לכל
+$v\in\R^n$
+מתקיים
+$$
+.v=\sum_{i=1}^n(v\cdot v_i)v_i
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.13.}
+
+יהי
+$B=\Set{v_1,...,v_m}$
+בסיס לתת-מרחב
+$W\subseteq \R^n$.
+נגדיר:
+$$ 
+\begin{aligned} w_1&=v_1 \\ 
+w_2&=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1 \\ 
+w_3&=v_3-\frac{v_3\cdot v_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2\\ 
+&\thinspace \vdots \\ 
+w_m&=v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i 
+\end{aligned}
+$$
+אז הקבוצה
+$\Set{w_1,...,w_m}$
+היא בסיס אורתוגונלי ל-
+$W$,
+והקבוצה המנורמלת
+$\{\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}\}$
+היא בסיס אורתונורמלי ל-
+$W$.
+יתר על כן, מתקיים:
+$$ 
+\begin{aligned} 
+\Span(v_1)&=\Span(w_1)=\Span(\frac{w_1}{\|w_1\|}) \\ \Span(v_1,v_2)&=\Span(w_1,w_2)=\Span(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|}) \\ &\thinspace\vdots \\ \Span(v_1,...,v_m)&=\Span(w_1,...,w_m)=\Span(\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}) \end{aligned} 
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 12.14.}
+
+תהי
+$P\in\M_{n\times n}(\R)$
+הפיכה. אם
+$P^{-1}=P^t$,
+נאמר ש-
+$P$
+היא מטריצה אורתוגונלית.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.15.}
+
+תהי 
+$P\in\M_{n\times n}(\R)$.
+התנאים הבאים שקולים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$P^t=P^{-1}$
+
+
+\item 
+$P^tP=I_n$
+
+
+\item 
+$PP^t=I_n$
+
+
+\item 
+עמודות
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^n$.
+
+
+\item 
+שורות
+$P$
+מהוות בסיס אורתונורמלי ל-
+$\R^n$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.16.}
+
+תהי
+$P\in\M_{n\times n}(\R)$
+מטריצה אורתוגונלית, ויהיו
+$v,w\in\R^n$. 
+אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item
+$$
+(Pv)\cdot (Pw)=v\cdot w
+$$
+
+
+\item 
+$$
+\|Pv\|=\|v|\|
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 12.17.}
+
+$A\in\M_{n\times n}(\R)$
+נקראת לכסינה אורתוגונלית אם קיימות
+$P,D\in\M_{n\times n}(\R)$
+כך ש-
+$P$
+אורתוגונלית,
+$D$
+אלכסונית ומתקיים
+$$
+.A=PDP^t
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.18.}
+
+כל מטריצה לכסינה אורתוגונלית היא בהכרח סימטרית.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.19.}
+
+$A\in\M_{n\times n}(\R)$
+היא לכסינה אורתוגונלית אם ורק אם קיים ל-
+$\R^n$
+בסיס אורתונורמלי המורכב מוקטורים עצמיים של 
+$A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 12.20.}
+
+תהי
+$A\in\M_{n\times n}(\R)$
+סימטרית. אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל
+$v,w\in\R^n$
+$$
+.(Av)\cdot w=v\cdot (Aw)
+$$
+
+
+\item 
+כל ע"ע של
+$A$
+הוא ממשי.
+
+
+\item 
+כל שני ו"ע של 
+$A$
+המתאימים לע"ע שונים, הם אורתוגונליים.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 12.21.}
+
+כל 
+$A\in\M_{n\times n}(\R)$
+סימטרית היא לכסינה אורתוגונלית.
+\bigskip
+\bigskip
+
+\end{document}

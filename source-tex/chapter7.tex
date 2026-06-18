@@ -42,9 +42,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -103,6 +103,7 @@ $\det(A)$
 \section{הגדרת הדטרמיננטה והקשר לדירוג}
 
 \begin{definition}\label{def:det}
+\adddeftolist{דטרמיננטה לפי תכונות בסיסיות}
 עבור
 $A\in\M_{n\times n}(\F)$
 נגדיר את 
@@ -197,6 +198,7 @@ $$
 \end{example}
 
 \begin{proposition}\label{prop:det-scalar}
+\addpropositiontolist{הוצאת סקלר מחוץ לדטרמיננטה}
 יהיו
 $A\in\M_{n\times n}(\F)$
 ו-
@@ -225,6 +227,7 @@ $$
 \end{proof}
 
 \begin{proposition}\label{prop:zero-row}
+\addpropositiontolist{שורת אפסים מאפסת דטרמיננטה}
 אם למטריצה
 $A\in\M_{n\times n}(\F)$
 יש שורת אפסים,
@@ -249,6 +252,7 @@ $$
 \end{proof}
 
 \begin{proposition}\label{prop:diagonal-det}
+\addpropositiontolist{דטרמיננטה של מטריצה אלכסונית}
 יהיו
 $D,U\in\M_{n\times n}(\F)$.
 
@@ -399,6 +403,7 @@ $n=2$,
 שהוא יותר קל לניתוח וחישוב. כאן כדאי לזכור את נוסחת הדטרמיננטה שנקבל.
 
 \begin{proposition}\label{prop:det-order-2}
+\addpropositiontolist{דטרמיננטה של מטריצה מסדר $2\times 2$}
 עבור
 $n=2$
 הפונקציה
@@ -801,6 +806,7 @@ $$
 יש לנו כבר מספיק כלים כדי להוכיח את אחד השימושים העיקריים של הדטרמיננטה, שהוא תנאי שקול להפיכות עבור מטריצות ריבועיות מסדר כללי.
 
 \begin{theorem}\label{thm:det-invertible}
+\addtheoremtolist{מטריצה ריבועית היא הפיכה אם ורק אם הדטרמיננטה שונה מ-$0$}
 תהי
 $A\in\M_{n\times n}(F)$.
 אז 
@@ -822,7 +828,7 @@ $$
 $\tilde{E}_1,\tilde{E}_2,...,\tilde{E}_k$
 הן מטריצות אלמנטריות
 (למעשה, הן מתאימות לפש"אות ההפוכות בדירוג הקנוני).
-אז לפי שימוש חוזר ב-
+אז לפי שימוש חוזר בטענה
 \ref{prop:elementary-det}
 נובע כי
 $$
@@ -879,15 +885,15 @@ $A^{-1}$
 \end{exercise}
 
 \begin{solution}
-    נחשב את הדטרמיננטה לפי הנוסחה בטענה
-    \ref{prop:det-order-2}
-   ונקבל
-  $.\det(A)=t^2+1$
-  אז לפי משפט
-  \ref{thm:det-invertible}
-  נובע כי 
-  $A$
-  הפיכה אם ורק אם
+נחשב את הדטרמיננטה לפי הנוסחה בטענה
+\ref{prop:det-order-2}
+ונקבל
+$.\det(A)=t^2+1$
+אז לפי משפט
+\ref{thm:det-invertible}
+נובע כי 
+$A$
+הפיכה אם ורק אם
 $$
 .t^2+1\neq 0 \iff t^2\neq-1 \iff t\neq\pm i
 $$
@@ -905,6 +911,7 @@ $$
 
 כעת נוכיח תכונה חשובה שנקראת כפליות הדטרמיננטה:
 \begin{proposition}\label{prop:det-product}
+\addpropositiontolist{דטרמיננטה של מכפלת מטריצות (תכונת הכפליות)}
 יהיו 
 $A,B\in\M_{n\times n}(\F)$.
 אז מתקיים
@@ -957,7 +964,7 @@ $$
 $B$
 הפיכה משמאל ובכלל.
 
-אז לפי טענה
+אז לפי מסקנה
 \ref{cor:elementary-product}
 גם 
 $A$
@@ -989,6 +996,7 @@ $$
 \end{proof}
 
 \begin{corollary}\label{cor:det-inverse}
+\addcorollarytolist{דטרמיננטה של מטריצה הופכית}
 תהי
 $A\in\M_{n\times n}(\F)$
 הפיכה. אז מתקיים
@@ -998,7 +1006,7 @@ $$
 \end{corollary}
 
 \begin{proof}
-לפי
+לפי טענה
 \ref{prop:det-product}
 מתקיים
 $$
@@ -1048,6 +1056,7 @@ $A$.
 \end{remark}
 
 \begin{proposition}\label{prop:det-transpose}
+\addpropositiontolist{דטרמיננטה של מטריצה משוחלפת}
 תהי
 $A\in\M_{n\times n}(\F)$.
 אז מתקיים
@@ -1066,11 +1075,11 @@ $A$.
 $A$
 אינה הפיכה. לא ייתכן כי
 $A^t$
-הפיכה, כי אז לפי
+הפיכה, כי אז לפי תרגיל
 \ref{exer:inverse-product}
 גם 
 $A=(A^t)^t$
-הפיכה וזו סתירה. לכן, לפי
+הפיכה וזו סתירה. לכן, לפי משפט
 \ref{thm:det-invertible}
 נובע כי
 $$
@@ -1081,7 +1090,7 @@ $$
 \item 
 נניח כי
 $A$
-הפיכה. אז לפי
+הפיכה. אז לפי מסקנה
 \ref{cor:elementary-product}
 היא מכפלה של מטריצות אלמנטריות
 $E_1,\cdots,E_k$.
@@ -1157,6 +1166,7 @@ $$
 $0$.
 
 \begin{corollary}
+\addpropositiontolist{דטרמיננטה של מטריצה משולשית עליונה/תחתונה}
 תהי
 $U,L\in\M_{n\times n}(\F)$.
 
@@ -1326,6 +1336,7 @@ $2\times 2$,
 ותמיד אפשר להשתמש בדירוג (לא בהכרח קנוני) כדי לקבל מטריצה משולשית עליונה שגם עבורה הנוסחה ידועה. נשאלת השאלה אם יש קיצור דרך, והתשובה חיובית בהרבה מקרים.
 
 \begin{definition}
+\adddeftolist{מינור}
 תהי
 $A\in\M_{n\times n}(\F)$.
 נגדיר את המינור
@@ -1376,6 +1387,7 @@ $$
 \end{example}
 
 \begin{proposition}\label{prop:laplace}
+\addpropositiontolist{פיתוח דטרמיננטה לפי שורה/עמודה}
 תהי
 $$
 .A=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
@@ -1415,14 +1427,18 @@ $j$
 $i$.
 \end{remark}
 
-נדחה את עיקר ההוכחה לפרק על העתקות לינאריות, אבל בינתיים נראה איך פיתוח לפי עמודה נובע מפיתוח לפי שורה (בעזרת שחלוף):
+הוכחת עיקר הטענה חורגת במעט ממסגרת הקורס, אבל נראה איך פיתוח לפי עמודה נובע מפיתוח לפי שורה (בעזרת שחלוף):
 
 \begin{proof}\
 \begin{enumerate}[label=\alph*.]
 \item
-נוכיח את נוסחה זו בהמשך הקורס. לעת עתה נציין שהביטוי
+לא נוכיח זאת, אך נציין שהביטוי
 $(-1)^{i+j}$
-קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות.
+קשור לשינוי הסימן של הדטרמיננטה בעקבות החלפה בין שורות וגם בין עמודות. החלפה בין עמודות 
+$A$
+מתאימה להחלפה בין שורות
+$A^t$,
+ולכן היא לא משנה את הדטרמיננטה.
 
 
 \item 
@@ -1763,5 +1779,336 @@ $$
 $$
 
 \end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 7.1.}
+
+עבור
+$A\in\M_{n\times n}(\F)$
+נגדיר את 
+$\det(A)$
+ע"י התכונות הבאות:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+$
+.\det(I_n)=1
+$
+
+
+\item 
+אם
+$A\xrightarrow{\alpha R_i\to R_i}A'$
+עבור
+$1\leq i \leq n$,
+אז
+$\det(A')=\alpha \det(A)$.
+
+\item 
+אם
+$A\xrightarrow{R_i+\alpha R_j\to R_i}A'$
+עבור
+$i\neq j$,
+אז
+$\det(A')=\det(A)$.
+
+
+\item 
+אם
+$A\xrightarrow{R_i\leftrightarrow R_j}A'$
+עבור
+$i\neq j$,
+אז
+$\det(A')=-\det(A)$.
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.2.}
+
+יהיו
+$A\in\M_{n\times n}(\F)$
+ו-
+$\alpha\in\F$.
+אז מתקיים
+$$
+.\det(\alpha A)=\alpha^n\det(A)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.3.}
+
+אם למטריצה
+$A\in\M_{n\times n}(\F)$
+יש שורת אפסים,
+אז
+$\det(A)=0$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.4.}
+
+יהיו
+$D,U\in\M_{n\times n}(\F)$.
+
+\begin{enumerate}[label=\alph*.]
+\item 
+אם
+$D$
+אלכסונית מהצורה
+
+$$
+,D=\begin{pmatrix}
+d_1 &0 & \cdots & 0 \\
+0 & d_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+אז מתקיים
+
+$$
+.\det(D)=d_1d_2\cdots d_n
+$$
+
+
+\item
+אם
+$U$
+משולשית עליונה מהצורה
+
+$$
+U=\begin{pmatrix}
+d_1 &* & \cdots & * \\
+0 & d_2 & \cdots & * \\
+\vdots & \vdots & \ddots & * \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם ובנוסף
+$d_i\neq 0$
+לכל 
+$1\leq i\leq n$,
+אז מתקיים
+
+$$
+.\det(U)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.5.}
+
+עבור
+$n=2$
+הפונקציה
+$\det:\M_{2\times 2}(\F)\to\F$
+מהגדרה
+\ref{def:det}
+מקיימת:
+\begin{enumerate}[label=\alph*.]
+\item
+לכל
+$$
+A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+$$
+מתקיים
+$$
+.\det(A)=ad-bc
+$$
+
+\item 
+$A$
+הפיכה אם ורק אם
+$\det(A)\neq 0$. 
+במקרה זה מתקיים
+$$
+.A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}
+d & -b \\
+-c & a
+\end{pmatrix}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.6.}
+
+יהיו 
+$E,A\in\M_{n\times n}(\F)$
+כך ש-
+$E$
+מטריצה אלמנטרית המתאימה לפש"א
+$S$,
+כלומר
+$E=S(I_n)$.
+אז מתקיים
+$$
+.\det(EA)=\det(E)\det(A)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 7.7.}
+
+תהי
+$A\in\M_{n\times n}(F)$.
+אז 
+$A$
+הפיכה אם ורק אם
+$\det(A)\neq 0$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.8.}
+
+יהיו 
+$A,B\in\M_{n\times n}(\F)$.
+אז מתקיים
+$$
+.\det(AB)=\det(A)\det(B)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 7.9.}
+
+תהי
+$A\in\M_{n\times n}(\F)$
+הפיכה. אז מתקיים
+$$
+.\det(A^{-1})=\frac{1}{\det(A)}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.10.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+אז מתקיים
+$$
+.\det(A^t)=\det(A)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 7.11.}
+
+תהי
+$U,L\in\M_{n\times n}(\F)$.
+
+\begin{enumerate}[label=\alph*.]
+\item
+אם
+$U$
+משולשית עליונה מהצורה
+
+$$
+U=\begin{pmatrix}
+d_1 &* & \cdots & * \\
+0 & d_2 & \cdots & * \\
+\vdots & \vdots & \ddots & * \\
+0 & 0 & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם,
+אז מתקיים
+
+$$
+.\det(U)=d_1d_2\cdots d_n
+$$
+
+\item 
+אם
+$L$
+משולשית תחתונה מהצורה
+
+$$
+L=\begin{pmatrix}
+d_1 &0 & \cdots & 0 \\
+* & d_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+* & * & \cdots & d_n
+\end{pmatrix}
+$$
+
+כאשר הכוכביות מציינות איברים כלשהם,
+אז מתקיים
+
+$$
+.\det(L)=d_1d_2\cdots d_n
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 7.12.}
+
+תהי
+$A\in\M_{n\times n}(\F)$.
+נגדיר את המינור
+$M_{i,j}(A)$
+להיות המטריצה שמתקבלת מ-
+$A$
+ע"י מחיקת השורה ה-
+$i$
+והעמודה ה-
+$j$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 7.13.}
+
+תהי
+$$
+.A=\begin{pmatrix}a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}
+$$
+אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item
+לכל
+$1\leq i \leq n$, 
+ניתן לפתח את הדטרמיננטה לפי השורה ה-
+$i$:
+$$
+\det(A)=\sum_{j=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+$$
+
+
+\item
+לכל
+$1\leq j \leq n$, 
+ניתן לפתח את הדטרמיננטה לפי העמודה ה-
+$j$:
+$$
+\det(A)=\sum_{i=1}^n (-1)^{i+j}a_{ij}\det(M_{i,j}(A))
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
 
 \end{document}

@@ -42,9 +42,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{הגדרה}
-\newtheorem{example}[theorem]{דוגמה}
-\newtheorem{exercise}[theorem]{תרגיל}
-\newtheorem{remark}[theorem]{הערה}
+\newtheorem{example}{דוגמה}[chapter]
+\newtheorem{exercise}{תרגיל}[chapter]
+\newtheorem{remark}{הערה}[chapter]
 
 % Unnumbered for website folding
 \newtheorem*{solution}{פתרון}
@@ -79,7 +79,7 @@
 
 \chapter{העתקות לינאריות}\label{ch:linearmaps}
 
-בחשבון דיפרנציאלי ואינטגרלי עוסקים בהרחבה בפונקציות של משתנה ממשי (בהמשך עוברים למספר משתנים). באופן יותר כללי במתמטיקה, פונקציה מתארת חוק שמקשר בין קלט לפלט: לכל אובייקט במרחב אחד מותאם אובייקט במרחב אחר (אובייקטים אלה אינם בהכרח מספרים). פונקציות יכולות להיות פשוטות או מורכבות מאוד, ולעיתים קשה להבין את פעולתן על כל הקלטים האפשריים.
+בקורסי חדו"א עוסקים בהרחבה בפונקציות של משתנה ממשי (בהמשך עוברים למספר משתנים). באופן יותר כללי במתמטיקה, פונקציה מתארת חוק שמקשר בין קלט לפלט: לכל אובייקט במרחב אחד מותאם אובייקט במרחב אחר (אובייקטים אלה אינם בהכרח מספרים). פונקציות יכולות להיות פשוטות או מורכבות מאוד, ולעיתים קשה להבין את פעולתן על כל הקלטים האפשריים.
 
 באלגברה לינארית מתמקדים במחלקה מיוחדת של פונקציות – העתקות לינאריות. אלו פונקציות בין מרחבים וקטוריים השומרות על חיבור וכפל בסקלר (בדומה לתכונות של כפל מטריצה בוקטור), ולכן ההתנהגות שלהן נקבעת לחלוטין על ידי פעולתן על וקטורי בסיס כלשהו למרחב המקורי (תחום ההעתקה). תכונה זו מאפשרת תיאור מלא בעזרת מטריצות ונותנת כלים חזקים לניתוח וחישוב. נשים דגש על הקשר בין העתקות לינאריות למטריצות.
 
@@ -92,6 +92,7 @@
 נעבור להגדרה המדויקת של פונקציה כהקדמה להגדרה של העתקה לינארית:
 
 \begin{definition}
+\adddeftolist{פונקציה}
 יהיו קבוצות
 $A,B\neq\emptyset$.
 פונקציה 
@@ -128,6 +129,7 @@ $B$
 \end{remark}
 
 \begin{definition}
+\adddeftolist{העתקה לינארית (ה"ל)}
 יהיו
 $V,W$
 מרחבים וקטוריים מעל
@@ -140,10 +142,12 @@ $v_1,v_2\in V$
 $\alpha\in\F$
 מתקיים:
 $$
+\left\{
 \begin{aligned}
-T(v_1+v_2)&=T(v_1)+T(v_2) \\
-T(\alpha v_1)&=\alpha T(v_1)
+T(v_1+v_2) &= T(v_1)+T(v_2)\\
+T(\alpha v_1) &= \alpha T(v_1)
 \end{aligned}
+\right.
 $$
 \end{definition}
 
@@ -167,8 +171,6 @@ $W$.
 כנ"ל לכפל בסקלר - כל פעולה מתבצעת במרחב הרלוונטי. אז הסימונים קצת מתעתעים, כי זה לא בהכרח אותו סוג חיבור או אותו סוג של כפל בסקלר בשני המרחבים.
 \end{remark}
 
-%% הדגמה דומה לזו שהייתה כבר לכפל מטריצה בוקטור
-
 \begin{example}\
 \begin{enumerate}[label=\alph*.]
 \item 
@@ -186,10 +188,12 @@ $1$).
 $x_1,x_2,\alpha\in\R$
 מתקיים:
 $$
+\left\{
 \begin{aligned}
 f(x_1+x_2)&=2(x_1+x_2)=2x_1+2x_2=f(x_1)+f(x_2) \\
 f(\alpha x)&=2(\alpha x)=\alpha(2x)=\alpha f(x)
 \end{aligned}
+\right.
 $$
 
 
@@ -201,13 +205,16 @@ $T\begin{pmatrix}x \\y\end{pmatrix}=x+y$
 $\begin{pmatrix}x_1 \\y_1\end{pmatrix},\begin{pmatrix}x_2 \\y_2\end{pmatrix}\in\R^2$
 ולכל 
 $\alpha\in\F$
-מתקיים:
+מתקיים
 $$
 \begin{aligned}
 T\left(\begin{pmatrix}x_1 \\y_1\end{pmatrix}+\begin{pmatrix}x_2 \\y_2\end{pmatrix}\right)&=T\begin{pmatrix}x_1+x_2 \\y_1+y_2\end{pmatrix}=(x_1+x_2)+(y_1+y_2)\\
-&=(x_1+y_1)+(x_2+y_2)=T\begin{pmatrix}x_1 \\y_1\end{pmatrix}+T\begin{pmatrix}x_2 \\y_2\end{pmatrix}\\
-T\left(\alpha\begin{pmatrix}x_1 \\y_1\end{pmatrix}\right)&=T\begin{pmatrix}\alpha x_1 \\\alpha y_1\end{pmatrix}=\alpha x_1+\alpha y_1=\alpha(x_1+y_1)=\alpha T\begin{pmatrix}x_1 \\y_1\end{pmatrix}
+&=(x_1+y_1)+(x_2+y_2)=T\begin{pmatrix}x_1 \\y_1\end{pmatrix}+T\begin{pmatrix}x_2 \\y_2\end{pmatrix}
 \end{aligned}
+$$
+וגם
+$$
+.T\left(\alpha\begin{pmatrix}x_1 \\y_1\end{pmatrix}\right)=T\begin{pmatrix}\alpha x_1 \\\alpha y_1\end{pmatrix}=\alpha x_1+\alpha y_1=\alpha(x_1+y_1)=\alpha T\begin{pmatrix}x_1 \\y_1\end{pmatrix}
 $$
 
 
@@ -218,14 +225,15 @@ $f:\R\to\R$
 $f(x)=x+1$
 אינה ה"ל. בתור דוגמה נגדית, ניקח
 $x_1=0,x_2=1,\alpha=2$
-ונקבל:
+ונקבל
 $$
-\begin{aligned}
-f(x_1+x_2)&=f(1)=2\neq 1+2=f(0)+f(1)=f(x_1)+f(x_2) \\
-f(2x_1)&=f(0)=1\neq 2\cdot 1=2f(0)=2f(x_1)
-\end{aligned}
+.f(x_1+x_2)=f(1)=2\neq 1+2=f(0)+f(1)=f(x_1)+f(x_2)
 $$
-הפרכנו את שתי התכונות בהגדרה של ה"ל (מספיק להפריך אחת).
+לחילופין, ניתן להפריך לינאריות גם לפי התכונה השנייה:
+$$
+f(2x_1)=f(0)=1\neq 2\cdot 1=2f(0)=2f(x_1)
+$$
+כאן הפרכנו את שתי התכונות בהגדרה של ה"ל, אך מספיק להפריך אחת.
 
 
 \item 
@@ -235,32 +243,35 @@ $f:\R\to\R$
 $f(x)=x^2$
 אינה ה"ל. בתור דוגמה נגדית, ניקח
 $x_1=1,x_2=-1,\alpha=2$
-ונקבל:
+ונקבל
 $$
-\begin{aligned}
-f(x_1+x_2)&=f(0)=0\neq 1+1=f(1)+f(-1)=f(x_1)+f(x_2) \\
-f(2x_1)&=f(2)=4\neq 2\cdot 1=2f(1)=2f(x_1)
-\end{aligned}
+.f(x_1+x_2)=f(0)=0\neq 1+1=f(1)+f(-1)=f(x_1)+f(x_2)
+$$
+שוב ניתן להפריך לינאריות גם לפי התכונה השנייה:
+$$
+f(2x_1)=f(2)=4\neq 2\cdot 1=2f(1)=2f(x_1)
 $$
 
 
 \item 
 העתקת השחלוף
-$T:\M_{n\times n}(\F)\to\M_{n\times n}(\F)$
+$T:\M_{m\times n}(\F)\to\M_{n\times m}(\F)$
 המוגדרת ע"י
 $T(A)=A^t$
 היא לינארית. הוכחנו זאת בטענה
 \ref{prop:transpose},
 לפיה לכל 
-$A,B\in\M_{n\times n}(\F)$
+$A,B\in\M_{m\times n}(\F)$
 ולכל 
 $\alpha\in\F$
-מתקיים
+מתקיים:
 $$
+\left\{
 \begin{aligned}
 T(A+B)&=(A+B)^t=A^t+B^t=T(A)+T(B) \\
 T(\alpha A)&=(\alpha A)^t=\alpha A^t=\alpha T(A)
 \end{aligned}
+\right.
 $$
 
 
@@ -285,19 +296,21 @@ $v_1,v_1\in V$
 $\alpha\in\F$
 מתקיים:
 $$
+\left\{
 \begin{aligned}
 T(v_1+v_2)&=[v_1+v_2]_B=[v_1]_B+[v_2]_B=T(v_1)+T(v_2) \\
 T(\alpha v_1)&=[\alpha v_1]_B=\alpha[v_1]_B=\alpha T(v_1)
 \end{aligned}
+\right.
 $$
 
 
 \end{enumerate}
 \end{example}
 
-למעשה, לכל ה"ל
+למעשה, יש הרבה מאוד פונקציות מהצורה
 $T:\F\to\F$
-יש נוסחה פשוטה, בין אם
+כפי שרואים בחדו"א. אבל אם דורשים לינאריות, אז נגלה כי כמות הפונקציות מצטמצמת פלאים וכל פונקציה כזו (ה"ל) היא בעלת נוסחה פשוטה מאוד. זה נכון בין אם
 $\F=\R$
 או 
 $\F=\C$.
@@ -314,7 +327,7 @@ $T(x)=cx$.
 \begin{proof}
 נסמן
 $c=T(1)$.
-לכל
+מלינאריות, לכל
 $x\in\F$
 מתקיים
 $$
@@ -326,8 +339,10 @@ $x$
 $\F$).
 \end{proof}
 
-נרצה להוכיח תכונות נוספות של ה"ל, שנובעות מהתכונות בהגדרה.
+נרצה להוכיח תכונות נוספות של ה"ל, שנובעות מהתכונות בהגדרה. אכן, העתקה לינארית מתנהגת יפה ביחס לחיבור וקטורי וכפל בסקלר, ולכן היא גם מתנהגת יפה ביחס לצירופים לינאריים במובן של הטענה הבאה:
+
 \begin{proposition}\label{prop:more-linearity}
+\addpropositiontolist{תכונות נוספות של העתקות לינאריות}
 יהיו 
 $V,W$
 מרחבים וקטוריים מעל
@@ -349,7 +364,7 @@ $$
 
 
 \item 
-$$T(0_V)=0_W$$
+$$.T(0_V)=0_W$$
 
 
 \end{enumerate}
@@ -386,6 +401,15 @@ $$
 \end{enumerate}
 \end{proof}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/LinearMap.png}
+    \caption{ה"ל פועלת לחוד על וקטורי הבסיס של מרחב התחום, והיא שולחת כל צירוף לינארי שלהם לצירוף הלינארי המתאים של איברי התמונות שלהם}
+    \label{fig:LןinearMap}
+\end{figure}
+
+% Insert LinearMap.html here.
+
 \begin{exercise}
 האם
 $T:\R^3\to M_{2\times 2}(\R)$
@@ -403,7 +427,7 @@ $$
 $T$
 אינה לינארית. הדרך הפשוטה ביותר להראות זאת היא לשים לב שמתקיים
 $$
-.T\begin{pmatrix}0\\0\\0\end{pmatrix}=\begin{pmatrix}
+,T\begin{pmatrix}0\\0\\0\end{pmatrix}=\begin{pmatrix}
 1 & 0 \\
 0 & 0
 \end{pmatrix}\neq \begin{pmatrix}
@@ -411,6 +435,7 @@ $$
 0 & 0
 \end{pmatrix}
 $$
+בסתירה לתכונה (ב) מהטענה האחרונה,
 \end{solution}
 
 \begin{remark}
@@ -426,18 +451,24 @@ $f(0)=0$.
 
 \subsection{העתקה לינארית המוגדרת ע"י מטריצה}
 לאור כל מה שלמדנו על מטריצות, נוח לעבוד עם העתקה לינארית המוגדרת ע"י מטריצה.
+
 \begin{definition}
+\adddeftolist{ה"ל $T_A$ המתאימה למטריצה
+$A$}
 תהי 
 $A\in\M_{m\times n}(\F)$.
 נגדיר
 $T_A:\F^n\to\F^m$
 ע"י
 $$
-.T_A(v)=Av
+T_A(v)=Av
 $$
+לכל 
+$v\in\F^n$.
 \end{definition}
 
 \begin{proposition}\label{prop:matrix-map}
+\addpropositiontolist{כפל במטריצה הוא העתקה לינארית}
 לכל 
 $A\in\M_{m\times n}(\F)$
 ההעתקה
@@ -450,8 +481,25 @@ $T_A:\F^n\to\F^m$
 \ref{prop:matrix-vector}.
 \end{proof}
 
-\begin{example}\
+\begin{example}\label{ex:rotation}\
 \begin{enumerate}[label=\alph*.]
+\item 
+עבור
+$$
+A=\begin{pmatrix}
+1 & 1 
+\end{pmatrix}
+$$
+נקבל ה"ל 
+$T_A:\R^2\to \R$
+הנתונה ע"י
+$$
+.T_A\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+1 & 1 
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=x+y
+$$
+ראינו אותה בדוגמה קודמת, אבל עכשיו הקשר למטריצה (וקטור שורה) ברור.
+
 \item 
 עבור
 $$
@@ -460,7 +508,7 @@ A=\begin{pmatrix}
 2 & 0 & 1
 \end{pmatrix}
 $$
-נקבל 
+נקבל ה"ל 
 $T_A:\R^3\to \R^2$
 הנתונה ע"י
 $$
@@ -484,7 +532,7 @@ $$
 \sin{\theta} & \cos{\theta} 
 \end{pmatrix}
 $$
-נקבל 
+נקבל ה"ל 
 $T_A:\R^2\to \R^2$
 הנתונה ע"י
 $$
@@ -503,7 +551,9 @@ $T_A$
 $\begin{pmatrix}x\\y\end{pmatrix}$
 בזווית
 $\theta$
-נגד כיוון השעון. זו פעולה אנלוגית להכפלת
+נגד כיוון השעון, ולכן
+$A$
+נקראת מטריצת סיבוב. זו פעולה אנלוגית להכפלת
 $z=x+iy$
 במספר
 $e^{i\theta}=\cos{\theta}+i\sin{\theta}$
@@ -513,7 +563,8 @@ $\C$.
 $$
 (\cos{\theta}+i\sin{\theta})(x+iy)=x\cos{\theta}-y\sin{\theta}+i(x\sin{\theta}+y\cos{\theta})
 $$
-%% הדגמת הסיבוב
+
+% Insert Rotation.html here.
 
 
 \item 
@@ -524,7 +575,7 @@ $$
 1 & 0
 \end{pmatrix}
 $$
-נקבל 
+נקבל ה"ל 
 $T_A:\R^2\to \R^2$
 הנתונה ע"י
 $$
@@ -536,17 +587,24 @@ y \\
 x
 \end{pmatrix}
 $$
-כאן המשמעות הגיאומטרית היא שיקוף ביחס לישר 
+כאן המשמעות הגיאומטרית של פעולת
+$T_A$
+היא שיקוף ביחס לישר 
 $y=x$.
 
-%% ציור או הדגמה
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Reflection.png}
+    \caption{שיקוף הוקטור ביחס לישר}
+    \label{fig:Reflection}
+\end{figure}
 
 \end{enumerate}
 \end{example}
 
 \begin{exercise}
 הראו כי
-$T:\R^2\to\R^3$
+$T:\R^3\to\R^3$
 הנתונה ע"י
 $$
 T\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}2x+5y+z\\3x-y+2z\\y-5z\end{pmatrix}
@@ -588,7 +646,16 @@ $T=T_A$,
 ולכן היא ה"ל.
 \end{solution}
 
-\begin{proposition}
+בינתיים ראינו כי לכל
+$A\in\M_{m\times n}(\F)$
+מתאימה ה"ל
+$T_A:\F^n\to\F^m$.
+מה לגבי הכיוון השני? כלומר, האם כל ה"ל
+$T:\F^n\to\F^m$
+מתאימה למטריצה מסדר מתאים? התשובה חיובית, ומטריצה זו נקבעת ביחידות. זה מראה כי יש קשר הדוק בין מטריצות להעתקות לינאריות.
+
+\begin{proposition}\label{prop:unique-matrix}
+\addpropositiontolist{מציאת מטריצה המתאימה לה"ל נתונה}
 תהי
 $T:\F^n\to\F^m$
 ה"ל. אז קיימת
@@ -598,7 +665,20 @@ $T=T_A$.
 \end{proposition}
 
 \begin{proof}
-נבחר את 
+לכל 
+$\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}\in\F^n$
+מתקיים:
+$$
+\begin{aligned}
+T\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}&=T(x_1e_1+...+x_ne_n)=x_1T(e_1)+...+x_nT(e_n)\\
+&=\begin{pmatrix}
+\mid & \mid &        & \mid \\
+T(e_1) & T(e_2) & \cdots & T(e_n) \\
+\mid & \mid &        & \mid
+\end{pmatrix}\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}
+\end{aligned}
+$$
+אם כן, נבחר את 
 $A$
 להיות המטריצה שעמודותיה הן
 $T(e_1),...,T(e_n)$:
@@ -609,21 +689,8 @@ T(e_1) & T(e_2) & \cdots & T(e_n) \\
 \mid & \mid &        & \mid
 \end{pmatrix}
 $$
-לכל 
-$\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}\in\F^n$
-מתקיים:
-$$
-\begin{aligned}
-T_A\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}&=\begin{pmatrix}
-\mid & \mid &        & \mid \\
-T(e_1) & T(e_2) & \cdots & T(e_n) \\
-\mid & \mid &        & \mid
-\end{pmatrix}\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}=x_1T(e_1)+...+x_nT(e_n)\\
-&=T(x_1e_1+...x_ne_n)=T\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}
-\end{aligned}
-$$
-קיבלנו כי
-$T_A=T$
+החישוב הקודם בדיוק מראה כי
+$T=T_A$
 כנדרש.
 \end{proof}
 
@@ -635,30 +702,35 @@ $$
 .T\begin{pmatrix}1 \\ 0\end{pmatrix}=\begin{pmatrix}1 \\ 2\end{pmatrix},\quad T\begin{pmatrix}0 \\ 1\end{pmatrix}=\begin{pmatrix}-2 \\ 1\end{pmatrix}
 $$
 
-ראשית, נמצא לה נוסחה רגילה (בלי מטריצה) ע"י שימוש בנתונים ובתכונות של ה"ל. לכל
+לפי הנתונים והוכחת טענה
+\ref{prop:unique-matrix}
+מתקיים
+$T=T_A$
+עבור
+$$
+.A=\begin{pmatrix}
+1 & -2 \\
+2 & 1
+\end{pmatrix}
+$$
+
+כדאי גם להבין זאת ע"י בדיקה ישירה. לכל
 $\begin{pmatrix}x\\y\end{pmatrix}\in\R^2$
 מתקיים:
+
 $$
 \begin{aligned}
-T\begin{pmatrix}x\\y\end{pmatrix}&=T\left(x\begin{pmatrix}1\\0\end{pmatrix}+y\begin{pmatrix}0\\1\end{pmatrix}\right)=xT\begin{pmatrix}1\\0\end{pmatrix}+y\begin{pmatrix}0\\1\end{pmatrix}=x\begin{pmatrix}1 \\ 2\end{pmatrix}+y\begin{pmatrix}-2 \\ 1\end{pmatrix} \\
-&=\begin{pmatrix}x-2y \\ 2x+y \end{pmatrix}
+T\begin{pmatrix}x\\y\end{pmatrix}&=T\left(x\cdot\begin{pmatrix}1\\0\end{pmatrix}+y\cdot\begin{pmatrix}0\\1\end{pmatrix}\right)=x\cdot T\begin{pmatrix}1\\0\end{pmatrix}+y\cdot T\begin{pmatrix}0\\1\end{pmatrix}\\
+&=x\cdot\begin{pmatrix}1 \\ 2\end{pmatrix}+y\cdot\begin{pmatrix}-2 \\ 1\end{pmatrix}=\begin{pmatrix}x-2y \\ 2x+y \end{pmatrix}
 \end{aligned}
 $$
-
-לבסוף, נשים לב שאפשר להציג את הפעולה של 
-$T$
-ככפל של מטריצה בוקטור. מתקיים
-
+ולכן
 $$
 .T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
 1 & -2 \\
 2 & 1
 \end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}
 $$
-
-מאחר שהקלטים הנתונים הם וקטורי יחידה, מלכתחילה ניתן לכתוב 
-$T=T_A$.
-אבל טוב גם להבין את הגישה הישירה בלי מטריצה.
 
 \end{example}
 
@@ -670,11 +742,14 @@ $T:\F^n\to\F^m$,
 $T(e_1),...,T(e_n)$
 קובעים את
 $T$
-ביחידות - ואף הצלחנו לבטא את הקשר ע"י מטריצה. נרצה להוכיח משפט כללי יותר על ה"ל בין מרחבים וקטוריים שאינם בהכרח מהצורה 
+ביחידות - ואף הצלחנו לבטא את הקשר ע"י מטריצה בטענה
+\ref{prop:unique-matrix}.
+נרצה להוכיח משפט כללי יותר על ה"ל בין מרחבים וקטוריים שאינם בהכרח מהצורה 
 $\F^k$,
-וגם עבור ערכים המתאימים לוקטורי בסיס שאינו בהכרח סטנדרטי. המשפט הבא נקרא "משפט ההגדרה":
+וגם עבור ערכים המתאימים לוקטורי בסיס שאינו בהכרח סטנדרטי. המשפט הבא נקרא "משפט ההגדרה של ה"ל".
 
 \begin{theorem}\label{thm:exist-unique}
+\addtheoremtolist{משפט ההגדרה להעתקות לינאריות}
 יהיו 
 $V,W$
 מרחבים וקטוריים מעל
@@ -799,7 +874,7 @@ $S'=\Set{v_1,...,v_j}$
 עבור 
 $j<k$.
 יש לבדוק כי הערכים
-$T(v_{j+1},...,v_n)$
+$T(v_{j+1}),...,T(v_n)$
 מקיימים את דרישת הלינאריות. כלומר, לכל 
 $j<i\leq k$
 קיימים 
@@ -837,19 +912,19 @@ $j<n$,
 $T:\R^3\to\R^3$
 המקיימת
 $$
-.T\begin{pmatrix}1\\-1\\1\end{pmatrix}=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad T\begin{pmatrix}2\\1\\0\end{pmatrix}=\begin{pmatrix}4\\-1\\0\end{pmatrix},\quad T\begin{pmatrix}4\\-1\\2\end{pmatrix}=\begin{pmatrix}0\\0\\0\end{pmatrix}
+.T\underbrace{\begin{pmatrix}1\\-1\\1\end{pmatrix}}_{v_1}=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad T\underbrace{\begin{pmatrix}2\\1\\0\end{pmatrix}}_{v_2}=\begin{pmatrix}4\\-1\\0\end{pmatrix},\quad T\underbrace{\begin{pmatrix}4\\-1\\2\end{pmatrix}}_{v_3}=\begin{pmatrix}0\\0\\0\end{pmatrix}
 $$
 נשים לב כי וקטורי הקלט
-$\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}2\\1\\0\end{pmatrix},\begin{pmatrix}4\\-1\\2\end{pmatrix}$
+$v_1,v_2,v_3$
 הם ת"ל. יש למצוא את משוואת התלות הלינארית ביניהם ולבדוק שוקטורי הפלט גם מקיימים אותה. דירוג מראה כי
 $$
-.\begin{pmatrix}4\\-1\\2\end{pmatrix}=2\begin{pmatrix}1\\-1\\1\end{pmatrix}+\begin{pmatrix}2\\1\\0\end{pmatrix}
+.v_3=2v_1+v_2
 $$
 נניח בשלילה שקיימת ה"ל 
 $T$
 שמקיימת את הנתונים. אז נובע כי
 $$
-,T\begin{pmatrix}4\\-1\\2\end{pmatrix}=2T\begin{pmatrix}1\\-1\\1\end{pmatrix}+T\begin{pmatrix}2\\1\\0\end{pmatrix}
+,T(v_3)=2T(v_1)+T(v_2)
 $$
 ולאחר הצבת הנתונים נקבל
 $$
@@ -870,11 +945,12 @@ $$
 .T\begin{pmatrix}1\\-1\\1\end{pmatrix}=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad T\begin{pmatrix}2\\1\\0\end{pmatrix}=\begin{pmatrix}4\\-1\\0\end{pmatrix},\quad T\begin{pmatrix}4\\-1\\2\end{pmatrix}=\begin{pmatrix}6\\3\\6\end{pmatrix}
 $$
 
-אלה הנתונים הקודמים עם שינוי אחד: כעת $T\begin{pmatrix}4\\-1\\2\end{pmatrix}=\begin{pmatrix}6\\3\\6\end{pmatrix}$ 
-בהתאם לחישוב שנובע מהתלות הלינארית בין וקטורי הקלט. המשמעות היא שנתון זה מיותר, כי הוא נובע משני הנתונים האחרים. כדי למצוא נוסחה ל-
+אלה הנתונים הקודמים עם שינוי אחד: כעת
+$T(v_3)=\begin{pmatrix}6\\3\\6\end{pmatrix}$ 
+בהתאם לחישוב שנובע מהתלות הלינארית בין וקטורי הקלט. המשמעות היא שנתון זה מיותר, כי הוא נובע משני הנתונים האחרים. אז קיימות אינסוף אפשרויות לה"ל המקיימת את הנתונים. מדוע אינסוף? כדי למצוא נוסחה ל-
 $T$
 צריך להשלים את
-$\Set{\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}2\\1\\0\end{pmatrix}}$
+$\Set{v_1,v_2}$
 לבסיס ל-
 $\R^3$.
 דירוג לפי שורות מראה כי ניתן לעשות זאת ע"י הוספת הוקטור
@@ -882,11 +958,11 @@ $e_3$
 (כי בסוף הדירוג לא יהיה איבר מוביל בעמודה השלישית).
 הערך 
 $T(e_3)$
-נתון לבחירתנו, ולצורך נוחות נבחר
+נתון לבחירתנו, ומכאן יש אינסוף אפשרויות. נמצא אחת באופן מפורש ע"י הבחירה השרירותית
 $T(e_3)=\begin{pmatrix}0\\0\\0\end{pmatrix}$.
 נסמן
 $$
-.B=\Set{\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}2\\1\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}}
+.B=\Set{v_1,v_2,e_3}
 $$
 
 יהי
@@ -903,7 +979,7 @@ $$
 1 & 0 & 1 & z
 \end{array}\right)
 $$
-צורתה המדורגת קנונית היא:
+צורתה המדורגת קנונית היא (בדקו זאת): 
 $$
 \left(\begin{array}{ccc|c}
 1 & 0 & 0 & \frac{x-2y}{3} \\
@@ -914,15 +990,16 @@ $$
 
 לכן, מתקיים
 $$
-.\begin{pmatrix}x\\y\\z\end{pmatrix}=\frac{x-2y}{3}\begin{pmatrix}1\\-1\\0\end{pmatrix}+\frac{x+y}{3}\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\begin{pmatrix}0\\0\\1\end{pmatrix}
+.\begin{pmatrix}x\\y\\z\end{pmatrix}=\frac{x-2y}{3}\cdot\begin{pmatrix}1\\-1\\0\end{pmatrix}+\frac{x+y}{3}\cdot\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}
 $$
 נפעיל את
 $T$
 על שני האגפים ונקבל:
 $$
 \begin{aligned}
-T\begin{pmatrix}x\\y\\z\end{pmatrix}&=\frac{x-2y}{3}T\begin{pmatrix}1\\-1\\1\end{pmatrix}+\frac{x+y}{3}T\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}T\begin{pmatrix}0\\0\\1\end{pmatrix} \\
-&=\frac{x-2y}{3}\begin{pmatrix}1\\2\\3\end{pmatrix}+\frac{x+y}{3}\begin{pmatrix}4\\-1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\begin{pmatrix}0\\0\\0\end{pmatrix}=\begin{pmatrix}\frac{5x+2y}{3}\\\frac{x-5y}{3}\\x-2y\end{pmatrix}
+T\begin{pmatrix}x\\y\\z\end{pmatrix}&=\frac{x-2y}{3}\cdot T\begin{pmatrix}1\\-1\\1\end{pmatrix}+\frac{x+y}{3}\cdot T\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot T\begin{pmatrix}0\\0\\1\end{pmatrix} \\
+&=\frac{x-2y}{3}\cdot \begin{pmatrix}1\\2\\3\end{pmatrix}+\frac{x+y}{3}\cdot \begin{pmatrix}4\\-1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot\begin{pmatrix}0\\0\\0\end{pmatrix}\\
+&=\begin{pmatrix}\frac{5x+2y}{3}\\\frac{x-5y}{3}\\x-2y\end{pmatrix}
 \end{aligned}
 $$
 לסיכום, מצאנו דוגמה (אחת מתוך אינסוף) לה"ל שמקיימת את הנתונים:
@@ -982,7 +1059,7 @@ $$
 1 & 0 & 0 & x \\
 1 & 1 & 1 & y \\
 0 & 0 & 1 & z
-\end{array}\right)\xrightarrow{R_2\to R_2-R_1-R_3}\left(\begin{array}{ccc|c}
+\end{array}\right)\xrightarrow[R_2\to R_2-R_3]{R_2\to R_2-R_1}\left(\begin{array}{ccc|c}
 1 & 0 & 0 & x \\
 0 & 1 & 0 & y-x-z \\
 0 & 0 & 1 & z
@@ -992,40 +1069,47 @@ $$
 $\left[\begin{pmatrix}x\\y\\z\end{pmatrix}\right]_B=\begin{pmatrix}x\\y-x-z\\z\end{pmatrix}$
 ובאופן שקול
 $$
-.\begin{pmatrix}x\\y\\z\end{pmatrix}=x\begin{pmatrix}1\\1\\0\end{pmatrix}+(y-x-z)\begin{pmatrix}0\\1\\0\end{pmatrix}+z\begin{pmatrix}0\\1\\1\end{pmatrix}
+.\begin{pmatrix}x\\y\\z\end{pmatrix}=x\cdot\begin{pmatrix}1\\1\\0\end{pmatrix}+(y-x-z)\cdot\begin{pmatrix}0\\1\\0\end{pmatrix}+z\cdot\begin{pmatrix}0\\1\\1\end{pmatrix}
 $$
 נפעיל את 
 $T$
 על שני האגפים, נציב את הנתונים ונקבל
 $$
-.T\begin{pmatrix}x\\y\\z\end{pmatrix}=x\begin{pmatrix}2\\1\end{pmatrix}+(y-x-z)\begin{pmatrix}2\\2\end{pmatrix}+z\begin{pmatrix}1\\2\end{pmatrix}=\begin{pmatrix}2y-z\\2y-x\end{pmatrix}
+.T\begin{pmatrix}x\\y\\z\end{pmatrix}=x\cdot\begin{pmatrix}2\\1\end{pmatrix}+(y-x-z)\cdot\begin{pmatrix}2\\2\end{pmatrix}+z\cdot\begin{pmatrix}1\\2\end{pmatrix}=\begin{pmatrix}2y-z\\2y-x\end{pmatrix}
 $$
 \end{solution}
 
 \section{גרעין ותמונה}
 אנחנו רגילים לפתור ממ"ליות. עבור
-$A\in\M_{m\times n})(\F)$
+$A\in\M_{m\times n}(\F)$
 הסתכלנו על ממ"ליות הומוגניות מהצורה
 $Ax=\underline{0}$,
-וראינו כי קבוצת הפתרונות היא למעשה תת-מרחב שקראנו לו מרחב הפתרונות
-$\Null(A)\subseteq \F^n$.
+וראינו כי קבוצת הפתרונות היא למעשה תת-מרחב של
+$\F^n$
+שנקרא מרחב הפתרונות
+$\Null(A)$.
 לעומת זאת, גם ראינו כי קבוצת כל הוקטורים
 $b\in\F^m$
 עבורם יש פתרון לממ"ל
 $Ax=b$,
-היא מרחב העמודות 
-$\Col(A)\subseteq \F^m$.
+היא תת-מרחב של 
+$\F^m$
+שנקרא מרחב העמודות 
+$\Col(A)$.
 
 למעשה, מדובר במקרים פרטיים של שתי הגדרות יותר כלליות הקשורות להעתקה לינארית.
 
 \begin{definition}
+\adddeftolist{גרעין ותמונה}
 תהי
 $T:V\to W$
 ה"ל.
 
 \begin{itemize}
 \item 
-הגרעין של 
+הגרעין 
+(kernel)
+של 
 $T$
 מוגדר להיות
 $$
@@ -1033,7 +1117,9 @@ $$
 $$
 
 \item 
-התמונה של 
+התמונה
+(image)
+של
 $T$
 מוגדרת להיות
 $$
@@ -1044,23 +1130,29 @@ $$
 \end{itemize}
 \end{definition}
 
-% תמונה או הדגמה 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/KernelImage.png}
+    \caption{תיאור סכמטי (לא מדויק) של גרעין ותמונה - במציאות הם תת-מרחבים}
+    \label{fig:KernelImage}
+\end{figure}
 
 תמונה של פונקציה היא מושג כללי שנתקלים בו גם בקורסים מתמטיים אחרים (למשל חדו"א), ואפשר לחשוב עליה כעל קבוצת כל האיברים בטווח שיש להם מקורות בתחום (לפחות אחד לכל אחד). לעומת זאת, גרעין הוא קבוצת כל האיברים בתחום שנשלחים לוקטור האפס. בקורס שלנו גם לתמונה וגם לגרעין יש "אופי לינארי", כלומר שניהם הם תת-מרחבים.
 
 \begin{proposition}
+\addpropositiontolist{גרעין ותמונה של ה"ל הם תת-מרחבים}
 תהי
 $T:V\to W$
 ה"ל. אז מתקיים:
 \begin{itemize}
     \item 
-    $Ker(T)$
+    $\Ker(T)$
     היא תת-מרחב של 
     $V$.
 
 
     \item 
-    $Im(T)$
+    $\Image(T)$
     היא תת-מרחב של 
     $W$.
 
@@ -1069,6 +1161,15 @@ $T:V\to W$
 \end{proposition}
 
 \begin{proof}
+ראשית, מתקיים
+$0_V\in\Ker(T)$
+כי
+$T(0_V)=0_W$
+לפי סעיף ב' של טענה
+\ref{prop:more-linearity}.
+זה גם מראה כי 
+$0_W\in\Image(T)$.
+
 לכל קבוצה נבדוק סגירות לחיבור וכפל בסקלר.
 \begin{enumerate}[label=\alph*.]
 \item 
@@ -1170,7 +1271,10 @@ c+d
 $$
 \end{example}
 
+אחד היתרונות של ה"ל הוא שמספיק לדעת את ערכיה על קבוצה פורשת (בפרט בסיס) כדי לדעת את כל התמונה. זה לא בהכרח נכון לתמונה של פונקציה שאינה ה"ל (במקרה כזה יש לחקור את הפונקציה, לרוב ע"י כלים של חדו"א). הטענה הבאה מראה שהדרך לחישוב התמונה של ה"ל היא די פשוטה.
+
 \begin{proposition}\label{prop:image-span}
+\addpropositiontolist{מציאת תמונה של ה"ל לפי קבוצה פורשת של מרחב התחום}
 תהי
 $T:V\to W$
 ה"ל. אם
@@ -1205,6 +1309,7 @@ $$
 כמובטח, יש קשר בין גרעין ותמונה למרחב הפתרונות ומרחב העמודות של מטריצה.
 
 \begin{proposition}\label{prop:matrix-map}
+\addpropositiontolist{הקשר בין גרעין ותמונה של ה"ל למרחבים הקשורים למטריצה המתאימה}
 תהי 
 $A\in\M_{m\times n}(\F)$.
 אז מתקיים:
@@ -1236,7 +1341,7 @@ $v\in V$
 $T_A(v)=Av$.
 לכן:
 $$
-v\in\Ker(T)\iff T_A(v)=0 \iff Av=0 \iff v\in \Null(A)
+v\in\Ker(T_A)\iff T_A(v)=0 \iff Av=0 \iff v\in \Null(A)
 $$
 מכאן נובע כי 
 $\Ker(T_A)=\Null(A)$.
@@ -1264,6 +1369,15 @@ $A$.
 
 \end{enumerate}
 \end{proof}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/KerIm.png}
+    \caption{עבור ה"ל המתאימה למטריצה ריבועית, ניתן להציג את הגרעין (אדום) והתמונה (כחול) באותה מערכת צירים}
+    \label{fig:KerIm}
+\end{figure}
+
+% Insert KerIm.html here.
 
 \begin{exercise}
 תהי
@@ -1296,7 +1410,9 @@ $$
 \Image(T)&=\Image(T_A)=\Col(A)
 \end{aligned}
 $$
-נדרג קנונית ונקבל:
+נדרג קנונית את
+$A$
+ונקבל:
 $$
 \begin{pmatrix}
 1 & 0 & 0 & -\tfrac12 \\
@@ -1322,9 +1438,10 @@ $$
 $$
 \end{solution}
 
-לכל מ"ו יש העתקה פשוטה שניתן להגדיר באופן טבעי.
+כעת נראה שלכל מ"ו יש העתקה פשוטה שניתן להגדיר באופן טבעי.
 
 \begin{definition}
+\adddeftolist{העתקות הזהות $\Id_V$}
 יהי
 $V$
 מ"ו מעל
@@ -1341,8 +1458,9 @@ $$
 לכל שני מרחבים וקטוריים קיימת העתקה פשוטה ביניהם, שהגדרתה גם טבעית.
 
 \begin{definition}
+\adddeftolist{העתקת האפס $\0_{V,W}$}
 נגדיר את העתקת האפס
-$\0_{V,W}:V\to V$
+$\0_{V,W}:V\to W$
 ע"י
 $$
 ,\0_{V,W}(v)=0_W 
@@ -1358,9 +1476,11 @@ $W$.
 $V=\F^n, W=\F^m$
 מתקיים
 $$
-.\Id_V=T_{I_n},\quad \0_{V,W}=T_{\0_{m,n}}
+\Id_V=T_{I},\quad \0_{V,W}=T_{\0}
 $$
-כלומר, העתקת הזהות מתאימה למטריצת הזהות, והעתקת האפס מתאימה למטריצת האפס.
+כאשר
+$I=I_n,\,\0=\0_{m\times n}$.
+כלומר, העתקת הזהות מתאימה למטריצת הזהות בגודל המתאים, והעתקת האפס מתאימה למטריצת האפס בגודל המתאים.
 \end{remark}
 
 \begin{exercise}
@@ -1429,9 +1549,10 @@ $$
 \end{enumerate}
 \end{solution}
 
-המושגים הכלליים של "פונקציה על" ו"פונקציה חד-חד-ערכית" תקפים גם לגבי העתקות לינאריות. נגדיר אותם במדויק.
+המושגים הכלליים של "פונקציה על" ו"פונקציה חד-חד-ערכית" תקפים גם לגבי העתקות לינאריות ויהיו רלוונטיים עבורנו. נגדיר אותם במדויק.
 
 \begin{definition}
+\adddeftolist{ה"ל על, ה"ל חח"ע}
 תהי
 $T:V\to W$
 ה"ל.
@@ -1446,7 +1567,7 @@ $\Image(T)=W$.
 \item 
 נאמר כי
 $T$
-חד-חד-ערכית (חח"ע) אם לכל
+חד-חד-ערכית (חח״ע) אם לכל
 $v_1,v_2\in V$
 מתקיים
 $$
@@ -1457,14 +1578,14 @@ $$
 \end{itemize}
 \end{definition}
 
-יש אפיון יותר פשוט להעתקה לינארית חח"ע:
+יש אפיון יותר פשוט להעתקה לינארית חח״ע:
 
 \begin{proposition}\label{prop:injective}
 תהי
 $T:V\to W$ 
 ה"ל. אז מתקיים
 $$
-.\Ker(T)=\Set{0_V} \iff \text{$T$ חח"ע}
+.\Ker(T)=\Set{0_V} \iff \text{$T$ חח״ע}
 $$
 
 \end{proposition}
@@ -1474,7 +1595,7 @@ $$
 $\impliedby$:
 נניח כי
 $T$
-חח"ע.
+חח״ע.
 נזכור כי
 $T(0_V)=0_W$
 לפי טענה
@@ -1501,7 +1622,7 @@ T(v_1)=T(v_2) &\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
 $$
 קיבלנו כי
 $T$
-חח"ע.
+חח״ע.
 
 \end{proof}
 
@@ -1510,17 +1631,17 @@ $T$
 $f:\R\to\R$
 המוגדרת ע"י
 $f(x)=x^2$
-אינה חח"ע כי
+אינה חח״ע כי
 $f(1)=f(-1)$.
 למרות זאת, קבוצת כל הפתרונות של המשוואה
 $f(x)=0$
 היא בדיוק
 $\Set{0}$.
-
-אם בקורס כמו חדו"א נדרשת חקירה (עם נגזרת) כדי להראות שפונקציה היא חח"ע, באלגברה לינארית הכלי הוא פתרון ממ"ל הומוגנית או שימוש בשיקולי מימד כדי להראות שיש פתרון טריוויאלי בלבד.
+אם בקורס כמו חדו"א נדרשת חקירה (עם נגזרת) כדי להראות שפונקציה היא חח״ע, באלגברה לינארית הכלי הוא לרוב פתרון ממ"ל הומוגנית או שימוש בשיקולי מימד כדי להראות שיש פתרון טריוויאלי בלבד.
 \end{remark}
 
 \begin{proposition}\label{prop:matrix-map-2}
+\addpropositiontolist{התנאים לה"ל חח"ע/על במונחים של המטריצה המתאימה}
 תהי
 $A\in\M_{m\times n}(\F)$.
 $T_A:\F^n\to\F^m$
@@ -1529,7 +1650,7 @@ $T_A:\F^n\to\F^m$
 \item 
 $$
 \begin{aligned}
-\Null(A)=\Set{\underline{0}} &\iff \text{$T_A$ חח"ע} \\
+\Null(A)=\Set{\underline{0}} &\iff \text{$T_A$ חח״ע} \\
 \Col(A)=\F^m &\iff \text{$T_A$ על} 
 \end{aligned}
 $$
@@ -1540,7 +1661,7 @@ $$
 $n=m$,
 אז
 $$
-.\text{$T_A$ חח"ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}
+.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}
 $$
 
 
@@ -1557,7 +1678,7 @@ $$
 מתקיים:
 $$
 \begin{aligned}
-\Null(A)=\Set{\underline{0}} &\iff \Ker(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח"ע} \\
+\Null(A)=\Set{\underline{0}} &\iff \Ker(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע} \\
 \Col(A)=\F^m &\iff \Image(T_A)=\F^m \iff \text{$T_A$ על} 
 \end{aligned}
 $$
@@ -1573,7 +1694,7 @@ $$
 $$
 ולכן במקרה זה מתקיים
 $$
-.\text{$T_A$ חח"ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}
+.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}
 $$
 
 
@@ -1605,14 +1726,15 @@ $\det(A)=2\neq 0$).
 \ref{prop:matrix-map-2}
 נובע כי
 $T=T_A$
-חח"ע ועל.
+חח״ע ועל.
 
 \end{enumerate}
 \end{example}
 
-המשפט הבא נקרא משפט המימדים להעתקות לינאריות.
+המשפט הבא נקרא משפט המימדים להעתקות לינאריות, והוא מבסס קשר בין המימדים של גרעין ותמונה.
 
 \begin{theorem}\label{thm:ker-image}
+\addtheoremtolist{משפט המימדים להעתקות לינאריות}
 תהי
 $T:V\to W$
 ה"ל. אז מתקיים
@@ -1698,7 +1820,7 @@ $$
 נסמן 
 $v=\alpha_{k+1}v_{k+1}+...+\alpha_nv_n$.
 כעת,
-$B_0=\Set{v_1,...,v_n}$
+$B_0=\Set{v_1,...,v_k}$
 פורשת את
 $\Ker(T)$.
 בפרט, קיימים 
@@ -1726,7 +1848,7 @@ $\Set{T(v_{k+1}),...,T(v_n)}$
 $$
 .\dim(\Image(T))=\dim(V)-\dim(\Ker(T))\leq\dim(V)
 $$
-כבר היה ברור שמתקיים
+זהו חסם לא טריוויאלי. כבר היו לנו חסמים טריוויאליים:
 $\dim(\Ker(T))\leq\dim(V)$
 וגם
 $\dim(\Image(T))\leq\dim(W)$
@@ -1751,11 +1873,11 @@ $T:\R^3\to\R^4$
 \item
 קיימת ה"ל
 $T:\R^4\to\R^3$
-שהיא חח"ע.
+שהיא חח״ע.
 
 \item
 $T:\M_{2\times 3}(\C)\to\C^6$
-היא על אם ורק אם היא חח"ע.
+היא על אם ורק אם היא חח״ע.
 
 
 \end{enumerate}
@@ -1782,7 +1904,7 @@ $T$
 \item
 נניח שקיימת
 $T:\R^4\to\R^3$
-שהיא חח"ע. כלומר מתקיים
+שהיא חח״ע. כלומר מתקיים
 $\Ker(T)=\Set{\underline{0}}$,
 ולפי משפט המימדים לה"ל נובע כי
 $$
@@ -1794,7 +1916,7 @@ $\dim(\Image(T))=4$,
 $\Image(T)\subseteq\R^3$
 ולכן
 $$.\dim(\Image(T))\leq\dim(\R^3)=3$$
-סתירה.
+זו סתירה, ומכאן לא קיימת ה"ל כזו.
 
 
 \item 
@@ -1815,13 +1937,13 @@ $$
 ובאופן שקול (לפי מסקנה
 \ref{cor:subspace-dim}):
 $$
-.\Ker(T))=\Set{\underline{0}} \iff \Image(T)=\C^6
+.\Ker(T)=\Set{\underline{0}} \iff \Image(T)=\C^6
 $$
 לבסוף, לפי טענה
 \ref{prop:injective}
 אפשר להסיק כי 
 $T$
-היא על אם ורק אם היא חח"ע.
+היא על אם ורק אם היא חח״ע.
 
 \end{enumerate}
 \end{solution}
@@ -1829,6 +1951,7 @@ $T$
 הטענה הבאה מכלילה את התרגיל האחרון:
 
 \begin{proposition}
+\addpropositiontolist{הקשר בין מימדי התחום והטווח של ה"ל חח"ע/על}
 תהי
 $T:V\to W$
 ה"ל. 
@@ -1846,7 +1969,7 @@ $$
 \item
 אם
 $T$
-חח"ע,
+חח״ע,
 אז
 $$
 .\dim(W)\geq\dim(V)
@@ -1867,9 +1990,9 @@ $$
 $$
 מתקיים
 $\dim(\Ker(T))\geq 0$,
-ולכן:
+ולכן
 $$
-\dim(W)\leq\dim(V)
+.\dim(W)\leq\dim(V)
 $$
 
 
@@ -1892,16 +2015,42 @@ $$
 \end{enumerate}
 \end{proof}
 
+\begin{remark}
+יש אנלוגיה בין הטענה לעיל לבין טענה יותר אינטואיטיבית לגבי פונקציה
+$f:A\to B$
+כאשר 
+$A,B$
+קבוצות סופיות. נסמן ב-
+$|A|,|B|$
+את הגדלים שלהן (מספרי האיברים). אם 
+$f$
+חח"ע, אז בהכרח 
+$|A|\leq|B|$
+כי כל איבר
+$a\in A$
+מתאים לאיבר יחיד ב-
+$B$.
+לעומת זאת, אם
+$f$
+על, אז בהכרח
+$|B|\leq|A|$
+כי כל איבר 
+$b\in B$
+מתאים לאיבר אחד לפחות ב-
+$A$.
+\end{remark}
+
 אנחנו מוכנים להוכיח עוד משפט שראוי לשם "שלישי חינם". הפעם ההקשר הוא העתקות לינאריות.
 
 \begin{theorem}\label{thm:3-for-2-iso}
+\addtheoremtolist{משפט "שלישי חינם" להעתקות לינאריות}
 תהי
 $T:V\to W$
 ה"ל. כל שניים מהתנאים הבאים גורר את התנאי השלישי:
 \begin{enumerate}[label=\alph*.]
 \item 
 $T$
-חח"ע.
+חח״ע.
 
 
 \item
@@ -1959,7 +2108,7 @@ $\dim(\Ker(T))=0$,
 $\Ker(T)=\Set{0_V}$.
 פירוש הדבר ש-
 $T$
-חח"ע לפי טענה
+חח״ע לפי טענה
 \ref{prop:injective}.
 
 \end{proof}
@@ -1973,11 +2122,11 @@ $A\in\M_{m\times n}(\F)$.
 $v_1,...,v_n$,
 ונשים לב כי
 $$
-.\text{$v_1,...,v_n$ בת"ל}\iff \Null(A)=\Set{\underline{0}} \iff \Ker(T_A)=\Set{\underline{0}} \iff \text{$T$ חח"ע}
+.\text{$v_1,...,v_n$ בת"ל}\iff \Null(A)=\Set{\underline{0}} \iff \Ker(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע}
 $$
 בנוסף:
 $$
-.\text{$v_1,...,v_n$ פורשים את $\F^m$}\iff \Col(A)=\F^m \iff \Image(T_A)=\F^m \iff \text{$T$ על}
+.\text{$v_1,...,v_n$ פורשים את $\F^m$}\iff \Col(A)=\F^m \iff \Image(T_A)=\F^m \iff \text{$T_A$ על}
 $$
 
 לאור זאת ולפי המשפט החדש, כל שניים מהתנאים הבאים גוררים את התנאי השלישי:
@@ -2005,13 +2154,14 @@ $n=m$
 הפעולות הבסיסיות באלגברה לינארית הן חיבור וכפל בסקלר. נראה שניתן להגדיר פעולות דומות על העתקות לינאריות.
 
 \begin{definition}
+\adddeftolist{פעולות חיבור וכפל בסקלר על העתקות לינאריות}
 יהיו
 $T,S:V\to W$
 ה"ל ו-
 $\alpha\in\F$.
 \begin{itemize}
 \item 
-ההעתקה
+חיבור ה"ל: העתקה
 $T+S:V\to W$
 מוגדרת ע"י
 $$
@@ -2020,7 +2170,7 @@ $$
 
 
 \item 
-ההעתקה
+כפל של ה"ל בסקלר: ההעתקה
 $\alpha\cdot T:V\to W$
 מוגדרת ע"י
 $$
@@ -2130,7 +2280,7 @@ T_A+T_B=T_{A+B}
 $$
 באופן דומה, לכל
 $v\in\F^n$
-ולכלל
+ולכל
 $\alpha\in \F$
 מתקיים
 $$
@@ -2145,6 +2295,7 @@ $$
 בינתיים, נגדיר עוד פעולה שמוכרת מעולם הפונקציות:
 
 \begin{definition}
+\adddeftolist{הרכבה של העתקות לינאריות}
 יהיו
 $T:V\to W$
 ו-
@@ -2153,13 +2304,18 @@ $S:W\to U$
 $S\circ T:V\to U$
 מוגדרת ע"י
 $$
-.S\circ T(v)=S(T(v))
+.(S\circ T)(v)=S(T(v))
 $$
 \end{definition}
 
-% הדגמה או ציור 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Composition.png}
+    \caption{הרכבה כפעולה דו-שלבית}
+    \label{fig:Composition}
+\end{figure}
 
-\begin{example}\label{example:composition}\
+\begin{example}\label{ex:composition}\
 \begin{enumerate}[label=\alph*.]
 \item
 יהיו
@@ -2175,10 +2331,20 @@ $S\circ T:\R^2\to \R^3$
 מוגדרת ומתקיים
 $$
 \begin{aligned}
-S\circ T\begin{pmatrix}x\\y\end{pmatrix}&=S\left(T\begin{pmatrix}x\\y\end{pmatrix}\right)=S\begin{pmatrix}x+y\\x-y\end{pmatrix}=\begin{pmatrix}2(x+y)\\3(x-y)\\4(x+y)-(x-y)\end{pmatrix} \\
+(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}&=S\left(T\begin{pmatrix}x\\y\end{pmatrix}\right)=S\begin{pmatrix}x+y\\x-y\end{pmatrix}=\begin{pmatrix}2(x+y)\\3(x-y)\\4(x+y)-(x-y)\end{pmatrix} \\
 &=\begin{pmatrix}2x+2y\\3x-3y\\3x+5y\end{pmatrix}
 \end{aligned}
 $$
+שימו לב שההרכבה 
+$T\circ S$
+לא מוגדרת במקרה זה, כי הטווח 
+$\R^3$
+של
+$S$
+אינו מוכל בתחום
+$\R^2$
+של 
+$T$.
 
 \item
 יהיו
@@ -2200,7 +2366,7 @@ $S\circ T:\R^3\to\R^4$
 מוגדרת ומתקיים
 $$
 \begin{aligned}
-S\circ T\begin{pmatrix}x\\y\\z\end{pmatrix}&=S\left(T\begin{pmatrix}x\\y\\z\end{pmatrix}\right)=S\begin{pmatrix}
+(S\circ T)\begin{pmatrix}x\\y\\z\end{pmatrix}&=S\left(T\begin{pmatrix}x\\y\\z\end{pmatrix}\right)=S\begin{pmatrix}
 x & x+z \\
 y+z & y
 \end{pmatrix}=\begin{pmatrix}x\\x+(x+z)\\(x+z)+(y+z)\\(y+z)+y\end{pmatrix} \\
@@ -2232,13 +2398,13 @@ $T,S$
 ונקבל:
 $$
 \begin{aligned}
-S\circ T(v_1+v_2)&=S(T(v_1+v_2))=S(T(v_1)+T(v_2))=S(T(v_1))+S(T(v_2)) \\
-&=S\circ T(v_1)+S\circ T(v_2)
+(S\circ T)(v_1+v_2)&=S(T(v_1+v_2))=S(T(v_1)+T(v_2))=S(T(v_1))+S(T(v_2)) \\
+&=(S\circ T)(v_1)+(S\circ T)(v_2)
 \end{aligned}
 $$
 באופן דומה:
 $$
-S\circ T(\alpha v_1)=S(T(\alpha v_1))=S(\alpha T(v_1))=\alpha S(T(v_1))=\alpha S\circ T(v_1)
+(S\circ T)(\alpha v_1)=S(T(\alpha v_1))=S(\alpha T(v_1))=\alpha S(T(v_1))=\alpha (S\circ T)(v_1)
 $$
 
 \end{solution}
@@ -2246,6 +2412,7 @@ $$
 כעת נראה שבמקרה הפרטי של העתקות לינאריות המוגדרות ע"י מטריצות, ההרכבה (אם היא מוגדרת) מתאימה לכפל מטריצות.
 
 \begin{proposition}\label{prop:homeo}
+\addpropositiontolist{הקשר בין הרכבה לכפל המטריצות המתאימות}
 יהיו
 $A\in\M_{m\times n}(\F),B\in\M_{n\times k}(\F)$.
 עבור
@@ -2263,7 +2430,7 @@ $$
 $v\in\F^k$
 מתקיים
 $$
-.T_A\circ T_B(v)=T_A(T_B(v))=T_A(Bv)=A(Bv)=(AB)v=T_{AB}(v)
+.(T_A\circ T_B)(v)=T_A(T_B(v))=T_A(Bv)=A(Bv)=(AB)v=T_{AB}(v)
 $$
 ולכן
 $$
@@ -2273,7 +2440,7 @@ $$
 
 \begin{example}
 נחזור לסעיף א' בדוגמה
-\ref{example:composition}.
+\ref{ex:composition}.
 שם מתקיים
 $S=T_A,T=T_B$
 כאשר
@@ -2297,7 +2464,7 @@ $$
 $$
 זו דרך נוספת לראות כי מתקיים
 $$
-.S\circ T\begin{pmatrix}x\\y\end{pmatrix}=T_A\circ T_B\begin{pmatrix}x\\y\end{pmatrix}=T_{AB}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+.(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}=(T_A\circ T_B)\begin{pmatrix}x\\y\end{pmatrix}=T_{AB}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
 2 & 2 \\
 3 & -3 \\
 3 & 5
@@ -2317,15 +2484,33 @@ $V=\R^2$
 $$
 .T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}y\\x\end{pmatrix},\quad S\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x\\0\end{pmatrix}
 $$
+שימו לב כי
+$T$
+היא שיקוף ביחס לישר
+$y=x$,
+ואילו 
+$S$
+היא הטלה על ציר 
+$x$.
 נחשב את ההרכבות ונקבל:
 $$
 \begin{aligned}
-T\circ S\begin{pmatrix}x\\y\end{pmatrix}&=T\begin{pmatrix}x\\0\end{pmatrix}=\begin{pmatrix}0\\x\end{pmatrix} \\
-S\circ T\begin{pmatrix}x\\y\end{pmatrix}&=S\begin{pmatrix}y\\x\end{pmatrix}=\begin{pmatrix}y\\0\end{pmatrix}
+(T\circ S)\begin{pmatrix}x\\y\end{pmatrix}&=T\begin{pmatrix}x\\0\end{pmatrix}=\begin{pmatrix}0\\x\end{pmatrix} \\
+(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}&=S\begin{pmatrix}y\\x\end{pmatrix}=\begin{pmatrix}y\\0\end{pmatrix}
 \end{aligned}
 $$
 אם כן, מתקיים
 $T\circ S\neq S\circ T$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/ReflectProject.png}
+    \caption{בכל צד יש אותו וקטור קלט כחול $v$, אחריו וקטור ירוק (פלט ראשון) ולבסוף וקטור אדום (הפלט של ההרכבה הרלוונטית)}
+    \label{fig:ReflectProject}
+\end{figure}
+
+% Insert Composition.html here.
+
 \end{remark}
 
 התרגיל הבא מראה קשר בין הרכבה לגרעין ותמונה.
@@ -2352,15 +2537,15 @@ $$
 \item 
 אם
 $S\circ T$
-חח"ע, אז
+חח״ע, אז
 $T$
-חח"ע.
+חח״ע.
 
 
 \item 
 אם
-$S\circ T$,
-אז 
+$S\circ T$
+על, אז 
 $S$
 על.
 
@@ -2377,13 +2562,13 @@ $v\in\Ker(T)$.
 \ref{prop:more-linearity},
 מתקיים
 $$
-.S\circ T(v)=S(T(v))=S(0_W)=0_U
+.(S\circ T)(v)=S(T(v))=S(0_W)=0_U
 $$
 כלומר
 $v\in\Ker(S\circ T)$,
-ולכן:
+ולכן
 $$
-\Ker(T)\subseteq \Ker(S\circ T)
+.\Ker(T)\subseteq \Ker(S\circ T)
 $$
 
 
@@ -2394,7 +2579,7 @@ $w\in\Image(S\circ T)$.
 $v\in V$
 כך ש-
 $$
-.w=S\circ T(v)=S(T(v))
+.w=(S\circ T)(v)=S(T(v))
 $$
 זה מראה כי 
 $S$
@@ -2404,16 +2589,16 @@ $T(v)$
 $w$,
 ולכן
 $w\in\Image(S)$. 
-מכאן:
+מכאן נקבל
 $$
-\Image(S\circ T)\subseteq \Image(S)
+.\Image(S\circ T)\subseteq \Image(S)
 $$
 
 
 \item 
 נניח כי
 $S\circ T$
-חח"ע. לפי טענה
+חח״ע. לפי טענה
 \ref{prop:injective}
 מתקיים
 $\Ker(S\circ T)=\Set{0_V}$,
@@ -2425,7 +2610,7 @@ $$
 $\Ker(T)=\Set{0_V}$,
 ושוב לפי הטענה (בכיוון ההפוך שלה) נובע כי
 $T$
-חח"ע.
+חח״ע.
 
 
 \item 
@@ -2450,7 +2635,7 @@ $S$
 \section{מטריצות מייצגות של העתקות לינאריות}
 יהי
 $V$
-מ"ו נוצר סופית (בעל בסיס) מעל 
+מ"ו נוצר סופית (בעל בסיס סופי) מעל 
 $\F$.
 בפרק
 \ref{ch:vectorspaces}
@@ -2480,13 +2665,13 @@ $$
 $$
 
 \begin{example}
-ב-
-$\R^3$
-נסתכל על הבסיס הסדור
+כדי להדגים שוב את המשמעות של וקטור קוארדינטות, נסתכל על הבסיס הסדור
 $$
-.B=\Set{\begin{pmatrix}1\\1\\1\end{pmatrix},\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}1\\1\\-1\end{pmatrix}}
+B=\Set{\begin{pmatrix}1\\1\\1\end{pmatrix},\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}1\\1\\-1\end{pmatrix}}
 $$
-מתקיים
+ל-
+$\R^3$.
+ניתן לבדוק (או לפתור את הממ"ל שמובילה לסקלרים) שמתקיים
 $$
 ,2\begin{pmatrix}1\\1\\1\end{pmatrix}+1\begin{pmatrix}1\\-1\\1\end{pmatrix}+3\begin{pmatrix}1\\1\\-1\end{pmatrix}=\begin{pmatrix}6\\4\\0\end{pmatrix}
 $$
@@ -2499,15 +2684,16 @@ $$
 כעת נרצה להשתמש ברעיון של וקטורי קוארדינטות כדי לייצג העתקות לינאריות ע"י מטריצות, מה שיאפשר לנו לעשות חישובים יותר בקלות (למשל, עבור גרעין ותמונה).
 
 \begin{definition}
+\adddeftolist{מטריצה מייצגת של ה"ל לפי שני בסיסים סדורים}
 יהיו
-$T:V\to W$,
-בסיס סדור
+$T:V\to W$
+ה"ל,
 $B=\Set{v_1,...,v_n}$
-ל-
-$V$
-ובסיס סדור
+בסיס סדור ל-
+$V$,
+ו-
 $C$
-ל-
+בסיס סדור ל-
 $W$.
 נגדיר את המטריצה המייצגת של
 $T$
@@ -2537,6 +2723,14 @@ $$
 \end{array}
 \end{pmatrix}
 $$
+לכל
+$1\leq j\leq n$
+העמודה ה-
+$j$
+של מטריצה זו היא וקטור הקוארדינטות של
+$T(v_j)$
+ביחס לבסיס הסדור
+$C$.
 \end{definition}
 
 \begin{example}\
@@ -2792,6 +2986,7 @@ $$
 נשאלת השאלה: מהו השימוש של מטריצה מייצגת? במובן הבסיסי ביותר, זוהי דרך לחשוב על העתקה לינארית כעל כפל במטריצה, שזו פעולה שכבר התרגלנו אליה. הטענה הבאה תבהיר את הכוונה המדויקת.
 
 \begin{proposition}\label{prop:rep-matrix}
+\addpropositiontolist{שימושים של מטריצה מייצגת}
 יהיו
 $T:V\to W$,
 $S:W\to U$
@@ -2916,13 +3111,13 @@ $$
 &=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
-[S\circ T(v_1)]_D\\[-0.4ex]
+[(S\circ T)(v_1)]_D\\[-0.4ex]
 |
 \end{array}
 &
 \begin{array}{c}
 |\\[-0.4ex]
-[S\circ T(v_2)]_D\\[-0.4ex]
+[(S\circ T)(v_2)]_D\\[-0.4ex]
 |
 \end{array}
 &
@@ -2930,11 +3125,11 @@ $$
 &
 \begin{array}{c}
 |\\[-0.4ex]
-[S\circ T(v_n)]_D\\[-0.4ex]
+[(S\circ T)(v_n)]_D\\[-0.4ex]
 |
 \end{array}
 \end{pmatrix}\\
-&=[S\circ T]_D^B
+&=[(S\circ T)]_D^B
 \end{aligned}
 $$
 
@@ -2958,8 +3153,7 @@ $$
 $S,T$
 ולחשב את
 $S\circ T$,
-אך נפעל בדרך אחרת. נסתכל על שלושת הבסיסים הסדורים הבאים ל-
-$\R^2$:
+אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן:
 $$
 B=\Set{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}, \quad D=\Set{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}}
 $$
@@ -2967,7 +3161,7 @@ $$
 $B,C$
 בהתאם לוקטורי הקלט של הנתונים, ואילו 
 $D$
-הוא בחירה שרירותית לצורך הדוגמה. כעת נחשב את המטריצות המייצגות
+הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות
 $[S]_D^C,[T]_C^B$.
 תחילה:
 $$
@@ -3021,9 +3215,9 @@ $$
 \end{pmatrix}
 $$
 
-נעבור למטריצה המייצגת הבאה:
+נעבור למטריצה המייצגת הבאה ונקבל
 $$
-[S]_D^C=\begin{pmatrix}
+.[S]_D^C=\begin{pmatrix}
 \begin{array}{c}
 |\\[-0.4ex]
 \left[S\begin{pmatrix}3\\1\end{pmatrix}\right]_C\\[-0.4ex]
@@ -3248,21 +3442,43 @@ $$
 החישוב של מטריצה מייצגת עלול להיות ארוך אם לפחות אחד מהבסיסים אינו סטנדרטי. הכלי הבא עשוי לקצר את החישובים, ונראה בהמשך שיש לו חשיבות גם מעבר לכך.
 
 \begin{definition}
+\adddeftolist{מטריצת מעבר בין שני בסיסים סדורים}
 יהי
 $V$
 מ"ו נוצר סופית מעל
 $\F$
-עם בסיסים (סדורים)
-$B,C$.
+עם בסיסים סדורים
+$B=\Set{v_1,...,v_n},C$.
 מטריצת המעבר בין הבסיסים
 $B$
 ו-
 $C$
 מוגדרת ע"י
 $$
-.[I]_C^B=[\Id_V]_C^B
+.[I]_C^B=[\Id_V]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[v_1]_C\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+[v_2]_C\\[-0.4ex]
+|
+\end{array}
+&
+\cdots
+&
+\begin{array}{c}
+|\\[-0.4ex]
+[v_n]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}
 $$
 \end{definition}
+מטריצת מעבר כשמה כן היא: כלי לעבור מבסיס סדור אחד לאחר.
 
 \begin{example}\
 \begin{enumerate}[label=\alph*.]
@@ -3313,13 +3529,13 @@ $$
 [v_n]_B\\[-0.4ex]
 |
 \end{array}
-\end{pmatrix}=I_{n\times n}
+\end{pmatrix}=I_n
 \end{aligned}
 $$
 כלומר מטריצת המעבר מבסיס (בגודל
 $n$)
 לעצמו היא מטריצת היחידה
-$I_{n\times n}$.
+$I_n$.
 
 
 \item 
@@ -3422,6 +3638,7 @@ $$
 הדוגמה האחרונה היא הקדמה לטענה הבאה:
 
 \begin{proposition}\label{prop:rep-inverse}
+\addpropositiontolist{מטריצה הופכית למטריצת מעבר}
 יהי
 $V$
 מ"ו מעל
@@ -3445,7 +3662,7 @@ $\dim(V)=n$.
 \ref{prop:rep-matrix}
 מתקיים
 $$
-.[I]_B^C[I]_C^B=[\Id_V]_B^C[\Id_V]_C^B=[\Id_V\circ\Id_V]_B^B=[\Id_V]_B^B=I_{n\times n}
+.[I]_B^C[I]_C^B=[\Id_V]_B^C[\Id_V]_C^B=[\Id_V\circ\Id_V]_B^B=[\Id_V]_B^B=I_n
 $$
 לכן, שתי המטריצות הפיכות ומתקיים
 $$
@@ -3459,7 +3676,7 @@ $$
 $C=E$)
 קל לקבל את
 $[I]_E^B$
-בלי דירוג. נחשב את המטריצה ההופכית ונקבל
+בלי דירוג, ואז נחשב את המטריצה ההופכית ונקבל
 $$
 .[I]_B^E=([I]_E^B)^{-1}
 $$
@@ -3468,6 +3685,7 @@ $$
 מה הקשר בין מטריצות מייצגות של אותה העתקה לינארית? לשם כך נועדו מטריצות המעבר.
 
 \begin{proposition}\label{prop:rep-transition}
+\addpropositiontolist{הקשר בין מטריצות מייצגות של אותה ה"ל}
 תהי
 $T:V\to W$
 ה"ל. יהיו 
@@ -3499,6 +3717,7 @@ $$
 כמסקנה, נקבל מקרה פרטי שיהיה רלוונטי במיוחד בפרק הבא:
 
 \begin{corollary}\label{cor:rep-similar}
+\addcorollarytolist{דמיון בין מטריצות מייצגות של אותה ה"ל לפי בסיסים שונים}
 תהי
 $T:V\to V$
 ויהיו
@@ -3548,7 +3767,12 @@ $A$
 $$
 .A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}
 $$
-נבין בפרק הבא מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.
+פירוש הדבר שהמטריצות המייצגות
+$[T]_{B_1}^{B_1},[T]_{B_2}^{B_2}$
+(כל אחת היא מבסיס אחד לעצמו)
+של ה"ל
+$T:V\to V$,
+הן מה שייקרא "דומות זו לזו". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.
 \end{remark}
 
 \subsection{שחזור העתקה לינארית מתוך מטריצה מייצגת}
@@ -3559,9 +3783,9 @@ $$
 בסיסים סדורים ל-
 $V,W$
 בהתאמה.
-תהי
+נניח שעבור
 $T:V\to W$
-הנתונה ע"י מטריצה מייצגת
+ידועה המטריצה המייצגת
 $[T]_C^B$.
 איך נמצא נוסחה מפורשת ל-
 $T$?
@@ -3614,7 +3838,14 @@ $
 $
 ולבסוף חישוב המכפלה של שלוש מטריצות. ברגע שנקבל את
 $[T]_{E'}^E$,
-המעבר לנוסחה מפורשת יהיה מיידי כי הבסיסים סטנדרטיים.
+המעבר לנוסחה מפורשת יהיה מיידי כי הבסיסים סטנדרטיים. למעשה, אם נסמן 
+$A=[T]_{E'}^E$
+הרי שמתקיים
+$T=T_A$
+כי
+$$
+.T(v)=[T(v)]_{E'}=[T]_{E'}^E[v]_E=Av
+$$
 
 \begin{exercise}
 יהיו 
@@ -3714,6 +3945,7 @@ $$
 זהו מקרה מיוחד של העתקה לינארית המוגדרת ע"י מטריצה באופן ישיר (הבסיסים המתאימים למטריצה המייצגת הם סטנדרטיים). מה ניתן לומר לגבי העתקה לינארית כללית בעזרת מטריצה מייצגת כלשהי שלה? ההכללה מופיעה בטענה הבאה:
 
 \begin{proposition}\label{prop:ker-image-rep}
+\addpropositiontolist{הקשר בין גרעין ותמונה של ה"ל למרחבים הקשורים למטריצה מייצגת}
 תהי
 $T:V\to W$
 ה"ל, ויהיו
@@ -3734,7 +3966,7 @@ $$
 לכל
 $w\in W$
 $$
-.w\in\Image(T) \iff [w]_B\in\Col([T]_C^B)
+.w\in\Image(T) \iff [w]_C\in\Col([T]_C^B)
 $$
 
 
@@ -3780,7 +4012,7 @@ $$
 \begin{enumerate}[label=\alph*.]
 \item 
 $T$
-חח"ע אם ורק אם
+חח״ע אם ורק אם
 $\Null([T]_C^B)=\Set{\underline{0}}$.
 
 
@@ -3799,7 +4031,7 @@ $\rank([T]_C^B)=m$.
 לפי טענה
 \ref{prop:injective},
 $T$
-חח"ע אם ורק אם 
+חח״ע אם ורק אם 
 $\Ker(T)=\Set{\underline{0}}$.
 לפי טענה
 \ref{prop:ker-image-rep},
@@ -3844,12 +4076,22 @@ $\rank([T]_C^B)=m$.
 
 \section{איזומורפיזמים}
 
-יש חשיבות לשילוב בין התכונה "חד-חד-ערכית" לתכונה "על". מכאן ההגדרה הבאה:
+יש חשיבות לשילוב בין התכונה "חד-חד-ערכית" לתכונה "על". כאשר קיימת ה"ל 
+$T:V\to W$
+שהיא חח"ע ועל, המשמעות היא ש-
+$V,W$
+הם זהים מבחינת המבנה הלינארי שלהם – יש ביניהם התאמה שמשמרת חיבור וכפל בסקלר. אפשר לומר שהמרחבים "נראים אותו הדבר" מבפנים, גם אם הם "לבושים אחרת" (ייצוגים שונים, למשל ההבדל בין וקטור עמודה לוקטור שורה בגודל שווה).
+
+
+מכאן ההגדרה הבאה של איזומורפיזם
+,(isomorphism)
+שפירושה המילולי הוא "צורה זהה":
 
 \begin{definition}
-ה"ל
+\adddeftolist{איזומורפיזם}
+ה״ל
 $T:V\to W$
-נקראת איזומורפיזם אם היא גם חח"ע וגם על.
+נקראת איזומורפיזם אם היא גם חח״ע וגם על.
 \end{definition}
 
 כבר הוכחנו את משפט
@@ -3860,9 +4102,9 @@ $T:V\to W$
 $\dim(V)=\dim(W)$.
 לחילופין, אם ידוע שיש שוויון מימדים, אז די להוכיח
 כי $T$
-היא חח"ע או על כדי להסיק שגם התכונה השנייה מתקיימת, ולכן 
+היא חח״ע או על כדי להסיק שגם התכונה השנייה מתקיימת, ולכן 
 $T$
-היא איזומורפיזם.
+היא איזומורפיזם. באופן אינטואיטיבי, אפשר לחשוב על המימד כמדד לצורה הלינארית של כל מרחב. שוויון מימדים פירושו שקיים איזומורפיזם, ולהיפך.
 
 \begin{example}
 תהי
@@ -3874,7 +4116,7 @@ $$
 נראה כי 
 $T$
 היא איזומורפיזם. לפי משפט "שלישי חינם", די להראות כי היא 
-חח"ע שהרי מימד התחום שווה למימד הטווח (המרחבים עצמם שווים). אם כן:
+חח״ע שהרי מימד התחום שווה למימד הטווח (המרחבים עצמם שווים). אם כן:
 $$
 A\in\Ker(T) \iff A^t=0_{n\times n} \iff (A^t)^t=(0_{n\times n})^t \iff A=0_{n\times n}
 $$
@@ -3882,7 +4124,7 @@ $$
 $\Ker(T)=\Set{0_{n\times n}}$
 ו-
 $T$
-היא חח"ע. מכאן שהיא איזורמורפיזם.
+היא חח״ע. מכאן שהיא איזורמורפיזם.
 
 לחילופין, אפשר להראות כי היא על בעזרת תכונה בסיסית של שחלוף, ולא הרבה מעבר לזה.
 תהי
@@ -3905,18 +4147,23 @@ $$
 $T$
 היא על כי בחרנו
 $B$
-שרירותית. אז שוב הראינו כי 
+שרירותית והראינו כי
+$T(B^t)=B$.
+אז שוב הראינו כי 
 $T$
 היא איזומורפיזם.
 \end{example}
 
-בדוגמה לעיל ראינו איזומורפיזם שהוא למעשה פעולה (במקרה זה על מטריצות) שיש לה פעולה הפוכה, כלומר בהינתן 
-$T(A)$
+בדוגמה לעיל ראינו איזומורפיזם שהוא למעשה פעולה (במקרה זה על מטריצות) שיש לה פעולה הפוכה. באופן כללי עבור איזומורפיזם
+$T:V\to W$,
+בהינתן
+$T(v)$
 ניתן לשחזר את 
-$A$.
-נרצה להבין שזהו אפיון כללי של איזומורפיזמים. ראשית, טענת עזר:
+$v$.
+נרצה להוכיח זאת. ראשית, טענת עזר:
 
 \begin{proposition}\label{prop:iso-by-basis}
+\addpropositiontolist{קביעת איזומורפיזם לפי בסיס}
 תהי 
 $T:V\to W$
 ה"ל, ויהי
@@ -3969,9 +4216,10 @@ $$
 \end{proof}
 
 \begin{definition}
-ה"ל 
+\adddeftolist{ה"ל הפיכה}
+ה״ל
 $T:V\to W$
-נקראת הפיכה אם קיימת ה"ל
+נקראת הפיכה אם קיימת ה״ל
 $T^{-1}:W\to V$
 כך ש-
 $$
@@ -3992,11 +4240,17 @@ $T(v)=w$
 $w$
 נתון.
 
-% הדגמה או ציור
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Inverse.png}
+    \caption{ההעתקה ההופכית שולחת את הפלט של הה"ל המקורית חזרה לקלט}
+    \label{fig:Inverse}
+\end{figure}
 
 ההגדרה של ה"ל הפיכה אנלוגית לזו של מטריצה הפיכה. גם במקרה זה ניתן לוותר על אחת מהדרישות של ההגדרה, לפחות כאשר נתון שוויון מימדים בין התחום לטווח.
 
 \begin{proposition}\label{prop:inverse-simplified}
+\addpropositiontolist{העתקה הופכית מימין ומשמאל}
 יהיו
 $T:V\to W$
 ו-
@@ -4018,9 +4272,9 @@ $T\circ S=\Id_W$
 לפי תרגיל
 \ref{exer:composition},
 $T$
-חח"ע כי
+חח״ע כי
 $S\circ T$
-חח"ע בתור העתקת הזהות.
+חח״ע בתור העתקת הזהות.
 לכן,
 $T$
 גם על לפי משפט "שלישי חינם" לאיזומורפיזמים. לבסוף, יהי
@@ -4031,7 +4285,7 @@ $v\in V$
 $w=T(v)$,
 ובהתאם נקבל
 $$
-.T\circ S(w)=T\circ S(T(v))=T(S\circ T(v))=T(\Id_V(v))=T(v)=w
+.(T\circ S)(w)=(T\circ S)(T(v))=T((S\circ T)(v))=T(\Id_V(v))=T(v)=w
 $$
 כלומר
 $T\circ S=\Id_W$,
@@ -4039,6 +4293,7 @@ $T\circ S=\Id_W$,
 \end{proof}
 
 \begin{proposition}\label{prop:iso-invertible}
+\addpropositiontolist{ה"ל היא איזומורפיזם אם ורק אם היא הפיכה}
 ה"ל
 $T:V\to W$
 היא איזומורפיזם אם ורק אם היא הפיכה.
@@ -4047,7 +4302,7 @@ $T:V\to W$
 \begin{proof}
 בכיוון אחד, נניח כי
 $T$
-היא איזומורפיזם. בפרט,מתקיים
+היא איזומורפיזם. בפרט, מתקיים
 $\dim(V)=\dim(W)$.
 יהי
 $B=\Set{v_1,...,v_n}$
@@ -4073,7 +4328,7 @@ $$
 $1\leq j\leq n$
 מתקיים
 $$
-,S\circ T(v_j)=\Id_V(v_j)
+,(S\circ T)(v_j)=\Id_V(v_j)
 $$
 ולכן
 $$
@@ -4104,7 +4359,7 @@ $$
 $T^{-1}\circ T=\Id_V$
 כי
 $T$
-חח"ע. מהשוויון השני נובע כי היא על (וגם ממשפט "שלישי חינם"). לסיכום, 
+חח״ע. מהשוויון השני נובע כי היא על (וגם ממשפט "שלישי חינם"). לסיכום, 
 $T$
 היא איזומורפיזם.
 
@@ -4207,9 +4462,9 @@ $$
 \end{pmatrix}
 $$
 
-לבסוף:
+לבסוף, נובע כי
 $$
-T^{-1}\begin{pmatrix}x\\y\end{pmatrix}=T_A^{-1}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+.T^{-1}\begin{pmatrix}x\\y\end{pmatrix}=T_A^{-1}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
 1 & -2 \\
 -1 & 3
 \end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x-2y\\-x+3y\end{pmatrix}
@@ -4223,6 +4478,7 @@ $$
 \end{solution}
 
 \begin{proposition}\label{prop:iso-by-matrix}
+\addpropositiontolist{קביעת איזומורפיזם לפי ההפיכות של מטריצה מייצגת}
 תהי
 $T:V\to W$
 ה"ל, ויהיו
@@ -4278,7 +4534,7 @@ $\dim(V)=\dim(W)$,
 שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה.
 אם כן, ההנחה ש-
 $T$
-אינה איזומורפיזם פירושה שהיא אינה חח"ע (לפי משפט "שלישי חינם"). אז קיים
+אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט "שלישי חינם"). אז קיים
 $0_V\neq v\in \Ker(T)$,
 ולכן נובע מטענה
 \ref{prop:ker-image-rep}
@@ -4296,7 +4552,7 @@ $[T]_C^B$
 תהי
 $A\in\M_{n\times n}(\F)$.
 הוכיחו כי
-$T_A:\F^n\to\F^m$
+$T_A:\F^n\to\F^n$
 היא איזומורפיזם אם ורק אם 
 $A$
 הפיכה. מצאו נוסחה ל-
@@ -4339,13 +4595,13 @@ $T_A$
 $$
 .T_A^{-1}(w)=A^{-1}w
 $$
-או באופן תמציתי:
+או באופן תמציתי, קיבלנו
 $$
-(T_A)^{-1}=T_{A^{-1}}
+.(T_A)^{-1}=T_{A^{-1}}
 $$
 \end{solution}
 
-\begin{exercise}
+\begin{exercise}\
 \begin{enumerate}[label=\alph*.]
 \item
 תהי
@@ -4383,11 +4639,11 @@ $n^2\times n^2$.
 במקום לחשב אותה הרבה יותר קל
 להוכיח כי
 $S_A$
-הפיכה (ולכן איזומורפיזם) ע"י פתרון המשוואה הבאה:
+הפיכה (ולכן איזומורפיזם) ע"י פתרון המשוואה
 $$
-AB=C
+,AB=C
 $$
-כאן הנעלם הוא המטריצה 
+כאשר הנעלם הוא המטריצה 
 $B$.
 נתון כי
 $A$
@@ -4404,20 +4660,26 @@ $$
 $$
 ולכן
 $S_A$
-הפיכה ומתקיים
+הפיכה כי לכל
+$C$
+מצאנו 
+$B=A^{-1}C$
+יחידה המקיימת
+$S_A(B)=C$.
+מתקיים
 $$
 .(S_A)^{-1}(C)=A^{-1}C
 $$
-או באופן תמציתי:
+או באופן תמציתי, קיבלנו
 $$
-(S_A)^{-1}=S_{A^{-1}}
+.(S_A)^{-1}=S_{A^{-1}}
 $$
 
 
 \item 
 די להראות ש-
 $S_A$
-אינה על, או לחילופין שהיא אינה חח"ע. אין צורך בשתי הבדיקות, אך נעבור על שתיהן.
+אינה על, או לחילופין שהיא אינה חח״ע. אין צורך בשתי הבדיקות, אך נעבור על שתיהן.
 
 $S_A$
 אינה על:
@@ -4435,7 +4697,7 @@ $\Image(S_A)$.
 
 
 $S_A$
-אינה חח"ע: נתון כי
+אינה חח״ע: נתון כי
 $A$
 אינה הפיכה, ולכן קיים 
 $\underline{0}\neq v\in\F^n$
@@ -4515,10 +4777,717 @@ $0_{n\times n}\neq B_v\in\Ker(S_A)$,
 $\Ker(S_A)\neq \Set{0_{n\times n}}$.
 זה מראה כי 
 $S_A$
-אינה חח"ע.
+אינה חח״ע.
 
 
 \end{enumerate}
 \end{solution}
+
+\clearpage
+\section{סיכום}
+
+\noindent\textbf{הגדרה 10.1.}
+
+יהיו קבוצות
+$A,B\neq\emptyset$.
+פונקציה 
+$f$
+מקבוצה 
+$A$
+ל-
+$B$
+מתאימה לכל איבר 
+$a\in A$
+בדיוק איבר אחד 
+$b\in B$.
+מסמנים 
+$f:A\to B$
+וגם
+$b=f(a)$.
+$A$
+נקראת התחום של 
+$f$,
+ו-
+$B$
+נקראת הטווח שלה.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.2.}
+
+יהיו
+$V,W$
+מרחבים וקטוריים מעל
+$\F$.
+פונקציה
+$T:V\to W$
+נקראת העתקה לינארית (ה"ל) אם לכל
+$v_1,v_2\in V$
+ולכל
+$\alpha\in\F$
+מתקיים:
+$$
+\left\{
+\begin{aligned}
+T(v_1+v_2) &= T(v_1)+T(v_2)\\
+T(\alpha v_1) &= \alpha T(v_1)
+\end{aligned}
+\right.
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.3.}
+
+תהי
+$T:\F\to\F$
+ה"ל. אז קיים
+$c\in\F$
+כך ש-
+$T(x)=cx$.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.4.}
+
+יהיו 
+$V,W$
+מרחבים וקטוריים מעל
+$\F$,
+ותהי
+$T:V\to W$
+ה"ל. אז מתקיים:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל
+$v_1,...,v_k\in V$
+ולכל
+$\alpha_1,...,\alpha_k\in \F$
+מתקיים
+$$
+.T(\alpha_1 v_1+...+\alpha_k v_k)=\alpha_1 T(v_1)+...+\alpha_k T(v_k)
+$$
+
+
+\item 
+$$T(0_V)=0_W$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.5.}
+
+תהי 
+$A\in\M_{m\times n}(\F)$.
+נגדיר
+$T_A:\F^n\to\F^m$
+ע"י
+$$
+.T_A(v)=Av
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.6.}
+
+לכל 
+$A\in\M_{m\times n}(\F)$
+ההעתקה
+$T_A:\F^n\to\F^m$
+היא ה"ל.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.7.}
+
+תהי
+$T:\F^n\to\F^m$
+ה"ל. אז קיימת
+$A\in\M_{m\times n}(\F)$
+כך ש-
+$T=T_A$.
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 10.8.}
+
+יהיו 
+$V,W$
+מרחבים וקטוריים מעל
+$\F$,
+$B=\Set{v_1,...,v_n}$
+בסיס ל-
+$V$
+ו-
+$\Set{w_1,...,w_n}\subseteq W$
+תת-קבוצה כלשהי. אז קיימת ויחידה ה"ל 
+$T:V\to W$
+המקיימת
+$$
+.T(v_1)=w_1,...,T(v_n)=w_n
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.9.}
+
+תהי
+$T:V\to W$
+ה"ל.
+
+\begin{itemize}
+\item 
+הגרעין של 
+$T$
+מוגדר להיות
+$$
+.\Ker(T)=\Set{v\in V|T(v)=0_W}\subseteq V
+$$
+
+\item 
+התמונה של 
+$T$
+מוגדרת להיות
+$$
+.\Image(T)=\Set{T(v)|v\in V}\subseteq W
+$$
+
+
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.10.}
+
+תהי
+$T:V\to W$
+ה"ל. אז מתקיים:
+\begin{itemize}
+    \item 
+    $Ker(T)$
+    היא תת-מרחב של 
+    $V$.
+
+
+    \item 
+    $Im(T)$
+    היא תת-מרחב של 
+    $W$.
+
+    
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.11.}
+
+תהי
+$T:V\to W$
+ה"ל. אם
+$V=\Span(v_1,...,v_k)$,
+אז מתקיים 
+$$.\Image(T)=\Span(T(v_1),...,T(v_k))$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.12.}
+
+תהי 
+$A\in\M_{m\times n}(\F)$.
+אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item
+$$\Ker(T_A)=\Null(A)\subseteq \F^n$$
+
+\item
+$$\Image(T_A)=\Col(A)\subseteq \F^m$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.13.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$.
+נגדיר את העתקת הזהות
+$\Id_V:V\to V$
+ע"י
+$$
+,\Id_V(v)=v 
+$$
+כלומר ההעתקה ששולחת כל וקטור לעצמו.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.14.}
+
+נגדיר את העתקת האפס
+$\0_{V,W}:V\to V$
+ע"י
+$$
+,\0_{V,W}(v)=0_W 
+$$
+כלומר ההעתקה הקבועה ששולחת כל וקטור ב-
+$V$
+לוקטור האפס ב-
+$W$.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.15.}
+
+תהי
+$T:V\to W$
+ה"ל.
+\begin{itemize}
+\item
+נאמר כי
+$T$
+על אם
+$\Image(T)=W$.
+
+
+\item 
+נאמר כי
+$T$
+חד-חד-ערכית (חח״ע) אם לכל
+$v_1,v_2\in V$
+מתקיים
+$$
+.T(v_1)=T(v_2) \iff v_1=v_2
+$$
+
+
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.16.}
+
+תהי
+$T:V\to W$ 
+ה"ל. אז מתקיים
+$$
+.\Ker(T)=\Set{0_V} \iff \text{$T$ חח״ע}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.17.}
+
+תהי
+$A\in\M_{m\times n}(\F)$.
+$T_A:\F^n\to\F^m$
+מקיימת:
+\begin{enumerate}[label=\alph*.]
+\item 
+$$
+\begin{aligned}
+\Null(A)=\Set{\underline{0}} &\iff \text{$T_A$ חח״ע} \\
+\Col(A)=\F^m &\iff \text{$T_A$ על} 
+\end{aligned}
+$$
+
+
+\item 
+אם
+$n=m$,
+אז
+$$
+.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 10.18.}
+
+תהי
+$T:V\to W$
+ה"ל. אז מתקיים
+$$
+.\dim(\Ker(T))+\dim(\Image(T))=\dim(V)
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.19.}
+
+תהי
+$T:V\to W$
+ה"ל. 
+\begin{enumerate}[label=\alph*.]
+\item
+אם
+$T$
+על,
+אז
+$$
+.\dim(W)\leq\dim(V)
+$$
+
+
+\item
+אם
+$T$
+חח״ע,
+אז
+$$
+.\dim(W)\geq\dim(V)
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{משפט 10.20.}
+
+תהי
+$T:V\to W$
+ה"ל. כל שניים מהתנאים הבאים גורר את התנאי השלישי:
+\begin{enumerate}[label=\alph*.]
+\item 
+$T$
+חח״ע.
+
+
+\item
+$T$
+על.
+
+
+\item 
+$\dim(V)=\dim(W)$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.21.}
+
+יהיו
+$T,S:V\to W$
+ה"ל ו-
+$\alpha\in\F$.
+\begin{itemize}
+\item 
+ההעתקה
+$T+S:V\to W$
+מוגדרת ע"י
+$$
+.(T+S)(v)=T(v)+S(v)
+$$
+
+
+\item 
+ההעתקה
+$\alpha\cdot T:V\to W$
+מוגדרת ע"י
+$$
+.(\alpha\cdot T)(v)=\alpha\cdot T(v)
+$$
+
+
+\end{itemize}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.22.}
+
+יהיו
+$T:V\to W$
+ו-
+$S:W\to U$
+העתקות לינאריות. אז ההרכבה
+$S\circ T:V\to U$
+מוגדרת ע"י
+$$
+.(S\circ T)(v)=S(T(v))
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.23.}
+
+יהיו
+$A\in\M_{m\times n}(\F),B\in\M_{n\times k}(\F)$.
+עבור
+$T_A:\F^n\to\F^m,T_B:\F^k\to\F^n$
+ההרכבה
+$T_B\circ T_A:\F^k\to\F^m$
+מוגדרת ומתקיים
+$$
+.T_A\circ T_B=T_{AB}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.24.}
+
+יהיו
+$T:V\to W$,
+בסיס סדור
+$B=\Set{v_1,...,v_n}$
+ל-
+$V$
+ובסיס סדור
+$C$
+ל-
+$W$.
+נגדיר את המטריצה המייצגת של
+$T$
+לפי
+$B,C$
+ע"י
+$$
+.[T]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&
+\cdots
+&
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.25.}
+
+יהיו
+$T:V\to W$,
+$S:W\to U$
+ה"ל, ויהיו
+$B,C,D$
+בסיסים סדורים ל-
+$V,W,U$
+בהתאמה. אז:
+
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל 
+$v\in V$
+מתקיים
+$$
+.[T(v)]_C=[T]_C^B[v]_B
+$$
+
+
+\item 
+$$
+[S\circ T]_D^B=[S]_D^C[T]_C^B
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.26.}
+
+יהי
+$V$
+מ"ו נוצר סופית מעל
+$\F$
+עם בסיסים (סדורים)
+$B,C$.
+מטריצת המעבר בין הבסיסים
+$B$
+ו-
+$C$
+מוגדרת ע"י
+$$
+.[I]_C^B=[\Id_V]_C^B
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.27.}
+
+יהי
+$V$
+מ"ו מעל
+$\F$,
+ויהיו
+$B,C$
+בסיסים סדורים ל-
+$V$.
+אז 
+$[I]_C^B,[I]_B^C$
+הפיכות ומתקיים
+$$
+.([I]_C^B)^{-1}=[I]_B^C
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.28.}
+
+תהי
+$T:V\to W$
+ה"ל. יהיו 
+$B_1,B_2$
+בסיסים סדורים ל-
+$V$,
+ויהיו
+$C_1,C_2$
+בסיסים סדורים ל-
+$W$. 
+אז מתקיים
+$$
+.[T]_{C_2}^{B_2}=[I]_{C_2}^{C_1}[T]_{C_1}^{B_1}[I]_{B_1}^{B_2}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{מסקנה 10.29.}
+
+תהי
+$T:V\to V$
+ויהיו
+$B_1,B_2$
+בסיסים סדורים ל-
+$V$.
+אז מתקיים
+$$
+.[T]_{B_2}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}([I]_{B_2}^{B_1})^{-1}
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.30.}
+
+תהי
+$T:V\to W$
+ה"ל, ויהיו
+$B,C$
+בסיסים סדורים ל-
+$V,W$
+בהתאמה. אז מתקיים:
+\begin{enumerate}[label=\alph*.]
+\item 
+לכל
+$v\in V$
+$$
+.v\in\Ker(T) \iff [v]_B\in\Null([T]_C^B)
+$$
+
+
+\item 
+לכל
+$w\in W$
+$$
+.w\in\Image(T) \iff [w]_B\in\Col([T]_C^B)
+$$
+
+
+\end{enumerate}
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.31.}
+
+ה״ל
+$T:V\to W$
+נקראת איזומורפיזם אם היא גם חח״ע וגם על.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.32.}
+
+תהי 
+$T:V\to W$
+ה"ל, ויהי
+$B=\Set{v_1,...,v_n}$
+בסיס ל-
+$V$.
+אז 
+$\Set{T(v_1),...,T(v_n)}$
+היא בסיס ל-
+$W$
+אם ורק אם
+$T$
+היא איזומורפיזם.
+\bigskip
+\bigskip
+
+\noindent\textbf{הגדרה 10.33.}
+
+ה״ל
+$T:V\to W$
+נקראת הפיכה אם קיימת ה״ל
+$T^{-1}:W\to V$
+כך ש-
+$$
+.T\circ T^{-1}=\Id_W,\quad T^{-1}\circ T=\Id_V
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.34.}
+
+יהיו
+$T:V\to W$
+ו-
+$S:W\to V$
+ה"ל כך ש-
+$\dim(W)=\dim(V)$.
+אז מתקיים
+$$
+.S\circ T=\Id_V \iff T\circ S=\Id_W
+$$
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.35.}
+
+ה"ל
+$T:V\to W$
+היא איזומורפיזם אם ורק אם היא הפיכה.
+\bigskip
+\bigskip
+
+\noindent\textbf{טענה 10.36.}
+
+תהי
+$T:V\to W$
+ה"ל, ויהיו
+$B,C$
+בסיסים סדורים ל-
+$V,W$
+בהתאמה. אז 
+$T$
+היא איזומורפיזם אם ורק אם
+$[T]_C^B$
+הפיכה, ובמקרה זה מתקיים
+$$
+.[T^{-1}]_B^C=([T]_C^B)^{-1}
+$$
+\bigskip
+\bigskip
 
 \end{document}
