@@ -1726,8 +1726,8 @@ u=\alpha_1w_1+...+\alpha_kw_k &\iff [u]_B=[\alpha_1w_1+...+\alpha_kw_k]_B \\
 
 ב. לפי [8.83](#cor-span-coordinates), לכל $v\in V$ מתקיים $$.v\in\mathop{\mathrm{Span}}(v_1,...,v_k) \iff [v]_B\in\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)$$
 
-    כל וקטור ב- $\mathbb{F}^n$ הוא מהצורה $[v]_B$, ולכן נובע כי $$.V=\mathop{\mathrm{Span}}(v_1,...,v_k) \iff \mathbb{F}^n=\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)$$
-
+ כל וקטור ב-$\mathbb{F}^n$ הוא מהצורה $[v]_B$, ולכן נובע כי:
+$$V=\mathop{\mathrm{Span}}(v_1,...,v_k) \iff \mathbb{F}^n=\mathop{\mathrm{Span}}([v_1]_B,...,[v_k]_B)$$
 ג. סעיף זה נובע ישירות משילוב שני הסעיפים הקודמים.
 
  ◻

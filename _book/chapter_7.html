@@ -228,13 +228,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">chapter_8.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ערכים עצמיים, וקטורים עצמיים ולכסון</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">chapter_9.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">מכפלה סקלרית ולכסון אורתוגונלי</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -367,13 +367,13 @@ T\left(\begin{pmatrix}x_1 \\y_1\end{pmatrix}+\begin{pmatrix}x_2 \\y_2\end{pmatri
 \end{aligned}\]</span> וגם <span class="math display">\[.T\left(\alpha\begin{pmatrix}x_1 \\y_1\end{pmatrix}\right)=T\begin{pmatrix}\alpha x_1 \\\alpha y_1\end{pmatrix}=\alpha x_1+\alpha y_1=\alpha(x_1+y_1)=\alpha T\begin{pmatrix}x_1 \\y_1\end{pmatrix}\]</span></p></li>
 <li><p>הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x+1\)</span> אינה ה"ל. בתור דוגמה נגדית, ניקח <span class="math inline">\(x_1=0,x_2=1,\alpha=2\)</span> ונקבל <span class="math display">\[.f(x_1+x_2)=f(1)=2\neq 1+2=f(0)+f(1)=f(x_1)+f(x_2)\]</span> לחילופין, ניתן להפריך לינאריות גם לפי התכונה השנייה: <span class="math display">\[f(2x_1)=f(0)=1\neq 2\cdot 1=2f(0)=2f(x_1)\]</span> כאן הפרכנו את שתי התכונות בהגדרה של ה"ל, אך מספיק להפריך אחת.</p></li>
 <li><p>הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x^2\)</span> אינה ה"ל. בתור דוגמה נגדית, ניקח <span class="math inline">\(x_1=1,x_2=-1,\alpha=2\)</span> ונקבל <span class="math display">\[.f(x_1+x_2)=f(0)=0\neq 1+1=f(1)+f(-1)=f(x_1)+f(x_2)\]</span> שוב ניתן להפריך לינאריות גם לפי התכונה השנייה: <span class="math display">\[f(2x_1)=f(2)=4\neq 2\cdot 1=2f(1)=2f(x_1)\]</span></p></li>
-<li><p>העתקת השחלוף <span class="math inline">\(T:\mathbb{M}_{m\times n}(\mathbb{F})\to\mathbb{M}_{n\times m}(\mathbb{F})\)</span> המוגדרת ע"י <span class="math inline">\(T(A)=A^t\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_3.html#prp-transpose">??</a>, לפיה לכל <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
+<li><p>העתקת השחלוף <span class="math inline">\(T:\mathbb{M}_{m\times n}(\mathbb{F})\to\mathbb{M}_{n\times m}(\mathbb{F})\)</span> המוגדרת ע"י <span class="math inline">\(T(A)=A^t\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_3.html#prp-transpose">6.41</a>, לפיה לכל <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
 \begin{aligned}
 T(A+B)&amp;=(A+B)^t=A^t+B^t=T(A)+T(B) \\
 T(\alpha A)&amp;=(\alpha A)^t=\alpha A^t=\alpha T(A)
 \end{aligned}
 \right.\]</span></p></li>
-<li><p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ממימד <span class="math inline">\(n\)</span> עם בסיס סדור <span class="math inline">\(B\)</span>. הפונקציה <span class="math inline">\(T:V\to\mathbb{F}^n\)</span> המוגדרת ע"י <span class="math inline">\(T(v)=[v]_B\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_5.html#prp-coordinates-linear">??</a>, לפיה לכל <span class="math inline">\(v_1,v_1\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
+<li><p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ממימד <span class="math inline">\(n\)</span> עם בסיס סדור <span class="math inline">\(B\)</span>. הפונקציה <span class="math inline">\(T:V\to\mathbb{F}^n\)</span> המוגדרת ע"י <span class="math inline">\(T(v)=[v]_B\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_5.html#prp-coordinates-linear">8.82</a>, לפיה לכל <span class="math inline">\(v_1,v_1\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
 \begin{aligned}
 T(v_1+v_2)&amp;=[v_1+v_2]_B=[v_1]_B+[v_2]_B=T(v_1)+T(v_2) \\
 T(\alpha v_1)&amp;=[\alpha v_1]_B=\alpha[v_1]_B=\alpha T(v_1)
@@ -463,7 +463,7 @@ z &amp; 0
 <p><span class="theorem-title"><strong>Proposition 10.2</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ההעתקה <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span> היא ה"ל.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>ההוכחה מיידית לפי טענה <a href="./chapter_3.html#prp-matrix-vector">??</a>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>ההוכחה מיידית לפי טענה <a href="./chapter_3.html#prp-matrix-vector">6.23</a>.&nbsp;◻</p>
 </div>
 <div id="exm-rotation" class="example theorem">
 <p><span class="theorem-title"><strong>Example 10.1</strong></span> &nbsp;</p>
@@ -952,7 +952,7 @@ T(v_1)=T(v_2) &amp;\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
 <ol type="1">
 <li><p>נניח בשלילה שקיימת <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^4\)</span> שהיא על. כלומר מתקיים <span class="math inline">\(\mathop{\mathrm{Im}}(T)=\mathbb{R}^4\)</span>, ולפי משפט המימדים לה"ל נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathbb{R}^4)=\dim(\mathbb{R}^3)\]</span> מכאן <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))=-1\)</span> וזו סתירה. לסיכום, הראינו כי לא קיימת <span class="math inline">\(T\)</span> כזו.</p></li>
 <li><p>נניח שקיימת <span class="math inline">\(T:\mathbb{R}^4\to\mathbb{R}^3\)</span> שהיא חח״ע. כלומר מתקיים <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}}\)</span>, ולפי משפט המימדים לה"ל נובע כי <span class="math display">\[.0+\dim(\mathop{\mathrm{Im}}(T))=\dim(\mathbb{R}^4)\]</span> קיבלנו <span class="math inline">\(\dim(\mathop{\mathrm{Im}}(T))=4\)</span>, אבל מתקיים <span class="math inline">\(\mathop{\mathrm{Im}}(T)\subseteq\mathbb{R}^3\)</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))\leq\dim(\mathbb{R}^3)=3\]</span> זו סתירה, ומכאן לא קיימת ה"ל כזו.</p></li>
-<li><p>הטענה נכונה. נוכיח זאת: תהי <span class="math inline">\(T:\mathbb{M}_{2\times 3}(\mathbb{C})\to\mathbb{C}^6\)</span>. נשים לב כי <span class="math display">\[.\dim(\mathbb{M}_{2\times 3}(\mathbb{C}))=6=\dim(\mathbb{C}^6)\]</span> בנוסף, ממשפט המימדים לה"ל נובע כי <span class="math display">\[,\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathop{\mathrm{Im}}(T))=6\]</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0 \iff \dim(\mathop{\mathrm{Im}}(T))=6\]</span> ובאופן שקול (לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">??</a>): <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}} \iff \mathop{\mathrm{Im}}(T)=\mathbb{C}^6\]</span> לבסוף, לפי טענה <a href="#prp-injective">10.31</a> אפשר להסיק כי <span class="math inline">\(T\)</span> היא על אם ורק אם היא חח״ע.</p></li>
+<li><p>הטענה נכונה. נוכיח זאת: תהי <span class="math inline">\(T:\mathbb{M}_{2\times 3}(\mathbb{C})\to\mathbb{C}^6\)</span>. נשים לב כי <span class="math display">\[.\dim(\mathbb{M}_{2\times 3}(\mathbb{C}))=6=\dim(\mathbb{C}^6)\]</span> בנוסף, ממשפט המימדים לה"ל נובע כי <span class="math display">\[,\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathop{\mathrm{Im}}(T))=6\]</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0 \iff \dim(\mathop{\mathrm{Im}}(T))=6\]</span> ובאופן שקול (לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a>): <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}} \iff \mathop{\mathrm{Im}}(T)=\mathbb{C}^6\]</span> לבסוף, לפי טענה <a href="#prp-injective">10.31</a> אפשר להסיק כי <span class="math inline">\(T\)</span> היא על אם ורק אם היא חח״ע.</p></li>
 </ol>
 </div>
 </div>
@@ -987,11 +987,11 @@ T(v_1)=T(v_2) &amp;\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\((\text{ג})\impliedby(\text{ב})+(\text{א})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0,\quad \dim(\mathop{\mathrm{Im}}(T))=\dim(W)\]</span> לאחר הצבה בנוסחה של משפט המימדים לה"ל, נקבל <span class="math display">\[.\dim(W)=\dim(V)\]</span></p>
-<p><span class="math inline">\((\text{ב})\impliedby(\text{ג})+(\text{א})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0,\quad \dim(V)=\dim(W)\]</span> לאחר הצבה בנוסחה של משפט המימדים לה"ל, נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(W)\]</span> לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">??</a>, נובע כי <span class="math inline">\(\mathop{\mathrm{Im}}(T)=W\)</span>. כלומר <span class="math inline">\(T\)</span> היא על.</p>
+<p><span class="math inline">\((\text{ב})\impliedby(\text{ג})+(\text{א})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0,\quad \dim(V)=\dim(W)\]</span> לאחר הצבה בנוסחה של משפט המימדים לה"ל, נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(W)\]</span> לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">8.95</a>, נובע כי <span class="math inline">\(\mathop{\mathrm{Im}}(T)=W\)</span>. כלומר <span class="math inline">\(T\)</span> היא על.</p>
 <p><span class="math inline">\((\text{א})\impliedby(\text{ג})+(\text{ב})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(W),\quad \dim(V)=\dim(W)\]</span> לאחר הצבה בנוסחה, נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(W)=\dim(W)\]</span> נובע כי <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))=0\)</span>, ולכן <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>. פירוש הדבר ש- <span class="math inline">\(T\)</span> חח״ע לפי טענה <a href="#prp-injective">10.31</a>.&nbsp;◻</p>
 </div>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>מה הקשר של המשפט לעיל לבין משפט "שלישי חינם" לקבוצת וקטורים (משפט <a href="./chapter_5.html#thm-3-for-2">??</a>)? המשפט הישן הוא מקרה פרטי של המשפט החדש. נראה זאת: תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נסמן את עמודותיה ב- <span class="math inline">\(v_1,...,v_n\)</span>, ונשים לב כי <span class="math display">\[.\text{$v_1,...,v_n$ בת"ל}\iff \mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Ker}}(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע}\]</span> בנוסף: <span class="math display">\[.\text{$v_1,...,v_n$ פורשים את $\mathbb{F}^m$}\iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על}\]</span></p>
+<p><span class="proof-title"><em>Remark</em>. </span>מה הקשר של המשפט לעיל לבין משפט "שלישי חינם" לקבוצת וקטורים (משפט <a href="./chapter_5.html#thm-3-for-2">8.69</a>)? המשפט הישן הוא מקרה פרטי של המשפט החדש. נראה זאת: תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נסמן את עמודותיה ב- <span class="math inline">\(v_1,...,v_n\)</span>, ונשים לב כי <span class="math display">\[.\text{$v_1,...,v_n$ בת"ל}\iff \mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Ker}}(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע}\]</span> בנוסף: <span class="math display">\[.\text{$v_1,...,v_n$ פורשים את $\mathbb{F}^m$}\iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על}\]</span></p>
 <p>לאור זאת ולפי המשפט החדש, כל שניים מהתנאים הבאים גוררים את התנאי השלישי:</p>
 <ol type="1">
 <li><p><span class="math inline">\(v_1,...,v_n\)</span> בת"ל.</p></li>
@@ -3094,8 +3094,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_8.html" class="pagination-link" aria-label="chapter_8.html">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">chapter_8.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_8.html" class="pagination-link" aria-label="ערכים עצמיים, וקטורים עצמיים ולכסון">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ערכים עצמיים, וקטורים עצמיים ולכסון</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
