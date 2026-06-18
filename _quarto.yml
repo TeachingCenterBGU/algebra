@@ -25,7 +25,7 @@ book:
     logo: logo.png
     tools:
       - icon: download
-        href: אלגברה-לינארית.pdf
+        href: downloads/book.pdf
         text: הורדת הספר כ-PDF
 
 language:
