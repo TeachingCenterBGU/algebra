@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; העתקות לינאריות – אלגברה לינארית</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_8.html" rel="next">
+<link href="./chapter_6.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TPY4VZJV6M"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-TPY4VZJV6M');
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="rtl-baseline.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_7.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">העתקות לינאריות</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">אלגברה לינארית</a> 
+        <div class="sidebar-tools-main">
+    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">מידע כללי</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">הקדמה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">קבוצות ומספרים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_0_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">תכונות ושימושים של המספרים המרוכבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">מערכות משוואות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">מטריצות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">דטרמיננטה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">מרחבים וקטוריים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">תת-מרחבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_7.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">העתקות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">chapter_8.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">chapter_9.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ביבליוגרפיה</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#הגדרות-ותכונות" id="toc-הגדרות-ותכונות" class="nav-link active" data-scroll-target="#הגדרות-ותכונות"><span class="header-section-number">10.1</span> הגדרות ותכונות</a>
+  <ul class="collapse">
+  <li><a href="#העתקה-לינארית-המוגדרת-עי-מטריצה" id="toc-העתקה-לינארית-המוגדרת-עי-מטריצה" class="nav-link" data-scroll-target="#העתקה-לינארית-המוגדרת-עי-מטריצה"><span class="header-section-number">10.1.1</span> העתקה לינארית המוגדרת ע"י מטריצה</a></li>
+  </ul></li>
+  <li><a href="#sec-map-by-basis" id="toc-sec-map-by-basis" class="nav-link" data-scroll-target="#sec-map-by-basis"><span class="header-section-number">10.2</span> קיום ויחידות העתקה לינארית לפי בסיס</a></li>
+  <li><a href="#גרעין-ותמונה" id="toc-גרעין-ותמונה" class="nav-link" data-scroll-target="#גרעין-ותמונה"><span class="header-section-number">10.3</span> גרעין ותמונה</a></li>
+  <li><a href="#פעולות-על-העתקות-לינאריות" id="toc-פעולות-על-העתקות-לינאריות" class="nav-link" data-scroll-target="#פעולות-על-העתקות-לינאריות"><span class="header-section-number">10.4</span> פעולות על העתקות לינאריות</a></li>
+  <li><a href="#מטריצות-מייצגות-של-העתקות-לינאריות" id="toc-מטריצות-מייצגות-של-העתקות-לינאריות" class="nav-link" data-scroll-target="#מטריצות-מייצגות-של-העתקות-לינאריות"><span class="header-section-number">10.5</span> מטריצות מייצגות של העתקות לינאריות</a>
+  <ul class="collapse">
+  <li><a href="#מטריצת-מעבר-בין-בסיסים" id="toc-מטריצת-מעבר-בין-בסיסים" class="nav-link" data-scroll-target="#מטריצת-מעבר-בין-בסיסים"><span class="header-section-number">10.5.1</span> מטריצת מעבר בין בסיסים</a></li>
+  <li><a href="#שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת" id="toc-שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת" class="nav-link" data-scroll-target="#שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת"><span class="header-section-number">10.5.2</span> שחזור העתקה לינארית מתוך מטריצה מייצגת</a></li>
+  <li><a href="#גרעין-ותמונה-בהקשר-של-מטריצה-מייצגת" id="toc-גרעין-ותמונה-בהקשר-של-מטריצה-מייצגת" class="nav-link" data-scroll-target="#גרעין-ותמונה-בהקשר-של-מטריצה-מייצגת"><span class="header-section-number">10.5.3</span> גרעין ותמונה בהקשר של מטריצה מייצגת</a></li>
+  </ul></li>
+  <li><a href="#איזומורפיזמים" id="toc-איזומורפיזמים" class="nav-link" data-scroll-target="#איזומורפיזמים"><span class="header-section-number">10.6</span> איזומורפיזמים</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="display: none;">
+
+$$
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\M}{\mathbb{M}}
+
+\newcommand{\0}{\mathbf{0}}
+
+\newcommand{\Set}[1]{\left\{#1\right\}}
+
+$$
+
+</div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-linearmaps" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">העתקות לינאריות</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>בקורסי חדו"א עוסקים בהרחבה בפונקציות של משתנה ממשי (בהמשך עוברים למספר משתנים). באופן יותר כללי במתמטיקה, פונקציה מתארת חוק שמקשר בין קלט לפלט: לכל אובייקט במרחב אחד מותאם אובייקט במרחב אחר (אובייקטים אלה אינם בהכרח מספרים). פונקציות יכולות להיות פשוטות או מורכבות מאוד, ולעיתים קשה להבין את פעולתן על כל הקלטים האפשריים.</p>
+<p>באלגברה לינארית מתמקדים במחלקה מיוחדת של פונקציות – העתקות לינאריות. אלו פונקציות בין מרחבים וקטוריים השומרות על חיבור וכפל בסקלר (בדומה לתכונות של כפל מטריצה בוקטור), ולכן ההתנהגות שלהן נקבעת לחלוטין על ידי פעולתן על וקטורי בסיס כלשהו למרחב המקורי (תחום ההעתקה). תכונה זו מאפשרת תיאור מלא בעזרת מטריצות ונותנת כלים חזקים לניתוח וחישוב. נשים דגש על הקשר בין העתקות לינאריות למטריצות.</p>
+<p>בהנדסה, העתקות לינאריות משמשות כמודל בסיסי למערכות רבות, כגון מערכות חשמליות, מערכות מכניות, מערכות בקרה ועיבוד אותות. במערכות כאלה מתקיים בהרבה מקרים עקרון הסופרפוזיציה: השפעתם של כמה קלטים על מערכת היא סכום ההשפעות של כל קלט בנפרד, וכפל קלט בסקלר גורר שכפול זהה של הפלט. לדוגמה, במעגל חשמלי לינארי, אם מקור מתח אחד יוצר זרם מסוים ומקור נוסף יוצר זרם אחר, אז הפעלת שניהם יחד תיצור זרם שהוא סכום הזרמים שכל אחד יוצר לבדו.</p>
+<p>המשמעות המתמטית של סופרפוזיציה היא שניתן לתאר את הקשר בין קלט לפלט באמצעות העתקה לינארית. גם כאשר המערכת האמיתית אינה לינארית לחלוטין, מהנדסים משתמשים בהעתקות לינאריות כקירוב מקומי המאפשר ניתוח, חישוב ותכנון יעילים.</p>
+<section id="הגדרות-ותכונות" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="הגדרות-ותכונות"><span class="header-section-number">10.1</span> הגדרות ותכונות</h2>
+<p>נעבור להגדרה המדויקת של פונקציה כהקדמה להגדרה של העתקה לינארית:</p>
+<div class="definition">
+<p>יהיו קבוצות <span class="math inline">\(A,B\neq\emptyset\)</span>. פונקציה <span class="math inline">\(f\)</span> מקבוצה <span class="math inline">\(A\)</span> ל- <span class="math inline">\(B\)</span> מתאימה לכל איבר <span class="math inline">\(a\in A\)</span> בדיוק איבר אחד <span class="math inline">\(b\in B\)</span>. מסמנים <span class="math inline">\(f:A\to B\)</span> וגם <span class="math inline">\(b=f(a)\)</span>. <span class="math inline">\(A\)</span> נקראת התחום של <span class="math inline">\(f\)</span>, ו- <span class="math inline">\(B\)</span> נקראת הטווח שלה.</p>
+</div>
+<div id="fig-Function" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Function.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.1: מכל איבר בתחום יוצא בדיוק חץ אחד לאיבר בטווח
+</figcaption>
+</figure>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בהקשרים מסוימים יש מילים נרדפות לפונקציה, כמו "העתקה", "טרנספורמציה" ו"אופרטור". בקורס שלנו נדבר על העתקות, ובפרט העתקות לינאריות. העתקה לינארית היא פונקציה בין מרחבים וקטוריים שמקיימת זוג תכונות שיחד נקראות "לינאריות".</p>
+</div>
+<div class="definition">
+<p>יהיו <span class="math inline">\(V,W\)</span> מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span>. פונקציה <span class="math inline">\(T:V\to W\)</span> נקראת העתקה לינארית (ה"ל) אם לכל <span class="math inline">\(v_1,v_2\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
+\begin{aligned}
+T(v_1+v_2) &amp;= T(v_1)+T(v_2)\\
+T(\alpha v_1) &amp;= \alpha T(v_1)
+\end{aligned}
+\right.\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כאשר נתייחס לה"ל <span class="math inline">\(T:V\to W\)</span> ההנחה המובלעת היא ש- <span class="math inline">\(V,W\)</span> הם מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span>. אין משמעות ללינאריות בלי מרחבים וקטוריים.</p>
+<p>שימו לב שהחיבור <span class="math inline">\(v_1+v_2\)</span> מתבצע במרחב <span class="math inline">\(V\)</span>, ואילו החיבור <span class="math inline">\(T(v_1)+T(v_2)\)</span> מתבצע במרחב <span class="math inline">\(W\)</span>. כנ"ל לכפל בסקלר - כל פעולה מתבצעת במרחב הרלוונטי. אז הסימונים קצת מתעתעים, כי זה לא בהכרח אותו סוג חיבור או אותו סוג של כפל בסקלר בשני המרחבים.</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p><span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=2x\)</span> היא ה"ל (ניתן לחשוב על <span class="math inline">\(\mathbb{R}\)</span> כעל <span class="math inline">\(\mathbb{R}^1\)</span>, שהוא מ"ו ממימד <span class="math inline">\(1\)</span>). לכל <span class="math inline">\(x_1,x_2,\alpha\in\mathbb{R}\)</span> מתקיים: <span class="math display">\[\left\{
+\begin{aligned}
+f(x_1+x_2)&amp;=2(x_1+x_2)=2x_1+2x_2=f(x_1)+f(x_2) \\
+f(\alpha x)&amp;=2(\alpha x)=\alpha(2x)=\alpha f(x)
+\end{aligned}
+\right.\]</span></p></li>
+<li><p><span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(T\begin{pmatrix}x \\y\end{pmatrix}=x+y\)</span> היא ה"ל. לכל <span class="math inline">\(\begin{pmatrix}x_1 \\y_1\end{pmatrix},\begin{pmatrix}x_2 \\y_2\end{pmatrix}\in\mathbb{R}^2\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math display">\[\begin{aligned}
+T\left(\begin{pmatrix}x_1 \\y_1\end{pmatrix}+\begin{pmatrix}x_2 \\y_2\end{pmatrix}\right)&amp;=T\begin{pmatrix}x_1+x_2 \\y_1+y_2\end{pmatrix}=(x_1+x_2)+(y_1+y_2)\\
+&amp;=(x_1+y_1)+(x_2+y_2)=T\begin{pmatrix}x_1 \\y_1\end{pmatrix}+T\begin{pmatrix}x_2 \\y_2\end{pmatrix}
+\end{aligned}\]</span> וגם <span class="math display">\[.T\left(\alpha\begin{pmatrix}x_1 \\y_1\end{pmatrix}\right)=T\begin{pmatrix}\alpha x_1 \\\alpha y_1\end{pmatrix}=\alpha x_1+\alpha y_1=\alpha(x_1+y_1)=\alpha T\begin{pmatrix}x_1 \\y_1\end{pmatrix}\]</span></p></li>
+<li><p>הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x+1\)</span> אינה ה"ל. בתור דוגמה נגדית, ניקח <span class="math inline">\(x_1=0,x_2=1,\alpha=2\)</span> ונקבל <span class="math display">\[.f(x_1+x_2)=f(1)=2\neq 1+2=f(0)+f(1)=f(x_1)+f(x_2)\]</span> לחילופין, ניתן להפריך לינאריות גם לפי התכונה השנייה: <span class="math display">\[f(2x_1)=f(0)=1\neq 2\cdot 1=2f(0)=2f(x_1)\]</span> כאן הפרכנו את שתי התכונות בהגדרה של ה"ל, אך מספיק להפריך אחת.</p></li>
+<li><p>הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x^2\)</span> אינה ה"ל. בתור דוגמה נגדית, ניקח <span class="math inline">\(x_1=1,x_2=-1,\alpha=2\)</span> ונקבל <span class="math display">\[.f(x_1+x_2)=f(0)=0\neq 1+1=f(1)+f(-1)=f(x_1)+f(x_2)\]</span> שוב ניתן להפריך לינאריות גם לפי התכונה השנייה: <span class="math display">\[f(2x_1)=f(2)=4\neq 2\cdot 1=2f(1)=2f(x_1)\]</span></p></li>
+<li><p>העתקת השחלוף <span class="math inline">\(T:\mathbb{M}_{m\times n}(\mathbb{F})\to\mathbb{M}_{n\times m}(\mathbb{F})\)</span> המוגדרת ע"י <span class="math inline">\(T(A)=A^t\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_3.html#prp-transpose">??</a>, לפיה לכל <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
+\begin{aligned}
+T(A+B)&amp;=(A+B)^t=A^t+B^t=T(A)+T(B) \\
+T(\alpha A)&amp;=(\alpha A)^t=\alpha A^t=\alpha T(A)
+\end{aligned}
+\right.\]</span></p></li>
+<li><p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span> ממימד <span class="math inline">\(n\)</span> עם בסיס סדור <span class="math inline">\(B\)</span>. הפונקציה <span class="math inline">\(T:V\to\mathbb{F}^n\)</span> המוגדרת ע"י <span class="math inline">\(T(v)=[v]_B\)</span> היא לינארית. הוכחנו זאת בטענה <a href="./chapter_5.html#prp-coordinates-linear">??</a>, לפיה לכל <span class="math inline">\(v_1,v_1\in V\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\left\{
+\begin{aligned}
+T(v_1+v_2)&amp;=[v_1+v_2]_B=[v_1]_B+[v_2]_B=T(v_1)+T(v_2) \\
+T(\alpha v_1)&amp;=[\alpha v_1]_B=\alpha[v_1]_B=\alpha T(v_1)
+\end{aligned}
+\right.\]</span></p></li>
+</ol>
+</div>
+<p>למעשה, יש הרבה מאוד פונקציות מהצורה <span class="math inline">\(T:\mathbb{F}\to\mathbb{F}\)</span> כפי שרואים בחדו"א. אבל אם דורשים לינאריות, אז נגלה כי כמות הפונקציות מצטמצמת פלאים וכל פונקציה כזו (ה"ל) היא בעלת נוסחה פשוטה מאוד. זה נכון בין אם <span class="math inline">\(\mathbb{F}=\mathbb{R}\)</span> או <span class="math inline">\(\mathbb{F}=\mathbb{C}\)</span>.</p>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(T:\mathbb{F}\to\mathbb{F}\)</span> ה"ל. אז קיים <span class="math inline">\(c\in\mathbb{F}\)</span> כך ש- <span class="math inline">\(T(x)=cx\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(c=T(1)\)</span>. מלינאריות, לכל <span class="math inline">\(x\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.T(x)=T(x\cdot 1)=xT(1)=x\cdot c=cx\]</span> שימו לב שתחילה התייחסנו אל <span class="math inline">\(x\)</span> כוקטור ואחר כך כסקלר (הוא שניהם במקרה של <span class="math inline">\(\mathbb{F}\)</span>).&nbsp;◻</p>
+</div>
+<p>נרצה להוכיח תכונות נוספות של ה"ל, שנובעות מהתכונות בהגדרה. אכן, העתקה לינארית מתנהגת יפה ביחס לחיבור וקטורי וכפל בסקלר, ולכן היא גם מתנהגת יפה ביחס לצירופים לינאריים במובן של הטענה הבאה:</p>
+<div id="prp-more-linearity" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.1</strong></span> <em>יהיו <span class="math inline">\(V,W\)</span> מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span>, ותהי <span class="math inline">\(T:V\to W\)</span> ה"ל. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">\(v_1,...,v_k\in V\)</span> ולכל <span class="math inline">\(\alpha_1,...,\alpha_k\in \mathbb{F}\)</span> מתקיים <span class="math display">\[.T(\alpha_1 v_1+...+\alpha_k v_k)=\alpha_1 T(v_1)+...+\alpha_k T(v_k)\]</span></em></p></li>
+<li><p><em><span class="math display">\[.T(0_V)=0_W\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>יהיו <span class="math inline">\(v_1,...,v_k\in V\)</span> ו- <span class="math inline">\(\alpha_1,...,\alpha_k\in \mathbb{F}\)</span>. נשתמש בתכונת החיבור של לינאריות (לשני מחוברים) מספר חוזר של פעמים כדי להוציא כל מחובר מחוץ לסוגריים אחד אחרי השני (ההוכחה הפורמלית היא באינדוקציה למי שמכיר):</p>
+<p><span class="math display">\[\begin{aligned}
+&amp;T(\alpha_1 v_1+...+\alpha_{k-1}v_{k-1}+\alpha_k v_k)=T(\alpha_1 v_1+...+\alpha_{k-1}v_{k-1})+T(\alpha_k v_k)\\
+&amp;=T(\alpha_1 v_1+...+\alpha_{k-2}v_{k-2})+T(\alpha_{k-1}v_{k-1})+T(\alpha_k v_k)=...\\
+&amp;=T(\alpha_1 v_1)+...+T(\alpha_k v_k)=\alpha_1T(v_1)+...+\alpha_k T(v_k)
+\end{aligned}\]</span> במעבר האחרון הוצאנו סקלר מכל ערך של <span class="math inline">\(T\)</span> לחוד.</p></li>
+<li><p>מתקיים <span class="math display">\[.T(0_V)=T(0\cdot 0_V)=0\cdot T(0_V)=0_W\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div id="fig-LinearMap" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LinearMap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/LinearMap.html?embed=1" width="800" height="800">
+<figcaption>
+ה”ל פועלת לחוד על וקטורי הבסיס של מרחב התחום, והיא שולחת כל צירוף לינארי שלהם לצירוף הלינארי המתאים של איברי התמונות שלהם
+</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-LinearMap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.2
+</figcaption>
+</figure>
+</div>
+<div class="exercise">
+<p>האם <span class="math inline">\(T:\mathbb{R}^3\to M_{2\times 2}(\mathbb{R})\)</span> המוגדרת ע"י <span class="math display">\[T\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}
+x+1 &amp; y \\
+z &amp; 0
+\end{pmatrix}\]</span> היא ה"ל?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(T\)</span> אינה לינארית. הדרך הפשוטה ביותר להראות זאת היא לשים לב שמתקיים <span class="math display">\[,T\begin{pmatrix}0\\0\\0\end{pmatrix}=\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}\neq \begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}\]</span> בסתירה לתכונה (ב) מהטענה האחרונה,</p>
+</div>
+</div>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>התנאי <span class="math inline">\(T(0_V)=0_W\)</span> הוא הכרחי ללינאריות, אך הוא אינו מספיק. למשל, ראינו כבר כי הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x^2\)</span> אינה ה"ל, אם כי מתקיים <span class="math inline">\(f(0)=0\)</span>.</p>
+</div>
+<section id="העתקה-לינארית-המוגדרת-עי-מטריצה" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="העתקה-לינארית-המוגדרת-עי-מטריצה"><span class="header-section-number">10.1.1</span> העתקה לינארית המוגדרת ע"י מטריצה</h3>
+<p>לאור כל מה שלמדנו על מטריצות, נוח לעבוד עם העתקה לינארית המוגדרת ע"י מטריצה.</p>
+<div class="definition">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נגדיר <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span> ע"י <span class="math display">\[T_A(v)=Av\]</span> לכל <span class="math inline">\(v\in\mathbb{F}^n\)</span>.</p>
+</div>
+<div id="prp-matrix-map-linear" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.2</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ההעתקה <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span> היא ה"ל.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>ההוכחה מיידית לפי טענה <a href="./chapter_3.html#prp-matrix-vector">??</a>.&nbsp;◻</p>
+</div>
+<div id="exm-rotation" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.1</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>עבור <span class="math display">\[A=\begin{pmatrix}
+1 &amp; 1
+\end{pmatrix}\]</span> נקבל ה"ל <span class="math inline">\(T_A:\mathbb{R}^2\to \mathbb{R}\)</span> הנתונה ע"י <span class="math display">\[.T_A\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+1 &amp; 1
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=x+y\]</span> ראינו אותה בדוגמה קודמת, אבל עכשיו הקשר למטריצה (וקטור שורה) ברור.</p></li>
+<li><p>עבור <span class="math display">\[A=\begin{pmatrix}
+1 &amp; 2 &amp; -3 \\
+2 &amp; 0 &amp; 1
+\end{pmatrix}\]</span> נקבל ה"ל <span class="math inline">\(T_A:\mathbb{R}^3\to \mathbb{R}^2\)</span> הנתונה ע"י <span class="math display">\[.T_A\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}
+1 &amp; 2 &amp; -3 \\
+2 &amp; 0 &amp; 1
+\end{pmatrix}\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}
+x+2y-3z \\
+2x+z
+\end{pmatrix}\]</span></p></li>
+<li><p>תהי <span class="math inline">\(\theta\in\mathbb{R}\)</span>. נסמן <span class="math display">\[.A=\begin{pmatrix}
+\cos{\theta} &amp; -\sin{\theta} \\
+\sin{\theta} &amp; \cos{\theta}
+\end{pmatrix}\]</span> נקבל ה"ל <span class="math inline">\(T_A:\mathbb{R}^2\to \mathbb{R}^2\)</span> הנתונה ע"י <span class="math display">\[.T_A\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+\cos{\theta} &amp; -\sin{\theta} \\
+\sin{\theta} &amp; \cos{\theta}
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+x\cos{\theta}-y\sin{\theta} \\
+x\sin{\theta}+y\cos{\theta}
+\end{pmatrix}\]</span></p>
+<p>במקרה זה ל- <span class="math inline">\(T_A\)</span> יש משמעות גיאומטרית של סיבוב וקטור הקלט <span class="math inline">\(\begin{pmatrix}x\\y\end{pmatrix}\)</span> בזווית <span class="math inline">\(\theta\)</span> נגד כיוון השעון, ולכן <span class="math inline">\(A\)</span> נקראת מטריצת סיבוב. זו פעולה אנלוגית להכפלת <span class="math inline">\(z=x+iy\)</span> במספר <span class="math inline">\(e^{i\theta}=\cos{\theta}+i\sin{\theta}\)</span> במישור המרוכב <span class="math inline">\(\mathbb{C}\)</span>. אכן: <span class="math display">\[(\cos{\theta}+i\sin{\theta})(x+iy)=x\cos{\theta}-y\sin{\theta}+i(x\sin{\theta}+y\cos{\theta})\]</span></p></li>
+<li><p>נסמן <span class="math display">\[.A=\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}\]</span> נקבל ה"ל <span class="math inline">\(T_A:\mathbb{R}^2\to \mathbb{R}^2\)</span> הנתונה ע"י <span class="math display">\[.T_A\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+y \\
+x
+\end{pmatrix}\]</span> כאן המשמעות הגיאומטרית של פעולת <span class="math inline">\(T_A\)</span> היא שיקוף ביחס לישר <span class="math inline">\(y=x\)</span>.</p>
+<div id="fig-Reflection" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Reflection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Reflection.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Reflection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.3: שיקוף הוקטור ביחס לישר
+</figcaption>
+</figure>
+</div></li>
+</ol>
+</div>
+<div id="fig-Rotation" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Rotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Rotation.html?embed=1" width="800" height="800">
+<figcaption>
+סימולציה - סיבוב וקטור בזווית
+</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Rotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.4
+</figcaption>
+</figure>
+</div>
+<div class="exercise">
+<p>הראו כי <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^3\)</span> הנתונה ע"י <span class="math display">\[T\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}2x+5y+z\\3x-y+2z\\y-5z\end{pmatrix}\]</span> היא ה"ל.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נמצא <span class="math inline">\(A\in\mathbb{M}_{3\times 3}(\mathbb{R})\)</span> כך ש- <span class="math inline">\(T=T_A\)</span>. מכך ינבע כי <span class="math inline">\(T\)</span> היא ה"ל לפי טענה <a href="#prp-matrix-map-linear">10.11</a>. המעבר מהנוסחה של <span class="math inline">\(T\)</span> למטריצה <span class="math inline">\(A\)</span> אנלוגי לחלוטין למעבר מממ"ל למטריצת המקדמים המצומצמת. לכן, עבור <span class="math display">\[A=\begin{pmatrix}
+2 &amp; 5 &amp; 1\\
+3 &amp; -1 &amp; 2\\
+0 &amp; 1 &amp; -5
+\end{pmatrix}\]</span> נקבל <span class="math display">\[.T_A\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}
+2 &amp; 5 &amp; 1\\
+3 &amp; -1 &amp; 2\\
+0 &amp; 1 &amp; -5
+\end{pmatrix}\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}2x+5y+z\\3x-y+2z\\y-5z\end{pmatrix}=T\begin{pmatrix}x\\y\\z\end{pmatrix}\]</span> זה בדיוק מראה כי <span class="math inline">\(T=T_A\)</span>, ולכן היא ה"ל.</p>
+</div>
+</div>
+</div>
+<p>בינתיים ראינו כי לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> מתאימה ה"ל <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span>. מה לגבי הכיוון השני? כלומר, האם כל ה"ל <span class="math inline">\(T:\mathbb{F}^n\to\mathbb{F}^m\)</span> מתאימה למטריצה מסדר מתאים? התשובה חיובית, ומטריצה זו נקבעת ביחידות. זה מראה כי יש קשר הדוק בין מטריצות להעתקות לינאריות.</p>
+<div id="prp-unique-matrix" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.3</strong></span> <em>תהי <span class="math inline">\(T:\mathbb{F}^n\to\mathbb{F}^m\)</span> ה"ל. אז קיימת <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(T=T_A\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לכל <span class="math inline">\(\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}\in\mathbb{F}^n\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+T\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}&amp;=T(x_1e_1+...+x_ne_n)=x_1T(e_1)+...+x_nT(e_n)\\
+&amp;=\begin{pmatrix}
+\mid &amp; \mid &amp;        &amp; \mid \\
+T(e_1) &amp; T(e_2) &amp; \cdots &amp; T(e_n) \\
+\mid &amp; \mid &amp;        &amp; \mid
+\end{pmatrix}\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}
+\end{aligned}\]</span> אם כן, נבחר את <span class="math inline">\(A\)</span> להיות המטריצה שעמודותיה הן <span class="math inline">\(T(e_1),...,T(e_n)\)</span>: <span class="math display">\[A=\begin{pmatrix}
+\mid &amp; \mid &amp;        &amp; \mid \\
+T(e_1) &amp; T(e_2) &amp; \cdots &amp; T(e_n) \\
+\mid &amp; \mid &amp;        &amp; \mid
+\end{pmatrix}\]</span> החישוב הקודם בדיוק מראה כי <span class="math inline">\(T=T_A\)</span> כנדרש.&nbsp;◻</p>
+</div>
+<div class="example">
+<p>נתונה ה"ל <span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}^2\)</span> המקיימת <span class="math display">\[.T\begin{pmatrix}1 \\ 0\end{pmatrix}=\begin{pmatrix}1 \\ 2\end{pmatrix},\quad T\begin{pmatrix}0 \\ 1\end{pmatrix}=\begin{pmatrix}-2 \\ 1\end{pmatrix}\]</span></p>
+<p>לפי הנתונים והוכחת טענה <a href="#prp-unique-matrix">10.14</a> מתקיים <span class="math inline">\(T=T_A\)</span> עבור <span class="math display">\[.A=\begin{pmatrix}
+1 &amp; -2 \\
+2 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>כדאי גם להבין זאת ע"י בדיקה ישירה. לכל <span class="math inline">\(\begin{pmatrix}x\\y\end{pmatrix}\in\mathbb{R}^2\)</span> מתקיים:</p>
+<p><span class="math display">\[\begin{aligned}
+T\begin{pmatrix}x\\y\end{pmatrix}&amp;=T\left(x\cdot\begin{pmatrix}1\\0\end{pmatrix}+y\cdot\begin{pmatrix}0\\1\end{pmatrix}\right)=x\cdot T\begin{pmatrix}1\\0\end{pmatrix}+y\cdot T\begin{pmatrix}0\\1\end{pmatrix}\\
+&amp;=x\cdot\begin{pmatrix}1 \\ 2\end{pmatrix}+y\cdot\begin{pmatrix}-2 \\ 1\end{pmatrix}=\begin{pmatrix}x-2y \\ 2x+y \end{pmatrix}
+\end{aligned}\]</span> ולכן <span class="math display">\[.T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+1 &amp; -2 \\
+2 &amp; 1
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}\]</span></p>
+</div>
+</section>
+</section>
+<section id="sec-map-by-basis" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="sec-map-by-basis"><span class="header-section-number">10.2</span> קיום ויחידות העתקה לינארית לפי בסיס</h2>
+<p>ראינו כי במקרה הפרטי של ה"ל <span class="math inline">\(T:\mathbb{F}^n\to\mathbb{F}^m\)</span>, הערכים <span class="math inline">\(T(e_1),...,T(e_n)\)</span> קובעים את <span class="math inline">\(T\)</span> ביחידות - ואף הצלחנו לבטא את הקשר ע"י מטריצה בטענה <a href="#prp-unique-matrix">10.14</a>. נרצה להוכיח משפט כללי יותר על ה"ל בין מרחבים וקטוריים שאינם בהכרח מהצורה <span class="math inline">\(\mathbb{F}^k\)</span>, וגם עבור ערכים המתאימים לוקטורי בסיס שאינו בהכרח סטנדרטי. המשפט הבא נקרא "משפט ההגדרה של ה"ל".</p>
+<div id="thm-exist-unique" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.1</strong></span> <em>יהיו <span class="math inline">\(V,W\)</span> מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span>, <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס ל- <span class="math inline">\(V\)</span> ו- <span class="math inline">\(\Set{w_1,...,w_n}\subseteq W\)</span> תת-קבוצה כלשהי. אז קיימת ויחידה ה"ל <span class="math inline">\(T:V\to W\)</span> המקיימת <span class="math display">\[.T(v_1)=w_1,...,T(v_n)=w_n\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>יהי <span class="math inline">\(v\in V\)</span>. נסמן <span class="math display">\[.[v]_B=\begin{pmatrix}\alpha_1\\ \vdots \\ \alpha_n\end{pmatrix}\]</span> בתור התחלה, נניח שקיימת ה"ל <span class="math inline">\(T:V\to W\)</span> השולחת כל <span class="math inline">\(v_k\)</span> ל- <span class="math inline">\(w_k\)</span> המתאים. אז לפי טענה <a href="#prp-more-linearity">10.7</a> בהכרח מתקיים <span class="math display">\[.T(v)=T(\sum_{k=1}^n \alpha_k v_k)=\sum_{k=1}^n \alpha_k T(v_k)=\sum_{k=1}^n \alpha_k w_k\]</span> אם כך, נפעל בכיוון ההפוך: נגדיר <span class="math display">\[,T(v)=\sum_{k=1}^n \alpha_k w_k\]</span> ונוכיח לינאריות. אם נצליח, הרי ש- <span class="math inline">\(T\)</span> היא הה"ל היחידה שמקיימת את הדרישות. ובכן, יהי <span class="math inline">\(w\in V\)</span> ונסמן <span class="math display">\[.[w]_B=\begin{pmatrix}\beta_1\\ \vdots \\ \beta_n\end{pmatrix}\]</span> מתקיים <span class="math display">\[,[v+w]_B=\begin{pmatrix}\alpha_1+\beta_1\\ \vdots \\ \alpha_n +\beta_n\end{pmatrix}\]</span> ומכאן נקבל לפי הגדרת <span class="math inline">\(T\)</span>: <span class="math display">\[\begin{aligned}
+T(v+w)&amp;=T(\sum_{k=1}^n(\alpha_k+\beta_k)v_k)=\sum_{k=1}^n(\alpha_k+\beta_k)w_k \\
+&amp;=\sum_{k=1}^n\alpha_kw_k+\sum_{k=1}^n\beta_kw_k=T(v)+T(w)
+\end{aligned}\]</span> נבדוק גם כפל בסקלר: לכל <span class="math inline">\(\gamma\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.T(\gamma v)=T(\sum_{k=1}^n\gamma\alpha_kv_k)=\sum_{k=1}^n\gamma\alpha_kw_k=\gamma\sum_{k=1}^n\alpha_k w_k =\gamma T(v)\]</span>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>נניח כי <span class="math inline">\(V,W\)</span> מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span> כך ש- <span class="math inline">\(\dim(V)=n\)</span>. אם מחפשים ה"ל <span class="math inline">\(T:V\to W\)</span> המקיימת <span class="math display">\[,\forall 1\leq i\leq k \quad T(v_i)=w_i\]</span> יש כמה מקרים:</p>
+<ul>
+<li><p><span class="math inline">\(S=\Set{v_1,...,v_k}\)</span> היא בסיס ל- <span class="math inline">\(V\)</span> (בפרט <span class="math inline">\(k=n\)</span>). במקרה זה, קיימת ה"ל <span class="math inline">\(T\)</span> יחידה לפי משפט ההגדרה.</p></li>
+<li><p><span class="math inline">\(S\)</span> בת"ל, אך <span class="math inline">\(k&lt;n\)</span>. במקרה זה, <span class="math inline">\(T\)</span> קיימת אך אינה יחידה, כי ניתן להשלים את <span class="math inline">\(S\)</span> לבסיס ל- <span class="math inline">\(V\)</span> ע"י הוספת וקטורים <span class="math inline">\(v_{k+1},...,v_n\)</span>. הערכים <span class="math inline">\(T(v_{k+1}),...,T(v_n)\)</span> שרירותיים כי אין שום דרך לקבוע אותם לפי הנתונים. כל בחירה של הערכים החדשים היא לגיטימית ולכל אחת מתאימה ה"ל <span class="math inline">\(T\)</span>, כך שיש אינסוף אפשרויות ל- <span class="math inline">\(T\)</span> המקיימות את הנתונים.</p></li>
+<li><p><span class="math inline">\(S\)</span> ת"ל. במקרה זה יש לחלץ תת-קבוצה בת"ל בגודל מקסימלי, נניח <span class="math inline">\(S'=\Set{v_1,...,v_j}\)</span> עבור <span class="math inline">\(j&lt;k\)</span>. יש לבדוק כי הערכים <span class="math inline">\(T(v_{j+1}),...,T(v_n)\)</span> מקיימים את דרישת הלינאריות. כלומר, לכל <span class="math inline">\(j&lt;i\leq k\)</span> קיימים <span class="math inline">\(a_1,...,a_j\in\mathbb{F}\)</span> כך ש- <span class="math display">\[,v_i=a_1v_1+...+a_jv_j\]</span> ולכן צריך להתקיים <span class="math display">\[.T(v_i)=a_1T(v_1)+...+a_jT(v_j)\]</span> אם זה לא מתקיים אפילו עבור ערך אחד של <span class="math inline">\(j&lt;i\leq k\)</span>, אז זו סתירה ללינאריות ולכן לא קיימת ה"ל <span class="math inline">\(T\)</span> שמקיימת את הנתונים. אחרת, צריך למצוא את <span class="math inline">\(T\)</span> לפי הנתונים הקשורים ל- <span class="math inline">\(S'\)</span>. אם <span class="math inline">\(j=n\)</span>, אז קיבלנו את המקרה הראשון (שמתאים למשפט). אם <span class="math inline">\(j&lt;n\)</span>, אז קיבלנו את המקרה השני (וצריך להשלים לבסיס ולבחור ערכים שרירותיים).</p></li>
+</ul>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נברר אם קיימת ה"ל <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^3\)</span> המקיימת <span class="math display">\[.T\underbrace{\begin{pmatrix}1\\-1\\1\end{pmatrix}}_{v_1}=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad T\underbrace{\begin{pmatrix}2\\1\\0\end{pmatrix}}_{v_2}=\begin{pmatrix}4\\-1\\0\end{pmatrix},\quad T\underbrace{\begin{pmatrix}4\\-1\\2\end{pmatrix}}_{v_3}=\begin{pmatrix}0\\0\\0\end{pmatrix}\]</span> נשים לב כי וקטורי הקלט <span class="math inline">\(v_1,v_2,v_3\)</span> הם ת"ל. יש למצוא את משוואת התלות הלינארית ביניהם ולבדוק שוקטורי הפלט גם מקיימים אותה. דירוג מראה כי <span class="math display">\[.v_3=2v_1+v_2\]</span> נניח בשלילה שקיימת ה"ל <span class="math inline">\(T\)</span> שמקיימת את הנתונים. אז נובע כי <span class="math display">\[,T(v_3)=2T(v_1)+T(v_2)\]</span> ולאחר הצבת הנתונים נקבל <span class="math display">\[.\begin{pmatrix}0\\0\\0\end{pmatrix}=2\begin{pmatrix}1\\2\\3\end{pmatrix}+\begin{pmatrix}4\\-1\\0\end{pmatrix}\]</span> זו סתירה כי אגף ימין שווה ל- <span class="math inline">\(\begin{pmatrix}6\\3\\6\end{pmatrix}\)</span>. המסקנה היא שלא קיימת ה"ל <span class="math inline">\(T\)</span> המקיימת את הנתונים.</p></li>
+<li><p>נמצא <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^3\)</span> המקיימת <span class="math display">\[.T\begin{pmatrix}1\\-1\\1\end{pmatrix}=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad T\begin{pmatrix}2\\1\\0\end{pmatrix}=\begin{pmatrix}4\\-1\\0\end{pmatrix},\quad T\begin{pmatrix}4\\-1\\2\end{pmatrix}=\begin{pmatrix}6\\3\\6\end{pmatrix}\]</span></p>
+<p>אלה הנתונים הקודמים עם שינוי אחד: כעת <span class="math inline">\(T(v_3)=\begin{pmatrix}6\\3\\6\end{pmatrix}\)</span> בהתאם לחישוב שנובע מהתלות הלינארית בין וקטורי הקלט. המשמעות היא שנתון זה מיותר, כי הוא נובע משני הנתונים האחרים. אז קיימות אינסוף אפשרויות לה"ל המקיימת את הנתונים. מדוע אינסוף? כדי למצוא נוסחה ל- <span class="math inline">\(T\)</span> צריך להשלים את <span class="math inline">\(\Set{v_1,v_2}\)</span> לבסיס ל- <span class="math inline">\(\mathbb{R}^3\)</span>. דירוג לפי שורות מראה כי ניתן לעשות זאת ע"י הוספת הוקטור <span class="math inline">\(e_3\)</span> (כי בסוף הדירוג לא יהיה איבר מוביל בעמודה השלישית). הערך <span class="math inline">\(T(e_3)\)</span> נתון לבחירתנו, ומכאן יש אינסוף אפשרויות. נמצא אחת באופן מפורש ע"י הבחירה השרירותית <span class="math inline">\(T(e_3)=\begin{pmatrix}0\\0\\0\end{pmatrix}\)</span>. נסמן <span class="math display">\[.B=\Set{v_1,v_2,e_3}\]</span></p>
+<p>יהי <span class="math inline">\(\begin{pmatrix}x\\y\\z\end{pmatrix}\in\mathbb{R}^3\)</span>. נחשב את <span class="math inline">\(\left[\begin{pmatrix}x\\y\\z\end{pmatrix}\right]_B\)</span>, ואז נשתמש בקוארדינטות כדי לחשב את <span class="math inline">\(T\begin{pmatrix}x\\y\\z\end{pmatrix}\)</span>. נדרג את המטריצה הבאה: <span class="math display">\[\left(\begin{array}{ccc|c}
+1 &amp; 2 &amp; 0 &amp; x \\
+-1 &amp; 1 &amp; 0 &amp; y \\
+1 &amp; 0 &amp; 1 &amp; z
+\end{array}\right)\]</span> צורתה המדורגת קנונית היא (בדקו זאת): <span class="math display">\[\left(\begin{array}{ccc|c}
+1 &amp; 0 &amp; 0 &amp; \frac{x-2y}{3} \\
+0 &amp; 1 &amp; 0 &amp; \frac{x+y}{3} \\
+0 &amp; 0 &amp; 1 &amp; \frac{-x+2y+3z}{3}
+\end{array}\right)\]</span></p>
+<p>לכן, מתקיים <span class="math display">\[.\begin{pmatrix}x\\y\\z\end{pmatrix}=\frac{x-2y}{3}\cdot\begin{pmatrix}1\\-1\\0\end{pmatrix}+\frac{x+y}{3}\cdot\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}\]</span> נפעיל את <span class="math inline">\(T\)</span> על שני האגפים ונקבל: <span class="math display">\[\begin{aligned}
+T\begin{pmatrix}x\\y\\z\end{pmatrix}&amp;=\frac{x-2y}{3}\cdot T\begin{pmatrix}1\\-1\\1\end{pmatrix}+\frac{x+y}{3}\cdot T\begin{pmatrix}2\\1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot T\begin{pmatrix}0\\0\\1\end{pmatrix} \\
+&amp;=\frac{x-2y}{3}\cdot \begin{pmatrix}1\\2\\3\end{pmatrix}+\frac{x+y}{3}\cdot \begin{pmatrix}4\\-1\\0\end{pmatrix}+\frac{-x+2y+3z}{3}\cdot\begin{pmatrix}0\\0\\0\end{pmatrix}\\
+&amp;=\begin{pmatrix}\frac{5x+2y}{3}\\\frac{x-5y}{3}\\x-2y\end{pmatrix}
+\end{aligned}\]</span> לסיכום, מצאנו דוגמה (אחת מתוך אינסוף) לה"ל שמקיימת את הנתונים: <span class="math display">\[T\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}\frac{5x+2y}{3}\\\frac{x-5y}{3}\\x-2y\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>נסמן <span class="math display">\[,v_1=\begin{pmatrix}1\\1\\0\end{pmatrix},\quad v_2=\begin{pmatrix}0\\1\\0\end{pmatrix},\quad v_3=\begin{pmatrix}0\\1\\1\end{pmatrix},\quad v_4=\begin{pmatrix}1\\1\\1\end{pmatrix}\]</span> ובנוסף <span class="math display">\[.w_1=\begin{pmatrix}2\\1\end{pmatrix},\quad w_2=\begin{pmatrix}2\\2\end{pmatrix},\quad w_3=\begin{pmatrix}1\\2\end{pmatrix},\quad w_4=\begin{pmatrix}1\\1\end{pmatrix}\]</span> מצאו נוסחה לה"ל <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^2\)</span> המקיימת <span class="math inline">\(T(v_k)=w_k\)</span> לכל <span class="math inline">\(1\leq k\leq 4\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הקבוצה <span class="math inline">\(\Set{v_1,v_2,v_3,v_4}\)</span> בהכרח ת"ל כי יש בה ארבעה וקטורים - יותר מהמימד של <span class="math inline">\(\mathbb{R}^3\)</span>. דירוג מראה כי מתקיים <span class="math display">\[.\begin{pmatrix}1\\1\\0\end{pmatrix}-\begin{pmatrix}0\\1\\0\end{pmatrix}+\begin{pmatrix}0\\1\\1\end{pmatrix}- \begin{pmatrix}1\\1\\1\end{pmatrix}=\begin{pmatrix}0\\0\\0\end{pmatrix}\]</span> נבדוק שאין סתירה בנתונים. נפעיל את <span class="math inline">\(T\)</span> על שני האגפים, נציב את הנתונים ונקבל <span class="math display">\[.\begin{pmatrix}2\\1\end{pmatrix}-\begin{pmatrix}2\\2\end{pmatrix}+\begin{pmatrix}1\\2\end{pmatrix}-\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}\]</span></p>
+<p>אם כן, אין סתירה וקיימת ויחידה <span class="math inline">\(T\)</span> כנ"ל לפי משפט ההגדרה. ניתן לדלל כל אחד מהוקטורים <span class="math inline">\(v_1,v_2,v_3,v_4\)</span> ולקבל בסיס ל- <span class="math inline">\(\mathbb{R}^3\)</span>. נבחר את <span class="math inline">\(B=\Set{v_1,v_2,v_3}\)</span>. כעת, יהי <span class="math inline">\(\begin{pmatrix}x\\y\\z\end{pmatrix}\in\mathbb{R}^3\)</span>. נחשב וקטור קוארדינטות ע"י דירוג המטריצה הבאה: <span class="math display">\[\left(\begin{array}{ccc|c}
+1 &amp; 0 &amp; 0 &amp; x \\
+1 &amp; 1 &amp; 1 &amp; y \\
+0 &amp; 0 &amp; 1 &amp; z
+\end{array}\right)\xrightarrow[R_2\to R_2-R_3]{R_2\to R_2-R_1}\left(\begin{array}{ccc|c}
+1 &amp; 0 &amp; 0 &amp; x \\
+0 &amp; 1 &amp; 0 &amp; y-x-z \\
+0 &amp; 0 &amp; 1 &amp; z
+\end{array}\right)\]</span> לכן, מתקיים <span class="math inline">\(\left[\begin{pmatrix}x\\y\\z\end{pmatrix}\right]_B=\begin{pmatrix}x\\y-x-z\\z\end{pmatrix}\)</span> ובאופן שקול <span class="math display">\[.\begin{pmatrix}x\\y\\z\end{pmatrix}=x\cdot\begin{pmatrix}1\\1\\0\end{pmatrix}+(y-x-z)\cdot\begin{pmatrix}0\\1\\0\end{pmatrix}+z\cdot\begin{pmatrix}0\\1\\1\end{pmatrix}\]</span> נפעיל את <span class="math inline">\(T\)</span> על שני האגפים, נציב את הנתונים ונקבל <span class="math display">\[.T\begin{pmatrix}x\\y\\z\end{pmatrix}=x\cdot\begin{pmatrix}2\\1\end{pmatrix}+(y-x-z)\cdot\begin{pmatrix}2\\2\end{pmatrix}+z\cdot\begin{pmatrix}1\\2\end{pmatrix}=\begin{pmatrix}2y-z\\2y-x\end{pmatrix}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="גרעין-ותמונה" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="גרעין-ותמונה"><span class="header-section-number">10.3</span> גרעין ותמונה</h2>
+<p>אנחנו רגילים לפתור ממ"ליות. עבור <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> הסתכלנו על ממ"ליות הומוגניות מהצורה <span class="math inline">\(Ax=\underline{0}\)</span>, וראינו כי קבוצת הפתרונות היא למעשה תת-מרחב של <span class="math inline">\(\mathbb{F}^n\)</span> שנקרא מרחב הפתרונות <span class="math inline">\(\mathop{\mathrm{N}}(A)\)</span>. לעומת זאת, גם ראינו כי קבוצת כל הוקטורים <span class="math inline">\(b\in\mathbb{F}^m\)</span> עבורם יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>, היא תת-מרחב של <span class="math inline">\(\mathbb{F}^m\)</span> שנקרא מרחב העמודות <span class="math inline">\(\mathop{\mathrm{Col}}(A)\)</span>.</p>
+<p>למעשה, מדובר במקרים פרטיים של שתי הגדרות יותר כלליות הקשורות להעתקה לינארית.</p>
+<div class="definition">
+<p>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל.</p>
+<ul>
+<li><p>הגרעין (kernel) של <span class="math inline">\(T\)</span> מוגדר להיות <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\Set{v\in V|T(v)=0_W}\subseteq V\]</span></p></li>
+<li><p>התמונה (image) של <span class="math inline">\(T\)</span> מוגדרת להיות <span class="math display">\[.\mathop{\mathrm{Im}}(T)=\Set{T(v)|v\in V}\subseteq W\]</span></p></li>
+</ul>
+</div>
+<div id="fig-KernelImage" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-KernelImage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/KernelImage.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KernelImage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.5: תיאור סכמטי (לא מדויק) של גרעין ותמונה - במציאות הם תת-מרחבים
+</figcaption>
+</figure>
+</div>
+<p>תמונה של פונקציה היא מושג כללי שנתקלים בו גם בקורסים מתמטיים אחרים (למשל חדו"א), ואפשר לחשוב עליה כעל קבוצת כל האיברים בטווח שיש להם מקורות בתחום (לפחות אחד לכל אחד). לעומת זאת, גרעין הוא קבוצת כל האיברים בתחום שנשלחים לוקטור האפס. בקורס שלנו גם לתמונה וגם לגרעין יש "אופי לינארי", כלומר שניהם הם תת-מרחבים.</p>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. אז מתקיים:</em></p>
+<ul>
+<li><p><em><span class="math inline">\(\mathop{\mathrm{Ker}}(T)\)</span> היא תת-מרחב של <span class="math inline">\(V\)</span>.</em></p></li>
+<li><p><em><span class="math inline">\(\mathop{\mathrm{Im}}(T)\)</span> היא תת-מרחב של <span class="math inline">\(W\)</span>.</em></p></li>
+</ul>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>ראשית, מתקיים <span class="math inline">\(0_V\in\mathop{\mathrm{Ker}}(T)\)</span> כי <span class="math inline">\(T(0_V)=0_W\)</span> לפי סעיף ב’ של טענה <a href="#prp-more-linearity">10.7</a>. זה גם מראה כי <span class="math inline">\(0_W\in\mathop{\mathrm{Im}}(T)\)</span>.</p>
+<p>לכל קבוצה נבדוק סגירות לחיבור וכפל בסקלר.</p>
+<ol type="1">
+<li><p>יהיו <span class="math inline">\(v_1,v_2\in \mathop{\mathrm{Ker}}(T), \alpha\in\mathbb{F}\)</span>. מתקיים <span class="math display">\[,T(v_1+v_2)=T(v_1)+T(v_2)=0_W+0_W=0_W\]</span> ולכן <span class="math inline">\(v_1+v_2\in\mathop{\mathrm{Ker}}(T)\)</span>. באופן דומה: <span class="math display">\[,T(\alpha v_1)=\alpha T(v_1)=\alpha\cdot 0_W=0_W\]</span> ולכן <span class="math inline">\(\alpha v_1\in\mathop{\mathrm{Ker}}(T)\)</span>.</p></li>
+<li><p>יהיו <span class="math inline">\(w_1,w_2\in \mathop{\mathrm{Im}}(T), \alpha\in\mathbb{F}\)</span>. קיימים <span class="math inline">\(u_1,u_2\in V\)</span> כך ש- <span class="math display">\[.w_1=T(u_1),\quad w_2=T(u_2)\]</span> נשים לב כי <span class="math display">\[,T(u_1+u_2)=T(u_1)+T(u_2)=w_1+w_2\]</span> ובפרט מתקיים <span class="math inline">\(w_1+w_2\in\mathop{\mathrm{Im}}(T)\)</span>. באופן דומה: <span class="math display">\[,T(\alpha u_1)=\alpha T(u_1)=\alpha w_1\]</span> ולכן <span class="math inline">\(\alpha w_1\in\mathop{\mathrm{Im}}(T)\)</span>.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>תהי <span class="math inline">\(T:\mathbb{M}_{2\times 2}(\mathbb{R})\to \mathbb{R}^2\)</span> הנתונה ע"י <span class="math display">\[.T\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}=\begin{pmatrix}
+a+b \\
+c+d
+\end{pmatrix}\]</span> לפי הגדרת הגרעין, מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Ker}}(T)&amp;=\Set{\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}|\begin{pmatrix}
+a+b \\
+c+d
+\end{pmatrix}=\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}}=\Set{\begin{pmatrix}
+-s &amp; s \\
+-t &amp; t
+\end{pmatrix}|s,t\in \mathbb{R}} \\
+&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}
+-1 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+-1 &amp; 1
+\end{pmatrix}\right)
+\end{aligned}\]</span> לפי הגדרת התמונה, מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Im}}(T)&amp;=\Set{T\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}|\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}\in\mathbb{M}_{2\times 2}(\mathbb{R})} \\
+&amp;=\Set{\begin{pmatrix}
+a+b \\
+c+d
+\end{pmatrix}|a,b,c,d\in\mathbb{R}}=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1\\0\end{pmatrix},\begin{pmatrix}0\\1\end{pmatrix}\right)=\mathbb{R}^2
+\end{aligned}\]</span></p>
+</div>
+<p>אחד היתרונות של ה"ל הוא שמספיק לדעת את ערכיה על קבוצה פורשת (בפרט בסיס) כדי לדעת את כל התמונה. זה לא בהכרח נכון לתמונה של פונקציה שאינה ה"ל (במקרה כזה יש לחקור את הפונקציה, לרוב ע"י כלים של חדו"א). הטענה הבאה מראה שהדרך לחישוב התמונה של ה"ל היא די פשוטה.</p>
+<div id="prp-image-span" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.4</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. אם <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>, אז מתקיים <span class="math display">\[.\mathop{\mathrm{Im}}(T)=\mathop{\mathrm{Span}}(T(v_1),...,T(v_k))\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי הנתון <span class="math inline">\(V=\mathop{\mathrm{Span}}(v_1,...,v_k)\)</span>, לכל <span class="math inline">\(v\in V\)</span> קיימים סקלרים <span class="math inline">\(\alpha_1,...,\alpha_k\in \mathbb{F}\)</span> כך ש- <span class="math display">\[.v=\alpha_1v_1+...+\alpha_kv_k\]</span> לכן, לפי טענה <a href="#prp-more-linearity">10.7</a> נובע כי:</p>
+<p><span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Im}}(T)&amp;=\Set{T(v)|v\in V}=\Set{T(\alpha_1v_1+...+\alpha_kv_k)|\alpha_1,...,\alpha_k\in \mathbb{F}}\\
+&amp;=\Set{\alpha_1T(v_1)+...+\alpha_kT(v_k)|\alpha_1,...,\alpha_k\in \mathbb{F}}=\mathop{\mathrm{Span}}(T(v_1),...,T(v_k))
+\end{aligned}\]</span>&nbsp;◻</p>
+</div>
+<p>כמובטח, יש קשר בין גרעין ותמונה למרחב הפתרונות ומרחב העמודות של מטריצה.</p>
+<div id="prp-matrix-map" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.5</strong></span> <em>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[\mathop{\mathrm{Ker}}(T_A)=\mathop{\mathrm{N}}(A)\subseteq \mathbb{F}^n\]</span></em></p></li>
+<li><p><em><span class="math display">\[\mathop{\mathrm{Im}}(T_A)=\mathop{\mathrm{Col}}(A)\subseteq \mathbb{F}^m\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נזכור כי <span class="math inline">\(T_A\)</span> היא ה"ל מ- <span class="math inline">\(\mathbb{F}^n\)</span> ל- <span class="math inline">\(\mathbb{F}^m\)</span>.</p>
+<ol type="1">
+<li><p>לפי הגדרת <span class="math inline">\(T_A\)</span>, לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math inline">\(T_A(v)=Av\)</span>. לכן: <span class="math display">\[v\in\mathop{\mathrm{Ker}}(T_A)\iff T_A(v)=0 \iff Av=0 \iff v\in \mathop{\mathrm{N}}(A)\]</span> מכאן נובע כי <span class="math inline">\(\mathop{\mathrm{Ker}}(T_A)=\mathop{\mathrm{N}}(A)\)</span>.</p></li>
+<li><p>לפי טענה <a href="#prp-image-span">10.23</a>, מהעובדה <span class="math inline">\(\mathbb{F}^n=\mathop{\mathrm{Span}}(e_1,...,e_n)\)</span> נובע כי <span class="math display">\[.\mathop{\mathrm{Im}}(T_A)=\mathop{\mathrm{Span}}(Ae_1,...,Ae_n)=\mathop{\mathrm{Col}}(A)\]</span></p>
+<p>השוויון האחרון נובע מכך שלכל <span class="math inline">\(1\leq j\leq n\)</span>, הוקטור <span class="math inline">\(Ae_j\)</span> הוא בדיוק העמודה ה- <span class="math inline">\(j\)</span> של <span class="math inline">\(A\)</span>.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div id="fig-KerIm" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-KerIm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/KerIm.html?embed=1" width="800" height="800">
+<figcaption>
+עבור ה”ל המתאימה למטריצה ריבועית, ניתן להציג את הגרעין (אדום) והתמונה (כחול) באותה מערכת צירים
+</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-KerIm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.6
+</figcaption>
+</figure>
+</div>
+<div class="exercise">
+<p>תהי <span class="math inline">\(T:\mathbb{R}^4\to\mathbb{R}^3\)</span> המוגדרת ע"י <span class="math display">\[.T\begin{pmatrix}x\\y\\z\\w\end{pmatrix}=\begin{pmatrix}x+y+z\\2y+z+w\\x+y+3z\end{pmatrix}\]</span> מצאו את <span class="math inline">\(\mathop{\mathrm{Ker}}(T),\mathop{\mathrm{Im}}(T)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>מתקיים <span class="math inline">\(T=T_A\)</span> כאשר <span class="math display">\[.A=\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 2 &amp; 2 &amp; 1 \\
+1 &amp; 1 &amp; 3 &amp; 0
+\end{pmatrix}\]</span> לפי טענה <a href="#prp-matrix-map">10.24</a> מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Ker}}(T)&amp;=\mathop{\mathrm{Ker}}(T_A)=\mathop{\mathrm{N}}(A)\\
+\mathop{\mathrm{Im}}(T)&amp;=\mathop{\mathrm{Im}}(T_A)=\mathop{\mathrm{Col}}(A)
+\end{aligned}\]</span> נדרג קנונית את <span class="math inline">\(A\)</span> ונקבל: <span class="math display">\[\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -\tfrac12 \\
+0 &amp; 1 &amp; 0 &amp; \tfrac12 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}\]</span> לכן, ע"י הצבת <span class="math inline">\(w=t\)</span> נקבל <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\mathop{\mathrm{N}}(A)=\Set{\left(\frac{t}{2},-\frac{t}{2},0,t\right)|t\in\mathbb{R}}=\mathop{\mathrm{Span}}((1,-1,0,2))\]</span> בנוסף, הדירוג מראה כי ניתן לקבל בסיס ל- <span class="math inline">\(\mathop{\mathrm{Col}}(A)\)</span> ע"י דילול העמודה הרביעית של <span class="math inline">\(A\)</span>. כך נקבל קבוצה של שלושה וקטורים בת"ל ב- <span class="math inline">\(\mathbb{R}^3\)</span>, ולכן לפי משפט "שלישי חינם" <span class="math display">\[.\mathop{\mathrm{Im}}(T)=\mathop{\mathrm{Col}}(A)=\mathbb{R}^3\]</span></p>
+</div>
+</div>
+</div>
+<p>כעת נראה שלכל מ"ו יש העתקה פשוטה שניתן להגדיר באופן טבעי.</p>
+<div class="definition">
+<p>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>. נגדיר את העתקת הזהות <span class="math inline">\(\mathop{\mathrm{Id}}_V:V\to V\)</span> ע"י <span class="math display">\[,\mathop{\mathrm{Id}}_V(v)=v\]</span> כלומר ההעתקה ששולחת כל וקטור לעצמו.</p>
+</div>
+<p>לכל שני מרחבים וקטוריים קיימת העתקה פשוטה ביניהם, שהגדרתה גם טבעית.</p>
+<div class="definition">
+<p>נגדיר את העתקת האפס <span class="math inline">\(\mathbf{0}_{V,W}:V\to W\)</span> ע"י <span class="math display">\[,\mathbf{0}_{V,W}(v)=0_W\]</span> כלומר ההעתקה הקבועה ששולחת כל וקטור ב- <span class="math inline">\(V\)</span> לוקטור האפס ב- <span class="math inline">\(W\)</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>עבור <span class="math inline">\(V=\mathbb{F}^n, W=\mathbb{F}^m\)</span> מתקיים <span class="math display">\[\mathop{\mathrm{Id}}_V=T_{I},\quad \mathbf{0}_{V,W}=T_{\mathbf{0}}\]</span> כאשר <span class="math inline">\(I=I_n,\,\mathbf{0}=\mathbf{0}_{m\times n}\)</span>. כלומר, העתקת הזהות מתאימה למטריצת הזהות בגודל המתאים, והעתקת האפס מתאימה למטריצת האפס בגודל המתאים.</p>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math inline">\(V,W\)</span> מרחבים וקטוריים מעל <span class="math inline">\(\mathbb{F}\)</span>.</p>
+<ol type="1">
+<li><p>הראו כי ההעתקות <span class="math inline">\(\mathbf{0}_{V,W},\mathop{\mathrm{Id}}_V\)</span> הן לינאריות.</p></li>
+<li><p>הראו כי מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Ker}}(\mathop{\mathrm{Id}}_V)      &amp;= \Set{0_V},      &amp; \quad \mathop{\mathrm{Im}}(\mathop{\mathrm{Id}}_V)      &amp;= V \\
+\mathop{\mathrm{Ker}}(\mathbf{0}_{V,W})   &amp;= V,            &amp; \quad \mathop{\mathrm{Im}}(\mathbf{0}_{V,W})   &amp;= \Set{0_W}
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>יהיו <span class="math inline">\(v_1,v_2\in V,\alpha\in\mathbb{F}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Id}}_V(v_1+v_2)&amp;=v_1+v_2=\mathop{\mathrm{Id}}(v_1)+\mathop{\mathrm{Id}}(v_2) \\
+\mathbf{0}_{V,W}(v_1+v_2)&amp;=0_W=0_W+0_W=\mathbf{0}_{V,W}(v_1)+\mathbf{0}_{V,W}(v_2)
+\end{aligned}\]</span></p>
+<p>בנוסף: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Id}}_V(\alpha v_1)&amp;=\alpha v_1=\alpha\mathop{\mathrm{Id}}(v_1) \\
+\mathbf{0}_{V,W}(\alpha v_1)&amp;=0_W=\alpha\cdot 0_W=\alpha\mathbf{0}_{V,W}(v_1)
+\end{aligned}\]</span></p></li>
+<li><p>עבור העתקת הזהות: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Ker}}(\mathop{\mathrm{Id}}_V)&amp;=\Set{v\in V|\mathop{\mathrm{Id}}_V(v)=0_V}=\Set{v\in V|v=0_V}=\Set{0_V} \\
+\mathop{\mathrm{Im}}(\mathop{\mathrm{Id}}_V)&amp;=\Set{\mathop{\mathrm{Id}}_V(v)|v\in V}=\Set{v|v\in V}=V
+\end{aligned}\]</span></p>
+<p>עבור העתקת האפס: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Ker}}(\mathbf{0}_{V,W})&amp;=\Set{v\in V|\mathbf{0}_{V,W}(v)=0_W}=\Set{v\in V|0_W=0_W}=V \\
+\mathop{\mathrm{Im}}(\mathbf{0}_{V,W})&amp;=\Set{\mathbf{0}_{V,W}(v)|v\in V}=\Set{0_W|v\in V}=\Set{0_W}
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>המושגים הכלליים של "פונקציה על" ו"פונקציה חד-חד-ערכית" תקפים גם לגבי העתקות לינאריות ויהיו רלוונטיים עבורנו. נגדיר אותם במדויק.</p>
+<div class="definition">
+<p>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל.</p>
+<ul>
+<li><p>נאמר כי <span class="math inline">\(T\)</span> על אם <span class="math inline">\(\mathop{\mathrm{Im}}(T)=W\)</span>.</p></li>
+<li><p>נאמר כי <span class="math inline">\(T\)</span> חד-חד-ערכית (חח״ע) אם לכל <span class="math inline">\(v_1,v_2\in V\)</span> מתקיים <span class="math display">\[.T(v_1)=T(v_2) \iff v_1=v_2\]</span></p></li>
+</ul>
+</div>
+<p>יש אפיון יותר פשוט להעתקה לינארית חח״ע:</p>
+<div id="prp-injective" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.6</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. אז מתקיים <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\Set{0_V} \iff \text{$T$ חח״ע}\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>הכיוון <span class="math inline">\(\impliedby\)</span>: נניח כי <span class="math inline">\(T\)</span> חח״ע. נזכור כי <span class="math inline">\(T(0_V)=0_W\)</span> לפי טענה <a href="#prp-more-linearity">10.7</a>. לכן: <span class="math display">\[,v\in\mathop{\mathrm{Ker}}(T) \iff T(v)=0_W \iff T(v)=T(0_V) \iff v=0_V\]</span> ומכאן <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>.</p>
+<p>הכיוון <span class="math inline">\(\implies\)</span>: נניח כי <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>. לכל <span class="math inline">\(v_1,v_2\in V\)</span> מתקיים <span class="math display">\[\begin{aligned}
+T(v_1)=T(v_2) &amp;\iff T(v_1)-T(v_2)=0_W \iff T(v_1-v_2)=0_W \\
+&amp;\iff v_1-v_2\in \mathop{\mathrm{Ker}}(T) \iff v_1-v_2=0_V \iff v_1=v_2
+\end{aligned}\]</span> קיבלנו כי <span class="math inline">\(T\)</span> חח״ע.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>האפיון הזה לא חל על פונקציות לא לינאריות. למשל, הפונקציה <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> המוגדרת ע"י <span class="math inline">\(f(x)=x^2\)</span> אינה חח״ע כי <span class="math inline">\(f(1)=f(-1)\)</span>. למרות זאת, קבוצת כל הפתרונות של המשוואה <span class="math inline">\(f(x)=0\)</span> היא בדיוק <span class="math inline">\(\Set{0}\)</span>. אם בקורס כמו חדו"א נדרשת חקירה (עם נגזרת) כדי להראות שפונקציה היא חח״ע, באלגברה לינארית הכלי הוא לרוב פתרון ממ"ל הומוגנית או שימוש בשיקולי מימד כדי להראות שיש פתרון טריוויאלי בלבד.</p>
+</div>
+<div id="prp-matrix-map-2" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.7</strong></span> <em>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span> מקיימת:</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[\begin{aligned}
+\mathop{\mathrm{N}}(A)=\Set{\underline{0}} &amp;\iff \text{$T_A$ חח״ע} \\
+\mathop{\mathrm{Col}}(A)=\mathbb{F}^m &amp;\iff \text{$T_A$ על}
+\end{aligned}\]</span></em></p></li>
+<li><p><em>אם <span class="math inline">\(n=m\)</span>, אז <span class="math display">\[.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>לפי טענות <a href="#prp-matrix-map">10.24</a> ו- <a href="#prp-injective">10.31</a> מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{N}}(A)=\Set{\underline{0}} &amp;\iff \mathop{\mathrm{Ker}}(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע} \\
+\mathop{\mathrm{Col}}(A)=\mathbb{F}^m &amp;\iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על}
+\end{aligned}\]</span></p></li>
+<li><p>עבור <span class="math inline">\(n=m\)</span> ידוע כי (לפי משפט <a href="./chapter_3.html#thm-invertible2">??</a>) <span class="math display">\[,\mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \text{$A$ הפיכה}\]</span> ולכן במקרה זה מתקיים <span class="math display">\[.\text{$T_A$ חח״ע} \iff \text{$T_A$ על} \iff \text{$A$ הפיכה}\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+
+</div>
+<p>המשפט הבא נקרא משפט המימדים להעתקות לינאריות, והוא מבסס קשר בין המימדים של גרעין ותמונה.</p>
+<div id="thm-ker-image" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.2</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. אז מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathop{\mathrm{Im}}(T))=\dim(V)\]</span></em></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>משפט הדרגה (סעיף ב’ של משפט <a href="./chapter_5.html#thm-rank-nullity">8.99</a>) הוא מקרה פרטי של משפט זה. נשים לב כי לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> מתקיים <span class="math display">\[,\mathop{\mathrm{Ker}}(T_A)=\mathop{\mathrm{N}}(A),\quad \mathop{\mathrm{Im}}(T_A)=\mathop{\mathrm{Col}}(A)\]</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T_A))=\dim(\mathop{\mathrm{N}}(A)),\quad \dim(\mathop{\mathrm{Im}}(T_A))=\dim(\mathop{\mathrm{Col}}(A))=\mathop{\mathrm{rank}}(A)\]</span> בנוסף, התחום של <span class="math inline">\(T_A\)</span> הוא <span class="math inline">\(\mathbb{F}^n\)</span>. מכאן, לפי משפט המימדים עבור העתקות לינאריות נקבל <span class="math display">\[.\dim(\mathop{\mathrm{N}}(A))+\dim(\mathop{\mathrm{Col}}(A))=\dim(\mathbb{F}^n)=n\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(n=\dim(V),k=\dim(\mathop{\mathrm{Ker}}(T))\)</span>.</p>
+<p>ל- <span class="math inline">\(\mathop{\mathrm{Ker}}(T)\)</span> קיים בסיס <span class="math inline">\(B_0=\Set{v_1,...,v_k}\)</span>. נשלים אותו לבסיס ל- <span class="math inline">\(V\)</span> ע"י הוספת <span class="math inline">\(n-k\)</span> וקטורים, ונקבל: <span class="math display">\[B_V=\Set{v_1,...,v_k,v_{k+1},...,v_n}\]</span> נשים לב כי <span class="math display">\[,\mathop{\mathrm{Im}}(T)=\mathop{\mathrm{Span}}(T(v_1),...,T(v_n))=\mathop{\mathrm{Span}}(T(v_{k+1}),...,T(v_n))\]</span> כאשר השוויון האחרון נובע מכך ש- <span class="math inline">\(T(v_j)=0_W\)</span> לכל <span class="math inline">\(1\leq j\leq k\)</span> לפי ההנחה על <span class="math inline">\(B_0\)</span>. אם נראה כי <span class="math inline">\(\Set{T(v_{k+1}),...,T(v_n)}\)</span> היא קבוצה בת"ל, נקבל שהיא בסיס ל- <span class="math inline">\(\mathop{\mathrm{Im}}(T)\)</span> ומכאן: <span class="math display">\[\dim(\mathop{\mathrm{Im}}(T))=n-k=\dim(V)-\dim(\mathop{\mathrm{Ker}}(T))\]</span> ובאופן שקול: <span class="math display">\[\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathop{\mathrm{Im}}(T))=\dim(V)\]</span></p>
+<p>ובכן, נניח שקיימים <span class="math inline">\(\alpha_{k+1},...,\alpha_n\in\mathbb{F}\)</span> כך ש- <span class="math display">\[.\alpha_{k+1}T(v_{k+1})+...+\alpha_nT(v_n)=0_W\]</span> מלינאריות נובע כי <span class="math display">\[,T(\alpha_{k+1}v_{k+1}+...+\alpha_nv_n)=0_W\]</span> ולכן <span class="math display">\[.\alpha_{k+1}v_{k+1}+...+\alpha_nv_n\in\mathop{\mathrm{Ker}}(T)\]</span> נסמן <span class="math inline">\(v=\alpha_{k+1}v_{k+1}+...+\alpha_nv_n\)</span>. כעת, <span class="math inline">\(B_0=\Set{v_1,...,v_k}\)</span> פורשת את <span class="math inline">\(\mathop{\mathrm{Ker}}(T)\)</span>. בפרט, קיימים <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{F}\)</span> כך ש- <span class="math inline">\(v=\alpha_1v_1+...+\alpha_kv_k\)</span>. נציב את הביטוי המקורי ונקבל <span class="math display">\[.\alpha_{k+1}v_{k+1}+...+\alpha_nv_n=\alpha_1v_1+...+\alpha_kv_k\]</span> ובאופן שקול: <span class="math display">\[-\alpha_1v_1+...-\alpha_kv_k+\alpha_{k+1}v_{k+1}+...+\alpha_nv_n=0_W\]</span> <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בת"ל, ולכן בהכרח כל הסקלרים לעיל מתאפסים. בפרט, קיבלנו <span class="math display">\[\alpha_{k+1}=...=\alpha_n=0\]</span> כנדרש. אם כן, <span class="math inline">\(\Set{T(v_{k+1}),...,T(v_n)}\)</span> בת"ל וסיימנו את הוכחת המשפט.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>מהמשפט נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(V)-\dim(\mathop{\mathrm{Ker}}(T))\leq\dim(V)\]</span> זהו חסם לא טריוויאלי. כבר היו לנו חסמים טריוויאליים: <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))\leq\dim(V)\)</span> וגם <span class="math inline">\(\dim(\mathop{\mathrm{Im}}(T))\leq\dim(W)\)</span> כי <span class="math inline">\(\mathop{\mathrm{Ker}}(T)\subseteq V,\mathop{\mathrm{Im}}(T)\subseteq W\)</span>.</p>
+<p>יש גם דרך אינטואיטיבית לחשוב על אי-השוויון <span class="math inline">\(\dim(\mathop{\mathrm{Im}}(T))\leq\dim(V)\)</span>: מימד התמונה לא יכול לעלות על מימד התחום כי <span class="math inline">\(T\)</span> שולחת כל וקטור בתחום לוקטור יחיד בתמונה. למשל, ישר לא יכול להפוך למישור באופן כזה.</p>
+</div>
+<div class="exercise">
+<p>הוכיחו או הפריכו:</p>
+<ol type="1">
+<li><p>קיימת ה"ל <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^4\)</span> שהיא על.</p></li>
+<li><p>קיימת ה"ל <span class="math inline">\(T:\mathbb{R}^4\to\mathbb{R}^3\)</span> שהיא חח״ע.</p></li>
+<li><p><span class="math inline">\(T:\mathbb{M}_{2\times 3}(\mathbb{C})\to\mathbb{C}^6\)</span> היא על אם ורק אם היא חח״ע.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נניח בשלילה שקיימת <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{R}^4\)</span> שהיא על. כלומר מתקיים <span class="math inline">\(\mathop{\mathrm{Im}}(T)=\mathbb{R}^4\)</span>, ולפי משפט המימדים לה"ל נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathbb{R}^4)=\dim(\mathbb{R}^3)\]</span> מכאן <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))=-1\)</span> וזו סתירה. לסיכום, הראינו כי לא קיימת <span class="math inline">\(T\)</span> כזו.</p></li>
+<li><p>נניח שקיימת <span class="math inline">\(T:\mathbb{R}^4\to\mathbb{R}^3\)</span> שהיא חח״ע. כלומר מתקיים <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}}\)</span>, ולפי משפט המימדים לה"ל נובע כי <span class="math display">\[.0+\dim(\mathop{\mathrm{Im}}(T))=\dim(\mathbb{R}^4)\]</span> קיבלנו <span class="math inline">\(\dim(\mathop{\mathrm{Im}}(T))=4\)</span>, אבל מתקיים <span class="math inline">\(\mathop{\mathrm{Im}}(T)\subseteq\mathbb{R}^3\)</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))\leq\dim(\mathbb{R}^3)=3\]</span> זו סתירה, ומכאן לא קיימת ה"ל כזו.</p></li>
+<li><p>הטענה נכונה. נוכיח זאת: תהי <span class="math inline">\(T:\mathbb{M}_{2\times 3}(\mathbb{C})\to\mathbb{C}^6\)</span>. נשים לב כי <span class="math display">\[.\dim(\mathbb{M}_{2\times 3}(\mathbb{C}))=6=\dim(\mathbb{C}^6)\]</span> בנוסף, ממשפט המימדים לה"ל נובע כי <span class="math display">\[,\dim(\mathop{\mathrm{Ker}}(T))+\dim(\mathop{\mathrm{Im}}(T))=6\]</span> ולכן <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0 \iff \dim(\mathop{\mathrm{Im}}(T))=6\]</span> ובאופן שקול (לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">??</a>): <span class="math display">\[.\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}} \iff \mathop{\mathrm{Im}}(T)=\mathbb{C}^6\]</span> לבסוף, לפי טענה <a href="#prp-injective">10.31</a> אפשר להסיק כי <span class="math inline">\(T\)</span> היא על אם ורק אם היא חח״ע.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>הטענה הבאה מכלילה את התרגיל האחרון:</p>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל.</em></p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">\(T\)</span> על, אז <span class="math display">\[.\dim(W)\leq\dim(V)\]</span></em></p></li>
+<li><p><em>אם <span class="math inline">\(T\)</span> חח״ע, אז <span class="math display">\[.\dim(W)\geq\dim(V)\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>לפי הנתון, מתקיים <span class="math inline">\(\mathop{\mathrm{Im}}(T)=W\)</span>. לכן, לפי משפט המימדים לה"ל נובע כי <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(W)=\dim(V)\]</span> מתקיים <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))\geq 0\)</span>, ולכן <span class="math display">\[.\dim(W)\leq\dim(V)\]</span></p></li>
+<li><p>הפעם מתקיים <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>. לפי המשפט המימדים נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(V)\]</span> מצד שני, <span class="math inline">\(\mathop{\mathrm{Im}}(T)\subseteq W\)</span> ולכן מתקיים <span class="math inline">\(\dim(\mathop{\mathrm{Im}}(T))\leq \dim(W)\)</span>. בסך הכל: <span class="math display">\[\dim(V)\leq\dim(W)\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>יש אנלוגיה בין הטענה לעיל לבין טענה יותר אינטואיטיבית לגבי פונקציה <span class="math inline">\(f:A\to B\)</span> כאשר <span class="math inline">\(A,B\)</span> קבוצות סופיות. נסמן ב- <span class="math inline">\(|A|,|B|\)</span> את הגדלים שלהן (מספרי האיברים). אם <span class="math inline">\(f\)</span> חח"ע, אז בהכרח <span class="math inline">\(|A|\leq|B|\)</span> כי כל איבר <span class="math inline">\(a\in A\)</span> מתאים לאיבר יחיד ב- <span class="math inline">\(B\)</span>. לעומת זאת, אם <span class="math inline">\(f\)</span> על, אז בהכרח <span class="math inline">\(|B|\leq|A|\)</span> כי כל איבר <span class="math inline">\(b\in B\)</span> מתאים לאיבר אחד לפחות ב- <span class="math inline">\(A\)</span>.</p>
+</div>
+<p>אנחנו מוכנים להוכיח עוד משפט שראוי לשם "שלישי חינם". הפעם ההקשר הוא העתקות לינאריות.</p>
+<div id="thm-3-for-2-iso" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.3</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. כל שניים מהתנאים הבאים גורר את התנאי השלישי:</em></p>
+<ol type="1">
+<li><p><em><span class="math inline">\(T\)</span> חח״ע.</em></p></li>
+<li><p><em><span class="math inline">\(T\)</span> על.</em></p></li>
+<li><p><em><span class="math inline">\(\dim(V)=\dim(W)\)</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\((\text{ג})\impliedby(\text{ב})+(\text{א})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0,\quad \dim(\mathop{\mathrm{Im}}(T))=\dim(W)\]</span> לאחר הצבה בנוסחה של משפט המימדים לה"ל, נקבל <span class="math display">\[.\dim(W)=\dim(V)\]</span></p>
+<p><span class="math inline">\((\text{ב})\impliedby(\text{ג})+(\text{א})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))=0,\quad \dim(V)=\dim(W)\]</span> לאחר הצבה בנוסחה של משפט המימדים לה"ל, נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(W)\]</span> לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">??</a>, נובע כי <span class="math inline">\(\mathop{\mathrm{Im}}(T)=W\)</span>. כלומר <span class="math inline">\(T\)</span> היא על.</p>
+<p><span class="math inline">\((\text{א})\impliedby(\text{ג})+(\text{ב})\)</span>: לפי ההנחות מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Im}}(T))=\dim(W),\quad \dim(V)=\dim(W)\]</span> לאחר הצבה בנוסחה, נקבל <span class="math display">\[.\dim(\mathop{\mathrm{Ker}}(T))+\dim(W)=\dim(W)\]</span> נובע כי <span class="math inline">\(\dim(\mathop{\mathrm{Ker}}(T))=0\)</span>, ולכן <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>. פירוש הדבר ש- <span class="math inline">\(T\)</span> חח״ע לפי טענה <a href="#prp-injective">10.31</a>.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>מה הקשר של המשפט לעיל לבין משפט "שלישי חינם" לקבוצת וקטורים (משפט <a href="./chapter_5.html#thm-3-for-2">??</a>)? המשפט הישן הוא מקרה פרטי של המשפט החדש. נראה זאת: תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נסמן את עמודותיה ב- <span class="math inline">\(v_1,...,v_n\)</span>, ונשים לב כי <span class="math display">\[.\text{$v_1,...,v_n$ בת"ל}\iff \mathop{\mathrm{N}}(A)=\Set{\underline{0}} \iff \mathop{\mathrm{Ker}}(T_A)=\Set{\underline{0}} \iff \text{$T_A$ חח״ע}\]</span> בנוסף: <span class="math display">\[.\text{$v_1,...,v_n$ פורשים את $\mathbb{F}^m$}\iff \mathop{\mathrm{Col}}(A)=\mathbb{F}^m \iff \mathop{\mathrm{Im}}(T_A)=\mathbb{F}^m \iff \text{$T_A$ על}\]</span></p>
+<p>לאור זאת ולפי המשפט החדש, כל שניים מהתנאים הבאים גוררים את התנאי השלישי:</p>
+<ol type="1">
+<li><p><span class="math inline">\(v_1,...,v_n\)</span> בת"ל.</p></li>
+<li><p><span class="math inline">\(\mathop{\mathrm{Span}}(v_1,...,v_n)=\mathbb{F}^m\)</span></p></li>
+<li><p><span class="math inline">\(n=m\)</span></p></li>
+</ol>
+<p>זהו בדיוק משפט "שלישי חינם" המקורי לקבוצת וקטורים.</p>
+</div>
+</section>
+<section id="פעולות-על-העתקות-לינאריות" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="פעולות-על-העתקות-לינאריות"><span class="header-section-number">10.4</span> פעולות על העתקות לינאריות</h2>
+<p>הפעולות הבסיסיות באלגברה לינארית הן חיבור וכפל בסקלר. נראה שניתן להגדיר פעולות דומות על העתקות לינאריות.</p>
+<div class="definition">
+<p>יהיו <span class="math inline">\(T,S:V\to W\)</span> ה"ל ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>.</p>
+<ul>
+<li><p>חיבור ה"ל: העתקה <span class="math inline">\(T+S:V\to W\)</span> מוגדרת ע"י <span class="math display">\[.(T+S)(v)=T(v)+S(v)\]</span></p></li>
+<li><p>כפל של ה"ל בסקלר: ההעתקה <span class="math inline">\(\alpha\cdot T:V\to W\)</span> מוגדרת ע"י <span class="math display">\[.(\alpha\cdot T)(v)=\alpha\cdot T(v)\]</span></p></li>
+</ul>
+</div>
+<div class="example">
+<p>יהיו <span class="math inline">\(T,S:\mathbb{M}_{2\times 2}(\mathbb{R})\to \mathbb{M}_{2\times 2}(\mathbb{R})\)</span> שמוגדרות ע"י <span class="math display">\[.T(A)=A^t,\quad S\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}=\begin{pmatrix}c &amp; d\\a &amp; b\end{pmatrix}\]</span> מתקיים: <span class="math display">\[\begin{aligned}
+(T+S)\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}&amp;=T\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}+S\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}=\begin{pmatrix}a &amp; c\\b &amp; d\end{pmatrix}+\begin{pmatrix}c &amp; d\\a &amp; b\end{pmatrix}\\
+&amp;=\begin{pmatrix}a+c &amp; c+d\\a+b &amp; b+d\end{pmatrix}
+\end{aligned}\]</span> לכל <span class="math inline">\(\alpha\in\mathbb{R}\)</span> מתקיים <span class="math display">\[.(\alpha\cdot T)(A)=(\alpha A)^t=\alpha A^t\]</span> ובאופן מפורש יותר: <span class="math display">\[(\alpha\cdot T)\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}=\alpha\begin{pmatrix}a &amp;c\\b &amp; d\end{pmatrix}=\begin{pmatrix}\alpha a &amp; \alpha c\\\alpha b &amp; \alpha d\end{pmatrix}\]</span> באופן דומה: <span class="math display">\[(\alpha\cdot S)\begin{pmatrix}a &amp; b\\c &amp; d\end{pmatrix}=\alpha\begin{pmatrix}c &amp; d\\a &amp; b\end{pmatrix}=\begin{pmatrix}\alpha c &amp; \alpha d\\\alpha a &amp; \alpha b\end{pmatrix}\]</span></p>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math inline">\(T,S:V\to W\)</span> ה"ל ויהי <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. הוכיחו כי <span class="math inline">\(T+S,\alpha\cdot T\)</span> הן העתקות לינאריות.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>יהיו <span class="math inline">\(v_1,v_2\in V, \beta\in \mathbb{F}\)</span>. נבדוק תחילה את תכונת החיבור של הלינאריות עבור <span class="math inline">\(T+S\)</span>. נשתמש בהגדרה, בלינאריות של <span class="math inline">\(T,S\)</span> ולבסוף בחוק החילוף: <span class="math display">\[\begin{aligned}
+(T+S)(v_1+v_2)&amp;=T(v_1+v_2)+S(v_1+v_2)=T(v_1)+T(v_2)+S(v_1)+S(v_2) \\
+&amp;=T(v_1)+S(v_1)+T(v_2)+S(v_2)=(T+S)(v_1)+(T+S)(v_2)
+\end{aligned}\]</span> נעבור לכפל בסקלר: <span class="math display">\[\begin{aligned}
+(T+S)(\beta\cdot v_1)&amp;=T(\beta\cdot v_1)+S(\beta\cdot v_1)=\beta\cdot T(v_1)+\beta\cdot S(v_1)\\
+&amp;=\beta(T(v_1)+S(v_1))=\beta (T+S)(v_1)
+\end{aligned}\]</span></p>
+<p>שתי הבדיקות עבור <span class="math inline">\(\alpha\cdot T\)</span> דומות. עבור חיבור נקבל: <span class="math display">\[\begin{aligned}
+(\alpha\cdot T)(v_1+v_2)&amp;=\alpha\cdot T(v_1+v_2)=\alpha(T(v_1)+T(v_2)) \\
+&amp;=\alpha\cdot T(v_1)+\alpha\cdot T(v_2)=(\alpha\cdot T)(v_1)+(\alpha\cdot T)(v_2)
+\end{aligned}\]</span> ועבור כפל בסקלר: <span class="math display">\[\begin{aligned}
+(\alpha\cdot T)(\beta v_1)&amp;=\alpha\cdot T(\beta v_1)=\alpha(\beta\cdot T(v_1)) \\
+&amp;=(\alpha\beta)T(v_1)=\beta(\alpha\cdot T(v_1))=\beta(\alpha\cdot T)(v_1)
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>מהו הקשר לפעולות החיבור והכפל בסקלר על מטריצות? נסתכל על המקרה הפרטי של <span class="math inline">\(T_A,T_B:\mathbb{F}^n\to\mathbb{F}^m\)</span> המוגדרות ע"י מטריצות <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. לכל <span class="math inline">\(v\in\mathbb{F}^n\)</span> מתקיים <span class="math display">\[.(T_A+T_B)(v)=T_A(v)+T_B(v)=Av+Bv=(A+B)v=T_{A+B}(v)\]</span> או באופן תמציתי: <span class="math display">\[T_A+T_B=T_{A+B}\]</span> באופן דומה, לכל <span class="math inline">\(v\in\mathbb{F}^n\)</span> ולכל <span class="math inline">\(\alpha\in \mathbb{F}\)</span> מתקיים <span class="math display">\[.(\alpha\cdot T_A)(v)=\alpha\cdot T_A(v)=\alpha\cdot Av=(\alpha\cdot A)v=T_{\alpha\cdot A}(v)\]</span> ובקצרה: <span class="math display">\[\alpha\cdot T_A=T_{\alpha\cdot A}\]</span> לסיכום, הראינו שבמקרה הפרטי לעיל יש התאמה בין הפעולות על העתקות לינאריות לפעולות המתאימות על מטריצות. בקרוב נראה איך ניתן לייצג העתקה לינארית כללית ע"י מטריצה, ונוכיח את הקשר הכללי בין העתקות לינאריות, מטריצות והפעולות עליהן.</p>
+</div>
+<p>בינתיים, נגדיר עוד פעולה שמוכרת מעולם הפונקציות:</p>
+<div class="definition">
+<p>יהיו <span class="math inline">\(T:V\to W\)</span> ו- <span class="math inline">\(S:W\to U\)</span> העתקות לינאריות. אז ההרכבה <span class="math inline">\(S\circ T:V\to U\)</span> מוגדרת ע"י <span class="math display">\[.(S\circ T)(v)=S(T(v))\]</span></p>
+</div>
+<div id="fig-Composition" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Composition.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.7: הרכבה כפעולה דו-שלבית
+</figcaption>
+</figure>
+</div>
+<div id="exm-composition" class="example theorem">
+<p><span class="theorem-title"><strong>Example 10.2</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>יהיו <span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}^2\)</span> ו- <span class="math inline">\(S:\mathbb{R}^2\to \mathbb{R}^3\)</span> המוגדרות ע"י <span class="math display">\[.S\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}2x\\3y\\4x-y\end{pmatrix},\quad T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x+y\\x-y\end{pmatrix}\]</span> ההרכבה <span class="math inline">\(S\circ T:\mathbb{R}^2\to \mathbb{R}^3\)</span> מוגדרת ומתקיים <span class="math display">\[\begin{aligned}
+(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}&amp;=S\left(T\begin{pmatrix}x\\y\end{pmatrix}\right)=S\begin{pmatrix}x+y\\x-y\end{pmatrix}=\begin{pmatrix}2(x+y)\\3(x-y)\\4(x+y)-(x-y)\end{pmatrix} \\
+&amp;=\begin{pmatrix}2x+2y\\3x-3y\\3x+5y\end{pmatrix}
+\end{aligned}\]</span> שימו לב שההרכבה <span class="math inline">\(T\circ S\)</span> לא מוגדרת במקרה זה, כי הטווח <span class="math inline">\(\mathbb{R}^3\)</span> של <span class="math inline">\(S\)</span> אינו מוכל בתחום <span class="math inline">\(\mathbb{R}^2\)</span> של <span class="math inline">\(T\)</span>.</p></li>
+<li><p>יהיו <span class="math inline">\(T:\mathbb{R}^3\to\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> ו- <span class="math inline">\(S:\mathbb{M}_{2\times 2}(\mathbb{R})\to \mathbb{R}^4\)</span> המוגדרות ע"י <span class="math display">\[.S\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}=\begin{pmatrix}a\\a+b\\b+c\\c+d\end{pmatrix},\quad T\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}
+x &amp; x+z \\
+y+z &amp; y
+\end{pmatrix}\]</span> ההרכבה <span class="math inline">\(S\circ T:\mathbb{R}^3\to\mathbb{R}^4\)</span> מוגדרת ומתקיים <span class="math display">\[\begin{aligned}
+(S\circ T)\begin{pmatrix}x\\y\\z\end{pmatrix}&amp;=S\left(T\begin{pmatrix}x\\y\\z\end{pmatrix}\right)=S\begin{pmatrix}
+x &amp; x+z \\
+y+z &amp; y
+\end{pmatrix}=\begin{pmatrix}x\\x+(x+z)\\(x+z)+(y+z)\\(y+z)+y\end{pmatrix} \\
+&amp;=\begin{pmatrix}x\\2x+z\\x+y+2z\\2y+z\end{pmatrix}
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math inline">\(T:V\to W\)</span> ו- <span class="math inline">\(S:W\to U\)</span> ה"ל. הוכיחו כי <span class="math inline">\(S\circ T\)</span> היא ה"ל.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>יהיו <span class="math inline">\(v_1,v_2\in V\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. נשתמש בלינאריות של <span class="math inline">\(T,S\)</span> ונקבל: <span class="math display">\[\begin{aligned}
+(S\circ T)(v_1+v_2)&amp;=S(T(v_1+v_2))=S(T(v_1)+T(v_2))=S(T(v_1))+S(T(v_2)) \\
+&amp;=(S\circ T)(v_1)+(S\circ T)(v_2)
+\end{aligned}\]</span> באופן דומה: <span class="math display">\[(S\circ T)(\alpha v_1)=S(T(\alpha v_1))=S(\alpha T(v_1))=\alpha S(T(v_1))=\alpha (S\circ T)(v_1)\]</span></p>
+</div>
+</div>
+</div>
+<p>כעת נראה שבמקרה הפרטי של העתקות לינאריות המוגדרות ע"י מטריצות, ההרכבה (אם היא מוגדרת) מתאימה לכפל מטריצות.</p>
+<div id="prp-homeo" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.8</strong></span> <em>יהיו <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F}),B\in\mathbb{M}_{n\times k}(\mathbb{F})\)</span>. עבור <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m,T_B:\mathbb{F}^k\to\mathbb{F}^n\)</span> ההרכבה <span class="math inline">\(T_B\circ T_A:\mathbb{F}^k\to\mathbb{F}^m\)</span> מוגדרת ומתקיים <span class="math display">\[.T_A\circ T_B=T_{AB}\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לכל <span class="math inline">\(v\in\mathbb{F}^k\)</span> מתקיים <span class="math display">\[.(T_A\circ T_B)(v)=T_A(T_B(v))=T_A(Bv)=A(Bv)=(AB)v=T_{AB}(v)\]</span> ולכן <span class="math display">\[.T_A\circ T_B=T_{AB}\]</span>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>נחזור לסעיף א’ בדוגמה <a href="#exm-composition">10.48</a>. שם מתקיים <span class="math inline">\(S=T_A,T=T_B\)</span> כאשר <span class="math display">\[.A=\begin{pmatrix}
+2 &amp; 0 \\
+0 &amp; 3 \\
+4 &amp; -1
+\end{pmatrix},\quad B=\begin{pmatrix}
+1 &amp; 1 \\
+1 &amp; -1
+\end{pmatrix}\]</span> מתקיים <span class="math display">\[.AB=\begin{pmatrix}
+2 &amp; 2 \\
+3 &amp; -3 \\
+3 &amp; 5
+\end{pmatrix}\]</span> זו דרך נוספת לראות כי מתקיים <span class="math display">\[.(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}=(T_A\circ T_B)\begin{pmatrix}x\\y\end{pmatrix}=T_{AB}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+2 &amp; 2 \\
+3 &amp; -3 \\
+3 &amp; 5
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}2x+2y\\3x-3y\\3x+5y\end{pmatrix}\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>יש אנלוגיה בין הרכבה של העתקות לינאריות לבין כפל מטריצות. בפרט, אין חוק חילוף להרכבה גם אם לשתי ההרכבות יש אותו תחום וטווח. כלומר, עבור ה"ל <span class="math inline">\(S,T:V\to V\)</span> לא בהכרח מתקיים <span class="math inline">\(T\circ S=S\circ T\)</span>. בתור דוגמה נגדית ניקח <span class="math inline">\(V=\mathbb{R}^2\)</span> עם <span class="math display">\[.T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}y\\x\end{pmatrix},\quad S\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x\\0\end{pmatrix}\]</span> שימו לב כי <span class="math inline">\(T\)</span> היא שיקוף ביחס לישר <span class="math inline">\(y=x\)</span>, ואילו <span class="math inline">\(S\)</span> היא הטלה על ציר <span class="math inline">\(x\)</span>. נחשב את ההרכבות ונקבל: <span class="math display">\[\begin{aligned}
+(T\circ S)\begin{pmatrix}x\\y\end{pmatrix}&amp;=T\begin{pmatrix}x\\0\end{pmatrix}=\begin{pmatrix}0\\x\end{pmatrix} \\
+(S\circ T)\begin{pmatrix}x\\y\end{pmatrix}&amp;=S\begin{pmatrix}y\\x\end{pmatrix}=\begin{pmatrix}y\\0\end{pmatrix}
+\end{aligned}\]</span> אם כן, מתקיים <span class="math inline">\(T\circ S\neq S\circ T\)</span>.</p>
+<div id="fig-ReflectProject" class="figure quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ReflectProject-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="simulations/Composition.html?embed=1" width="800" height="800">
+<figcaption>
+בכל צד יש אותו וקטור קלט כחול <span class="math inline"><em>v</em></span>, אחריו וקטור ירוק (פלט ראשון) ולבסוף וקטור אדום (הפלט של ההרכבה הרלוונטית)
+</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-ReflectProject-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.8
+</figcaption>
+</figure>
+</div>
+</div>
+<p>התרגיל הבא מראה קשר בין הרכבה לגרעין ותמונה.</p>
+<div id="exr-composition" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 10.1</strong></span> יהיו <span class="math inline">\(T:V\to W\)</span> ו- <span class="math inline">\(S:W\to U\)</span> ה"ל. הוכיחו כי:</p>
+<ol type="1">
+<li><p><span class="math display">\[\mathop{\mathrm{Ker}}(T)\subseteq \mathop{\mathrm{Ker}}(S\circ T)\]</span></p></li>
+<li><p><span class="math display">\[\mathop{\mathrm{Im}}(S\circ T)\subseteq \mathop{\mathrm{Im}}(S)\]</span></p></li>
+<li><p>אם <span class="math inline">\(S\circ T\)</span> חח״ע, אז <span class="math inline">\(T\)</span> חח״ע.</p></li>
+<li><p>אם <span class="math inline">\(S\circ T\)</span> על, אז <span class="math inline">\(S\)</span> על.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>יהי <span class="math inline">\(v\in\mathop{\mathrm{Ker}}(T)\)</span>. לפי ההגדרות וטענה <a href="#prp-more-linearity">10.7</a>, מתקיים <span class="math display">\[.(S\circ T)(v)=S(T(v))=S(0_W)=0_U\]</span> כלומר <span class="math inline">\(v\in\mathop{\mathrm{Ker}}(S\circ T)\)</span>, ולכן <span class="math display">\[.\mathop{\mathrm{Ker}}(T)\subseteq \mathop{\mathrm{Ker}}(S\circ T)\]</span></p></li>
+<li><p>יהי <span class="math inline">\(w\in\mathop{\mathrm{Im}}(S\circ T)\)</span>. לפי ההגדרה, קיים <span class="math inline">\(v\in V\)</span> כך ש- <span class="math display">\[.w=(S\circ T)(v)=S(T(v))\]</span> זה מראה כי <span class="math inline">\(S\)</span> שולחת את <span class="math inline">\(T(v)\)</span> ל- <span class="math inline">\(w\)</span>, ולכן <span class="math inline">\(w\in\mathop{\mathrm{Im}}(S)\)</span>. מכאן נקבל <span class="math display">\[.\mathop{\mathrm{Im}}(S\circ T)\subseteq \mathop{\mathrm{Im}}(S)\]</span></p></li>
+<li><p>נניח כי <span class="math inline">\(S\circ T\)</span> חח״ע. לפי טענה <a href="#prp-injective">10.31</a> מתקיים <span class="math inline">\(\mathop{\mathrm{Ker}}(S\circ T)=\Set{0_V}\)</span>, ולפי סעיף א’ נובע כי <span class="math display">\[.\Set{0_V}\subseteq \mathop{\mathrm{Ker}}(T)\subseteq \mathop{\mathrm{Ker}}(S\circ T)=\Set{0_V}\]</span> מכאן <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_V}\)</span>, ושוב לפי הטענה (בכיוון ההפוך שלה) נובע כי <span class="math inline">\(T\)</span> חח״ע.</p></li>
+<li><p>נניח כי <span class="math inline">\(S\circ T\)</span> על, כלומר <span class="math inline">\(\mathop{\mathrm{Im}}(S\circ T)=U\)</span>. לפי סעיף ב’ נובע כי <span class="math display">\[.U=\mathop{\mathrm{Im}}(S\circ T)\subseteq \mathop{\mathrm{Im}}(S)=U\]</span> לכן <span class="math inline">\(\mathop{\mathrm{Im}}(S)=U\)</span>, כלומר <span class="math inline">\(S\)</span> על.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="מטריצות-מייצגות-של-העתקות-לינאריות" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="מטריצות-מייצגות-של-העתקות-לינאריות"><span class="header-section-number">10.5</span> מטריצות מייצגות של העתקות לינאריות</h2>
+<p>יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית (בעל בסיס סופי) מעל <span class="math inline">\(\mathbb{F}\)</span>. בפרק <a href="./chapter_5.html#sec-vectorspaces">פרק 8</a> דיברנו על וקטורי קוארדינטות, שהם דרך להציג וקטורים ב- <span class="math inline">\(V\)</span> באופן מוכר יותר כוקטורים ב- <span class="math inline">\(\mathbb{F}^n\)</span>. זו דרך נוחה לבדוק מושגים כמו פרישה ותלות לינארית (או אי-תלות לינארית) ע"י דירוג המטריצה המתאימה. בהינתן בסיס סדור <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> של <span class="math inline">\(V\)</span>, לכל וקטור <span class="math inline">\(v\in V\)</span> יש סקלרים יחידים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> עבורם מתקיים <span class="math display">\[.v=\alpha_1 v_1+...+\alpha_n v_n\]</span> בהתאם, הגדרנו את וקטור הקוארדינטות של <span class="math inline">\(v\)</span> לפי <span class="math inline">\(B\)</span>: <span class="math display">\[[v]_B=\begin{pmatrix}\alpha_1\\\vdots\\\alpha_n\end{pmatrix}\]</span></p>
+<div class="example">
+<p>כדי להדגים שוב את המשמעות של וקטור קוארדינטות, נסתכל על הבסיס הסדור <span class="math display">\[B=\Set{\begin{pmatrix}1\\1\\1\end{pmatrix},\begin{pmatrix}1\\-1\\1\end{pmatrix},\begin{pmatrix}1\\1\\-1\end{pmatrix}}\]</span> ל- <span class="math inline">\(\mathbb{R}^3\)</span>. ניתן לבדוק (או לפתור את הממ"ל שמובילה לסקלרים) שמתקיים <span class="math display">\[,2\begin{pmatrix}1\\1\\1\end{pmatrix}+1\begin{pmatrix}1\\-1\\1\end{pmatrix}+3\begin{pmatrix}1\\1\\-1\end{pmatrix}=\begin{pmatrix}6\\4\\0\end{pmatrix}\]</span> ולכן <span class="math display">\[.\left[\begin{pmatrix}6\\4\\0\end{pmatrix}\right]_B=\begin{pmatrix}2\\1\\3\end{pmatrix}\]</span></p>
+</div>
+<p>כעת נרצה להשתמש ברעיון של וקטורי קוארדינטות כדי לייצג העתקות לינאריות ע"י מטריצות, מה שיאפשר לנו לעשות חישובים יותר בקלות (למשל, עבור גרעין ותמונה).</p>
+<div class="definition">
+<p>יהיו <span class="math inline">\(T:V\to W\)</span> ה"ל, <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס סדור ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(C\)</span> בסיס סדור ל- <span class="math inline">\(W\)</span>. נגדיר את המטריצה המייצגת של <span class="math inline">\(T\)</span> לפי <span class="math inline">\(B,C\)</span> ע"י <span class="math display">\[.[T]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> לכל <span class="math inline">\(1\leq j\leq n\)</span> העמודה ה- <span class="math inline">\(j\)</span> של מטריצה זו היא וקטור הקוארדינטות של <span class="math inline">\(T(v_j)\)</span> ביחס לבסיס הסדור <span class="math inline">\(C\)</span>.</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>תהי <span class="math inline">\(T:\mathbb{R}^2\to \mathbb{R}^3\)</span> המוגדרת ע"י <span class="math display">\[.T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x+2y\\2x+y\\x-y\end{pmatrix}\]</span> ניקח את הבסיסים הסטנדרטיים <span class="math display">\[E_2=\Set{\begin{pmatrix}1\\0\end{pmatrix},\begin{pmatrix}0\\1\end{pmatrix}},E_3=\Set{\begin{pmatrix}1\\0\\0\end{pmatrix},\begin{pmatrix}0\\1\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}}\]</span> ונקבל את המטריצה המייצגת לפי <span class="math inline">\(E_2,E_3\)</span>: <span class="math display">\[[T]_{E_3}^{E_2}=\begin{pmatrix}\begin{array}{c}
+|\\[-0.4ex]
+\left[T\begin{pmatrix}1\\0\end{pmatrix}\right]_{E_3}\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[T\begin{pmatrix}0\\1\end{pmatrix}\right]_{E_3}\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; 1 \\
+1 &amp; -1
+\end{pmatrix}\]</span> כאן וקטורי הקוארדינטות הם הוקטורים עצמם כי <span class="math inline">\(E_3\)</span> הוא בסיס סטנדרטי.</p></li>
+<li><p>הכללה של הסעיף הקודם: תהי <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^m\)</span> כאשר <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. ניקח את הבסיסים הסטנדרטיים <span class="math inline">\(E_n,E_m\)</span> ל- <span class="math inline">\(\mathbb{F}^n,\mathbb{F}^m\)</span> בהתאמה, ונקבל:</p>
+<p><span class="math display">\[\begin{aligned}
+[T_A]_{E_m}^{E_n}&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[Ae_1]_{E_m}\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[Ae_2]_{E_m}\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[Ae_n]_{E_m}\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+Ae_1\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+Ae_2\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+Ae_n\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=A
+\end{aligned}\]</span></p>
+<p>אם כן, ההצגה הטבעית של <span class="math inline">\(T_A\)</span> היא לפי הבסיסים הסטנדרטיים. המטריצה המייצגת במקרה זה היא <span class="math inline">\(A\)</span> עצמה.</p></li>
+<li><p>תהי <span class="math inline">\(T:\mathbb{M}_{2\times 2}(\mathbb{F})\to\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> העתקת השחלוף המוגדרת ע"י <span class="math display">\[.T(A)=A^t\]</span> ניקח את הבסיס הסטנדרטי <span class="math display">\[E=\Set{\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix},\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}}\]</span> ונקבל <span class="math display">\[\begin{aligned}
+[T]_E^E&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}^t\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix}^t\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix}^t\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}^t\right]_E\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>נסתכל על העתקת האפס <span class="math inline">\(0_{V,W}:V\to W\)</span> וניקח בסיסים סדורים <span class="math display">\[B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}\]</span> ל- <span class="math inline">\(V,W\)</span>. מתקיים <span class="math display">\[.[0_{V,W}]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[0_W]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[0_W]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[0_W]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\mathbf{0}_{m\times n}\]</span></p></li>
+</ol>
+</div>
+<p>נשאלת השאלה: מהו השימוש של מטריצה מייצגת? במובן הבסיסי ביותר, זוהי דרך לחשוב על העתקה לינארית כעל כפל במטריצה, שזו פעולה שכבר התרגלנו אליה. הטענה הבאה תבהיר את הכוונה המדויקת.</p>
+<div id="prp-rep-matrix" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.9</strong></span> <em>יהיו <span class="math inline">\(T:V\to W\)</span>, <span class="math inline">\(S:W\to U\)</span> ה"ל, ויהיו <span class="math inline">\(B,C,D\)</span> בסיסים סדורים ל- <span class="math inline">\(V,W,U\)</span> בהתאמה. אז:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">\(v\in V\)</span> מתקיים <span class="math display">\[.[T(v)]_C=[T]_C^B[v]_B\]</span></em></p></li>
+<li><p><em><span class="math display">\[[S\circ T]_D^B=[S]_D^C[T]_C^B\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>נסמן <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span>. לכל <span class="math inline">\(v\in V\)</span> קיימים סקלרים יחידים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{F}\)</span> כך ש- <span class="math display">\[,v=\alpha_1 v_1+...+\alpha_n v_n\]</span> ובהתאם מתקיים <span class="math display">\[.[v]_B=\begin{pmatrix}\alpha_1\\\vdots\\\alpha_n\end{pmatrix}\]</span> לכן, מהלינאריות של <span class="math inline">\(T\)</span> וגם של קוארדינטות נובע כי <span class="math display">\[\begin{aligned}
+[T(v)]_C&amp;=[\alpha_1T(v_1)+...+\alpha_nT(v_n)]_C=\alpha_1[T(v_1)]_C+...+\alpha_n[T(v_n)]_C \\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}
+\begin{pmatrix}\alpha_1\\\vdots\\\alpha_n\end{pmatrix}=[T]_C^B[v]_B
+\end{aligned}\]</span></p></li>
+<li><p>תחילה נבצע את כפל המטריצות בהתאם לעמודות של המטריצה הימנית במכפלה, ואחר כך נשתמש בסעיף הקודם: <span class="math display">\[\begin{aligned}
+[S]_D^C[T]_C^B&amp;=[S]_D^C\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[S]_D^C[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[S]_D^C[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[S]_D^C[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[(S\circ T)(v_1)]_D\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[(S\circ T)(v_2)]_D\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[(S\circ T)(v_n)]_D\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\\
+&amp;=[(S\circ T)]_D^B
+\end{aligned}\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>יהיו <span class="math inline">\(T,S:\mathbb{R}^2\to\mathbb{R}^2\)</span> ה"ל המקיימות את הנתונים הבאים: <span class="math display">\[\begin{alignedat}{2}
+T\begin{pmatrix}1\\1\end{pmatrix}  &amp;= \begin{pmatrix}2\\3\end{pmatrix},\quad &amp;
+T\begin{pmatrix}1\\-1\end{pmatrix} &amp;= \begin{pmatrix}3\\-1\end{pmatrix} \\
+S\begin{pmatrix}3\\1\end{pmatrix}  &amp;= \begin{pmatrix}2\\2\end{pmatrix},\quad &amp;
+S\begin{pmatrix}1\\3\end{pmatrix} &amp;= \begin{pmatrix}0\\4\end{pmatrix}
+\end{alignedat}\]</span> ניתן למצוא נוסחאות ל- <span class="math inline">\(S,T\)</span> ולחשב את <span class="math inline">\(S\circ T\)</span>, אך הפעם נסתפק במטריצה מייצגת לפי בסיסים סדורים שמסתתרים בתוך הנתונים. נסמן: <span class="math display">\[B=\Set{\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}3\\1\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}, \quad D=\Set{\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}1\\2\end{pmatrix}}\]</span> בחרנו את <span class="math inline">\(B,C\)</span> בהתאם לוקטורי הקלט של הנתונים, ואילו <span class="math inline">\(D\)</span> הוא בחירה שרירותית לצורך הדוגמה (בדרך כלל, אם לא נדרש לעבוד עם בסיס מסוים, עדיף לבחור בסיס סטנדרטי). כעת נחשב את המטריצות המייצגות <span class="math inline">\([S]_D^C,[T]_C^B\)</span>. תחילה: <span class="math display">\[[T]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[T\begin{pmatrix}1\\1\end{pmatrix}\right]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[T\begin{pmatrix}1\\-1\end{pmatrix}\right]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}2\\3\end{pmatrix}\right]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}3\\-1\end{pmatrix}\right]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> נחשב את וקטורי הקוארדינטות ע"י דירוג המטריצה המורחבת: <span class="math display">\[\begin{pmatrix}
+3 &amp; 1 &amp; \vline &amp; 2 &amp; \vline &amp; 3 \\
+1 &amp; 3 &amp; \vline &amp; 3 &amp; \vline &amp; -1
+\end{pmatrix}\]</span></p>
+<p>לאחר דירוג קנוני נקבל את המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
+1 &amp; 0 &amp; \vline &amp; \frac{3}{8} &amp; \vline &amp; \frac{5}{4} \\
+0 &amp; 1 &amp; \vline &amp; \frac{7}{8} &amp; \vline &amp; -\frac{3}{4}
+\end{pmatrix}\]</span></p>
+<p>ולכן: <span class="math display">\[[T]_C^B=\begin{pmatrix}
+\frac{3}{8} &amp; \frac{5}{4} \\
+\frac{7}{8} &amp; -\frac{3}{4}
+\end{pmatrix}\]</span></p>
+<p>נעבור למטריצה המייצגת הבאה ונקבל <span class="math display">\[.[S]_D^C=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[S\begin{pmatrix}3\\1\end{pmatrix}\right]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[S\begin{pmatrix}1\\3\end{pmatrix}\right]_D\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}2\\2\end{pmatrix}\right]_D\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\4\end{pmatrix}\right]_D\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> שוב נחשב את וקטורי הקוארדינטות ע"י דירוג מטריצה מורחבת: <span class="math display">\[\begin{pmatrix}
+2 &amp; 1 &amp; \vline &amp; 2 &amp; \vline &amp; 0 \\
+-1 &amp; 2 &amp; \vline &amp; 2 &amp; \vline &amp; 4
+\end{pmatrix}\]</span></p>
+</div>
+<p>צורתה המדורגת קנונית היא: <span class="math display">\[\begin{pmatrix}
+1 &amp; 0 &amp; \vline &amp; \frac{2}{5} &amp; \vline &amp; -\frac{4}{5} \\
+0 &amp; 1 &amp; \vline &amp; \frac{6}{5} &amp; \vline &amp; \frac{8}{5}
+\end{pmatrix}\]</span> מכאן: <span class="math display">\[[S]_D^C=\begin{pmatrix}
+\frac{2}{5} &amp; -\frac{4}{5} \\
+\frac{6}{5} &amp; \frac{8}{5}
+\end{pmatrix}\]</span> לבסוף, לפי טענה <a href="#prp-rep-matrix">10.57</a> נובע כי <span class="math display">\[.[S\circ T]_D^B=[S]_D^C[T]_C^B=\begin{pmatrix}
+\frac{2}{5} &amp; -\frac{4}{5} \\
+\frac{6}{5} &amp; \frac{8}{5}
+\end{pmatrix}\begin{pmatrix}
+\frac{3}{8} &amp; \frac{5}{4} \\
+\frac{7}{8} &amp; -\frac{3}{4}
+\end{pmatrix}=\begin{pmatrix}
+-\frac{11}{20} &amp; \frac{11}{10} \\
+\frac{37}{20} &amp; \frac{3}{10}
+\end{pmatrix}\]</span></p>
+<div class="exercise">
+<p>יהיו <span class="math inline">\(T,S:V\to W\)</span> ה"ל, ויהיו <span class="math inline">\(B,C\)</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. אז:</p>
+<ol type="1">
+<li><p><span class="math display">\[[T+S]_C^B=[T]_C^B+[S]_C^B\]</span></p></li>
+<li><p>לכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים <span class="math display">\[.[\alpha T]_C^B=\alpha[T]_C^B\]</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>מתקיים <span class="math display">\[\begin{aligned}
+[T+S]_C^B&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)+S(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)+S(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)+S(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;+\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[S(v_1)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[S(v_2)]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[S(v_n)]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=[T]_C^B+[S]_C^B
+\end{aligned}\]</span></p></li>
+<li><p>יהי <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. מתקיים: <span class="math display">\[\begin{aligned}
+[\alpha T]_C^B&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[(\alpha T(v_1)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[\alpha T(v_2)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[\alpha T(v_n)]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;=\alpha\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_1)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_2)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[T(v_n)]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\alpha [T]_C^B
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<section id="מטריצת-מעבר-בין-בסיסים" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="מטריצת-מעבר-בין-בסיסים"><span class="header-section-number">10.5.1</span> מטריצת מעבר בין בסיסים</h3>
+<p>החישוב של מטריצה מייצגת עלול להיות ארוך אם לפחות אחד מהבסיסים אינו סטנדרטי. הכלי הבא עשוי לקצר את החישובים, ונראה בהמשך שיש לו חשיבות גם מעבר לכך.</p>
+<div class="definition">
+<p>יהי <span class="math inline">\(V\)</span> מ"ו נוצר סופית מעל <span class="math inline">\(\mathbb{F}\)</span> עם בסיסים סדורים <span class="math inline">\(B=\Set{v_1,...,v_n},C\)</span>. מטריצת המעבר בין הבסיסים <span class="math inline">\(B\)</span> ו- <span class="math inline">\(C\)</span> מוגדרת ע"י <span class="math display">\[.[I]_C^B=[\mathop{\mathrm{Id}}_V]_C^B=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[v_1]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[v_2]_C\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[v_n]_C\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span></p>
+</div>
+<p>מטריצת מעבר כשמה כן היא: כלי לעבור מבסיס סדור אחד לאחר.</p>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>עבור <span class="math inline">\(C=B=\Set{v_1,...,v_n}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+[I]_B^B&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[\mathop{\mathrm{Id}}_V(v_1)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[\mathop{\mathrm{Id}}_V(v_2)]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[\mathop{\mathrm{Id}}_V(v_n)]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+[v_1]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[v_2]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+[v_n]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=I_n
+\end{aligned}\]</span> כלומר מטריצת המעבר מבסיס (בגודל <span class="math inline">\(n\)</span>) לעצמו היא מטריצת היחידה <span class="math inline">\(I_n\)</span>.</p></li>
+<li><p>יהי <span class="math inline">\(E\)</span> הבסיס הסטנדרטי ל- <span class="math inline">\(\mathbb{R}^3\)</span> וניקח בנוסף את הבסיס הסדור <span class="math display">\[.B=\Set{\begin{pmatrix}1\\2\\3\end{pmatrix},\begin{pmatrix}1\\3\\7\end{pmatrix},\begin{pmatrix}0\\2\\1\end{pmatrix}}\]</span> ייצוג וקטורים לפי <span class="math inline">\(E\)</span> הוא מיידי, ולכן נקבל <span class="math display">\[\begin{aligned}
+[I]_E^B&amp;=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}1\\2\\3\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}1\\3\\7\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\2\\1\end{pmatrix}\right]_E\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+1 &amp; 1 &amp; 0 \\
+2 &amp; 3 &amp; 2 \\
+3 &amp; 7 &amp; 1
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>מה לגבי <span class="math inline">\([I]_B^E\)</span>? זהו חישוב יותר ארוך שדורש דירוג.</p>
+<p><span class="math display">\[[I]_B^E=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}1\\0\\0\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\1\\0\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+\left[\begin{pmatrix}0\\0\\1\end{pmatrix}\right]_B\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> לצורך חישוב וקטורי הקוארדינטות, נדרג את המטריצה הבאה: <span class="math display">\[\begin{pmatrix}
+1 &amp; 1 &amp; 0 &amp; \vline &amp; 1 &amp; \vline &amp; 0 &amp; \vline &amp; 0 \\
+2 &amp; 3 &amp; 2 &amp; \vline &amp; 0 &amp; \vline &amp; 1 &amp; \vline &amp; 0 \\
+3 &amp; 7 &amp; 1 &amp; \vline &amp; 0 &amp; \vline &amp; 0 &amp; \vline &amp; 1
+\end{pmatrix}\]</span> נשים לב שזו בדיוק הדרך לחשב את המטריצה ההופכית של המטריצה שעמודותיה הן וקטורי <span class="math inline">\(B\)</span> (זה לא מקרי). לאחר דירוג קנוני נקבל: <span class="math display">\[\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; \vline &amp; \frac{11}{7} &amp; \vline &amp; \frac{1}{7} &amp; \vline &amp; -\frac{2}{7} \\
+0 &amp; 1 &amp; 0 &amp; \vline &amp; -\frac{4}{7} &amp; \vline &amp; -\frac{1}{7} &amp; \vline &amp; \frac{2}{7} \\
+0 &amp; 0 &amp; 1 &amp; \vline &amp; -\frac{5}{7} &amp; \vline &amp; \frac{4}{7} &amp; \vline &amp; -\frac{1}{7}
+\end{pmatrix}\]</span> ולכן: <span class="math display">\[[I]_B^E=\begin{pmatrix}
+\frac{11}{7} &amp; \frac{1}{7} &amp; -\frac{2}{7} \\
+-\frac{4}{7} &amp; -\frac{1}{7} &amp; \frac{2}{7} \\
+-\frac{5}{7} &amp; \frac{4}{7} &amp; -\frac{1}{7}
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<p>הדוגמה האחרונה היא הקדמה לטענה הבאה:</p>
+<div id="prp-rep-inverse" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.10</strong></span> <em>יהי <span class="math inline">\(V\)</span> מ"ו מעל <span class="math inline">\(\mathbb{F}\)</span>, ויהיו <span class="math inline">\(B,C\)</span> בסיסים סדורים ל- <span class="math inline">\(V\)</span>. אז <span class="math inline">\([I]_C^B,[I]_B^C\)</span> הפיכות ומתקיים <span class="math display">\[.([I]_C^B)^{-1}=[I]_B^C\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נניח כי <span class="math inline">\(\dim(V)=n\)</span>. לפי טענה <a href="#prp-rep-matrix">10.57</a> מתקיים <span class="math display">\[.[I]_B^C[I]_C^B=[\mathop{\mathrm{Id}}_V]_B^C[\mathop{\mathrm{Id}}_V]_C^B=[\mathop{\mathrm{Id}}_V\circ\mathop{\mathrm{Id}}_V]_B^B=[\mathop{\mathrm{Id}}_V]_B^B=I_n\]</span> לכן, שתי המטריצות הפיכות ומתקיים <span class="math display">\[.([I]_C^B)^{-1}=[I]_B^C\]</span>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בפרט, כאשר אחד הבסיסים הוא סטנדרטי (למשל <span class="math inline">\(C=E\)</span>) קל לקבל את <span class="math inline">\([I]_E^B\)</span> בלי דירוג, ואז נחשב את המטריצה ההופכית ונקבל <span class="math display">\[.[I]_B^E=([I]_E^B)^{-1}\]</span></p>
+</div>
+<p>מה הקשר בין מטריצות מייצגות של אותה העתקה לינארית? לשם כך נועדו מטריצות המעבר.</p>
+<div id="prp-rep-transition" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.11</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל. יהיו <span class="math inline">\(B_1,B_2\)</span> בסיסים סדורים ל- <span class="math inline">\(V\)</span>, ויהיו <span class="math inline">\(C_1,C_2\)</span> בסיסים סדורים ל- <span class="math inline">\(W\)</span>. אז מתקיים <span class="math display">\[.[T]_{C_2}^{B_2}=[I]_{C_2}^{C_1}[T]_{C_1}^{B_1}[I]_{B_1}^{B_2}\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-rep-matrix">10.57</a> מתקיים: <span class="math display">\[\begin{aligned}
+[T]_{C_2}^{B_2}&amp;=[(\mathop{\mathrm{Id}}_W\circ T)\circ \mathop{\mathrm{Id}}_V]_{C_2}^{B_2}=[\mathop{\mathrm{Id}}_W\circ T]_{C_2}^{B_1}[\mathop{\mathrm{Id}}_V]_{B_1}^{B_2} \\
+&amp;=[\mathop{\mathrm{Id}}_W]_{C_2}^{C_1}[T]_{C_1}^{B_1}[\mathop{\mathrm{Id}}_V]_{B_1}^{B_2}=[I]_{C_2}^{C_1}[T]_{C_1}^{B_1}[I]_{B_1}^{B_2}
+\end{aligned}\]</span>&nbsp;◻</p>
+</div>
+<p>כמסקנה, נקבל מקרה פרטי שיהיה רלוונטי במיוחד בפרק הבא:</p>
+<div id="cor-rep-similar" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 10.1</strong></span> <em>תהי <span class="math inline">\(T:V\to V\)</span> ויהיו <span class="math inline">\(B_1,B_2\)</span> בסיסים סדורים ל- <span class="math inline">\(V\)</span>. אז מתקיים <span class="math display">\[.[T]_{B_2}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}([I]_{B_2}^{B_1})^{-1}\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נשתמש בטענה <a href="#prp-rep-transition">10.64</a> עם <span class="math inline">\(C_1=B_1,C_2=B_2\)</span> ונקבל <span class="math display">\[.[T]_{B_2}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}[I]_{B_1}^{B_2}=[I]_{B_2}^{B_1}[T]_{B_1}^{B_1}([I]_{B_2}^{B_1})^{-1}\]</span> השוויון האחרון נובע מטענה <a href="#prp-rep-inverse">10.62</a>.&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בתרגיל <a href="./chapter_4.html#exr-similar-det">??</a> כבר עמדנו על אחד הקשרים בין מטריצה ריבועית <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> למטריצה <span class="math inline">\(PAP^{-1}\)</span> כאשר <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. ראינו כי <span class="math display">\[.\det(PAP^{-1})=\det(A)\]</span> בפרק הבא נגדיר באופן מסודר את המושג של דמיון מטריצות. <span class="math inline">\(PAP^{-1}\)</span> נקראת דומה ל- <span class="math inline">\(A\)</span> לפי הגדרה זו. במסקנה <a href="#cor-rep-similar">10.65</a> מדובר על <span class="math display">\[.A=[T]_{B_1}^{B_1},\quad P=[I]_{B_2}^{B_1},\quad PAP^{-1}=[T]_{B_2}^{B_2}\]</span> פירוש הדבר שהמטריצות המייצגות <span class="math inline">\([T]_{B_1}^{B_1},[T]_{B_2}^{B_2}\)</span> (כל אחת היא מבסיס אחד לעצמו) של ה"ל <span class="math inline">\(T:V\to V\)</span>, הן מה שייקרא "דומות זו לזו". בפרק הבא נבין מה המשמעות המלאה של דמיון מטריצות חוץ משוויון בין הדטרמיננטות.</p>
+</div>
+</section>
+<section id="שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="שחזור-העתקה-לינארית-מתוך-מטריצה-מייצגת"><span class="header-section-number">10.5.2</span> שחזור העתקה לינארית מתוך מטריצה מייצגת</h3>
+<p>יהיו <span class="math display">\[B=\Set{v_1,...,v_n},\quad C=\Set{w_1,...,w_m}\]</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. נניח שעבור <span class="math inline">\(T:V\to W\)</span> ידועה המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span>. איך נמצא נוסחה מפורשת ל- <span class="math inline">\(T\)</span>? העמודות של מטריצה זו הן בדיוק הוקטורים <span class="math display">\[.[T(v_1)]_C,...,[T(v_n)]_C\]</span> לכל <span class="math inline">\(1\leq j\leq n\)</span>, אם <span class="math display">\[,[T(v_j)]_C=\begin{pmatrix}a_{1j}\\ \vdots \\ a_{mj}\end{pmatrix}\]</span> אז לפי ההגדרה של וקטור קוארדינטות בהכרח מתקיים <span class="math display">\[.T(v_j)=a_{1j}w_1+...+a_{mj}w_m\]</span> בעזרת הנתונים האלה אפשר למצוא נוסחה מפורשת ל- <span class="math inline">\(T\)</span> לפי האלגוריתם של מציאת העתקה לינארית לפי בסיס (תת-פרק <a href="#sec-map-by-basis">10.??</a>). אבל יש דרך אחרת שקשורה למטריצות מעבר. היא דומה אך עשויה להיות יותר נוחה ומסודרת, ויותר הגיוני להשתמש בה כאשר מלכתחילה הנתון קשור למטריצה מייצגת.</p>
+<p>הרעיון: לחשב את את <span class="math inline">\([T]_{E'}^E\)</span> כאשר <span class="math inline">\(E\)</span> הבסיס הסטנדרטי ל- <span class="math inline">\(V\)</span>, ו- <span class="math inline">\(E'\)</span> הבסיס הסטנדרטי ל- <span class="math inline">\(W\)</span>. ניתן לעשות זאת לפי טענה <a href="#prp-rep-transition">10.64</a> באופן הבא: <span class="math display">\[[T]_{E'}^E=[I]_{E'}^C[T]_C^B[I]_B^E=[I]_{E'}^C[T]_C^B([I]_E^B)^{-1}\]</span> נזכיר כי <span class="math inline">\([T]_C^B\)</span> נתונה, ואילו המטריצות <span class="math display">\[[I]_{E'}^C, [I]_E^B\]</span> מתקבלות באופן מיידי. לכן עיקר העבודה הוא החישוב של <span class="math inline">\(,([I]_E^B)^{-1}\)</span> ולבסוף חישוב המכפלה של שלוש מטריצות. ברגע שנקבל את <span class="math inline">\([T]_{E'}^E\)</span>, המעבר לנוסחה מפורשת יהיה מיידי כי הבסיסים סטנדרטיים. למעשה, אם נסמן <span class="math inline">\(A=[T]_{E'}^E\)</span> הרי שמתקיים <span class="math inline">\(T=T_A\)</span> כי <span class="math display">\[.T(v)=[T(v)]_{E'}=[T]_{E'}^E[v]_E=Av\]</span></p>
+<div class="exercise">
+<p>יהיו <span class="math display">\[B=\Set{\begin{pmatrix}1\\2\end{pmatrix},\begin{pmatrix}3\\1\end{pmatrix}},\quad C=\Set{\begin{pmatrix}1\\-2\end{pmatrix},\begin{pmatrix}1\\3\end{pmatrix}}\]</span> בסיסים סדורים ל- <span class="math inline">\(\mathbb{R}^2\)</span>. מצאו ה"ל <span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}^2\)</span> המקיימת <span class="math display">\[.[T]_C^B=\begin{pmatrix}
+2 &amp; 5 \\
+3 &amp; 1
+\end{pmatrix}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נמצא מטריצות מעבר באופן מיידי: <span class="math display">\[[I]_E^C=\begin{pmatrix}
+1 &amp; 1 \\
+-2 &amp; 3
+\end{pmatrix},\quad [I]_E^B=\begin{pmatrix}
+1 &amp; 3 \\
+2 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>נחשב את <span class="math inline">\([I]_B^E\)</span> ע"י חישוב מטריצה הופכית. נעשה זאת לפי הנוסחה מטענה <a href="./chapter_4.html#prp-det-order-2">??</a>: <span class="math display">\[[I]_B^E=([I]_E^B)^{-1}=\begin{pmatrix}
+1 &amp; 3 \\
+2 &amp; 1
+\end{pmatrix}^{-1}=\frac{1}{1-6}\begin{pmatrix}
+1 &amp; -3 \\
+-2 &amp; 1
+\end{pmatrix}=\begin{pmatrix}
+-\frac{1}{5} &amp; \frac{3}{5} \\
+\frac{2}{5} &amp; -\frac{1}{5}
+\end{pmatrix}\]</span></p>
+<p>לפי טענה <a href="#prp-rep-transition">10.64</a> נובע כי <span class="math display">\[[T]_E^E=[I]_{E}^C[T]_C^B([I]_E^B)^{-1}=\begin{pmatrix}
+1 &amp; 1 \\
+-2 &amp; 3
+\end{pmatrix}\begin{pmatrix}
+2 &amp; 5 \\
+3 &amp; 1
+\end{pmatrix}\begin{pmatrix}
+-\frac{1}{5} &amp; \frac{3}{5} \\
+\frac{2}{5} &amp; -\frac{1}{5}
+\end{pmatrix}=\begin{pmatrix}
+\frac{7}{5} &amp; \frac{9}{5} \\
+-\frac{19}{5} &amp; \frac{22}{5}
+\end{pmatrix}\]</span></p>
+<p>לסיכום, נקבל את הנוסחה המפורשת של <span class="math inline">\(T\)</span>: <span class="math display">\[T\begin{pmatrix}x\\y\end{pmatrix}=\left[T\begin{pmatrix}x\\y\end{pmatrix}\right]_E=[T]_E^E\left[\begin{pmatrix}x\\y\end{pmatrix}\right]_E=\begin{pmatrix}
+\frac{7}{5} &amp; \frac{9}{5} \\
+-\frac{19}{5} &amp; \frac{22}{5}
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}\frac{7x+9y}{5} \\ \frac{22y-19x}{5}\end{pmatrix}\]</span> ניתן לבדוק (ליתר ביטחון) כי עבור הנוסחה לעיל אכן מתקיים <span class="math display">\[.[T]_C^B=\begin{pmatrix}
+2 &amp; 5 \\
+3 &amp; 1
+\end{pmatrix}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="גרעין-ותמונה-בהקשר-של-מטריצה-מייצגת" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="גרעין-ותמונה-בהקשר-של-מטריצה-מייצגת"><span class="header-section-number">10.5.3</span> גרעין ותמונה בהקשר של מטריצה מייצגת</h3>
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. ראינו בטענה <a href="#prp-matrix-map">10.24</a> שמתקיים <span class="math display">\[.\mathop{\mathrm{Ker}}(T_A)=\mathop{\mathrm{N}}(A),\quad \mathop{\mathrm{Im}}(T_A)=\mathop{\mathrm{Col}}(A)\]</span></p>
+<p>זהו מקרה מיוחד של העתקה לינארית המוגדרת ע"י מטריצה באופן ישיר (הבסיסים המתאימים למטריצה המייצגת הם סטנדרטיים). מה ניתן לומר לגבי העתקה לינארית כללית בעזרת מטריצה מייצגת כלשהי שלה? ההכללה מופיעה בטענה הבאה:</p>
+<div id="prp-ker-image-rep" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.12</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל, ויהיו <span class="math inline">\(B,C\)</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">\(v\in V\)</span> <span class="math display">\[.v\in\mathop{\mathrm{Ker}}(T) \iff [v]_B\in\mathop{\mathrm{N}}([T]_C^B)\]</span></em></p></li>
+<li><p><em>לכל <span class="math inline">\(w\in W\)</span> <span class="math display">\[.w\in\mathop{\mathrm{Im}}(T) \iff [w]_C\in\mathop{\mathrm{Col}}([T]_C^B)\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נשתמש בטענה <a href="#prp-rep-matrix">10.57</a>.</p>
+<ol type="1">
+<li><p>יהי <span class="math inline">\(v\in V\)</span>. מתקיים: <span class="math display">\[\begin{aligned}
+v\in\mathop{\mathrm{Ker}}(T) &amp;\iff T(v)=0_W \iff [T(v)]_C=\underline{0} \iff [T]_C^B[v]_B=\underline{0} \\
+&amp;\iff [v]_B\in\mathop{\mathrm{N}}([T]_C^B)
+\end{aligned}\]</span></p></li>
+<li><p>יהי <span class="math inline">\(w\in W\)</span>. נסמן <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> ונקבל לפי טענה <a href="#prp-image-span">10.23</a>: <span class="math display">\[\begin{aligned}
+w\in\mathop{\mathrm{Im}}(T) &amp;\iff w\in\mathop{\mathrm{Span}}(T(v_1),...,T(v_n)) \\
+&amp;\iff [w]_C\in \mathop{\mathrm{Span}}([T(v_1)]_C,...,[T(v_n)]_C)  \iff [w]_C\in \mathop{\mathrm{Col}}([T]_C^B))
+\end{aligned}\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>בסימונים של הטענה לעיל, הוכיחו כי:</p>
+<ol type="1">
+<li><p><span class="math inline">\(T\)</span> חח״ע אם ורק אם <span class="math inline">\(\mathop{\mathrm{N}}([T]_C^B)=\Set{\underline{0}}\)</span>.</p></li>
+<li><p><span class="math inline">\(T\)</span> על אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}([T]_C^B)=m\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>לפי טענה <a href="#prp-injective">10.31</a>, <span class="math inline">\(T\)</span> חח״ע אם ורק אם <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{\underline{0}}\)</span>. לפי טענה <a href="#prp-ker-image-rep">10.68</a>, התנאי האחרון שקול לתנאי <span class="math inline">\(\mathop{\mathrm{N}}([T]_C^B)=\underline{0}\)</span>, כי מתקיים <span class="math display">\[.v=0_W \iff [v]_B=\underline{0}\]</span></p></li>
+<li><p>לפי טענה <a href="#prp-image-span">10.23</a>, <span class="math inline">\(T\)</span> על אם ורק אם <span class="math inline">\(\mathop{\mathrm{Span}}(T(v_1),...,T(v_n))=W\)</span>. לפי טענה <a href="#prp-ker-image-rep">10.68</a>, התנאי האחרון שקול לתנאי <span class="math inline">\(\mathop{\mathrm{Col}}([T]_C^B)=\mathbb{F}^m\)</span>. לבסוף, לפי משפט <a href="./chapter_5.html#thm-rank-nullity">8.99</a>, מתקיים <span class="math display">\[.\dim(\mathop{\mathrm{Col}}([T]_C^B))=\mathop{\mathrm{rank}}([T]_C^B)\]</span> לאור זאת ולפי לפי מסקנה <a href="./chapter_5.html#cor-subspace-dim">??</a>, הדרגה שווה ל- <span class="math inline">\(m\)</span> אם ורק אם <span class="math inline">\(\mathop{\mathrm{Col}}([T]_C^B)=\mathbb{F}^m\)</span>. לסיכום, <span class="math inline">\(T\)</span> על אם ורק אם <span class="math inline">\(\mathop{\mathrm{rank}}([T]_C^B)=m\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="איזומורפיזמים" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="איזומורפיזמים"><span class="header-section-number">10.6</span> איזומורפיזמים</h2>
+<p>יש חשיבות לשילוב בין התכונה "חד-חד-ערכית" לתכונה "על". כאשר קיימת ה"ל <span class="math inline">\(T:V\to W\)</span> שהיא חח"ע ועל, המשמעות היא ש- <span class="math inline">\(V,W\)</span> הם זהים מבחינת המבנה הלינארי שלהם – יש ביניהם התאמה שמשמרת חיבור וכפל בסקלר. אפשר לומר שהמרחבים "נראים אותו הדבר" מבפנים, גם אם הם "לבושים אחרת" (ייצוגים שונים, למשל ההבדל בין וקטור עמודה לוקטור שורה בגודל שווה).</p>
+<p>מכאן ההגדרה הבאה של איזומורפיזם ,(isomorphism) שפירושה המילולי הוא "צורה זהה":</p>
+<div class="definition">
+<p>ה״ל <span class="math inline">\(T:V\to W\)</span> נקראת איזומורפיזם אם היא גם חח״ע וגם על.</p>
+</div>
+<p>כבר הוכחנו את משפט <a href="#thm-3-for-2-iso">10.41</a>, שהוא בעצם משפט "שלישי חינם" לאיזומורפיזמים. בפרט, המשפט קובע כי עבור איזומורפיזם <span class="math inline">\(T:V\to W\)</span> בהכרח מתקיים <span class="math inline">\(\dim(V)=\dim(W)\)</span>. לחילופין, אם ידוע שיש שוויון מימדים, אז די להוכיח כי <span class="math inline">\(T\)</span> היא חח״ע או על כדי להסיק שגם התכונה השנייה מתקיימת, ולכן <span class="math inline">\(T\)</span> היא איזומורפיזם. באופן אינטואיטיבי, אפשר לחשוב על המימד כמדד לצורה הלינארית של כל מרחב. שוויון מימדים פירושו שקיים איזומורפיזם, ולהיפך.</p>
+<div class="example">
+<p>תהי <span class="math inline">\(T:M_{n\times n}(\mathbb{F})\to M_{n\times n}(\mathbb{F})\)</span> העתקת השחלוף המוגדרת ע"י <span class="math display">\[.T(A)=A^t\]</span> נראה כי <span class="math inline">\(T\)</span> היא איזומורפיזם. לפי משפט "שלישי חינם", די להראות כי היא חח״ע שהרי מימד התחום שווה למימד הטווח (המרחבים עצמם שווים). אם כן: <span class="math display">\[A\in\mathop{\mathrm{Ker}}(T) \iff A^t=0_{n\times n} \iff (A^t)^t=(0_{n\times n})^t \iff A=0_{n\times n}\]</span> לכן <span class="math inline">\(\mathop{\mathrm{Ker}}(T)=\Set{0_{n\times n}}\)</span> ו- <span class="math inline">\(T\)</span> היא חח״ע. מכאן שהיא איזורמורפיזם.</p>
+<p>לחילופין, אפשר להראות כי היא על בעזרת תכונה בסיסית של שחלוף, ולא הרבה מעבר לזה. תהי <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. נפתור את המשוואה (כאשר הנעלם הוא המטריצה <span class="math inline">\(A\)</span>) הבאה: <span class="math display">\[A^t=B\]</span> נפעיל את העתקת השחלוף ונקבל <span class="math display">\[,A=B^t\]</span> ואכן מתקיים <span class="math display">\[(B^t)^t=B\]</span> כנדרש. לכן, <span class="math inline">\(T\)</span> היא על כי בחרנו <span class="math inline">\(B\)</span> שרירותית והראינו כי <span class="math inline">\(T(B^t)=B\)</span>. אז שוב הראינו כי <span class="math inline">\(T\)</span> היא איזומורפיזם.</p>
+</div>
+<p>בדוגמה לעיל ראינו איזומורפיזם שהוא למעשה פעולה (במקרה זה על מטריצות) שיש לה פעולה הפוכה. באופן כללי עבור איזומורפיזם <span class="math inline">\(T:V\to W\)</span>, בהינתן <span class="math inline">\(T(v)\)</span> ניתן לשחזר את <span class="math inline">\(v\)</span>. נרצה להוכיח זאת. ראשית, טענת עזר:</p>
+<div id="prp-iso-by-basis" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.13</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל, ויהי <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס ל- <span class="math inline">\(V\)</span>. אז <span class="math inline">\(\Set{T(v_1),...,T(v_n)}\)</span> היא בסיס ל- <span class="math inline">\(W\)</span> אם ורק אם <span class="math inline">\(T\)</span> היא איזומורפיזם.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון אחד, נניח כי <span class="math inline">\(\Set{T(v_1),...,T(v_n)}\)</span> היא בסיס ל- <span class="math inline">\(W\)</span>. בפרט, מתקיים <span class="math display">\[.\dim(W)=\dim(V)=n\]</span> בנוסף, <span class="math inline">\(T\)</span> על כי מתקיים <span class="math display">\[.\mathop{\mathrm{Im}}(T)=\mathop{\mathrm{Span}}(T(v_1),...,T(v_n))=W\]</span> לכן, לפי משפט "שלישי חינם" לאיזומורפיזמים, נובע כי <span class="math inline">\(T\)</span> היא איזומורפיזם.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(T\)</span> היא איזומורפיזם. בפרט, מתקיים <span class="math display">\[.\dim(W)=\dim(V)=n\]</span> כדי להראות כי <span class="math inline">\(\Set{T(v_1),...,T(v_n)}\)</span> היא בסיס ל- <span class="math inline">\(W\)</span>, די להראות כי היא קבוצה פורשת. ובכן: <span class="math display">\[\mathop{\mathrm{Span}}(T(v_1),...,T(v_n))=\mathop{\mathrm{Im}}(T)=W\]</span> כלומר היא אכן קבוצה פורשת, ולכן היא בסיס לפי משפט "שלישי חינם" לבסיסים.&nbsp;◻</p>
+</div>
+<div class="definition">
+<p>ה״ל <span class="math inline">\(T:V\to W\)</span> נקראת הפיכה אם קיימת ה״ל <span class="math inline">\(T^{-1}:W\to V\)</span> כך ש- <span class="math display">\[.T\circ T^{-1}=\mathop{\mathrm{Id}}_W,\quad T^{-1}\circ T=\mathop{\mathrm{Id}}_V\]</span></p>
+</div>
+<p><span class="math inline">\(T^{-1}\)</span> נקראת העתקה הופכית. המשמעות המעשית של ההגדרה היא הקשר הבא: <span class="math display">\[T(v)=w \iff v=T^{-1}(w)\]</span> או במילים: <span class="math inline">\(v=T^{-1}(w)\)</span> הוא הפתרון היחיד למשוואה <span class="math inline">\(T(v)=w\)</span> עבור <span class="math inline">\(w\)</span> נתון.</p>
+<div id="fig-Inverse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Inverse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Inverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Inverse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;10.9: ההעתקה ההופכית שולחת את הפלט של הה”ל המקורית חזרה לקלט
+</figcaption>
+</figure>
+</div>
+<p>ההגדרה של ה"ל הפיכה אנלוגית לזו של מטריצה הפיכה. גם במקרה זה ניתן לוותר על אחת מהדרישות של ההגדרה, לפחות כאשר נתון שוויון מימדים בין התחום לטווח.</p>
+<div id="prp-inverse-simplified" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.14</strong></span> <em>יהיו <span class="math inline">\(T:V\to W\)</span> ו- <span class="math inline">\(S:W\to V\)</span> ה"ל כך ש- <span class="math inline">\(\dim(W)=\dim(V)\)</span>. אז מתקיים <span class="math display">\[.S\circ T=\mathop{\mathrm{Id}}_V \iff T\circ S=\mathop{\mathrm{Id}}_W\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נניח כי <span class="math inline">\(S\circ T=\mathop{\mathrm{Id}}_V\)</span> ונוכיח כי <span class="math inline">\(T\circ S=\mathop{\mathrm{Id}}_W\)</span> (הכיוון השני דומה מטעמי סימטריה). לפי תרגיל <a href="#exr-composition">10.53</a>, <span class="math inline">\(T\)</span> חח״ע כי <span class="math inline">\(S\circ T\)</span> חח״ע בתור העתקת הזהות. לכן, <span class="math inline">\(T\)</span> גם על לפי משפט "שלישי חינם" לאיזומורפיזמים. לבסוף, יהי <span class="math inline">\(w\in W\)</span>. קיים <span class="math inline">\(v\in V\)</span> כך ש- <span class="math inline">\(w=T(v)\)</span>, ובהתאם נקבל <span class="math display">\[.(T\circ S)(w)=(T\circ S)(T(v))=T((S\circ T)(v))=T(\mathop{\mathrm{Id}}_V(v))=T(v)=w\]</span> כלומר <span class="math inline">\(T\circ S=\mathop{\mathrm{Id}}_W\)</span>, כנדרש.&nbsp;◻</p>
+</div>
+<div id="prp-iso-invertible" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.15</strong></span> <em>ה"ל <span class="math inline">\(T:V\to W\)</span> היא איזומורפיזם אם ורק אם היא הפיכה.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון אחד, נניח כי <span class="math inline">\(T\)</span> היא איזומורפיזם. בפרט, מתקיים <span class="math inline">\(\dim(V)=\dim(W)\)</span>. יהי <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס ל- <span class="math inline">\(V\)</span>. לפי טענה <a href="#prp-iso-by-basis">10.72</a>, נובע כי <span class="math inline">\(\Set{T(v_1),...,T(v_n)}\)</span> היא בסיס ל- <span class="math inline">\(W\)</span>. לכן, לפי משפט ההגדרה (משפט <a href="#thm-exist-unique">10.16</a>) קיימת ויחידה ה"ל <span class="math inline">\(S:W\to V\)</span> המקיימת לכל <span class="math inline">\(1\leq j\leq n\)</span> את הדרישה <span class="math display">\[.S(T(v_j))=v_j\]</span> באופן שקול, לכל <span class="math inline">\(1\leq j\leq n\)</span> מתקיים <span class="math display">\[,(S\circ T)(v_j)=\mathop{\mathrm{Id}}_V(v_j)\]</span> ולכן <span class="math display">\[S\circ T=\mathop{\mathrm{Id}}_V\]</span> שוב לפי משפט ההגדרה. מטענה <a href="#prp-inverse-simplified">10.74</a> נובע כי גם מתקיים <span class="math display">\[.T\circ S=\mathop{\mathrm{Id}}_W\]</span> לסיכום, קיבלנו כי <span class="math inline">\(T\)</span> הפיכה ומתקיים <span class="math inline">\(S=T^{-1}\)</span>.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(T\)</span> הפיכה. אז קיימת <span class="math inline">\(T^{-1}:W\to V\)</span> כך ש- <span class="math display">\[.T^{-1}\circ T=\mathop{\mathrm{Id}}_V,\quad T\circ T^{-1}=\mathop{\mathrm{Id}}_W\]</span> לפי תרגיל <a href="#exr-composition">10.53</a>, נובע מהשוויון <span class="math inline">\(T^{-1}\circ T=\mathop{\mathrm{Id}}_V\)</span> כי <span class="math inline">\(T\)</span> חח״ע. מהשוויון השני נובע כי היא על (וגם ממשפט "שלישי חינם"). לסיכום, <span class="math inline">\(T\)</span> היא איזומורפיזם.&nbsp;◻</p>
+</div>
+<p>בהינתן איזומורפיזם <span class="math inline">\(T:V\to W\)</span>, איך מוצאים את <span class="math inline">\(T^{-1}:W\to V\)</span>? הוכחת המשפט לעיל מסבירה את הרעיון הכללי: לוקחים בסיס <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> ל- <span class="math inline">\(V\)</span> ומקבלים את הבסיס המתאים ל- <span class="math inline">\(W\)</span>: <span class="math display">\[C=\Set{T(v_1),...,T(v_n)}\]</span> ההעתקה ההופכית <span class="math inline">\(T^{-1}\)</span> היא ההעתקה הלינארית היחידה השולחת כל וקטור ב- <span class="math inline">\(C\)</span> למקור שלו ב- <span class="math inline">\(B\)</span>.</p>
+<p>שוב נרצה לראות גישה קצת שונה כדי שנוכל לעשות חישובים עם מטריצות, שיש לנו איתן יותר ניסיון מפרקים קודמים. התרגיל הבא הוא הכנה טובה:</p>
+<div class="exercise">
+<p>תהי <span class="math inline">\(T:\mathbb{R}^2\to\mathbb{R}^2\)</span> המוגדרת ע"י <span class="math display">\[.T\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+3x+2y \\
+x+y
+\end{pmatrix}\]</span> הראו כי <span class="math inline">\(T\)</span> היא איזומורפיזם ומצאו את <span class="math inline">\(T^{-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>כאן <span class="math display">\[,T=T_A\]</span> כאשר <span class="math display">\[.A=\begin{pmatrix}
+3 &amp; 2 \\
+1 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>לפי טענה <a href="#prp-homeo">10.50</a>, לכל <span class="math inline">\(B\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> מתקיים <span class="math display">\[.T_A T_B=T_{AB}\]</span> נראה בהמשך כי <span class="math inline">\(A\)</span> הפיכה. בהנחה שזה נכון, נוכל להציב <span class="math inline">\(B=A^{-1}\)</span> ולקבל <span class="math display">\[.T_A T_{A^{-1}}=T_{I_2}=\mathop{\mathrm{Id}}_{\mathbb{R}^2}\]</span> מכאן נסיק כי <span class="math inline">\(T_A\)</span> הפיכה, ולכן היא איזומורפיזם לפי טענה <a href="#prp-iso-invertible">10.75</a>. בנוסף, מתקיים <span class="math display">\[.(T_{A})^{-1}=T_{A^{-1}}\]</span></p>
+<p>נסיים את הפתרון ע"י חישוב <span class="math inline">\(\det(A)\)</span> ושימוש בנוסחה למטריצה הופכית מסדר <span class="math inline">\(2\times 2\)</span>: <span class="math display">\[\det(A)=\begin{pmatrix}
+3 &amp; 2 \\
+1 &amp; 1
+\end{pmatrix}=1\neq 0\]</span> לכן זו מטריצה הפיכה, והמטריצה ההופכית נתונה ע"י <span class="math display">\[.A^{-1}=\frac{1}{1}\begin{pmatrix}
+1 &amp; -2 \\
+-1 &amp; 3
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; -2 \\
+-1 &amp; 3
+\end{pmatrix}\]</span></p>
+<p>לבסוף, נובע כי <span class="math display">\[.T^{-1}\begin{pmatrix}x\\y\end{pmatrix}=T_A^{-1}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}
+1 &amp; -2 \\
+-1 &amp; 3
+\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x-2y\\-x+3y\end{pmatrix}\]</span></p>
+<p>ניתן לבדוק באופן ישיר (בלי מטריצות) כי אכן <span class="math display">\[.T\circ T^{-1}=T^{-1}\circ T=\mathop{\mathrm{Id}}_{\mathbb{R}^2}\]</span></p>
+</div>
+</div>
+</div>
+<div id="prp-iso-by-matrix" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 10.16</strong></span> <em>תהי <span class="math inline">\(T:V\to W\)</span> ה"ל, ויהיו <span class="math inline">\(B,C\)</span> בסיסים סדורים ל- <span class="math inline">\(V,W\)</span> בהתאמה. אז <span class="math inline">\(T\)</span> היא איזומורפיזם אם ורק אם <span class="math inline">\([T]_C^B\)</span> הפיכה, ובמקרה זה מתקיים <span class="math display">\[.[T^{-1}]_B^C=([T]_C^B)^{-1}\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>בכיוון אחד, נניח כי <span class="math inline">\(T\)</span> היא איזומורפיזם. לכן, היא הפיכה לפי טענה <a href="#prp-iso-invertible">10.75</a>. פירוש הדבר שקיימת <span class="math inline">\(T^{-1}\)</span> כך ש- <span class="math display">\[.T\circ T^{-1}=\mathop{\mathrm{Id}}_W\]</span> נסמן <span class="math inline">\(n=\dim(V)=\dim(W)\)</span>. לפי טענה <a href="#prp-rep-transition">10.64</a> נובע כי <span class="math display">\[.[T]_C^B[T^{-1}]_B^C=[T\circ T^{-1}]_C^C=[\mathop{\mathrm{Id}}_W]_C^C=I_{n}\]</span> המטריצה המייצגת <span class="math inline">\([T]_C^B\)</span> היא מטריצה ריבועית מסדר <span class="math inline">\(n\times n\)</span>, ולכן היא הפיכה לפי החישוב לעיל וטענה <a href="./chapter_3.html#prp-invertible">??</a>. בנוסף, קיבלנו כי <span class="math display">\[.([T]_C^B)^{-1}=[T^{-1}]_B^C\]</span></p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(T\)</span> אינה איזומורפיזם ונראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה. ניתן להניח כי <span class="math inline">\(\dim(V)=\dim(W)\)</span>, שכן אחרת המטריצה המייצגת אינה ריבועית ובפרט אינה הפיכה. אם כן, ההנחה ש- <span class="math inline">\(T\)</span> אינה איזומורפיזם פירושה שהיא אינה חח״ע (לפי משפט "שלישי חינם"). אז קיים <span class="math inline">\(0_V\neq v\in \mathop{\mathrm{Ker}}(T)\)</span>, ולכן נובע מטענה <a href="#prp-ker-image-rep">10.68</a> כי <span class="math display">\[.\underline{0}\neq[v]_B\in \mathop{\mathrm{N}}([T]_C^B)\]</span> זה מראה כי <span class="math inline">\([T]_C^B\)</span> אינה הפיכה לפי משפט <a href="./chapter_3.html#thm-invertible">??</a>.&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. הוכיחו כי <span class="math inline">\(T_A:\mathbb{F}^n\to\mathbb{F}^n\)</span> היא איזומורפיזם אם ורק אם <span class="math inline">\(A\)</span> הפיכה. מצאו נוסחה ל- <span class="math inline">\(T_A^{-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>זהו מקרה פרטי של טענה <a href="#prp-iso-by-matrix">10.77</a> כאשר <span class="math inline">\(B,C\)</span> הם הבסיס הסטנדרטי <span class="math inline">\(E\)</span> ל- <span class="math inline">\(\mathbb{F}^n\)</span>. לפי הטענה, <span class="math inline">\(T_A\)</span> היא איזומורפיזם אם ורק אם <span class="math inline">\(A=[T_A]_E^E\)</span> הפיכה. נמצא נוסחה ל- <span class="math inline">\(T_A^{-1}\)</span> באופן ישיר ע"י פתרון המשוואה הבאה עבור <span class="math inline">\(w\in\mathbb{F}^n\)</span> שרירותי: <span class="math display">\[Av=w\]</span> הפתרון היחיד הוא <span class="math inline">\(v=A^{-1}w\)</span> ומתקיים <span class="math display">\[.T_A(A^{-1}w)=w\]</span> כלומר <span class="math inline">\(T_A\)</span> הפיכה (כידוע) ומתקיים <span class="math display">\[.T_A^{-1}(w)=A^{-1}w\]</span> או באופן תמציתי, קיבלנו <span class="math display">\[.(T_A)^{-1}=T_{A^{-1}}\]</span></p>
+</div>
+</div>
+</div>
+<div class="exercise">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>תהי <span class="math inline">\(A\in M_{n\times n}(\mathbb{F})\)</span> הפיכה. נגדיר ה"ל <span class="math inline">\(S_A:\mathbb{M}_{n\times n}(\mathbb{F})\to\mathbb{M}_{n\times n}(\mathbb{F})\)</span> ע"י <span class="math display">\[.S_A(B)=AB\]</span> הוכיחו כי היא איזומורפיזם. מצאו נוסחה ל- <span class="math inline">\(S_A^{-1}\)</span>.</p></li>
+<li><p>כעת נניח כי <span class="math inline">\(A\)</span> אינה הפיכה. הוכיחו כי <span class="math inline">\(S_A\)</span> אינה איזומורפיזם.</p>
+<p>רמז: בשני הסעיפים אין צורך במטריצה מייצגת.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>יש לציין שהמטריצה המייצגת אינה <span class="math inline">\(A\)</span>, אלא מטריצה אחרת (הקשורה אליה) מסדר <span class="math inline">\(n^2\times n^2\)</span>. במקום לחשב אותה הרבה יותר קל להוכיח כי <span class="math inline">\(S_A\)</span> הפיכה (ולכן איזומורפיזם) ע"י פתרון המשוואה <span class="math display">\[,AB=C\]</span> כאשר הנעלם הוא המטריצה <span class="math inline">\(B\)</span>. נתון כי <span class="math inline">\(A\)</span> הפיכה ולכן ניתן להכפיל את שני האגפים ב- <span class="math inline">\(A^{-1}\)</span> משמאל: <span class="math display">\[B=A^{-1}C\]</span> קיבלנו <span class="math display">\[,S_A(A^{-1}C)=C\]</span> ולכן <span class="math inline">\(S_A\)</span> הפיכה כי לכל <span class="math inline">\(C\)</span> מצאנו <span class="math inline">\(B=A^{-1}C\)</span> יחידה המקיימת <span class="math inline">\(S_A(B)=C\)</span>. מתקיים <span class="math display">\[.(S_A)^{-1}(C)=A^{-1}C\]</span> או באופן תמציתי, קיבלנו <span class="math display">\[.(S_A)^{-1}=S_{A^{-1}}\]</span></p></li>
+<li><p>די להראות ש- <span class="math inline">\(S_A\)</span> אינה על, או לחילופין שהיא אינה חח״ע. אין צורך בשתי הבדיקות, אך נעבור על שתיהן.</p>
+<p><span class="math inline">\(S_A\)</span> אינה על: <span class="math inline">\(A\)</span> אינה הפיכה, ולכן אין פתרון למשוואה <span class="math display">\[.AB=I_n\]</span> זה מראה כי <span class="math inline">\(I_n\notin \mathop{\mathrm{Im}}(S_A)\)</span>, כלומר <span class="math inline">\(S_A\)</span> אינה על. למעשה, לא קיימת אף מטריצה הפיכה ב- <span class="math inline">\(\mathop{\mathrm{Im}}(S_A)\)</span>.</p>
+<p><span class="math inline">\(S_A\)</span> אינה חח״ע: נתון כי <span class="math inline">\(A\)</span> אינה הפיכה, ולכן קיים <span class="math inline">\(\underline{0}\neq v\in\mathbb{F}^n\)</span> כך ש- <span class="math inline">\(Av=\underline{0}\)</span>. נסמן <span class="math display">\[,B_v=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> ונשים לב כי <span class="math display">\[.S_A(B_v)=A\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+Av\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+Av\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+Av\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}=\mathbf{0}_{n\times n}\]</span> קיבלנו כי <span class="math inline">\(0_{n\times n}\neq B_v\in\mathop{\mathrm{Ker}}(S_A)\)</span>, ולכן <span class="math inline">\(\mathop{\mathrm{Ker}}(S_A)\neq \Set{0_{n\times n}}\)</span>. זה מראה כי <span class="math inline">\(S_A\)</span> אינה חח״ע.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+/* כותרות אוטומטיות + צבע פסטלי לסביבות; טיפול מדויק ב-solution כך שיישאר callout מתקפל */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+
+  // מחיקת כותרות ברירת המחדל של Quarto באנגלית (כמו Remark / Proof)
+
+  document.querySelectorAll('.proof-title').forEach(el => el.remove());
+
+
+
+  // --- מספר פרק נוכחי למספור לפי פרק ---
+
+  function chapterNumber() {
+
+    const h1 = document.querySelector('main h1[data-number]');
+
+    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+
+    const sec = document.querySelector('.header-section-number');
+
+    if (sec) return sec.textContent.trim().split('.')[0];
+
+    return '1';
+
+  }
+
+  const chap = chapterNumber();
+
+
+
+  // --- מפת סביבות: תווית, צבע, והאם ממוספרת ---
+
+  const envs = {
+
+    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
+
+    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
+
+    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  },
+
+    remark:      { label: 'הערה',     color: 'rgba(60, 179, 113, 0.35)', numbered: true  },
+
+    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+
+    proof:       { label: 'הוכחה',    color: 'rgba(0, 0, 0, 0.15)', numbered: false },
+
+    solution:    { label: 'פתרון',    color: 'rgba(72, 209, 204, 0.35)',numbered: false } // ללא מספור
+
+  };
+
+
+
+  // --- נרמול פתרון: שמירה כ-callout מתקפל וזיהוי כ-solution ---
+
+  document.querySelectorAll('div.callout.callout-note[title="הצג פתרון"], div.callout.callout-note[title="Solution"]').forEach(div => {
+
+    div.classList.add('solution');          // מוסיפים solution
+
+    div.setAttribute('collapse', 'true');   // קיפול נשמר
+
+    div.setAttribute('title', 'פתרון');     // כותרת callout
+
+  });
+
+
+
+  // --- תיקון כפילות מחלקות: אם יש proof+solution יחד – להסיר proof ---
+
+  document.querySelectorAll('div.solution.proof').forEach(div => div.classList.remove('proof'));
+
+  document.querySelectorAll('div.remark.proof').forEach(div => div.classList.remove('proof'));
+
+
+
+  // --- אם יש solution בלי מבנה callout, נבנה header+body כדי לקבל תיבה מתקפלת ---
+
+  document.querySelectorAll('div.solution:not(.callout)').forEach(div => {
+
+    div.classList.add('callout', 'callout-note');
+
+    div.setAttribute('collapse', 'true');
+
+    // header
+
+    const header = document.createElement('div');
+
+    header.className = 'callout-header';
+
+    const titleWrap = document.createElement('div');
+
+    titleWrap.className = 'callout-title-container';
+
+    const title = document.createElement('div');
+
+    title.className = 'callout-title';
+
+    title.textContent = 'פתרון';
+
+    titleWrap.appendChild(title);
+
+    header.appendChild(titleWrap);
+
+    div.insertBefore(header, div.firstChild);
+
+    // body
+
+    const body = document.createElement('div');
+
+    body.className = 'callout-body';
+
+    while (header.nextSibling) body.appendChild(header.nextSibling);
+
+    div.appendChild(body);
+
+  });
+
+// --- מספור משותף (רץ) לכל הסביבות לפי סדר הופעתן ---
+
+  const boxEnvs = ['definition','example','exercise','remark','theorem','lemma','proposition','corollary','proof'];
+
+  let sharedCounter = 0; // מונה אחד משותף לכולם
+
+  const envMap = {}; // מיפוי id → "טענה 2.7" לצורך רפרנסים אוטומטיים
+
+
+
+  // תופס את כל הסביבות יחד כדי לשמור על סדר ההופעה במסמך
+
+  const allBoxSelector = boxEnvs.map(env => `div.${env}`).join(', ');
+
+  
+
+  document.querySelectorAll(allBoxSelector).forEach(div => {
+
+    // לא לגעת ב-callout (כמו פתרונות)
+
+    if (div.classList.contains('callout')) return;
+
+
+
+    // --- התיקון: מחיקת הכותרת האנגלית המובנית של Quarto ---
+
+    // Quarto שותל את הכותרת שלו בתור תגית span בתוך הפסקה הראשונה
+
+    const quartoNativeTitle = div.querySelector('span.theorem-title');
+
+    if (quartoNativeTitle) {
+
+      quartoNativeTitle.remove(); // מעלים את Theorem 2.1
+
+    }
+
+
+
+    // מזהים איזו סביבה זו מתוך הרשימה שלנו
+
+    const env = boxEnvs.find(e => div.classList.contains(e));
+
+    if (!env) return;
+
+    const meta = envs[env];
+
+
+
+    // הוספת הכותרת שלנו עם המונה המשותף בעברית
+
+    let title = div.querySelector(':scope > div.theorem-title');
+
+    if (!title) {
+
+      title = document.createElement('div');
+
+      title.className = 'theorem-title custom-title';
+
+      if (meta.numbered) {
+
+        sharedCounter += 1; // מקדם את המונה המשותף
+
+        const fullLabel = `${meta.label} ${chap}.${sharedCounter}`;
+
+        title.textContent = fullLabel;
+
+        // שמירה במפה לרפרנסים אוטומטיים
+
+        if (div.id) envMap[div.id] = `${chap}.${sharedCounter}`;
+
+      } else {
+
+        title.textContent = meta.label;
+
+      }
+
+      div.insertBefore(title, div.firstChild);
+
+    }
+
+
+
+    // צבע וצביעת קופסה
+
+    div.style.setProperty('--env-color', meta.color);
+
+    div.classList.add('envbox');
+
+  });
+
+
+
+  // --- רפרנסים אוטומטיים: עדכון לינקים שמצביעים לסביבות ממוספרות ---
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    const targetId = link.getAttribute('href').slice(1);
+
+    if (envMap[targetId] && !link.textContent.trim()) {
+
+      link.textContent = envMap[targetId];
+
+    }
+
+  });
+
+console.log('envMap:', envMap);
+
+  // --- צביעת פתרון כ-callout לפי המפה ---
+
+  document.querySelectorAll('div.callout.solution').forEach(div => {
+
+    div.style.setProperty('--env-color', envs.solution.color);
+
+  });
+
+
+
+});
+
+</script>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // בחר את כל כותרות הפרקים הראשיים
+
+  const chapters = document.querySelectorAll('main h1[data-number]');
+
+  let counter = 0;
+
+  chapters.forEach(h1 => {
+
+    counter++;
+
+    if (counter <= 3) {
+
+      // שני פרקים ראשונים ברומי
+
+      const roman = ['I','II'][counter-1];
+
+      h1.setAttribute('data-number', roman);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = roman;
+
+    } else {
+
+      // חזרה למספרים רגילים החל מ-1
+
+      const normal = counter - 3;
+
+      h1.setAttribute('data-number', normal);
+
+      const numSpan = h1.querySelector('.header-section-number');
+
+      if (numSpan) numSpan.textContent = normal;
+
+    }
+
+  });
+
+});
+
+</script>
+<script src="tracking.js"></script>
+<style>
+
+#typo-report-btn {
+
+  position: fixed;
+
+  bottom: 0;
+
+  right: 0;
+
+  width: 250px;
+
+  z-index: 9999;
+
+  background: transparent;
+
+  color: #888;
+
+  border: none;
+
+  border-top: 0.5px solid #ddd;
+
+  border-radius: 0;
+
+  padding: 10px 16px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  text-decoration: none;
+
+  font-family: inherit;
+
+  transition: background 0.15s, color 0.15s;
+
+  box-sizing: border-box;
+
+}
+
+#typo-report-btn:hover {
+
+  background: rgba(0,0,0,0.04);
+
+  color: #444;
+
+}
+
+#typo-report-btn svg {
+
+  width: 13px;
+
+  height: 13px;
+
+  flex-shrink: 0;
+
+}
+
+@media (max-width: 991px) {
+
+  #typo-report-btn { display: none; }
+
+}
+
+</style>
+
+
+
+<script>
+
+(function() {
+
+  var FORM_URL      = "https://docs.google.com/forms/d/e/1FAIpQLSdhMnxeLkwra9GljMRwBhw7b2N5lmtfgSEa5oZ__reVX4gycg/viewform";
+
+  var PAGE_ENTRY    = "entry.1917305355";
+
+  var SECTION_ENTRY = "entry.1642881501";
+
+
+
+  function getCurrentSection() {
+
+    var headings = document.querySelectorAll('main h1, main h2, main h3');
+
+    var current = null;
+
+    var scrollY = window.scrollY + 80;
+
+    headings.forEach(function(h) {
+
+      if (h.getBoundingClientRect().top + window.scrollY <= scrollY) {
+
+        current = h;
+
+      }
+
+    });
+
+    if (!current) return '';
+
+    var num = current.getAttribute('data-number') || '';
+
+    var text = current.textContent.replace(/^\s*[\d.IVX]+\s*/, '').trim();
+
+    return num ? num + ' ' + text : text;
+
+  }
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    var btn = document.createElement('a');
+
+    btn.id = 'typo-report-btn';
+
+    btn.target = '_blank';
+
+    btn.rel = 'noopener';
+
+    btn.title = 'דיווח על שגיאת כתיב';
+
+
+
+    btn.innerHTML =
+
+      '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+
+        '<path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8c0 1.16.3 2.25.82 3.2L1.5 14.5l3.3-.82A6.5 6.5 0 1 0 8 1.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>' +
+
+        '<path d="M8 5.5v3M8 10.5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+
+      '</svg>' +
+
+      'דיווח על שגיאת כתיב/הקלדה';
+
+
+
+    function updateLink() {
+
+      var pageUrl = window.location.href;
+
+      var section = getCurrentSection();
+
+      btn.href = FORM_URL +
+
+        "?usp=pp_url" +
+
+        "&" + PAGE_ENTRY    + "=" + encodeURIComponent(pageUrl) +
+
+        "&" + SECTION_ENTRY + "=" + encodeURIComponent(section);
+
+    }
+
+
+
+    updateLink();
+
+    window.addEventListener('scroll', updateLink);
+
+    window.addEventListener('popstate', updateLink);
+
+    window.addEventListener('hashchange', updateLink);
+
+
+
+    document.body.appendChild(btn);
+
+  });
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_6.html" class="pagination-link" aria-label="תת-מרחבים">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">תת-מרחבים</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_8.html" class="pagination-link" aria-label="chapter_8.html">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">chapter_8.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
