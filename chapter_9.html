@@ -85,6 +85,35 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="rtl-baseline.css">
 <link rel="stylesheet" href="styles.css">
@@ -119,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">אלגברה לינארית</a> 
         <div class="sidebar-tools-main">
-    <a href="./אלגברה-לינארית.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
+    <a href="./downloads/book.pdf" title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
 </div>
     </div>
       </div>
@@ -219,8 +248,18 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#מכפלה-סקלרית" id="toc-מכפלה-סקלרית" class="nav-link active" data-scroll-target="#מכפלה-סקלרית"><span class="header-section-number">12.0.1</span> מכפלה סקלרית</a></li>
+  <li><a href="#וקטורים-אורתוגונליים" id="toc-וקטורים-אורתוגונליים" class="nav-link" data-scroll-target="#וקטורים-אורתוגונליים"><span class="header-section-number">12.0.2</span> וקטורים אורתוגונליים</a></li>
+  <li><a href="#תהליך-גרם-שמידט" id="toc-תהליך-גרם-שמידט" class="nav-link" data-scroll-target="#תהליך-גרם-שמידט"><span class="header-section-number">12.0.3</span> תהליך גרם-שמידט</a></li>
+  <li><a href="#מטריצות-אורתוגונליות" id="toc-מטריצות-אורתוגונליות" class="nav-link" data-scroll-target="#מטריצות-אורתוגונליות"><span class="header-section-number">12.0.4</span> מטריצות אורתוגונליות</a></li>
+  <li><a href="#לכסון-אורתוגונלי" id="toc-לכסון-אורתוגונלי" class="nav-link" data-scroll-target="#לכסון-אורתוגונלי"><span class="header-section-number">12.0.5</span> לכסון אורתוגונלי</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -269,9 +308,1141 @@ $$
 </header>
 
 
-<p>TBD</p>
+<p>בפרק <a href="chapter_1.html">??</a> הגדרנו את המכפלה הסקלרית ב- <span class="math inline">\(\mathbb{R}^2\)</span> ו- <span class="math inline">\(\mathbb{R}^3\)</span>, וראינו את הקשר שלה לגדלים של וקטורים והזוויות ביניהם. בפרק זה נכליל את ההגדרה של מכפלה סקלרית ל- <span class="math inline">\(\mathbb{R}^n\)</span> לכל <span class="math inline">\(n\in\mathbb{N}\)</span>, וע"י כך נקבל הבנה בסיסית לגבי גיאומטריה במימדים גבוהים (בשביל האינטואיציה מספיק להבין את <span class="math inline">\(\mathbb{R}^3\)</span>). בנוסף, נראה את הקשר לנושאים אחרים שנלמדו בקורס - עם דגש על לכסון. נוכיח משפט לפיו כל מטריצה סימטרית היא לכסינה באופן מיוחד, שנקרא לכסון אורתוגונלי (הוקטורים העצמיים המעורבים בלכסון מאונכים זה לזה).</p>
+<section id="מכפלה-סקלרית" class="level3" data-number="12.0.1">
+<h3 data-number="12.0.1" class="anchored" data-anchor-id="מכפלה-סקלרית"><span class="header-section-number">12.0.1</span> מכפלה סקלרית</h3>
+<div class="definition">
+<p>יהיו <span class="math inline">\(v,w\in\mathbb{R}^n\)</span> הנתונים ע"י <span class="math display">\[.v=\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix},\quad w=\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}\]</span> נגדיר את המכפלה הסקלרית שלהם ע"י <span class="math display">\[.v\cdot w=\sum_{i=1}^n a_ib_i\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>המכפלה הסקלרית נקראת גם "מכפלה פנימית סטנדרטית", ולפי השם הזה ניתן להבין שיש מכפלות פנימיות נוספות (ב- <span class="math inline">\(\mathbb{R}^n\)</span> ומרחבים וקטוריים אחרים) בעלות תכונות דומות. לא נעסוק בהן בקורס, אך נציין שיש אנלוגיה מוחלטת בין המכפלות הפנימיות השונות וההבדל הוא בעיקר חישובי.</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>ב- <span class="math inline">\(\mathbb{R}^2\)</span> מתקיים <span class="math display">\[.\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+4
+\end{pmatrix}=1\cdot 3+2\cdot 4=11\]</span></p></li>
+<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> מתקיים <span class="math display">\[.\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+-1 \\
+2
+\end{pmatrix}=1\cdot 1+2\cdot(-1)+3\cdot 2=5\]</span></p></li>
+<li><p>ב- <span class="math inline">\(\mathbb{R}^4\)</span> מתקיים <span class="math display">\[.\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+-2 \\
+3 \\
+-4
+\end{pmatrix}=1\cdot 1+2\cdot(-2)+3\cdot 3+4\cdot(-4)=-10\]</span></p></li>
+<li><p>המכפלה הסקלרית <span class="math display">\[\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\cdot \begin{pmatrix}
+0 \\
+2 \\
+4
+\end{pmatrix}\]</span> אינה מוגדרת כי הוקטורים אינם שווי אורך (הם לא שייכים לאותו המרחב).</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>כאשר מזהים את שני הוקטורים כוקטורי עמודה, כלומר מטריצות מסדר <span class="math inline">\(n\times 1\)</span>, מתקיים הקשר הבא בין מכפלה סקלרית לכפל מטריצות: <span class="math display">\[.v\cdot w=v^tw=(a_1,\cdots,a_n)\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}\]</span></p>
+</div>
+<p>בעזרת מכפלה סקלרית אפשר להגדיר גודל של וקטור ב- <span class="math inline">\(\mathbb{R}^n\)</span>, בהתאם לנוסחה של משפט פיתגורס שמתקיימת במישור ובמרחב.</p>
+<div class="definition">
+<p>יהי <span class="math inline">\(v=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\in\mathbb{R}^n\)</span>. נגדיר את גודלו ע"י <span class="math display">\[.\|v\|=\sqrt{v\cdot v}=\sqrt{\sum_{i=1}^n a_i^2}\]</span></p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>ב- <span class="math inline">\(\mathbb{R}^2\)</span> מתקיים <span class="math display">\[.\left\|\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}\right\|=\sqrt{1^2+2^2}=\sqrt{5}\]</span></p></li>
+<li><p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> מתקיים <span class="math display">\[.\left\|\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\right\|=\sqrt{1^2+2^2+3^2}=\sqrt{14}\]</span></p></li>
+<li><p>ב- <span class="math inline">\(\mathbb{R}^4\)</span> מתקיים <span class="math display">\[.\left\|\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4
+\end{pmatrix}\right\|=\sqrt{1^2+2^2+3^2+4^2}=\sqrt{30}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>חשבו את הגדלים של הוקטורים <span class="math display">\[v=\begin{pmatrix}
+1 \\
+3 \\
+5 \\
+7
+\end{pmatrix},\quad w=\begin{pmatrix}
+2 \\
+4 \\
+6 \\
+8
+\end{pmatrix}\]</span> ואת המכפלה הסקלרית <span class="math inline">\(v\cdot w\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נחשב: <span class="math display">\[\begin{aligned}
+\|v\|&amp;=\sqrt{1^2+3^2+5^2+7^2}=\sqrt{84} \\
+\|w\|&amp;=\sqrt{2^2+4^2+6^2+8^2}=2\sqrt{1^2+2^2+3^2+4^2}=2\sqrt{30} \\
+v\cdot w&amp;=1\cdot 2+3\cdot 4+5\cdot 6+7\cdot 8=100
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+<p>נוכיח הכללה ל- <span class="math inline">\(\mathbb{R}^n\)</span> של התכונות של המכפלה הסקלרית שהופיעו בטענה <a href="#prp-dot-product-properties">??</a>.</p>
+<div id="prp-dot-properties-general" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.1</strong></span> <em>יהיו <span class="math inline">\(v_1,v_2,v_3\in\mathbb{R}^n\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[v_1\cdot v_2=v_2\cdot v_1\]</span></em></p></li>
+<li><p><em><span class="math display">\[(v_1+v_3)\cdot v_2=v_1\cdot v_2+v_3\cdot v_2\]</span></em></p></li>
+<li><p><em><span class="math display">\[v_1\cdot v_1=\|v_1\|^2\]</span></em></p></li>
+<li><p><em><span class="math display">\[(\alpha v_1)\cdot v_2=\alpha(v_1\cdot v_2)\]</span></em></p></li>
+<li><p><em><span class="math display">\[\|\alpha v_1\|=|\alpha|\|v_1\|\]</span></em></p></li>
+<li><p><em><span class="math display">\[\|v_1\|=0\iff v_1=\underline{0}\]</span></em></p></li>
+<li><p><em>אם <span class="math inline">\(v_1\neq\underline{0}\)</span>, אז <span class="math display">\[.\left\|\frac{v_1}{\|v_1\|}\right\|=1\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math display">\[.v_1=\begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+    \end{pmatrix},v_2=\begin{pmatrix}
+    b_1 \\
+    \vdots \\
+    b_n
+    \end{pmatrix}, v_3=\begin{pmatrix}
+    c_1 \\
+    \vdots \\
+    c_n
+    \end{pmatrix}\]</span></p>
+<ol type="1">
+<li><p>לפי חוק החילוף לכפל ב- <span class="math inline">\(\mathbb{R}\)</span>, מתקיים <span class="math display">\[.v_1\cdot v_2=\sum_{i=1}^n a_i b_i=\sum_{i=1}^n b_i a_i=v_2\cdot v_1\]</span></p></li>
+<li><p>לפי חוק הפילוג וחוק החילוף (לחיבור) מתקיים <span class="math display">\[.(v_1+v_3)\cdot v_2=\sum_{i=1}^n (a_i+c_i)b_i=\sum_{i=1}^n a_ib_i+\sum_{i=1}^n c_ib_i=v_1\cdot v_2+v_3\cdot v_2\]</span></p></li>
+<li><p>ישירות מההגדרה של גודל.</p></li>
+<li><p>לפי חוק הפילוג, לכל <span class="math inline">\(\alpha\in\mathbb{R}\)</span> מתקיים <span class="math display">\[.(\alpha v_1)\cdot v_2=\sum_{i=1}^n (\alpha a_i)\cdot b_i=\alpha\sum_{i=1}^n a_ib_i=\alpha (v_1\cdot v_2)\]</span></p></li>
+<li><p><span class="math display">\[\begin{aligned}
+\|\alpha v_1\|&amp;=\sqrt{(\alpha v_1)\cdot(\alpha v_1)}=\sqrt{\alpha^2(v_1\cdot v_1)}=\sqrt{\alpha^2\|v_1\|^2}\\
+&amp;=|\alpha|\|v_1\|
+\end{aligned}\]</span></p></li>
+<li><p>מתקיים <span class="math display">\[.\|v_1\|=0 \iff \sum_{i=1}^n a_i^2=0 \iff \forall 1\leq i\leq n\thinspace:\thinspace a_i=0 \iff v_1=\underline{0}\]</span> הסיבה לשקילות האמצעית היא שהביטוי <span class="math inline">\(\sum_{i=1}^n a_i^2=0\)</span> הוא סכום של מחוברים אי-שליליים, ולכן הוא מתאפס רק באשר כל מחובר מתאפס.</p></li>
+<li><p>נניח כי <span class="math inline">\(\|v_1\|\neq 0\)</span>. מסעיף ה’ עבור <span class="math inline">\(\alpha=\frac{1}{\|v_1\|}\)</span> נובע כי <span class="math display">\[.\left\|\frac{v_1}{\|v_1\|}\right\|=\|\alpha v_1\|=|\alpha|\|v_1\|=\frac{1}{\|v_1\|}\cdot \|v_1\|=1\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>סעיף ז’ מתאר תהליך שנקרא "נרמול" שבו משנים את גודל הוקטור <span class="math inline">\(v\)</span> ל- <span class="math inline">\(1\)</span> בלי לשנות את כיוונו. עושים זאת ע"י כפל בסקלר <span class="math inline">\(\frac{1}{\|v\|}\)</span>.</p>
+</div>
+<div id="cor-bilinear" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 12.1</strong></span> <em>לכל <span class="math inline">\(v_1,...,v_m,w_1,...,w_k\in\mathbb{R}^n\)</span> ולכל <span class="math inline">\(\alpha_1,...,\alpha_m,\beta_1,...,\beta_k\in\mathbb{R}\)</span> מתקיים <span class="math display">\[.(\alpha_1v_1+...+\alpha_mv_m)\cdot(\beta_1w_1+...+\beta_kw_k)=\sum_{i=1}^m\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot w_j)\]</span></em></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>תכונה זו נקראת בי-לינאריות. ראינו בסעיפים ב’ ו-ד’ של טענה <a href="#prp-dot-properties-general">12.8</a> את מה שנקרא לינאריות לפי הארגומנט הראשון (השמאלי) של המכפלה הסקלרית. בי-לינאריות פירושה שמתקיימת גם לינאריות לפי הארגומנט השני (הימני), והמסקנה מראה את השילוב של שני סוגי הלינאריות. מכאן אפשר לחשוב על תכונה זו כלינאריות כפולה ("בי"), והיא מתאימה לתכונות המוכרות של חיבור וכפל.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math display">\[.v=\alpha_1v_1+...+\alpha_mv_m, \quad w=\beta_1w_1+...+\beta_kw_k\]</span> נשתמש בסעיפים ב’ ו-ד’ של טענה <a href="#prp-dot-properties-general">12.8</a> מספר חוזר של פעמים (בהתאם למספר המחוברים), תחילה ביחס לארגומנט הראשון ואחר כך נעבור לשני בעזרת סעיף א’. כך נקבל</p>
+<p><span class="math display">\[\begin{aligned}
+v\cdot w&amp;=(\alpha_1v_1+...+\alpha_mv_m)\cdot w=\alpha_1(v_1\cdot w)+...+\alpha_m(v_m\cdot w) \\
+&amp;=\alpha_1(w\cdot v_1)+...+\alpha_m(w\cdot v_m)=\sum_{i=1}^m\alpha_i (w\cdot v_i)=\sum_{i=1}^m\alpha_i\left(\sum_{j=1}^k\beta_jw_j\right)\cdot v_i \\
+&amp;=\sum_{i=1}^m\alpha_i\left(\sum_{j=1}^k\beta_jw_j\cdot v_i\right)=\sum_{i=1}^m\sum_{j=1}^k \alpha_i\beta_j(w_j\cdot v_i)=\sum_{i=1}^m\sum_{j=1}^k \alpha_i\beta_j(v_i\cdot w_j)
+\end{aligned}\]</span>&nbsp;◻</p>
+</div>
+<div class="example">
+<p>ב- <span class="math inline">\(\mathbb{R}^3\)</span> מתקיים <span class="math display">\[\begin{aligned}
+&amp;\left(2\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}+3\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\right)\cdot\left(4\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix}-3\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}\right) \\
+&amp;=(2\cdot 4)\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix}+(2\cdot(-3))\begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}+(3\cdot 4)\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\cdot\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix} \\
+&amp;+(3\cdot(-3))\begin{pmatrix}
+2 \\
+0 \\
+-1
+\end{pmatrix}\cdot\begin{pmatrix}
+3 \\
+5 \\
+0
+\end{pmatrix}=8(1+3)-6(3+10)+12(2-1)-9\cdot 6=-88
+\end{aligned}\]</span> ניתן להגיע לתוצאה זו גם באופן ישיר (ע"י חישוב כל וקטור לפני פתיחת הסוגריים). נראה בהמשך את השימוש של בי-לינאריות.</p>
+</div>
+</section>
+<section id="וקטורים-אורתוגונליים" class="level3" data-number="12.0.2">
+<h3 data-number="12.0.2" class="anchored" data-anchor-id="וקטורים-אורתוגונליים"><span class="header-section-number">12.0.2</span> וקטורים אורתוגונליים</h3>
+<p>ראינו ב- <span class="math inline">\(\mathbb{R}^2\)</span> וגם ב- <span class="math inline">\(\mathbb{R}^3\)</span> ששני וקטורים <span class="math inline">\(v,w\neq\underline{0}\)</span> מאונכים זה לזה אם ורק אם <span class="math inline">\(v\cdot w=0\)</span>. נשתמש בעובדה כזו לצורך ההגדרה של וקטורים אורתוגונליים (מילה נרדפת ל"מאונכים" בהקשר אלגברי) ב- <span class="math inline">\(\mathbb{R}^n\)</span>, שהיא פחות אינטואיטיבית עבור <span class="math inline">\(n\geq 4\)</span>. יתר על כן, נכליל את ההגדרה לקבוצה סופית של וקטורים - לא בהכרח זוג.</p>
+<div class="definition">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>נאמר ש- <span class="math inline">\(\underline{0}\neq v,w\in\mathbb{R}^n\)</span> הם אורתוגונליים אם <span class="math inline">\(v\cdot w=0\)</span>. נסמן זאת ע"י <span class="math inline">\(v\perp w\)</span>.</p></li>
+<li><p>קבוצה <span class="math inline">\(\underline{0}\notin \Set{v_1,...,v_k}\subseteq\mathbb{R}^n\)</span> נקראת אורתוגונלית אם לכל <span class="math inline">\(i\neq j\)</span> מתקיים <span class="math display">\[.v_i\cdot v_j=0\]</span></p></li>
+<li><p>קבוצה <span class="math inline">\(\Set{v_1,...,v_k}\subseteq\mathbb{R}^n\)</span> נקראת אורתונורמלית אם היא אורתוגונלית ובנוסף לכל <span class="math inline">\(1\leq i\leq k\)</span> מתקיים <span class="math display">\[.\|v_i\|=1\]</span></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>&nbsp;</p>
+<ol type="1">
+<li><p>לכל <span class="math inline">\(v,w\in\mathbb{R}^n\)</span> מתקיים <span class="math inline">\(v\cdot w=w\cdot v\)</span>, ולכן <span class="math display">\[.v\perp w\iff w\perp v\]</span></p></li>
+<li><p>כל קבוצה אורתונורמלית היא אורתוגונלית, אך לא להיפך. אם <span class="math inline">\(\|v_i\|=1\)</span>, אז בהכרח <span class="math inline">\(v_i\neq 0\)</span> (שזה תנאי הנדרש לאורתוגונליות) לפי טענה <a href="#prp-dot-properties-general">12.8</a>.</p></li>
+</ol>
+</div>
+<div id="fig-Orthogonal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Orthogonal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Orthogonal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Orthogonal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.1: וקטורי הצירים מהווים קבוצה אורתוגונלית, וגם הוקטורים הצבועים מהווים קבוצה אורתוגונלית נפרדת
+</figcaption>
+</figure>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>הקבוצה <span class="math display">\[A=\Set{\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}}\subseteq\mathbb{R}^3\]</span> היא אורתוגונלית, אך לא אורתונורמלית. נראה זאת ע"י חישוב מכפלה סקלרית לכל זוג וקטורים: <span class="math display">\[\begin{aligned}
+\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}&amp;=-2+2+0=0 \\
+    \begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}&amp;=0+0+0=0 \\
+    \begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}\cdot\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}&amp;=0+0+0=0
+\end{aligned}\]</span> כל הוקטורים שונים מוקטור האפס, אך הוקטורים <span class="math inline">\(\begin{pmatrix}
+    2 \\
+    1 \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -1 \\
+    2 \\
+    0
+    \end{pmatrix}\)</span> אינם בגודל <span class="math inline">\(1\)</span>.</p></li>
+<li><p>ניקח את הקבוצה מהסעיף הקודם ו"ננרמל" כל וקטור בה. הכוונה היא שנחליף כל וקטור <span class="math inline">\(v\in A\)</span> בגרסה ה"מנורמלת" <span class="math inline">\(\frac{v}{\|v\|}\)</span> בגודל <span class="math inline">\(1\)</span>. שני הוקטורים הראשונים הם בגודל <span class="math inline">\(\sqrt{5}\)</span> והשלישי הוא כבר בגודל <span class="math inline">\(1\)</span>. לאחר נרמול נקבל <span class="math display">\[.B=\Set{\begin{pmatrix}
+    \frac{2}{\sqrt{5}} \\
+    \frac{1}{\sqrt{5}} \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    -\frac{1}{\sqrt{5}} \\
+    \frac{2}{\sqrt{5}} \\
+    0
+    \end{pmatrix},\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+    \end{pmatrix}}\subseteq\mathbb{R}^3\]</span></p>
+<p>זו קבוצה אורתונורמלית. לפי סעיף ז’ של טענה <a href="#prp-dot-properties-general">12.8</a>, הגודל של כל וקטור הוא <span class="math inline">\(1\)</span> כתוצאה מהנרמול. ניתן לבדוק שכל המכפלות הסקלריות הן עדיין <span class="math inline">\(0\)</span>, ונעשה זאת באופן כללי בטענה הבאה.</p></li>
+</ol>
+</div>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(\Set{v_1,...,v_k}\subseteq\mathbb{R}^n\)</span> קבוצה אורתוגונלית. אז הקבוצה המנורמלת <span class="math display">\[\left\{\frac{v_1}{\|v_1\|},...,\frac{v_k}{\|v_k\|}\right\}\]</span> היא אורתונורמלית.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי סעיף ז’ של טענה <a href="#prp-dot-properties-general">12.8</a>, לכל <span class="math inline">\(1\leq i\leq k\)</span> מתקיים <span class="math display">\[\left\|\frac{v_i}{\|v_i\|}\right\|=1\]</span> כנדרש. נראה כי המכפלה הסקלרית של כל זוג וקטורים מנורמלים מתאפסת: לכל <span class="math inline">\(i\neq j\)</span> מתקיים <span class="math inline">\(v_i\cdot v_j=0\)</span> לפי הנתון, ולכן <span class="math display">\[.\frac{v_i}{\|v_i\|}\cdot\frac{v_j}{\|v_j\|}=\frac{1}{\|v_i\|\|v_j\|}(v_i\cdot v_j)=0\]</span>&nbsp;◻</p>
+</div>
+<p>מה היתרון של קבוצה אורתונורמלית? המכפלה הסקלרית של צירופים לינאריים של איברי הקבוצה היא נוחה לחישוב. הטענה הבאה מראה את החישוב לקבוצה אורתוגונלית באופן כללי, ולקבוצה אורתונורמלית כמקרה פרטי (פשוט יותר).</p>
+<div id="prp-ortho-dot" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.2</strong></span> <em>&nbsp;</em></p>
+<ol type="1">
+<li><p><em>תהי <span class="math inline">\(\Set{v_1,...,v_k}\)</span> קבוצה אורתוגונלית. לכל <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\mathbb{R}\)</span> מתקיים <span class="math display">\[.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\|v_i\|^2\]</span></em></p></li>
+<li><p><em>אם <span class="math inline">\(\Set{v_1,...,v_k}\)</span> קבוצה אורתונורמלית, אז לכל <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\mathbb{R}\)</span> מתקיים <span class="math display">\[.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>יהיו <span class="math inline">\(\alpha_1,...,\alpha_k,\beta_1,...,\beta_k\in\mathbb{R}\)</span>.</p>
+<ol type="1">
+<li><p>נשתמש בבי-לינאריות (מסקנה <a href="#cor-bilinear">12.10</a>) ונקבל <span class="math display">\[.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot v_j)\]</span></p>
+<p>לכל <span class="math inline">\(1\leq i\leq k\)</span> מתקיים <span class="math display">\[,\sum_{j=1}^k\alpha_i\beta_j(v_i\cdot v_j)=0+...+0+\alpha_i\beta_i(v_i\cdot v_i)+0+...+0=\alpha_i\beta_i\|v_i\|^2\]</span> כי רק מחובר אחד (עבור <span class="math inline">\(j=i\)</span>) בסכום לא מתאפס. נציב זאת במשוואה הקודמת ונקבל <span class="math display">\[(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\|v_i\|^2\]</span> כנדרש.</p></li>
+<li><p>זהו מקרה פרטי של הסעיף הקודם. כאן <span class="math inline">\(\|v_i\|=1\)</span> לכל <span class="math inline">\(1\leq i\leq n\)</span>, ולאחר הצבה נקבל <span class="math display">\[.(\alpha_1v_1+...+\alpha_kv_k)\cdot(\beta_1v_1+...+\beta_kv_k)=\sum_{i=1}^k\alpha_i\beta_i\]</span></p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>למעשה, מדובר פה בהכללה של משפט פיתגורס. ב- <span class="math inline">\(\mathbb{R}^2\)</span> עבור קבוצה אורתוגונלית <span class="math inline">\(\Set{v_1,v_2}\)</span> נקבל <span class="math display">\[,\|v_1+v_2\|^2=\|v_1\|^2+\|v_2\|^2\]</span> כאשר אגף שמאל מתאר את הריבוע של אורך היתר במשולש ישר-זווית שניצביו מתאימים לוקטורים <span class="math inline">\(v_1,v_2\)</span>. באופן דומה, ב- <span class="math inline">\(\mathbb{R}^n\)</span> עבור קבוצה אורתוגונלית <span class="math inline">\(\Set{w_1,...,w_n}\)</span> נקבל <span class="math display">\[.\|w_1+...+w_n\|^2=\|w_1\|^2+...+\|w_n\|^2\]</span> אפשר לצייר את זה ב- <span class="math inline">\(\mathbb{R}^3\)</span> ולנסות לדמיין את ההכללה עבור <span class="math inline">\(n\geq 4\)</span>.</p>
+<div id="fig-GeneralPythagoras" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-GeneralPythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/GeneralPythagoras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-GeneralPythagoras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.2: המקרה התלת-מימדי נשען על המקרה הדו-מימדי
+</figcaption>
+</figure>
+</div>
+</div>
+<p>הטענה הבאה מראה את הקשר בין אורתוגונליות (מושג גיאומטרי) לבין אי-תלות לינארית (מושג אלגברי):</p>
+<div id="prp-ortho-independent" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.3</strong></span> <em>כל קבוצה אורתוגונלית <span class="math inline">\(\Set{v_1,...,v_k}\subseteq \mathbb{R}^n\)</span> היא בת"ל.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נניח שקיימים <span class="math inline">\(\alpha_1,...,\alpha_k\in\mathbb{R}\)</span> כך ש- <span class="math display">\[.\alpha_1v_1+...+\alpha_kv_k=\underline{0}\]</span> לכל <span class="math inline">\(1\leq i\leq k\)</span> נכפיל (באופן סקלרי) את שני אגפי המשוואה ב- <span class="math inline">\(v_i\)</span> ונקבל <span class="math display">\[.(\alpha_1v_1+...+\alpha_kv_k)\cdot v_i=0\]</span> לפי טענה <a href="#prp-ortho-dot">12.17</a> נובע כי <span class="math display">\[,\alpha_i\|v_i\|^2=0\]</span> ומכאן לכל <span class="math inline">\(1\leq i\leq k\)</span> מתקיים</p>
+<p><span class="math display">\[\alpha_i=0\]</span> שהרי <span class="math inline">\(\|v_i\|\neq 0\)</span> כי <span class="math inline">\(v_i\neq 0\)</span> לפי הנתון. לכן, הקבוצה <span class="math inline">\(\Set{v_1,...,v_k}\)</span> היא בת"ל.&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>תהי <span class="math inline">\(A=\Set{v_1,v_2,v_3}\subseteq\mathbb{R}^n\)</span> קבוצה אורתונורמלית.</p>
+<ol type="1">
+<li><p>מצאו <span class="math inline">\(r,s,t\in\mathbb{R}\)</span> כך ש- <span class="math display">\[B=\Set{rv_1+v_2+v_3,v_1+sv_2+v_3,v_1+v_2+tv_3}\subseteq\mathbb{R}^n\]</span> תהיה קבוצה אורתוגונלית.</p></li>
+<li><p>עבור <span class="math inline">\(r,s,t\)</span> מהסעיף הקודם, נרמלו את וקטורי הקבוצה <span class="math inline">\(B\)</span> כדי לקבל קבוצה אורתונורמלית.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נדרוש שהמכפלה הסקלרית תתאפס לכל זוג וקטורים ב- <span class="math inline">\(B\)</span>. לפי טענה <a href="#prp-ortho-dot">12.17</a> מתקיים: <span class="math display">\[\begin{cases}
+(rv_1+v_2+v_3)\cdot(v_1+sv_2+v_3)&amp;=r\|v_1\|^2+s\|v_1\|^2+\|v_3\|^2=r+s+1 \\
+(v_1+sv_2+v_3)\cdot(v_1+v_2+tv_3)&amp;=1+s+t \\
+(rv_1+v_2+v_3)\cdot(v_1+v_2+tv_3)&amp;=r+1+t\\
+\end{cases}\]</span> לכן, יש לפתור את הממ"ל הבאה: <span class="math display">\[\begin{cases}
+r+s=-1 \\
+s+t=-1 \\
+r+t=-1
+\end{cases}\]</span></p>
+<p>יש לה פתרון יחיד: <span class="math display">\[r=s=t=-\frac{1}{2}\]</span></p>
+<p>יש לבדוק שוקטור האפס לא מופיע בקבוצה <span class="math inline">\(B\)</span> המתאימה לסקלרים שמצאנו. נראה זאת ע"י חישוב הגדלים בסעיף הבא.</p></li>
+<li><p>נציב <span class="math inline">\(r=s=t=-\frac{1}{2}\)</span> ונשתמש בסעיף ב’ של טענה <a href="#prp-ortho-dot">12.17</a>:</p>
+<p><span class="math display">\[\begin{aligned}
+\left\|-\frac{1}{2}v_1+v_2+v_3\right\|^2&amp;=\frac{1}{4}+1+1=\frac{9}{4} \\
+\left\|v_1-\frac{1}{2}v_2+v_3\right\|^2&amp;=1+\frac{1}{4}+1=\frac{9}{4} \\
+\left\|v_1+v_2-\frac{1}{2}v_3\right\|^2&amp;=1+1+\frac{1}{4}=\frac{9}{4}
+\end{aligned}\]</span></p>
+<p>לכן, הגודל המשותף של כל וקטורי <span class="math inline">\(B\)</span> הוא <span class="math inline">\(\sqrt{\frac{9}{4}}=\frac{3}{2}\)</span>. נכפיל כל וקטור בסקלר ההופכי <span class="math inline">\(\frac{2}{3}\)</span> ונקבל את הקבוצה האורתונורמלית הבאה: <span class="math display">\[C=\Set{-\frac{1}{3}v_1+\frac{2}{3}v_2+\frac{2}{3}v_3,\frac{2}{3}v_1-\frac{1}{3}v_2+\frac{2}{3}v_3,\frac{2}{3}v_1+\frac{2}{3}v_2-\frac{1}{3}v_3}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="cor-orthogonal-basis" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 12.2</strong></span> <em>תהי <span class="math inline">\(\Set{v_1,...,v_n}\subseteq\mathbb{R}^n\)</span> אורתוגונלית. אז היא בסיס ל- <span class="math inline">\(\mathbb{R}^n\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-ortho-independent">12.19</a> הקבוצה <span class="math inline">\(\Set{v_1,...,v_n}\)</span> היא בת"ל. לפי משפט "שלישי חינם" נובע כי היא בסיס ל- <span class="math inline">\(\mathbb{R}^n\)</span>.&nbsp;◻</p>
+</div>
+<div class="definition">
+<p>קבוצה אורתוגונלית <span class="math inline">\(\Set{v_1,...,v_n}\subseteq\mathbb{R}^n\)</span> נקראת בסיס אורתוגונלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>. אם היא אורתונורמלית, היא נקראת בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+</div>
+<div id="exm-rotation-matrix" class="example theorem">
+<p><span class="theorem-title"><strong>Example 12.1</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>הבסיס הסטנדרטי <span class="math inline">\(\Set{e_1,...,e_n}\subseteq \mathbb{R}^n\)</span> הוא בסיס אורתוגונלי כי לכל <span class="math inline">\(i\neq j\)</span> מתקיים <span class="math display">\[,e_i\cdot e_j=0+...+0=0\]</span> שהרי בכל מחובר לפחות אחד משני גורמי המכפלה הוא <span class="math inline">\(0\)</span>. יתר על כן, בסיס זה הוא אורתונורמלי כי לכל <span class="math inline">\(1\leq i\leq n\)</span> מתקיים <span class="math display">\[.\|e_i\|=\sqrt{e_i\cdot e_i}=\sqrt{0+...+0+1+0+...+0}=1\]</span></p></li>
+<li><p>לכל <span class="math inline">\(\theta\in\mathbb{R}\)</span> הקבוצה <span class="math display">\[\Set{\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix},\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}}\]</span> היא בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^2\)</span>. אכן, לכל <span class="math inline">\(\theta\in\mathbb{R}\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+\left\|\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix}\right\|&amp;=\sqrt{\cos^2\theta+\sin^2\theta}=1 \\
+\left\|\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}\right\|&amp;=\sqrt{\sin^2\theta+\cos^2\theta}=1 \\
+\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix}\cdot\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}&amp;=-\cos\theta\sin\theta+\sin\theta\cos\theta=0
+\end{aligned}\]</span></p>
+<p>למשל, עבור <span class="math inline">\(\theta=\frac{\pi}{4}\)</span> נקבל את הבסיס האורתונורמלי הבא <span class="math display">\[.\Set{\begin{pmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix},\begin{pmatrix}
+-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>מהו הגודל המקסימלי של קבוצה אורתוגונלית ב- <span class="math inline">\(\mathbb{R}^n\)</span>?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>באופן כללי, תהי <span class="math inline">\(\Set{v_1,...,v_k}\subseteq\mathbb{R}^n\)</span> קבוצה אורתוגונלית בגודל <span class="math inline">\(k\)</span>. לפי טענה <a href="#prp-ortho-independent">12.19</a> זו קבוצה בת"ל, ולכן בכרח <span class="math inline">\(k\leq n\)</span> לפי מסקנה <a href="#cor-size-dim">??</a>. מכאן נובע שהגודל המקסימלי הוא לכל היותר <span class="math inline">\(n\)</span>, ולמעשה יש שוויון כי הבסיס הסטנדרטי הוא קבוצה אורתונורמלית (בפרט אורתוגונלית) בגודל <span class="math inline">\(n\)</span>,</p>
+</div>
+</div>
+</div>
+<p>לבסיס אורתוגונלי יש יתרון חישובי כאשר רוצים לבטא וקטור כללי כצירוף לינארי של איברי הבסיס. במקרה זה, אין צורך לפתור ממ"ל כי יש נוסחה לצירוף הלינארי במונחים של מכפלה סקלרית.</p>
+<div id="prp-ortho-basis" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.4</strong></span> <em>יהי <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס אורתוגונלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>. אז לכל <span class="math inline">\(v\in\mathbb{R}^n\)</span> מתקיים <span class="math display">\[.v=\sum_{i=1}^n\frac{v\cdot v_i}{v_i\cdot v_i}v_i\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>יהי <span class="math inline">\(v\in\mathbb{R}^n\)</span>. <span class="math inline">\(B\)</span> היא בסיס, ולכן קיימים <span class="math inline">\(\alpha_1,...,\alpha_n\in\mathbb{R}\)</span> כך ש- <span class="math display">\[.v=\alpha_1 v_1+...+\alpha_n v_n\]</span> לכל <span class="math inline">\(1\leq i\leq n\)</span> נכפיל את שני אגפי המשוואה (באופן סקלרי) ב- <span class="math inline">\(v_i\)</span>, ונקבל <span class="math display">\[.v\cdot v_i=0+...+0+\alpha_iv_i\cdot v_i+0+...+0=\alpha_i(v_i\cdot v_i)\]</span> מכאן נובע כי לכל <span class="math inline">\(1\leq i\leq n\)</span> מתקיים <span class="math display">\[,\alpha_i=\frac{v\cdot v_i}{v_i\cdot v_i}\]</span> ולאחר הצבה במשוואה המקורית נקבל <span class="math display">\[v=\sum_{i=1}^n\frac{v\cdot v_i}{v_i\cdot v_i}v_i\]</span> כנדרש.&nbsp;◻</p>
+</div>
+<div id="cor-orthonormal" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 12.3</strong></span> <em>יהי <span class="math inline">\(B=\Set{v_1,...,v_n}\)</span> בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>. אז לכל <span class="math inline">\(v\in\mathbb{R}^n\)</span> מתקיים <span class="math display">\[.v=\sum_{i=1}^n(v\cdot v_i)v_i\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>זו מסקנה מיידית מטענה <a href="#prp-ortho-basis">12.25</a> ע"י הצבת <span class="math inline">\(v_i\cdot v_i=\|v_i\|^2=1\)</span> במכנה.&nbsp;◻</p>
+</div>
+<div id="exr-orthogonal-by-basis" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 12.1</strong></span> יהי <span class="math inline">\(W\subseteq\mathbb{R}^n\)</span> תת-מרחב בעל בסיס <span class="math inline">\(\Set{w_1,...,w_m}\)</span>. אז לכל <span class="math inline">\(v\in\mathbb{R}^n\)</span> מתקיים: <span class="math display">\[\forall w\in W\thinspace :\thinspace v\perp w \iff \forall 1\leq i\leq m \thinspace :\thinspace v\perp w_m\]</span></p>
+<p>או במילים: <span class="math inline">\(v\)</span> מאונך לכל וקטור ב- <span class="math inline">\(W\)</span> אם ורק אם הוא מאונך לכל וקטורי הבסיס.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>הכיוון <span class="math inline">\(\implies\)</span> מובן מאליו.</p>
+<p>בכיוון השני, נניח כי <span class="math inline">\(v\)</span> מאונך לכל וקטורי הבסיס. לכל <span class="math inline">\(w\in W\)</span> קיימים <span class="math inline">\(\alpha_1,...,\alpha_m\in\mathbb{R}\)</span> כך ש- <span class="math display">\[.w=\sum_{i=1}^m\alpha_i w_i\]</span> לכן: <span class="math display">\[,v\cdot w=\sum_{i=1}^m\alpha_i (v\cdot w_i)=\sum_{i=1}^m \alpha_i\cdot 0=0\]</span> כנדרש.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="תהליך-גרם-שמידט" class="level3" data-number="12.0.3">
+<h3 data-number="12.0.3" class="anchored" data-anchor-id="תהליך-גרם-שמידט"><span class="header-section-number">12.0.3</span> תהליך גרם-שמידט</h3>
+<p>ראינו כי ל- <span class="math inline">\(\mathbb{R}^n\)</span> יש בסיס אורתונורמלי מיוחד, שהוא הבסיס הסטנדרטי. לא קשה להשתכנע שיש אינסוף בסיסים אורתונורמליים אחרים. אבל מה לגבי תת-מרחב של <span class="math inline">\(W\subseteq\mathbb{R}^n\)</span>? יש אלגוריתם (שנקרא תהליך גרם-שמידט) שיאפשר לנו להמיר כל בסיס ל- <span class="math inline">\(W\)</span> לבסיס אורתוגונלי שלו. ע"י נרמול אפשר גם לקבל בסיס אורתונורמלי.</p>
+<div class="proposition">
+<p><em>יהי <span class="math inline">\(B=\Set{v_1,...,v_m}\)</span> בסיס לתת-מרחב <span class="math inline">\(W\subseteq \mathbb{R}^n\)</span>. נגדיר: <span class="math display">\[\begin{aligned} w_1&amp;=v_1 \\
+w_2&amp;=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1 \\
+w_3&amp;=v_3-\frac{v_3\cdot v_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2\\
+&amp;\thinspace \vdots \\
+w_m&amp;=v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i
+\end{aligned}\]</span> אז הקבוצה <span class="math inline">\(\Set{w_1,...,w_m}\)</span> היא בסיס אורתוגונלי ל- <span class="math inline">\(W\)</span>, והקבוצה המנורמלת <span class="math inline">\(\{\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}\}\)</span> היא בסיס אורתונורמלי ל- <span class="math inline">\(W\)</span>. יתר על כן, מתקיים: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Span}}(v_1)&amp;=\mathop{\mathrm{Span}}(w_1)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|}) \\ \mathop{\mathrm{Span}}(v_1,v_2)&amp;=\mathop{\mathrm{Span}}(w_1,w_2)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|}) \\ &amp;\thinspace\vdots \\ \mathop{\mathrm{Span}}(v_1,...,v_m)&amp;=\mathop{\mathrm{Span}}(w_1,...,w_m)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|}) \end{aligned}\]</span></em></p>
+</div>
+<div class="example">
+<p>לפני ההוכחה נתאר את הגיאומטריה של שני מקרים חשובים.</p>
+<ol type="1">
+<li><p>עבור <span class="math inline">\(m=2\)</span> נבחר <span class="math inline">\(w_1=v_1\)</span> ונראה כי הוקטור <span class="math inline">\(w_2\)</span> המאונך ל- <span class="math inline">\(v_1\)</span>, מתאים לנוסחה של תהליך גרם-שמידט.</p>
+<div id="fig-2Gram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2Gram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/2Gram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2Gram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.3: הוקטור השני שמתקבל מאונך לקודמו
+</figcaption>
+</figure>
+</div>
+<p>הניצב בכיוון של <span class="math inline">\(v_1=w_1\)</span> הוא בגודל <span class="math inline">\(\|v_2\|\cos(\alpha)\)</span>, כאשר <span class="math inline">\(\cos(\alpha)=\frac{v_2\cdot w_1}{\|v_2\|\|w_1\|}\)</span> ולצורך פשטות נניח כי <span class="math inline">\(\alpha\)</span> היא זווית חדה. כדי לקבל את הוקטור המתאים יש להכפיל את <span class="math inline">\(w_1\)</span> בסקלר <span class="math inline">\(\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}\)</span> (בדקו זאת). לפי חיבור וקטורי נובע כי <span class="math display">\[,\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}w_1+w_2=v_2\]</span> ומכאן <span class="math display">\[w_2=v_2-\frac{\|v_2\|\cos(\alpha)}{\|w_1\|}w_1=v_2-\frac{\|v_2\|\|w_1\|\cos(\alpha)}{\|w_1\|^2}w_1=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1\]</span> בהתאם לתהליך גרם-שמידט.</p></li>
+<li><p>המקרה של <span class="math inline">\(m=3\)</span> דומה. לצורך הדוגמה נניח כי מדובר בוקטורים <span class="math display">\[v_1=\begin{pmatrix}a\\0\\0\end{pmatrix},v_2=\begin{pmatrix}0\\b\\0\end{pmatrix},v_3=\begin{pmatrix}c\\d\\e\end{pmatrix}\in\mathbb{R}^3\]</span> כאשר <span class="math inline">\(abe\neq 0\)</span> (כלומר <span class="math inline">\(a,b,e\neq 0\)</span>). שני הוקטורים הראשונים כבר מאונכים, ולכן נקבל: <span class="math display">\[\begin{aligned}
+w_1=\begin{pmatrix}a\\0\\0\end{pmatrix},\quad w_2&amp;=\begin{pmatrix}0\\b\\0\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>נפעל לפי תהליך גרם-שמידט ונבדוק שהתוצאה נכונה: <span class="math display">\[w_3=v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2=\begin{pmatrix}c\\d\\e\end{pmatrix}-\frac{ac}{a^2}\begin{pmatrix}a\\0\\0\end{pmatrix}-\frac{bd}{b^2}\begin{pmatrix}0\\b\\0\end{pmatrix}=\begin{pmatrix}0\\0\\e\end{pmatrix}\]</span> אכן מתקיים <span class="math inline">\(w_1\cdot w_3=0=w_2\cdot w_3\)</span>.</p></li>
+</ol>
+</div>
+<p>מדוגמה זו נעבור להסתכלות גיאומטרית על תהליך גרם-שמידט עבור שלושה וקטורים כלליים: כדי לקבל את <span class="math inline">\(w_3\)</span> צריך להחסיר מ- <span class="math inline">\(v_3\)</span> את היטלו על המישור <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,w_2)=\mathop{\mathrm{Span}}(v_1,v_2)\)</span>, כך שהתוצאה תהיה וקטור המאונך למישור זה (וקטור נורמל במונחים של פרק <a href="chapter_1.html">??</a>).</p>
+<div id="fig-3Gram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3Gram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/3Gram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3Gram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.4: הוקטור השלישי שמתקבל הוא נורמל למישור הנפרש ע”י שני קודמיו
+</figcaption>
+</figure>
+</div>
+<p>אנחנו מוכנים להוכיח את הטענה הכללית:</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>תחילה נראה כי <span class="math inline">\(\Set{w_1,...,w_m}\)</span> היא קבוצה אורתוגונלית. כל הוקטורים בקבוצה זו שונים מ- <span class="math inline">\(\underline{0}\)</span> לפי הנוסחאות שמגדירות אותם והעובדה שהקבוצה המקורית <span class="math inline">\(\Set{v_1,...,v_m}\)</span> היא בת"ל. נחשב את <span class="math inline">\(w_j\cdot w_k\)</span> לכל <span class="math inline">\(1\leq j&lt;k\leq m\)</span>, ונעשה זאת לפי הסדר כאשר נגדיל את <span class="math inline">\(k\)</span> בהדרגה (מ- <span class="math inline">\(2\)</span> עד <span class="math inline">\(m\)</span>) ונעבור על כל האפשרויות עבור <span class="math inline">\(j&lt;k\)</span>. עבור <span class="math inline">\(k=2\)</span> יש רק בדיקה אחת למקרה <span class="math inline">\(j=1\)</span>: <span class="math display">\[\begin{aligned}
+w_1\cdot w_2&amp;=w_1\cdot(v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1)=w_1\cdot v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}(w_1\cdot w_1) \\
+&amp;=w_1\cdot v_2-v_2\cdot w_1=0
+\end{aligned}\]</span></p>
+<p>עבור <span class="math inline">\(k=3\)</span> יש שתי בדיקות שנובעות מהחישוב הקודם: <span class="math display">\[\begin{aligned}
+w_1\cdot w_3&amp;=w_1\cdot(v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2)=w_1\cdot v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}(w_1\cdot w_1) \\
+&amp;-\frac{v_3\cdot w_2}{w_2\cdot w_2}(w_1\cdot w_2)=w_1\cdot v_3-v_3\cdot w_1-0=0 \\
+w_2\cdot w_3&amp;=w_2\cdot(v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2)=w_2\cdot v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}(w_2\cdot w_1) \\
+&amp;-\frac{v_3\cdot w_2}{w_2\cdot w_2}(w_2\cdot w_2)=w_2\cdot v_3-0-v_3\cdot w_2=0
+\end{aligned}\]</span></p>
+<p>נמשיך כך כאשר בכל פעם שמגדילים את <span class="math inline">\(k\)</span>, הבדיקות החדשות נשענות על החישובים הקודמים. כאשר נגיע ל- <span class="math inline">\(k=m\)</span> החישובים עד לשלב זה יראו כי <span class="math inline">\(w_j\cdot w_i=0\)</span> לכל <span class="math inline">\(1\leq i,j\leq m-1\)</span> כך ש- <span class="math inline">\(i\neq j\)</span>, ולכן לכל <span class="math inline">\(j&lt;m\)</span> נקבל: <span class="math display">\[\begin{aligned}
+w_j\cdot w_m&amp;=w_j\cdot(v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i)=w_j\cdot v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}(w_j\cdot w_i) \\
+&amp;=w_j\cdot v_m-0-...-0-\frac{v_m\cdot w_j}{w_j\cdot w_j}(w_j\cdot w_j)-0-...-0 \\
+&amp;=w_j\cdot v_m-v_m\cdot w_j=0
+\end{aligned}\]</span></p>
+<p>סיימנו את הוכחת האורתוגונליות ומכאן נובע כי <span class="math inline">\(\Set{w_1,...,w_m}\)</span> בת"ל. כדי להראות כי היא בסיס (אורתוגונלי) ל- <span class="math inline">\(W\)</span>, נראה כי <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,...,w_k)=W\)</span>. נעשה זאת בהדרגה.</p>
+<p>לפי ההגדרה מתקיים <span class="math inline">\(w_1=v_1\)</span>, ולכן ברור כי <span class="math display">\[.\mathop{\mathrm{Span}}(v_1)=\mathop{\mathrm{Span}}(w_1)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|})\]</span> מתקיים <span class="math display">\[,w_2=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1\in\mathop{\mathrm{Span}}(v_2,w_1)=\mathop{\mathrm{Span}}(v_1,v_2)\]</span> ולכן <span class="math display">\[.\mathop{\mathrm{Span}}(w_1,w_2)\subseteq\mathop{\mathrm{Span}}(v_1,v_2)\]</span> הקבוצות <span class="math inline">\(\Set{w_1,w_2},\Set{v_1,v_2}\)</span> הן בת"ל, ולכן ההכלה לעיל היא שוויון לפי משפט "שלישי חינם". הנרמול (כפל בסקלר) לא משפיע על ה- <span class="math inline">\(\mathop{\mathrm{Span}}\)</span>, ולכן <span class="math display">\[.\mathop{\mathrm{Span}}(v_1,v_2)=\mathop{\mathrm{Span}}(w_1,w_2)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|})\]</span> נמשיך כך באופן דומה, ונקבל: <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{Span}}(v_1,v_2,v_3)&amp;=\mathop{\mathrm{Span}}(w_1,w_2,w_3)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},\frac{w_2}{\|w_2\|},\frac{w_3}{\|w_3\|}) \\
+&amp;\thinspace\vdots\ \\
+\mathop{\mathrm{Span}}(v_1,...,v_{m-1})&amp;=\mathop{\mathrm{Span}}(w_1,...,w_{m-1})=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},...,\frac{w_{m-1}}{\|w_{m-1}\|})
+\end{aligned}\]</span> מהשוויון האחרון נובע כי <span class="math display">\[,w_m=v_m-\sum_{i=1}^{m-1}\frac{v_m\cdot w_i}{w_i\cdot w_i}w_i\in\mathop{\mathrm{Span}}(v_m,w_1,...,w_{m-1})=\mathop{\mathrm{Span}}(v_1,...,v_m)\]</span> ולכן <span class="math display">\[.\mathop{\mathrm{Span}}(w_1,...,w_m)\subseteq\mathop{\mathrm{Span}}(v_1,...,v_m)\]</span> הקבוצות <span class="math inline">\(\Set{w_1,...,w_m},\Set{v_1,...,v_m}\)</span> הן בת"ל, ולכן ההכלה לעיל היא שוב שוויון. כאמור, לנרמול אין השפעה על ה- <span class="math inline">\(\mathop{\mathrm{Span}}\)</span> ומכאן נקבל <span class="math display">\[.W=\mathop{\mathrm{Span}}(v_1,...,v_m)=\mathop{\mathrm{Span}}(w_1,...,w_m)=\mathop{\mathrm{Span}}(\frac{w_1}{\|w_1\|},...,\frac{w_m}{\|w_m\|})\]</span>&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>יהיו <span class="math display">\[.v_1=\begin{pmatrix}1\\1\\1\end{pmatrix},v_2=\begin{pmatrix}2\\0\\4\end{pmatrix},v_3=\begin{pmatrix}0\\3\\5\end{pmatrix}\in\mathbb{R}^3\]</span></p>
+<ol type="1">
+<li><p>מצאו בסיס אורתונורמלי ל- <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,v_2)\)</span>.</p></li>
+<li><p>השתמשו בתהליך גרם-שמידט על <span class="math inline">\(\Set{v_1,v_2,v_3}\)</span> כדי לקבל בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^3\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>בכל סעיף נשתמש בתהליך גרם-שמידט על הקבוצה הרלוונטית כדי לקבל בסיס אורתוגונלי. לבסוף ננרמל אותו.</p>
+<ol type="1">
+<li><p>ראשית נגדיר <span class="math inline">\(w_1=v_1\)</span>. לפי תהליך גרם-שמידט נקבל <span class="math display">\[.w_2=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1=\begin{pmatrix}2\\0\\4\end{pmatrix}-\frac{6}{3}\begin{pmatrix}1\\1\\1\end{pmatrix}=\begin{pmatrix}0\\-2\\2\end{pmatrix}\]</span></p>
+<p>ננרמל: <span class="math display">\[\begin{aligned}
+\frac{w_1}{\|w_1\|}&amp;=\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix}\\
+\frac{w_2}{\|w_2\|}&amp;=\begin{pmatrix}0\\-\frac{2}{\sqrt{8}}\\\frac{2}{\sqrt{8}}\end{pmatrix}=\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>הקבוצה <span class="math inline">\(\Set{\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix},\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix}}\)</span> היא בסיס אורתונורמלי ל- <span class="math inline">\(\mathop{\mathrm{Span}}(v_1,v_2)\)</span>.</p></li>
+<li><p>מדובר בהמשך של הסעיף הקודם. מצאנו את <span class="math inline">\(w_1,w_2\)</span> ונותר למצוא את <span class="math inline">\(w_3\)</span>. הפעם נקבל</p>
+<p><span class="math display">\[w_3=v_3-\frac{v_3\cdot w_1}{w_1\cdot w_1}w_1-\frac{v_3\cdot w_2}{w_2\cdot w_2}w_2=\begin{pmatrix}0\\3\\5\end{pmatrix}-\frac{8}{3}\begin{pmatrix}1\\1\\1\end{pmatrix}-\frac{4}{8}\begin{pmatrix}0\\-2\\2\end{pmatrix}=\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}\]</span></p>
+<p>ננרמל: <span class="math display">\[\frac{w_3}{\|w_3\|}=\frac{3}{\sqrt{96}}\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}=\frac{3}{4\sqrt{6}}\begin{pmatrix}-\frac{8}{3}\\ \frac{4}{3}\\ \frac{4}{3}\end{pmatrix}=\begin{pmatrix}-\frac{2}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\end{pmatrix}\]</span></p>
+<p>לפי מסקנה <a href="#cor-orthogonal-basis">12.21</a>, הקבוצה <span class="math inline">\(\Set{\begin{pmatrix}\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}}\end{pmatrix},\begin{pmatrix}0\\-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\end{pmatrix},\begin{pmatrix}-\frac{2}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\end{pmatrix}}\)</span> היא בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^3\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="מטריצות-אורתוגונליות" class="level3" data-number="12.0.4">
+<h3 data-number="12.0.4" class="anchored" data-anchor-id="מטריצות-אורתוגונליות"><span class="header-section-number">12.0.4</span> מטריצות אורתוגונליות</h3>
+<p>ישנן מטריצות הפיכות מיוחדות שיופיעו בלכסון האורתוגונלי, ובזכותן הוא יהיה יותר נוח לחישובים מאשר לכסון רגיל. קוראים להן מטריצות אורתוגונליות.</p>
+<div class="definition">
+<p>תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> הפיכה. אם <span class="math inline">\(P^{-1}=P^t\)</span>, נאמר ש- <span class="math inline">\(P\)</span> היא מטריצה אורתוגונלית.</p>
+</div>
+<div class="example">
+<p>&nbsp;</p>
+<ol type="1">
+<li><p>בדוגמה <a href="#exm-rotation">??</a> (סעיף ג’) הזכרנו מטריצות סיבוב והבנו את המשמעות הגיאומטרית שלהן. כעת ניתן לומר יותר מכך: לכל <span class="math inline">\(\theta\in\mathbb{R}\)</span> מטריצת הסיבוב <span class="math display">\[P=\begin{pmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{pmatrix}\]</span> היא אורתוגונלית. אכן, מתקיים <span class="math display">\[P^t=\begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+-\sin\theta &amp; \cos\theta
+\end{pmatrix}\]</span> וניתן לבדוק כי <span class="math inline">\(P^t=P^{-1}\)</span> או ע"י חישוב <span class="math inline">\(P^{-1}\)</span> או ע"י חישוב המכפלה הבאה: <span class="math display">\[P^tP=\begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+-\sin\theta &amp; \cos\theta
+\end{pmatrix}\begin{pmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}=I_2\]</span> החישוב האחרון גם מגלה לנו שוב את מה שראינו בדוגמה <a href="#exm-rotation-matrix">12.23</a>: הקבוצה <span class="math display">\[\Set{\begin{pmatrix}
+\cos{\theta} \\
+\sin{\theta}
+\end{pmatrix},\begin{pmatrix}
+-\sin{\theta} \\
+\cos{\theta}
+\end{pmatrix}}\]</span> היא בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^2\)</span>. כל איבר במטריצה <span class="math inline">\(P^tP\)</span> מתאים למכפלה סקלרית של וקטורי עמודות של <span class="math inline">\(P\)</span>. כאשר מדובר במכפלה של וקטור עמודה בעצמו, מקבלים <span class="math inline">\(1\)</span> בהתאם לגודלו. אחרת מקבלים <span class="math inline">\(0\)</span> כי הוקטורים אורתוגונליים.</p>
+<p>באופן דומה, החישוב <span class="math display">\[PP^t=\begin{pmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{pmatrix}\begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+-\sin\theta &amp; \cos\theta
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}=I_2\]</span> מראה כי וקטורי השורות של <span class="math inline">\(P\)</span> מהווים בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li>
+<li><p>המטריצה <span class="math display">\[P=\begin{pmatrix}
+\frac{1}{\sqrt{3}} &amp; 0 &amp; -\frac{2}{\sqrt{6}} \\
+\frac{1}{\sqrt{3}} &amp; -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} \\
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}}\
+\end{pmatrix}\]</span> היא אורתוגונלית. אכן, מתקיים <span class="math display">\[.P^t=\begin{pmatrix}
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}} \\
+0 &amp; -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
+-\frac{2}{\sqrt{6}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{6}}\
+\end{pmatrix}\]</span> וניתן לבדוק כי <span class="math display">\[.P^tP=I_3\]</span> זה שקול לכך שעמודות <span class="math inline">\(P\)</span> מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^3\)</span>. באופן דומה, השוויון <span class="math inline">\(PP^t=I_3\)</span> מבטא את העובדה ששורות <span class="math inline">\(P\)</span> מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^3\)</span>.</p></li>
+</ol>
+</div>
+<p>מכאן נעבור לטענה הכללית שתראה שניתן להגדיר מטריצה אורתוגונלית במספר דרכים שקולות:</p>
+<div id="prp-ortho-matrix" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.5</strong></span> <em>תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span>. התנאים הבאים שקולים:</em></p>
+<ol type="1">
+<li><p><em><span class="math inline">\(P^t=P^{-1}\)</span></em></p></li>
+<li><p><em><span class="math inline">\(P^tP=I_n\)</span></em></p></li>
+<li><p><em><span class="math inline">\(PP^t=I_n\)</span></em></p></li>
+<li><p><em>עמודות <span class="math inline">\(P\)</span> מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>.</em></p></li>
+<li><p><em>שורות <span class="math inline">\(P\)</span> מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>שלושת התנאים הראשונים שקולים לפי משפט <a href="#thm-invertible">??</a>.</p>
+<p>נראה כי <span class="math inline">\(\text{(ד)}\)</span> שקול ל- <span class="math inline">\(\text{(ב)}\)</span>. נסמן <span class="math display">\[.P=\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v_1\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v_2\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v_n\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> מתקיים <span class="math display">\[,P^t =
+\begin{pmatrix}
+\begin{array}{ccc}
+- &amp; v_1^t &amp; -
+\end{array} \\[0.6ex]
+\begin{array}{ccc}
+- &amp; v_2^t &amp; -
+\end{array} \\
+\vdots \\
+\begin{array}{ccc}
+- &amp; v_n^t &amp; -
+\end{array}
+\end{pmatrix}\]</span> ולכן <span class="math display">\[.P^tP=\begin{pmatrix}
+\begin{array}{ccc}
+- &amp; v_1^t &amp; -
+\end{array} \\[0.6ex]
+\begin{array}{ccc}
+- &amp; v_2^t &amp; -
+\end{array} \\
+\vdots \\
+\begin{array}{ccc}
+- &amp; v_n^t &amp; -
+\end{array}
+\end{pmatrix}\begin{pmatrix}
+\begin{array}{c}
+|\\[-0.4ex]
+v_1\\[-0.4ex]
+|
+\end{array}
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v_2\\[-0.4ex]
+|
+\end{array}
+&amp;
+\cdots
+&amp;
+\begin{array}{c}
+|\\[-0.4ex]
+v_n\\[-0.4ex]
+|
+\end{array}
+\end{pmatrix}\]</span> נשים לב כי לכל <span class="math inline">\(1\leq i,j\leq n\)</span> מתקיים <span class="math display">\[.(P^tP)_{ij}=v_i^tv_j=v_i\cdot v_j\]</span> לכן: <span class="math display">\[\begin{aligned}
+\text{היא קבוצה אורתונורמלית} \Set{v_1,...,v_n} &amp;\iff \forall 1\leq i,j\leq n \thinspace :\thinspace v_i\cdot v_j=\begin{cases}
+1, &amp; i=j \\
+0, &amp; i\neq j
+\end{cases} \\
+&amp;\iff P^tP=I_n
+\end{aligned}\]</span> מכאן מקבלים כי <span class="math inline">\(\text{(ב)}\)</span> שקול ל- <span class="math inline">\(\text{(ד)}\)</span> לפי מסקנה <a href="#cor-orthogonal-basis">12.21</a>.</p>
+<p>כדי להוכיח את השקילות בין <span class="math inline">\(\text{(ג)}\)</span> ל- <span class="math inline">\(\text{(ה)}\)</span> נסתכל על המטריצה <span class="math inline">\(P^t\)</span> שעמודותיה הן שורות <span class="math inline">\(P\)</span> עד כדי שחלוף. לפי השקילות בין <span class="math inline">\(\text{(ב)}\)</span> ל- <span class="math inline">\(\text{(ד)}\)</span>, נובע כי <span class="math inline">\(\text{(ה)}\)</span> שקול ל- <span class="math display">\[,(P^t)^tP^t=I_n\]</span> שהוא שכתוב קל של <span class="math inline">\(\text{(ג)}\)</span>.&nbsp;◻</p>
+</div>
+<div id="exr-orthogonal-det" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 12.2</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> מטריצה אורתוגונלית. הוכיחו כי <span class="math inline">\(\det(P)=\pm 1\)</span>.</p></li>
+<li><p>מצאו דוגמה למטריצה אורתוגונלית <span class="math inline">\(P\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> כך ש- <span class="math inline">\(\det(P)=-1\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נתון כי <span class="math inline">\(P^t=P^{-1}\)</span>. לפי תכונות הדטרמיננטה נקבל <span class="math display">\[.\det(P)=\det(P^t)=\det(P^{-1})=\frac{1}{\det(P)}\]</span> לכן <span class="math inline">\((\det(P))^2=1\)</span>, ובהכרח <span class="math inline">\(\det(P)=\pm 1\)</span>.</p></li>
+<li><p>דרך פשוטה לקבל מטריצה כנ"ל היא להחליף בין השורות של <span class="math inline">\(I_2\)</span>, מה שישנה את סימן הדטרמיננטה אך לא את העובדה שהעמודות/שורות מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^2\)</span>. כך נקבל את המטריצה <span class="math display">\[.P=\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}\]</span> אכן מתקיים <span class="math inline">\(\det(P)=-1\)</span> וגם <span class="math display">\[.P^t=P=P^{-1}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>למטריצה אורתוגונלית יש תכונה גיאומטרית: היא שומרת על המכפלה הסקלרית של כל זוג וקטורים (ולכן על הזווית ביניהם), ועל הגודל של כל וקטור. על כך בטענה הבאה:</p>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> מטריצה אורתוגונלית, ויהיו <span class="math inline">\(v,w\in\mathbb{R}^n\)</span>. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[(Pv)\cdot (Pw)=v\cdot w\]</span></em></p></li>
+<li><p><em><span class="math display">\[\|Pv\|=\|v|\|\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי טענה <a href="#prp-ortho-matrix">12.33</a> מתקיים <span class="math inline">\(P^tP=I_n\)</span>.</p>
+<ol type="1">
+<li><p>מתקיים <span class="math display">\[\begin{aligned}
+.(Pv)\cdot (Pw)=(Pv)^t(Pw)=(v^tP^t)(Pw)=v^t(P^tP)w=v^tw=v\cdot w
+\end{aligned}\]</span></p></li>
+<li><p>נשתמש בסעיף הקודם עבור <span class="math inline">\(w=v\)</span> ונקבל <span class="math display">\[\begin{aligned}
+.\|Pv\|^2=(Pv)\cdot (Pv)=v\cdot v=\|v\|^2
+\end{aligned}\]</span> נוציא שורש ונקבל <span class="math inline">\(\|Pv\|=\|v|\|\)</span> כנדרש.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>לצורך העשרה גיאומטרית, נזכיר שבפרק <a href="chapter_4.html">??</a> ציינו את העובדה שלכל מטריצה <span class="math display">\[,A=\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_1 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_2 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_3 &amp; \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}\in\mathbb{M}_{3\times 3}(\mathbb{R})\]</span> <span class="math inline">\(|\det(A)|\)</span> שווה לנפח המקבילון שנוצר ע"י <span class="math inline">\(v_1,v_2,v_3\)</span>. הוכחנו זאת עבור מקרה פרטי, וכעת יש לנו כלים להוכיח זאת באופן כללי. נשתמש בתהליך גרם-שמידט כדי לעבור מהקבוצה <span class="math inline">\(\Set{v_1,v_2,v_3}\)</span> לקבוצה <span class="math inline">\(\Set{w_1,w_2,w_3}\)</span>, כאשר <span class="math inline">\(w_1=v_1\)</span> מתאים לצלע אחת של המקבילית שהיא בסיס המקבילון, <span class="math inline">\(w_2\)</span> הוא הוקטור המתאים לגובה המקבילית ו- <span class="math inline">\(w_3\)</span> הוא הוקטור המתאים לגובה המקבילון.</p>
+<div id="fig-Height" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Height-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Height.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Height-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.5: גובה המקבילון הוא הוקטור השלישי שמתקבל בתהליך גרם-שמידט
+</figcaption>
+</figure>
+</div>
+<p>נסמן <span class="math display">\[.\alpha=\frac{v_2\cdot w_1}{w_1\cdot w_1},\quad \beta=\frac{v_3\cdot w_1}{w_1\cdot w_1},\quad \gamma=\frac{v_3\cdot w_2}{w_2\cdot w_2}\]</span> לפי הנוסחאות של תהליך גרם-שמידט מתקיים: <span class="math display">\[\begin{aligned}
+w_1&amp;=v_1 \\
+w_2&amp;=v_2-\alpha w_1 \\
+w_3&amp;=v_3-\beta w_1-\gamma w_2
+\end{aligned}\]</span></p>
+<p>לפי תכונות הדטרמיננטה ביחס לפעולות שורה (שמופיעות בהגדרתה) נובע כי <span class="math display">\[\begin{aligned}
+\det(A)
+&amp;= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_1 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_2 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_3 &amp; \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+\quad \text{\scriptsize $R_2\to R_2-\alpha R_1$} \\
+&amp;= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; w_1 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; w_2 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; v_3 &amp; \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+\quad \text{\scriptsize $R_3\to R_3-\beta R_1-\gamma R_2$} \\
+&amp;= \det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; w_1 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; w_2 &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; w_3 &amp; \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix} \quad
+\text{\scriptsize
+$\begin{aligned}
+R_1 &amp;\to \frac{1}{\|w_1\|} R_1 \\
+R_2 &amp;\to \frac{1}{\|w_2\|} R_2 \\
+R_3 &amp;\to \frac{1}{\|w_3\|} R_3
+\end{aligned}$} \\
+&amp;= \|w_1\|\|w_2\|\|w_3\|
+\det\begin{pmatrix}
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; \frac{w_1}{\|w_1\|} &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; \frac{w_2}{\|w_2\|} &amp; \rule{0.8cm}{0.4pt}
+\end{array} \\
+\begin{array}{ccc}
+\rule{0.8cm}{0.4pt} &amp; \frac{w_3}{\|w_3\|} &amp; \rule{0.8cm}{0.4pt}
+\end{array}
+\end{pmatrix}
+= \pm \|w_1\|\|w_2\|\|w_3\|
+\end{aligned}\]</span> השתמשנו בעובדה שהמטריצה בשורה האחרונה היא אורתוגונלית כי שורותיה מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^3\)</span>, ולכן הדטרמיננטה שלה היא <span class="math inline">\(\pm 1\)</span> לפי תרגיל <a href="#exr-orthogonal-det">12.34</a>. מכאן נובע כי <span class="math display">\[,|\det(A)|=\|w_1\|\|w_2\|\|w_3\|\]</span> והמכפלה באגף ימין מתארת את נפח המקבילון כידוע מגיאומטריה של המרחב.</p>
+</div>
+</section>
+<section id="לכסון-אורתוגונלי" class="level3" data-number="12.0.5">
+<h3 data-number="12.0.5" class="anchored" data-anchor-id="לכסון-אורתוגונלי"><span class="header-section-number">12.0.5</span> לכסון אורתוגונלי</h3>
+<p>לאחר שהבנו את ההגדרה והתכונות של מטריצה אורתוגונלית, אנחנו מוכנים להגדיר לכסון אורתוגונלי.</p>
+<div class="definition">
+<p><span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> נקראת לכסינה אורתוגונלית אם קיימות <span class="math inline">\(P,D\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> כך ש- <span class="math inline">\(P\)</span> אורתוגונלית, <span class="math inline">\(D\)</span> אלכסונית ומתקיים <span class="math display">\[.A=PDP^t\]</span></p>
+</div>
+<p>הטענה הבאה מראה שהדיון על לכסון אורתוגונלי רלוונטי רק למטריצות סימטריות:</p>
+<div class="proposition">
+<p><em>כל מטריצה לכסינה אורתוגונלית היא בהכרח סימטרית.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> לכסינה אורתוגונלית. אז קיימות <span class="math inline">\(P,D\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> כך ש- <span class="math inline">\(P\)</span> אורתוגונלית, <span class="math inline">\(D\)</span> אלכסונית ומתקיים <span class="math inline">\(A=PDP^t\)</span>. נשים לב כי <span class="math inline">\(D\)</span> סימטרית ולכן <span class="math display">\[.A^t=(PDP^t)^t=(P^t)^tD^tP^t=PDP^t=A\]</span> כלומר <span class="math inline">\(A\)</span> סימטרית.&nbsp;◻</p>
+</div>
+<div id="prp-orthog-diag" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.6</strong></span> <em><span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> היא לכסינה אורתוגונלית אם ורק אם קיים ל- <span class="math inline">\(\mathbb{R}^n\)</span> בסיס אורתונורמלי המורכב מוקטורים עצמיים של <span class="math inline">\(A\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>ההוכחה כמעט זהה לזו של משפט <a href="#thm-diag">??</a>. החידוש הוא שהמטריצה <span class="math inline">\(P\)</span> היא אורתוגונלית אם ורק אם עמודותיה, שהן וקטורים עצמיים של <span class="math inline">\(A\)</span>, מהוות בסיס אורתונורמלי ל- <span class="math inline">\(\mathbb{R}^n\)</span>.&nbsp;◻</p>
+</div>
+<div id="fig-OrthoEigen" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-OrthoEigen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/OrthoEigen.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-OrthoEigen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור&nbsp;12.6: למטריצה הסימטרית בדוגמה זו יש בסיס אורתוגונלי של ו”ע שמתאימים לע”ע שונים, וזה מסביר איך הכדור נמתח בכיוונים שונים ע”י כפל במטריצה (הצורה שמתקבלת נקראת אליפסואיד)
+</figcaption>
+</figure>
+</div>
+<p>לפני שנתאר את תהליך הלכסון האורתוגונלי, חשוב לדעת את העובדות שמופיעות בטענה הבאה:</p>
+<div id="prp-symmetric-eigen" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 12.7</strong></span> <em>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> סימטרית. אז מתקיים:</em></p>
+<ol type="1">
+<li><p><em>לכל <span class="math inline">\(v,w\in\mathbb{R}^n\)</span> מתקיים <span class="math display">\[.(Av)\cdot w=v\cdot (Aw)\]</span></em></p></li>
+<li><p><em>כל ע"ע של <span class="math inline">\(A\)</span> הוא ממשי.</em></p></li>
+<li><p><em>כל שני ו"ע של <span class="math inline">\(A\)</span> המתאימים לע"ע שונים, הם אורתוגונליים.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="1">
+<li><p>יהיו <span class="math inline">\(v,w\in\mathbb{R}^n\)</span>. מתקיים <span class="math display">\[.(Av)\cdot w=(Av)^t w=(v^t A^t)w=v^t(Aw)=v\cdot (Aw)\]</span></p></li>
+<li><p>יהי <span class="math inline">\(\lambda\in\mathbb{C}\)</span> ע"ע של <span class="math inline">\(A\)</span>. אז קיים ו"ע <span class="math display">\[v=\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix}\in\mathbb{C}^n\]</span> כך ש- <span class="math inline">\(Av=\lambda v\)</span>. לאחר שחלוף נקבל <span class="math display">\[.v^tA=\lambda v^t\]</span> נכפיל מימין בוקטור <span class="math display">\[\overline{v}=\begin{pmatrix}\overline{a_1}\\\vdots\\\overline{a_n}\end{pmatrix}\in\mathbb{C}^n\]</span> ונקבל <span class="math display">\[.v^tA\overline{v}=\lambda v^t\overline{v}\]</span> מצד שני, אם נחזור למשוואה <span class="math inline">\(Av=\lambda v\)</span> וניקח צמוד של כל אגף, נקבל <span class="math display">\[.A\overline{v}=\overline{\lambda}\overline{v}\]</span> ע"י הצבה במשוואה הקודמת נקבל <span class="math display">\[,\overline{\lambda}v^t\overline{v}=\lambda v^t\overline{v}\]</span> ומכאן נובע כי <span class="math inline">\(\overline{\lambda}=\lambda\)</span> שהרי <span class="math display">\[v^t\overline{v}=|a_1|^2+...+|a_n|^2&gt;0\]</span> כי <span class="math inline">\(v\neq\underline{0}\)</span>. לכן, מתקיים <span class="math inline">\(\lambda\in\mathbb{R}\)</span> כנדרש.</p></li>
+<li><p>יהיו <span class="math inline">\(v_1,v_2\in\mathbb{R}^n\)</span> ו"ע המתאימים לע"ע <span class="math inline">\(\lambda_1\neq\lambda_2\)</span>. אז לפי סעיף א’ מתקיים <span class="math display">\[,(\lambda_1 v_1)\cdot v_2=(Av_1)\cdot v_2=v_1\cdot (Av_2)=v_1\cdot(\lambda_2 v_2)\]</span> ולכן <span class="math display">\[.(\lambda_1-\lambda_2)(v_1\cdot v_2)=0\]</span> מכאן <span class="math inline">\(v_1\cdot v_2=0\)</span> כי <span class="math inline">\(\lambda_1-\lambda_2\neq 0\)</span>. כלומר <span class="math inline">\(v_1,v_2\)</span> אורתוגונליים.</p></li>
+</ol>
+<p>&nbsp;◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>למטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> כללית מובטח לפחות ו"ע אחד ב- <span class="math inline">\(\mathbb{C}^n\)</span>, אך לא בהכרח ב- <span class="math inline">\(\mathbb{R}^n\)</span>. אם <span class="math inline">\(A\)</span> סימטרית, הרי שלפי הטענה האחרונה בהכרח יש לה ו"ע השייך ל- <span class="math inline">\(\mathbb{R}^n\)</span>. למעשה, בהכרח יש בסיס (אורתונורמלי) ל- <span class="math inline">\(\mathbb{R}^n\)</span> המורכב מו"ע של <span class="math inline">\(A\)</span> - לפי משפט שנוכיח בסוף הפרק.</p>
+</div>
+<section id="אלגוריתם-הלכסון-האורתוגונלי" class="level4" data-number="12.0.5.1">
+<h4 data-number="12.0.5.1" class="anchored" data-anchor-id="אלגוריתם-הלכסון-האורתוגונלי"><span class="header-section-number">12.0.5.1</span> אלגוריתם הלכסון האורתוגונלי</h4>
+<p>בהינתן מטריצה סימטרית <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span>, איך נלכסן אותה באופן אורתוגונלי? נחזור לאלגוריתם הלכסון הכללי ונעדכן אותו למקרה הפרטי:</p>
+<p><u>שלב 1:</u> מחשבים את הפולינום האופייני <span class="math inline">\(p_A(x)\)</span>. לפי טענה <a href="#prp-symmetric-eigen">12.40</a>, כל שורשיו בהכרח ממשיים ולכן הוא מתפצל מעל <span class="math inline">\(\mathbb{R}\)</span>. אין צורך לעסוק ב- <span class="math inline">\(\mathbb{C}\)</span> (עבור מטריצה סימטרית).</p>
+<p><u>שלב 2:</u> בודקים אם לכל ע"ע <span class="math inline">\(\lambda_i\)</span> מתקיים <span class="math inline">\(g_i=a_i\)</span>. זה בהכרח נכון לפי המשפט שנוכיח בהמשך, אבל בכל מקרה יש למצוא בסיס אורתונורמלי ל- <span class="math inline">\(V_{\lambda_i}\)</span>. עושים זאת ע"י מציאת בסיס רגיל ושימוש בתהליך גרם-שמידט כדי להמיר אותו לבסיס אותונורמלי (אם <span class="math inline">\(g_i&gt;1\)</span>).</p>
+<p>נקבל בסיס ל- <span class="math inline">\(V_{\lambda_i}\)</span> שמורכב מ- <span class="math inline">\(g_i\)</span> וקטורים עצמיים אורתונורמליים: <span class="math display">\[B_i=\Set{v_{i1},...,v_{ig_i}}\]</span> ניקח איחוד שלהם ונקבל בסיס אורתונורמלי לכל <span class="math inline">\(\mathbb{R}^n\)</span>: <span class="math display">\[B=B_1\cup \cdots \cup B_k=\Set{v_{11},...,v_{1g_1},...,v_{k1},...,v_{kg_k}}\]</span> יש אורתוגונליות בין כל זוג וקטורים לפי הבנייה (עבור ו"ע המתאימים לאותו ע"ע) והסעיף השני של טענה <a href="#prp-symmetric-eigen">12.40</a> (עבור ו"ע המתאימים לע"ע שונים).</p>
+<p><u>שלב 3:</u> הלכסון האורתוגונלי <span class="math inline">\(A=PDP^t\)</span> מתקבל עבור המטריצות הבאות: <span class="math display">\[\begin{aligned}
+P&amp;=\begin{pmatrix}
+\big| &amp; \big|        &amp; \big| \\
+v_{11} &amp; \cdots &amp; v_{kg_k} \\
+\big| &amp; \big|         &amp; \big|
+\end{pmatrix}\\
+D&amp;=\begin{pmatrix}
+\lambda_1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots \\
+0  &amp; \cdots &amp; \lambda_k
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<div class="exercise">
+<ol type="1">
+<li><p>מצאו לכסון אורתוגונלי עבור <span class="math display">\[.A=\begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 1 \\
+1 &amp; 1 &amp; 2
+\end{pmatrix}\]</span></p></li>
+<li><p>חשבו את <span class="math inline">\(A^{2026}\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נחשב פולינום אופייני: <span class="math display">\[\begin{aligned}
+p_A(x)&amp;=\det(xI_3-A)=\det\begin{pmatrix}
+x-2 &amp; -1 &amp; -1 \\
+-1 &amp; x-2 &amp; -1 \\
+-1 &amp; -1 &amp; x-2
+\end{pmatrix} \\
+&amp;\overset{R_3\to R_3-R_2}=\det\begin{pmatrix}
+x-2 &amp; -1 &amp; -1 \\
+-1 &amp; x-2 &amp; -1 \\
+0 &amp; 1-x &amp; x-1
+\end{pmatrix} \\
+&amp;\overset{\text{פיתוח לפי $R_3$}}=-(1-x)(2-x-1)+(x-1)\left((x-2)^2-1\right)^2 \\
+&amp;=(x-1)(1-x+x^2-4x+3)=(x-1)(x^2-5x+4)\\
+&amp;=(x-1)^2(x-4)
+\end{aligned}\]</span></p>
+<p>הריבוי האלגברי של <span class="math inline">\(\lambda_1=1\)</span> הוא <span class="math inline">\(2\)</span>. תחילה נמצא בסיס רגיל ל- <span class="math inline">\(V_1\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+V_1&amp;=\mathop{\mathrm{N}}(I_3-A)=\mathop{\mathrm{N}}\begin{pmatrix}
+-1 &amp; -1 &amp; -1 \\
+-1 &amp; -1 &amp; -1 \\
+-1 &amp; -1 &amp; -1
+\end{pmatrix}=\mathop{\mathrm{N}}\begin{pmatrix}
+1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{pmatrix} \\
+&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}-1\\1\\0\end{pmatrix},\begin{pmatrix}-1\\0\\1\end{pmatrix}\right)
+\end{aligned}\]</span></p>
+<p>נסמן <span class="math display">\[.v_1=\begin{pmatrix}-1\\1\\0\end{pmatrix},\quad v_2=\begin{pmatrix}-1\\0\\1\end{pmatrix}\]</span></p>
+<p>כדי לקבל בסיס אורתוגונלי ל- <span class="math inline">\(V_1\)</span>, נפעיל את תהליך גרם-שמידט ונקבל: <span class="math display">\[\begin{aligned}
+w_1&amp;=v_1=\begin{pmatrix}-1\\1\\0\end{pmatrix} \\
+w_2&amp;=v_2-\frac{v_2\cdot w_1}{w_1\cdot w_1}w_1=\begin{pmatrix}-1\\0\\1\end{pmatrix}-\frac{1}{2}\begin{pmatrix}-1\\1\\0\end{pmatrix}=\begin{pmatrix}-\frac{1}{2}\\-\frac{1}{2}\\1\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>ננרמל אותם בסוף. עבור <span class="math inline">\(\lambda_2=4\)</span> הריבוי האלגברי הוא <span class="math inline">\(1\)</span>, ולכן זהו גם הריבוי הגיאומטרי ואין צורך בתהליך גרם-שמידט. מתקיים:</p>
+<p><span class="math display">\[\begin{aligned}
+V_4&amp;=\mathop{\mathrm{N}}(4I_3-A)=\mathop{\mathrm{N}}\begin{pmatrix}
+2 &amp; -1 &amp; -1 \\
+-1 &amp; 2 &amp; -1 \\
+-1 &amp; -1 &amp; 2
+\end{pmatrix}=\mathop{\mathrm{N}}\begin{pmatrix}
+1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0
+\end{pmatrix} \\
+&amp;=\mathop{\mathrm{Span}}\left(\begin{pmatrix}1\\1\\1\end{pmatrix}\right)
+\end{aligned}\]</span></p>
+<p>ננרמל את <span class="math inline">\(w_1,w_2\)</span> ו- <span class="math inline">\(\begin{pmatrix}1\\1\\1\end{pmatrix}\)</span> ונקבל את הבסיס האורתונורמלי הבא:</p>
+<p><span class="math display">\[B=\Set{\begin{pmatrix}-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}\\0\end{pmatrix},\begin{pmatrix}-\frac{1}{\sqrt{6}}\\-\frac{1}{\sqrt{6}}\\\sqrt{\frac{2}{3}}\end{pmatrix},\begin{pmatrix}\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\end{pmatrix}}\]</span></p>
+<p>לסיכום: <span class="math inline">\(A\)</span> אכן לכסינה אורתוגונלית ומתקיים <span class="math inline">\(A=PDP^t\)</span> כאשר <span class="math display">\[.P=\begin{pmatrix}
+-\frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} &amp;  \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\
+0 &amp; \sqrt{\frac{2}{3}} &amp; \frac{1}{\sqrt{3}}\\
+\end{pmatrix}, \quad D=\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 4
+\end{pmatrix}\]</span></p></li>
+<li><p>נזכור כי <span class="math inline">\(P^{-1}=P^t\)</span> ואין צורך בדירוג כדי לחשב מטריצה הופכית. לפי הסעיף הקודם וטענה <a href="#prp-matrix-power">??</a> (שתקפה גם לגבי לכסון אורתוגונלי) ניתן לחשב את החזקה באופן הבא:</p>
+<p><span class="math display">\[\begin{aligned}
+A^{2026}&amp;=PD^{2026}P^t=\begin{pmatrix}
+-\frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} &amp;  \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\
+0 &amp; \sqrt{\frac{2}{3}} &amp; \frac{1}{\sqrt{3}}\\
+\end{pmatrix}\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 4^{2026}
+\end{pmatrix}\begin{pmatrix}
+-\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} &amp; 0\\
+-\frac{1}{\sqrt{6}} &amp; -\frac{1}{\sqrt{6}} &amp; \sqrt{\frac{2}{3}} \\
+\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{3}}\\
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+\frac{4^{2026}+2}{3} &amp; \frac{4^{2026}-1}{3} &amp; \frac{4^{2026}-1}{3}\\
+\frac{4^{2026}-1}{3} &amp; \frac{4^{2026}+2}{3} &amp; \frac{4^{2026}-1}{3}\\
+\frac{4^{2026}-1}{3} &amp; \frac{4^{2026}-1}{3} &amp; \frac{4^{2026}+2}{3}
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="משפט-הלכסון-האורתוגונלי" class="level4" data-number="12.0.5.2">
+<h4 data-number="12.0.5.2" class="anchored" data-anchor-id="משפט-הלכסון-האורתוגונלי"><span class="header-section-number">12.0.5.2</span> משפט הלכסון האורתוגונלי</h4>
+<p>לסיום הפרק, נוכיח את משפט הלכסון האורתוגונלי למטריצות סימטריות תוך שילוב מספר נושאים מהקורס. המשפט חשוב להבנת הפרק, אבל ההוכחה היא לסקרנים <u>לצורך העשרה</u>.</p>
+<div id="thm-symmetric-diag" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 12.1</strong></span> <em>כל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> סימטרית היא לכסינה אורתוגונלית.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נניח בשלילה שקיימת <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{R})\)</span> סימטרית שאינה לכסינה אורתוגונלית בעלת ע"ע <span class="math inline">\(\lambda_1,...,\lambda_m\)</span>. המשמעות של אי-לכסינות (אורתוגונלית ולמעשה בכלל) היא שסכום הריבויים הגיאומטריים של הע"ע קטן מ- <span class="math inline">\(n\)</span>. נמצא בסיס אורתונורמלי לכל מרחב עצמי וניקח איחוד של הבסיסים, ונקבל את הקבוצה האורתונורמלית הבאה: <span class="math display">\[B_0=\Set{w_1,...,w_m}\]</span> כאן כל <span class="math inline">\(w_i\)</span> מתאים לע"ע <span class="math inline">\(\lambda_i\)</span>, ותיתכן חזרה על אותו ע"ע. <span class="math inline">\(m\)</span> הוא סכום הריבויים הגיאומטריים, ולפי ההנחה בשלילה מתקיים <span class="math inline">\(m&lt;n\)</span>. נשלים את <span class="math inline">\(B_0\)</span> לבסיס אורתונורמלי <span class="math inline">\(B\)</span> לכל <span class="math inline">\(\mathbb{R}^n\)</span> (תחילה נוסיף וקטורי יחידה מתאימים כדי לקבל בסיס רגיל, ואחר כך נבצע תהליך גרם-שמידט):</p>
+<p><span class="math display">\[B=\Set{w_1,...,w_m,u_1,...,u_{n-m}}\]</span></p>
+<p>נרצה לקבל סתירה ע"י מציאת ו"ע <span class="math inline">\(u_0\in\mathop{\mathrm{Span}}(u_1,...,u_{n-m})\)</span> של <span class="math inline">\(A\)</span>. זו סתירה כי לפי הבנייה כל ו"ע של <span class="math inline">\(A\)</span> שייך לאחד מהמרחבים העצמיים שנפרש ע"י אחד או יותר מהוקטורים <span class="math inline">\(w_1,...,w_m\)</span>, אבל מתקיים <span class="math inline">\(\mathop{\mathrm{Span}}(w_1,...,w_m)\cap\mathop{\mathrm{Span}}(u_1,...,u_{n-m})=\Set{\underline{0}}\)</span> כי <span class="math inline">\(B\)</span> בת"ל. נסמן <span class="math inline">\(U=\mathop{\mathrm{Span}}(u_1,...,u_{n-m})\)</span>. כדי למצוא ו"ע כנ"ל נגדיר ה"ל <span class="math inline">\(S_A:U\to U\)</span> ע"י <span class="math display">\[.S_A(u)=Au\]</span> נציין שההבדל בין <span class="math inline">\(S_A\)</span> ל- <span class="math inline">\(T_A:\mathbb{R}^n\to \mathbb{R}^n\)</span> הוא תחום ההגדרה בלבד - צמצמנו אותו ל- <span class="math inline">\(U\)</span>. צריך לבדוק שהטווח הוא אכן <span class="math inline">\(U\)</span>, כלומר <span class="math inline">\(\mathop{\mathrm{Im}}(S_A)\subseteq U\)</span>. יהי <span class="math inline">\(u\in U\)</span>. לכל <span class="math inline">\(1\leq i\leq m\)</span> ולכל <span class="math inline">\(1\leq j\leq n-m\)</span> מתקיים <span class="math inline">\(w_i\perp u_j\)</span>. לכן, לפי טענה <a href="#prp-symmetric-eigen">12.40</a> מתקיים <span class="math inline">\(w_i\perp u\)</span> לכל <span class="math inline">\(1\leq i\leq m\)</span>. לפי תרגיל <a href="#exr-orthogonal-by-basis">12.27</a>, נובע כי <span class="math display">\[.(Au)\cdot w_i=u\cdot (Aw_i)=u\cdot (\lambda_iw_i)=\lambda_i(u\cdot w_i)=0\]</span> לפי מסקנה <a href="#cor-orthonormal">12.26</a>, נובע כי <span class="math display">\[.Au=\sum_{i=1}^m\left((Au)\cdot w_i\right)w_i+\sum_{j=1}^{n-m}\left((Au)\cdot u_j\right)u_j=\sum_{j=1}^{n-m}\left((Au)\cdot u_j\right)u_j\in U\]</span> קיבלנו שאכן ניתן לקבוע את הטווח של <span class="math inline">\(S_A\)</span> להיות <span class="math inline">\(U\)</span>. נסמן <span class="math inline">\(B_U=\Set{u_1,...,u_{n-m}}\)</span> ונראה כי המטריצה המייצגת <span class="math inline">\([S_A]_{B_U}\)</span> היא סימטרית. לכל <span class="math inline">\(1\leq j\leq n-m\)</span> מתקיים <span class="math display">\[,S_A(u_j)=Au_j=\sum_{i=1}^{n-m}\left((Au_j)\cdot u_i\right)u_i\]</span> ולכן (לפי הגדרת מטריצה מייצגת) לכל <span class="math inline">\(1\leq i,j\leq n-m\)</span> נקבל <span class="math display">\[.([S_A]_{B_V})_{ij}=(Au_j)\cdot u_i=u_j\cdot (Au_i)=(Au_i)\cdot u_j=([S_A]_{B_V})_{ji}\]</span> אם כן, <span class="math inline">\([S_A]_{B_U}\)</span> סימטרית וככזו יש לה ו"ע <span class="math inline">\(\begin{pmatrix}a_1\\\vdots\\a_{n-m}\end{pmatrix}\in\mathbb{R}^{n-m}\)</span> המתאים לע"ע <span class="math inline">\(\lambda_0\in\mathbb{R}\)</span>. מהקוארדינטות של וקטור זה נקבל ו"ע <span class="math display">\[u_0=\sum_{i=1}^{n-m}a_iu_i\in U\]</span> עבור <span class="math inline">\(S_A\)</span>, כי מתקיים <span class="math display">\[.[S_A(u_0)]_{B_U}=[S_A]_{B_U}[u_0]_B=[S_A]_{B_U}\begin{pmatrix}a_1\\\vdots\\a_{n-m}\end{pmatrix}=\lambda_0[u_0]_{B_U}=[\lambda_0u_0]_{B_U}\]</span> זה אומר ש- <span class="math inline">\(u_0\)</span> הוא ו"ע של <span class="math inline">\(A\)</span> עצמה, כי מתקיים <span class="math display">\[.Au_0=S_A(u_0)=\lambda_0 u_0\]</span> זו בדיוק הסתירה ששאפנו לקבל.&nbsp;◻</p>
+</div>
+<div class="exercise">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> מטריצה סימטרית ואורתוגונלית.</p>
+<ol type="1">
+<li><p>מהם הע"ע האפשריים של <span class="math inline">\(A\)</span>? הראו כי אם יש ע"ע יחיד, אז בהכרח <span class="math inline">\(A=\pm I_2\)</span>.</p></li>
+<li><p>הוכיחו כי אם <span class="math inline">\(A\neq\pm I_2\)</span>, אז בהכרח קיים <span class="math inline">\(\theta\in\mathbb{R}\)</span> כך ש- <span class="math display">\[.A=\begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+\sin\theta &amp; -\cos\theta
+\end{pmatrix}\]</span> רמז: השתמשו בלכסון אורתוגונלי לסעיף א’, אך בחישוב ישיר לסעיף ב’.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נשים לב כי <span class="math inline">\(A^t=A=A^{-1}\)</span>, ולכן <span class="math inline">\(A^2=I_2\)</span>. מכאן (לפי טענה <a href="#prp-matrix-poly">??</a>) שלכל ע"ע <span class="math inline">\(\lambda\in\mathbb{R}\)</span> מתקיים <span class="math inline">\(\lambda^2=1\)</span>, כלומר הע"ע האפשריים הם <span class="math inline">\(\pm 1\)</span>.</p>
+<p>כעת נניח של- <span class="math inline">\(A\)</span> יש ע"ע יחיד <span class="math inline">\(\pm 1\)</span> (לא שניהם), ולכן המטריצה האלכסונית המתאימה היא <span class="math inline">\(\pm I_2\)</span>. לפי משפט <a href="#thm-symmetric-diag">12.43</a>, קיימת <span class="math inline">\(P\in\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> אורתוגונלית כך ש- <span class="math display">\[,A=P(\pm I_2)P^t=\pm PP^t=\pm I_2\]</span> כנדרש.</p></li>
+<li><p>נניח כי <span class="math inline">\(A\neq\pm I_2\)</span> ונסמן <span class="math display">\[.A=\begin{pmatrix}
+a &amp; b \\
+b &amp; c
+\end{pmatrix}\]</span> מאורתוגונליות נובע כי <span class="math inline">\(AA^t=I_2\)</span>, ובאופן שקול: <span class="math display">\[\begin{cases}
+a^2+b^2&amp;=1 \\
+b^2+c^2&amp;=1 \\
+b(a+c)&amp;=0
+\end{cases}\]</span></p>
+<p>לפי המשוואה האחרונה, יש שני מקרים:</p>
+<ul>
+<li><p><span class="math inline">\(b=0\)</span> ולכן <span class="math inline">\(a=\pm 1\)</span> וגם <span class="math inline">\(c=\pm 1\)</span> לפי שאר המשוואות (הסימנים בלתי תלויים). הנחנו כי <span class="math inline">\(A\neq\pm I_2\)</span>, ולכן <span class="math display">\[.A=\pm\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}\]</span> אפשרות זו מתאימה לנוסחה הכללית עבור הזוויות <span class="math inline">\(\theta_1=0,\thinspace\theta_2=\pi\)</span>.</p></li>
+<li><p><span class="math inline">\(c=-a\)</span> ו- <span class="math inline">\(a^2+b^2=1\)</span>. נשתמש בקוארדינטות פולריות עבור <span class="math inline">\((a,b)\)</span> ונקבל <span class="math inline">\(\theta\in\mathbb{R}\)</span> כך ש- <span class="math display">\[.a=\cos\theta,\thinspace b=\sin\theta\]</span> מכאן <span class="math display">\[,A=\begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+\sin\theta &amp; -\cos\theta
+\end{pmatrix}\]</span> כנדרש.</p></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
