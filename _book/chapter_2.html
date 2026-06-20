@@ -1238,8 +1238,8 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 <p>ניתן לאפיין את הקריטריונים לעיל באמצעות הדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A)\)</span> של מטריצת המקדמים המצומצמת, והדרגה <span class="math inline">\(\mathop{\mathrm{rank}}(A|b)\)</span> של מטריצת המקדמים המורחבת. דירוג קנוני של <span class="math inline">\(A\)</span> מתאים לדירוג קנוני של <span class="math inline">\((A|b)\)</span>, כאשר ההבדל היחיד הוא העמודה הימנית (צריך לבצע עליה את כל פעולות השורה שבחרנו עבור <span class="math inline">\(A\)</span>).</p>
 <p>ראשית נוכיח כמה תכונות של דרגה.</p>
 <div id="prp-rank-ineq" class="proposition theorem">
-<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> א. לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.*</p>
-<p>ב. מתקיים <span class="math inline">\(0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\)</span> כאשר <span class="math inline">\(\min\{m,n\}\)</span> הוא המספר הקטן מבין <span class="math inline">\(m,n\)</span>.*</p>
+<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> א. לכל <span class="math inline">\(A\)</span> מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(b\in\mathbb F^n\)</span> מתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)\)</span>.</p>
+<p>ב. מתקיים <span class="math inline">\(0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}\)</span> כאשר <span class="math inline">\(\min\{m,n\}\)</span> הוא המספר הקטן מבין <span class="math inline">\(m,n\)</span>.</p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>&nbsp; א. נניח כי הצורה המדורגת קנונית של <span class="math inline">\((A|b)\)</span> היא <span class="math inline">\((A'|b')\)</span>. אז בפרט, <span class="math inline">\(A'\)</span> היא הצורה המדורגת קנונית של <span class="math inline">\(A\)</span>.</p>
@@ -1550,7 +1550,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- מספור משותף (רץ) לכל הסביבות לפי סדר הופעתן ---
 
-  const boxEnvs = ['definition','example','exercise','remark','theorem','lemma','proposition','corollary','proof'];
+  const boxEnvs = ['definition','example','exercise','remark','lemma','proposition','corollary','theorem','proof'];
 
   let sharedCounter = 0; // מונה אחד משותף לכולם
 

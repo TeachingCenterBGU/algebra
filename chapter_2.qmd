@@ -1098,9 +1098,9 @@ z=\frac{2-i}{i-1}=\frac{(2-i)(-i-1)}{2}=-\frac{3+i}{2}
 ראשית נוכיח כמה תכונות של דרגה.
 
 ::: {.proposition #prp-rank-ineq}
-א. לכל $A$ מסדר $m\times n$ ולכל $b\in\mathbb F^n$ מתקיים $\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)$.*
+א. לכל $A$ מסדר $m\times n$ ולכל $b\in\mathbb F^n$ מתקיים $\mathop{\mathrm{rank}}(A)\leq\mathop{\mathrm{rank}}(A|b)$.
 
-ב. מתקיים $0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}$ כאשר $\min\{m,n\}$ הוא המספר הקטן מבין $m,n$.*
+ב. מתקיים $0\leq\mathop{\mathrm{rank}}(A)\leq\min\{m,n\}$ כאשר $\min\{m,n\}$ הוא המספר הקטן מבין $m,n$.
 :::
 
 ::: proof
@@ -1274,7 +1274,7 @@ $$\begin{aligned}
  
 כנדרש לכל $1\leq i\leq n$.
  
-ב. אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל $$.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n.$$ לכן, לפי [טענה 5.40](#prp-rank-number) יש פתרון יחיד.
+ב. אם נחזור למטריצת המקדמים המורחבת (עם אפסים בעמודה הימנית), הדרגה שלה בהכרח שווה לזו של מטריצת המקדמים המצומצמת כי אין אפשרות לאיבר מוביל בעמודה הימנית. נקבל $$.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)=n.$$ לכן, לפי [טענה 5.40](#prp-rank-number) יש אינסוף פתרונות.
  
 ג. הפעם מתקיים $$.\mathop{\mathrm{rank}}(A|0)=\mathop{\mathrm{rank}}(A)<n.$$ לכן, לפי [טענה 5.40](#prp-rank-number) יש אינסוף פתרונות.
  

@@ -334,12 +334,12 @@ x_1\\
 x_2\\
 \vdots \\
 x_n
-\end{pmatrix}\in\mathbb{F}^n$$ נגדיר את המכפלה $$Ax=\begin{pmatrix}
+\end{pmatrix}\in\mathbb{F}^n$$נגדיר את המכפלה$$Ax=\begin{pmatrix}
 y_1\\
 y_2\\
 \vdots \\
 y_m
-\end{pmatrix}\in\mathbb{F}^m$$ עם קוארדינטות הנתונות ע\"י $$y_i=\sum_{j=1}^n (A)_{ij}x_j.$ לכל $1\leq i\leq m$. נסמן $y_i=(Ax)_i$ עבור הקוארדינטות.
+\end{pmatrix}\in\mathbb{F}^m$$ עם קוארדינטות הנתונות ע\"י $y_i=\sum_{j=1}^n (A)_{ij}x_j$. לכל $1\leq i\leq m$. נסמן $y_i=(Ax)_i$ עבור הקוארדינטות.
 :::
 
 ::: remark
@@ -582,7 +582,7 @@ $$.x=v_0+y\in\Set{x_0+y|y\in\mathbb{F}^n,Ay=0}.$$ ◻
 ### כפל מטריצות
 
 ::: definition
-בהינתן $A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})$ נגדיר את מטריצת הכפל $AB$ ע\"י $$(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}.$ לכל $1\leq i\leq m, 1\leq j\leq n$.
+בהינתן $A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})$ נגדיר את מטריצת הכפל $AB$ ע\"י $$(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}$$ לכל $1\leq i\leq m, 1\leq j\leq n$.
 :::
 
 ::: remark
@@ -768,7 +768,7 @@ Av_1 & Av_2 & \cdots & Av_n \\
 :::
 
 ::: proof
-ישירות לפי ההגדרות של כפל מטריצוות וכפל מטריצה בוקטור עמודה (שהוא מטריצה עם עמודה אחת). לכל $1\leq j\leq n$ נכתוב $(B)_{ij}=b_{ij}$, כלומר $$.v_j=\begin{pmatrix}b_{1j} \\ b_{2j} \\ \vdots \\ b_{kj}\end{pmatrix}.$$
+ישירות לפי ההגדרות של כפל מטריצות וכפל מטריצה בוקטור עמודה (שהוא מטריצה עם עמודה אחת). לכל $1\leq j\leq n$ נכתוב $(B)_{ij}=b_{ij}$, כלומר $$.v_j=\begin{pmatrix}b_{1j} \\ b_{2j} \\ \vdots \\ b_{kj}\end{pmatrix}.$$
 
 אז לפי הגדרות הכפל נובע כי
 
@@ -1184,7 +1184,7 @@ $$B\cdot B=B\cdot 0 \nRightarrow B=0$$
 
 1.  $A$ נקראת סימטרית אם מתקיים $A^t=A$, או באופן שקול: $$\forall 1\leq i,j\leq n \quad (A)_{ji}=(A)_{ij}$$
 
-2.  נקראת אנטי-סימטרית אם מתקיים $A^t=-A$, או באופן שקול: $$\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}$$
+2.  $A$ נקראת אנטי-סימטרית אם מתקיים $A^t=-A$, או באופן שקול: $$\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}$$
 :::
 
 ::: example
@@ -1908,7 +1908,7 @@ $(\text{ה}) \impliedby (\text{א})$: כנ\"ל.
 
 כעת נוכיח את הכיוון ההפוך של כל גרירה.
 
-$(\text{ב}) \implies (\text{א})$: אם הדרגה היא $n$, אז יש $1$ מוביל בכל עמודה. כל שאר האיברים הם $0$ ,(כי הדירוג קנוני) ולכן $A'=I_n$.
+$(\text{ב}) \implies (\text{א})$: אם הדרגה היא $n$, אז יש $1$ מוביל בכל עמודה. כל שאר האיברים הם $0$ (כי הדירוג קנוני), ולכן $A'=I_n$.
 
 $(\text{ג}) \implies (\text{א})$: מיחידות הפתרון נובע $(\text{ב})$ ומכאן גם $(\text{א})$.
 
@@ -1930,15 +1930,15 @@ $(\text{ה}) \implies (\text{א})$: אם תמיד קיים פתרון לממ\"ל
 ::: {.proposition #prp-invertible}
 *לכל $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ התנאים הבאים שקולים:*
 
-1.  *$A$ שקולת שורה ל- $I_n$.*
+א.  *$A$ שקולת שורה ל- $I_n$.*
 
-2.  *$\mathop{\mathrm{rank}}(A)=n$*
+ב.  *$\mathop{\mathrm{rank}}(A)=n$*
 
-3.  *לממ\"ל $Ax=0$ יש פתרון יחיד.*
+ג.  *לממ\"ל $Ax=0$ יש פתרון יחיד.*
 
-4.  *לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ\"ל $Ax=b$.*
+ד.  *לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ\"ל $Ax=b$.*
 
-5.  *לכל $b\in\mathbb{F}^n$ יש פתרון לממ\"ל $Ax=b$.*
+ה.  *לכל $b\in\mathbb{F}^n$ יש פתרון לממ\"ל $Ax=b$.*
 :::
 
 ::: proof
@@ -1956,21 +1956,21 @@ $(\text{ה}) \implies (\text{א})$: אם תמיד קיים פתרון לממ\"ל
 ::: {.theorem #thm-invertible}
 *לכל $A\in\mathbb{M}_{n\times n}(\mathbb{F})$ התנאים הבאים שקולים:*
 
-1.  *$A$ שקולת שורה ל- $I_n$.*
+א.  *$A$ שקולת שורה ל- $I_n$.*
 
-2.  *$\mathop{\mathrm{rank}}(A)=n$*
+ב.  *$\mathop{\mathrm{rank}}(A)=n$*
 
-3.  *לממ\"ל $Ax=0$ יש פתרון יחיד.*
+ג.  *לממ\"ל $Ax=0$ יש פתרון יחיד.*
 
-4.  *לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ\"ל $Ax=b$.*
+ד.  *לכל $b\in\mathbb{F}^n$ יש פתרון יחיד לממ\"ל $Ax=b$.*
 
-5.  *לכל $b\in\mathbb{F}^n$ יש פתרון לממ\"ל $Ax=b$.*
+ה.  *לכל $b\in\mathbb{F}^n$ יש פתרון לממ\"ל $Ax=b$.*
 
-6.  *$A$ הפיכה משמאל.*
+ו.  *$A$ הפיכה משמאל.*
 
-7.  *$A$ הפיכה מימין.*
+ז.  *$A$ הפיכה מימין.*
 
-8.  *$A$ הפיכה.*
+ח.  *$A$ הפיכה.*
 :::
 
 ::: proof
@@ -2028,7 +2028,7 @@ x_n
 :::
 
 ::: proof
-אם $BA=I_n$, אז $A$ הפיכה משמאל. לפי משפט [6.73](#thm-invertible) היא גם הפיכה מימין, ולכן קיימת $C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $AC=I_n$. אבל אז נובע מטענה [6.76](#prp-inverses) כי $B=C$, ולכן $AB=I_n$.
+אם $BA=I_n$, אז $A$ הפיכה משמאל. לפי משפט [6.75](#thm-invertible) היא גם הפיכה מימין, ולכן קיימת $C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $AC=I_n$. אבל אז נובע מטענה [6.76](#prp-inverses) כי $B=C$, ולכן $AB=I_n$.
 
 הכיוון השני דומה, למשל משיקולי סימטריה (משחק תפקידים בין $A$ ל- $B$). ◻
 :::
@@ -2040,7 +2040,7 @@ x_n
 :::
 
 ::: proof
-** $A$ הפיכה משמאל ולכן גם מימין לפי משפט [6.73](#thm-invertible). כלומר קיימת $C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $AC=I_n$. לכן, נובע $B_1=C=B_2$ מטענה [6.76](#prp-inverses). ◻
+** $A$ הפיכה משמאל ולכן גם מימין לפי משפט [6.75](#thm-invertible). כלומר קיימת $C\in\mathbb{M}_{n\times n}(\mathbb{F})$ כך ש- $AC=I_n$. לכן, נובע $B_1=C=B_2$ מטענה [6.76](#prp-inverses). ◻
 :::
 
 ::: definition
@@ -2096,7 +2096,6 @@ x_n
 :::
 
 ::: proof
-**  
 
 1.  זהו מקרה פרטי של מסקנה [6.68](#cor-left) עבור $A'=I_n$. כאן $B=A^{-1}$.
 
@@ -2147,7 +2146,7 @@ $$(A\mid I_n)\rightarrow (E_1A\mid E_1)\rightarrow (E_2E_1A\mid E_2E_1)\rightarr
     0 & -1 & 2 & -2 & 0 & 1
     \end{array}
     \right)
-    \\[4pt] [2]
+    \\[4pt]
     &\xrightarrow{R_2\leftrightarrow R_3}
     \left(
     \begin{array}{ccc|ccc}

@@ -1,0 +1,3080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.7.32" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+
+<title>6  מטריצות – אלגברה לינארית</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPY4VZJV6M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TPY4VZJV6M');
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="rtl-baseline.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
+        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="/index.html" class="sidebar-logo-link">
+      <img src="/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"/>
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="/">
+      אלגברה לינארית
+      </a> 
+        <div class="sidebar-tools-main">
+    <a href="/downloads/book.pdf"  title="הורדת הספר כ-PDF" class="quarto-navigation-tool px-1" aria-label="הורדת הספר כ-PDF"><i class="bi bi-download"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">מידע כללי</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>הקדמה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>קבוצות ומספרים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_0_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>3</span>  <span class='chapter-title'>תכונות ושימושים של המספרים המרוכבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>4</span>  <span class='chapter-title'>גיאומטריה במישור ובמרחב</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>5</span>  <span class='chapter-title'>מערכות משוואות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class='chapter-number'>6</span>  <span class='chapter-title'>מטריצות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>7</span>  <span class='chapter-title'>דטרמיננטה</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>8</span>  <span class='chapter-title'>מרחבים וקטוריים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>9</span>  <span class='chapter-title'>תת-מרחבים</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>10</span>  <span class='chapter-title'>העתקות לינאריות</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>11</span>  <span class='chapter-title'>ערכים עצמיים, וקטורים עצמיים ולכסון</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/chapter_9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class='chapter-number'>12</span>  <span class='chapter-title'>מכפלה סקלרית ולכסון אורתוגונלי</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ביבליוגרפיה</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="display: none;">
+$$
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+$$
+</div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#פעולות-על-מטריצות" id="toc-פעולות-על-מטריצות"><span class="header-section-number">6.1</span> פעולות על מטריצות</a>
+  <ul>
+  <li><a href="#חיבור-וכפל-בסקלר" id="toc-חיבור-וכפל-בסקלר"><span class="header-section-number">6.1.1</span> חיבור וכפל בסקלר</a></li>
+  <li><a href="#כפל-מטריצה-בוקטור-עמודה" id="toc-כפל-מטריצה-בוקטור-עמודה"><span class="header-section-number">6.1.2</span> כפל מטריצה בוקטור עמודה</a></li>
+  <li><a href="#כפל-מטריצות" id="toc-כפל-מטריצות"><span class="header-section-number">6.1.3</span> כפל מטריצות</a></li>
+  <li><a href="#שחלוף-מטריצות" id="toc-שחלוף-מטריצות"><span class="header-section-number">6.1.4</span> שחלוף מטריצות</a></li>
+  </ul></li>
+  <li><a href="#מטריצות-מיוחדות" id="toc-מטריצות-מיוחדות"><span class="header-section-number">6.2</span> מטריצות מיוחדות</a>
+  <ul>
+  <li><a href="#מטריצות-ריבועיות" id="toc-מטריצות-ריבועיות"><span class="header-section-number">6.2.1</span> מטריצות ריבועיות</a></li>
+  <li><a href="#מטריצות-סימטריות-ואנטי-סימטריות" id="toc-מטריצות-סימטריות-ואנטי-סימטריות"><span class="header-section-number">6.2.2</span> מטריצות סימטריות ואנטי-סימטריות</a></li>
+  <li><a href="#מטריצות-אלכסוניות-ומטריצות-משולשיות" id="toc-מטריצות-אלכסוניות-ומטריצות-משולשיות"><span class="header-section-number">6.2.3</span> מטריצות אלכסוניות ומטריצות משולשיות</a></li>
+  <li><a href="#מטריצות-אלמנטריות" id="toc-מטריצות-אלמנטריות"><span class="header-section-number">6.2.4</span> מטריצות אלמנטריות</a></li>
+  </ul></li>
+  <li><a href="#מטריצות-הפיכות-והקשר-לממל" id="toc-מטריצות-הפיכות-והקשר-לממל"><span class="header-section-number">6.3</span> מטריצות הפיכות והקשר לממ"ל</a>
+  <ul>
+  <li><a href="#חישוב-מטריצה-הופכית" id="toc-חישוב-מטריצה-הופכית"><span class="header-section-number">6.3.1</span> חישוב מטריצה הופכית</a></li>
+  </ul></li>
+  </ul>
+</nav>
+<p>בפרק הקודם ראינו מטריצות מקדמים בהקשר של ממ"ל (מצומצמות או מורחבות). אבל הרעיון של מטריצה הוא כללי יותר, ולא תמיד חייב להיות קשר לממ"ל. מטריצה אינה אלא טבלה של מספרים, וטבלה כזו יכולה לייצג כל מיני דברים.</p>
+<div id="exm-bus" class="example theorem">
+<p><span class="theorem-title"><strong>Example 6.1</strong></span> נניח שאנחנו רוצים לחשב את מספר האוטובוסים (של חברה מסוימת) שעוברים בין אילת, באר שבע ות"א ביום ראשון. לצורך הדוגמה, לכל אוטובוס אין תחנות ביניים - רק תחנת יציאה ותחנת הגעה. אז אפשר להכין מטריצה מסדר <span class="math inline">\(3\times 3\)</span> שבה כל שורה תציין תחנת יציאה, וכל עמודה תציין תחנת הגעה. נשתמש בסימונים <span class="math inline">\(E, B, T\)</span> לת"א, באר שבע ואילת בהתאמה כדי שיהיה ברור איזו עמודה/שורה מתאימה לאיזו עיר (סימונים אלה אינם איברים במטריצה). אז לפי הנתונים מקבלים מטריצה כזו:</p>
+<p><span class="math display">\[\left(
+\begin{array}{c|ccc}
+&amp; E &amp; B &amp; T \\ \hline
+E &amp; 0 &amp; 10 &amp; 5 \\
+B &amp; 8 &amp; 0 &amp; 12 \\
+T &amp; 4 &amp; 6 &amp; 0
+\end{array}
+\right)\]</span></p>
+<p>משמעות המטריצה היא שאין אוטובוס מאף תחנה לעצמה. יש עשרה אוטובוסים שיוצאים מאילת לבאר שבע, ויש שמונה אוטובוסים שעושים את המסלול ההפוך. וכן הלאה. נוותר על הסימונים של הערים ונכתוב את המטריצה בצורה הרגילה, ונסמנה ע"י <span class="math inline">\(S\)</span>:</p>
+<p><span class="math display">\[S=\left(
+\begin{array}{ccc}
+0 &amp; 10 &amp; 5 \\
+8 &amp; 0 &amp; 12 \\
+4 &amp; 6 &amp; 0
+\end{array}
+\right)\]</span></p>
+<p>זו המטריצה עבור הנתונים של יום ראשון. עכשיו נניח שיש נתונים שונים ליום שני, ונכין מטריצה חדשה עבורם:</p>
+<p><span class="math display">\[M=\left(
+\begin{array}{ccc}
+0 &amp; 12 &amp; 7 \\
+11 &amp; 0 &amp; 10 \\
+3 &amp; 8 &amp; 0
+\end{array}
+\right)\]</span></p>
+<p>כעת אפשר לשאול כמה אוטובוסים יש לכל מסלול בשני הימים יחד. אז צריך לעשות חיבור בכל רכיב של המטריצה (שמתאים למסלול עם נקודת יציאה ונקודת הגעה) לחוד. אפשר לכתוב מטריצה חדשה שאיבריה יהיו סכומי האיברים של המטריצות <span class="math inline">\(S,M\)</span> לפי כל רכיב לחוד. זה מתבקש לקרוא למטריצה החדשה <span class="math inline">\(S+M\)</span> בדומה לחיבור וקטורי. כך נקבל:</p>
+<p><span class="math display">\[S+M=\left(
+\begin{array}{ccc}
+0+0 &amp; 10+12 &amp; 5+7 \\
+8+11 &amp; 0+0 &amp; 12+10 \\
+4+3 &amp; 6+8 &amp; 0+0
+\end{array}
+\right)
+=\left(
+\begin{array}{ccc}
+0+0 &amp; 22 &amp; 12 \\
+19 &amp; 0 &amp; 22 \\
+7 &amp; 14 &amp; 0
+\end{array}
+\right)\]</span></p>
+<p>בפרט, משמעות המטריצה לעיל היא שאין אוטובוס מאף תחנה לעצמה באף יום. יש <span class="math inline">\(22\)</span> אוטובסים שיוצאים מאילת לבאר שבע ביומיים של ראשון ושני, ו- <span class="math inline">\(19\)</span> שעושים את המסלול ההפוך ביומיים האלה. וכן הלאה.</p>
+</div>
+<div class="definition">
+<p>נגדיר את קבוצת כל המטריצות מסדר <span class="math inline">\(m\times n\)</span> מעל <span class="math inline">\(\mathbb{F}\)</span> (כאשר <span class="math inline">\(\mathbb{F}=\mathbb{R}\)</span> או <span class="math inline">\(\mathbb{F}=\mathbb{C}\)</span> ) ע"י</p>
+<p><span class="math display">\[.\mathbb{M}_{m\times n}(\mathbb{F})=\Set{\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}|\forall 1\leq i\leq m \quad \forall 1\leq j\leq n \quad a_{ij}\in \mathbb{F}}.\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הסימן <span class="math inline">\(\forall\)</span> פירושו "לכל". אז התנאי המתמטי בהגדרת <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{F})\)</span> אומר שכל איבר <span class="math inline">\(a_{ij}\)</span> במטריצה שייך לקבוצה <span class="math inline">\(\mathbb{F}\)</span>, כי עוברים על כל האיברים בכל השורות ובכל העמודות.</p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>מתקיים <span class="math display">\[.A=\begin{pmatrix} 10 &amp; 9 &amp; 1 &amp; -7\\
+1 &amp; 2 &amp; 3 &amp; 4\\
+0 &amp; 4 &amp; -3 &amp; -5
+\end{pmatrix}\in\mathbb{M}_{3\times 4}(\mathbb{R})\]</span></p></li>
+<li><p>מתקיים <span class="math display">\[.B=\begin{pmatrix} i &amp; 1 \\
+1 &amp; 1+i\\
+0 &amp; 2i
+\end{pmatrix}\in\mathbb{M}_{3\times 2}(\mathbb{C})\]</span></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span> מתקיים <span class="math inline">\(\mathbb{M}_{m\times n}(\mathbb{R})\subseteq \mathbb{M}_{m\times n}(\mathbb{C})\)</span> כי <span class="math inline">\(\mathbb{R}\subseteq\mathbb{C}\)</span>. אז למעשה כל המטריצות בקורס הן מעל <span class="math inline">\(\mathbb{C}\)</span>, אבל אם לדייק רובן (לא כולן) יהיו מעל <span class="math inline">\(\mathbb{R}\)</span>. השימוש בסימון <span class="math inline">\(\mathbb{F}\)</span> נועד לרוב הטענות, שנכונות גם מעל <span class="math inline">\(\mathbb{R}\)</span> וגם מעל <span class="math inline">\(\mathbb{C}\)</span>. בתחום של אלגברה לינארית אפשר גם לעסוק בקבוצות מספרים נוספות שנקראות שדות ,(fields) ומכאן הסיבה לאות <span class="math inline">\(\mathbb{F}\)</span>. אבל בקורס שלנו נסתפק ב- <span class="math inline">\(\mathbb{R},\mathbb{C}\)</span> (השדות החשובים ביותר).</p>
+</div>
+<section id="פעולות-על-מטריצות" class="level2" data-number="6.1">
+<h2 data-number="6.1"><span class="header-section-number">6.1</span> פעולות על מטריצות</h2>
+<section id="חיבור-וכפל-בסקלר" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1"><span class="header-section-number">6.1.1</span> חיבור וכפל בסקלר</h3>
+<p>ראינו בדוגמה <a href="#exm-bus">6.1</a> שיש טעם בהגדרת פעולת חיבור בין מטריצות, בדיוק כמו חיבור וקטורי (עושים חיבור בכל קוארדינטה/רכיב לחוד). קודם כל נכליל חיבור וקטורי וכפל בסקלר (שהגדרנו (בפרק <a href="#sec-geometry" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">sec-geometry</span></a>) במישור ובמרחב) ל- <span class="math inline">\(\mathbb{F}^n\)</span>.</p>
+<div class="definition">
+<p>עבור וקטורים <span class="math inline">\(v=(a_1,...,a_n)\in\mathbb{F}^n,w=(b_1,...,b_n)\in\mathbb{F}^n\)</span> וסקלר <span class="math inline">\(c\in\mathbb{F}\)</span> נגדיר את הפעולות הבאות:</p>
+<ol type="1">
+<li><p>פעולת החיבור: <span class="math display">\[v+w=(a_1+b_1,...,a_n+b_n)\]</span></p></li>
+<li><p>פעולת כפל בסקלר: <span class="math display">\[c \cdot v=(c\cdot a_1,\dots,c\cdot a_n)\]</span></p></li>
+</ol>
+</div>
+<div class="definition">
+<p>עבור <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> וסקלר <span class="math inline">\(c\in\mathbb{F}\)</span> נגדיר את הפעולות הבאות:</p>
+<ol type="1">
+<li><p>פעולת החיבור: <span class="math display">\[\begin{aligned}
+A+B&amp;=\begin{pmatrix}a_{11} &amp; \cdots &amp; a_{1n}\\
+a_{21} &amp; \cdots &amp; a_{2n}\\
+\vdots  &amp; \ddots &amp; \vdots\\
+a_{m1}  &amp; \cdots &amp; a_{mn}
+\end{pmatrix}+\begin{pmatrix}b_{11} &amp; \cdots &amp; b_{1n}\\
+b_{21} &amp; \cdots &amp; b_{2n}\\
+\vdots &amp; \ddots &amp; \vdots\\
+b_{m1} &amp; \cdots &amp; b_{mn}
+\end{pmatrix}\\
+&amp;=\begin{pmatrix}a_{11}+b_{11} &amp; \cdots &amp; a_{1n}+b_{1n} \\ a_{21}+b_{21} &amp; \cdots &amp; a_{2n}+b_{2n}\\
+\vdots &amp; \ddots &amp; \vdots\\
+a_{m1}+b_{m1} &amp; \cdots &amp; a_{mn}+b_{mn}
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>פעולת כפל בסקלר: <span class="math display">\[c A=\begin{pmatrix}ca_{11} &amp; ca_{12} &amp; \cdots &amp; ca_{1n}\\
+ca_{21} &amp; ca_{22} &amp; \cdots &amp; ca_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+ca_{m1} &amp; ca_{m2} &amp; \cdots &amp; ca_{mn}
+\end{pmatrix}\]</span></p>
+<p>בפרט, נגדיר <span class="math inline">\(-A=(-1)\cdot A\)</span> ובהתאמה <span class="math inline">\(B-A=B+(-1)\cdot A\)</span>.</p></li>
+</ol>
+</div>
+<div class="example">
+<ol type="1">
+<li><p>חיבור של מטריצות מסדר <span class="math inline">\(2\times 2\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[\begin{aligned}
+&amp;\begin{pmatrix} 3 &amp; 7 \\
+5 &amp; -2
+\end{pmatrix}+\begin{pmatrix} -10 &amp; 5 \\
+-4 &amp; -3
+\end{pmatrix}\\
+&amp;=\begin{pmatrix} 3-10 &amp; 7+5 \\
+5-4 &amp; -2-3
+\end{pmatrix}=\begin{pmatrix} -7 &amp; 12 \\
+1 &amp; -5
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>חיבור של מטריצות מסדר <span class="math inline">\(3\times 4\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[\begin{aligned}
+&amp;\begin{pmatrix} 10 &amp; 9 &amp; 1 &amp; -7\\
+1 &amp; 2 &amp; 3 &amp; 4\\
+0 &amp; 4 &amp; -3 &amp; -5
+\end{pmatrix}+\begin{pmatrix} 3 &amp; -2 &amp; 0 &amp; 6\\
+5 &amp; -2 &amp; 4 &amp; -4\\
+10 &amp; -6 &amp; 3 &amp; 1
+\end{pmatrix}\\
+&amp;=\begin{pmatrix} 10+3 &amp; 9-2 &amp; 1+0 &amp; -7+6\\
+1+5 &amp; 2-2 &amp; 3+4 &amp; 4-4\\
+0+10 &amp; 4-6 &amp; -3+3 &amp; -5+1
+\end{pmatrix}\\
+&amp;=\begin{pmatrix} 13 &amp; 7 &amp; 1 &amp; -1\\
+6 &amp; 0 &amp; 7 &amp; 0\\
+10 &amp; -2 &amp; 0 &amp; -4
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>חיבור של מטריצות מסדר <span class="math inline">\(2\times 2\)</span> מעל <span class="math inline">\(\mathbb{C}\)</span>: אם</p>
+<p><span class="math display">\[A = \begin{pmatrix} 1 &amp; i \\
+2-3i &amp; 3-2i
+\end{pmatrix},\quad  B = \begin{pmatrix} 7-5i &amp; 2+7i \\
+-6 &amp; 3+10i
+\end{pmatrix}\]</span></p>
+<p>אז <span class="math display">\[\begin{aligned}
+A+B&amp;=\begin{pmatrix} 1+7-5i &amp; i+2+7i \\
+2-3i-6 &amp; 3-2i+3+10i
+\end{pmatrix}=\begin{pmatrix} 8-5i &amp; 2+8i \\
+-4-3i &amp; 6+8i
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+<div id="def-entry-formula" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 6.1</strong></span> יש דרך מקוצרת לכתיבת חיבור. במקום לכתוב את החיבור בכל רכיב, נסתכל על האיבר הכללי של כל מטריצה. נסמן את האיבר בשורה ה- <span class="math inline">\(i\)</span> ובעמודה ה- <span class="math inline">\(j\)</span> ע"י <span class="math inline">\((P)_{ij}\)</span> לכל <span class="math inline">\(P\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. אז למעשה הגדרנו לכל <span class="math inline">\(1\leq i \leq m\)</span> ולכל <span class="math inline">\(1\leq j\leq n\)</span>: <span class="math display">\[(A+B)_{ij}=(A)_{ij}+(B)_{ij}\]</span></p>
+<p><span class="math display">\[(c A)_{ij}=c(A)_{ij}\]</span></p>
+</div>
+<p>למשל, בדוגמה האחרונה היה לנו <span class="math inline">\((A)_{12} = i, (B)_{21} = -6, (A+B)_{22}=6+8i\)</span>.</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>שימו לב שהחיבור מוגדר רק למטריצות מאותו הסדר (כנ"ל לוקטורים - רק אם הם שווי אורך). גם הסדר של מטריצת הסכום שווה לסדר המשותף של המטריצות.</p>
+</div>
+<div class="example">
+<p>החיבור הבא אינו מוגדר: <span class="math display">\[\begin{pmatrix} 3 &amp; 7 \\
+5 &amp; -2
+\end{pmatrix}+\begin{pmatrix} -10 &amp; 5 &amp;0\\
+-4 &amp; -3 &amp;0
+\end{pmatrix}\]</span></p>
+<p>המטריצה השמאלית היא מסדר <span class="math inline">\(2\times 2\)</span> והימנית היא מסדר <span class="math inline">\(2\times 3\)</span>.</p>
+</div>
+<div class="example">
+<p>(דוגמאות נוספות) 1. כפל בסקלר של מטריצה מסדר <span class="math inline">\(3\times 3\)</span> מעל <span class="math inline">\(\mathbb{C}\)</span>: <span class="math display">\[\begin{aligned}
+    &amp;i\begin{pmatrix} 1 &amp; i &amp; 1+i \\
+    1-i &amp; 2i &amp; 3 \\
+    2+3i &amp; 3-2i &amp; 5
+    \end{pmatrix}=\begin{pmatrix} i\cdot1 &amp; i\cdot i &amp; i(1+i) \\
+    i(1-i) &amp; i\cdot 2i &amp; i\cdot3 \\
+    i(2+3i) &amp; i(3-2i) &amp; i\cdot5
+    \end{pmatrix}\\
+    &amp;=\begin{pmatrix}i &amp; -1 &amp; -1+i \\
+    1+i &amp; -2 &amp; 3i \\
+    -3+2i &amp; 2+3i &amp; 5i
+    \end{pmatrix}
+    \end{aligned}\]</span></p>
+<ol start="2" type="1">
+<li>שילוב של כפל בסקלר וחיבור מטריצות מסדר <span class="math inline">\(2\times 2\)</span> מעל <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[\begin{aligned}
+&amp;2 \begin{pmatrix} 11 &amp; 2 \\
+-2 &amp; 4
+\end{pmatrix}+3\begin{pmatrix} -4 &amp; 5 \\
+6 &amp; -3
+\end{pmatrix}=\begin{pmatrix} 22 &amp; 4 \\
+-4 &amp; 8
+\end{pmatrix}+\begin{pmatrix} -12 &amp; 15 \\
+18 &amp; -9
+\end{pmatrix}\\
+&amp;=\begin{pmatrix} 22-12 &amp; 4+15 \\
+-4+18 &amp; 8-9
+\end{pmatrix}
+\end{aligned}\]</span></li>
+</ol>
+</div>
+<div class="definition">
+<p>לכל <span class="math inline">\(m,n\in\mathbb{N}\)</span> נגדיר את מטריצת האפס מסדר <span class="math inline">\(m\times n\)</span> כמטריצה שכל איבריה הם <span class="math inline">\(0\)</span>: <span class="math display">\[.\mathbf{0}_{m\times n}=\begin{pmatrix}0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;\cdots &amp;0 \\
+\vdots &amp; \vdots &amp;\ddots &amp;\vdots\\
+0 &amp;0 &amp;\cdots &amp;0
+\end{pmatrix}\]</span></p>
+</div>
+<div class="proposition">
+<p><em>יהיו <span class="math inline">\(A,B,C\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ו- <span class="math inline">\(\alpha,\beta\in\mathbb{F}\)</span>. אז מתקיימים הכללים הבאים:</em></p>
+<ol type="1">
+<li><p><em>חוק החילוף (קומוטטיביות): <span class="math display">\[A+B=B+A\]</span></em></p></li>
+<li><p><em>חוק הקיבוץ (אסוציאטיביות): <span class="math display">\[(A+B)+C=A+(B+C)\]</span></em></p></li>
+<li><p><em>חוק הקיבוץ לכפל בסקלר: <span class="math display">\[(\alpha\beta)A=\alpha(\beta A)\]</span></em></p></li>
+<li><p><em>חוק הפילוג (דיסטריביוטיביות): <span class="math display">\[\alpha(A+B)=\alpha A+\alpha B\]</span></em></p></li>
+<li><p><em>ניטרליות היחידה: <span class="math display">\[1\cdot A=A\]</span></em></p></li>
+<li><p><em><span class="math display">\[0\cdot A=\mathbf{0}_{m\times n}\]</span></em></p></li>
+<li><p><em>ניטרליות מטריצת האפס: <span class="math display">\[A+\mathbf{0}_{m\times n}=A\]</span></em></p></li>
+<li><p><em><span class="math display">\[A-A=0\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>כל התכונות עוברות בירושה מחיבור וכפל ב- <span class="math inline">\(\mathbb{F}\)</span> (מדובר בתכונות מוכרות של <span class="math inline">\(\mathbb{R}\)</span> וראינו (בפרק <a href="#sec-complex" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">sec-complex</span></a>) שהן עוברות בירושה ל- <span class="math inline">\(\mathbb{C}\)</span>). נוכיח למשל את חוק הפילוג: נתמקד באיבר הכללי של כל מטריצה בשוויון שצריך להוכיח. לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> מתקיים</p>
+<p><span class="math display">\[.(\alpha(A+B))_{ij}=\alpha(A+B)_{ij}=\alpha((A)_{ij}+(B)_{ij})=\alpha (A)_{ij}+\alpha (B)_{ij}\]</span> שימו לב שהמעבר האחרון נכון לפי חוק הפילוג ב-<span class="math inline">\(\mathbb{F}\)</span>. לכן נובע כי <span class="math display">\[.\alpha(A+B)=\alpha A+\beta A\]</span></p>
+<p>נוכיח גם את ניטרליות מטריצת האפס: <span class="math display">\[(A+\mathbf{0}_{m\times n})_{ij}=(A)_{ij}+(\mathbf{0}_{m\times n})_{ij}=(A)_{ij}+0=(A)_{ij}\]</span> לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span>, ולכן <span class="math display">\[,A+\mathbf{0}_{m\times n}=A\]</span></p>
+<p>ההוכחות של שאר הסעיפים דומות, כאשר הרעיון הכללי הוא שימוש ב- <a href="#def-entry-formula">הגדרה 6.9</a> והתכונות המתאימות של חיבור/כפל ב- <span class="math inline">\(\mathbb{F}\)</span>. ◻</p>
+</div>
+<div class="exercise">
+<p>הוכיחו את חוק הקיבוץ לכפל בסקלר.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>. עבור חוק הקיבוץ: לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> מתקיים</p>
+<p><span class="math display">\[.((A+B)+C)_{ij}=(A+B)_{ij}+(C)_{ij}=((A)_{ij}+(B)_{ij})+(C)_{ij}\]</span></p>
+<p>באופן דומה, מתקיים <span class="math display">\[.(A+(B+C))_{ij}=A_{ij}+(B+C)_{ij}=(A)_{ij}+((B)_{ij}+(C)_{ij})\]</span></p>
+<p>שני הביטויים באגף ימין של שתי המשוואות שווים לפי חוק הקיבוץ ב- <span class="math inline">\(\mathbb{F}\)</span>. לכן <span class="math display">\[.(A+B)+C=A+(B+C)\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="כפל-מטריצה-בוקטור-עמודה" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2"><span class="header-section-number">6.1.2</span> כפל מטריצה בוקטור עמודה</h3>
+<p>בפרק הקודם דיברנו על ממ"ל מהצורה <span class="math inline">\(Ax=b\)</span> כאשר</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}
+\]</span></p>
+<p>היא מטריצת המקדמים המצומצמת, <span class="math inline">\(x=\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix}\)</span> הוא וקטור המשתנים ו- <span class="math inline">\(b=\begin{pmatrix}
+b_1\\
+b_2\\
+\vdots\\
+b_m
+\end{pmatrix}\)</span> הוא וקטור הקבועים. נרצה להגדיר באופן מדויק את פעולת הכפל <span class="math inline">\(Ax\)</span> של מטריצה <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> בוקטור עמודה <span class="math inline">\(x\in\mathbb{F}^n\)</span> שמספר שורותיו שווה למספר העמודות של המטריצה.</p>
+<p>לפני כן, נגדיר את סימון <span class="math inline">\(\Sigma\)</span> לסכימה (שאולי כבר מוכר).</p>
+<div class="definition">
+<p>בהינתן <span class="math inline">\(a_1,a_2,...,a_n\in\mathbb{F}\)</span> נסמן את סכומם בעזרת כתיבה עם <span class="math inline">\(\Sigma\)</span> ואינדקס <span class="math inline">\(l\)</span>.</p>
+<p><span class="math display">\[.\sum_{l=1}^n a_l=a_1+a_2+a_3+\cdots+a_n.\]</span></p>
+<p>האינדקס <span class="math inline">\(l\)</span> רץ על פני הקבוצה <span class="math inline">\(\Set{1,2,3,\cdots,n}\)</span> וכל הצבה תורמת איבר לסכום.</p>
+</div>
+<div class="example">
+<p>במקרה <span class="math inline">\(a_l=l\)</span> נקבל <span class="math display">\[\sum_{l=1}^{5} l=1+2+3+4+5=15\]</span></p>
+</div>
+<div class="definition">
+<p>בהינתן <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ו- <span class="math display">\[,x=\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{pmatrix}\in\mathbb{F}^n\]</span>נגדיר את המכפלה<span class="math display">\[Ax=\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots \\
+y_m
+\end{pmatrix}\in\mathbb{F}^m\]</span> עם קוארדינטות הנתונות ע"י <span class="math inline">\(y_i=\sum_{j=1}^n (A)_{ij}x_j\)</span>. לכל <span class="math inline">\(1\leq i\leq m\)</span>. נסמן <span class="math inline">\(y_i=(Ax)_i\)</span> עבור הקוארדינטות.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>לפי הגדרה זו, לכל <span class="math inline">\(1\leq i\leq m\)</span> מתקיים <span class="math display">\[.(Ax)_i=b_i \iff \sum_{j=1}^n (A)_{ij}x_j=b_i.\]</span></p>
+<p>לכן, השוויון הוקטורי <span class="math inline">\(Ax=b\)</span> אכן שקול לממ"ל.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>למעשה יש זיהוי בין <span class="math inline">\(\mathbb{M}_{1\times n}(\mathbb{F})\)</span> לבין <span class="math inline">\(\mathbb{F}^n\)</span>, לפי הגדרה <a href="chapter_2.qmd#def-F-n">5.3</a> שהתייחסה לוקטורי שורה. אבל נרשה לעצמנו להשתמש בסימון <span class="math inline">\(\mathbb{F}^n\)</span> גם עבור וקטורי עמודה באורך <span class="math inline">\(n\)</span>, כלומר עבור הקבוצה <span class="math inline">\(\mathbb{M}_{n\times 1}(\mathbb{F})\)</span>. לפעמים ההבדל בין וקטור שורה לוקטור עמודה הוא אסתטי בלבד, אבל כאשר מכפילים מטריצה בוקטור בהחלט יש חשיבות לסוג הוקטור (הוא צריך להיות וקטור עמודה). אז ככלל נזכור לשים לב להבדל כאשר מופיעה מכפלה של מטריצה בוקטור, ובשאר המקרים אפשר לכתוב את הוקטור כשורה או עמודה לפי טעם אישי.</p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>ניקח <span class="math display">\[A = \begin{pmatrix}
+2 &amp; -1 \\
+3 &amp; 4
+\end{pmatrix}, \quad
+x = \begin{pmatrix}
+1 \\
+5
+\end{pmatrix}\]</span> ונקבל <span class="math display">\[.\begin{pmatrix}
+2 &amp; -1 \\
+3 &amp; 4
+\end{pmatrix}
+\begin{pmatrix}
+1 \\
+5
+\end{pmatrix}
+=
+\begin{pmatrix}
+2\cdot1 + (-1)5 \\
+3\cdot1 + 4\cdot5
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3 \\
+23
+\end{pmatrix}\]</span></p></li>
+<li><p><span class="math display">\[\begin{pmatrix}a_1 &amp;b_1 &amp;c_1\end{pmatrix}\begin{pmatrix}a_2 \\ b_2 \\ c_2\end{pmatrix}=a_1a_2+b_1b_2+c_1c_2\]</span></p>
+<p>לכל <span class="math inline">\(a_1,b_1,c_1,a_2,b_2,c_2\in\mathbb{F}\)</span>. במקרה של <span class="math inline">\(\mathbb{F}=\mathbb{R}\)</span> מדובר על המכפלה הסקלרית של <span class="math display">\[.\begin{pmatrix}a_1 \\ b_1 \\ c_1\end{pmatrix},\begin{pmatrix}a_2 \\ b_2 \\ c_2\end{pmatrix}\in\mathbb{R}^3\]</span></p></li>
+<li><p><span class="math display">\[\begin{pmatrix}
+1 &amp; 0 &amp; 2 \\
+-2 &amp; 3 &amp; 1 \\
+4 &amp; -1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+3 \\
+2 \\
+-1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1\cdot3 + 0\cdot2 + 2(-1) \\
+-2\cdot3 + 3\cdot 2 + 1(-1) \\
+4\cdot3 + (-1)2 + 0(-1)
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+-1 \\
+10
+\end{pmatrix}\]</span></p></li>
+<li><p><span class="math display">\[\begin{pmatrix}
+1+i &amp; 2 \\
+3i &amp; 4-i
+\end{pmatrix}\begin{pmatrix}
+2 \\
+1-i
+\end{pmatrix}=\begin{pmatrix}
+(1+i)2 + 2(1-i) \\
+(3i)2 + (4-i)(1-i)
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\
+3 + i
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p>חשבו את <span class="math inline">\(Av\)</span> עבור <span class="math display">\[.A = \begin{pmatrix}
+1 &amp; i &amp; 2 \\
+-1 &amp; 3i &amp; 0 \\
+2+i &amp; 1 &amp; -i
+\end{pmatrix}, \quad
+v = \begin{pmatrix}
+1+i \\
+2 \\
+-1
+\end{pmatrix}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[Ax=\begin{pmatrix}
+1(1+i) + i\cdot 2 + 2(-1) \\
+(-1)(1+i) + 3i\cdot2 + 0(-1) \\
+(2+i)(1+i) + 1\cdot2 + (-i)(-1)
+\end{pmatrix}
+=
+\begin{pmatrix}
+1+i + 2i - 2 \\
+-1 - i + 6i \\
+1+3i+2+i
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1 + 3i \\
+-1 + 5i \\
+3+4i
+\end{pmatrix}\]</span></p>
+</div>
+</div>
+</div>
+<div id="prp-matrix-vector" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.1</strong></span> <em>יהיו <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>, <span class="math inline">\(v,w\in\mathbb{F}^n\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>.</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[A(v+w)=Av+Aw\]</span></em></p></li>
+<li><p><em><span class="math display">\[(A+B)v=Av+Bv\]</span></em></p></li>
+<li><p><em><span class="math display">\[A(\alpha v)=\alpha(Av)\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>בכל סעיף נראה שוויון בין הקוארדינטות ה- <span class="math inline">\(i\)</span> של שני האגפים, לכל <span class="math inline">\(1\leq i\leq m\)</span>. ראשית נסמן <span class="math display">\[.v=\begin{pmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_n
+\end{pmatrix}, \quad
+w=\begin{pmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_n
+\end{pmatrix}\]</span></p>
+<ol type="1">
+<li><p><span class="math display">\[(A(v+w))_i=\sum_{j=1}^n (A)_{ij}(v+w)_j=\sum_{j=1}^n (A)_{ij}v_j+\sum_{j=1}^n (A)_{ij}w_j=(Av)_i+(Aw)_i\]</span> בשביל השוויון השני השתמשנו בחוק הפילוג ב- <span class="math inline">\(\mathbb{F}\)</span>, וגם פיצלנו את הסכום לפי חוק החילוף (אין חשיבות לסדר הסכימה).</p></li>
+<li><p><span class="math display">\[\begin{aligned}
+((A+B)v)_i&amp;=\sum_{j=1}^n ((A)_{ij}+(B)_{ij})v_j=\sum_{j=1}^n (A)_{ij}v_j+\sum_{j=1}^n (B)_{ij}v_j\\
+&amp;=(Av)_i+(Bv)_i=(Av+Bv)_i
+\end{aligned}\]</span></p></li>
+<li><p><span class="math display">\[(A(\alpha v))_i=\sum_{j=1}^n (A)_{ij}(\alpha v_j)=\alpha\sum_{j=1}^n (A)_{ij}v_j=\alpha(Av)_i=(\alpha Av)_i\]</span> בשוויון השני השתמשנו בחוק הפילוג ב- <span class="math inline">\(\mathbb{F}\)</span>, לפיו אפשר להוציא גורם משותף מחוץ לסכימה.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<p>בהינתן מטריצה <span class="math inline">\(A\)</span>, אפשר לחשוב על הכפל <span class="math inline">\(Av\)</span> כפעולה על <span class="math inline">\(v\)</span>. זהו רעיון שנחזור אליו בהמשך הקורס, אבל כבר ניתן להתרשם מהפעולה הזו באופן גיאומטרי, למשל עבור <span class="math display">\[.A=\begin{pmatrix}
+1 &amp; 1 \\
+0 &amp; -2
+\end{pmatrix}\]</span></p>
+<p>אפשר לצייר רשת במרחב המקור (עבור <span class="math inline">\(v\)</span>) בהתאם לוקטורים <span class="math display">\[\begin{pmatrix}1 \\
+0
+\end{pmatrix}, \begin{pmatrix}0 \\
+1
+\end{pmatrix}\]</span> ולראות איזו רשת נוצרת במרחב התמונה (עבור <span class="math inline">\(Av\)</span>):</p>
+<div id="fig:MatrixGrid" class="figure">
+<embed src="simulations/MatrixGrid.html?embed=1" width="720" height="720" />
+<figcaption>
+הכפל במטריצה משפיע על שני הוקטורים באופן שונה, אבל כל ריבוע במרחב המקור הופך למקבילית במרחב התמונה
+</figcaption>
+</div>
+<p>במקום רשת של ריבועים, אפשר להסתכל על מעגלים סביב הראשית ולראות איזה מסלול מתאים לכל מעגל במרחב התמונה:</p>
+<div id="fig:MatrixCircle" class="figure">
+<embed src="simulations/MatrixCircle.html?embed=1" width="720" height="720" />
+<figcaption>
+כל מעגל במרחב המקור נשלח לאליפסה במרחב התמונה, ומתיחה של המעגל מתאימה למתיחה של האליפסה
+</figcaption>
+</div>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(Ax=0\)</span> ממ"ל הומוגנית.</em></p>
+<ol type="1">
+<li><p><em>קבוצת הפתרונות סגורה לחיבור, כלומר לכל שני פתרונות <span class="math inline">\(v,w\in\mathbb{F}^n\)</span> גם <span class="math inline">\(v+w\)</span> הוא פתרון.</em></p></li>
+<li><p><em>קבוצת הפתרונות סגורה לכפל בסקלר, כלומר לכל פתרון <span class="math inline">\(v\in\mathbb{F}^n\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> גם <span class="math inline">\(\alpha v\)</span> הוא פתרון.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>יהיו <span class="math inline">\(v,w\in\mathbb{F}^n\)</span> פתרונות של הממ"ל.</p>
+<ol type="1">
+<li><p>לפי טענה <a href="#prp-matrix-vector">6.23</a> מתקיים <span class="math display">\[.A(v+w)=Av+Aw=0+0=0.\]</span> כלומר <span class="math inline">\(v+w\)</span> הוא פתרון של הממ"ל.</p></li>
+<li><p>שוב, לפי טענה <a href="#prp-matrix-vector">6.23</a> לכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים</p>
+<p><span class="math display">\[.A(\alpha v)=\alpha Av=\alpha\cdot 0=0.\]</span> כלומר <span class="math inline">\(\alpha v\)</span> הוא פתרון של הממ"ל.</p></li>
+</ol>
+</div>
+<div class="proposition">
+<p><em>תהי <span class="math inline">\(Ax=b\)</span> ממ"ל לא הומוגנית. נניח שקיים לה פתרון (לא בהכרח יחיד) <span class="math inline">\(v_0\in\mathbb{F}^n\)</span>. אז מתקיים הקשר הבא בין קבוצת הפתרונות של הממ"ל הלא הומוגנית לקבוצת הפתרונות של הממ"ל ההומוגנית <span class="math inline">\(Ax=0\)</span>:</em></p>
+<p><em><span class="math display">\[.\Set{x\in\mathbb{F}^n|Ax=b}=\Set{v_0+y|y\in\mathbb{F}^n,Ay=0}.\]</span></em></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הרעיון הזה כבר מוכר לנו מההצגה הפרמטרית של ישר/מישור. למשל, ראינו שלישר במישור יש הצגה פרמטרית מהצורה <span class="math display">\[\Set{\begin{pmatrix}
+x_0 \\
+y_0
+\end{pmatrix}+t\begin{pmatrix}
+\alpha \\
+\beta
+\end{pmatrix}|t\in\mathbb{R}}\]</span> כאשר <span class="math inline">\(\begin{pmatrix}
+\alpha \\
+\beta
+\end{pmatrix}\in\mathbb{R}^2\)</span> הוא וקטור כיוון (בפרק <a href="#sec-geometry" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">sec-geometry</span></a>) השתמשנו בוקטורי שורה, אבל בהקשר של כפל צריך לקחת וקטורי עמודה). אם הישר מתאר קבוצת פתרונות של ממ"ל <span class="math inline">\(\begin{pmatrix}a_1 &amp;a_2\end{pmatrix}\begin{pmatrix}
+x \\
+y
+\end{pmatrix}=b\)</span>, אז וקטור הכיוון הוא פתרון של הממ"ל ההומוגנית. כלומר מתקיים <span class="math inline">\(\begin{pmatrix}a_1 &amp;a_2\end{pmatrix}\begin{pmatrix}
+\alpha \\
+\beta
+\end{pmatrix}=0\)</span>, או באופן שקול <span class="math inline">\(a_1\alpha+a_2\beta=0\)</span>. יותר מכך, קבוצת הפתרונות של הממ"ל ההומוגנית היא קבוצת הכפולות בסקלר של וקטור הכיוון.</p>
+</div>
+<p>נוכיח את הטענה:</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נוכיח שוויון בין שתי הקבוצות ע"י הכלה דו-כיוונית.</p>
+<p>הכיוון <span class="math inline">\(\supseteq\)</span>: יהי <span class="math inline">\(y\in\mathbb{F}^n\)</span> כך ש- <span class="math inline">\(Ay=0\)</span>. אז מתקיים <span class="math display">\[,A(v_0+y)=Av_0+Ay=b+0=b\]</span> ולכן <span class="math inline">\(v_0+y\in\Set{x\in\mathbb{F}^n|Ax=b}\)</span>.</p>
+<p>הכיוון <span class="math inline">\(\subseteq\)</span>: יהי <span class="math inline">\(x\in\mathbb{F}^n\)</span> כך ש- <span class="math inline">\(Ax=b\)</span>. אז מתקיים <span class="math inline">\(x=v_0+y\)</span> עבור <span class="math inline">\(y=x-v_0\)</span>. נבדוק ש-<span class="math inline">\(y\)</span> הוא פתרון של הממ"ל ההומוגנית:</p>
+<p><span class="math display">\[.Ay=A(x-v_0)=Ax-Av_0=b-b=0.\]</span></p>
+<p>לכן</p>
+<p><span class="math display">\[.x=v_0+y\in\Set{x_0+y|y\in\mathbb{F}^n,Ay=0}.\]</span> ◻</p>
+</div>
+</section>
+<section id="כפל-מטריצות" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3"><span class="header-section-number">6.1.3</span> כפל מטריצות</h3>
+<div class="definition">
+<p>בהינתן <span class="math inline">\(A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span> נגדיר את מטריצת הכפל <span class="math inline">\(AB\)</span> ע"י <span class="math display">\[(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}\]</span> לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>שימו לב שכפל בין מטריצות מוגדר רק כאשר מספר העמודות של המטריצה השמאלית שווה למספר השורות של המטריצה הימנית, וסימנו את מספר זה ע"י <span class="math inline">\(k\)</span>. זה אומר שבהרבה מקרים פעולת הכפל אינה מוגדרת, למשל כאשר <span class="math inline">\(A,B\)</span> שתיהן מסדר <span class="math inline">\(2\times 3\)</span>.</p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>עבור <span class="math inline">\(A=\begin{pmatrix}
+2 &amp; 3 \\
+1 &amp; 4
+\end{pmatrix},B=
+\begin{pmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{pmatrix}\)</span> נקבל <span class="math display">\[AB=\begin{pmatrix}
+2\cdot5 + 3\cdot7 &amp; 2\cdot6 + 3\cdot8 \\
+1\cdot5 + 4\cdot7 &amp; 1\cdot6 + 4\cdot8
+\end{pmatrix}
+=
+\begin{pmatrix}
+31 &amp; 36 \\
+33 &amp; 38
+\end{pmatrix}\]</span></p>
+<p>לעומת זאת, אם נחשב את המכפלה בסדר הפוך נקבל</p>
+<p><span class="math display">\[BA=\begin{pmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{pmatrix}\begin{pmatrix}
+2 &amp; 3 \\
+1 &amp; 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+5\cdot2+6\cdot1 &amp; 5\cdot3+6\cdot4 \\
+7\cdot2+8\cdot1 &amp; 7\cdot3+8\cdot4
+\end{pmatrix}
+=
+\begin{pmatrix}
+16 &amp; 39 \\
+22 &amp; 53
+\end{pmatrix}\]</span> אז במקרה זה <span class="math inline">\(AB\neq BA\)</span>.</p></li>
+<li><p>עבור <span class="math inline">\(C=\begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{pmatrix},\quad D=
+\begin{pmatrix}
+1 &amp; 0 &amp; 2 \\
+-1 &amp; 3 &amp; 1 \\
+0 &amp; 4 &amp; 5
+\end{pmatrix}\)</span> נקבל <span class="math display">\[\begin{aligned}
+CD&amp;=
+\begin{pmatrix}
+1\cdot1 + 2(-1) + 3\cdot0 &amp; 1\cdot0 + 2\cdot3 + 3\cdot4 &amp; 1\cdot2 + 2\cdot 1 + 3\cdot5 \\
+4\cdot1 + 5(-1) + 6\cdot0 &amp; 4\cdot0 + 5\cdot3 + 6\cdot4 &amp; 4\cdot2 + 5\cdot1 + 6\cdot5
+\end{pmatrix}\\
+&amp;=
+\begin{pmatrix}
+-1 &amp; 18 &amp; 19 \\
+-1 &amp; 39 &amp; 43
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>עבור <span class="math inline">\(E=\begin{pmatrix}
+1+i &amp; 2 \\
+3 &amp; 4-i
+\end{pmatrix}, \quad
+F=\begin{pmatrix}
+2 &amp; i \\
+1-i &amp; 3
+\end{pmatrix}\)</span> נקבל <span class="math display">\[\begin{aligned}
+EF&amp;=\begin{pmatrix}
+(1+i)2 + 2(1-i) &amp; (1+i)i + 2\cdot3 \\
+3\cdot2 + (4-i)(1-i) &amp; 3\cdot i + (4-i)3
+\end{pmatrix}\\
+&amp;=
+\begin{pmatrix}
+2+2i + 2 - 2i &amp; i - 1 + 6 \\
+6 + 4 - 4i - i - 1 &amp; 3i + 12 - 3i
+\end{pmatrix}=
+\begin{pmatrix}
+4 &amp; 5 + i \\
+9 - 5i &amp; 12
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>המכפלה <span class="math display">\[\begin{pmatrix}
+2 &amp;3 &amp;1 \\
+0 &amp;-1 &amp;-2
+\end{pmatrix}
+\begin{pmatrix}
+10 &amp;-5 \\
+3 &amp;-1
+\end{pmatrix}\]</span></p>
+<p>אינה מוגדרת, כי מספר העמודות של המטריצה השמאלית <span class="math inline">\((3)\)</span> שונה ממספר השורות של המטריצה הימנית <span class="math inline">\((2)\)</span>.</p></li>
+<li><p>נסתכל על דוגמה שיש לה קשר לתורת הגרפים (שחורגת מהקורס). גרף הוא קבוצת קודקודים שחלקם מחוברים ביניהם ע"י צלעות. לדוגמה:</p>
+<div id="fig-Adjacency" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-Adjacency-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Adjacency.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%" />
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Adjacency-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+איור 6.1: ריבוע עם אחד מאלכסוניו
+</figcaption>
+</figure>
+</div>
+<p>ניתן לקודד את כל המידע הרלוונטי לגרף זה במטריצה <span class="math inline">\(M\)</span> (שנקראת מטריצת השכנויות). אם קיימת צלע בין <span class="math inline">\(p_i\)</span> ל- <span class="math inline">\(p_j\)</span>, נכתוב <span class="math inline">\((M)_{ij}=1\)</span>. אם לא קיימת צלע ביניהם, נכתוב <span class="math inline">\((M)_{ij}=0\)</span>. כך נקבל <span class="math display">\[.M=
+\begin{pmatrix}
+0 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}\]</span></p>
+<p>מה המשמעות של כפל? נחשב את <span class="math inline">\(M^2=M\cdot M\)</span> ונקבל <span class="math display">\[.M^2=
+\begin{pmatrix}
+3 &amp; 1 &amp; 2 &amp; 1 \\
+1 &amp; 2 &amp; 1 &amp; 2 \\
+2 &amp; 1 &amp; 3 &amp; 1 \\
+1 &amp; 2 &amp; 1 &amp; 2
+\end{pmatrix}\]</span></p>
+<p>אם המטריצה <span class="math inline">\(M\)</span> מתארת מספרי מסלולים באורך <span class="math inline">\(1\)</span>, אז המטריצה <span class="math inline">\(M^2\)</span> מתארת מספרי מסלולים באורך <span class="math inline">\(2\)</span>. למשל, בין <span class="math inline">\(p_1\)</span> לעצמו יש <span class="math inline">\(3\)</span> מסלולים באורך <span class="math inline">\(2\)</span>, שהם: <span class="math display">\[p_1\to p_2\to p_1, \quad p_1\to p_3\to p_1,\quad p_1\to p_4\to p_1\]</span></p>
+<p>זה מתאים לחישוב הבא:</p>
+<p><span class="math display">\[.(M^2)_{11}=\sum_{k=1}^4 (M)_{1k}(M)_{k1}=0\cdot0+1\cdot1+1\cdot1+1\cdot1=3\]</span></p>
+<p>כל מחובר <span class="math inline">\((M)_{1k}(M)_{k1}\)</span> שתורם <span class="math inline">\(1\)</span> לסכום, מתאר מסלול <span class="math inline">\(p_1\to p_k\to p_1\)</span> עם תחנת ביניים <span class="math inline">\(p_k\)</span>. לכן, הסכום מתאר את מספר המסלולים מ- <span class="math inline">\(p_1\)</span> לעצמו באורך <span class="math inline">\(2\)</span>.</p>
+<p>ובהכללה: לכל <span class="math inline">\(k\in\mathbb{N}\)</span> אפשר לחשב את החזקה <span class="math inline">\(M^k=\underbrace{M \cdot M \cdot \ldots \cdot M}_{\text{פעמים} \ k}\)</span> ואז <span class="math inline">\((M^k)_{ij}\)</span> שווה למספר המסלולים באורך <span class="math inline">\(k\)</span> מ- <span class="math inline">\(p_i\)</span> ל- <span class="math inline">\(p_j\)</span>, כאשר אין הגבלה על תחנות הביניים (יכולה להיות חזרה על קודקוד אחד או יותר). רעיון זה תקף לכל גרף, והוא דוגמה טובה לשימוש של כפל מטריצות.</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>ראינו כי אין חוק חילוף למטריצות. בהרבה מקרים מתקיים <span class="math inline">\(AB\neq BA\)</span> גם אם שתי פעולות הכפל מוגדרות. לפעמים כן מתקיים <span class="math inline">\(AB=BA\)</span>, ואז נאמר שהמטריצות <span class="math inline">\(A,B\)</span> מתחלפות. ניתקל במקרים כאלה בהמשך, אבל בינתיים חשוב להבין שרוב המטריצות אינן מתחלפות.</p>
+</div>
+<div class="exercise">
+<p>חשבו את <span class="math inline">\(AB\)</span> עבור <span class="math display">\[.A=\begin{pmatrix}
+1 &amp; -2 &amp; 3 \\
+-4 &amp; 5 &amp; -6
+\end{pmatrix}, \quad
+\begin{pmatrix}
+3 &amp; 2 &amp; 1 \\
+2 &amp; 3 &amp; 0 \\
+3 &amp; -1 &amp; 7
+\end{pmatrix}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נחשב לפי ההגדרה:</p>
+<p><span class="math display">\[AB=
+\begin{pmatrix}
+1 &amp; -2 &amp; 3 \\
+-4 &amp; 5 &amp; -6
+\end{pmatrix}
+\begin{pmatrix}
+3 &amp; 2 &amp; 1 \\
+2 &amp; 3 &amp; 0 \\
+3 &amp; -1 &amp; 7
+\end{pmatrix}
+=
+\begin{pmatrix}
+8 &amp; -7 &amp; 22 \\
+-20 &amp; 13 &amp; -46
+\end{pmatrix}\]</span></p>
+</div>
+</div>
+</div>
+<div id="prp-product-column" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.2</strong></span> <em>יהיו <span class="math inline">\(A\in\mathbb{M}_{m\times k}(\mathbb{F}), B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span>. נניח שהעמודות של <span class="math inline">\(B\)</span> הם הוקטורים <span class="math inline">\(v_1,v_2,...,v_n\in\mathbb{F}^k\)</span>. אז מתקיים</em></p>
+<p><em><span class="math display">\[AB=A\begin{pmatrix}
+| &amp; | &amp; &amp; | \\
+v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
+| &amp; | &amp; &amp; |
+\end{pmatrix}=\begin{pmatrix}
+| &amp; | &amp; &amp; | \\
+Av_1 &amp; Av_2 &amp; \cdots &amp; Av_n \\
+| &amp; | &amp; &amp; |
+\end{pmatrix}\]</span></em></p>
+<p><em>כלומר התוצאה של כפל ב- <span class="math inline">\(A\)</span> משמאל הוא שכל וקטור עמודה מוכפל ב- <span class="math inline">\(A\)</span> לחוד.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>ישירות לפי ההגדרות של כפל מטריצות וכפל מטריצה בוקטור עמודה (שהוא מטריצה עם עמודה אחת). לכל <span class="math inline">\(1\leq j\leq n\)</span> נכתוב <span class="math inline">\((B)_{ij}=b_{ij}\)</span>, כלומר <span class="math display">\[.v_j=\begin{pmatrix}b_{1j} \\ b_{2j} \\ \vdots \\ b_{kj}\end{pmatrix}.\]</span></p>
+<p>אז לפי הגדרות הכפל נובע כי</p>
+<p><span class="math display">\[.(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=\sum_{l=1}^k A_{il}b_{lj}=(Av_j)_i.\]</span></p>
+<p>לכן וקטור העמודה ה- <span class="math inline">\(j\)</span> של <span class="math inline">\(AB\)</span> הוא אכן <span class="math inline">\(Av_j\)</span>. ◻</p>
+</div>
+<div id="prp-matrix-multiplication" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.3</strong></span> <em>יהיו <span class="math inline">\(A_1,A_2\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>, <span class="math inline">\(B_1,B_2\in\mathbb{M}_{n\times p}(\mathbb{F})\)</span>, <span class="math inline">\(C\in\mathbb{M}_{p\times q}(\mathbb{F})\)</span> ו- <span class="math inline">\(\alpha\in\mathbb{F}\)</span>. אז מתקיים</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[(A_1+A_2)B_1=A_1B_1+A_2B_1\]</span></em></p></li>
+<li><p><em><span class="math display">\[A_1(B_1+B_2)=A_1B_1+A_1B_2\]</span></em></p></li>
+<li><p><em><span class="math display">\[A_1(B_1C)=(A_1B_1)C\]</span></em></p></li>
+<li><p><em><span class="math display">\[(\alpha A_1)B_1=\alpha(A_1B_1)=A_1(\alpha B_1)\]</span></em></p></li>
+<li><p><em><span class="math display">\[\mathbf{0}_{m\times n} B_1=\mathbf{0}_{m\times p}=A_1\mathbf{0}_{n\times p}\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>רוב הסעיפים נובעים משילוב בין טענה <a href="#prp-matrix-vector">6.23</a> לטענה <a href="#prp-product-column">6.32</a>. לכן נסתפק בהוכחת סעיף ג’ (חוק הקיבוץ לכפל מטריצות), שהוא היוצא מן הכלל. נניח כי <span class="math display">\[.(A_1)_{ik} = a_{ik}, \quad
+(B_1)_{kl} = b_{kl}, \quad
+(C)_{lj} = c_{lj}\]</span></p>
+<p>אם כן:</p>
+<p><span class="math display">\[(B_1C)_{kj} = \sum_{l=1}^{p} b_{kl} c_{lj},\]</span> ולכן <span id="eq-associativity1"><span class="math display">\[
+.(A_1(B_1C))_{ij} = \sum_{k=1}^{n}a_{ik}(B_1C)_{kj}
+             = \sum_{k=1}^{n} a_{ik} \left( \sum_{l=1}^{p} b_{kl} c_{lj} \right)
+             = \sum_{k=1}^{n} \sum_{l=1}^{p}a_{ik}b_{kl}c_{lj}. \tag{6.1}\]</span></span></p>
+<p>כעת נחשב את <span class="math inline">\(((A_1B_1)C)_{ij}\)</span>: <span class="math display">\[(A_1B_1)_{il} = \sum_{k=1}^{n}a_{ik}b_{kl},\]</span> ולכן <span id="eq-associativity2"><span class="math display">\[
+.((A_1B_1)C)_{ij} = \sum_{l=1}^{p}(A_1B_1)_{il}c_{l j}
+              = \sum_{l=1}^{p} \left( \sum_{k=1}^{n}a_{ik}b_{kl}\right) c_{l j}
+              = \sum_{l=1}^{p}\sum_{k=1}^{n} a_{ik}b_{kl}c_{lj}. \tag{6.2}\]</span></span></p>
+<p>נשים לב כי יש שוויון בין שני הביטויים בצד ימין של <a href="#eq-associativity1" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">eq-associativity1</span></a> ו-<a href="#eq-associativity2" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">eq-associativity2</span></a> כי לפי חוק החילוף אין חשיבות לסדר הסכימה (אפשר לסכום קודם לפי <span class="math inline">\(l\)</span> או קודם לפי <span class="math inline">\(k\)</span> בלי לשנות את הסכום). לכן, לכל <span class="math inline">\(i,j\)</span> מתקיים <span class="math inline">\((A_1(B_1C))_{ij}=((A_1B_1)C)_{ij}\)</span>, ומכאן <span class="math display">\[.A_1(B_1C)=(A_1B_1)C\]</span> ◻</p>
+</div>
+<div class="definition">
+<p>מטריצת היחידה מסדר <span class="math inline">\(n\times n\)</span> (אפשר גם לומר מסדר <span class="math inline">\(n\)</span>) מוגדרת להיות <span class="math display">\[.I_n=I_{n\times n}=.
+\begin{pmatrix}
+1 &amp;0 &amp;\cdots &amp;0\\
+0 &amp;1 &amp;\cdots &amp;0\\
+\vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
+0 &amp;0 &amp;\cdots &amp;1
+\end{pmatrix}\]</span></p>
+<p>זוהי המטריצה שבה כל איבר על האלכסון הראשי הוא <span class="math inline">\(1\)</span>, וכל שאר האיברים הם <span class="math inline">\(0\)</span>. או באופן מתמטי:</p>
+<p><span class="math display">\[\begin{aligned}
+\forall 1\leq i\leq n \quad (I_n)_{ii}=1 \\
+\forall 1\leq i,j\leq n  \quad i\neq j \implies &amp;(I_n)_{ij}=0
+\end{aligned}\]</span></p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p><span class="math display">\[I_1=\begin{pmatrix}1\end{pmatrix}\]</span></p>
+<p>זהו בעצם הסקלר <span class="math inline">\(1\)</span>, עם הבדל פורמלי של סוגריים.</p></li>
+<li><p><span class="math display">\[I_2=
+\begin{pmatrix}
+1 &amp;0 \\
+0 &amp;1
+\end{pmatrix}\]</span></p></li>
+<li><p><span class="math display">\[I_3=
+\begin{pmatrix}
+1 &amp;0 &amp;0 \\
+0 &amp;1 &amp;0 \\
+0 &amp;0 &amp;1
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<p>מטריצת היחידה (מכל סדר) משחקת את התפקיד של הסקלר <span class="math inline">\(1\)</span> במובן של ניטרליות ביחס לכפל. ליתר דיוק:</p>
+<div class="proposition">
+<p><em>לכל <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> מתקיים <span class="math inline">\(AI_n=A=I_m A\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לכל <span class="math inline">\(1\leq i,j \leq n\)</span> מתקיים</p>
+<p><span class="math display">\[.(AI_n)_{ij}=\sum_{l=1}^n (A)_{il}(I_n)_{lj}\]</span></p>
+<p>נשים לב כי לפי הגדרת מטריצת היחידה, מתקיים <span class="math inline">\((I)_{lj}=0\)</span> לכל <span class="math inline">\(l\neq j\)</span>. אז רק איבר אחד בסכום באגף ימין לא מתאפס, והוא מתאים להצבה <span class="math inline">\(l=j\)</span>. לכן</p>
+<p><span class="math display">\[.(AI_n)_{ij}=0+...+0+(A)_{ij}(I_n)_{jj}+0+...+0=(A)_{ij}.\]</span></p>
+<p>אז <span class="math inline">\(AI_n=A\)</span> כי יש שוויון בין כל האיברים המתאימים. באופן דומה:</p>
+<p><span class="math display">\[.(I_m A)_{ij}=\sum_{l=1}^m (I_m)_{il}A_{lj}=0+...+0+(I)_{ii}(A)_{ij}+0+...+0=(A)_{ij}.\]</span></p>
+<p>ולכן <span class="math inline">\(I_m A=A\)</span>. ◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>אם <span class="math inline">\(m=n\)</span>, אז לפי הטענה מתקיים <span class="math inline">\(AI_n=A=I_nA\)</span>. במילים: <span class="math inline">\(I_n\)</span> מתחלפת עם כל מטריצה מסדר <span class="math inline">\(n\times n\)</span>.</p>
+</div>
+</section>
+<section id="שחלוף-מטריצות" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4"><span class="header-section-number">6.1.4</span> שחלוף מטריצות</h3>
+<p>ניתן לעשות המרה בין שורות לעמודות. פעולה זו נקראת שחלוף.</p>
+<div class="definition">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span>. נגדיר את המטריצה המשוחלפת <span class="math inline">\(A^t\in\mathbb{M}_{n\times m}(\mathbb{F})\)</span> ע"י <span class="math display">\[(A^t)_{ij}=A_{ji}\]</span> לכל <span class="math inline">\(1\leq i\leq n,1\leq j\leq m\)</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span><span class="math inline">\(A^t\)</span> זה סימון מיוחד, לא סימון חזקה. כאן <span class="math inline">\(t\)</span> זה מלשון transpose (שחלוף באנגלית).</p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>עבור וקטור שורה <span class="math inline">\(v=(\alpha_1,\alpha_2,...,\alpha_n)\)</span> נקבל <span class="math display">\[.v^t=\begin{pmatrix}
+\alpha_1\\
+\alpha_2\\
+\vdots \\
+\alpha_n
+\end{pmatrix}\]</span></p></li>
+<li><p>עבור <span class="math display">\[A=\begin{pmatrix}
+a &amp;b\\
+c &amp; d
+\end{pmatrix}\]</span> נקבל <span class="math display">\[.A^t=\begin{pmatrix}
+a &amp;c\\
+b &amp; d
+\end{pmatrix}\]</span></p></li>
+<li><p>עבור <span class="math display">\[B=\begin{pmatrix}
+1 &amp;2\\
+3 &amp; 4\\
+5 &amp; 6
+\end{pmatrix}\]</span> נקבל <span class="math display">\[.B^t=\begin{pmatrix}
+1 &amp;3 &amp;5\\
+2 &amp; 4 &amp;6
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div id="prp-transpose" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.4</strong></span> <em>לכל <span class="math inline">\(A,B\in\mathbb{M}_{m\times n}(\mathbb{F}), C\in\mathbb{M}_{n\times k}(\mathbb{F})\)</span> ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים:</em></p>
+<ol type="1">
+<li><p><em><span class="math display">\[(A^t)^t=A\]</span></em></p></li>
+<li><p><em><span class="math display">\[(A+B)^t=A^t+B^t\]</span></em></p></li>
+<li><p><em><span class="math display">\[(\alpha A)^t=\alpha A^t\]</span></em></p></li>
+<li><p><em><span class="math display">\[(AC)^t=C^tA^t\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נראה שוויון בין האיברים הכלליים של המטריצות בשני האגפים של כל סעיף.</p>
+<ol type="1">
+<li><p>שתי המטריצות מסדר <span class="math inline">\(m\times n\)</span> ולכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span> מתקיים <span class="math display">\[.((A^t)^t)_{ij}=(A^t)_{ji}=(A)_{ij}.\]</span></p></li>
+<li><p>שתי המטריצות מסדר <span class="math inline">\(n\times m\)</span> ולכל <span class="math inline">\(1\leq i\leq n, 1\leq j\leq m\)</span> מתקיים <span class="math display">\[.(A+B)^t_{ij}=(A+B)_{ji}=(A)_{ji}+(B)_{ji}=(A^t)_{ij}+(B^t)_{ij}=(A^t+B^t)_{ij}.\]</span></p></li>
+<li><p>שתי המטריצות מסדר <span class="math inline">\(n\times m\)</span> ולכל <span class="math inline">\(1\leq i\leq n, 1\leq j\leq m\)</span> מתקיים <span class="math display">\[.((\alpha A)^t)_{ij}=(\alpha A)_{ji}=\alpha (A)_{ji}=\alpha (A^t)_{ij}=(\alpha A^t)_{ij}\]</span></p></li>
+<li><p>כאן <span class="math inline">\(AC\)</span> מסדר <span class="math inline">\(m\times k\)</span> ולכן <span class="math inline">\((AC)^t\)</span> מסדר <span class="math inline">\(k\times m\)</span>. באופן דומה, <span class="math inline">\(C^t\)</span> מסדר <span class="math inline">\(k\times n\)</span> ו- <span class="math inline">\(A^t\)</span> מסדר <span class="math inline">\(n\times m\)</span>. אז גם <span class="math inline">\(C^tA^t\)</span> מסדר <span class="math inline">\(k\times m\)</span>, ולכל <span class="math inline">\(1\leq i\leq k, 1\leq j\leq m\)</span> מתקיים: <span class="math display">\[\begin{aligned}
+&amp;((AC)^t)_{ij}=(AC)_{ji}=\sum_{l=1}^n (A)_{jl}(C)_{li}=\sum_{l=1}^n (A^t)_{lj}(C^t)_{il}=\sum_{l=1}^n (C^t)_{il}(A^t)_{lj} \\
+&amp;=(C^tA^t)_{ij}
+\end{aligned}\]</span> לקראת הסוף השתמשנו בחוק החילוף כדי להתאים את סדר הכפל בתוך הסכום לתבנית של <span class="math inline">\(C^tA^t\)</span>.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>בתנאי הטענה, המטריצה <span class="math inline">\(A^tC^t\)</span> מוגדרת אם ורק אם מספר העמודות של <span class="math inline">\(A^t\)</span> שווה למספר השורות של <span class="math inline">\(C^t\)</span>, כלומר אם ורק אם <span class="math inline">\(m=k\)</span>. במקרה זה הסדר של <span class="math inline">\(A^tC^t\)</span> הוא <span class="math inline">\(n\times n\)</span>. לעומת זאת, הסדר של <span class="math inline">\((AC)^t\)</span> הוא <span class="math inline">\(k\times m\)</span>, או <span class="math inline">\(m\times m\)</span> תחת ההנחה ש- <span class="math inline">\(A^tC^t\)</span> אכן מוגדרת. גם במקרה <span class="math inline">\(m=k=n\)</span> אין הכרח שיתקיים <span class="math inline">\(A^tC^t=C^tA^t\)</span>. ולסיכום: אין הכרח שיתקיים <span class="math inline">\((AC)^t=A^tC^t\)</span>.</p>
+</div>
+<div class="example">
+<p>ניקח <span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{pmatrix}, \quad
+C = \begin{pmatrix}
+1 &amp; 0 \\
+-1 &amp; 2 \\
+0 &amp; 3
+\end{pmatrix}.\]</span></p>
+<p>נחשב גם את <span class="math inline">\((AC)^t\)</span> וגם את <span class="math inline">\(C^tA^t\)</span> ונראה שאכן יש שוויון (כצפוי). ראשית, נחשב את <span class="math inline">\(AC\)</span>:</p>
+<p><span class="math display">\[AC=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 0 \\
+-1 &amp; 2 \\
+0 &amp; 3
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1 &amp; 13 \\
+-1 &amp; 28
+\end{pmatrix}\]</span></p>
+<p>לכן</p>
+<p><span class="math display">\[.(AC)^t=\begin{pmatrix}
+-1 &amp; -1 \\
+13 &amp; 28
+\end{pmatrix}\]</span></p>
+<p>נעבור לחישוב <span class="math inline">\(C^tA^t\)</span>:</p>
+<p><span class="math display">\[C^t A^t=
+\begin{pmatrix}
+1 &amp; -1 &amp; 0 \\
+0 &amp; 2 &amp; 3
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 4 \\
+2 &amp; 5 \\
+3 &amp; 6
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1 &amp; -1 \\
+13 &amp; 28
+\end{pmatrix}\]</span></p>
+<p>אז אכן קיבלנו <span class="math inline">\((CA)^t=C^tA^t\)</span>.</p>
+</div>
+<div class="exercise">
+<p>עבור <span class="math display">\[A = \begin{pmatrix}
+1+i &amp; 2 \\
+3 &amp; 4-i
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+2 &amp; i \\
+1-i &amp; 3
+\end{pmatrix}\]</span></p>
+<p>הראו ע"י חישוב ישיר כי <span class="math inline">\((AB)^t=B^tA^t\neq A^tB^t\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>נחשב את <span class="math inline">\(AB\)</span> ונקבל</p>
+<p><span class="math display">\[.AB=
+\begin{pmatrix}
+4 &amp; 5 + i \\
+9 - 5i &amp; 12
+\end{pmatrix}\]</span></p>
+<p>לכן <span class="math display">\[.(AB)^t=\begin{pmatrix}
+4 &amp; 9-5i \\
+5+i &amp; 12
+\end{pmatrix}\]</span></p>
+<p>נעבור לחישוב השני:</p>
+<p><span class="math display">\[\begin{aligned}
+B^t A^t &amp;=
+\begin{pmatrix}
+2 &amp; 1-i \\
+i &amp; 3
+\end{pmatrix}
+\begin{pmatrix}
+1+i &amp; 3 \\
+2 &amp; 4-i
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 &amp; 9 - 5i \\
+5 + i &amp; 12
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>אז אכן יש שוויון. לעומת זאת:</p>
+<p><span class="math display">\[A^tB^t =
+\begin{pmatrix}
+1+i &amp; 3 \\
+2 &amp; 4-i
+\end{pmatrix}
+\begin{pmatrix}
+2 &amp; 1-i \\
+i &amp; 3
+\end{pmatrix}
+=
+\begin{pmatrix}
+2+5i &amp; 11 \\
+5 + 4i &amp; 14-5i
+\end{pmatrix}\neq B^tA^t\]</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="מטריצות-מיוחדות" class="level2" data-number="6.2">
+<h2 data-number="6.2"><span class="header-section-number">6.2</span> מטריצות מיוחדות</h2>
+<p>נרצה להגדיר קבוצות של מטריצות מיוחדות, שיופיעו בהמשך הקורס.</p>
+<section id="מטריצות-ריבועיות" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1"><span class="header-section-number">6.2.1</span> מטריצות ריבועיות</h3>
+<p>מטריצות ריבועיות הן סוג נפוץ של מטריצות שניתקל בהן לאורך הקורס. כשמן כן הן - מטריצות שנראות כמו ריבוע עם מספרים בתוכו. הרבה מטריצות בקורס יהיו ריבועיות.</p>
+<div class="definition">
+<p>מטריצה <span class="math inline">\(A\)</span> נקראת ריבועית אם מספר השורות שלה שווה למספר העמודות, כלומר אם קיים <span class="math inline">\(n\in\mathbb{N}\)</span> עבורו <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</p>
+</div>
+<div class="example">
+<p>המטריצות הבאות הן ריבועיות:</p>
+<p><span class="math display">\[\begin{pmatrix}
+1 &amp;2 \\
+3 &amp;4
+\end{pmatrix}, \quad
+\begin{pmatrix}
+i &amp;2 &amp;3 \\
+4 &amp;0 &amp;6 \\
+7 &amp;8 &amp;i
+\end{pmatrix}\]</span></p>
+<p>המטריצות הבאות אינן ריבועיות:</p>
+<p><span class="math display">\[\begin{pmatrix}
+1 &amp;2 &amp;3\\
+4 &amp;5 &amp;6
+\end{pmatrix}, \quad
+\begin{pmatrix}
+1 &amp;2  \\
+-2 &amp;-1  \\
+0 &amp;5 \\
+1 &amp; 10
+\end{pmatrix}, \quad
+\begin{pmatrix}
+i \\
+1  \\
+0
+\end{pmatrix}\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>אם <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> אז גם <span class="math inline">\(A\pm B,AB,BA\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. במילים: הקבוצה <span class="math inline">\(\mathbb{M}_{n\times n}(F)\)</span> סגורה לחיבור, חיסור וכפל.</p>
+</div>
+<div class="definition">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז נגדיר</p>
+<p><span class="math display">\[A^0=I_n, \quad A^1=A, \quad A^2=A\cdot A, \quad A^3=A\cdot A\cdot A\]</span></p>
+<p>ולכל <span class="math inline">\(k\in\mathbb{N}\)</span></p>
+<p><span class="math display">\[.A^k = \underbrace{A \cdot A \cdot \ldots \cdot A}_{\text{פעמים} \ k}\]</span></p>
+<p>עבור פולינום <span class="math display">\[p(x)=a_mx^m+a_{m-1}x^{m-1}+...+a_1x+a_0\]</span> נגדיר את ההצבה של <span class="math inline">\(A\)</span> בו ע"י <span class="math display">\[.p(A)=a_mA^m+a_{m-1}A^{m-1}+...+a_1A+a_0I_n.\]</span></p>
+</div>
+<div class="example">
+<p>נחשב את <span class="math inline">\(p(A)\)</span> עבור <span class="math display">\[A=\begin{pmatrix}
+1 &amp;2 \\
+0 &amp;-1
+\end{pmatrix}\]</span> והפולינום <span class="math display">\[.p(x)=x^3+2x^2+x+1\]</span></p>
+<p>לצורך כך צריך לחשב את החזקות <span class="math inline">\(A^3, A^2\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+A^2&amp;=\begin{pmatrix}
+1 &amp;2 \\
+0 &amp;-1
+\end{pmatrix}\begin{pmatrix}
+1 &amp;2 \\
+0 &amp;-1
+\end{pmatrix}=\begin{pmatrix}
+1 &amp;0 \\
+0 &amp;1
+\end{pmatrix}=I_2\\
+\implies A^3&amp;=A^2\cdot A=I_2 A=A \\
+\implies p(A)&amp;=A^3+2A^2+A+I_2=2A+3I_2=2\begin{pmatrix}
+1 &amp;2 \\
+0 &amp;-1
+\end{pmatrix}+3\begin{pmatrix}
+1 &amp;0 \\
+0 &amp;1
+\end{pmatrix} \\
+&amp;=\begin{pmatrix}
+5 &amp;4 \\
+0 &amp;1
+\end{pmatrix}
+\end{aligned}\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>הדוגמה האחרונה גם מראה שייתכן <span class="math inline">\(A^2=I_n\)</span> גם אם <span class="math inline">\(A\neq\pm I_n\)</span>. אמנם לסקלר יש שני שורשים (או אחד במקרה של <span class="math inline">\(0\)</span>), אבל למטריצת יחידה מסדר לפחות <span class="math inline">\(2\)</span> יש אינסוף שורשים. בקורס שלנו אסור להוציא שורש של מטריצה כי זו לא פעולה שנגדיר (לפעמים יש אינסוף שורשים, לפעמים יש מספר סופי כלשהו של שורשים, ולפעמים אין שורש).</p>
+<p>באופן דומה, מתקיים <span class="math inline">\(B^2=0\)</span> עבור <span class="math display">\[.B=\begin{pmatrix}
+0 &amp;1 \\
+0 &amp;0
+\end{pmatrix}\]</span> אז לא רק שקיימת למטריצת האפס <span class="math inline">\(\mathbf{0}_{2\times 2}\)</span> שורש שאינו עצמה, זה גם מראה שכלל הצמצום למטריצות לא מתקיים באופן כללי.</p>
+<p><span class="math display">\[B\cdot B=B\cdot 0 \nRightarrow B=0\]</span></p>
+<p>לא ניתן "לחלק" במטריצה, אלא אם כן היא מסוג מסוים שעוד לא הגדרנו (מטריצה הפיכה). זה לא המקרה פה.</p>
+</div>
+</section>
+<section id="מטריצות-סימטריות-ואנטי-סימטריות" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2"><span class="header-section-number">6.2.2</span> מטריצות סימטריות ואנטי-סימטריות</h3>
+<p>כאן הכוונה לסימטריה בין שורות לעמודות. לכן יש קשר לפעולת השחלוף.</p>
+<div class="definition">
+<ol type="1">
+<li><p><span class="math inline">\(A\)</span> נקראת סימטרית אם מתקיים <span class="math inline">\(A^t=A\)</span>, או באופן שקול: <span class="math display">\[\forall 1\leq i,j\leq n \quad (A)_{ji}=(A)_{ij}\]</span></p></li>
+<li><p><span class="math inline">\(A\)</span> נקראת אנטי-סימטרית אם מתקיים <span class="math inline">\(A^t=-A\)</span>, או באופן שקול: <span class="math display">\[\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}\]</span></p></li>
+</ol>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>המטריצות הבאות הן סימטריות: <span class="math display">\[\begin{pmatrix}
+1 &amp;2\\
+2 &amp;3
+\end{pmatrix}, \begin{pmatrix}
+1 &amp;i &amp;0\\
+i &amp;3 &amp;-1  \\
+0 &amp;-1 &amp;5
+\end{pmatrix}\]</span></p></li>
+<li><p>המטריצות הבאות הן אנטי-סימטריות: <span class="math display">\[\begin{pmatrix}
+0 &amp;1\\
+-1 &amp;0
+\end{pmatrix}, \begin{pmatrix}
+0 &amp;i &amp;-2\\
+-i &amp;0 &amp;-1  \\
+2 &amp;1 &amp;0
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div id="prp-sym-antisym" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.5</strong></span> תהי <span class="math inline">\(P\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מטריצה ריבועית.</p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">\(P\)</span> אנטי-סימטרית, אז כל איבריה על האלכסון הראשי שווים ל- <span class="math inline">\(0\)</span>.</em></p></li>
+<li><p><em>אם <span class="math inline">\(P\)</span> סימטרית וגם אנטי-סימטרית, אז <span class="math inline">\(P=0\)</span>.</em></p></li>
+<li><p><em>לכל <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> קיימות <span class="math inline">\(S\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> סימטרית ו- <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> אנטי-סימטרית כך שמתקיים <span class="math inline">\(B=S+A\)</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="1">
+<li><p><span class="math display">\[\forall 1\leq i\leq n\quad(P)_{ii}=-(P)_{ii} \implies (P)_{ii}=0\]</span> כלומר יש רק אפסים על האלכסון הראשי של <span class="math inline">\(P\)</span>.</p></li>
+<li><p>מצד אחד <span class="math inline">\(P^t=P\)</span> ומצד שני <span class="math inline">\(.P^t=-P\)</span> לכן</p>
+<p><span class="math display">\[P=-P \implies P+P=-P+P \implies 2P=0 \implies P=0\]</span></p>
+<p>למעשה, השתמשנו באלגברה רגילה כדי לקבל <span class="math inline">\(P=0\)</span> כמו עבור משוואה במשתנה סקלרי. מותר לחלק בסקלר <span class="math inline">\(2\)</span>, שזה כמו להכפיל בסקלר <span class="math inline">\(\frac{1}{2}\)</span>.</p></li>
+<li><p>ניקח <span class="math display">\[.S=\frac{1}{2}(B+B^t), \quad A=\frac{1}{2}(B-B^t)\]</span> אז לפי טענה <a href="#prp-transpose">6.41</a> מתקיים <span class="math display">\[\begin{aligned}
+S^t&amp;=\frac{1}{2}(B+B^t)^t=\frac{1}{2}(B^t+B)=S \\
+A^t&amp;=\frac{1}{2}(B-B^t)^t=\frac{1}{2}(B^t-B)=-A \\
+B&amp;=\frac{1}{2}(B+B^t)+\frac{1}{2}(B-B^t)=S+A
+\end{aligned}\]</span></p>
+<p>לכן <span class="math inline">\(S\)</span> סימטרית ו- <span class="math inline">\(A\)</span> אנטי-סימטרית כנדרש.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<div class="example">
+<p>נראה כי מכפלה של מטריצות סימטריות <span class="math inline">\(A,B\)</span> אינה בהכרח סימטרית. אם היינו מנסים להוכיח שהמכפלה היא סימטרית, היינו נתקעים:</p>
+<p><span class="math display">\[(AB)^t=B^tA^t=BA\]</span></p>
+<p>הבעיה היא שלא בהכרח מתקיים <span class="math inline">\(BA=AB\)</span>. אז בתור דוגמה נגדית נמצא שתי מטריצות סימטריות מסדר <span class="math inline">\(2\times 2\)</span> שאינן מתחלפות. למשל:</p>
+<p><span class="math display">\[A=\begin{pmatrix}
+1 &amp;2 \\
+2 &amp;0
+\end{pmatrix}, \quad
+B=\begin{pmatrix}
+1 &amp;1 \\
+1 &amp;0
+\end{pmatrix}\]</span></p>
+<p>נקבל</p>
+<p><span class="math display">\[AB=\begin{pmatrix}
+1 &amp;2 \\
+2 &amp;0
+\end{pmatrix}\begin{pmatrix}
+1 &amp;1 \\
+1 &amp;0
+\end{pmatrix}=\begin{pmatrix}
+3 &amp;1 \\
+2 &amp;2
+\end{pmatrix}\]</span></p>
+<p>וזו לא מטריצה סימטרית.</p>
+</div>
+<div class="exercise">
+<p>הסבירו מדוע כל מטריצה אנטי-סימטרית <span class="math inline">\(A\in\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> היא מהצורה <span class="math display">\[\begin{pmatrix}
+0 &amp;a\\
+-a &amp;0
+\end{pmatrix}\]</span> עבור <span class="math inline">\(a\in\mathbb{F}\)</span>. הסיקו שלכל שתי מטריצות אנטי-סימטריות <span class="math inline">\(A,B\in\mathbb{M}_{2\times 2}(\mathbb{F})\)</span> שאינן <span class="math inline">\(\mathbf{0}_{2\times 2}\)</span> מתקיים <span class="math inline">\(AB=BA\)</span> ומכפלה זו אינה אנטי-סימטרית.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>האיברים על האלכסון הראשי של כל מטריצה אנטי-סימטרית הם <span class="math inline">\(0\)</span>. נסמן <span class="math inline">\((A)_{12}=a\)</span> ונקבל <span class="math inline">\((A)_{21}=-a\)</span>. לכן <span class="math display">\[,A=\begin{pmatrix}
+0 &amp;a\\
+-a &amp;0
+\end{pmatrix}\]</span> ובאופן דומה קיים <span class="math inline">\(b\in\mathbb{F}\)</span> כך שמתקיים <span class="math display">\[.B=\begin{pmatrix}
+0 &amp;b\\
+-b &amp;0
+\end{pmatrix}\]</span></p>
+<p>נחשב מכפלות: <span class="math display">\[.AB=\begin{pmatrix}
+0 &amp;a\\
+-a &amp;0
+\end{pmatrix}\begin{pmatrix}
+0 &amp;b\\
+-b &amp;0
+\end{pmatrix}=\begin{pmatrix}
+-ab &amp;0 \\
+0 &amp;-ab
+\end{pmatrix}=\begin{pmatrix}
+0 &amp;b\\
+-b &amp;0
+\end{pmatrix}\begin{pmatrix}
+0 &amp;a\\
+-a &amp;0
+\end{pmatrix}=BA\]</span></p>
+<p>זו לא מטריצה אנטי-סימטרית כי <span class="math inline">\(ab\neq 0\)</span> לפי ההנחה <span class="math inline">\(A,B\neq\mathbf{0}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="exercise">
+<p> </p>
+<ol type="1">
+<li><p>לכל <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> סימטריות ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים שהמטריצות <span class="math inline">\(A+B,\alpha A\)</span> הן סימטריות.</p></li>
+<li><p>לכל <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> אנטי-סימטריות ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> מתקיים שהמטריצות <span class="math inline">\(A+B,\alpha A\)</span> הן אנטי-סימטריות.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>לכל <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> סימטריות ולכל <span class="math inline">\(\alpha\in\mathbb{F}\)</span> נקבל לפי טענה <a href="#prp-transpose">6.41</a> <span class="math display">\[\begin{aligned}
+(A+B)^t&amp;=A^t+B^t=A+B \\
+(\alpha A)^t&amp;=\alpha A^t=\alpha A
+\end{aligned}\]</span> ולכן אלו מטריצות סימטריות.</p></li>
+<li><p>הפעם נקבל</p>
+<p><span class="math display">\[\begin{aligned}
+(A+B)^t&amp;=A^t+B^t=-A-B=-(A+B) \\
+(\alpha A)^t&amp;=\alpha A^t=\alpha(-A)=-(\alpha A)
+\end{aligned}\]</span> ולכן אלו מטריצות אנטי-סימטריות.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="מטריצות-אלכסוניות-ומטריצות-משולשיות" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3"><span class="header-section-number">6.2.3</span> מטריצות אלכסוניות ומטריצות משולשיות</h3>
+<div class="definition">
+<p>מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נקראת:</p>
+<ol type="1">
+<li><p>אלכסונית אם לכל <span class="math inline">\(i\neq j\)</span> מתקיים <span class="math inline">\((A)_{ij}=0\)</span>, כלומר כל האיברים מחוץ לאלכסון הראשי שווים ל- <span class="math inline">\(0\)</span>.</p></li>
+<li><p>משולשית עליונה אם לכל <span class="math inline">\(i&gt;j\)</span> מתקיים <span class="math inline">\((A)_{ij}=0\)</span>, כלומר כל האיברים מתחת לאלכסון הראשי שווים ל- <span class="math inline">\(0\)</span>.</p></li>
+<li><p>משולשית תחתונה אם לכל <span class="math inline">\(i&lt;j\)</span> מתקיים <span class="math inline">\((A)_{ij}=0\)</span>, כלומר כל האיברים מעל לאלכסון הראשי שווים ל- <span class="math inline">\(0\)</span>.</p></li>
+</ol>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>המטריצות הבאות הן אלכסוניות: <span class="math display">\[\begin{pmatrix}
+1 &amp;0 \\
+0 &amp;2
+\end{pmatrix}, \begin{pmatrix}
+-1 &amp;0 &amp;0 \\
+0 &amp;2 &amp;0 \\
+0 &amp;0 &amp;i
+\end{pmatrix}, \begin{pmatrix}
+4 &amp;0 &amp;0 &amp;0 \\
+0 &amp;6 &amp;0 &amp;0 \\
+0 &amp;0 &amp;8 &amp;0 \\
+0 &amp;0 &amp;0 &amp;0
+\end{pmatrix}\]</span></p></li>
+<li><p>המטריצות הבאות הן משולשיות עליונות: <span class="math display">\[\begin{pmatrix}
+1 &amp;3 \\
+0 &amp;2
+\end{pmatrix}, \begin{pmatrix}
+-1 &amp;-i &amp;3 \\
+0 &amp;2 &amp;7 \\
+0 &amp;0 &amp;i
+\end{pmatrix}, \begin{pmatrix}
+4 &amp;5 &amp;20 &amp;0 \\
+0 &amp;6 &amp;7 &amp;13 \\
+0 &amp;0 &amp;8 &amp;5 \\
+0 &amp;0 &amp;0 &amp;0
+\end{pmatrix}\]</span></p></li>
+<li><p>המטריצות הבאות הן משולשיות תחתונות: <span class="math display">\[\begin{pmatrix}
+1 &amp;0 \\
+-4 &amp;2
+\end{pmatrix}, \begin{pmatrix}
+-1 &amp;0 &amp;0 \\
+1 &amp;2 &amp;0 \\
+3 &amp;2i &amp;i
+\end{pmatrix}, \begin{pmatrix}
+4 &amp;0 &amp;0 &amp;0 \\
+-2 &amp;6 &amp;0 &amp;0 \\
+3 &amp;7 &amp;8 &amp;0 \\
+4 &amp;-5 &amp;6 &amp;0
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>נשים לב שלפי ההגדרות, לכל <span class="math inline">\(A\)</span> ריבועית מתקיים:</p>
+<ol type="1">
+<li><p><span class="math inline">\(A\)</span> משולשית עליונה וגם משולשית תחתונה <span class="math inline">\(\iff\)</span> <span class="math inline">\(A\)</span> אלכסונית.</p></li>
+<li><p><span class="math inline">\(A\)</span> משולשית עליונה <span class="math inline">\(\iff\)</span> <span class="math inline">\(A^t\)</span> משולשית תחתונה.</p></li>
+<li><p><span class="math inline">\(A\)</span> משולשית תחתונה <span class="math inline">\(\iff\)</span> <span class="math inline">\(A^t\)</span> משולשית עליונה.</p></li>
+</ol>
+</div>
+<div class="proposition">
+<p><em>יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>.</em></p>
+<ol type="1">
+<li><p><em>אם <span class="math inline">\(A,B\)</span> משולשיות עליונות, אז <span class="math inline">\(AB\)</span> גם משולשית עליונה.</em></p></li>
+<li><p><em>אם <span class="math inline">\(A,B\)</span> משולשיות תחתונות, אז <span class="math inline">\(AB\)</span> גם משולשית תחתונה.</em></p></li>
+<li><p><em>אם <span class="math inline">\(A,B\)</span> אלכסוניות, אז <span class="math inline">\(AB\)</span> גם אלכסונית.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="1">
+<li><p>לכל <span class="math inline">\(j&lt;i\)</span> נסתכל על האיבר הכללי של המכפלה:</p>
+<p><span class="math display">\[(AB)_{ij}=\sum_{l=1}^n (A)_{il}(B)_{lj}\]</span></p>
+<p>עבור <span class="math inline">\(l&lt; i\)</span> מתקיים <span class="math inline">\((A)_{il}=0\)</span> כי <span class="math inline">\(A\)</span> משולשית עליונה. אז <span class="math inline">\(i-1\)</span> המכפלות הראשונות בסכום מתאפסות. עבור <span class="math inline">\(l\geq i&gt;j\)</span> מתקיים <span class="math inline">\((B)_{lj}=0\)</span> כי <span class="math inline">\(B\)</span> משולשית עליונה. אז גם המכפלות הנותרות בסכום מתאפסות, ולכן <span class="math inline">\((AB)_{ij}=0\)</span> כנדרש.</p></li>
+<li><p>אפשר לחקות את ההוכחה של הסעיף הקודם, אבל יש קיצור דרך: אם <span class="math inline">\(A,B\)</span> משולשיות תחתונות, אז <span class="math inline">\(A^t,B^t\)</span> משולשיות עליונות. לפי הסעיף הקודם, נובע כי <span class="math inline">\(B^tA^t=(AB)^t\)</span> משולשית עליונה ולכן <span class="math inline">\(AB\)</span> משולשית תחתונה.</p></li>
+<li><p>שוב אפשר להשתמש בסעיפים הקודמים. אם <span class="math inline">\(A,B\)</span> אלכסוניות, אז הן גם משולשיות עליונות וגם משולשיות תחתונות. לכן, לפי הסעיפים הקודמים <span class="math inline">\(AB\)</span> גם משולשית עליונה וגם משולשית תחתונה, כלומר היא אלכסונית.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>לאחר שהבנו שהמכפלה של שתי מטריצות אלכסוניות (מאותו הסדר) היא בהכרח אלכסונית, קל להשתכנע שהנוסחה הבאה נכונה:</p>
+<p>נסמן <span class="math display">\[.A=\begin{pmatrix}
+a_1 &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;a_2 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;a_3 &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;a_n
+\end{pmatrix}, \quad
+B=\begin{pmatrix}
+b_1 &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;b_2 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;b_3 &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;b_n
+\end{pmatrix}\]</span> אז לפי חישוב איברי האלכסון הראשי של המכפלה, נקבל <span class="math display">\[.AB=\begin{pmatrix}
+a_1b_1 &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;a_2b_2 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;a_3b_3 &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;a_nb_n
+\end{pmatrix}\]</span></p>
+<p>בפרט, אם <span class="math inline">\(B=A\)</span> נקבל <span class="math display">\[.A^2=\begin{pmatrix}
+a_1^2 &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;a_2^2 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;a_3^2 &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;a_n^2
+\end{pmatrix}\]</span> נכפיל שוב ב- <span class="math inline">\(A\)</span> ונקבל: <span class="math display">\[.A^3=\begin{pmatrix}
+a_1^3 &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;a_2^3 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;a_3^3 &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;a_n^3
+\end{pmatrix}\]</span> ובהכללה (או באינדוקציה למי שמכיר) לכל <span class="math inline">\(k\in\mathbb{N}\)</span> נובע כי <span class="math display">\[.A^k=\begin{pmatrix}
+a_1^k &amp;0 &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;a_2^k &amp;0 &amp;\cdots &amp;0 \\
+0 &amp;0 &amp;a_3^k &amp;\cdots &amp;0 \\
+\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\
+0 &amp;0 &amp;0 &amp;\cdots &amp;a_n^k
+\end{pmatrix}\]</span></p>
+<p>אז קל יחסית לחשב חזקות של מטריצה אלכסונית, בניגוד למטריצה כללית עבורה יש הרבה יותר חישובים (בוודאי אם <span class="math inline">\(n\)</span> והמעריך <span class="math inline">\(k\)</span> הם מספרים גדולים).</p>
+</div>
+<div class="definition">
+<p>מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נקראת סקלרית אם קיים <span class="math inline">\(\alpha\in\mathbb{F}\)</span> כך ש- <span class="math inline">\(A=\alpha I_n\)</span>.</p>
+</div>
+<div class="exercise">
+<p>הראו כי לכל מטריצה סקלרית <span class="math inline">\(A=\alpha I_n\)</span> ולכל מטריצה <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מתקיים <span class="math inline">\(AB=BA=\alpha B\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>יהיו <span class="math inline">\(A,B\)</span> כנ"ל. אז מתקיים</p>
+<p><span class="math display">\[AB=(\alpha I_n)B=\alpha(I_nB)=\alpha B,\]</span></p>
+<p>ובנוסף</p>
+<p><span class="math display">\[.BA=B(\alpha I_n)=\alpha(BI_n)=\alpha B.\]</span></p>
+<p>לכן יש שוויון.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="מטריצות-אלמנטריות" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4"><span class="header-section-number">6.2.4</span> מטריצות אלמנטריות</h3>
+<p>כאן יש קשר הדוק לפעולות שורה אלמנטריות. נשתמש בראשי התיבות פש"א עבור "פעולת שורה אלמנטרית".</p>
+<div class="definition">
+<p>מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נקראת אלמנטרית אם היא מתקבלת ממטריצת היחידה <span class="math inline">\(I_n\)</span> ע"י פש"א אחת.</p>
+<p>עבור פש"א <span class="math inline">\(S\)</span>, נסמן ב- <span class="math inline">\(S(I_n)\)</span> את המטריצה האלמנטרית המתאימה שמתקבלת מ- <span class="math inline">\(I_n\)</span> ע"י <span class="math inline">\(S\)</span>. באופן כללי, לכל מטריצה <span class="math inline">\(A\)</span> נסמן ב- <span class="math inline">\(S(A)\)</span> את המטריצה שמתקבלת מ- <span class="math inline">\(A\)</span> ע"י <span class="math inline">\(S\)</span>.</p>
+</div>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p>המטריצות הבאות הן אלמנטריות כי הן מתאימות להחלפה בין שורות של מטריצת יחידה:</p>
+<p><span class="math display">\[\begin{aligned}
+S=(R_1\leftrightarrow R_2) \implies S(I_2)&amp;=\begin{pmatrix}
+0 &amp;1 \\
+1 &amp; 0
+\end{pmatrix} \\
+S=(R_1\leftrightarrow R_3)\implies S(I_3)&amp;=\begin{pmatrix}
+0 &amp;0 &amp;1 \\
+0 &amp; 1 &amp;0 \\
+1 &amp;0 &amp;0
+\end{pmatrix} \\
+S=(R_2\leftrightarrow R_4) \implies S(I_4)&amp;=\begin{pmatrix}
+1 &amp;0 &amp;0 &amp;0 \\
+0 &amp; 0 &amp;0 &amp;1 \\
+0 &amp;0 &amp;1 &amp;0 \\
+0 &amp;1 &amp;0 &amp;0
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>המטריצות הבאות הן אלמנטריות כי הן מתאימות לכפל בסקלר של שורה אחת של מטריצת יחידה:</p>
+<p><span class="math display">\[\begin{aligned}
+S=(2R_1\to R_1)\implies S(I_2)&amp;=\begin{pmatrix}
+2 &amp; 0\\
+0 &amp; 1
+\end{pmatrix} \\
+S=(3R_2\to R_2)\implies S(I_3)&amp;=\begin{pmatrix}
+1 &amp;0 &amp;0 \\
+0 &amp; 3 &amp;0 \\
+0 &amp;0 &amp;1
+\end{pmatrix} \\
+S=(4R_3\to R_3)\implies S(I_4)&amp;=\begin{pmatrix}
+1 &amp;0 &amp;0 &amp;0 \\
+0 &amp; 1 &amp;0 &amp;0 \\
+0 &amp;0 &amp;4 &amp;0 \\
+0 &amp;0 &amp;0 &amp;1
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>המטריצות הבאות הן אלמנטריות כי הן מתאימות להוספת כפולה בסקלר של שורה אחת לשורה אחרת במטריצת יחידה:</p>
+<p><span class="math display">\[\begin{aligned}
+S=(R_2+2R_1\to R_2)\implies S(I_2)&amp;=\begin{pmatrix}
+1 &amp; 0\\
+2 &amp; 1
+\end{pmatrix} \\
+S=(R_2+3R_1\to R_2)\implies S(I_3)&amp;=\begin{pmatrix}
+1 &amp;0 &amp;0 \\
+3 &amp; 1 &amp;0 \\
+0 &amp;0 &amp;1
+\end{pmatrix} \\
+S=(R_3+4R_2\to R_3)\implies S(I_4)&amp;=\begin{pmatrix}
+1 &amp;0 &amp;0 &amp;0 \\
+0 &amp; 1 &amp;0 &amp;0 \\
+0 &amp;4 &amp;1 &amp;0 \\
+0 &amp;0 &amp;0 &amp;1
+\end{pmatrix}
+\end{aligned}\]</span></p></li>
+<li><p>המטריצות הבאות <u>אינן</u> אלמנטריות כי הן מתקבלות ממטריצת יחידה ע"י יותר מפש"א אחת:</p>
+<p><span class="math display">\[\begin{pmatrix}
+2 &amp; 0\\
+0 &amp; 3
+\end{pmatrix}, \begin{pmatrix}
+1 &amp;0 &amp;0 \\
+1 &amp; 1 &amp;0 \\
+1 &amp;0 &amp;1
+\end{pmatrix}, \begin{pmatrix}
+0 &amp;0 &amp;0 &amp;1 \\
+0 &amp; 0 &amp;1 &amp;0 \\
+0 &amp;1 &amp;0 &amp;0 \\
+1 &amp;0 &amp;0 &amp;0
+\end{pmatrix}\]</span> למעשה, במטריצה אלמנטרית רק שורה אחת שונה מהשורה המתאימה ב- <span class="math inline">\(I_n\)</span>, אלא אם כן זו מטריצה שמתאימה להחלפת שורות. אבל גם אז יש הבדל רק בשתי שורות וקל לזהות את ההחלפה, בניגוד למטריצה השמאלית לעיל שהיא בפירוש לא קשורה להחלפה.</p></li>
+</ol>
+</div>
+<div id="prp-elementary" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.6</strong></span> <em>יהיו <span class="math inline">\(A\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> ו- <span class="math inline">\(S\)</span> פש"א. אז מתקיים <span class="math inline">\(S(I_m)A=S(A)\)</span>.</em></p>
+</div>
+<p>לפני החישובים הכלליים הדרושים להוכחה, נסתכל על דוגמאות:</p>
+<div class="example">
+<p> </p>
+<ol type="1">
+<li><p><span class="math display">\[\begin{pmatrix}
+0 &amp;0 &amp;1 \\
+0 &amp; 1 &amp;0 \\
+1 &amp;0 &amp;0
+\end{pmatrix}\begin{pmatrix}
+a &amp;b &amp;c \\
+d &amp; e &amp;f \\
+g &amp;h &amp;r
+\end{pmatrix}=\begin{pmatrix}
+g &amp;h &amp;r \\
+d &amp; e &amp;f \\
+a &amp;b &amp;c
+\end{pmatrix}\]</span></p></li>
+<li><p><span class="math display">\[\begin{pmatrix}
+1 &amp;0 &amp;0 \\
+0 &amp; 3 &amp;0 \\
+0 &amp;0 &amp;1
+\end{pmatrix}\begin{pmatrix}
+a &amp;b &amp;c \\
+d &amp; e &amp;f \\
+g &amp;h &amp;r
+\end{pmatrix}=\begin{pmatrix}
+a &amp;b &amp;c \\
+3d &amp; 3e &amp;3f \\
+g &amp;h &amp;r
+\end{pmatrix}\]</span></p></li>
+<li><p><span class="math display">\[\begin{pmatrix}
+1 &amp;0 &amp;0 \\
+3 &amp; 1 &amp;0 \\
+0 &amp;0 &amp;1
+\end{pmatrix}\begin{pmatrix}
+a &amp;b &amp;c \\
+d &amp; e &amp;f \\
+g &amp;h &amp;r
+\end{pmatrix}=\begin{pmatrix}
+a &amp;b &amp;c \\
+3a+d &amp; 3b+e &amp;3c+f \\
+g &amp;h &amp;r
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נסמן <span class="math inline">\(E=S(I_m)\)</span> עם איברים <span class="math inline">\(e_{ij}=(E)_{ij}\)</span>. נראה ש- <span class="math inline">\(EA\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בדיוק ע"י הפעלת <span class="math inline">\(S\)</span> על שורות <span class="math inline">\(A\)</span>. נחלק לשלושה מקרים:</p>
+<ol type="1">
+<li><p><span class="math inline">\(S=(R_i\leftrightarrow R_j)\)</span></p>
+<p><span class="math inline">\(E\)</span> מזכירה את מטריצת היחידה, אבל יש ארבעה הבדלים: <span class="math display">\[e_{ii}=e_{jj}=0, \quad e_{ij}=e_{ji}=1\]</span></p>
+<p>נחשב: <span class="math display">\[(EA)_{rk} = \sum_{l=1}^m e_{rl} a_{lk}.\]</span> אם <span class="math inline">\(r \notin \{i,j\}\)</span>, אז <span class="math inline">\(e_{rk}\)</span> הוא בדיוק כמו במטריצת היחידה: <span class="math inline">\(1\)</span> עבור <span class="math inline">\(r=k\)</span>, אחרת <span class="math inline">\(0\)</span>. לכן השורה ה- <span class="math inline">\(r\)</span> נשארת כפי שהיא. לעומת זאת, אם <span class="math inline">\(r=i\)</span> נקבל <span class="math inline">\((EA)_{ik} = a_{jk}\)</span>. אם <span class="math inline">\(r=j\)</span> נקבל <span class="math inline">\((EA)_{jk} = a_{ik}\)</span>. כלומר החלפנו בין השורות ה- <span class="math inline">\(i,j\)</span> של <span class="math inline">\(A\)</span>, ולכן קיבלנו את <span class="math inline">\(S(A)\)</span>.</p></li>
+<li><p><span class="math inline">\(S=(\alpha R_i\to R_i)\)</span> עבור <span class="math inline">\(\alpha\neq 0\)</span>.</p>
+<p>כאן <span class="math inline">\(E\)</span> היא כמעט כמו מטריצת היחידה, עם הבדל אחד: <span class="math inline">\(.e_{ii} = \alpha\)</span></p>
+<p>נשתמש בנוסחה מפוצלת כי יש פה שני מקרים:</p>
+<p><span class="math display">\[(EA)_{rk} = \sum_{l=1}^m e_{rl} a_{lk} =
+\begin{cases}
+a_{rk}, &amp; r \neq i\\
+\alpha a_{ik}, &amp; r = i
+\end{cases}\]</span> כלומר השורה ה- <span class="math inline">\(i\)</span> של <span class="math inline">\(A\)</span> הוכפלה ב־ <span class="math inline">\(\alpha\)</span> ושאר השורות לא השתנו. קיבלנו את <span class="math inline">\(S(A)\)</span>.</p></li>
+<li><p><span class="math inline">\(S=(R_i+\alpha R_j\to R_i)\)</span> עבור <span class="math inline">\(i\neq j\)</span>. כאן <span class="math display">\[,E = I_m + \alpha P(i,j)\]</span> כאשר <span class="math inline">\(P(i,j)\)</span> היא המטריצה שכל ערכיה הם <span class="math inline">\(0\)</span> פרט ל- <span class="math inline">\((P(i,j))_{ij}=1\)</span>. נחשב: <span class="math display">\[.EA = (I_m + \alpha P(i,j))A = A + \alpha (P(i,j)A)\]</span> אבל <span class="math display">\[(P(i,j)A)_{rk} = \sum_{l=1}^m (P(i,j))_{rl} a_{lk} = \begin{cases}
+0, &amp; r \neq i\\
+a_{jk}, &amp; r = i
+\end{cases}\]</span> ולכן <span class="math display">\[(EA)_{rk} =
+\begin{cases}
+a_{rk}, &amp; r \neq i\\
+a_{ik} + \alpha a_{jk}, &amp; r = i
+\end{cases}\]</span> כלומר השורה <span class="math inline">\(R_i\)</span> הוחלפה ב־ <span class="math inline">\(R_i + \alpha R_j\)</span>. שוב קיבלנו את <span class="math inline">\(S(A)\)</span>.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<div id="cor-left" class="corollary theorem">
+<p><span class="theorem-title"><strong>Corollary 6.1</strong></span> <em>יהיו <span class="math inline">\(A,A&#39;\in\mathbb{M}_{m\times n}(\mathbb{F})\)</span> שקולות שורה. אז קיימת <span class="math inline">\(B\in\mathbb{M}_{m\times m}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(A&#39;=BA\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי הנתון קיימות פש"אות <span class="math inline">\(S_1,S_2,...,S_k\)</span> כך שמתקיים <span class="math inline">\(,A&#39;=S_k(...(S_1(A))...)\)</span> כלומר <span class="math inline">\(A&#39;\)</span> מתקבלת מ- <span class="math inline">\(A\)</span> בעקבות הפעלת <span class="math inline">\(S_1\)</span>, אחריה <span class="math inline">\(S_2\)</span> וכן הלאה עד <span class="math inline">\(S_k\)</span>.</p>
+<p>לפי טענה <a href="#prp-elementary">6.66</a>, ניתן לפתוח את הסוגריים בהדרגה כאשר בכל שלב הפעולה הרלוונטית הופכת לכפל במטריצה האלמנטרית המתאימה לה:</p>
+<p><span class="math display">\[\begin{aligned}
+A&#39;&amp;=S_k(I_m)S_{k-1}(...(S_1(A))...)=S_k(I_m)S_{k-1}(I_m)S_{k-2}(...(S_1(A))...)=...\\
+&amp;=S_k(I_m)S_{k-1}(I_m)S_{k-2}(I_m)\cdots S_1(I_m)A
+\end{aligned}\]</span> נסמן <span class="math inline">\(B=S_k(I_m)S_{k-1}(I_m)S_{k-2}(I_m)\cdots S_1(I_m)\)</span>. זו אכן מטריצה מסדר <span class="math inline">\(m\times m\)</span> וקיבלנו <span class="math inline">\(A&#39;=BA\)</span>. ◻</p>
+</div>
+<div class="example">
+<p>נסתכל על המטריצה</p>
+<p><span class="math display">\[.A =
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+2 &amp; 4 &amp; 5 &amp; -2 \\
+1 &amp; 3 &amp; 4 &amp; 0
+\end{pmatrix}\]</span></p>
+<p>נבצע דירוג קנוני, אבל הפעם נציין בכל שלב את המטריצה האלמנטרית המתאימה <span class="math inline">\(E_i\)</span> ונעקוב אחר המכפלה המצטברת.</p>
+<p>שלב 1: <span class="math inline">\(R_2 - 2R_1 \to R_2\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_1 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+-2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix},
+\qquad
+E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+0 &amp; 0 &amp; -1 &amp; -4 \\
+1 &amp; 3 &amp; 4 &amp; 0
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 2: <span class="math inline">\(R_3 - R_1 \to R_3\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_2 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{pmatrix},
+\qquad
+E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+0 &amp; 0 &amp; -1 &amp; -4 \\
+0 &amp; 1 &amp; 1 &amp; -1
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 3: <span class="math inline">\(R_3 \leftrightarrow R_2\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_3 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{pmatrix},
+\qquad
+E_3 E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+0 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; -1 &amp; -4
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 4: <span class="math inline">\(-R_3 \to R_3\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_4 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{pmatrix},
+\qquad
+E_4 E_3 E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+0 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 5: <span class="math inline">\(R_2 - R_3 \to R_2\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_5 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix},
+\qquad
+E_5 E_4 E_3 E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; -5 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 6: <span class="math inline">\(R_1 - 3R_3 \to R_1\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_6 &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; -3 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix},
+\qquad
+E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 2 &amp; 0 &amp; -11 \\
+0 &amp; 1 &amp; 0 &amp; -5 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>שלב 7: <span class="math inline">\(R_1 - 2R_2 \to R_1\)</span> <span class="math display">\[\begin{aligned}
+{2}
+E_7 &amp;=
+\begin{pmatrix}
+1 &amp; -2 &amp; 0 \\
+0 &amp;  1 &amp; 0 \\
+0 &amp;  0 &amp; 1
+\end{pmatrix},
+\qquad
+E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -1 \\
+0 &amp; 1 &amp; 0 &amp; -5 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>המטריצה האחרונה שקיבלנו בצד ימין היא מדורגת קנונית:</p>
+<p><span class="math display">\[A&#39;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -1 \\
+0 &amp; 1 &amp; 0 &amp; -5 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}\]</span></p>
+<p>המכפלה הכוללת של המטריצות האלמנטריות היא <span class="math inline">\(E = E_7 E_6 E_5 E_4 E_3 E_2 E_1\)</span>, ובמפורש:</p>
+<p><span class="math display">\[E =
+\begin{pmatrix}
+1 &amp; 1 &amp; -2 \\
+-3 &amp; 1 &amp; 1 \\
+2 &amp; -1 &amp; 0
+\end{pmatrix}\]</span></p>
+<p>בדיקה:</p>
+<p><span class="math display">\[.EA=
+\begin{pmatrix}
+1 &amp; 1 &amp; -2 \\
+-3 &amp; 1 &amp; 1 \\
+2 &amp; -1 &amp; 0
+\end{pmatrix}\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 1 \\
+2 &amp; 4 &amp; 5 &amp; -2 \\
+1 &amp; 3 &amp; 4 &amp; 0
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -1 \\
+0 &amp; 1 &amp; 0 &amp; -5 \\
+0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+=A&#39;\]</span></p>
+</div>
+</section>
+</section>
+<section id="מטריצות-הפיכות-והקשר-לממל" class="level2" data-number="6.3">
+<h2 data-number="6.3"><span class="header-section-number">6.3</span> מטריצות הפיכות והקשר לממ"ל</h2>
+<p>לפני שנמשיך, יש סימון נוח לוקטורים שיהיו שימושיים בקורס:</p>
+<div class="definition">
+<p>נגדיר את וקטורי היחידה <span class="math inline">\(e_1,e_2,\cdots,e_n\in\mathbb{F}^n\)</span> ע"י <span class="math display">\[e_i=\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+0 \\
+1 \\
+0\\
+\vdots \\
+0
+\end{pmatrix}\]</span> כאשר כל הקוארדינטות הן <span class="math inline">\(0\)</span> חוץ מהקוארדינטה ה- <span class="math inline">\(i\)</span> השווה ל- <span class="math inline">\(1\)</span>. נציין שאלה וקטורי העמודה של <span class="math inline">\(I_n\)</span>, וגם וקטורי השורה עד כדי שחלוף (ההבדל בין שורה לעמודה).</p>
+</div>
+<div class="exercise">
+<p>לכל <span class="math display">\[x=\begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n
+    \end{pmatrix}\]</span> מתקיים <span class="math display">\[.x=\sum_{j=1}^n a_je_j.\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>בסכום <span class="math inline">\(\sum_{j=1}^n a_je_j\)</span> רק המחובר ה- <span class="math inline">\(i\)</span> תורם לקוארדינטה ה- <span class="math inline">\(i\)</span>, כי כל השאר תורמים <span class="math inline">\(0\)</span>. התרומה עבור <span class="math inline">\(j=i\)</span> היא <span class="math inline">\(a_i\cdot 1=a_i\)</span> כנדרש.</p>
+</div>
+</div>
+</div>
+<p>לפני שנגדיר מטריצות הפיכות, נוכיח טענה שמראה את חשיבותה של מטריצת היחידה בהקשר של קיום ויחידות הפתרון לממ"ל כאשר מספר המשתנים שווה למספר המשוואות.</p>
+<div id="prp-RREF" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.7</strong></span> <em>אם <span class="math inline">\(A&#39;\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> מדורגת קנונית, אז התנאים הבאים שקולים:</em></p>
+<ol type="1">
+<li><p><em><span class="math inline">\(A&#39;=I_n\)</span></em></p></li>
+<li><p><em><span class="math inline">\(\mathop{\mathrm{rank}}(A&#39;)=n\)</span></em></p></li>
+<li><p><em>לממ"ל <span class="math inline">\(A&#39;x=0\)</span> יש פתרון יחיד.</em></p></li>
+<li><p><em>לכל <span class="math inline">\(b&#39;\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(A&#39;x=b&#39;\)</span>.</em></p></li>
+<li><p><em>לכל <span class="math inline">\(b&#39;\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(A&#39;x=b&#39;\)</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>נוכיח כי <span class="math inline">\((\text{א})\)</span> שקול לכל אחד מהתנאים האחרים. תחילה נראה שהוא גורר את האחרים:</p>
+<p><span class="math inline">\((\text{ב}) \impliedby (\text{א})\)</span>: למטריצה <span class="math inline">\(I_n\)</span> יש דרגה <span class="math inline">\(n\)</span> כמספר האיברים המובילים שלה.</p>
+<p><span class="math inline">\((\text{ג}) \impliedby (\text{א})\)</span>: ברור שיש פתרון יחיד, שהוא הפתרון הטריוויאלי.</p>
+<p><span class="math inline">\((\text{ד}) \impliedby (\text{א})\)</span>: ברור שיש פתרון יחיד, שהוא <span class="math inline">\(x=b&#39;\)</span>.</p>
+<p><span class="math inline">\((\text{ה}) \impliedby (\text{א})\)</span>: כנ"ל.</p>
+<p>כעת נוכיח את הכיוון ההפוך של כל גרירה.</p>
+<p><span class="math inline">\((\text{ב}) \implies (\text{א})\)</span>: אם הדרגה היא <span class="math inline">\(n\)</span>, אז יש <span class="math inline">\(1\)</span> מוביל בכל עמודה. כל שאר האיברים הם <span class="math inline">\(0\)</span> (כי הדירוג קנוני), ולכן <span class="math inline">\(A&#39;=I_n\)</span>.</p>
+<p><span class="math inline">\((\text{ג}) \implies (\text{א})\)</span>: מיחידות הפתרון נובע <span class="math inline">\((\text{ב})\)</span> ומכאן גם <span class="math inline">\((\text{א})\)</span>.</p>
+<p><span class="math inline">\((\text{ד}) \implies (\text{א})\)</span>: כנ"ל.</p>
+<p><span class="math inline">\((\text{ה}) \implies (\text{א})\)</span>: אם תמיד קיים פתרון לממ"ל <span class="math inline">\(A&#39;x=b\)</span>, אז אין שורת אפסים ב- <span class="math inline">\(A&#39;\)</span> כי אחרת מתקבלת שורה סתירה ב- <span class="math inline">\((A&#39;|b&#39;)\)</span> עבור <span class="math display">\[.b&#39;=\begin{pmatrix}
+0\\
+0\\
+\vdots \\
+0 \\
+1
+\end{pmatrix}\]</span></p>
+<p>לכן נובע <span class="math inline">\((\text{ב})\)</span> ומכאן <span class="math inline">\((\text{א})\)</span>. ◻</p>
+</div>
+<p>כמסקנה מהטענה הקודמת למטריצות ריבועיות שהן מדורגות קנונית, יש לנו משפט למטריצות ריבועיות כלליות:</p>
+<div id="prp-invertible" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.8</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
+<p>א. <em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p>
+<p>ג. <em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p>
+<p>ד. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ה. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. היא שקולת שורה למטריצה מתאימה <span class="math inline">\(A&#39;\)</span> שהיא מדורגת קנונית, ונשים לב כי כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי המקביל לו בטענה <a href="#prp-RREF">6.72</a> עם <span class="math inline">\(A&#39;\)</span> במקום <span class="math inline">\(A\)</span>. הסיבה לכך היא שמתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A&#39;)\)</span> לפי הגדרת דרגה, וגם קבוצת הפתרונות של הממ"ל <span class="math inline">\(Ax=b\)</span> שווה לקבוצת הפתרונות של הממ"ל <span class="math inline">\(A&#39;x=b&#39;\)</span>. לכן, כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי <span class="math inline">\(A&#39;=I_n\)</span>, שזה בדיוק <span class="math inline">\(\text{(א)}\)</span>. ◻</p>
+</div>
+<p>משפט זה מראה שיש משהו מיוחד לגבי מטריצות ריבועיות שהן שקולות שורה למטריצת יחידה. נראה שיש דרך חלופית להגדיר אותן, שקשורה לכפל מטריצות. בהתחלה ההגדרה תיראה שונה, ובסוף נוכיח שזו הגדרה שקולה.</p>
+<div class="definition">
+<p>מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> נקראת הפיכה משמאל אם קיימת <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(BA=I_n\)</span>. <span class="math inline">\(A\)</span> נקראת הפיכה מימין אם קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. אם שני התנאים מתקיימים, <span class="math inline">\(A\)</span> נקראת הפיכה.</p>
+</div>
+<p>נראה שהפיכות מימין והפיכות משמאל, הן למעשה שני תנאים שקולים (עבור מטריצה ריבועית). יותר מכך:</p>
+<div id="thm-invertible" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.1</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
+<p>א. <em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p>
+<p>ג. <em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p>
+<p>ד. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ה. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ו. <em><span class="math inline">\(A\)</span> הפיכה משמאל.</em></p>
+<p>ז. <em><span class="math inline">\(A\)</span> הפיכה מימין.</em></p>
+<p>ח. <em><span class="math inline">\(A\)</span> הפיכה.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>כבר הוכחנו שחמשת התנאים הראשונים שקולים. נראה כי <span class="math display">\[(\text{ג}) \impliedby (\text{ו}) \impliedby (\text{א})\]</span> וגם <span class="math display">\[(\text{ז}) \iff (\text{ה})\]</span> ומכאן נסיק שכל אחד מהתנאים <span class="math inline">\((\text{ח}) ,(\text{ז}) ,(\text{ו})\)</span> שקול לכל שאר התנאים.</p>
+<p><span class="math inline">\(:(\text{ו}) \impliedby (\text{א})\)</span> זה נובע ישירות ממסקנה <a href="#cor-left">6.68</a> עם <span class="math inline">\(A&#39;=I_n\)</span>.</p>
+<p><span class="math inline">\(:(\text{ג}) \impliedby (\text{ו})\)</span> נניח כי קיימת <span class="math inline">\(B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(BA=I_n\)</span>. אז כדי לפתור את הממ"ל <span class="math inline">\(Ax=0\)</span> נכפיל את שני האגפים ב- <span class="math inline">\(B\)</span> משמאל: <span class="math display">\[B(Ax)=B\cdot0 \implies I_n x=0 \implies x=0\]</span> לכן יש פתרון יחיד.</p>
+<p><span class="math inline">\(:(\text{ז}) \impliedby (\text{ה})\)</span> המטרה היא למצוא <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. נסמן את העמודות של <span class="math inline">\(C\)</span> ע"י <span class="math inline">\(v_1,v_2,...,v_n\in\mathbb{F}^n\)</span>, ואז לפי <a href="#prp-product-column">טענה 6.32</a> מתקיים <span class="math display">\[.AC=\begin{pmatrix}
+| &amp; | &amp; &amp; | \\
+Av_1 &amp; Av_2 &amp; \cdots &amp; Av_n \\
+| &amp; | &amp; &amp; |
+\end{pmatrix}\]</span></p>
+<p>לכן <span class="math display">\[.AC=I_n \iff \forall 1\leq j\leq n \quad Av_j=e_j.\]</span></p>
+<p>אז קיבלנו <span class="math inline">\(n\)</span> ממ"ליות, ולכל אחת מהן יש פתרון <span class="math inline">\(v_j\)</span> לפי <span class="math inline">\((\text{ה})\)</span>. אז המטריצה המתאימה <span class="math display">\[C=\begin{pmatrix}
+| &amp; | &amp; &amp; | \\
+v_1 &amp; v_2 &amp; \cdots &amp; v_n \\
+| &amp; | &amp; &amp; |
+\end{pmatrix}\]</span> מקיימת <span class="math inline">\(AC=I_n\)</span> כנדרש.</p>
+<p><span class="math inline">\(:(\text{ה}) \impliedby (\text{ז})\)</span> נניח כי קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. יהי <span class="math display">\[b=\begin{pmatrix}
+\beta_1 \\
+\beta_2 \\
+\vdots \\
+\beta_n
+\end{pmatrix}\]</span></p>
+<p>ונראה שקיים פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>. בסימונים הקודמים לעמודות <span class="math inline">\(C\)</span>, שוב מתקיים לכל <span class="math inline">\(1\leq j\leq n\)</span> <span class="math display">\[.Av_j=e_j\]</span></p>
+<p>אז ניקח <span class="math display">\[x=\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}\]</span> עם <span class="math inline">\(.x=\sum_{j=1}^n \beta_j v_j\)</span> לכן נקבל <span class="math display">\[.Ax=A(\sum_{j=1}^n \beta_j v_j)=\sum_{j=1}^n \beta_j Av_j=\sum_{j=1}^n \beta_j e_j=b.\]</span></p>
+<p>ניתן להכניס את <span class="math inline">\(A\)</span> לתוך הסכימה לפי טענה <a href="#prp-matrix-vector">טענה 6.23</a>. ◻</p>
+</div>
+<p>לכאורה, הפיכות מימין והפיכות משמאל מתייחסות לשתי מטריצות <span class="math inline">\(B,C\)</span> שיכולות להיות שונות, אבל ראינו כי הפיכות משמאל שקולה להפיכות מימין. אז אמור להיות קשר בין המטריצות, ואכן:</p>
+<div id="prp-inverses" class="proposition theorem">
+<p><span class="theorem-title"><strong>Proposition 6.9</strong></span> <em>יהיו <span class="math inline">\(A,B,C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(BA=I_n=AC\)</span>. אז <span class="math inline">\(B=C\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>לפי התכונות של <span class="math inline">\(I_n\)</span> וחוק הקיבוץ לכפל מטריצות, נובע כי <span class="math display">\[.B=BI_n=B(AC)=(BA)C=I_nC=C.\]</span> ◻</p>
+</div>
+<div class="corollary">
+<p><em>יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. אז מתקיים <span class="math display">\[.AB=I_n \iff BA=I_n\]</span></em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>אם <span class="math inline">\(BA=I_n\)</span>, אז <span class="math inline">\(A\)</span> הפיכה משמאל. לפי משפט <a href="#thm-invertible">6.73</a> היא גם הפיכה מימין, ולכן קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. אבל אז נובע מטענה <a href="#prp-inverses">6.76</a> כי <span class="math inline">\(B=C\)</span>, ולכן <span class="math inline">\(AB=I_n\)</span>.</p>
+<p>הכיוון השני דומה, למשל משיקולי סימטריה (משחק תפקידים בין <span class="math inline">\(A\)</span> ל- <span class="math inline">\(B\)</span>). ◻</p>
+</div>
+<p>האם בהינתן מטריצה הפיכה <span class="math inline">\(A\)</span>, המטריצה <span class="math inline">\(B\)</span> שמקיימת <span class="math inline">\(AB=I_n=BA\)</span> נקבעת ביחידות ע"י <span class="math inline">\(A\)</span>? התשובה חיובית. לפני שנתאר את החישוב, נוכיח את היחידות:</p>
+<div class="corollary">
+<p><em>יהיו <span class="math inline">\(A,B_1,B_2\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(B_1A=B_2A=I_n\)</span>. אז <span class="math inline">\(B_1=B_2\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>** <span class="math inline">\(A\)</span> הפיכה משמאל ולכן גם מימין לפי משפט <a href="#thm-invertible">6.75</a>. כלומר קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. לכן, נובע <span class="math inline">\(B_1=C=B_2\)</span> מטענה <a href="#prp-inverses">6.76</a>. ◻</p>
+</div>
+<div class="definition">
+<p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. נסמן ב- <span class="math inline">\(A^{-1}\)</span> את המטריצה שמקיימת <span class="math display">\[.AA^{-1}=A^{-1}A=I_n\]</span> נקרא לה המטריצה ההופכית ל- <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>נשים לב כי <span class="math inline">\(A,A^{-1}\)</span> מתחלפות. בהינתן <span class="math inline">\(B\)</span>, כדי לבדוק שמתקיים <span class="math inline">\(B=A^{-1}\)</span> מספיק להראות <span class="math inline">\(AB=I_n\)</span> או לחילופין <span class="math inline">\(BA=I_n\)</span>, כי התנאים שקולים.</p>
+</div>
+<div id="exr-inverse-product" class="exercise theorem">
+<p><span class="theorem-title"><strong>Exercise 6.1</strong></span> יהיו <span class="math inline">\(A,B\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכות ו- <span class="math inline">\(0\neq \alpha\in\mathbb{F}\)</span>. אז מתקיים:</p>
+<ol type="1">
+<li><p><span class="math inline">\(A^{-1}\)</span> הפיכה ומתקיים <span class="math display">\[.(A^{-1})^{-1}=A.\]</span></p></li>
+<li><p><span class="math inline">\(\alpha A\)</span> הפיכה ומתקיים <span class="math display">\[.(\alpha A)^{-1}=\frac{1}{\alpha}A^{-1}.\]</span></p></li>
+<li><p><span class="math inline">\(AB\)</span> הפיכה ומתקיים <span class="math display">\[.(AB)^{-1}=B^{-1}A^{-1}.\]</span></p></li>
+<li><p><span class="math inline">\(A^t\)</span> הפיכה ומתקיים <span class="math display">\[.(A^t)^{-1}=(A^{-1})^t.\]</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p> בכל סעיף נחשב את אחת משתי המכפלות ונראה שהיא שווה ל- <span class="math inline">\(I_n\)</span>.</p>
+<ol type="1">
+<li><p>בהינתן <span class="math inline">\(AA^{-1}=A^{-1}A=I_n\)</span> נובע כי גם <span class="math inline">\(A^{-1}\)</span> הפיכה וההופכית שלה היא <span class="math inline">\(A\)</span>.</p></li>
+<li><p>מתקיים <span class="math display">\[.(\frac{1}{\alpha}A^{-1})(\alpha A)=(\frac{1}{\alpha}\alpha)A^{-1}A=1\cdot I_n=I_n\]</span> לכן <span class="math inline">\(\alpha A\)</span> הפיכה ומתקיים <span class="math inline">\(.(\alpha A)^{-1}=\frac{1}{\alpha}A^{-1}\)</span></p></li>
+<li><p>מתקיים <span class="math display">\[.(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=A(I_nA^{-1})=AA^{-1}=I_n\]</span> לכן <span class="math inline">\(AB\)</span> הפיכה ומתקיים <span class="math inline">\((AB)^{-1}=B^{-1}A^{-1}\)</span>.</p></li>
+<li><p>מתקיים <span class="math display">\[.A^t(A^{-1})^t=(A^{-1}A)^t=I_n^t=I_n\]</span></p>
+<p>לכן <span class="math inline">\(A^t\)</span> הפיכה ומתקיים <span class="math inline">\(.(A^t)^{-1}=(A^{-1})^t\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>לא בהכרח מתקיים <span class="math inline">\((AB)^{-1}=A^{-1}B^{-1}\)</span> כי אין הכרח ש- <span class="math inline">\(A^{-1},B^{-1}\)</span> יתחלפו.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>אם <span class="math inline">\(A\)</span> הפיכה, אז הפתרון היחיד לממ"ל <span class="math inline">\(Ax=b\)</span> נתון ע"י <span class="math display">\[x=A^{-1}b\]</span> לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span>. אכן, ניתן להכפיל את שני אגפי המשוואה ב- <span class="math inline">\(A^{-1}\)</span> בהינתן שהיא קיימת. לעומת זאת, אי אפשר "לחלק" במטריצה שאינה הפיכה.</p>
+</div>
+<section id="חישוב-מטריצה-הופכית" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1"><span class="header-section-number">6.3.1</span> חישוב מטריצה הופכית</h3>
+<p>הבנו שכל מטריצה <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה שקולת שורה ל- <span class="math inline">\(I_n\)</span>. יותר מכך, לפי ההוכחה של מסקנה <a href="#cor-left">6.68</a> יש התאמה בין <span class="math inline">\(A^{-1}\)</span> לבין הפש"אות שמובילות ל- <span class="math inline">\(I_n\)</span> בדירוג של <span class="math inline">\(A\)</span>. נחדד את נקודה זו כמסקנה נוספת:</p>
+<div class="corollary">
+<ol type="1">
+<li><p><em>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. אז מתקיים <span class="math display">\[.A^{-1}=E_kE_{k-1}\cdots E_1.\]</span> כאשר <span class="math inline">\(E_1,E_2,...,E_k\)</span> הן המטריצות האלמנטריות המתאימות לפש"אות <span class="math inline">\(S_1,S_2,...,S_k\)</span> בדירוג הקנוני של <span class="math inline">\(A\)</span>.</em></p></li>
+<li><p><em><span class="math inline">\(A\)</span> היא מכפלה של מטריצות אלמנטריות: <span class="math display">\[.A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}.\]</span></em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="1">
+<li><p>זהו מקרה פרטי של מסקנה <a href="#cor-left">6.68</a> עבור <span class="math inline">\(A&#39;=I_n\)</span>. כאן <span class="math inline">\(B=A^{-1}\)</span>.</p></li>
+<li><p>לפי תרגיל <a href="#exr-inverse-product">6.81</a> הפעולה של הפיכת מטריצה הופכת את סדר המטריצות במכפלה. אפשר להבין זאת מחישוב הדרגתי:</p>
+<p><span class="math display">\[\begin{aligned}
+A^{-1}&amp;=E_kE_{k-1}\cdots E_1 \\
+\implies A&amp;=((E_kE_{k-1}\cdots E_2) E_1)^{-1}=E_1^{-1}((E_kE_{k-1}\cdots E_3)E_2)^{-1}\\
+&amp;=E_1^{-1}E_2^{-1}((E_kE_{k-1}\cdots E_4)E_3)^{-1}=...=E_1^{-1}E_2^{-1}\cdots E_k^{-1}
+\end{aligned}\]</span></p>
+<p>לחילופין, אפשר לוודא שמתקיים <span class="math display">\[.(E_1^{-1}E_2^{-1}\cdots E_k^{-1})(E_kE_{k-1}\cdots E_1)=I_n\]</span></p>
+<p>נדגיש שלכל מטריצה אלמנטרית, גם ההופכית שלה היא מטריצה אלמנטרית המתאימה לפש"א ההפוכה.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<p>יש דרך נוחה ומסודרת לחשב את המטריצות האלמנטריות ואת מכפלתן שמובילה למטריצה ההופכית. הרעיון הוא לדרג את <span class="math inline">\(I_n\)</span> לצד <span class="math inline">\(A\)</span>, כמו במטריצת מקדמים מורחבת - אבל עם מספר עמודות מימין לקו המפריד. קובעים את הפש"אות לפי <span class="math inline">\(A\)</span>, אבל מבצעים אותן גם על <span class="math inline">\(I_n\)</span> (כלומר מכפילים גם אותה במטריצות האלמנטריות המתאימות):</p>
+<p><span class="math display">\[(A\mid I_n)\rightarrow (E_1A\mid E_1)\rightarrow (E_2E_1A\mid E_2E_1)\rightarrow \cdots \rightarrow(E_k\cdots E_1A \mid E_k\cdots E_1)\]</span></p>
+<p>המטריצה האחרונה בצד ימין היא למעשה <span class="math inline">\((I_n \mid A^{-1})\)</span>, כלומר המטריצה ההופכית מופיעה מימין ל- <span class="math inline">\(I_n\)</span> בסוף הדירוג הקנוני של מטריצה הפיכה.</p>
+<div class="example">
+<ol type="1">
+<li><p>ניקח את <span class="math display">\[A=\begin{pmatrix}
+1 &amp; 2 &amp; 1 \\
+0 &amp; 1 &amp; 1 \\
+2 &amp; 3 &amp; 4
+\end{pmatrix}\]</span> ונחשב את ההופכית ע"י דירוג קנוני של <span class="math inline">\((A \mid I_3)\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+(A\mid I_3)
+&amp;=\left(
+\begin{array}{ccc|ccc}
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+2 &amp; 3 &amp; 4 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_3-2R_1\to R_3}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; -1 &amp; 2 &amp; -2 &amp; 0 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_2\leftrightarrow R_3}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; -1 &amp; 2 &amp; -2 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{-R_2\to R_2}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; -2 &amp; 2 &amp; 0 &amp; -1\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_1-2R_2\to R_1}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 5 &amp; -3 &amp; 0 &amp; 2\\
+0 &amp; 1 &amp; -2 &amp; 2 &amp; 0 &amp; -1\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_3-R_2\to R_3}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 5 &amp; -3 &amp; 0 &amp; 2\\
+0 &amp; 1 &amp; -2 &amp; 2 &amp; 0 &amp; -1\\
+0 &amp; 0 &amp; 3 &amp; -2 &amp; 1 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{\tfrac13 R_3\to R_3}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 5 &amp; -3 &amp; 0 &amp; 2\\
+0 &amp; 1 &amp; -2 &amp; 2 &amp; 0 &amp; -1\\
+0 &amp; 0 &amp; 1 &amp; -\tfrac23 &amp; \tfrac13 &amp; \tfrac13
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_1-5R_3\to R_1}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 0 &amp; \tfrac13 &amp; -\tfrac53 &amp; \tfrac13\\
+0 &amp; 1 &amp; -2 &amp; 2 &amp; 0 &amp; -1\\
+0 &amp; 0 &amp; 1 &amp; -\tfrac23 &amp; \tfrac13 &amp; \tfrac13
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_2+2R_3\to R_2}
+\left(
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 0 &amp; \tfrac13 &amp; -\tfrac53 &amp; \tfrac13\\
+0 &amp; 1 &amp; 0 &amp; \tfrac23 &amp; \tfrac23 &amp; -\tfrac13\\
+0 &amp; 0 &amp; 1 &amp; -\tfrac23 &amp; \tfrac13 &amp; \tfrac13
+\end{array}
+\right)
+\end{aligned}\]</span></p>
+<p>אז קיבלנו <span class="math display">\[.A^{-1}=
+\begin{pmatrix}
+\frac{1}{3} &amp; -\frac{5}{3} &amp; \frac{1}{3}\\
+\frac{2}{3} &amp; \frac{2}{3} &amp; -\frac{1}{3}\\
+-\frac{2}{3} &amp; \frac{1}{3} &amp; \frac{1}{3}
+\end{pmatrix}\]</span></p></li>
+<li><p>ניקח את <span class="math display">\[B=\begin{pmatrix}
+1+i &amp; 2 \\
+3 &amp; 4-i
+\end{pmatrix}\]</span> ונחשב את ההופכית ע"י דירוג קנוני של <span class="math inline">\((B \mid I_2)\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+(B\mid I_2)
+&amp;=\left(
+\begin{array}{cc|cc}
+1+i &amp; 2 &amp; 1 &amp; 0 \\
+3 &amp; 4-i &amp; 0 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_2-\tfrac{3}{1+i}R_1\to R_2}
+\left(
+\begin{array}{cc|cc}
+1+i &amp; 2 &amp; 1 &amp; 0\\
+0 &amp; 4-i - \tfrac{6}{1+i} &amp; -\tfrac{3}{1+i} &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{\tfrac{1}{1+i}R_1\to R_1}
+\left(
+\begin{array}{cc|cc}
+1 &amp; \tfrac{2}{1+i} &amp; \tfrac{1}{1+i} &amp; 0\\
+0 &amp; \tfrac{-1+3i}{1+i} &amp; -\tfrac{3}{1+i} &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{\tfrac{1+i}{-1+3i}R_2\to R_2}
+\left(
+\begin{array}{cc|cc}
+1 &amp; 1-i &amp; \tfrac{1-i}{2} &amp; 0\\
+0 &amp; 1 &amp; \tfrac{3}{1-3i} &amp; \tfrac{1+i}{-1+3i}
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_1-(1-i)R_2\to R_1}
+\left(
+\begin{array}{cc|cc}
+1 &amp; 0 &amp; \tfrac{1-i}{2}-\tfrac{(3+9i)(1-i)}{10} &amp; -\tfrac{(1-i)(1-2i)}{5} \\
+0 &amp; 1 &amp; \tfrac{3+9i}{10} &amp; \tfrac{1-2i}{5}
+\end{array}
+\right)
+\end{aligned}\]</span></p>
+<p>נפשט את המטריצה האחרונה שקיבלנו בצד ימין:</p>
+<p><span class="math display">\[B^{-1}=\begin{pmatrix}
+-\tfrac{7+11i}{10} &amp; \tfrac{1+3i}{5} \\
+\tfrac{3+9i}{10} &amp; \tfrac{1-2i}{5}
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p> </p>
+<ol type="1">
+<li><p>חשבו את <span class="math inline">\(A^{-1}\)</span> עבור <span class="math display">\[.A=\begin{pmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{pmatrix}\]</span></p></li>
+<li><p>עבור <span class="math inline">\(A\)</span> הקודמת, מצאו <span class="math inline">\(B\in\mathbb{M}_{2\times 2}(\mathbb{R})\)</span> עבורה מתקיים <span class="math inline">\(AB=C\)</span> כאשר <span class="math display">\[.C=\begin{pmatrix}
+3 &amp; -5 \\
+-9 &amp; 1
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="פתרון">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class='callout-icon'></i>
+</div>
+<div class="callout-title-container flex-fill">
+פתרון
+</div>
+<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>נדרג את <span class="math inline">\((A|I_2)\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+\left(A \mid I_2\right)
+&amp;=
+\left(
+\begin{array}{cc|cc}
+1 &amp; 2 &amp; 1 &amp; 0\\
+3 &amp; 4 &amp; 0 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_2-3R_1\to R_2}
+\left(
+\begin{array}{cc|cc}
+1 &amp; 2 &amp; 1 &amp; 0\\
+0 &amp; -2 &amp; -3 &amp; 1
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{-\tfrac12 R_2\to R_2}
+\left(
+\begin{array}{cc|cc}
+1 &amp; 2 &amp; 1 &amp; 0\\
+0 &amp; 1 &amp; \tfrac32 &amp; -\tfrac12
+\end{array}
+\right)
+\\[4pt]
+&amp;\xrightarrow{R_1-2R_2\to R_1}
+\left(
+\begin{array}{cc|cc}
+1 &amp; 0 &amp; -2 &amp; 1\\
+0 &amp; 1 &amp; \tfrac32 &amp; -\tfrac12
+\end{array}
+\right)
+\end{aligned}\]</span></p>
+<p>אז קיבלנו</p>
+<p><span class="math display">\[.A^{-1}=\begin{pmatrix}
+-2 &amp; 1\\
+\tfrac32 &amp; -\tfrac12
+\end{pmatrix}\]</span></p></li>
+<li><p>נכפיל משמאל ב- <span class="math inline">\(A^{-1}\)</span> את שני אגפי המשוואה <span class="math inline">\(AB=C\)</span> ונקבל:</p>
+<p><span class="math display">\[.B=A^{-1}C=\begin{pmatrix}
+-2 &amp; 1\\
+\tfrac32 &amp; -\tfrac12
+\end{pmatrix}\begin{pmatrix}
+3 &amp; -5 \\
+-9 &amp; 1
+\end{pmatrix}=\begin{pmatrix}
+-15 &amp; 11 \\
+9 &amp; -8
+\end{pmatrix}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uZXh0"><span class="chapter-number">7</span>  <span class="chapter-title">דטרמיננטה</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2"><span class="chapter-number">5</span>  <span class="chapter-title">מערכות משוואות לינאריות</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1s157XmdeT16It15vXnNec15k=">מידע כללי</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbnRyby5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPteU16fXk9ee15Q8L3NwYW4+"><span class="chapter-number">1</span>  <span class="chapter-title">הקדמה</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzAuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mjwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7Xp9eR15XXpteV16ot15XXnteh16TXqNeZ1508L3NwYW4+"><span class="chapter-number">2</span>  <span class="chapter-title">קבוצות ומספרים</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzBfNS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4zPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPteq15vXldeg15XXqi3Xldep15nXnteV16nXmdedLdep15wt15TXnteh16TXqNeZ150t15TXnteo15XXm9eR15nXnTwvc3Bhbj4="><span class="chapter-number">3</span>  <span class="chapter-title">תכונות ושימושים של המספרים המרוכבים</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzEuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+NDwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7XkteZ15DXldee15jXqNeZ15Qt15HXnteZ16nXldeoLdeV15HXnteo15fXkTwvc3Bhbj4="><span class="chapter-number">4</span>  <span class="chapter-title">גיאומטריה במישור ובמרחב</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzIuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+NTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7Xntei16jXm9eV16ot157XqdeV15XXkNeV16ot15zXmdeg15DXqNeZ15XXqjwvc3Bhbj4="><span class="chapter-number">5</span>  <span class="chapter-title">מערכות משוואות לינאריות</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzMuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Njwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7XnteY16jXmdem15XXqjwvc3Bhbj4="><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzQuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Nzwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7Xk9eY16jXnteZ16DXoNeY15Q8L3NwYW4+"><span class="chapter-number">7</span>  <span class="chapter-title">דטרמיננטה</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzUuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+ODwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7Xnteo15fXkdeZ150t15XXp9eY15XXqNeZ15nXnTwvc3Bhbj4="><span class="chapter-number">8</span>  <span class="chapter-title">מרחבים וקטוריים</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzYuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+OTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7XqteqLdee16jXl9eR15nXnTwvc3Bhbj4="><span class="chapter-number">9</span>  <span class="chapter-title">תת-מרחבים</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzcuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTA8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+15TXoteq16fXldeqLdec15nXoNeQ16jXmdeV16o8L3NwYW4+"><span class="chapter-number">10</span>  <span class="chapter-title">העתקות לינאריות</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzguaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTE8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+16LXqNeb15nXnS3Xotem157XmdeZ150sLdeV16fXmNeV16jXmdedLdei16bXnteZ15nXnS3Xldec15vXodeV1588L3NwYW4+"><span class="chapter-number">11</span>  <span class="chapter-title">ערכים עצמיים, וקטורים עצמיים ולכסון</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyXzkuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTI8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+157Xm9ek15zXlC3Xoden15zXqNeZ16ot15XXnNeb16HXldefLdeQ15XXqNeq15XXkteV16DXnNeZPC9zcGFuPg=="><span class="chapter-number">12</span>  <span class="chapter-title">מכפלה סקלרית ולכסון אורתוגונלי</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9yZWZlcmVuY2VzLmh0bWzXkdeZ15HXnNeZ15XXkteo16TXmdeU">ביבליוגרפיה</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLTxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Njwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz7XnteY16jXmdem15XXqjwvc3Bhbj4="><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ=="><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span> – אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU="><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span> – אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">6</span>  <span class="chapter-title">מטריצות</span></span> – אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">אלגברה לינארית</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+/* כותרות אוטומטיות + צבע פסטלי לסביבות; טיפול מדויק ב-solution כך שיישאר callout מתקפל */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // מחיקת כותרות ברירת המחדל של Quarto באנגלית (כמו Remark / Proof)
+  document.querySelectorAll('.proof-title').forEach(el => el.remove());
+
+  // --- מספר פרק נוכחי למספור לפי פרק ---
+  function chapterNumber() {
+    const h1 = document.querySelector('main h1[data-number]');
+    if (h1 && h1.getAttribute('data-number')) return h1.getAttribute('data-number').split('.')[0];
+    const sec = document.querySelector('.header-section-number');
+    if (sec) return sec.textContent.trim().split('.')[0];
+    return '1';
+  }
+  const chap = chapterNumber();
+
+  // --- מפת סביבות: תווית, צבע, והאם ממוספרת ---
+  const envs = {
+    definition:  { label: 'הגדרה',   color: 'rgba(255, 99, 71, 0.4)',  numbered: true  },
+    example:     { label: 'דוגמה',    color: 'rgba(138, 43, 226, 0.3)', numbered: true  },
+    exercise:    { label: 'תרגיל',    color: 'rgba(30, 144, 255, 0.35)',numbered: true  },
+    remark:      { label: 'הערה',     color: 'rgba(60, 179, 113, 0.35)', numbered: true  },
+    theorem:     { label: 'משפט',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+    lemma:       { label: 'למה',      color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+    proposition: { label: 'טענה',     color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+    corollary:   { label: 'מסקנה',    color: 'rgba(255, 165, 0, 0.35)', numbered: true  },
+    proof:       { label: 'הוכחה',    color: 'rgba(0, 0, 0, 0.15)', numbered: false },
+    solution:    { label: 'פתרון',    color: 'rgba(72, 209, 204, 0.35)',numbered: false } // ללא מספור
+  };
+
+  // --- נרמול פתרון: שמירה כ-callout מתקפל וזיהוי כ-solution ---
+  document.querySelectorAll('div.callout.callout-note[title="הצג פתרון"], div.callout.callout-note[title="Solution"]').forEach(div => {
+    div.classList.add('solution');          // מוסיפים solution
+    div.setAttribute('collapse', 'true');   // קיפול נשמר
+    div.setAttribute('title', 'פתרון');     // כותרת callout
+  });
+
+  // --- תיקון כפילות מחלקות: אם יש proof+solution יחד – להסיר proof ---
+  document.querySelectorAll('div.solution.proof').forEach(div => div.classList.remove('proof'));
+  document.querySelectorAll('div.remark.proof').forEach(div => div.classList.remove('proof'));
+
+  // --- אם יש solution בלי מבנה callout, נבנה header+body כדי לקבל תיבה מתקפלת ---
+  document.querySelectorAll('div.solution:not(.callout)').forEach(div => {
+    div.classList.add('callout', 'callout-note');
+    div.setAttribute('collapse', 'true');
+    // header
+    const header = document.createElement('div');
+    header.className = 'callout-header';
+    const titleWrap = document.createElement('div');
+    titleWrap.className = 'callout-title-container';
+    const title = document.createElement('div');
+    title.className = 'callout-title';
+    title.textContent = 'פתרון';
+    titleWrap.appendChild(title);
+    header.appendChild(titleWrap);
+    div.insertBefore(header, div.firstChild);
+    // body
+    const body = document.createElement('div');
+    body.className = 'callout-body';
+    while (header.nextSibling) body.appendChild(header.nextSibling);
+    div.appendChild(body);
+  });
+// --- מספור משותף (רץ) לכל הסביבות לפי סדר הופעתן ---
+  const boxEnvs = ['definition','example','exercise','remark','lemma','proposition','corollary','theorem','proof'];
+  let sharedCounter = 0; // מונה אחד משותף לכולם
+  const envMap = {}; // מיפוי id → "טענה 2.7" לצורך רפרנסים אוטומטיים
+
+  // תופס את כל הסביבות יחד כדי לשמור על סדר ההופעה במסמך
+  const allBoxSelector = boxEnvs.map(env => `div.${env}`).join(', ');
+  
+  document.querySelectorAll(allBoxSelector).forEach(div => {
+    // לא לגעת ב-callout (כמו פתרונות)
+    if (div.classList.contains('callout')) return;
+
+    // --- התיקון: מחיקת הכותרת האנגלית המובנית של Quarto ---
+    // Quarto שותל את הכותרת שלו בתור תגית span בתוך הפסקה הראשונה
+    const quartoNativeTitle = div.querySelector('span.theorem-title');
+    if (quartoNativeTitle) {
+      quartoNativeTitle.remove(); // מעלים את Theorem 2.1
+    }
+
+    // מזהים איזו סביבה זו מתוך הרשימה שלנו
+    const env = boxEnvs.find(e => div.classList.contains(e));
+    if (!env) return;
+    const meta = envs[env];
+
+    // הוספת הכותרת שלנו עם המונה המשותף בעברית
+    let title = div.querySelector(':scope > div.theorem-title');
+    if (!title) {
+      title = document.createElement('div');
+      title.className = 'theorem-title custom-title';
+      if (meta.numbered) {
+        sharedCounter += 1; // מקדם את המונה המשותף
+        const fullLabel = `${meta.label} ${chap}.${sharedCounter}`;
+        title.textContent = fullLabel;
+        // שמירה במפה לרפרנסים אוטומטיים
+        if (div.id) envMap[div.id] = `${chap}.${sharedCounter}`;
+      } else {
+        title.textContent = meta.label;
+      }
+      div.insertBefore(title, div.firstChild);
+    }
+
+    // צבע וצביעת קופסה
+    div.style.setProperty('--env-color', meta.color);
+    div.classList.add('envbox');
+  });
+
+  // --- רפרנסים אוטומטיים: עדכון לינקים שמצביעים לסביבות ממוספרות ---
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const targetId = link.getAttribute('href').slice(1);
+    if (envMap[targetId] && !link.textContent.trim()) {
+      link.textContent = envMap[targetId];
+    }
+  });
+console.log('envMap:', envMap);
+  // --- צביעת פתרון כ-callout לפי המפה ---
+  document.querySelectorAll('div.callout.solution').forEach(div => {
+    div.style.setProperty('--env-color', envs.solution.color);
+  });
+
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // בחר את כל כותרות הפרקים הראשיים
+  const chapters = document.querySelectorAll('main h1[data-number]');
+  let counter = 0;
+  chapters.forEach(h1 => {
+    counter++;
+    if (counter <= 3) {
+      // שני פרקים ראשונים ברומי
+      const roman = ['I','II'][counter-1];
+      h1.setAttribute('data-number', roman);
+      const numSpan = h1.querySelector('.header-section-number');
+      if (numSpan) numSpan.textContent = roman;
+    } else {
+      // חזרה למספרים רגילים החל מ-1
+      const normal = counter - 3;
+      h1.setAttribute('data-number', normal);
+      const numSpan = h1.querySelector('.header-section-number');
+      if (numSpan) numSpan.textContent = normal;
+    }
+  });
+});
+</script>
+<script src="tracking.js"></script>
+<style>
+#typo-report-btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  z-index: 9999;
+  background: transparent;
+  color: #888;
+  border: none;
+  border-top: 0.5px solid #ddd;
+  border-radius: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  box-sizing: border-box;
+}
+#typo-report-btn:hover {
+  background: rgba(0,0,0,0.04);
+  color: #444;
+}
+#typo-report-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  #typo-report-btn { display: none; }
+}
+</style>
+
+<script>
+(function() {
+  var FORM_URL      = "https://docs.google.com/forms/d/e/1FAIpQLSdhMnxeLkwra9GljMRwBhw7b2N5lmtfgSEa5oZ__reVX4gycg/viewform";
+  var PAGE_ENTRY    = "entry.1917305355";
+  var SECTION_ENTRY = "entry.1642881501";
+
+  function getCurrentSection() {
+    var headings = document.querySelectorAll('main h1, main h2, main h3');
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    headings.forEach(function(h) {
+      if (h.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        current = h;
+      }
+    });
+    if (!current) return '';
+    var num = current.getAttribute('data-number') || '';
+    var text = current.textContent.replace(/^\s*[\d.IVX]+\s*/, '').trim();
+    return num ? num + ' ' + text : text;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.createElement('a');
+    btn.id = 'typo-report-btn';
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+    btn.title = 'דיווח על שגיאת כתיב';
+
+    btn.innerHTML =
+      '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8c0 1.16.3 2.25.82 3.2L1.5 14.5l3.3-.82A6.5 6.5 0 1 0 8 1.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<path d="M8 5.5v3M8 10.5h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+      '</svg>' +
+      'דיווח על שגיאת כתיב/הקלדה';
+
+    function updateLink() {
+      var pageUrl = window.location.href;
+      var section = getCurrentSection();
+      btn.href = FORM_URL +
+        "?usp=pp_url" +
+        "&" + PAGE_ENTRY    + "=" + encodeURIComponent(pageUrl) +
+        "&" + SECTION_ENTRY + "=" + encodeURIComponent(section);
+    }
+
+    updateLink();
+    window.addEventListener('scroll', updateLink);
+    window.addEventListener('popstate', updateLink);
+    window.addEventListener('hashchange', updateLink);
+
+    document.body.appendChild(btn);
+  });
+})();
+</script>
+<script id = "quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a  href="/chapter_2.html" class="pagination-link" aria-label="מערכות משוואות לינאריות">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class='chapter-number'>5</span>  <span class='chapter-title'>מערכות משוואות לינאריות</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a  href="/chapter_4.html" class="pagination-link" aria-label="דטרמיננטה">
+        <span class="nav-page-text"><span class='chapter-number'>7</span>  <span class='chapter-title'>דטרמיננטה</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+</body>
+
+</html>

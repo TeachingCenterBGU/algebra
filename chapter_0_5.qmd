@@ -328,7 +328,7 @@ $$
 $$
 e^{i\pi}=\cos(\pi)+i\sin(\pi)=-1
 $$
-לכן, נובע מטענה [](#prp-roots)וטענה [](#prp-angle-addition) כי
+לכן, נובע מטענות [](#prp-roots)וטענה [](#prp-angle-addition) כי
 $$
 z_1=\sqrt{r}e^{i\frac{\theta+2\pi}{2}}=\sqrt{r}e^{i\frac{\theta}{2}}\cdot e^{i\pi}=-\sqrt{r}e^{i\frac{\theta}{2}}=-z_0.
 $$

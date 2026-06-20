@@ -609,12 +609,12 @@ x_1\\
 x_2\\
 \vdots \\
 x_n
-\end{pmatrix}\in\mathbb{F}^n\]</span> נגדיר את המכפלה <span class="math display">\[Ax=\begin{pmatrix}
+\end{pmatrix}\in\mathbb{F}^n\]</span>נגדיר את המכפלה<span class="math display">\[Ax=\begin{pmatrix}
 y_1\\
 y_2\\
 \vdots \\
 y_m
-\end{pmatrix}\in\mathbb{F}^m\]</span> עם קוארדינטות הנתונות ע"י $<span class="math inline">\(y_i=\sum_{j=1}^n (A)_{ij}x_j.\)</span> לכל <span class="math inline">\(1\leq i\leq m\)</span>. נסמן <span class="math inline">\(y_i=(Ax)_i\)</span> עבור הקוארדינטות.</p>
+\end{pmatrix}\in\mathbb{F}^m\]</span> עם קוארדינטות הנתונות ע"י <span class="math inline">\(y_i=\sum_{j=1}^n (A)_{ij}x_j\)</span>. לכל <span class="math inline">\(1\leq i\leq m\)</span>. נסמן <span class="math inline">\(y_i=(Ax)_i\)</span> עבור הקוארדינטות.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>לפי הגדרה זו, לכל <span class="math inline">\(1\leq i\leq m\)</span> מתקיים <span class="math display">\[.(Ax)_i=b_i \iff \sum_{j=1}^n (A)_{ij}x_j=b_i.\]</span></p>
@@ -839,7 +839,7 @@ y
 <section id="כפל-מטריצות" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="כפל-מטריצות"><span class="header-section-number">6.1.3</span> כפל מטריצות</h3>
 <div class="definition">
-<p>בהינתן <span class="math inline">\(A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span> נגדיר את מטריצת הכפל <span class="math inline">\(AB\)</span> ע"י $<span class="math inline">\((AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}.\)</span> לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span>.</p>
+<p>בהינתן <span class="math inline">\(A\in\mathbb{M}_{m\times k}(\mathbb{F}),B\in\mathbb{M}_{k\times n}(\mathbb{F})\)</span> נגדיר את מטריצת הכפל <span class="math inline">\(AB\)</span> ע"י <span class="math display">\[(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=(A)_{i1}(B)_{1j}+(A)_{i2}(B)_{2j}+...+(A)_{ik}(B)_{kj}\]</span> לכל <span class="math inline">\(1\leq i\leq m, 1\leq j\leq n\)</span>.</p>
 </div>
 <div class="proof remark">
 <p><span class="proof-title"><em>Remark</em>. </span>שימו לב שכפל בין מטריצות מוגדר רק כאשר מספר העמודות של המטריצה השמאלית שווה למספר השורות של המטריצה הימנית, וסימנו את מספר זה ע"י <span class="math inline">\(k\)</span>. זה אומר שבהרבה מקרים פעולת הכפל אינה מוגדרת, למשל כאשר <span class="math inline">\(A,B\)</span> שתיהן מסדר <span class="math inline">\(2\times 3\)</span>.</p>
@@ -1023,7 +1023,7 @@ Av_1 &amp; Av_2 &amp; \cdots &amp; Av_n \\
 <p><em>כלומר התוצאה של כפל ב- <span class="math inline">\(A\)</span> משמאל הוא שכל וקטור עמודה מוכפל ב- <span class="math inline">\(A\)</span> לחוד.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>ישירות לפי ההגדרות של כפל מטריצוות וכפל מטריצה בוקטור עמודה (שהוא מטריצה עם עמודה אחת). לכל <span class="math inline">\(1\leq j\leq n\)</span> נכתוב <span class="math inline">\((B)_{ij}=b_{ij}\)</span>, כלומר <span class="math display">\[.v_j=\begin{pmatrix}b_{1j} \\ b_{2j} \\ \vdots \\ b_{kj}\end{pmatrix}.\]</span></p>
+<p><span class="proof-title"><em>Proof</em>. </span>ישירות לפי ההגדרות של כפל מטריצות וכפל מטריצה בוקטור עמודה (שהוא מטריצה עם עמודה אחת). לכל <span class="math inline">\(1\leq j\leq n\)</span> נכתוב <span class="math inline">\((B)_{ij}=b_{ij}\)</span>, כלומר <span class="math display">\[.v_j=\begin{pmatrix}b_{1j} \\ b_{2j} \\ \vdots \\ b_{kj}\end{pmatrix}.\]</span></p>
 <p>אז לפי הגדרות הכפל נובע כי</p>
 <p><span class="math display">\[.(AB)_{ij}=\sum_{l=1}^k (A)_{il}(B)_{lj}=\sum_{l=1}^k A_{il}b_{lj}=(Av_j)_i.\]</span></p>
 <p>לכן וקטור העמודה ה- <span class="math inline">\(j\)</span> של <span class="math inline">\(AB\)</span> הוא אכן <span class="math inline">\(Av_j\)</span>.&nbsp;◻</p>
@@ -1375,7 +1375,7 @@ A^2&amp;=\begin{pmatrix}
 <div class="definition">
 <ol type="1">
 <li><p><span class="math inline">\(A\)</span> נקראת סימטרית אם מתקיים <span class="math inline">\(A^t=A\)</span>, או באופן שקול: <span class="math display">\[\forall 1\leq i,j\leq n \quad (A)_{ji}=(A)_{ij}\]</span></p></li>
-<li><p>נקראת אנטי-סימטרית אם מתקיים <span class="math inline">\(A^t=-A\)</span>, או באופן שקול: <span class="math display">\[\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}\]</span></p></li>
+<li><p><span class="math inline">\(A\)</span> נקראת אנטי-סימטרית אם מתקיים <span class="math inline">\(A^t=-A\)</span>, או באופן שקול: <span class="math display">\[\forall 1\leq i,j\leq n \quad (A)_{ji}=-(A)_{ij}\]</span></p></li>
 </ol>
 </div>
 <div class="example">
@@ -2053,7 +2053,7 @@ E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
 <p><span class="math inline">\((\text{ד}) \impliedby (\text{א})\)</span>: ברור שיש פתרון יחיד, שהוא <span class="math inline">\(x=b'\)</span>.</p>
 <p><span class="math inline">\((\text{ה}) \impliedby (\text{א})\)</span>: כנ"ל.</p>
 <p>כעת נוכיח את הכיוון ההפוך של כל גרירה.</p>
-<p><span class="math inline">\((\text{ב}) \implies (\text{א})\)</span>: אם הדרגה היא <span class="math inline">\(n\)</span>, אז יש <span class="math inline">\(1\)</span> מוביל בכל עמודה. כל שאר האיברים הם <span class="math inline">\(0\)</span> ,(כי הדירוג קנוני) ולכן <span class="math inline">\(A'=I_n\)</span>.</p>
+<p><span class="math inline">\((\text{ב}) \implies (\text{א})\)</span>: אם הדרגה היא <span class="math inline">\(n\)</span>, אז יש <span class="math inline">\(1\)</span> מוביל בכל עמודה. כל שאר האיברים הם <span class="math inline">\(0\)</span> (כי הדירוג קנוני), ולכן <span class="math inline">\(A'=I_n\)</span>.</p>
 <p><span class="math inline">\((\text{ג}) \implies (\text{א})\)</span>: מיחידות הפתרון נובע <span class="math inline">\((\text{ב})\)</span> ומכאן גם <span class="math inline">\((\text{א})\)</span>.</p>
 <p><span class="math inline">\((\text{ד}) \implies (\text{א})\)</span>: כנ"ל.</p>
 <p><span class="math inline">\((\text{ה}) \implies (\text{א})\)</span>: אם תמיד קיים פתרון לממ"ל <span class="math inline">\(A'x=b\)</span>, אז אין שורת אפסים ב- <span class="math inline">\(A'\)</span> כי אחרת מתקבלת שורה סתירה ב- <span class="math inline">\((A'|b')\)</span> עבור <span class="math display">\[.b'=\begin{pmatrix}
@@ -2068,13 +2068,11 @@ E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
 <p>כמסקנה מהטענה הקודמת למטריצות ריבועיות שהן מדורגות קנונית, יש לנו משפט למטריצות ריבועיות כלליות:</p>
 <div id="prp-invertible" class="proposition theorem">
 <p><span class="theorem-title"><strong>Proposition 6.8</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p></li>
-<li><p><em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-</ol>
+<p>א. <em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p>
+<p>ג. <em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p>
+<p>ד. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ה. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span>. היא שקולת שורה למטריצה מתאימה <span class="math inline">\(A'\)</span> שהיא מדורגת קנונית, ונשים לב כי כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי המקביל לו בטענה <a href="#prp-RREF">6.72</a> עם <span class="math inline">\(A'\)</span> במקום <span class="math inline">\(A\)</span>. הסיבה לכך היא שמתקיים <span class="math inline">\(\mathop{\mathrm{rank}}(A)=\mathop{\mathrm{rank}}(A')\)</span> לפי הגדרת דרגה, וגם קבוצת הפתרונות של הממ"ל <span class="math inline">\(Ax=b\)</span> שווה לקבוצת הפתרונות של הממ"ל <span class="math inline">\(A'x=b'\)</span>. לכן, כל אחד מהתנאים <span class="math inline">\(\text{(ה)},\text{(ד)},\text{(ג)},\text{(ב)}\)</span> שקול לתנאי <span class="math inline">\(A'=I_n\)</span>, שזה בדיוק <span class="math inline">\(\text{(א)}\)</span>.&nbsp;◻</p>
@@ -2086,16 +2084,14 @@ E_7 E_6 E_5 E_4 E_3 E_2 E_1 A &amp;=
 <p>נראה שהפיכות מימין והפיכות משמאל, הן למעשה שני תנאים שקולים (עבור מטריצה ריבועית). יותר מכך:</p>
 <div id="thm-invertible" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 6.1</strong></span> <em>לכל <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> התנאים הבאים שקולים:</em></p>
-<ol type="1">
-<li><p><em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p></li>
-<li><p><em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-<li><p><em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה משמאל.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה מימין.</em></p></li>
-<li><p><em><span class="math inline">\(A\)</span> הפיכה.</em></p></li>
-</ol>
+<p>א. <em><span class="math inline">\(A\)</span> שקולת שורה ל- <span class="math inline">\(I_n\)</span>.</em></p>
+<p>ב. <em><span class="math inline">\(\mathop{\mathrm{rank}}(A)=n\)</span></em></p>
+<p>ג. <em>לממ"ל <span class="math inline">\(Ax=0\)</span> יש פתרון יחיד.</em></p>
+<p>ד. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון יחיד לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ה. <em>לכל <span class="math inline">\(b\in\mathbb{F}^n\)</span> יש פתרון לממ"ל <span class="math inline">\(Ax=b\)</span>.</em></p>
+<p>ו. <em><span class="math inline">\(A\)</span> הפיכה משמאל.</em></p>
+<p>ז. <em><span class="math inline">\(A\)</span> הפיכה מימין.</em></p>
+<p>ח. <em><span class="math inline">\(A\)</span> הפיכה.</em></p>
 </div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>כבר הוכחנו שחמשת התנאים הראשונים שקולים. נראה כי <span class="math display">\[(\text{ג}) \impliedby (\text{ו}) \impliedby (\text{א})\]</span> וגם <span class="math display">\[(\text{ז}) \iff (\text{ה})\]</span> ומכאן נסיק שכל אחד מהתנאים <span class="math inline">\((\text{ח}) ,(\text{ז}) ,(\text{ו})\)</span> שקול לכל שאר התנאים.</p>
@@ -2146,7 +2142,7 @@ x_n
 <p><em>יהיו <span class="math inline">\(A,B_1,B_2\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(B_1A=B_2A=I_n\)</span>. אז <span class="math inline">\(B_1=B_2\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** <span class="math inline">\(A\)</span> הפיכה משמאל ולכן גם מימין לפי משפט <a href="#thm-invertible">6.73</a>. כלומר קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. לכן, נובע <span class="math inline">\(B_1=C=B_2\)</span> מטענה <a href="#prp-inverses">6.76</a>.&nbsp;◻</p>
+<p><span class="proof-title"><em>Proof</em>. </span>** <span class="math inline">\(A\)</span> הפיכה משמאל ולכן גם מימין לפי משפט <a href="#thm-invertible">6.75</a>. כלומר קיימת <span class="math inline">\(C\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> כך ש- <span class="math inline">\(AC=I_n\)</span>. לכן, נובע <span class="math inline">\(B_1=C=B_2\)</span> מטענה <a href="#prp-inverses">6.76</a>.&nbsp;◻</p>
 </div>
 <div class="definition">
 <p>תהי <span class="math inline">\(A\in\mathbb{M}_{n\times n}(\mathbb{F})\)</span> הפיכה. נסמן ב- <span class="math inline">\(A^{-1}\)</span> את המטריצה שמקיימת <span class="math display">\[.AA^{-1}=A^{-1}A=I_n\]</span> נקרא לה המטריצה ההופכית ל- <span class="math inline">\(A\)</span>.</p>
@@ -2202,7 +2198,7 @@ x_n
 </ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>** &nbsp;</p>
+<p><span class="proof-title"><em>Proof</em>. </span></p>
 <ol type="1">
 <li><p>זהו מקרה פרטי של מסקנה <a href="#cor-left">6.68</a> עבור <span class="math inline">\(A'=I_n\)</span>. כאן <span class="math inline">\(B=A^{-1}\)</span>.</p></li>
 <li><p>לפי תרגיל <a href="#exr-inverse-product">6.81</a> הפעולה של הפיכת מטריצה הופכת את סדר המטריצות במכפלה. אפשר להבין זאת מחישוב הדרגתי:</p>
@@ -2244,7 +2240,7 @@ A^{-1}&amp;=E_kE_{k-1}\cdots E_1 \\
 0 &amp; -1 &amp; 2 &amp; -2 &amp; 0 &amp; 1
 \end{array}
 \right)
-\\[4pt] [2]
+\\[4pt]
 &amp;\xrightarrow{R_2\leftrightarrow R_3}
 \left(
 \begin{array}{ccc|ccc}
@@ -2581,7 +2577,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- מספור משותף (רץ) לכל הסביבות לפי סדר הופעתן ---
 
-  const boxEnvs = ['definition','example','exercise','remark','theorem','lemma','proposition','corollary','proof'];
+  const boxEnvs = ['definition','example','exercise','remark','lemma','proposition','corollary','theorem','proof'];
 
   let sharedCounter = 0; // מונה אחד משותף לכולם
 
